@@ -288,12 +288,6 @@ int main(int argc, char **argv){
        "Go forth and start your quest.");
     TextBox victoryBox("You have slain all the enemies! "
     "You gained 10xp and 50gold.");
-
-    /*
-    Menu menu("Attack;Magic;Item;Run");
-    menu.formatText();
-    menu.formatMenu();
-    */
     
     Menu menu("Attack,Magic|Fire|Fire1,Fire2,Fire3;Ice,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
     menu.formatText();
