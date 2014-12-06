@@ -1,0 +1,72 @@
+﻿Build started 12/6/2014 2:53:23 PM.
+     1>Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\RPG.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp AreaMap.cpp BattleMap.cpp Character.cpp CharFactory.cpp CharStats.cpp Collision.cpp Controls.cpp Cutscene.cpp Draw.cpp GameManager.cpp InitEnemies.cpp Layer.cpp main.cpp Map.cpp Menu.cpp Movement.cpp MovingImage.cpp MovingText.cpp Scenery.cpp Stats.cpp Tangible.cpp TextBox.cpp
+         TextBox.cpp
+         Tangible.cpp
+         Stats.cpp
+         Scenery.cpp
+         MovingText.cpp
+         MovingImage.cpp
+         Movement.cpp
+         Menu.cpp
+         Map.cpp
+         main.cpp
+     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\main.cpp(422): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\main.cpp(279): warning C4101: 'prevMap' : unreferenced local variable
+         Layer.cpp
+         InitEnemies.cpp
+         GameManager.cpp
+         Draw.cpp
+         Cutscene.cpp
+         Controls.cpp
+         Collision.cpp
+         CharStats.cpp
+         CharFactory.cpp
+         Character.cpp
+         Generating Code...
+         Compiling...
+         BattleMap.cpp
+         AreaMap.cpp
+     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\areamap.cpp(40): warning C4018: '>' : signed/unsigned mismatch
+     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\areamap.cpp(49): warning C4018: '>' : signed/unsigned mismatch
+         Animation.cpp
+         Generating Code...
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe" /NOLOGO /LIBPATH:c:\allegro\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro-5.0.10-monolith-md-debug.lib" /MANIFEST /ManifestFile:"Debug\RPG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.lib" /MACHINE:X86 Debug\Animation.obj
+         Debug\AreaMap.obj
+         Debug\BattleMap.obj
+         Debug\Character.obj
+         Debug\CharFactory.obj
+         Debug\CharStats.obj
+         Debug\Collision.obj
+         Debug\Controls.obj
+         Debug\Cutscene.obj
+         Debug\Draw.obj
+         Debug\GameManager.obj
+         Debug\InitEnemies.obj
+         Debug\Layer.obj
+         Debug\main.obj
+         Debug\Map.obj
+         Debug\Menu.obj
+         Debug\Movement.obj
+         Debug\MovingImage.obj
+         Debug\MovingText.obj
+         Debug\Scenery.obj
+         Debug\Stats.obj
+         Debug\Tangible.obj
+         Debug\TextBox.obj
+         LINK : C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe not found or not built by the last incremental link; performing full link
+         Vintage-RPG.vcxproj -> C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe;#1" /manifest Debug\RPG.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\RPG.unsuccessfulbuild".
+         Touching "Debug\RPG.lastbuildstate".
+     1>Done Building Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:14.47
