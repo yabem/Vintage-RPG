@@ -164,11 +164,26 @@ void GameManager::drawMenus(){
 //      vector in LIFO order until it reaches the beginning.
 void GameManager::removeAllSubMenus(){
 
-    vector<Menu*>::iterator menuIter = menus.end();
-    //BROKEN!!!
-    while(menuIter != menus.begin()){
-        menus.pop_back();
-        menuIter--;
+    //Do nothing if the vector is empty or there are no subMenus.
+    if(menus.empty() || menus.size() == 1)
+        return;
+
+    else{
+        //Set iterator to the last element.
+        //vector<Menu*>::iterator menuIter = menus.end() - 1;
+        
+        do{
+            menus.pop_back();
+
+        }while (menus.size() != 1);
+        
+        /*
+        while(menuIter != menus.begin()){
+            menus.pop_back();
+            //menuIter--;
+            menus.end() - 1;
+        }
+        */
     }
 }
 
