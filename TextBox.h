@@ -18,8 +18,8 @@ protected:
     int bWid;           //Width of the border.
     int rows;           //Number of text rows.
     std::string text;   //Unformatted text that will be displayed.
-    vector<string> formattedText;   //One full box of text.
-    vector<vector<string> > fullText;  //Vector of full boxes of text.
+    vector<std::string> formattedText;   //One full box of text.
+    vector<vector<std::string> > fullText;  //Vector of full boxes of text.
     ALLEGRO_FONT *font;             //Font for the text.
 
 public:

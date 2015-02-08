@@ -13,15 +13,135 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Battle">
+      <UniqueIdentifier>{1880a4a6-b98c-404c-a82e-6a8b4619e184}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Battle">
+      <UniqueIdentifier>{4cee629f-d3ff-4d9c-855f-f2da67ed785f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Images">
+      <UniqueIdentifier>{20c398c2-294d-4d0d-a227-89d1dda12a67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Images">
+      <UniqueIdentifier>{581d51ac-6654-4438-8a81-e9f5f13bc384}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{e7e477ab-d3d8-4aff-9e08-a47fc346d5c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{e3c6ae13-7507-415f-9406-2c62b6df3753}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character">
+      <UniqueIdentifier>{7cdbf2c6-7b48-4388-a40a-5b2ac162a0dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character">
+      <UniqueIdentifier>{d1b70676-8bea-481b-acb0-0be6e2ce11e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\CharacterManipulation">
+      <UniqueIdentifier>{0a81c056-7c66-456a-9a14-dd49b0b0d1d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\CharacterManipulation">
+      <UniqueIdentifier>{8fd05183-b3db-460e-b36b-faccac577733}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\CharacterManipulation\SuperClass">
+      <UniqueIdentifier>{64a7a777-9edf-4c40-8345-fddb0f177e6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\CharacterManipulation\SubClasses">
+      <UniqueIdentifier>{fb4c9da0-1099-4e83-bd35-319c3ed320be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\CharacterManipulation\SuperClass">
+      <UniqueIdentifier>{1339e876-e409-4fd3-9a56-a297b2c8e926}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\CharacterManipulation\SubClass">
+      <UniqueIdentifier>{5664d930-7481-4a29-bce5-e2b37a69a746}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\SuperClass">
+      <UniqueIdentifier>{f5958a48-6b4c-4371-89d0-f1aa38d70b04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Stats">
+      <UniqueIdentifier>{ae5d5e5c-9125-4a7f-8556-ac50d4149e8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Stats\SuperClass">
+      <UniqueIdentifier>{6e2f23ca-cc55-4dfc-8764-cd06ea78ba9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Stats\SubClass">
+      <UniqueIdentifier>{1c16c4fd-d3da-4797-a26f-1ce9d3a9a5f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stats">
+      <UniqueIdentifier>{6a165bd6-cbff-4998-87d3-e9d3b511fd36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stats\SuperClass">
+      <UniqueIdentifier>{53528d19-3d42-43ca-9d5c-1c6d5d242b3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stats\SubClass">
+      <UniqueIdentifier>{9a7add79-0cb4-4f5c-9e71-973ce1591d0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\CharacterManipulation\CharacterManipulationStore">
+      <UniqueIdentifier>{adb315a1-61d5-4640-bada-3cb659135641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\CharacterManipulation\CharacterManipulationStore">
+      <UniqueIdentifier>{aec276c7-269c-4420-b316-b0592b217c69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\CharacterList">
+      <UniqueIdentifier>{d6ba9daf-5962-4317-a8d9-d0dc26f49ea2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\CharFactory">
+      <UniqueIdentifier>{0ac95e19-bc79-4bca-8151-b9fc0c5f2512}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\SuperClass">
+      <UniqueIdentifier>{f3c9840d-9993-4749-bb31-9f58819183da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\CharFactory">
+      <UniqueIdentifier>{e31e149c-da7e-4e7a-aac4-a2ec10aa2e4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\CharacterList">
+      <UniqueIdentifier>{b4b14669-9095-4526-8b0b-f5a545452547}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map">
+      <UniqueIdentifier>{43671170-9096-4019-8fc2-b0bb9f0fd353}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map">
+      <UniqueIdentifier>{f66f3fc1-9708-4df6-af25-aa02e47c4802}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation">
+      <UniqueIdentifier>{247035fe-9b3e-402e-8eea-a589dc2ca4f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation">
+      <UniqueIdentifier>{77d8d180-c556-4789-a059-174b1714ec5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation\SuperClass">
+      <UniqueIdentifier>{77134c8a-f038-43a4-9881-7f673a4bce59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation\SubClass">
+      <UniqueIdentifier>{21ce656a-8b79-4103-a25e-2d3c834e00bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation\SuperClass">
+      <UniqueIdentifier>{908e79d2-d322-4919-86e7-fe29bbff87dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation\SubClass">
+      <UniqueIdentifier>{4358334f-2016-40ba-8734-16be237d1b0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TextBox">
+      <UniqueIdentifier>{e18bb8e3-da9e-4ab6-9ef3-bf61e126ebee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TextBox\SuperClass">
+      <UniqueIdentifier>{95ceadb7-cd77-4d63-b513-d0c5dbffee43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TextBox\SubClass">
+      <UniqueIdentifier>{3c661670-12cd-44e3-866b-a1820e39f2a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextBox">
+      <UniqueIdentifier>{83f9cfb8-1009-467a-ae97-f324b1fb90b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextBox\SuperClass">
+      <UniqueIdentifier>{27e7bfce-d0fb-4c47-a5cf-2ede666576ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextBox\SubClass">
+      <UniqueIdentifier>{f463e418-01da-489b-9d10-b077b16b1aa7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Controls.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Scenery.cpp">
@@ -33,46 +153,13 @@
     <ClCompile Include="Layer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AreaMap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Collision.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Movement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Draw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BattleMap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TextBox.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Cutscene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MovingText.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MovingImage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Stats.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CharStats.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CharFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InitEnemies.cpp">
@@ -81,17 +168,77 @@
     <ClCompile Include="GameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
+    <ClCompile Include="BattleAction.cpp">
+      <Filter>Source Files\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="GenerateAction.cpp">
+      <Filter>Source Files\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageStore.cpp">
+      <Filter>Source Files\Images</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Controls.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterManipulation.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\SuperClass</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterAttack.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\SubClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Stats.cpp">
+      <Filter>Source Files\Stats\SuperClass</Filter>
+    </ClCompile>
+    <ClCompile Include="CharStats.cpp">
+      <Filter>Source Files\Stats\SubClass</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterManipulationStore.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\CharacterManipulationStore</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files\Character\SuperClass</Filter>
+    </ClCompile>
+    <ClCompile Include="CharFactory.cpp">
+      <Filter>Source Files\Character\CharFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterList.cpp">
+      <Filter>Source Files\Character\CharacterList</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleMap.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="AreaMap.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files\Animation\SuperClass</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingImage.cpp">
+      <Filter>Source Files\Animation\SubClass</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingText.cpp">
+      <Filter>Source Files\Animation\SubClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Cursor.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleManager.cpp">
+      <Filter>Source Files\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="TextBox.cpp">
+      <Filter>Source Files\TextBox\SuperClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\TextBox\SubClass</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Character.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Controls.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -104,49 +251,16 @@
     <ClInclude Include="Layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AreaMap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Collision.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Movement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Draw.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AreaMapLayouts.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BattleMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TextBox.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Cutscene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MovingText.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MovingImage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Stats.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharStats.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InitEnemies.h">
@@ -158,8 +272,77 @@
     <ClInclude Include="BattleCreator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
+    <ClInclude Include="BattleAction.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateBattleAnimation.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="GenerateAction.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageStore.h">
+      <Filter>Header Files\Images</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Controls.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterManipulation.h">
+      <Filter>Header Files\Character\CharacterManipulation\SuperClass</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterAttack.h">
+      <Filter>Header Files\Character\CharacterManipulation\SubClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files\Character\SuperClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Stats.h">
+      <Filter>Header Files\Stats\SuperClass</Filter>
+    </ClInclude>
+    <ClInclude Include="CharStats.h">
+      <Filter>Header Files\Stats\SubClass</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterManipulationStore.h">
+      <Filter>Header Files\Character\CharacterManipulation\CharacterManipulationStore</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterList.h">
+      <Filter>Header Files\Character\CharacterList</Filter>
+    </ClInclude>
+    <ClInclude Include="CharFactory.h">
+      <Filter>Header Files\Character\CharFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="AreaMap.h">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="AreaMapLayouts.h">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleManager.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Header Files\Animation\SuperClass</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingImage.h">
+      <Filter>Header Files\Animation\SubClass</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingText.h">
+      <Filter>Header Files\Animation\SubClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Cursor.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBox.h">
+      <Filter>Header Files\TextBox\SuperClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files\TextBox\SubClass</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

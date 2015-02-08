@@ -26,6 +26,8 @@ protected:
     int baseDef;    //Character's base DEF before augments.
     int ttlDef;     //Character's total DEF after augments.
 
+    bool dead;     //Character's status of being alive or dead.
+
 public:
 
     //Constructor.
@@ -46,10 +48,14 @@ public:
     int getCurrMP() const;     //Returns currMP.
 
     int getBaseAtk() const;    //Returns baseAtk.
-    int getTtlAtk() const;     //Returns ttlAtk.
+    int virtual getTtlAtk() const;     //Returns ttlAtk.
 
     int getBaseDef() const;    //Returns baseDef.
-    int getTtlDef() const;     //Returns ttlDef.
+    int virtual getTtlDef() const;     //Returns ttlDef.
 
     void addToCurrHP(int amount);        //Adds to currHP.
+
+    bool isDead();        //Determines if currHP are all gone.
+    void makeDead();            //Sets the dead status to true.
+    void makeAlive();            //Sets the dead status to false.
 };

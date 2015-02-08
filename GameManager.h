@@ -10,6 +10,7 @@
 #include "InitEnemies.h"
 #include "CharFactory.h"
 #include "Menu.h"
+#include "CharacterList.h"
 
 //class AreaMap;
 class Cutscene;
@@ -19,11 +20,9 @@ class Menu;
 
 const int MAX_NUM_KEYS = 6;
 const int RESET_TIMER = 2000;
-const int BATTLE_TIMER = 200;   //Determines when a battle will take place.
+const int BATTLE_TIMER = 100;   //Determines when a battle will take place.
 
 class GameManager{
-
-
 
 public:
     //Confirmed for use
@@ -31,6 +30,11 @@ public:
     bool loadCutscene(Cutscene *cutscene);
     bool loadMenu(Menu *menu);
     void drawMenus();
+    
+    //Removes all the submenus objects from menus leaving the first
+    //Menu in the vector.
+    void removeAllSubMenus();
+
     void playCutscenes();
     void updateKey(int key);
     int gameTimer;          //Timer that counts up as the game progresses each frame.
@@ -51,7 +55,6 @@ public:
         startingInstructions;   //Flag for the startingInstructions.
     int selectEnemy ,       //
         enemyChoice;
-    
     
     int brow , bcol , charOnMapX , charOnMapY;  //The the x and y locations on the areamap.
     int charOnMapFacing;  //Direction the character is facing on the areamap.
@@ -84,9 +87,20 @@ public:
     void generateVictoryCutScene(); //Creates the victory CutScene.
 
 
+    std::string getMenuSelectionName();    //Get's the curr menu selection's name.
+    bool enemiesRemaining();    //Determines if there are still enemies remaining.
+    std::vector<Character*> getEnemiesList();   //Returns the enemies list.
+    Character* getCurrEnemy();   //Gets the currently selected enemy.
+    bool currEnemyDead();   //Returns whether or not the currently selected enemy is dead.
+    void deleteCurrEnemy(); //Deletes the currently selected enemy.
+
+    void moveEnemySelectionDown();  //Moves the currently selected enemy down.
+    void moveEnemySelectionUp();  //Moves the currently selected enemy up.
+
 //private:
     queue<Cutscene*> cutscenes;
     vector<Menu*> menus;
+    CharacterList theEnemies;
     //queue<Cutscene*> animations;
     ALLEGRO_FONT *introFont;
 };

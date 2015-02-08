@@ -30,6 +30,10 @@
 #include "Cutscene.h"
 #include "GameManager.h"
 #include "Menu.h"
+#include "ImageStore.h"
+#include "CharacterAttack.h"
+#include "Cursor.h"
+#include "BattleManager.h"
 
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
@@ -44,6 +48,7 @@ class BattleTrans;
 //Make tangible collision better so you can't go through objects.
 
 //Tiles taken from http://opengameart.org/content/tiled-terrains
+
 
 #define ttfaddon
 
@@ -104,6 +109,12 @@ int main(int argc, char **argv){
    al_register_event_source(event_queue, al_get_keyboard_event_source());
    al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
+
+   //Create imageStore and load all known bitmaps.
+   ImageStore imageStore;
+   imageStore.loadAllDefaultImages();
+
+   /*
    //Load the bitmaps.
    ALLEGRO_BITMAP *player = al_load_bitmap("player.png");
    ALLEGRO_BITMAP *rock = al_load_bitmap("rock.png");
@@ -125,25 +136,26 @@ int main(int argc, char **argv){
    al_convert_mask_to_alpha(wolf , al_map_rgb(255,0,255));
    al_convert_mask_to_alpha(soldier , al_map_rgb(255,0,255));
    al_convert_mask_to_alpha(attack , al_map_rgb(255,0,255)); 
-
+ 
    //Create the enemy vector and add all the bitmaps.
    vector<ALLEGRO_BITMAP*> enemyModels;
-   enemyModels.push_back(rat);
-   enemyModels.push_back(wolf);
-   enemyModels.push_back(soldier);
+   enemyModels.push_back(imageStore.getBitMap("rat"));
+   enemyModels.push_back(imageStore.getBitMap("wolf"));
+   enemyModels.push_back(imageStore.getBitMap("soldier"));
+   */
 
    //Characters
-   Character thePlayer(player , playWidth , playWidth , 30 , 2 , rate);
+   Character thePlayer(imageStore.getBitMap("player") , playWidth , playWidth , 30 , 2 , rate);
 
    //Character stats
-   CharStats playerStats(1 ,25 , 10 , 10 , 10 , 1 , 100 , 10);
+   CharStats playerStats(1 ,25 , 10 , 100 , 10 , 1 , 100 , 10);
    thePlayer.setStats(&playerStats);
 
    //Animations queue
    queue<Animation*> animations;
 
    //Moving Images
-   MovingImage weaponAttack(attack , 34 , 34 , 30);
+   MovingImage weaponAttack(imageStore.getBitMap("swordAttack") , 34 , 34 , 30);
 
    //Moving Texts
 #ifdef ttfaddon
@@ -157,31 +169,31 @@ int main(int argc, char **argv){
 
    players.push_back(&thePlayer);
 
-   Tangible theRock1(rock , 60 , 60 , 32 , 32 , 60 , 60 , 32 , 32);
-   Tangible theRock2(rock , 888 , 888 , 32 , 32 , 888 , 888 , 32 , 32);
+   Tangible theRock1(imageStore.getBitMap("rock") , 60 , 60 , 32 , 32 , 60 , 60 , 32 , 32);
+   Tangible theRock2(imageStore.getBitMap("rock") , 888 , 888 , 32 , 32 , 888 , 888 , 32 , 32);
 
-   Scenery cloud1(cloud , SCREEN_W , 0 , 100 , 100 , -4 , 1);
-   Scenery cloud2(cloud , SCREEN_W , 40 , 100 , 100 , -8 , 0);
-   Scenery cloud3(cloud , SCREEN_W , 80 , 100 , 100 , -6 , 0);
-   Scenery cloud4(cloud , SCREEN_W , 120 , 100 , 100 , -10 , 2);
-   Scenery cloud5(cloud , SCREEN_W , 160 , 100 , 100 , -3 , 0);
-   Scenery cloud6(cloud , SCREEN_W , 200 , 100 , 100 , -2 , 0);
-   Scenery cloud7(cloud , SCREEN_W , 240 , 100 , 100 , -8 , -2);
-   Scenery cloud8(cloud , SCREEN_W , 280 , 100 , 100 , -9 , 0);
-   Scenery cloud9(cloud , SCREEN_W , 380 , 100 , 100 , -5 , -1);
+   Scenery cloud1(imageStore.getBitMap("cloud") , SCREEN_W , 0 , 100 , 100 , -4 , 1);
+   Scenery cloud2(imageStore.getBitMap("cloud") , SCREEN_W , 40 , 100 , 100 , -8 , 0);
+   Scenery cloud3(imageStore.getBitMap("cloud") , SCREEN_W , 80 , 100 , 100 , -6 , 0);
+   Scenery cloud4(imageStore.getBitMap("cloud") , SCREEN_W , 120 , 100 , 100 , -10 , 2);
+   Scenery cloud5(imageStore.getBitMap("cloud") , SCREEN_W , 160 , 100 , 100 , -3 , 0);
+   Scenery cloud6(imageStore.getBitMap("cloud") , SCREEN_W , 200 , 100 , 100 , -2 , 0);
+   Scenery cloud7(imageStore.getBitMap("cloud") , SCREEN_W , 240 , 100 , 100 , -8 , -2);
+   Scenery cloud8(imageStore.getBitMap("cloud") , SCREEN_W , 280 , 100 , 100 , -9 , 0);
+   Scenery cloud9(imageStore.getBitMap("cloud") , SCREEN_W , 380 , 100 , 100 , -5 , -1);
 
-   Layer trans0(terrain , 8 , 4 , 32 , 32 , 15 , 20 , cutscene0 , 300);
-   Layer trans1(terrain , 8 , 4 , 32 , 32 , 15 , 20 , cutscene1 , 300); 
+   Layer trans0(imageStore.getBitMap("terrain") , 8 , 4 , 32 , 32 , 15 , 20 , cutscene0 , 300);
+   Layer trans1(imageStore.getBitMap("terrain") , 8 , 4 , 32 , 32 , 15 , 20 , cutscene1 , 300); 
 
-   Layer layer0(terrain , 8 , 4 , 32 , 32 , 50 , 50 , town0 , 2500);
-   Layer layer1(town , 10 , 13 , 32 , 32 , 50 , 50 , town1 , 2500);
-   Layer layer2(town , 10 , 13 , 32 , 32  , 50 , 50 , town2 , 2500);
+   Layer layer0(imageStore.getBitMap("terrain") , 8 , 4 , 32 , 32 , 50 , 50 , town0 , 2500);
+   Layer layer1(imageStore.getBitMap("town") , 10 , 13 , 32 , 32 , 50 , 50 , town1 , 2500);
+   Layer layer2(imageStore.getBitMap("town") , 10 , 13 , 32 , 32  , 50 , 50 , town2 , 2500);
 
-   Layer shop0(town , 10 , 13 , 32 , 32 , 8 , 8 , theShop0 , 64);
-   Layer shop1(town , 10 , 13 , 32 , 32  , 8 , 8 , theShop1 , 64);
+   Layer shop0(imageStore.getBitMap("town") , 10 , 13 , 32 , 32 , 8 , 8 , theShop0 , 64);
+   Layer shop1(imageStore.getBitMap("town") , 10 , 13 , 32 , 32  , 8 , 8 , theShop1 , 64);
 
-   Layer battle0(terrain , 8 , 4 , 32 , 32 , 15 , 20 , battleScreen0 , 300);
-   Layer battle1(terrain , 8 , 4 , 32 , 32 , 15 , 20 , battleScreen1 , 300);
+   Layer battle0(imageStore.getBitMap("terrain") , 8 , 4 , 32 , 32 , 15 , 20 , battleScreen0 , 300);
+   Layer battle1(imageStore.getBitMap("terrain") , 8 , 4 , 32 , 32 , 15 , 20 , battleScreen1 , 300);
 
    vector<Layer*> layers;
    layers.push_back(&layer0);
@@ -242,7 +254,6 @@ int main(int argc, char **argv){
    theMap.loadTangible(&theRock1);
    theMap.loadTangible(&theRock2);
 
-
    //Create GameManager.
    GameManager gameManager = GameManager();
    gameManager.currMap = &theMap;
@@ -250,16 +261,16 @@ int main(int argc, char **argv){
    gameManager.battleMap = &battleMap; 
    gameManager.cutSceneMap = &cutScene;
 
-   gameManager.loadEnemyModel(rat);
-   gameManager.loadEnemyModel(wolf);
-   gameManager.loadEnemyModel(soldier);
+   gameManager.loadEnemyModel(imageStore.getBitMap("rat"));
+   gameManager.loadEnemyModel(imageStore.getBitMap("wolf"));
+   gameManager.loadEnemyModel(imageStore.getBitMap("soldier"));
 
    //Cutscenes
    Intro *theIntro = new Intro(); 
    Instruct *theInstruct = new Instruct();
 
    gameManager.loadCutscene(theIntro);   
-   gameManager.loadCutscene(theInstruct);
+   gameManager.loadCutscene(theInstruct);  
 
    bool test = false;   //Used to set start location.
    bool battle = false;
@@ -292,6 +303,14 @@ int main(int argc, char **argv){
     Menu menu("Attack,Magic|Fire|Fire1,Fire2,Fire3;Ice,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
     menu.formatText();
     gameManager.loadMenu(&menu);
+
+    //xTesting cursor
+    Cursor cursor;
+    cursor.move(50 , 50);
+    cursor.reverseDirection();
+
+    BattleManager battleManager;
+    battleManager.loadCursor(&cursor);
     
    //Initialize starting position.
    Movement::setStart(*gameManager.player, theMap , STARTCOL , STARTROW);
@@ -321,7 +340,6 @@ int main(int argc, char **argv){
             if(!gameManager.cutscenes.empty()){
                 gameManager.playCutscenes();
                 
-                gameManager.drawMenus();
                 /*
                 menu.draw();
                 menu.moveSelection(gameManager.pressedKey);
@@ -343,7 +361,7 @@ int main(int argc, char **argv){
                 }
 
                 //Check for end of battle.
-                else if(keys[Q] == TRUE || gameManager.enemies.size() == 0){
+                else if(keys[Q] == TRUE || !gameManager.enemiesRemaining()){//xgameManager.enemies.size() == 0){
                     
                     //Create victory cutscene.
                     gameManager.generateVictoryCutScene();
@@ -359,35 +377,51 @@ int main(int argc, char **argv){
                 else{
                     
                     //Draw map.
-                    Draw::drawBattle(theBattleMap , players , gameManager.enemies);
+                    Draw::drawBattle(theBattleMap , players , gameManager.getEnemiesList());//xgameManager.enemies);
 
                     al_draw_filled_rectangle(gameManager.player->getX() - 100 , gameManager.player->getY() , gameManager.player->getX() - 20 , gameManager.player->getY() + 100 , al_map_rgb(0 , 0 , 255));
                     al_draw_rectangle(gameManager.player->getX() - 100 , gameManager.player->getY() , gameManager.player->getX() - 20 , gameManager.player->getY() + 100 , al_map_rgb(255 , 255 , 255) , 2 );
+
+                    //Draw cursor.
+                    battleManager.drawCursor();
 #ifdef ttfaddon                    
+
                     al_draw_textf(font18, al_map_rgb(150, 150, 150), gameManager.player->getX() - 95 , gameManager.player->getY() + 5, 0, "Attack");
                     al_draw_textf(font18, al_map_rgb(150, 150, 150), gameManager.player->getX() - 95 , gameManager.player->getY() + 25, 0, "Magic");
                     al_draw_textf(font18, al_map_rgb(150, 150, 150), gameManager.player->getX() - 95 , gameManager.player->getY() + 45, 0, "Item");
                     al_draw_textf(font18, al_map_rgb(150, 150, 150), gameManager.player->getX() - 95 , gameManager.player->getY() + 65, 0, "Run");
 #endif
+                    //Draw battle menus.
+                    gameManager.drawMenus();
 
                     //Play all animations.
                     if(animations.size() != 0){
 
                         //Pop off the animaton once it's done.
-                        if(animations.front()->play())
+                        if(animations.front()->play()){
+
+                            //Delete animation to reclaim memory.
+                            delete animations.front();  
                             animations.pop();
+                        }
                          
                         //Move cursor back once animations are done.
                         if(animations.size() == 0){
 
                             //Check if enemy is dead.
-                            if((*gameManager.enemyIter)->getStats()->getCurrHP() <= 0){
+                            /*//xif((*gameManager.enemyIter)->getStats()->getCurrHP() <= 0){
+                      
                                 delete (*gameManager.enemyIter)->getStats();
                                 delete (*gameManager.enemyIter);
                                 gameManager.enemies.erase(gameManager.enemyIter);
                             }
-                            
-                            gameManager.resetEnemyIter();
+                            */
+
+                            if(gameManager.currEnemyDead()){
+                                gameManager.deleteCurrEnemy();
+                            }
+                                                        
+                            //xgameManager.resetEnemyIter();
                             enemyChoice = 0;
                             selectEnemy = 1;
                         }
@@ -397,34 +431,55 @@ int main(int argc, char **argv){
                         switch(theKey){
 
                             case UP:
-                                if(selectEnemy == 1 && menuChoice > 0)
-                                    menuChoice -= 20;
+                                //xif(selectEnemy == 1 && menuChoice > 0)
+                                //x    menuChoice -= 20;
 
-                                if(selectEnemy == -1 && enemyChoice > 0){
-                                    enemyChoice--;
-                                    gameManager.enemyIter--;
-                                }
+                                gameManager.moveEnemySelectionUp();
+                                battleManager.moveCursorToTarget(gameManager.getCurrEnemy());
+                                //xif(selectEnemy == -1 && enemyChoice > 0){
+                                 //x   enemyChoice--;
+                                    //xgameManager.enemyIter--;
+                                //x}
 
                                 keys[theKey] = false;
                                 theKey = NOKEY;
                                 break;
 
                             case DOWN:
-                                if(selectEnemy == 1 && menuChoice < 60)
-                                    menuChoice += 20;
+                                //xif(selectEnemy == 1 && menuChoice < 60)
+                                   //x menuChoice += 20;
 
-                                if(selectEnemy == -1 && enemyChoice < gameManager.enemies.size() - 1){
-                                    enemyChoice++;
-                                    gameManager.enemyIter++;
-                                }
+                                gameManager.moveEnemySelectionDown();
+                                //xtempChar = gameManager.getCurrEnemy();
+                                battleManager.moveCursorToTarget(gameManager.getCurrEnemy());
+                                //xif(selectEnemy == -1 && enemyChoice < gameManager.enemies.size() - 1){
+                                //xif(selectEnemy == -1 && enemyChoice < gameManager.theEnemies.getList().size() - 1){
+                                  //x  enemyChoice++;
+                                    //xgameManager.enemyIter++;
+                                //x}
                                 keys[theKey] = false;
                                 theKey = NOKEY;
                                 break;
 
                             case SPACE:
 
-                                if(selectEnemy == -1){
+                                if(battleManager.targettingEnemies()){
+                                //xif(selectEnemy == -1){
 
+                                    CharacterAttack charAttack;
+                                    charAttack.loadAttack(&thePlayer , gameManager.getCurrEnemy() , &imageStore , font18);
+                                    //xcharAttack.loadAttack(&thePlayer , *gameManager.enemyIter , &imageStore , font18);
+                                    charAttack.execute();
+                                                                       
+                                    //std::string theSelec = gameManager.getMenuSelectionName();
+
+                                    //Load the Animations to the animations queue.
+                                    while(!charAttack.animationsIsEmpty()){
+                                        
+                                        animations.push(charAttack.getFrontAnimation());
+                                        charAttack.removeFrontAnimation();
+                                    }
+                                    /*
                                     weaponAttack.initialize(SCREEN_W , 0 , (*gameManager.enemyIter)->getX() , (*gameManager.enemyIter)->getY());
 #ifdef ttfaddon
                                     damage.initialize("10" , (*gameManager.enemyIter)->getX() , (*gameManager.enemyIter)->getY() , (*gameManager.enemyIter)->getX() , (*gameManager.enemyIter)->getY() - 50);
@@ -437,9 +492,16 @@ int main(int argc, char **argv){
                                     animations.push(&damage);
                                     animations.push(&damageStay);
 #endif
+                                    */
+                                    battleManager.targetPlayers();
+                                    gameManager.removeAllSubMenus();
                                 }
 
-                                else selectEnemy *= -1;
+                                else {
+                                    battleManager.targetEnemies();
+                                    battleManager.moveCursorToTarget(gameManager.getCurrEnemy());
+                                //xelse selectEnemy *= -1;
+                                }
 
                                 keys[theKey] = false;
                                 theKey = NOKEY;
@@ -449,9 +511,13 @@ int main(int argc, char **argv){
 
                     if(selectEnemy == -1){
 
-                        int sPtX = gameManager.enemies[enemyChoice]->getX() + gameManager.enemies[enemyChoice]->getW();
-                        int sPtY = gameManager.enemies[enemyChoice]->getY() + gameManager.enemies[enemyChoice]->getH() / 2;
+                        //xint sPtX = gameManager.enemies[enemyChoice]->getX() + gameManager.enemies[enemyChoice]->getW();
+                        //xint sPtY = gameManager.enemies[enemyChoice]->getY() + gameManager.enemies[enemyChoice]->getH() / 2;
 
+                       //x int sPtX = gameManager.theEnemies.getCurrSelection()->getX() + gameManager.theEnemies.getCurrSelection()->getW();
+                        //xint sPtY = gameManager.theEnemies.getCurrSelection()->getY() + gameManager.theEnemies.getCurrSelection()->getH() / 2;
+                        //x
+                        /*
                        al_draw_filled_triangle(
                            sPtX + SELWID, sPtY - SELHGT ,       //Upper point
                            sPtX , sPtY,                         //Middle point
@@ -463,8 +529,9 @@ int main(int argc, char **argv){
                            sPtX , sPtY,                         //Middle point
                            sPtX + SELWID , sPtY + SELHGT ,      //Lower point
                            al_map_rgb(255, 255, 255) , 2);
+                        */
                     }
-
+                    
                     else{
                         al_draw_filled_triangle(gameManager.player->getX() - 120 , gameManager.player->getY() + menuChoice , gameManager.player->getX() - 100 , gameManager.player->getY() + 15 + menuChoice , gameManager.player->getX() - 120 , gameManager.player->getY() + 30 + menuChoice , al_map_rgb(150, 150, 150));
                         al_draw_triangle(gameManager.player->getX() - 120 , gameManager.player->getY() + menuChoice , gameManager.player->getX() - 100 , gameManager.player->getY() + 15 + menuChoice , gameManager.player->getX() - 120 , gameManager.player->getY() + 30 + menuChoice , al_map_rgb(255, 255, 255) , 2);
@@ -491,9 +558,7 @@ int main(int argc, char **argv){
 
                 //Draw map.
                 Draw::drawArea(*gameManager.currMap , *gameManager.player);
-
-                
-     
+                                     
                 //Show variables.
 #ifdef ttfaddon
                 displayVariables(font18 , theKey , gameManager.player , gameManager.currMap->getLayer(CENTERGROUND));
@@ -514,6 +579,8 @@ int main(int argc, char **argv){
    al_destroy_display(display);
    al_destroy_timer(timer);
    al_destroy_event_queue(event_queue);
+
+/*
    al_destroy_bitmap(player);
    al_destroy_bitmap(terrain);
    al_destroy_bitmap(town);
@@ -523,7 +590,7 @@ int main(int argc, char **argv){
    al_destroy_bitmap(wolf);
    al_destroy_bitmap(soldier);
    al_destroy_bitmap(attack);
-
+*/
    return 0;
 }
 

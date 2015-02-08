@@ -1,3 +1,4 @@
+#pragma once
 #include "Animation.h"
 #include <allegro5/allegro_font.h>
 

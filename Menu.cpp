@@ -16,7 +16,7 @@ Menu::Menu(std::string text){
 
     numOptions = 0;
     longestOption = 0;
-    currSelection = 1;
+    currSelection = 0;
 
     this->text = text;  
     font = al_load_font("arial.ttf" , FONT_SIZE , 0);
@@ -88,57 +88,6 @@ void Menu::destroyMenuHelper(){
     return;
 }
 
-/*
-//Find number of rows based on length of text.
-void Menu::formatText(){
-
-    //int countRows = -1;
-    int countChars = 0;
-    std::string partial;
-
-    if(text == "")
-        return;
-
-    else{
-
-        std::string::iterator it = text.begin();
-
-        //Cycle through each character in the text.
-        for(int i = 0 ; it != text.end() ; it++){
-            
-            //Check for end of the option.
-            if(*it == ';'){
-
-                numOptions++;
-
-                //Add to the formattedText.
-                formattedText.push_back(partial);
-                partial.clear();
-
-                //Replace longest option as necessary.
-                if(countChars > longestOption)
-                    longestOption = countChars;
-
-                countChars = 0;
-            }
-
-            else{
-                //Increase number of chars for this line.
-                countChars++;
-
-                //Add the char to the temp line.
-                partial.push_back(*it);
-            }
-        }
-
-        //Insert remaining option.
-        formattedText.push_back(partial);
-        partial.clear();
-    }
-}
-*/
-
-
 //Use the text and format the menu.
 void Menu::formatMenu(){
 
@@ -177,7 +126,7 @@ void Menu::formatTextHelper(std::string text , std::string::iterator &stringIter
 
     else{
 
-        currSelection = 1;
+        currSelection = 0;
 
         while(!done){
 
@@ -214,7 +163,6 @@ void Menu::formatTextHelper(std::string text , std::string::iterator &stringIter
                     option->subMenu = additionalSubMenu;
 
                     additionalSubMenu->formatTextHelper(text , stringIter);
-                    //additionalSubMenu->formatMenu();
                 }
 
                 else stringIter++;
@@ -272,11 +220,11 @@ bool Menu::moveSelection(int key){
     return false;
 }
 
-
 //Returns the current selection. If options is empty returns "".
+//Unused at the moment.
 Menu* Menu::getSelectionsSubMenu(){
     
-    if(currSelection == 0)
+    if(currSelection < 0)
         return NULL;
 
     else{
@@ -284,18 +232,6 @@ Menu* Menu::getSelectionsSubMenu(){
         return (*optionIter)->subMenu;
     }
 }
-
-
-/*
-//Returns the current selection. If options is empty returns "".
-std::string Menu::getSelection(){
-
-    if(options.empty())
-        return "";
-
-    return (*optionIter)->Name;
-}
-*/
 
 //Returns the X value for the middle of the selection.
 int Menu::getCurrSelX() const{
@@ -306,35 +242,9 @@ int Menu::getCurrSelX() const{
 //Returns the Y value for the middle of the selection.
 int Menu::getCurrSelY() const{
 
-    return sy + (FONT_HEIGHT * currSelection) - (FONT_HEIGHT / 2);
+    return sy + (FONT_HEIGHT) + (FONT_HEIGHT * currSelection)
+        - (FONT_HEIGHT / 2);
 }
-
-/*
-//Draws the text box to the screen.
-void Menu::draw(){
-
-    //Draws the background and the border for the TextBox.
-    al_draw_filled_rectangle(sx , sy , dx , dy , al_map_rgb(rr , rg , rb));
-    al_draw_rectangle(sx , sy , dx , dy , al_map_rgb(br , bg , bb) , bWid);
-
-    //Create iterator.
-    vector<string>::iterator it = formattedText.begin();
-    
-    //Draw the text to the screen.
-    for(int i = 0 ; it != formattedText.end() ; it++ , i++){
-        
-        al_draw_textf(font,             //Font.
-            al_map_rgb(tr , tg , tb),   //Color.
-            sx + FONT_SIZE ,             //X draw location.
-            sy + FONT_HEIGHT * i ,       //Y draw location.
-            0,                          //Flag. 
-            it->c_str());               //Text.
-    }
-
-    //Draw the selector.
-    drawSelector();
-}
-*/
 
 //Draws the text box to the screen. Draws nothing if there aren't
 //any options in the menu.
@@ -354,15 +264,14 @@ void Menu::draw(){
     //Draw the text to the screen.
     for(int i = 0 ; selecIter != options.end() ; selecIter++ , i++){
         
-        al_draw_textf(font,             //Font.
-            al_map_rgb(tr , tg , tb),   //Color.
-            sx + FONT_SIZE ,             //X draw location.
-            sy + FONT_HEIGHT * i ,       //Y draw location.
-            0,                          //Flag. 
-            (*selecIter)->Name.c_str());               //Text.
+        al_draw_textf(font,                 //Font.
+            al_map_rgb(tr , tg , tb),       //Color.
+            sx + FONT_SIZE ,                //X draw location.
+            sy + FONT_HEIGHT * i ,          //Y draw location.
+            0,                              //Flag. 
+            (*selecIter)->Name.c_str());    //Text.
     }
     
-
     //Draw the selector.
     drawSelector();
 }
@@ -383,7 +292,6 @@ void Menu::calculateSelectorCoords(){
 //any options in the menu.
 void Menu::drawSelector(){
 
-    
     if(options.empty())
         return;
 
@@ -411,4 +319,56 @@ void Menu::setDrawToPrevSelection(Menu *prevMenu){
 
     calculateSelectorCoords();
     //optionIter = options.begin();
+}
+
+//Returns the name of the selected Option.
+//Pre:  None.
+//Post: Returns the name of the Option that is selected.
+//      The name is returned as a std::string. The function is
+//      recursive because it continues down the Menu checking every
+//      subMenu until it reaches NULL. Once it reaches a subMenu that
+//      is NULL, name of the Menu item is returned.
+std::string Menu::getSelectionName() const{
+
+    if(this->options[currSelection]->subMenu == NULL)
+        return options[currSelection]->Name;
+
+    else return this->options[currSelection]->subMenu->getSelectionName();
+//        this->options[currSelection]->subMenu();
+    /*
+    if(currSelection < 0)
+        return "Out of Range";
+
+    //Set temp pointer to current selection's subMenu.
+    Menu *tempMenu = options[currSelection]->subMenu;
+
+    //Sets temp int to the current Menu's selection.
+    int tempCurrSelection = currSelection;
+
+    //
+    //
+    //Inifinite looping, need to fix.
+    //
+    //
+
+    //Cycle through the Menu's until at the final option.
+    
+    while(tempMenu != NULL){
+
+        tempCurrSelection = tempMenu->currSelection;
+        tempMenu = options[tempCurrSelection]->subMenu;
+    }
+    */
+    
+  //  return options[tempCurrSelection]->Name;
+}
+
+//Returns the name of the selected Option.
+//Post: Returns the name of the current menu's selection.
+std::string Menu::getCurrSelectionName() const{
+
+    if(this == NULL)
+        return "Error, the Menu is empty.";
+
+    else return this->options[currSelection]->Name;
 }

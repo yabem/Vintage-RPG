@@ -1,35 +1,34 @@
-﻿Build started 12/6/2014 3:06:46 PM.
+﻿Build started 2/6/2015 12:55:59 PM.
      1>Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Touching "Debug\RPG.unsuccessfulbuild".
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AreaMap.cpp Collision.cpp Cutscene.cpp Draw.cpp GameManager.cpp Layer.cpp Map.cpp Movement.cpp main.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\main.cpp(422): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\main.cpp(279): warning C4101: 'prevMap' : unreferenced local variable
-         Movement.cpp
-         Map.cpp
-         Layer.cpp
-         GameManager.cpp
-         Draw.cpp
-         Cutscene.cpp
-         Collision.cpp
-         AreaMap.cpp
-     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\areamap.cpp(40): warning C4018: '>' : signed/unsigned mismatch
-     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\areamap.cpp(49): warning C4018: '>' : signed/unsigned mismatch
-         Generating Code...
+     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\imagestore.h(11): warning C4099: 'ALLEGRO_BITMAP' : type name first seen using 'struct' now seen using 'class'
+                 c:\allegro\include\allegro5\bitmap.h(12) : see declaration of 'ALLEGRO_BITMAP'
+     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\main.cpp(290): warning C4101: 'prevMap' : unreferenced local variable
        Link:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe" /NOLOGO /LIBPATH:c:\allegro\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro-5.0.10-monolith-md-debug.lib" /MANIFEST /ManifestFile:"Debug\RPG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.lib" /MACHINE:X86 Debug\Animation.obj
          Debug\AreaMap.obj
+         Debug\BattleAction.obj
+         Debug\BattleManager.obj
          Debug\BattleMap.obj
          Debug\Character.obj
+         Debug\CharacterAttack.obj
+         Debug\CharacterList.obj
+         Debug\CharacterManipulation.obj
+         Debug\CharacterManipulationStore.obj
          Debug\CharFactory.obj
          Debug\CharStats.obj
          Debug\Collision.obj
          Debug\Controls.obj
+         Debug\Cursor.obj
          Debug\Cutscene.obj
          Debug\Draw.obj
          Debug\GameManager.obj
+         Debug\GenerateAction.obj
+         Debug\ImageStore.obj
          Debug\InitEnemies.obj
          Debug\Layer.obj
          Debug\main.obj
@@ -53,4 +52,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:06.81
+Time Elapsed 00:00:01.59

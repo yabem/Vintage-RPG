@@ -22,5 +22,5 @@ public:
 
     int getTtlXP() const;       //Total gained XP.
     int getCurrLvlXP() const;   //Returns currLvlXP;
-    int getToLvlXP() const;        //Returns toLvlXP;
+    int getToLvlXP() const;     //Returns toLvlXP;
 };

@@ -8,6 +8,7 @@ using namespace std;
 
 enum MYKEYS {UP , RIGHT , DOWN , LEFT , SPACE , Q};
 enum LAYERTYPES {BACKGROUND , CENTERGROUND , FOREGROUND};
+enum IMAGES {ATTACK, BLOCK, MAGIC}; //Used for images indexing values.
 enum ENEMIES {RAT , WOLF , SOLDIER};
 const int MAX_ENEMIES = 3;  //Total number of possible enemies.
 const int MAX_ENEMIES_PER_BATTLE = 5; //Total number of enemies per battle.
@@ -46,7 +47,7 @@ const int BATTLESTARTY = SCREEN_H / 3;   //Starting height for enemies on the ba
 
 //ALLEGRO_FONT *font18;// = al_load_font("arial.ttf" , 18 , 0);
 
-const int RATBASEHP = 10;
+const int RATBASEHP = 5;
 const int RATBASEMP = 0;
 const int RATBASEATK = 1;
 const int RATBASEDEF = 1;

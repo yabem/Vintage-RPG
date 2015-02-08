@@ -162,6 +162,28 @@ Stats* Character::getStats(){
     return stats;
 }
 
+//Returns the attack stat for the character.
+int Character::getAttack() const{
+
+    return stats->getTtlAtk();
+}
+
+//Returns the defense stat for the character.
+int Character::getDefense() const{
+
+    return stats->getTtlDef();
+}
+
+//Adds the value to the Character's remaining hitpoints.
+//Pre:  The Stat's pointer points to a valid Stats object.
+//Post: The Character's Stat's object is permanently changed to
+//      by adding the amount. If the Character has no more hitpoints
+//      remaining the Character is now dead.
+void Character::addToRemainingHP(int amount){
+
+    stats->addToCurrHP(amount);
+}
+
 //Set bitmap to input.
 void Character::setBmap(ALLEGRO_BITMAP *bmap){
 
@@ -353,4 +375,28 @@ int Character::move(bool *keys , int keyPressed){
     resetColl(); //Reset collision.
 
     return result;  //return the key that was pressed.
+}
+
+//Returns the dead status of the Character.
+bool Character::isDead(){
+
+    return this->getStats()->isDead();
+}
+
+//Makes the Character dead.
+//Pre:  The Stats sheet is initialized.
+//Post: Makes the Character dead by changing the
+//      dead status to true.
+void Character::makeDead(){
+
+    stats->makeDead();
+}
+
+//Makes the Character alive.
+//Pre:  The Stats sheet is initialized.
+//Post: Makes the Character alive by changing the dead
+//      status to false.
+void Character::makeAlive(){
+
+    stats->makeAlive();
 }

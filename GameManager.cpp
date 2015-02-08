@@ -98,7 +98,7 @@ void GameManager::playCutscenes(){
     }
 }
 
-//Draws all menus in the vector in FIFO order.
+//Draws all menus in the vector in LIFO order.
 void GameManager::drawMenus(){
 
     if(menus.empty())
@@ -155,6 +155,21 @@ void GameManager::drawMenus(){
     }
 
     resetPressedKey();
+}
+
+//Removes all the submenus objects from menus leaving the first
+//Menu in the vector.
+//Pre:  None.
+//Post: Removes all of the Menu objects from the
+//      vector in LIFO order until it reaches the beginning.
+void GameManager::removeAllSubMenus(){
+
+    vector<Menu*>::iterator menuIter = menus.end();
+    //BROKEN!!!
+    while(menuIter != menus.begin()){
+        menus.pop_back();
+        menuIter--;
+    }
 }
 
 //Save the variables before switching to the battleMap.
@@ -233,14 +248,17 @@ void GameManager::generateEnemies(int maxNumberOfEnemies){
         //Create and add the enemy to the battle.
         Character *addEnemy = enemyFactory.createChar(randomEnemyType);
         InitEnemies::init(addEnemy , randomEnemyType , randomEnemyLevel , enemyModels);
-        enemies.push_back(addEnemy);
+        //enemies.push_back(addEnemy);
+        theEnemies.loadChar(addEnemy);
     }
 
     //Set spacing.
-    InitEnemies::initEnemiesSpacing(enemies);
+    //InitEnemies::initEnemiesSpacing(enemies);
+    InitEnemies::initEnemiesSpacing(theEnemies.getList());
 
     //Reset iterator to the beginning.
     //enemyIter = enemies.begin();  Might need later. For now using iterator in main.
+    theEnemies.resetSelection();
 }
 
 //Loads all the input model.
@@ -296,4 +314,72 @@ void GameManager::generateVictoryCutScene(){
 
     BattleVictory *battleVictory = new BattleVictory(currMap , *player);
     loadCutscene(battleVictory);
+}
+
+//Get's the curr menu selection's name.
+//Post: Returns the name of the current selection of the back element
+//      in the Menus vector. This is the Menu that is currently selected.
+std::string GameManager::getMenuSelectionName(){
+
+    return menus.back()->getCurrSelectionName();
+}
+
+//Determines if there are still enemies remaining.
+//Pre:  None.
+//Post: Returns TRUE if there is an Character still in
+//      theEnemies list. Returns FALSE of the list is empty.
+bool GameManager::enemiesRemaining(){
+
+    return !theEnemies.isEmpty();
+}
+
+//Returns the enemies list.
+//Pre:  None.
+//Post: Returns the vector to the CharacterList.
+std::vector<Character*> GameManager::getEnemiesList(){
+
+    return theEnemies.getList();
+}
+
+//Gets the currently selected enemy.
+//Pre:  None.
+//Post: Returns a pointer to the current enemy.
+Character* GameManager::getCurrEnemy(){
+
+    return theEnemies.getCurrSelection();
+}
+
+//Returns whether or not the currently selected enemy is dead.
+//Pre:  None.
+//Post: Returns TRUE if the current selection has 0 HP. Returns
+//      FALSE otherwise.
+bool GameManager::currEnemyDead(){
+
+    return theEnemies.currSelectionIsDead();
+}
+
+//Deletes the currently selected enemy.
+//Pre:  None.
+//Post: Deletes the currently selected enemy.
+void GameManager::deleteCurrEnemy(){
+
+    theEnemies.deleteCurrSelectedCharacter();
+}
+
+//Moves the currently selected enemy down.
+//Pre:  None.
+//Post: Moves the currently selected enemy down unless it is
+//      already at the bottom.
+void GameManager::moveEnemySelectionDown(){
+
+    theEnemies.moveSelectionDown();
+}
+
+//Moves the currently selected enemy up.
+//Pre:  None.
+//Post: Moves the currently selected enemy up unless it is
+//      already at the top.
+void GameManager::moveEnemySelectionUp(){
+
+    theEnemies.moveSelectionUp();
 }

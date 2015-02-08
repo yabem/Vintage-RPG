@@ -12,8 +12,7 @@
 #include "Enums.h"
 #include "Tangible.h"
 
-//Forward declarations.
-class Stats;
+#include "Stats.h"
 
 class Character{
 
@@ -66,6 +65,13 @@ public:
     bool getCollision(int direction);           //Return the collision value for the direction.
     Stats* getStats();                          //Return a pointer to the character stats.
 
+    int getAttack() const;                      //Returns the attack stat for the Character.
+    int getDefense() const;                     //Returns the defense stat for the Character.
+    void addToRemainingHP(int amount);          //Adds the value to the Character's remaining hitpoints.
+    bool isDead();                        //Returns the dead status of the Character.
+    void makeDead();                            //Makes the Character dead.
+    void makeAlive();                           //Makes the Character alive.
+
     void setBmap(ALLEGRO_BITMAP *bmap);         //Set bitmap to input.
     void setX(int x);                           //Set x to input.
     void setY(int y);                           //Set y to input.
@@ -75,7 +81,7 @@ public:
     void addToAllCornerY(int add);              //Add value to all y coordinates
     bool setFacing(int dir);                    //Set facing direction.
     bool setColl(int index);                    //Set collision index to true.
-    void setStats(Stats *stats);               //Set stats pointer to input.
+    void setStats(Stats *stats);                //Set stats pointer to input.
 
     void resetColl();                           //Reset all collisions to false.
     void refreshCorners();                      //Recalculate corners based off of x and y values.
