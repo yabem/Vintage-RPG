@@ -30,4 +30,8 @@ public:
     virtual void loadText(std::string text);   //Loads text into the TextBox.
     virtual void formatText();     //Find number of rows based on length of text.
     virtual void draw();            //Draws that TextBox to the screen.
+    void setSX(int sx);     //Sets sx.
+    void setSY(int sy);     //Sets sy.
+    void setDX(int dx);     //Sets dx.
+    void setDY(int dy);     //Sets dy.
 };

@@ -304,7 +304,6 @@ int main(int argc, char **argv){
     menu.formatText();
     gameManager.loadMenu(&menu);
 
-    //xTesting cursor
     Cursor cursor;
     cursor.move(50 , 50);
     cursor.reverseDirection();
@@ -337,17 +336,8 @@ int main(int argc, char **argv){
 
             //////////////////////////////////////////Cutscene//////////////////////////////////////////////
             
-            if(!gameManager.cutscenes.empty()){
+            if(!gameManager.cutscenesEmpty()){
                 gameManager.playCutscenes();
-                
-                /*
-                menu.draw();
-                menu.moveSelection(gameManager.pressedKey);
-                gameManager.resetPressedKey();
-                */
-                
-                //menu.getSelection();
-                //menu.destroyMenu();
             }
 
             //////////////////////////////////////////Battle////////////////////////////////////////////////
@@ -361,10 +351,13 @@ int main(int argc, char **argv){
                 }
 
                 //Check for end of battle.
-                else if(keys[Q] == TRUE || !gameManager.enemiesRemaining()){//xgameManager.enemies.size() == 0){
+                else if(keys[Q] == TRUE || !gameManager.enemiesRemaining()){
                     
                     //Create victory cutscene.
                     gameManager.generateVictoryCutScene();
+
+                    //Reset battle menus.
+                    gameManager.removeAllSubMenus();
 
                     //Draw final battle frame.
                     Draw::drawArea(*gameManager.currMap , *gameManager.player);
@@ -377,13 +370,21 @@ int main(int argc, char **argv){
                 else{
                     
                     //Draw map.
-                    Draw::drawBattle(theBattleMap , players , gameManager.getEnemiesList());//xgameManager.enemies);
+                    Draw::drawBattle(theBattleMap , players , gameManager.getEnemiesList());
 
+                    //Set the menus draw location.
+                    gameManager.placeMenuToLeftOfCharacter(&thePlayer);
+
+                    /*
                     al_draw_filled_rectangle(gameManager.player->getX() - 100 , gameManager.player->getY() , gameManager.player->getX() - 20 , gameManager.player->getY() + 100 , al_map_rgb(0 , 0 , 255));
                     al_draw_rectangle(gameManager.player->getX() - 100 , gameManager.player->getY() , gameManager.player->getX() - 20 , gameManager.player->getY() + 100 , al_map_rgb(255 , 255 , 255) , 2 );
 
+                    */
+
                     //Draw cursor.
                     battleManager.drawCursor();
+                    
+                    /*
 #ifdef ttfaddon                    
 
                     al_draw_textf(font18, al_map_rgb(150, 150, 150), gameManager.player->getX() - 95 , gameManager.player->getY() + 5, 0, "Attack");
@@ -391,8 +392,10 @@ int main(int argc, char **argv){
                     al_draw_textf(font18, al_map_rgb(150, 150, 150), gameManager.player->getX() - 95 , gameManager.player->getY() + 45, 0, "Item");
                     al_draw_textf(font18, al_map_rgb(150, 150, 150), gameManager.player->getX() - 95 , gameManager.player->getY() + 65, 0, "Run");
 #endif
+                    */
                     //Draw battle menus.
                     gameManager.drawMenus();
+                    gameManager.checkForMenuCursorMovement();
 
                     //Play all animations.
                     if(animations.size() != 0){
@@ -409,19 +412,10 @@ int main(int argc, char **argv){
                         if(animations.size() == 0){
 
                             //Check if enemy is dead.
-                            /*//xif((*gameManager.enemyIter)->getStats()->getCurrHP() <= 0){
-                      
-                                delete (*gameManager.enemyIter)->getStats();
-                                delete (*gameManager.enemyIter);
-                                gameManager.enemies.erase(gameManager.enemyIter);
-                            }
-                            */
-
                             if(gameManager.currEnemyDead()){
                                 gameManager.deleteCurrEnemy();
                             }
-                                                        
-                            //xgameManager.resetEnemyIter();
+
                             enemyChoice = 0;
                             selectEnemy = 1;
                         }
@@ -431,32 +425,18 @@ int main(int argc, char **argv){
                         switch(theKey){
 
                             case UP:
-                                //xif(selectEnemy == 1 && menuChoice > 0)
-                                //x    menuChoice -= 20;
 
                                 gameManager.moveEnemySelectionUp();
                                 battleManager.moveCursorToTarget(gameManager.getCurrEnemy());
-                                //xif(selectEnemy == -1 && enemyChoice > 0){
-                                 //x   enemyChoice--;
-                                    //xgameManager.enemyIter--;
-                                //x}
 
                                 keys[theKey] = false;
                                 theKey = NOKEY;
                                 break;
 
                             case DOWN:
-                                //xif(selectEnemy == 1 && menuChoice < 60)
-                                   //x menuChoice += 20;
 
                                 gameManager.moveEnemySelectionDown();
-                                //xtempChar = gameManager.getCurrEnemy();
                                 battleManager.moveCursorToTarget(gameManager.getCurrEnemy());
-                                //xif(selectEnemy == -1 && enemyChoice < gameManager.enemies.size() - 1){
-                                //xif(selectEnemy == -1 && enemyChoice < gameManager.theEnemies.getList().size() - 1){
-                                  //x  enemyChoice++;
-                                    //xgameManager.enemyIter++;
-                                //x}
                                 keys[theKey] = false;
                                 theKey = NOKEY;
                                 break;
@@ -464,14 +444,11 @@ int main(int argc, char **argv){
                             case SPACE:
 
                                 if(battleManager.targettingEnemies()){
-                                //xif(selectEnemy == -1){
 
+                                    //Generate attack animation.
                                     CharacterAttack charAttack;
                                     charAttack.loadAttack(&thePlayer , gameManager.getCurrEnemy() , &imageStore , font18);
-                                    //xcharAttack.loadAttack(&thePlayer , *gameManager.enemyIter , &imageStore , font18);
                                     charAttack.execute();
-                                                                       
-                                    //std::string theSelec = gameManager.getMenuSelectionName();
 
                                     //Load the Animations to the animations queue.
                                     while(!charAttack.animationsIsEmpty()){
@@ -479,20 +456,7 @@ int main(int argc, char **argv){
                                         animations.push(charAttack.getFrontAnimation());
                                         charAttack.removeFrontAnimation();
                                     }
-                                    /*
-                                    weaponAttack.initialize(SCREEN_W , 0 , (*gameManager.enemyIter)->getX() , (*gameManager.enemyIter)->getY());
-#ifdef ttfaddon
-                                    damage.initialize("10" , (*gameManager.enemyIter)->getX() , (*gameManager.enemyIter)->getY() , (*gameManager.enemyIter)->getX() , (*gameManager.enemyIter)->getY() - 50);
-                                    damageStay.initialize("10" , (*gameManager.enemyIter)->getX() , (*gameManager.enemyIter)->getY() , (*gameManager.enemyIter)->getX() , (*gameManager.enemyIter)->getY());
-#endif
-                                    (*gameManager.enemyIter)->getStats()->addToCurrHP(-10);
-                                    
-                                    animations.push(&weaponAttack);
-#ifdef ttfaddon
-                                    animations.push(&damage);
-                                    animations.push(&damageStay);
-#endif
-                                    */
+
                                     battleManager.targetPlayers();
                                     gameManager.removeAllSubMenus();
                                 }
@@ -500,7 +464,6 @@ int main(int argc, char **argv){
                                 else {
                                     battleManager.targetEnemies();
                                     battleManager.moveCursorToTarget(gameManager.getCurrEnemy());
-                                //xelse selectEnemy *= -1;
                                 }
 
                                 keys[theKey] = false;
@@ -509,33 +472,16 @@ int main(int argc, char **argv){
                         }
                     }
 
+                    /*
                     if(selectEnemy == -1){
-
-                        //xint sPtX = gameManager.enemies[enemyChoice]->getX() + gameManager.enemies[enemyChoice]->getW();
-                        //xint sPtY = gameManager.enemies[enemyChoice]->getY() + gameManager.enemies[enemyChoice]->getH() / 2;
-
-                       //x int sPtX = gameManager.theEnemies.getCurrSelection()->getX() + gameManager.theEnemies.getCurrSelection()->getW();
-                        //xint sPtY = gameManager.theEnemies.getCurrSelection()->getY() + gameManager.theEnemies.getCurrSelection()->getH() / 2;
-                        //x
-                        /*
-                       al_draw_filled_triangle(
-                           sPtX + SELWID, sPtY - SELHGT ,       //Upper point
-                           sPtX , sPtY,                         //Middle point
-                           sPtX + SELWID , sPtY + SELHGT ,      //Lower point
-                           al_map_rgb(150, 150, 150));
-                       
-                       al_draw_triangle(
-                           sPtX + SELWID, sPtY - SELHGT ,       //Upper point
-                           sPtX , sPtY,                         //Middle point
-                           sPtX + SELWID , sPtY + SELHGT ,      //Lower point
-                           al_map_rgb(255, 255, 255) , 2);
-                        */
+                        //???? what was this supposed to do?
                     }
                     
                     else{
-                        al_draw_filled_triangle(gameManager.player->getX() - 120 , gameManager.player->getY() + menuChoice , gameManager.player->getX() - 100 , gameManager.player->getY() + 15 + menuChoice , gameManager.player->getX() - 120 , gameManager.player->getY() + 30 + menuChoice , al_map_rgb(150, 150, 150));
-                        al_draw_triangle(gameManager.player->getX() - 120 , gameManager.player->getY() + menuChoice , gameManager.player->getX() - 100 , gameManager.player->getY() + 15 + menuChoice , gameManager.player->getX() - 120 , gameManager.player->getY() + 30 + menuChoice , al_map_rgb(255, 255, 255) , 2);
+                        //xal_draw_filled_triangle(gameManager.player->getX() - 120 , gameManager.player->getY() + menuChoice , gameManager.player->getX() - 100 , gameManager.player->getY() + 15 + menuChoice , gameManager.player->getX() - 120 , gameManager.player->getY() + 30 + menuChoice , al_map_rgb(150, 150, 150));
+                        //xal_draw_triangle(gameManager.player->getX() - 120 , gameManager.player->getY() + menuChoice , gameManager.player->getX() - 100 , gameManager.player->getY() + 15 + menuChoice , gameManager.player->getX() - 120 , gameManager.player->getY() + 30 + menuChoice , al_map_rgb(255, 255, 255) , 2);
                     }
+                    */
                 }
             }
 

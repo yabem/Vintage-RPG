@@ -27,12 +27,7 @@ GameManager::GameManager(){
     battleMap = NULL;
     cutSceneMap = NULL;
     player = NULL;
-    //srand (time(NULL));  //Seed random
-    //al_start_timer(timer);
     numEnemies = 0;
-    //CharFactory charFactory;
-    
-    enemyIter = enemies.begin();
 }
 
 void GameManager::updateKey(int key){
@@ -98,18 +93,11 @@ void GameManager::playCutscenes(){
     }
 }
 
-//Draws all menus in the vector in LIFO order.
+//Draws all menus in the vector in FIFO order.
 void GameManager::drawMenus(){
 
     if(menus.empty())
         return;
-
-    /*
-    //Only draw current Menu.
-    vector<Menu*>::iterator menuIter = menus.end() - 1;
-
-    (*menuIter)->draw();
-    */
 
     vector<Menu*>::iterator menuIter = menus.begin();
    
@@ -119,42 +107,16 @@ void GameManager::drawMenus(){
         (*menuIter)->draw();
         menuIter++;
     }
+}
 
-    //Set iterator to the last element.
-    menuIter = menus.end() - 1;
+//Set menu draw location to character.
+//Pre:  None.
+//Post: Sets the draw location of the left of the character
+//      location. The right side of the menu will meet the 
+//      left side of the character.
+void GameManager::placeMenuToLeftOfCharacter(Character *character){
 
-    //Move the selector on the highest menu.
-    (*menuIter)->moveSelection(pressedKey);
-
-    //Check if a Menu needs to be removed. Does not remove
-    //the last Menu.
-    if(pressedKey == LEFT && menus.size() > 1){
-
-        //Resets key to ensure only 1 Menu is removed.
-        if(pressedKey != -1)
-            keys[pressedKey] = false;
-        
-        pressedKey = -1;
-
-        menus.pop_back();
-        /*
-        if(cutscenes.front() != NULL)
-            delete cutscenes.front();
-
-        cutscenes.pop();
-        */
-    }   
-
-    else if(pressedKey == RIGHT && (*menuIter)->currSelectionHasSubMenu()){
-
-        Menu *menuPtr = (*menuIter);
-        Menu *subMenuPtr = (*menuIter)->getSelectionsSubMenu(); 
-        
-        subMenuPtr->setDrawToPrevSelection(menuPtr);
-        loadMenu(subMenuPtr);
-    }
-
-    resetPressedKey();
+    menus.front()->setMenuToLeftOfCharacter(character);
 }
 
 //Removes all the submenus objects from menus leaving the first
@@ -164,26 +126,22 @@ void GameManager::drawMenus(){
 //      vector in LIFO order until it reaches the beginning.
 void GameManager::removeAllSubMenus(){
 
-    //Do nothing if the vector is empty or there are no subMenus.
-    if(menus.empty() || menus.size() == 1)
+    //Do nothing if the vector is empty.
+    if(menus.empty())
         return;
 
+    //Remove all subMenus until at the base subMenu.
     else{
-        //Set iterator to the last element.
-        //vector<Menu*>::iterator menuIter = menus.end() - 1;
-        
-        do{
-            menus.pop_back();
 
-        }while (menus.size() != 1);
-        
-        /*
-        while(menuIter != menus.begin()){
+        while (menus.size() > 1){
+            //Resets the menu selection to the beginning of the list
+            //then removes it from the vector.
+            moveMenuSelectionToBegin();
             menus.pop_back();
-            //menuIter--;
-            menus.end() - 1;
-        }
-        */
+        } 
+
+        //Reset the menu selection for the base menu.
+        moveMenuSelectionToBegin();
     }
 }
 
@@ -263,16 +221,13 @@ void GameManager::generateEnemies(int maxNumberOfEnemies){
         //Create and add the enemy to the battle.
         Character *addEnemy = enemyFactory.createChar(randomEnemyType);
         InitEnemies::init(addEnemy , randomEnemyType , randomEnemyLevel , enemyModels);
-        //enemies.push_back(addEnemy);
         theEnemies.loadChar(addEnemy);
     }
 
     //Set spacing.
-    //InitEnemies::initEnemiesSpacing(enemies);
     InitEnemies::initEnemiesSpacing(theEnemies.getList());
 
     //Reset iterator to the beginning.
-    //enemyIter = enemies.begin();  Might need later. For now using iterator in main.
     theEnemies.resetSelection();
 }
 
@@ -298,18 +253,10 @@ bool GameManager::checkForBattle(){
         //Create the enemies for the battle.
         generateEnemies(MAX_ENEMIES_PER_BATTLE);
 
-        enemyIter = enemies.begin();
-
         return true;
     }
 
     else return false;
-}
-
-//Reset enemy iterator to the beginning.
-void GameManager::resetEnemyIter(){
-
-    enemyIter = enemies.begin();
 }
 
 //Sets the current pressed key to unpressed.
@@ -398,3 +345,71 @@ void GameManager::moveEnemySelectionUp(){
 
     theEnemies.moveSelectionUp();
 }
+
+//Determines if there are remaining cutscenes.
+//Pre:  None.
+//Post: Returns true if the cutscenes vector is empty.
+//      Returns false otherwise.
+bool GameManager::cutscenesEmpty() const{
+    
+    return cutscenes.empty();
+}      
+
+//Moves the menu selection to the beginning.
+//Pre:  None.
+//Post: Moves the menu's current selection to the beginning
+//      of the list.
+void GameManager::moveMenuSelectionToBegin(){
+
+    //Resets the menu selection to the beginning of the list
+    //then removes it from the vector.
+    vector<Menu*>::iterator menuIter = menus.end() - 1;
+    (*menuIter)->moveCurrSelectionToBegin();
+}
+
+//Determines if the cursor menu should be moved.
+//Pre:  None.
+//Post: Checks if the player is navigating through the menu.
+//      If it is, then UP and DOWN navigating through the list
+//      and LEFT and RIGHT check for subMenus. If a subMenu is found
+//      then the subMenu is added to the menus vector that will be drawn.
+void GameManager::checkForMenuCursorMovement(){
+
+    if(menus.empty())
+        return;
+
+    vector<Menu*>::iterator menuIter = menus.begin();
+
+    //Set iterator to the last element.
+    menuIter = menus.end() - 1;
+
+    //Move the selector on the highest menu.
+    (*menuIter)->moveSelection(pressedKey);
+
+    //Check if a Menu needs to be removed. Does not remove
+    //the last Menu.
+    if(pressedKey == LEFT && menus.size() > 1){
+
+        //Resets key to ensure only one Menu is removed.
+        if(pressedKey != -1)
+            keys[pressedKey] = false;
+        
+        pressedKey = -1;
+
+        //Resets the menu selection to the beginning of the list
+        //then removes it from the vector.
+        moveMenuSelectionToBegin();
+        menus.pop_back();
+    }   
+
+    else if(pressedKey == RIGHT && (*menuIter)->currSelectionHasSubMenu()){
+
+        Menu *menuPtr = (*menuIter);
+        Menu *subMenuPtr = (*menuIter)->getSelectionsSubMenu(); 
+        
+        subMenuPtr->setDrawToPrevSelection(menuPtr);
+        loadMenu(subMenuPtr);
+    }
+
+    resetPressedKey();
+}   

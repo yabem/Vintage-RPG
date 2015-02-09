@@ -30,6 +30,9 @@ public:
     bool loadCutscene(Cutscene *cutscene);
     bool loadMenu(Menu *menu);
     void drawMenus();
+
+    //Set menu draw location to character.
+    void placeMenuToLeftOfCharacter(Character *character);
     
     //Removes all the submenus objects from menus leaving the first
     //Menu in the vector.
@@ -39,7 +42,7 @@ public:
     void updateKey(int key);
     int gameTimer;          //Timer that counts up as the game progresses each frame.
     int pressedKey;
-    vector<Character*>::iterator enemyIter; //Iterator for the enemies.
+
     CharFactory enemyFactory;     //Factory for the enemies.
     vector<ALLEGRO_BITMAP*> enemyModels;    //Vector of pointers to enemy bitmaps.
 
@@ -68,7 +71,7 @@ public:
     AreaMap *cutSceneMap;   //Cutscene AreaMap used for battle transitions.
     Character *player;      //The player.
     int numEnemies;
-    vector<Character*> enemies; //Vector for enemies during battle.
+
     vector<bool> keys;
 
     void saveAreaMapVariables();
@@ -82,10 +85,9 @@ public:
     void loadEnemyModel(ALLEGRO_BITMAP *model);  //Loads all the input model.
 
     bool checkForBattle();  //Determines if a battle will occur.
-    void resetEnemyIter();  //Reset enemy iterator to the beginning.
+    
     void resetPressedKey(); //Sets the current pressed key to unpressed.
     void generateVictoryCutScene(); //Creates the victory CutScene.
-
 
     std::string getMenuSelectionName();    //Get's the curr menu selection's name.
     bool enemiesRemaining();    //Determines if there are still enemies remaining.
@@ -97,10 +99,17 @@ public:
     void moveEnemySelectionDown();  //Moves the currently selected enemy down.
     void moveEnemySelectionUp();  //Moves the currently selected enemy up.
 
-//private:
+    bool cutscenesEmpty() const;      //Determines if there are remaining cutscenes.
+
+    //Determines if the cursor menu should be moved.
+    void checkForMenuCursorMovement();
+
+private:
     queue<Cutscene*> cutscenes;
     vector<Menu*> menus;
     CharacterList theEnemies;
-    //queue<Cutscene*> animations;
     ALLEGRO_FONT *introFont;
+
+    //Moves the menu selection to the beginning.
+    void moveMenuSelectionToBegin();
 };

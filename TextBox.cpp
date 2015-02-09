@@ -103,3 +103,35 @@ void TextBox::draw(){
             it->c_str());               //Text.
     }
 }
+
+//Sets sx.
+//Pre:  None.
+//Post: Sets sx to the passed in value.
+void TextBox::setSX(int sx){
+
+    this->sx = sx;
+}
+
+//Sets sy.
+//Pre:  None.
+//Post: Sets sy to the passed in value.
+void TextBox::setSY(int sy){
+
+    this->sy = sy;
+}
+
+//Sets dx.
+//Pre:  None.
+//Post: Sets dx to the passed in value.
+void TextBox::setDX(int dx){
+    
+    this->dx = dx;
+}
+
+//Sets dy.
+//Pre:  None.
+//Post: Sets dy to the passed in value.
+void TextBox::setDY(int dy){
+    
+    this->dy = dy;
+}

@@ -91,13 +91,11 @@ void Menu::destroyMenuHelper(){
 //Use the text and format the menu.
 void Menu::formatMenu(){
 
-    //formatText();           //Put the text into vector.
-
     w = longestOption * FONT_WIDTH;
     h = options.size() * FONT_HEIGHT;
 
-    this->sx = 200;           //X draw location.
-    this->sy = 200;           //y draw location.
+    this->sx = DEFAULT_SX;           //X draw location.
+    this->sy = DEFAULT_SY;           //y draw location.
     this->dx = sx + w;
     this->dy = sy + h;
 
@@ -114,10 +112,13 @@ void Menu::formatText(){
 }
 
 //Find number of rows based on length of text.
-void Menu::formatTextHelper(std::string text , std::string::iterator &stringIter){
+void Menu::formatTextHelper(std::string text , 
+    std::string::iterator &stringIter){
 
     int countChars = 0;
-    std::string tempText;    //Storage for strings until the , delimiter is reached.
+
+    //Storage for strings until the , delimiter is reached.
+    std::string tempText;    
     bool done = false;
 
     //Stopping point check.
@@ -220,6 +221,24 @@ bool Menu::moveSelection(int key){
     return false;
 }
 
+//Moves the current selection to the beginning of the list.
+//Pre:  None.
+//Post: Moves the currentSelection and the optionIter to the
+//      beginning of the list.
+void Menu::moveCurrSelectionToBegin(){
+
+    currSelection = 0;
+    moveOptionIterToBegin();
+}
+
+//Move optionIter to the beginning of the list.
+//Pre:  None.
+//Post: Moves the optionIter to the beginning of the list.
+void Menu::moveOptionIterToBegin(){
+
+    optionIter = options.begin();
+}
+
 //Returns the current selection. If options is empty returns "".
 //Unused at the moment.
 Menu* Menu::getSelectionsSubMenu(){
@@ -272,7 +291,9 @@ void Menu::draw(){
             (*selecIter)->Name.c_str());    //Text.
     }
     
-    //Draw the selector.
+    //Calculate then draw the selector.
+    //x
+    calculateSelectorCoords();
     drawSelector();
 }
 
@@ -318,7 +339,6 @@ void Menu::setDrawToPrevSelection(Menu *prevMenu){
     this->dy = sy + h;
 
     calculateSelectorCoords();
-    //optionIter = options.begin();
 }
 
 //Returns the name of the selected Option.
@@ -334,33 +354,6 @@ std::string Menu::getSelectionName() const{
         return options[currSelection]->Name;
 
     else return this->options[currSelection]->subMenu->getSelectionName();
-//        this->options[currSelection]->subMenu();
-    /*
-    if(currSelection < 0)
-        return "Out of Range";
-
-    //Set temp pointer to current selection's subMenu.
-    Menu *tempMenu = options[currSelection]->subMenu;
-
-    //Sets temp int to the current Menu's selection.
-    int tempCurrSelection = currSelection;
-
-    //
-    //
-    //Inifinite looping, need to fix.
-    //
-    //
-
-    //Cycle through the Menu's until at the final option.
-    
-    while(tempMenu != NULL){
-
-        tempCurrSelection = tempMenu->currSelection;
-        tempMenu = options[tempCurrSelection]->subMenu;
-    }
-    */
-    
-  //  return options[tempCurrSelection]->Name;
 }
 
 //Returns the name of the selected Option.
@@ -371,4 +364,47 @@ std::string Menu::getCurrSelectionName() const{
         return "Error, the Menu is empty.";
 
     else return this->options[currSelection]->Name;
+}
+
+//Returns the width of the menu.
+//Pre:  None.
+//Post: Returns w.
+int Menu::getW() const{
+
+    return w;
+}
+
+//Returns the height of the menu.
+//Pre:  None.
+//Post: Returns w.
+int Menu::getH() const{
+
+    return h;
+}
+
+//Set menu draw location to character.
+//Pre:  None.
+//Post: Sets the draw location of the left of the character
+//      location. The right side of the menu will meet the 
+//      left side of the character.
+void Menu::setMenuToLeftOfCharacter(Character *character){
+
+    //Max width of the base menu.
+    int maxMenuWidth = getW();
+
+    //The character's x and y coordinate.
+    int charX = character->getX();
+    int charY = character->getY();
+
+    //New start and end coordinates for the menu.
+    int menuSX = charX - maxMenuWidth;
+    int menuSY = charY;
+    int menuDX = menuSX + getW();
+    int menuDY = menuSY + getH();
+
+    //x figure out why this isn't working
+    setSX(menuSX);
+    setSY(menuSY);
+    setDX(menuDX);
+    setDY(menuDY);
 }

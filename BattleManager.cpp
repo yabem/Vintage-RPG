@@ -44,8 +44,8 @@ void BattleManager::drawCursor() const{
 //      are defined.
 //Post: Updates the battleCursor to point to the middle of the Character.
 //      If the cursor is pointing to the LEFT then the cursor will be moved
-//      to the right side of the Character. If the cursor is pointing to the RIGHT
-//      the cursor will be moved to the left side of the Character.
+//      to the right side of the Character. If the cursor is pointing to the
+//      RIGHT the cursor will be moved to the left side of the Character.
 void BattleManager::moveCursorToTarget(Character *character){
 
     //Midpoint of Character.
@@ -54,6 +54,7 @@ void BattleManager::moveCursorToTarget(Character *character){
 
     switch(battleCursor->getPointingDirection()){
 
+        //Sets to the middle of the left side of the Character.
         case RIGHT:
             charX = character->getX();
 
@@ -62,6 +63,7 @@ void BattleManager::moveCursorToTarget(Character *character){
                         / 2 );
             break;
 
+        //Sets to the middle of the right side of the Character.
         case LEFT:
             charX = character->getX() +
                         character->getW();
@@ -114,3 +116,4 @@ bool BattleManager::targettingEnemies(){
 
     else return false;
 }
+
