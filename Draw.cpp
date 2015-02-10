@@ -59,3 +59,60 @@ void Draw::drawBattle(Map &map){
     for(int i = 0 ; i < map.getNumSceneries() ; i++)
         map.getScenery(i).draw();
 }
+
+//Draws all menus in the vector in FIFO order.
+//Pre:  None.
+//Post: Draws all the Menu objects on the vector by calling
+//      the draw method on each Menu until the end of the list
+//      is reached.
+void Draw::drawMenus(vector<Menu*> menus){
+
+    if(menus.empty())
+        return;
+
+    vector<Menu*>::iterator menuIter = menus.begin();
+   
+    //Draw all Menus in the vector.
+    while(menuIter != menus.end()){
+
+        (*menuIter)->draw();
+        menuIter++;
+    }
+}
+
+//Removes all of the subMenus from the vector leaving only the base Menu.
+//Pre:  None.
+//Post: Removes each Menu from the list in LIFO order until the Menu
+//      at the beginning of the list is reached.
+void Draw::removeAllSubMenus(std::vector<Menu*> &menus){
+
+   //Do nothing if the vector is empty.
+    if(menus.empty())
+        return;
+
+    //Remove all subMenus until at the base subMenu.
+    else{
+
+        while (menus.size() > 1){
+            //Resets the menu selection to the beginning of the list
+            //then removes it from the vector.
+            Draw::moveMenuSelectionToBegin(menus);
+            menus.pop_back();
+        } 
+
+        //Reset the menu selection for the base menu.
+       Draw::moveMenuSelectionToBegin(menus);
+    }
+}
+
+//Moves the menu selection to the beginning.
+//Pre:  None.
+//Post: Moves the menu's current selection to the beginning
+//      of the list.
+void Draw::moveMenuSelectionToBegin(vector<Menu*> menus){
+
+    //Resets the menu selection to the beginning of the list
+    //then removes it from the vector.
+    vector<Menu*>::iterator menuIter = menus.end() - 1;
+    (*menuIter)->moveCurrSelectionToBegin();
+}
