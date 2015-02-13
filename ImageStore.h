@@ -8,7 +8,7 @@
 #include <string>
 #include <allegro5/allegro_font.h>  //Used for al_load_bitmap().
 
-class ALLEGRO_BITMAP;
+struct ALLEGRO_BITMAP;
 
 class ImageStore{
 

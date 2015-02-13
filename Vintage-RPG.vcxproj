@@ -85,6 +85,8 @@
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="Cutscene.cpp" />
     <ClCompile Include="Draw.cpp" />
+    <ClCompile Include="DrawRespository.cpp" />
+    <ClCompile Include="FontStore.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GenerateAction.cpp" />
     <ClCompile Include="ImageStore.cpp" />
@@ -100,6 +102,7 @@
     <ClCompile Include="Stats.cpp" />
     <ClCompile Include="Tangible.cpp" />
     <ClCompile Include="TextBox.cpp" />
+    <ClCompile Include="TransferAnimations.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -121,7 +124,9 @@
     <ClInclude Include="Cutscene.h" />
     <ClInclude Include="Draw.h" />
     <ClInclude Include="CharacterList.h" />
+    <ClInclude Include="DrawRepository.h" />
     <ClInclude Include="Enums.h" />
+    <ClInclude Include="FontStore.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GenerateAction.h" />
     <ClInclude Include="ImageStore.h" />
@@ -137,6 +142,7 @@
     <ClInclude Include="Stats.h" />
     <ClInclude Include="Tangible.h" />
     <ClInclude Include="TextBox.h" />
+    <ClInclude Include="TransferAnimations.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

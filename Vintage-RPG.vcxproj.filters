@@ -139,6 +139,18 @@
     <Filter Include="Source Files\TextBox\SubClass">
       <UniqueIdentifier>{f463e418-01da-489b-9d10-b077b16b1aa7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Font">
+      <UniqueIdentifier>{82786b74-2a0c-400d-a6db-3f95e0df666f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FontStore">
+      <UniqueIdentifier>{b554ba31-9d2a-41ca-898b-e2451fc9cc85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DrawToScreen">
+      <UniqueIdentifier>{44b27c86-d4ff-46b9-9864-56379dabee26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DrawToScreen">
+      <UniqueIdentifier>{e1869093-aed5-459f-817c-71459fd1393a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -154,9 +166,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Movement.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Draw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Cutscene.cpp">
@@ -237,6 +246,18 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files\TextBox\SubClass</Filter>
     </ClCompile>
+    <ClCompile Include="FontStore.cpp">
+      <Filter>Source Files\FontStore</Filter>
+    </ClCompile>
+    <ClCompile Include="TransferAnimations.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw.cpp">
+      <Filter>Source Files\DrawToScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawRespository.cpp">
+      <Filter>Source Files\DrawToScreen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enums.h">
@@ -252,9 +273,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Movement.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Draw.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BattleMap.h">
@@ -343,6 +361,18 @@
     </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>Header Files\TextBox\SubClass</Filter>
+    </ClInclude>
+    <ClInclude Include="FontStore.h">
+      <Filter>Header Files\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="TransferAnimations.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Draw.h">
+      <Filter>Header Files\DrawToScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawRepository.h">
+      <Filter>Header Files\DrawToScreen</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

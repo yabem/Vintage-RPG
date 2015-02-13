@@ -3,7 +3,7 @@
 //Default constructor.
 BattleManager::BattleManager(){
 
-    currentTarget = NONE;
+    currentTarget = NO_TARGET;
     battleCursor = NULL;
 }
 
@@ -18,7 +18,24 @@ BattleManager::~BattleManager(){
 //Post: The turnToAct is changed to turn.
 void BattleManager::changeTarget(int currentTarget){
 
-    this->currentTarget = currentTarget;
+    switch(currentTarget){
+
+        case NO_TARGET:
+            this->currentTarget = currentTarget;
+            break;
+
+        case PLAYER:
+            this->currentTarget = currentTarget;
+            break;
+
+        case ENEMY:
+            this->currentTarget = currentTarget;
+            break;
+
+        default:
+            this->currentTarget = NO_TARGET;
+            break;
+    }
 }
 
 //Loads a cursor.
@@ -27,6 +44,14 @@ void BattleManager::changeTarget(int currentTarget){
 void BattleManager::loadCursor(Cursor *cursor){
 
     this->battleCursor = cursor;
+}
+
+//Load GameManager.
+//Pre:  The gameManager is not NULL.
+//Post: Sets the gameManager pointer.
+void BattleManager::loadGameManager(GameManager *gameManager){
+
+    this->gameManager = gameManager;
 }
 
 //Loads a Menu to the BattleManager.
@@ -123,20 +148,28 @@ void BattleManager::targetEnemies(){
     currentTarget = ENEMY;
 }
 
-//Returns the enemies list.
-//Pre:  None.
-//Post: Returns the vector to the CharacterList.
-std::vector<Character*> BattleManager::getEnemiesList(){
-
-    return theEnemies.getList();
-}
-
 //Changes currentTarget to players.
 //Pre:  None.
 //Post: Changes currentTarget to PLAYER.
 void BattleManager::targetPlayers(){
 
     currentTarget = PLAYER;
+}
+
+//Changes currentTarget to no target.
+//Pre:  None.
+//Post: Changes currentTarget to NO_TARGET.
+void BattleManager::setTargetToNoTarget(){
+
+    currentTarget = NO_TARGET;
+}
+
+//Returns the enemies list.
+//Pre:  None.
+//Post: Returns the vector to the CharacterList.
+std::vector<Character*> BattleManager::getEnemiesList(){
+
+    return theEnemies.getList();
 }
 
 //Get current target.
@@ -162,12 +195,16 @@ bool BattleManager::targettingEnemies(){
 //Determines if the cursor menu should be moved.
 //Pre:  None.
 //Post: Checks if the player is navigating through the menu.
-//      If it is, then UP and DOWN navigating through the list
+//      If it is, then UP and DOWN navigate through the list
 //      and LEFT and RIGHT check for subMenus. If a subMenu is found
 //      then the subMenu is added to the menus vector that will be drawn.
-void BattleManager::checkForMenuCursorMovement(GameManager *gameManager){
+void BattleManager::moveMenuCursor(GameManager *gameManager){
 
     if(menus.empty())
+        return;
+
+    //Only move if the enemy or players aren't selected.
+    if(currentTarget != NO_TARGET)
         return;
 
     int pressedKey = gameManager->getPressedKey();
@@ -178,22 +215,25 @@ void BattleManager::checkForMenuCursorMovement(GameManager *gameManager){
     menuIter = menus.end() - 1;
 
     //Move the selector on the highest menu.
-    (*menuIter)->moveSelection(pressedKey);
+    if(pressedKey == UP || pressedKey == DOWN){
+        (*menuIter)->moveSelection(pressedKey);
+        gameManager->resetPressedKey();
+    }
 
-    //Check if a Menu needs to be removed. Does not remove
-    //the last Menu.
-    if(pressedKey == LEFT && menus.size() > 1){
+    //Check if a Menu needs to be removed. Does not remove the last Menu.
+    else if(pressedKey == LEFT && menus.size() > 1){
 
         //Resets key to ensure only one Menu is removed.
-        if(pressedKey != -1)
+        if(pressedKey != NO_KEY)
             gameManager->updateKey(pressedKey);
         
-        pressedKey = -1;
+        pressedKey = NO_KEY;
 
         //Resets the menu selection to the beginning of the list
         //then removes it from the vector.
         Draw::moveMenuSelectionToBegin(menus);
         menus.pop_back();
+        gameManager->resetPressedKey();
     }   
 
     else if(pressedKey == RIGHT && (*menuIter)->currSelectionHasSubMenu()){
@@ -203,10 +243,63 @@ void BattleManager::checkForMenuCursorMovement(GameManager *gameManager){
         
         subMenuPtr->setDrawToPrevSelection(menuPtr);
         loadMenu(subMenuPtr);
+        gameManager->resetPressedKey();
     }
-
-    gameManager->resetPressedKey();
 } 
+
+//Determines if the enemy cursor selector should be moved.
+//Pre:  None.
+//Post: Checks if the player is navigating through the enemy list.
+//      If the player is, then UP and DOWN navigating through the list.
+void BattleManager::moveEnemyCursor(GameManager *gameManager){
+
+    if(menus.empty())
+        return;
+
+    //Only move if the enemy or players aren't selected.
+    if(currentTarget == ENEMY){
+    
+        switch (gameManager->getPressedKey()){
+
+            case UP:
+                moveEnemySelectionUp();  
+                break;
+
+            case DOWN:
+                moveEnemySelectionDown();
+                break;
+
+            default:
+                //Do nothing.
+                break;
+        }
+    }
+}
+
+//Consume keyboard input from player for the battle.
+//Pre:  The key input is within the range of the keyboard vector.
+//Post: If the player has the menu selected, the key is consumed by the
+//      menu operations. If the player has targetted the enemies, then
+//      the key is consumed by the menu enemy movement operations.
+void BattleManager::consumePlayerInput(GameManager *gameManager){
+
+    switch (gameManager->getPressedKey()){    
+
+        case ENEMY:
+            //Determines if the menu cursor should be moved.
+            moveMenuCursor(gameManager);
+            break;
+
+        case NO_TARGET:
+            //Determines if the enemy cursor selector should be moved.
+            moveEnemyCursor(gameManager);
+            break;
+
+        default:
+            //Do nothing.
+            break;
+    }
+}
 
 //Returns the list of Menu pointers.
 //Pre:  None.
@@ -214,6 +307,42 @@ void BattleManager::checkForMenuCursorMovement(GameManager *gameManager){
 std::vector<Menu*>& BattleManager::getMenuList(){
 
     return menus;
+}
+
+//Executes the current action based off of the player, target, and action.
+//Pre:  None.
+//Post: Creates the CharacterManipulation object based off of the player,
+//      the enemy, and the selected action, then executes it.
+void BattleManager::executeAction(){
+    /*
+    //Generate attack animation.
+    CharacterAttack charAttack;
+    charAttack.initialize(gameManager.getFrontPlayer() , 
+        getCurrEnemy() , &imageStore , &fontStore);
+    charAttack.execute();
+
+    //Load the Animations to the animations queue.
+    while(!charAttack.animationsIsEmpty()){
+                                        
+        animations.push(charAttack.getFrontAnimation());
+        charAttack.removeFrontAnimation();
+    }
+
+    targetPlayers();
+    Draw::removeAllSubMenus(getMenuList());
+
+    //Reset target to NONE.
+    setTargetToNoTarget();
+    */
+
+    characterManipulationStore->executeManipulation
+        (gameManager->getFrontPlayer() , getCurrEnemy() ,
+        menus.back()->getCurrSelectionName());
+
+    //gameManager->get); replace with the character's current selection.
+    //located in menu. Need to put an accessor into game
+    
+    //x
 }
 
 //Moves the currently selected enemy down.
@@ -257,6 +386,22 @@ bool BattleManager::currEnemyDead(){
 void BattleManager::deleteCurrEnemy(){
 
     theEnemies.deleteCurrSelectedCharacter();
+}
+
+//Delete's the current enemy if it is dead.
+//Pre:  None.
+//Post: Checks if the currentSelected enemy is dead. If
+//      dead, the enemy is deleted and returns true. If
+//      not dead, the enemy is not deleted and returns false.
+bool BattleManager::deleteDeadCurrEnemy(){
+
+    //Check if enemy is dead.
+    if(currEnemyDead()){
+        deleteCurrEnemy();
+        return true;
+    }
+
+    else return false;
 }
 
 //Determines if there are still enemies remaining.

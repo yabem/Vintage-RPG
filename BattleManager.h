@@ -9,19 +9,29 @@
 #include "Draw.h"
 #include "GameManager.h"
 #include "CharacterList.h"
+#include "Enums.h"
+
+//x remove
+#include "CharacterAttack.h"
+#include "CharacterManipulationStore.h"
+#include "GameManager.h"
 
 class BattleManager{
 
 private:
     
-    enum turnTypes{NONE , PLAYER , ENEMY};
+    enum turnTypes{NO_TARGET , PLAYER , ENEMY};
     
     //The enemies' or players' turn.
     int currentTarget;          
+
+    //Cursor for the enemies.
     Cursor *battleCursor;
 
     //List of menus.
-    vector<Menu*> menus;      
+    vector<Menu*> menus;     
+
+    //List of enemies for the battle.
     CharacterList theEnemies;
 
     //Factory for the enemies.
@@ -29,6 +39,12 @@ private:
     
     //Vector of pointers to enemy bitmaps.
     vector<ALLEGRO_BITMAP*> enemyModels;    
+
+    //Used to generate actions between Characters.
+    CharacterManipulationStore *characterManipulationStore;
+
+    //Used to get the current player.
+    GameManager *gameManager;
     
 public:
     
@@ -50,6 +66,9 @@ public:
     //Loads all the input model.
     void loadEnemyModel(ALLEGRO_BITMAP *model);
 
+    //Load GameManager.
+    void loadGameManager(GameManager *gameManager);
+
     //Set menu draw location to character.
     void placeMenuToLeftOfCharacter(Character *character);
 
@@ -62,11 +81,14 @@ public:
     //Changes currentTarget to enemies.
     void targetEnemies();
 
-    //Returns the enemies list.
-    std::vector<Character*> getEnemiesList();  
-
     //Changes currentTarget to Players.
     void targetPlayers();
+
+    //Changes currentTarget to no target.
+    void setTargetToNoTarget();
+
+    //Returns the enemies list.
+    std::vector<Character*> getEnemiesList();  
 
     //Return current target.
     int getCurrentTarget();
@@ -74,8 +96,17 @@ public:
     //Determines if the current target is the enemies.
     bool targettingEnemies();
 
-    //Determines if the cursor menu should be moved.
-    void checkForMenuCursorMovement(GameManager *gameManager);
+    //Determines if the menu cursor should be moved.
+    void moveMenuCursor(GameManager *gameManager);
+
+    //Determines if the enemy cursor selector should be moved.
+    void moveEnemyCursor(GameManager *gameManager);
+
+    //Consume keyboard input from player for the battle.
+    void consumePlayerInput(GameManager *gameManager);
+
+    //Executes the current action based off of the player, target, and action.
+    void executeAction();
 
     //Returns the list of Menu pointers.
     std::vector<Menu*>& getMenuList();   
@@ -95,6 +126,9 @@ public:
     //Deletes the currently selected enemy.
     void deleteCurrEnemy(); 
 
+    //Delete's the current enemy if it is dead.
+    bool deleteDeadCurrEnemy();
+
     //Determines if there are still enemies remaining.
     bool enemiesRemaining();    
 
@@ -105,5 +139,4 @@ public:
 
     //Generates the enemies for the battle.
     void generateEnemies(int maxNumberOfEnemies); 
-
 };

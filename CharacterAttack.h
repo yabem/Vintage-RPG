@@ -10,16 +10,13 @@
 #include "MovingImage.h"
 #include "MovingText.h"
 #include "ImageStore.h"
+#include "FontStore.h"
 
 class CharacterAttack : public CharacterManipulation{
 
 private:
 
-    Character *initiator;   //Character that initiates the attack.
-    Character *receiver;    //Character that receives the attack.
-    ImageStore *imageStore; //Image store where the images will be retrieved.
-    queue<Animation*> animations;    //Vector of animations.
-    ALLEGRO_FONT *font;     //Font for the text.
+
 
     int damageToReceiver;   //Total damage to the receiver.
 
@@ -28,12 +25,16 @@ public:
     CharacterAttack();      //Default constructor.
     ~CharacterAttack();     //Destructor.
 
-    //Initiates the attack action between the two characters.
-    void execute();   
+    //Loads the Characters.
+    void loadCharacters(Character *initiator , Character *receiver);
 
     //Initiates the attack between the two characters.
-    void loadAttack(Character *initiator , Character *receiver ,
-        ImageStore *imageStore , ALLEGRO_FONT *font);
+    void initialize(Character *initiator , Character *receiver ,
+        ImageStore *imageStore , FontStore *fontStore , 
+        queue<Animation*> destinationAnimationQueue);
+
+    //Initiates the attack action between the two characters.
+    void execute();   
 
     //Loads the animations to the animations vector.
     void loadAnimations();

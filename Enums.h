@@ -7,6 +7,7 @@
 using namespace std;
 
 enum MYKEYS {UP , RIGHT , DOWN , LEFT , SPACE , Q};
+const int MAX_NUM_KEYS = 6;
 enum LAYERTYPES {BACKGROUND , CENTERGROUND , FOREGROUND};
 enum IMAGES {ATTACK, BLOCK, MAGIC}; //Used for images indexing values.
 enum ENEMIES {RAT , WOLF , SOLDIER};
@@ -33,7 +34,7 @@ const int SELHGT = 15;          //Height of the selector triangle.
 const int BMAPXSTART = 0;       //Default location for starting x coordinate of a bitmap.
 const int BMAPYSTART = 0;       //Default location for starting y coordinate of a bitmap.
 
-const int NOKEY = -1;           //Default for resetting key.
+const int NO_KEY = -1;           //Default for resetting key.
 const int STARTCOL = 20;        //Initial starting col.
 const int STARTROW = 20;        //Initial starting row.
 

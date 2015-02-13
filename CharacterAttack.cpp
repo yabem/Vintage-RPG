@@ -1,5 +1,5 @@
 //CharacterAttack is an object that holds two characters CharacterA and
-//Characterb and a set of instructions to take the attack and defense from
+//CharacterB and a set of instructions to take the attack and defense from
 //the first character and applies it to the second. The damage
 //that is leftover after reducing the defense of CharacterB
 //is deducted from CharacterB's remaining hit points.
@@ -9,8 +9,11 @@
 //Default constructor.
 CharacterAttack::CharacterAttack(){
 
+    imageStore = NULL;
+    fontStore = NULL;
     initiator = NULL;
     receiver = NULL;
+    font = NULL;
     damageToReceiver = 0;
 }
 
@@ -24,6 +27,43 @@ CharacterAttack::~CharacterAttack(){
     }
 }
 
+//Loads the Characters.
+//Pre:  None.
+//Post: loads the iniatiator and receiver.
+void CharacterAttack::loadCharacters(Character *initiator ,
+    Character *receiver){
+
+    this->initiator = initiator;
+    this->receiver = receiver;
+}
+
+//Loads the two characters.
+//Pre:  Both Characters have valid stats.
+//Post: The initiator, receiver, and imageStore are loaded.
+//      The initiator is the Character doing the attacking
+//      The receiver is the Character receiving the attack.
+//      The imageStore is where the images will be taken from.
+void CharacterAttack::initialize(Character *initiator , 
+    Character *receiver , ImageStore *imageStore , FontStore *fontStore ,
+    std::queue<Animation*> destinationAnimationQueue){
+    
+    this->initiator = initiator;
+    this->receiver = receiver;
+    this->imageStore = imageStore;
+    this->font = fontStore->getFont("default");
+    this->animations = destinationAnimationQueue;
+
+    //Get attack and defense for calculation.
+    int charAAttack = initiator->getAttack();
+    int charBDefense = receiver->getDefense();
+
+    damageToReceiver = charAAttack - charBDefense;
+
+    //No damage done, the defense negated the attack.
+    if(damageToReceiver < 0)
+        damageToReceiver = 0;
+}
+ 
 //Initiates the attack action between the two Characters.
 //Pre:  Both characters have been loaded.
 //Post: The initiator's attack is checked against the
@@ -42,31 +82,6 @@ void CharacterAttack::execute(){
     loadAnimations();
 }
 
-//Loads the two characters.
-//Pre:  Both Characters have valid stats.
-//Post: The initiator, receiver, and imageStore are loaded.
-//      The initiator is the Character doing the attacking
-//      The receiver is the Character receiving the attack.
-//      The imageStore is where the images will be taken from.
-void CharacterAttack::loadAttack(Character *initiator , 
-    Character *receiver , ImageStore *imageStore , ALLEGRO_FONT *font){
-    
-    this->initiator = initiator;
-    this->receiver = receiver;
-    this->imageStore = imageStore;
-    this->font = font;
-
-    //Get attack and defense for calculation.
-    int charAAttack = initiator->getAttack();
-    int charBDefense = receiver->getDefense();
-
-    damageToReceiver = charAAttack - charBDefense;
-
-    //No damage done, the defense negated the attack.
-    if(damageToReceiver < 0)
-        damageToReceiver = 0;
-}
-                        
 //Loads the animations to the animations vector.
 void CharacterAttack::loadAnimations(){
 
@@ -86,7 +101,7 @@ void CharacterAttack::loadAnimations(){
 
     //Convert damage to string for display purposes.
     char theDamage[10];
-    itoa(damageToReceiver , theDamage , 10);
+    _itoa_s(damageToReceiver , theDamage , 10);
 
     //Sets the start and end coordinates.
     damage->initialize(theDamage , receiver->getX() , receiver->getY() , 
@@ -94,7 +109,7 @@ void CharacterAttack::loadAnimations(){
     damageStay->initialize(theDamage , receiver->getX() , receiver->getY() , 
         receiver->getX() , receiver->getY());
                                     
-    //Load al the animations to the animations queue.
+    //Load all the animations to the animations queue.
     animations.push(weaponAttack);
     animations.push(damage);
     animations.push(damageStay);

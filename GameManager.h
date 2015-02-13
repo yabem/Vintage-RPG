@@ -14,7 +14,6 @@
 class Cutscene;
 class Menu;
 
-const int MAX_NUM_KEYS = 6;
 const int RESET_TIMER = 2000;
 const int BATTLE_TIMER = 100;   //Determines when a battle will take place.
 
@@ -23,8 +22,9 @@ class GameManager{
 private:
 
     queue<Cutscene*> cutscenes;
+    queue<Animation*> animations;   //Stores the animations to be played.
     vector<Menu*> menus;
-    CharacterList theEnemies;
+    //xCharacterList theEnemies;
     ALLEGRO_FONT *introFont;
 
 public:
@@ -36,31 +36,47 @@ public:
     AreaMap *cutSceneMap;   //Cutscene AreaMap used for battle transitions.
     Character *player;      //The player.
     int numEnemies;
-    vector<bool> keys;
+    vector<bool> keys;      
 
     //Timer that counts up as the game progresses each frame.
     int gameTimer;          
     int pressedKey;
 
-    GameManager();
-    bool loadCutscene(Cutscene *cutscene);
-    bool loadMenu(Menu *menu);
-    void playCutscenes();
-    void updateKey(int key);
-    bool battle;        //Flag for if a battle is happening.
-    bool firstTime;     //Flag for first time through the battle to save the variables.
+    //Flag for if a battle is happening.
+    bool battle;   
+
+    //Flag for first time through the battle to save the variables.
+    bool firstTime;     
     
     //The the x and y locations on the areamap.
     int charOnMapX , charOnMapY;  
 
     //Direction the character is facing on the areamap.
-    int charOnMapFacing;  
-
-    //Factory for the enemies.
-    CharFactory enemyFactory;     
+    int charOnMapFacing;    
 
     //Vector of pointers to enemy bitmaps.
     vector<ALLEGRO_BITMAP*> enemyModels;    
+
+    GameManager();
+    //x
+    bool loadCutscene(Cutscene *cutscene);
+    bool loadMenu(Menu *menu);
+
+    //x
+    void playCutscenes();
+    void updateKey(int key);
+
+    //Returns a pointer to the player at the front of the list.
+    Character* getFrontPlayer();
+
+    //Returns the enemies list.
+    //xstd::queue<Animation*>& getAnimations();  
+
+    //Determines if the key is pressed.
+    bool isKeyActive(int key);  
+
+    //Makes a key inactive.
+    void makeKeyInactive(int key);
 
     void saveAreaMapVariables();
 
@@ -93,6 +109,6 @@ public:
     //Returns the pressedKey
     int getPressedKey() const;
 
-    //Update key to unpressed.
-    void updateKeyToUnpressed(int theKey);
+    //Sets the pressedKey to inactive.
+    void setPressedKeyToInactive();
 };

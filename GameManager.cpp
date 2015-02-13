@@ -26,7 +26,7 @@ void GameManager::updateKey(int key){
 
     pressedKey = key;
 
-    if(pressedKey == -1)
+    if(pressedKey == NO_KEY)
         return;
 
     else{
@@ -35,6 +35,46 @@ void GameManager::updateKey(int key){
     }
 }
 
+//Returns a pointer to the player at the front of the list.
+Character* GameManager::getFrontPlayer(){
+
+    return player;
+}
+
+//Returns the enemies list.
+//Pre:  None.
+//Post: Returns a reference to the Animations queue.
+//xstd::queue<Animation*>& GameManager::getAnimations(){
+
+   //x return animations;
+//x}
+
+//Determines if the key is pressed.
+//Pre:  The key is within the range of the vector.
+//Post: Returns the value of the value of the key. TRUE
+//      is returned if the key is active, FALSE otherwise.
+bool GameManager::isKeyActive(int key){
+
+    if(key >= keys.size() || key < 0)
+        return false;
+
+    else return keys[key];
+}
+
+
+//Makes a key inactive.
+//Pre:  The key is within the range of the vector.
+//Post: Sets the key to inactive in the keys vector.
+//      Does nothing if the key is out of range.
+void GameManager::makeKeyInactive(int key){
+
+    if(key >= keys.size() || key < 0)
+        return;
+
+    else keys[key] = false;
+}
+
+//x
 //Loads a cutscene to the GameManager.
 bool GameManager::loadCutscene(Cutscene *cutscene){
 
@@ -63,7 +103,7 @@ bool GameManager::loadMenu(Menu *menu){
     }
 }
 
-
+//x
 void GameManager::playCutscenes(){
 
     if(cutscenes.empty())
@@ -71,10 +111,10 @@ void GameManager::playCutscenes(){
 
     else if(cutscenes.front()->play(pressedKey) == true){
 
-        if(pressedKey != -1)
+        if(pressedKey != NO_KEY)
             keys[pressedKey] = false;
         
-        pressedKey = -1;
+        pressedKey = NO_KEY;
         if(cutscenes.front() != NULL){
             delete cutscenes.front();
         }
@@ -150,12 +190,12 @@ void GameManager::loadEnemyModel(ALLEGRO_BITMAP *model){
 //Sets the current pressed key to unpressed.
 void GameManager::resetPressedKey(){
 
-    if(pressedKey == -1)
+    if(pressedKey == NO_KEY)
         return;
     
     else{
         keys[pressedKey] = false;
-        pressedKey = -1;
+        pressedKey = NO_KEY;
     }
 }
 
@@ -183,10 +223,13 @@ int GameManager::getPressedKey() const{
     return pressedKey;
 }
 
-//Update key to unpressed.
-//Pre:  TheKey is within the bounds of the array.
-//Post: The specified key in keys[] is changed to false.
-void GameManager::updateKeyToUnpressed(int theKey){
+//Sets the pressedKey to inactive.
+//Pre:  The key is within the range of the vector.
+//Post: Sets the pressedKey to inactive and updates
+//      the pressedKey to NO_KEY.
+void GameManager::setPressedKeyToInactive(){
 
-    keys[theKey] = false;
+    makeKeyInactive(pressedKey);
+
+    pressedKey = NO_KEY;
 }
