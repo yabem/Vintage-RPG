@@ -11,6 +11,7 @@
 #include "CharacterAttack.h"
 class Character;
 class ImageStore;
+class DrawRepository;
 #include "GameManager.h"
 
 class CharacterManipulationStore{
@@ -20,6 +21,7 @@ private:
     ImageStore *imageStore;
     FontStore *fontStore;
     GameManager *gameManager;
+    DrawRepository *drawRepository;
 
     void addAllManipulations();     //Adds all the manipulations to the store.
 

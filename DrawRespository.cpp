@@ -58,6 +58,7 @@ bool DrawRepository::animationsEmpty(){
     return animations.empty();
 }
 
+
 //Loads a single Animation.
 //Pre:  The Animation is not NULL.
 //Post: Loads the Animation to the animations queue. Returns true
@@ -73,6 +74,8 @@ bool DrawRepository::loadAnimation(Animation *animation){
         return true;
     }
 }
+
+
 
 //Plays all the loaded Animations.
 //Pre:  None.

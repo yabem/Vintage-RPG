@@ -335,10 +335,11 @@ void BattleManager::executeAction(){
     setTargetToNoTarget();
     */
 
+    /*
     characterManipulationStore->executeManipulation
         (gameManager->getFrontPlayer() , getCurrEnemy() ,
         menus.back()->getCurrSelectionName());
-
+    *///Z
     //gameManager->get); replace with the character's current selection.
     //located in menu. Need to put an accessor into game
     

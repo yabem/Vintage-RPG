@@ -11,12 +11,11 @@
 #include "MovingText.h"
 #include "ImageStore.h"
 #include "FontStore.h"
+#include "DrawRepository.h"
 
 class CharacterAttack : public CharacterManipulation{
 
 private:
-
-
 
     int damageToReceiver;   //Total damage to the receiver.
 
@@ -31,7 +30,7 @@ public:
     //Initiates the attack between the two characters.
     void initialize(Character *initiator , Character *receiver ,
         ImageStore *imageStore , FontStore *fontStore , 
-        queue<Animation*> destinationAnimationQueue);
+        DrawRepository *drawRepository);
 
     //Initiates the attack action between the two characters.
     void execute();   

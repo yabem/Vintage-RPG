@@ -71,7 +71,7 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
 
     CharacterManipulation *charManip = new CharacterManipulation;
     charManip->initialize(NULL , NULL , imageStore , fontStore , 
-        gameManager);
+        drawRepository);
     loadManipulation("attack" , charManip);
 }
 

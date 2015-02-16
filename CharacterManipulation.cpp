@@ -1,5 +1,6 @@
 #include "CharacterManipulation.h"
 
+
 //Default constructor.
 CharacterManipulation::CharacterManipulation(){
     
@@ -13,8 +14,9 @@ CharacterManipulation::~CharacterManipulation(){
 //Sets the character information.
 void CharacterManipulation::initialize(Character *initiator , 
     Character *receiver , ImageStore *imageStore , 
-    FontStore *fontStore , GameManager *gameManager){
+    FontStore *fontStore , DrawRepository *drawRepository){
 
+        //Fill in later
 }
 
 //Loads the Characters.

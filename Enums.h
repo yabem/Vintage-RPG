@@ -27,7 +27,7 @@ const int MAXTEXTNUMROWS = 6;
 const int FONT_HEIGHT = 20;      //Height of the font when drawing text.
 const int FONT_WIDTH = 15;       //Width of the font when drawing text.
 const int FONT_SIZE = 18;
-const int MAXTEXTLENGTH = SCREEN_W / (FONT_SIZE / 1.5);  //Max number of chars that can fit in one line of the textbox.
+const int MAXTEXTLENGTH = SCREEN_W / (FONT_SIZE / 2);  //Max number of chars that can fit in one line of the textbox.
 const int SELWID = 20;          //Width of the selector triangle.
 const int SELHGT = 15;          //Height of the selector triangle.
 

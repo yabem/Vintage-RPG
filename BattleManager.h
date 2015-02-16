@@ -41,7 +41,7 @@ private:
     vector<ALLEGRO_BITMAP*> enemyModels;    
 
     //Used to generate actions between Characters.
-    CharacterManipulationStore *characterManipulationStore;
+//    CharacterManipulationStore *characterManipulationStore;
 
     //Used to get the current player.
     GameManager *gameManager;

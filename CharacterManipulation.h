@@ -8,6 +8,7 @@ class ImageStore;
 class FontStore;
 class Animation;
 class GameManager;
+class DrawRepository;
 struct ALLEGRO_FONT;
 
 class CharacterManipulation{
@@ -18,7 +19,7 @@ protected:
     Character *receiver;    //Character that receives the attack.
     ImageStore *imageStore; //Used to retrieve the image.
     FontStore *fontStore;   //Used to retrieve the font.
-    std::queue<Animation*> animations;    //Vector of animations.
+    DrawRepository *drawRepository;    //Repository of animations.
     ALLEGRO_FONT *font;     //Font for the text.
 
 public:
@@ -31,7 +32,7 @@ public:
     //Initialize to defaults, must loadCharacters before use.
     virtual void initialize(Character *initiator , Character *receiver ,
         ImageStore *imageStore , FontStore *fontStore , 
-        GameManager *gameManager);
+        DrawRepository *drawRepository);
     
     virtual void execute();             //Executes the manipulation.
 };

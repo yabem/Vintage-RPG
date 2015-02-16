@@ -1,59 +1,12 @@
-﻿Build started 2/13/2015 12:55:48 PM.
+﻿Build started 2/15/2015 9:18:51 PM.
      1>Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\RPG.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt BattleManager.cpp CharacterManipulationStore.cpp Cutscene.cpp DrawRespository.cpp GameManager.cpp main.cpp
-         main.cpp
-         GameManager.cpp
-     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\gamemanager.cpp(58): warning C4018: '>=' : signed/unsigned mismatch
-     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\gamemanager.cpp(71): warning C4018: '>=' : signed/unsigned mismatch
-         DrawRespository.cpp
-         BattleManager.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         Cutscene.cpp
-         CharacterManipulationStore.cpp
+         All outputs are up-to-date.
        Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe" /NOLOGO /LIBPATH:c:\allegro\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro-5.0.10-monolith-md-debug.lib" /MANIFEST /ManifestFile:"Debug\RPG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.lib" /MACHINE:X86 Debug\Animation.obj
-         Debug\AreaMap.obj
-         Debug\BattleAction.obj
-         Debug\BattleManager.obj
-         Debug\BattleMap.obj
-         Debug\Character.obj
-         Debug\CharacterAttack.obj
-         Debug\CharacterList.obj
-         Debug\CharacterManipulation.obj
-         Debug\CharacterManipulationStore.obj
-         Debug\CharFactory.obj
-         Debug\CharStats.obj
-         Debug\Collision.obj
-         Debug\Controls.obj
-         Debug\Cursor.obj
-         Debug\Cutscene.obj
-         Debug\Draw.obj
-         Debug\DrawRespository.obj
-         Debug\FontStore.obj
-         Debug\GameManager.obj
-         Debug\GenerateAction.obj
-         Debug\ImageStore.obj
-         Debug\InitEnemies.obj
-         Debug\Layer.obj
-         Debug\main.obj
-         Debug\Map.obj
-         Debug\Menu.obj
-         Debug\Movement.obj
-         Debug\MovingImage.obj
-         Debug\MovingText.obj
-         Debug\Scenery.obj
-         Debug\Stats.obj
-         Debug\Tangible.obj
-         Debug\TextBox.obj
-         Debug\TransferAnimations.obj
-         LINK : C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe not found or not built by the last incremental link; performing full link
+         All outputs are up-to-date.
          Vintage-RPG.vcxproj -> C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe;#1" /manifest Debug\RPG.exe.intermediate.manifest
        FinalizeBuildStatus:
          Deleting file "Debug\RPG.unsuccessfulbuild".
          Touching "Debug\RPG.lastbuildstate".
@@ -61,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.28
+Time Elapsed 00:00:00.16
