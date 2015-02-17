@@ -43,9 +43,6 @@ void CharacterAttack::loadCharacters(Character *initiator ,
 //Loads the two characters.
 //Pre:  Both Characters have valid stats.
 //Post: The initiator, receiver, and imageStore are loaded.
-//      The initiator is the Character doing the attacking
-//      The receiver is the Character receiving the attack.
-//      The imageStore is where the images will be taken from.
 void CharacterAttack::initialize(Character *initiator , 
     Character *receiver , ImageStore *imageStore , FontStore *fontStore ,
     DrawRepository *drawRepository){
@@ -55,16 +52,6 @@ void CharacterAttack::initialize(Character *initiator ,
     this->imageStore = imageStore;
     this->font = fontStore->getFont("default");
     this->drawRepository = drawRepository;
-
-    //Get attack and defense for calculation.
-    int charAAttack = initiator->getAttack();
-    int charBDefense = receiver->getDefense();
-
-    damageToReceiver = charAAttack - charBDefense;
-
-    //No damage done, the defense negated the attack.
-    if(damageToReceiver < 0)
-        damageToReceiver = 0;
 }
  
 //Initiates the attack action between the two Characters.
@@ -78,6 +65,9 @@ void CharacterAttack::execute(){
 
     if(initiator == NULL || receiver == NULL)
         return;
+
+    //Determines the damage to the receiver.
+    calculateDamage();
 
     //Remove receiver's hitpoints.
     receiver->addToRemainingHP(-damageToReceiver);
@@ -113,18 +103,28 @@ void CharacterAttack::loadAnimations(){
         receiver->getX() , receiver->getY());
                                     
     //Load all the animations to the animations queue.
-    /*
-    animations.push(weaponAttack);
-    animations.push(damage);
-    animations.push(damageStay);
-    */
     drawRepository->loadAnimation(weaponAttack);
     drawRepository->loadAnimation(damage);
-    drawRepository->loadAnimation(damageStay);
-       
+    drawRepository->loadAnimation(damageStay);   
 }
 
+//Calculates the damage to the receiver.
+//Pre:  None.
+//Post: The initiator is the Character doing the attacking
+//      The receiver is the Character receiving the attack.
+//      The imageStore is where the images will be taken from.
+void CharacterAttack::calculateDamage(){
 
+    //Get attack and defense for calculation.
+    int charAAttack = initiator->getAttack();
+    int charBDefense = receiver->getDefense();
+
+    damageToReceiver = charAAttack - charBDefense;
+
+    //No damage done, the defense negated the attack.
+    if(damageToReceiver < 0)
+        damageToReceiver = 0;
+}
 
 /*
 //Returns the first animation from the queue.

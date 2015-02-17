@@ -101,10 +101,6 @@ int main(int argc, char **argv){
    
    al_init_image_addon();
 
-//x#ifdef ttfaddon
-   //xALLEGRO_FONT *font18 = al_load_font("arial.ttf" , 18 , 0);
-//x#endif   
-
    al_register_event_source(event_queue, al_get_display_event_source(display));
    al_register_event_source(event_queue, al_get_keyboard_event_source());
    al_register_event_source(event_queue, al_get_timer_event_source(timer));
@@ -262,32 +258,34 @@ int main(int argc, char **argv){
     cursor.move(50 , 50);
     cursor.reverseDirection();
 
+    FontStore fontStore;
+    fontStore.loadAllDefaultFonts();
+
+    DrawRepository drawRepository;
+
+    CharacterManipulationStore characterManipulationStore;
+    characterManipulationStore.loadImageStore(&imageStore);
+    characterManipulationStore.loadGameManager(&gameManager);
+    characterManipulationStore.loadDrawRepository(&drawRepository);
+    characterManipulationStore.loadFontStore(&fontStore);
+    characterManipulationStore.loadAllDefaultManipulations();
+
     BattleManager battleManager;
     battleManager.loadCursor(&cursor);
     battleManager.loadMenu(&menu);
     battleManager.loadGameManager(&gameManager);
+    battleManager.loadCharacterManipulationStore(&characterManipulationStore);
 
     battleManager.loadEnemyModel(imageStore.getBitMap("rat"));
     battleManager.loadEnemyModel(imageStore.getBitMap("wolf"));
     battleManager.loadEnemyModel(imageStore.getBitMap("soldier"));
 
-    CharacterManipulationStore characterManipulationStore;
-    characterManipulationStore.loadAllDefaultManipulations();
-    characterManipulationStore.loadImageStore(&imageStore);
-    characterManipulationStore.loadGameManager(&gameManager);
-
-    DrawRepository drawRepository;
-    drawRepository.loadBattleManager(&battleManager);
-
-    FontStore fontStore;
-    fontStore.loadAllDefaultFonts();
-
    //Initialize starting position.
    Movement::setStart(*gameManager.player, theMap , STARTCOL , STARTROW);
    
-   ////////////////////////////////////////////////////////////////////////////////////////
-   ///////////////////////////////////Game Loop////////////////////////////////////////////
-   ////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////Game Loop////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
    while(!done){
 
       ALLEGRO_EVENT ev;
@@ -322,7 +320,6 @@ int main(int argc, char **argv){
                 }
 
                 //Check for end of battle.
-                //xelse if(keys[Q] == TRUE || !battleManager.enemiesRemaining()){
                 else if(gameManager.isKeyActive(Q) == TRUE 
                     || !battleManager.enemiesRemaining()){    
                     //Create victory cutscene.
@@ -346,7 +343,6 @@ int main(int argc, char **argv){
                         battleManager.getEnemiesList());
 
                     //Set the menus draw location.
-                    //xbattleManager.placeMenuToLeftOfCharacter(&thePlayer);
                     battleManager.placeMenuToLeftOfCharacter
                         (gameManager.getFrontPlayer());
 
@@ -355,70 +351,41 @@ int main(int argc, char **argv){
                     
                     //Draw battle menus.
                     Draw::drawMenus(battleManager.getMenuList());
-                    battleManager.moveMenuCursor(&gameManager);
+                    battleManager.moveMenuCursor();
 
                     //Play all animations.
-                    //drawRepository.playAllAnimations();
-                    //x
-                    
-                    if(!drawRepository.animationsEmpty())
+                    if(!drawRepository.animationsEmpty()){
                         drawRepository.playAllAnimations();
-                    /*
-                    if(animations.size() != 0){
-                    //if(!drawRepository.animationsEmpty()){
                         
-                        //Pop off the animaton once it's done.
-                        if(animations.front()->play()){
-
-                            //Delete animation to reclaim memory.
-                            delete animations.front();  
-                            animations.pop();
-                        }
-                         
-                        //Move cursor back once animations are done.
-                        if(animations.size() == 0){
-
-                            //Check if enemy is dead.
-                            if(battleManager.currEnemyDead()){
-                                battleManager.deleteCurrEnemy();
-                            }
-                        }
+                        if(drawRepository.animationsEmpty())
+                            battleManager.deleteDeadCurrEnemy();
                     }
-                    */
 
-                    
                     else{
                     
+                        battleManager.consumePlayerInput();
+                        
+                         /*
                         //switch(theKey){
                         switch(gameManager.getPressedKey()){
 
                             case UP:
 
-                                battleManager.moveEnemyCursor(&gameManager);
-                                battleManager.moveMenuCursor(&gameManager);
-                                //xbattleManager.moveEnemySelectionUp();
+                                battleManager.moveEnemyCursor();
+                                battleManager.moveMenuCursor();
                                 battleManager.moveCursorToTarget(
                                     battleManager.getCurrEnemy());
-                                                               
-                                //xkeys[theKey] = false;
-                                //ygameManager.makeKeyInactive(theKey);
-
-                                //xtheKey = NOKEY;
+                                                  
                                 gameManager.setPressedKeyToInactive();
                                 break;
 
                             case DOWN:
 
-                                battleManager.moveEnemyCursor(&gameManager);
-                                battleManager.moveMenuCursor(&gameManager);
-                                //xbattleManager.moveEnemySelectionDown();
+                                battleManager.moveEnemyCursor();
+                                battleManager.moveMenuCursor();
                                 battleManager.moveCursorToTarget(
                                     battleManager.getCurrEnemy());
                                 
-                                //xkeys[theKey] = false;
-                                //ygameManager.makeKeyInactive(theKey);
-                                
-                                //xtheKey = NOKEY;
                                 gameManager.setPressedKeyToInactive();
                                 break;
 
@@ -427,24 +394,17 @@ int main(int argc, char **argv){
                                 if(battleManager.targettingEnemies()){
 
                                     //Generate attack animation.
+                                    characterManipulationStore.executeManipulation(gameManager.getFrontPlayer() ,
+                                        battleManager.getCurrEnemy() , "attack");
+                                    /*
                                     CharacterAttack charAttack;
-                                    //xcharAttack.loadAttack(&thePlayer , 
-                                    //xbattleManager.getCurrEnemy() , &imageStore , font18);
                                     charAttack.initialize(gameManager.getFrontPlayer() , 
-                                        battleManager.getCurrEnemy() , &imageStore , &fontStore,
-                                        &drawRepository);
+                                        battleManager.getCurrEnemy() , &imageStore ,
+                                        &fontStore, &drawRepository);
                                     charAttack.execute();
+                                    */
 
-                                    
-                                    //Load the Animations to the animations queue.
-                                    while(!charAttack.animationsIsEmpty()){
-
-                                        //xanimations.push(charAttack.getFrontAnimation());
-                                        //drawRepository.loadAnimation(charAttack.getFrontAnimation());
-                                        // not sure if i have to remove this charAttack.removeFrontAnimation();
-                                    }
-                                    
-
+                        /*
                                     battleManager.targetPlayers();
                                     Draw::removeAllSubMenus(battleManager.getMenuList());
 
@@ -459,13 +419,10 @@ int main(int argc, char **argv){
                                     battleManager.moveCursorToTarget(battleManager.getCurrEnemy());
                                 }
 
-                                //xkeys[theKey] = false;
-                                //ygameManager.makeKeyInactive(theKey);
-                                                                
-                                //xtheKey = NOKEY;
                                 gameManager.setPressedKeyToInactive();
                                 break;
                         }
+                        */
                     }
                 }
             }
@@ -476,7 +433,6 @@ int main(int argc, char **argv){
                 Collision::characterToAreaMap(*gameManager.player , gameManager.currMap);
             
                 //Move the player on the map.
-                //xMovement::moveMap(*gameManager.player , *gameManager.currMap , theKey , keys);
                 Movement::moveMap(*gameManager.player , *gameManager.currMap ,
                     gameManager.getPressedKey(), keys);
 
@@ -487,19 +443,17 @@ int main(int argc, char **argv){
                 gameManager.currMap->animateSceneries();
             
                 //Determine if there is a battle.
-                battleManager.checkForBattle(&gameManager);
+                battleManager.checkForBattle();
 
                 //Draw map.
                 Draw::drawArea(*gameManager.currMap , *gameManager.player);
                                      
                 //Show variables.
 #ifdef ttfaddon
-                //displayVariables(font18 , theKey , gameManager.player ,
-                //xdisplayVariables(font18 , gameManager.getPressedKey() , gameManager.player ,
+
                 displayVariables(fontStore.getFont("default") ,
                     gameManager.getPressedKey() , gameManager.player ,
                     gameManager.currMap->getLayer(CENTERGROUND));
-                //xal_draw_textf(font18, al_map_rgb(0, 0, 0), 500, 310, 0,
                 al_draw_textf(fontStore.getFont("default"),
                     al_map_rgb(0, 0, 0), 500, 310, 0, 
                     "Cutscn count: %i" , cutsceneFrameCount);
@@ -562,16 +516,3 @@ void displayVariables(ALLEGRO_FONT *theFont , int theKey , Character *thePlayer 
         Collision::getLayerVal(layer, Collision::getRow(thePlayer->getUpperRightY() , layer) , 
         Collision::getCol(thePlayer->getUpperRightX() , layer)));
 }
-
-
-/*
-void increaseGameTimer(int &gameTimer){
-
-    //Increase ingame timer.
-    gameTimer++;
-
-    //Reset in game timer once it hits 2000.
-    if(gameTimer == 2000)
-        gameTimer = 0;
-}
-*/

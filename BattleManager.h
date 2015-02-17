@@ -12,9 +12,9 @@
 #include "Enums.h"
 
 //x remove
-#include "CharacterAttack.h"
+//#include "CharacterAttack.h"
 #include "CharacterManipulationStore.h"
-#include "GameManager.h"
+//class CharacterManipulationStore;
 
 class BattleManager{
 
@@ -41,7 +41,7 @@ private:
     vector<ALLEGRO_BITMAP*> enemyModels;    
 
     //Used to generate actions between Characters.
-//    CharacterManipulationStore *characterManipulationStore;
+    CharacterManipulationStore *characterManipulationStore;
 
     //Used to get the current player.
     GameManager *gameManager;
@@ -68,6 +68,10 @@ public:
 
     //Load GameManager.
     void loadGameManager(GameManager *gameManager);
+
+    //Load CharacterManipulation.
+    void loadCharacterManipulationStore(CharacterManipulationStore 
+        *CharacterManipulationStore);
 
     //Set menu draw location to character.
     void placeMenuToLeftOfCharacter(Character *character);
@@ -97,13 +101,13 @@ public:
     bool targettingEnemies();
 
     //Determines if the menu cursor should be moved.
-    void moveMenuCursor(GameManager *gameManager);
+    void moveMenuCursor();
 
     //Determines if the enemy cursor selector should be moved.
-    void moveEnemyCursor(GameManager *gameManager);
+    void moveEnemyCursor();
 
     //Consume keyboard input from player for the battle.
-    void consumePlayerInput(GameManager *gameManager);
+    void consumePlayerInput();
 
     //Executes the current action based off of the player, target, and action.
     void executeAction();
@@ -135,7 +139,7 @@ public:
 /////////////////////////////////////Enemy Creator/////////////////////////////
     
     //Determines if a battle will occur.
-    bool checkForBattle(GameManager *gameManager);  
+    bool checkForBattle();  
 
     //Generates the enemies for the battle.
     void generateEnemies(int maxNumberOfEnemies); 

@@ -41,14 +41,6 @@ Character* GameManager::getFrontPlayer(){
     return player;
 }
 
-//Returns the enemies list.
-//Pre:  None.
-//Post: Returns a reference to the Animations queue.
-//xstd::queue<Animation*>& GameManager::getAnimations(){
-
-   //x return animations;
-//x}
-
 //Determines if the key is pressed.
 //Pre:  The key is within the range of the vector.
 //Post: Returns the value of the value of the key. TRUE
@@ -74,7 +66,6 @@ void GameManager::makeKeyInactive(int key){
     else keys[key] = false;
 }
 
-//x
 //Loads a cutscene to the GameManager.
 bool GameManager::loadCutscene(Cutscene *cutscene){
 
@@ -103,7 +94,6 @@ bool GameManager::loadMenu(Menu *menu){
     }
 }
 
-//x
 void GameManager::playCutscenes(){
 
     if(cutscenes.empty())

@@ -17,7 +17,7 @@ void CharacterManipulation::initialize(Character *initiator ,
     FontStore *fontStore , DrawRepository *drawRepository){
 
         //Fill in later
-}
+   }
 
 //Loads the Characters.
 void CharacterManipulation::loadCharacters(Character *initiator ,

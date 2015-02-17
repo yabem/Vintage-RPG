@@ -31,11 +31,26 @@ void CharacterManipulationStore::loadGameManager(GameManager *gameManager){
     this->gameManager = gameManager;
 }
 
+//Loads the fontStore.
+//Pre:  None.
+//Post: Loads the pointer to the fontStore.
+void CharacterManipulationStore::loadFontStore(FontStore *fontStore){
+
+    this->fontStore = fontStore;
+}
+
+//Loads the drawRepository.
+//Pre:  None.
+//Post: Loads the pointer to the drawRepository.
+void CharacterManipulationStore::loadDrawRepository(DrawRepository *drawRepository){
+
+    this->drawRepository = drawRepository;
+}
+
 /*
 //Generates and executes the manipulation.
 void CharacterManipulationStore::generateManipulation(Character *initiator ,
     Character *receiver , std::string manipulation){
-    
         
     switch(){
 
@@ -43,8 +58,7 @@ void CharacterManipulationStore::generateManipulation(Character *initiator ,
         characterAttack.loadAttack(initiator , receiver ,
             imageStore , font18);
         characterAttack.execute();
-    }
-    
+    } 
 }
 */
 
@@ -69,7 +83,7 @@ void CharacterManipulationStore::loadManipulation(std::string name ,
 //      characterManipulations map.
 void CharacterManipulationStore::loadAllDefaultManipulations(){
 
-    CharacterManipulation *charManip = new CharacterManipulation;
+    CharacterManipulation *charManip = new CharacterAttack;
     charManip->initialize(NULL , NULL , imageStore , fontStore , 
         drawRepository);
     loadManipulation("attack" , charManip);
@@ -82,8 +96,8 @@ CharacterManipulation* CharacterManipulationStore::getManip
     (std::string charManip){
 
     //Create iterator for testing if the element exists.
-    std::map<std::string , CharacterManipulation*>::iterator iter =
-        characterManipulations.begin();
+    std::map<std::string , CharacterManipulation*>::iterator iter
+        = characterManipulations.begin();
 
     iter = characterManipulations.find(charManip);
 
@@ -104,5 +118,6 @@ void CharacterManipulationStore::executeManipulation(Character *initiator ,
 
     CharacterManipulation *charManip = getManip(manipulation);
     charManip->loadCharacters(initiator , receiver);
+    charManip->execute();
 }
 

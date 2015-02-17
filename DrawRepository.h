@@ -4,7 +4,7 @@
 #pragma once
 #include <queue>
 #include "Cutscene.h"
-#include "BattleManager.h"
+class BattleManager;
 class Animation;
 
 class DrawRepository{
@@ -13,15 +13,11 @@ private:
 
     std::queue<Cutscene*> cutscenes;     //Stores the Cutscenes that will be played.
     std::queue<Animation*> animations;   //Stores the animations to be played.
-    BattleManager *battleManager;       //Used to delete dead enemies.
 
 public:
 
     //Constructor.
     DrawRepository();
-
-    //Loads the battleManager.
-    void loadBattleManager(BattleManager *battleManager);
 
     //Loads a single Cutscene.
     bool loadCutscene(Cutscene *cutscene);

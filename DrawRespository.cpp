@@ -4,10 +4,8 @@
 //Constructor.
 DrawRepository::DrawRepository(){
 
-    battleManager = NULL;
 }
 
-/*
 //Loads a cutscene to the GameManager.
 bool DrawRepository::loadCutscene(Cutscene *cutscene){
 
@@ -21,9 +19,9 @@ bool DrawRepository::loadCutscene(Cutscene *cutscene){
     }
 }
 
-
 void DrawRepository::playCutscenes(){
 
+    /*
     if(cutscenes.empty())
         return;
 
@@ -39,15 +37,7 @@ void DrawRepository::playCutscenes(){
 
         cutscenes.pop();
     }
-}
-*/
-
-//Loads the battleManager.
-//Pre:  The BattleManager is not NULL.
-//Post: The battleManager pointer is loaded.
-void DrawRepository::loadBattleManager(BattleManager *battleManager){
-
-    this->battleManager = battleManager;
+    */
 }
 
 //Checks if there are any remaining animations.
@@ -75,12 +65,9 @@ bool DrawRepository::loadAnimation(Animation *animation){
     }
 }
 
-
-
 //Plays all the loaded Animations.
 //Pre:  None.
-//Post: Plays the Animations in the queue and
-//      deletes the current enemy if it is dead.
+//Post: Plays each Animation and pops it off the queue once it's done.
 void DrawRepository::playAllAnimations(){
 
     //Play all animations.
@@ -92,13 +79,6 @@ void DrawRepository::playAllAnimations(){
             //Delete animation to reclaim memory.
             delete animations.front();  
             animations.pop();
-        }
-                         
-        //Move cursor back once animations are done.
-        if(animations.size() == 0){
-
-            //Checks if the current enemy is dead and deletes it.
-            battleManager->deleteDeadCurrEnemy();
         }
     }
 }

@@ -24,7 +24,6 @@ private:
     queue<Cutscene*> cutscenes;
     queue<Animation*> animations;   //Stores the animations to be played.
     vector<Menu*> menus;
-    //xCharacterList theEnemies;
     ALLEGRO_FONT *introFont;
 
 public:
@@ -68,9 +67,6 @@ public:
 
     //Returns a pointer to the player at the front of the list.
     Character* getFrontPlayer();
-
-    //Returns the enemies list.
-    //xstd::queue<Animation*>& getAnimations();  
 
     //Determines if the key is pressed.
     bool isKeyActive(int key);  

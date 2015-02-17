@@ -54,6 +54,13 @@ void BattleManager::loadGameManager(GameManager *gameManager){
     this->gameManager = gameManager;
 }
 
+//Load CharacterManipulation.
+void BattleManager::loadCharacterManipulationStore(CharacterManipulationStore 
+    *characterManipulationStore){
+
+        this->characterManipulationStore = characterManipulationStore;
+}
+
 //Loads a Menu to the BattleManager.
 //Pre:  None.
 //Post: Returns false if the Menu is NULL.
@@ -198,7 +205,7 @@ bool BattleManager::targettingEnemies(){
 //      If it is, then UP and DOWN navigate through the list
 //      and LEFT and RIGHT check for subMenus. If a subMenu is found
 //      then the subMenu is added to the menus vector that will be drawn.
-void BattleManager::moveMenuCursor(GameManager *gameManager){
+void BattleManager::moveMenuCursor(){
 
     if(menus.empty())
         return;
@@ -251,7 +258,7 @@ void BattleManager::moveMenuCursor(GameManager *gameManager){
 //Pre:  None.
 //Post: Checks if the player is navigating through the enemy list.
 //      If the player is, then UP and DOWN navigating through the list.
-void BattleManager::moveEnemyCursor(GameManager *gameManager){
+void BattleManager::moveEnemyCursor(){
 
     if(menus.empty())
         return;
@@ -281,9 +288,10 @@ void BattleManager::moveEnemyCursor(GameManager *gameManager){
 //Post: If the player has the menu selected, the key is consumed by the
 //      menu operations. If the player has targetted the enemies, then
 //      the key is consumed by the menu enemy movement operations.
-void BattleManager::consumePlayerInput(GameManager *gameManager){
+void BattleManager::consumePlayerInput(){
 
-    switch (gameManager->getPressedKey()){    
+    /*
+    switch (currentTarget){    
 
         case ENEMY:
             //Determines if the menu cursor should be moved.
@@ -297,6 +305,62 @@ void BattleManager::consumePlayerInput(GameManager *gameManager){
 
         default:
             //Do nothing.
+            break;
+    }
+    */
+
+                        //switch(theKey){
+    switch(gameManager->getPressedKey()){
+
+        case UP:
+
+            moveEnemyCursor();
+            moveMenuCursor();
+            moveCursorToTarget(getCurrEnemy());
+                                                  
+            gameManager->setPressedKeyToInactive();
+            break;
+
+        case DOWN:
+
+            moveEnemyCursor();
+            moveMenuCursor();
+            moveCursorToTarget(getCurrEnemy());
+                                
+            gameManager->setPressedKeyToInactive();
+            break;
+
+        case SPACE:
+
+            if(targettingEnemies()){
+
+                characterManipulationStore->executeManipulation(
+                    gameManager->getFrontPlayer() , getCurrEnemy() , "attack");
+
+                /*
+                //Generate attack animation.
+                CharacterAttack charAttack;
+                charAttack.initialize(gameManager->getFrontPlayer() , 
+                    getCurrEnemy() , &imageStore ,
+                    &fontStore, &drawRepository);
+                charAttack.execute();
+                */
+
+                targetPlayers();
+                Draw::removeAllSubMenus(getMenuList());
+
+                //Reset target to NONE.
+                setTargetToNoTarget();
+                break;
+            }
+
+            else {
+                //Sets target to enemies.
+                targetEnemies();
+                moveCursorToTarget(getCurrEnemy());
+            }
+
+            gameManager->setPressedKeyToInactive();
             break;
     }
 }
@@ -417,7 +481,7 @@ bool BattleManager::enemiesRemaining(){
 /////////////////////////////////////Enemy Creator/////////////////////////////
 
 //Determines if a battle will occur.
-bool BattleManager::checkForBattle(GameManager *gameManager){
+bool BattleManager::checkForBattle(){
 
     if(gameManager->gameTimer == BATTLE_TIMER && gameManager->battle == false){
 

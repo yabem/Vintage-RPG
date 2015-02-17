@@ -9,10 +9,10 @@
 #include <allegro5/allegro_font.h>  //Used for al_load_bitmap().
 #include "CharacterManipulation.h"
 #include "CharacterAttack.h"
+#include "GameManager.h"
 class Character;
 class ImageStore;
 class DrawRepository;
-#include "GameManager.h"
 
 class CharacterManipulationStore{
 
@@ -33,11 +33,10 @@ public:
     CharacterManipulationStore();       //No parameter constructor.
     ~CharacterManipulationStore();      //Destructor.
 
-    //Loads the imageStore.
     void loadImageStore(ImageStore *imageStore);
-
-    //Loads the gameManager.
     void loadGameManager(GameManager *gameManager);
+    void loadFontStore(FontStore*fontStore);
+    void loadDrawRepository(DrawRepository *drawRepository);
 
     //Load a single CharacterManipulation to the store.
     void loadManipulation(std::string name , 

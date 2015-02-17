@@ -38,6 +38,9 @@ public:
     //Loads the animations to the animations vector.
     void loadAnimations();
 
+    //Calculates the damage to the receiver.
+    void calculateDamage();
+
     //Returns a pointer to the Animation at the front of the list.
     Animation* getFrontAnimation();
 
