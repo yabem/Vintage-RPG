@@ -357,73 +357,12 @@ int main(int argc, char **argv){
                     if(!drawRepository.animationsEmpty()){
                         drawRepository.playAllAnimations();
                         
+                        //Delete enemy after animation if it is dead.
                         if(drawRepository.animationsEmpty())
                             battleManager.deleteDeadCurrEnemy();
                     }
 
-                    else{
-                    
-                        battleManager.consumePlayerInput();
-                        
-                         /*
-                        //switch(theKey){
-                        switch(gameManager.getPressedKey()){
-
-                            case UP:
-
-                                battleManager.moveEnemyCursor();
-                                battleManager.moveMenuCursor();
-                                battleManager.moveCursorToTarget(
-                                    battleManager.getCurrEnemy());
-                                                  
-                                gameManager.setPressedKeyToInactive();
-                                break;
-
-                            case DOWN:
-
-                                battleManager.moveEnemyCursor();
-                                battleManager.moveMenuCursor();
-                                battleManager.moveCursorToTarget(
-                                    battleManager.getCurrEnemy());
-                                
-                                gameManager.setPressedKeyToInactive();
-                                break;
-
-                            case SPACE:
-
-                                if(battleManager.targettingEnemies()){
-
-                                    //Generate attack animation.
-                                    characterManipulationStore.executeManipulation(gameManager.getFrontPlayer() ,
-                                        battleManager.getCurrEnemy() , "attack");
-                                    /*
-                                    CharacterAttack charAttack;
-                                    charAttack.initialize(gameManager.getFrontPlayer() , 
-                                        battleManager.getCurrEnemy() , &imageStore ,
-                                        &fontStore, &drawRepository);
-                                    charAttack.execute();
-                                    */
-
-                        /*
-                                    battleManager.targetPlayers();
-                                    Draw::removeAllSubMenus(battleManager.getMenuList());
-
-                                    //Reset target to NONE.
-                                    battleManager.setTargetToNoTarget();
-                                    break;
-                                }
-
-                                else {
-                                    //Sets target to enemies.
-                                    battleManager.targetEnemies();
-                                    battleManager.moveCursorToTarget(battleManager.getCurrEnemy());
-                                }
-
-                                gameManager.setPressedKeyToInactive();
-                                break;
-                        }
-                        */
-                    }
+                    else battleManager.consumePlayerInput();
                 }
             }
 
