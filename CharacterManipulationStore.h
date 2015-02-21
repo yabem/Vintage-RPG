@@ -10,6 +10,7 @@
 #include "CharacterManipulation.h"
 #include "CharacterAttack.h"
 #include "GameManager.h"
+#include "ThrowRock.h"
 class Character;
 class ImageStore;
 class DrawRepository;

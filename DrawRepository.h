@@ -19,6 +19,9 @@ public:
     //Constructor.
     DrawRepository();
 
+    //Destructor.
+    ~DrawRepository();
+
     //Loads a single Cutscene.
     bool loadCutscene(Cutscene *cutscene);
 

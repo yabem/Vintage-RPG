@@ -18,7 +18,6 @@ void InitEnemies::init(Character *character , int enemyType , int level , vector
         default:
             return;
     }
-
 }
 
 //Initialize to a rat.
@@ -62,7 +61,8 @@ void InitEnemies::wolf(Character *character , int enemyType , int level , vector
 }
 
 //Initialize to a wolf.
-void InitEnemies::soldier(Character *character , int enemyType , int level , vector<ALLEGRO_BITMAP*> enemies){
+void InitEnemies::soldier(Character *character , int enemyType ,
+    int level , vector<ALLEGRO_BITMAP*> enemies){
 
     character->setBmap(enemies[enemyType]);
 
@@ -88,7 +88,8 @@ void InitEnemies::initEnemiesSpacing(vector<Character*> theEnemies){
     int totalHeight = BATTLESTARTY;
 
     //Loop through all enemies to get the total height.
-    for(vector<Character*>::iterator it = theEnemies.begin() ; it != theEnemies.end() ; it++){
+    for(vector<Character*>::iterator it = theEnemies.begin() ;
+        it != theEnemies.end() ; it++){
         
         //Set x and y start locations.
         (*it)->setX(totalWidth);

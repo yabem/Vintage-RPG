@@ -25,7 +25,7 @@
 #include "MovingText.h"
 #include "Stats.h"
 #include "CharStats.h"
-#include "CharFactory.h"
+//#include "CharFactory.h"
 #include "InitEnemies.h"
 #include "Cutscene.h"
 #include "GameManager.h"
@@ -41,6 +41,14 @@
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
+
+//x remove afer testing
+#include "TurnTimer.h"
+#include "TurnTimerList.h"
+#include "SetTurnTimerListToCharacterList.h"
+#include "CharacterList.h"
+#include "IList.h"
+
 
 //To do:
 //Make controls a class
@@ -71,13 +79,7 @@ int main(int argc, char **argv){
    bool done = false;
 
    int theKey = -1;
-   int playWidth = 32;     //Player width
    
-   int playerStartX = SCREEN_W / 2;
-   int playerStartY = 0;
-   int screenStartX = 800 - (SCREEN_W / 2) ;
-   int screenStartY = 0;
-
    //Check initializations.
    if(checkInit() == -1)
        return -1;
@@ -88,11 +90,8 @@ int main(int argc, char **argv){
        return -1;
  
    al_init_primitives_addon();
- 
    event_queue = al_create_event_queue();
- 
    timer = al_create_timer(1.0 / FPS);
-
    al_init_font_addon();
 
 #ifdef ttfaddon
@@ -110,7 +109,7 @@ int main(int argc, char **argv){
    imageStore.loadAllDefaultImages();
 
    //Characters
-   Character thePlayer(imageStore.getBitMap("player") , playWidth , playWidth , 30 , 2 , rate);
+   Character thePlayer(imageStore.getBitMap("player") , 32 , 32 , 30 , 2 , rate);
 
    //Character stats
    CharStats playerStats(1 ,25 , 10 , 100 , 10 , 1 , 100 , 10);
@@ -228,20 +227,10 @@ int main(int argc, char **argv){
    gameManager.loadCutscene(theIntro);   
    gameManager.loadCutscene(theInstruct);  
 
-   //bool test = false;   //Used to set start location.
-   bool battle = false;
-   bool firstTime = true;
-
-   int gameTimer = 0;
-
-   int theFacing = 0;
-   int cutsceneFrameCount = 0 , miniCount = 0;
-   int r = 0 , g = 0 , b = 0 , fade = 8;
-   int menuChoice = 0;
+   int cutsceneFrameCount = 0 , miniCount = 0;  //For display.
    srand (time(NULL));  //Seed random
+   
    al_start_timer(timer);
-   int numEnemies = 0;
-   CharFactory charFactory;
 
    TextBox textBox("You awaken in a strange town that you have never seen before. "
        "You don't know where you are and why you are there. "
@@ -250,7 +239,7 @@ int main(int argc, char **argv){
     TextBox victoryBox("You have slain all the enemies! "
     "You gained 10xp and 50gold.");
     
-    Menu menu("Attack,Magic|Fire|Fire1,Fire2,Fire3;Ice,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
+    Menu menu("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
     menu.formatText();
     gameManager.loadMenu(&menu);
 
@@ -280,9 +269,13 @@ int main(int argc, char **argv){
     battleManager.loadEnemyModel(imageStore.getBitMap("wolf"));
     battleManager.loadEnemyModel(imageStore.getBitMap("soldier"));
 
-   //Initialize starting position.
-   Movement::setStart(*gameManager.player, theMap , STARTCOL , STARTROW);
-   
+    //Initialize starting position.
+    Movement::setStart(*gameManager.player, theMap , STARTCOL , STARTROW);
+
+    //xRemove after testing.
+    TurnTimerList turnTimerList;
+    battleManager.theEnemies.loadList(&turnTimerList);
+
 ////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////Game Loop////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -317,11 +310,14 @@ int main(int argc, char **argv){
 
                     gameManager.saveAreaMapVariables();
                     gameManager.initializeBattle();
+                    //x testign list
+                    SetTurnTimerListToCharacterList::setTurnTimerListToCharacterList(&battleManager.theEnemies , &turnTimerList);
                 }
 
                 //Check for end of battle.
                 else if(gameManager.isKeyActive(Q) == TRUE 
                     || !battleManager.enemiesRemaining()){    
+
                     //Create victory cutscene.
                     gameManager.generateVictoryCutScene();
 
@@ -333,6 +329,10 @@ int main(int argc, char **argv){
 
                     //Switch to map variables.
                     gameManager.switchVariablesToMap();
+
+                    //xtesting list
+                    turnTimerList.deleteList();
+
                 }
                 
                 //The battle continues.
@@ -341,6 +341,18 @@ int main(int argc, char **argv){
                     //Draw map.
                     Draw::drawBattle(theBattleMap , players ,
                         battleManager.getEnemiesList());
+
+                    //xTesting TurnTimerList
+
+                    for(int i = 0 ; i < turnTimerList.listOfTimers.size() ; i++){
+                        turnTimerList.listOfTimers[i]->turnTimer->updateCurrentFill();
+                        turnTimerList.listOfTimers[i]->turnTimer->draw();
+                
+                        if(turnTimerList.listOfTimers[i]->turnTimer->innerBarIsFull())
+                            turnTimerList.listOfTimers[i]->turnTimer->resetCurrentFill();
+                    }
+                    //x
+
 
                     //Set the menus draw location.
                     battleManager.placeMenuToLeftOfCharacter
@@ -353,7 +365,7 @@ int main(int argc, char **argv){
                     Draw::drawMenus(battleManager.getMenuList());
                     battleManager.moveMenuCursor();
 
-                    //Play all animations.
+                    //Play animations.
                     if(!drawRepository.animationsEmpty()){
                         drawRepository.playAllAnimations();
                         

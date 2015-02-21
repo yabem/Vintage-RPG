@@ -55,9 +55,6 @@
     <Filter Include="Source Files\Character\CharacterManipulation\SubClass">
       <UniqueIdentifier>{5664d930-7481-4a29-bce5-e2b37a69a746}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Character\SuperClass">
-      <UniqueIdentifier>{f5958a48-6b4c-4371-89d0-f1aa38d70b04}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Stats">
       <UniqueIdentifier>{ae5d5e5c-9125-4a7f-8556-ac50d4149e8e}</UniqueIdentifier>
     </Filter>
@@ -82,20 +79,11 @@
     <Filter Include="Source Files\Character\CharacterManipulation\CharacterManipulationStore">
       <UniqueIdentifier>{aec276c7-269c-4420-b316-b0592b217c69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Character\CharacterList">
-      <UniqueIdentifier>{d6ba9daf-5962-4317-a8d9-d0dc26f49ea2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Character\CharFactory">
       <UniqueIdentifier>{0ac95e19-bc79-4bca-8151-b9fc0c5f2512}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Character\SuperClass">
-      <UniqueIdentifier>{f3c9840d-9993-4749-bb31-9f58819183da}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Character\CharFactory">
       <UniqueIdentifier>{e31e149c-da7e-4e7a-aac4-a2ec10aa2e4a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Character\CharacterList">
-      <UniqueIdentifier>{b4b14669-9095-4526-8b0b-f5a545452547}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Map">
       <UniqueIdentifier>{43671170-9096-4019-8fc2-b0bb9f0fd353}</UniqueIdentifier>
@@ -151,6 +139,54 @@
     <Filter Include="Source Files\DrawToScreen">
       <UniqueIdentifier>{e1869093-aed5-459f-817c-71459fd1393a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Battle\TurnTimer">
+      <UniqueIdentifier>{ea6570d7-10c7-4735-ae5c-f4eff5f93f66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Battle\TurnTimer">
+      <UniqueIdentifier>{288ca775-13ea-4cbb-b414-bc3fd81b6d36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Battle\TurnTimer\TurnTimerList">
+      <UniqueIdentifier>{09413817-bcc2-4086-ab06-60a7307db87c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Battle\TurnTimer\TurnTimerList">
+      <UniqueIdentifier>{c2e4f075-d3bb-4926-b175-6e0173495ce2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Battle\TurnTimer\Derived Class">
+      <UniqueIdentifier>{fd833bcf-6de1-450c-b2e5-27193726e38b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Battle\TurnTimer\Base Class">
+      <UniqueIdentifier>{675b5491-27d9-4a6e-ab64-656ec2056b6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Battle\TurnTimer\Base Class">
+      <UniqueIdentifier>{6f037d71-1719-4052-9f7d-bae716333bce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Battle\TurnTimer\Derived Class">
+      <UniqueIdentifier>{ebb00211-9050-438e-a1c5-466f021b3c74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\Base Class">
+      <UniqueIdentifier>{f5958a48-6b4c-4371-89d0-f1aa38d70b04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\Base Class">
+      <UniqueIdentifier>{f3c9840d-9993-4749-bb31-9f58819183da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\List">
+      <UniqueIdentifier>{2d1410bf-b860-4cd0-ac3c-04d6d3e9a99d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\List">
+      <UniqueIdentifier>{8027d86d-0314-434a-ab05-8399f5317255}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\List\Derived Class">
+      <UniqueIdentifier>{c4cd8285-6213-4d5d-a5c2-b6a176ec92db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\List\Base Class">
+      <UniqueIdentifier>{6f3f1c54-9c2b-435d-acb6-889efd2ded3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\List\Base Class">
+      <UniqueIdentifier>{d7eda8f4-7551-40cb-8dfd-5243f8b9bc2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\List\Derived Class">
+      <UniqueIdentifier>{32207718-334f-4be8-885e-142d20e984ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -171,16 +207,10 @@
     <ClCompile Include="Cutscene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InitEnemies.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BattleAction.cpp">
-      <Filter>Source Files\Battle</Filter>
-    </ClCompile>
-    <ClCompile Include="GenerateAction.cpp">
       <Filter>Source Files\Battle</Filter>
     </ClCompile>
     <ClCompile Include="ImageStore.cpp">
@@ -208,13 +238,10 @@
       <Filter>Source Files\Character\CharacterManipulation\CharacterManipulationStore</Filter>
     </ClCompile>
     <ClCompile Include="Character.cpp">
-      <Filter>Source Files\Character\SuperClass</Filter>
+      <Filter>Source Files\Character\Base Class</Filter>
     </ClCompile>
     <ClCompile Include="CharFactory.cpp">
       <Filter>Source Files\Character\CharFactory</Filter>
-    </ClCompile>
-    <ClCompile Include="CharacterList.cpp">
-      <Filter>Source Files\Character\CharacterList</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Source Files\Map</Filter>
@@ -258,6 +285,30 @@
     <ClCompile Include="DrawRespository.cpp">
       <Filter>Source Files\DrawToScreen</Filter>
     </ClCompile>
+    <ClCompile Include="ThrowRock.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\SubClass</Filter>
+    </ClCompile>
+    <ClCompile Include="TurnTimer.cpp">
+      <Filter>Source Files\Battle\TurnTimer\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="InitEnemies.cpp">
+      <Filter>Source Files\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterTimer.cpp">
+      <Filter>Source Files\Battle\TurnTimer\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="SetTurnTimerListToCharacterList.cpp">
+      <Filter>Source Files\Battle\TurnTimer\TurnTimerList</Filter>
+    </ClCompile>
+    <ClCompile Include="IList.cpp">
+      <Filter>Source Files\List\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterList.cpp">
+      <Filter>Source Files\List\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TurnTimerList.cpp">
+      <Filter>Source Files\List\Derived Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enums.h">
@@ -281,9 +332,6 @@
     <ClInclude Include="Cutscene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InitEnemies.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -294,9 +342,6 @@
       <Filter>Header Files\Battle</Filter>
     </ClInclude>
     <ClInclude Include="CreateBattleAnimation.h">
-      <Filter>Header Files\Battle</Filter>
-    </ClInclude>
-    <ClInclude Include="GenerateAction.h">
       <Filter>Header Files\Battle</Filter>
     </ClInclude>
     <ClInclude Include="ImageStore.h">
@@ -315,7 +360,7 @@
       <Filter>Header Files\Character\CharacterManipulation\SubClasses</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
-      <Filter>Header Files\Character\SuperClass</Filter>
+      <Filter>Header Files\Character\Base Class</Filter>
     </ClInclude>
     <ClInclude Include="Stats.h">
       <Filter>Header Files\Stats\SuperClass</Filter>
@@ -325,9 +370,6 @@
     </ClInclude>
     <ClInclude Include="CharacterManipulationStore.h">
       <Filter>Header Files\Character\CharacterManipulation\CharacterManipulationStore</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterList.h">
-      <Filter>Header Files\Character\CharacterList</Filter>
     </ClInclude>
     <ClInclude Include="CharFactory.h">
       <Filter>Header Files\Character\CharFactory</Filter>
@@ -373,6 +415,33 @@
     </ClInclude>
     <ClInclude Include="DrawRepository.h">
       <Filter>Header Files\DrawToScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="ThrowRock.h">
+      <Filter>Header Files\Character\CharacterManipulation\SubClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="InitEnemies.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterTimer.h">
+      <Filter>Header Files\Battle\TurnTimer\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnTimer.h">
+      <Filter>Header Files\Battle\TurnTimer\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="SetTurnTimerListToCharacterList.h">
+      <Filter>Header Files\Battle\TurnTimer\TurnTimerList</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleFormation.h">
+      <Filter>Source Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="IList.h">
+      <Filter>Header Files\List\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterList.h">
+      <Filter>Header Files\List\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnTimerList.h">
+      <Filter>Header Files\List\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

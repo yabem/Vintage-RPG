@@ -84,9 +84,15 @@ void CharacterManipulationStore::loadManipulation(std::string name ,
 void CharacterManipulationStore::loadAllDefaultManipulations(){
 
     CharacterManipulation *charManip = new CharacterAttack;
+
     charManip->initialize(NULL , NULL , imageStore , fontStore , 
         drawRepository);
-    loadManipulation("attack" , charManip);
+    loadManipulation("Attack" , charManip);
+
+    charManip = new ThrowRock;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository);
+    loadManipulation("Rock" , charManip);
 }
 
 //Retrieves a pointer to the CharacterManipulation.
@@ -103,8 +109,9 @@ CharacterManipulation* CharacterManipulationStore::getManip
 
     if(iter == characterManipulations.end()){
 
-        //Element not found, return CharacterManipulation.
-        return NULL;    
+        //Element not found, return default.
+        iter = characterManipulations.find("attack");
+        return iter->second;   
     }
 
     else return iter->second;

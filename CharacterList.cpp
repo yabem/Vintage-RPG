@@ -3,6 +3,8 @@
 //Constructor.
 CharacterList::CharacterList(){
 
+    currPosition = 0;
+    timerList = NULL;
 }
 
 //Destructor.
@@ -29,8 +31,10 @@ Character* CharacterList::getCurrSelection(){
 //      nothing happens.
 void CharacterList::moveSelectionUp(){
 
-    if(currSelection != charList.begin())
+    if(currSelection != charList.begin()){
         currSelection--;
+        currPosition--;
+    }
         
     else{
         //Do nothing.   
@@ -46,8 +50,10 @@ void CharacterList::moveSelectionDown(){
 
     //Make sure the increment won't take 
     //currSelection out of the vector bounds.
-    if(currSelection + 1 != charList.end())
+    if(currSelection + 1 != charList.end()){
         currSelection++;
+        currPosition++;
+    }
     
     else {
         //Do nothing
@@ -56,10 +62,23 @@ void CharacterList::moveSelectionDown(){
 
 //Resets the current selection to the top of the list.
 //Pre:  None.
-//Post: Sets the currSelecton to the beginning of the list.
+//Post: Sets the currSelecton and currPosition to the beginning of the list.
 void CharacterList::resetSelection(){
 
     currSelection = charList.begin();
+    currPosition = 0;
+}
+
+//Checks if the selection is at the end of the list.
+//Pre:  None.
+//Post: Returns true if the current selection is the last Character
+//      of the list otherwise returns false.
+bool CharacterList::lastCharOfList(){
+
+    if(currSelection + 1 == charList.end())
+        return true;
+
+    else return false;
 }
 
 //Inserts a Character the list.
@@ -69,6 +88,14 @@ void CharacterList::resetSelection(){
 void CharacterList::loadChar(Character *character){
 
     charList.push_back(character);
+}
+
+//Loads a companion list.
+//Pre:  The iList is not NULL. 
+//Post: Adds the iList to timerList.
+void CharacterList::loadList(IList *iList){
+
+    this->timerList = iList;
 }
 
 //Checks if the list is empty.
@@ -109,5 +136,9 @@ void CharacterList::deleteCurrSelectedCharacter(){
     delete *currSelection;
     charList.erase(currSelection);
 
-    currSelection = charList.begin();
+    //Delete dependencies.
+    if(timerList != NULL)
+        timerList->deleteSelection(currPosition);
+
+    resetSelection();
 }

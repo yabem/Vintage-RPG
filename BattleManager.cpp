@@ -335,7 +335,9 @@ void BattleManager::consumePlayerInput(){
             if(targettingEnemies()){
 
                 characterManipulationStore->executeManipulation(
-                    gameManager->getFrontPlayer() , getCurrEnemy() , "attack");
+                    //gameManager->getFrontPlayer() , getCurrEnemy() , "attack");
+                    gameManager->getFrontPlayer() , getCurrEnemy() ,
+                    menus.back()->getCurrSelectionName());
 
                 /*
                 //Generate attack animation.
@@ -499,7 +501,6 @@ bool BattleManager::checkForBattle(){
 
         return true;
     }
-
     else return false;
 }
 

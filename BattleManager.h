@@ -10,16 +10,14 @@
 #include "GameManager.h"
 #include "CharacterList.h"
 #include "Enums.h"
-
-//x remove
-//#include "CharacterAttack.h"
 #include "CharacterManipulationStore.h"
-//class CharacterManipulationStore;
 
 class BattleManager{
 
-private:
-    
+//private:
+  
+public:
+
     enum turnTypes{NO_TARGET , PLAYER , ENEMY};
     
     //The enemies' or players' turn.
@@ -46,7 +44,7 @@ private:
     //Used to get the current player.
     GameManager *gameManager;
     
-public:
+//public:
     
     //Default constructor.
     BattleManager();

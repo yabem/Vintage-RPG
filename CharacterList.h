@@ -5,15 +5,22 @@
 
 #include <vector>
 #include "Character.h"
+#include "IList.h"
 
-class CharacterList{
+class CharacterList : public IList{
 
 private:
     //List of the enemies.
-    std::vector<Character*>  charList;   
+    std::vector<Character*> charList;   
 
     //Currently selected enemy in the list.
     std::vector<Character*>::iterator currSelection;  
+
+    //Used for deletions.
+    int currPosition;
+
+    //List of timers.
+    IList *timerList;
     
 public:
 
@@ -21,7 +28,7 @@ public:
     CharacterList();
 
     //Destructor.
-    ~CharacterList();
+    virtual ~CharacterList();
 
     //Returns a pointer to the currently selected enemy.
     Character* getCurrSelection();  
@@ -35,8 +42,14 @@ public:
     //Resets the current selection to the top of the list.
     void resetSelection();
 
+    //Checks if the selection is at the end of the list.
+    bool lastCharOfList();
+
     //Inserts a Character the list.
     void loadChar(Character *character);
+
+    //Loads a companion list.
+    void loadList(IList *timerList);
 
     //Checks if the list is empty.
     bool isEmpty();

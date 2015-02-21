@@ -6,6 +6,24 @@ DrawRepository::DrawRepository(){
 
 }
 
+//Destructor.
+DrawRepository::~DrawRepository(){
+
+    //Deallocate cutscenes remaining in queue.
+    while(!cutscenes.empty()){
+
+        delete cutscenes.front();
+        cutscenes.pop();
+    }
+
+    //Deallocate animations remaining in queue.
+    while(!animations.empty()){
+
+        delete animations.front();
+        animations.pop();
+    }
+}
+
 //Loads a cutscene to the GameManager.
 bool DrawRepository::loadCutscene(Cutscene *cutscene){
 
