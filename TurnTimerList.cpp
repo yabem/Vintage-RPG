@@ -27,26 +27,6 @@ void TurnTimerList::initializeTurnTimerToCharacter(
 
     finalTurnTimerDrawX = charX;
     finalTurnTimerDrawY = charY + charHeight;
-    
-    /*
-    int charWidth = characterTimer->character->getW();
-    int charHeight = characterTimer->character->getH();
-        
-    int turnTimerWidth = characterTimer->turnTimer->getOutterWidth();
-
-    //Calculate the offset to center the TurnTimer on the Character.
-    int widthDiff = abs(turnTimerWidth - charWidth);
-    int adjustmentWidth = widthDiff / 2;
-
-    //Y draw coordinate will always be the same.
-    finalTurnTimerDrawY = charY + charHeight;
-
-    //Set the TurnTimer to the center of the Character.
-    if(turnTimerWidth < charWidth)
-        finalTurnTimerDrawX = charX + adjustmentWidth;
-
-    else finalTurnTimerDrawX = charX - adjustmentWidth;
-    */
 
     characterTimer->turnTimer->setDrawX(finalTurnTimerDrawX);
     characterTimer->turnTimer->setDrawY(finalTurnTimerDrawY);
@@ -114,5 +94,23 @@ void TurnTimerList::deleteList(){
         delete (*timersIter)->turnTimer;
         listOfTimers.erase(timersIter);
         timersIter = listOfTimers.begin();
+    }
+}
+
+//Update turnTimers.
+//Pre:  None.
+//Post: Updates all the turnTimers. If the turnTimers are full then
+//      the turnTimers are reset.
+void TurnTimerList::updateTurnTimers(){
+
+    for(int i = 0 ; i < listOfTimers.size() ; i++){
+        listOfTimers[i]->turnTimer->updateCurrentFill();
+        listOfTimers[i]->turnTimer->draw();
+                
+        if(listOfTimers[i]->turnTimer->innerBarIsFull()){
+         
+            listOfTimers[i]->turnTimer->resetCurrentFill();
+            //listOfTimers[i]->character->executeAction();
+        }
     }
 }

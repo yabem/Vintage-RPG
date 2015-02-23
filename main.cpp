@@ -25,7 +25,7 @@
 #include "MovingText.h"
 #include "Stats.h"
 #include "CharStats.h"
-//#include "CharFactory.h"
+
 #include "InitEnemies.h"
 #include "Cutscene.h"
 #include "GameManager.h"
@@ -41,14 +41,6 @@
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
-
-//x remove afer testing
-#include "TurnTimer.h"
-#include "TurnTimerList.h"
-#include "SetTurnTimerListToCharacterList.h"
-#include "CharacterList.h"
-#include "IList.h"
-
 
 //To do:
 //Make controls a class
@@ -272,20 +264,18 @@ int main(int argc, char **argv){
     //Initialize starting position.
     Movement::setStart(*gameManager.player, theMap , STARTCOL , STARTROW);
 
-    //xRemove after testing.
-    //xTurnTimerList turnTimerList;
-    //xbattleManager.theEnemies.loadList(&turnTimerList);
-
-////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////Game Loop////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////Game Loop///////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
    while(!done){
 
       ALLEGRO_EVENT ev;
       al_wait_for_event(event_queue, &ev);
 
         //Get keyboard input.
-        if(ev.type == ALLEGRO_EVENT_KEY_DOWN || ev.type == ALLEGRO_EVENT_KEY_UP){
+        if(ev.type == ALLEGRO_EVENT_KEY_DOWN 
+            || ev.type == ALLEGRO_EVENT_KEY_UP){
+
             theKey = getKeyboardInput(&ev , keys);
             gameManager.updateKey(theKey);
         }
@@ -296,13 +286,13 @@ int main(int argc, char **argv){
             //Add to game timer.
             gameManager.increaseGameTimer();
 
-//////////////////////////////////////////Cutscene//////////////////////////////////////////////
+//////////////////////////////////////////Cutscene/////////////////////////////
             
             if(!gameManager.cutscenesEmpty()){
                 gameManager.playCutscenes();
             }
 
-//////////////////////////////////////////Battle////////////////////////////////////////////////
+//////////////////////////////////////////Battle///////////////////////////////
             else if(gameManager.isBattle()){
 
                 //Save variables for end of battle.
@@ -310,31 +300,14 @@ int main(int argc, char **argv){
 
                     gameManager.saveAreaMapVariables();
                     gameManager.initializeBattle();
-                    //x testign list
-                    //xSetTurnTimerListToCharacterList::setTurnTimerListToCharacterList(
-                       //x &battleManager.theEnemies , &turnTimerList);
                 }
 
                 //Check for end of battle.
                 else if(gameManager.isKeyActive(Q) == TRUE 
                     || !battleManager.enemiesRemaining()){    
 
-                        /*
-                    //Create victory cutscene.
-                    gameManager.generateVictoryCutScene();
-
-                    //Reset battle menus.
-                    Draw::removeAllSubMenus(battleManager.getMenuList());
-
-                    //Draw final battle frame.
-                    Draw::drawArea(*gameManager.currMap , *gameManager.player);
-
-                    //Switch to map variables.
-                    gameManager.switchVariablesToMap();
-                    */
                     //Delete turnTimer list.
                     battleManager.playersVictory();
-                    
                 }
                 
                 //The battle continues.
@@ -344,16 +317,8 @@ int main(int argc, char **argv){
                     Draw::drawBattle(theBattleMap , players ,
                         battleManager.getEnemiesList());
 
-                    //xTesting TurnTimerList
-
-                    for(int i = 0 ; i < battleManager.turnTimerList.listOfTimers.size() ; i++){
-                        battleManager.turnTimerList.listOfTimers[i]->turnTimer->updateCurrentFill();
-                        battleManager.turnTimerList.listOfTimers[i]->turnTimer->draw();
-                
-                        if(battleManager.turnTimerList.listOfTimers[i]->turnTimer->innerBarIsFull())
-                            battleManager.turnTimerList.listOfTimers[i]->turnTimer->resetCurrentFill();
-                    }
-                    //x
+                    //Testing TurnTimerList
+                    battleManager.updateTurnTimers();
 
                     //Set the menus draw location.
                     battleManager.placeMenuToLeftOfCharacter
@@ -379,10 +344,11 @@ int main(int argc, char **argv){
                 }
             }
 
-//////////////////////////////////////////Moving on Map////////////////////////////////////////////////
+//////////////////////////////////////////Moving on Map////////////////////////
             else{
                 //Check collisions.
-                Collision::characterToAreaMap(*gameManager.player , gameManager.currMap);
+                Collision::characterToAreaMap(*gameManager.player ,
+                    gameManager.currMap);
             
                 //Move the player on the map.
                 Movement::moveMap(*gameManager.player , *gameManager.currMap ,

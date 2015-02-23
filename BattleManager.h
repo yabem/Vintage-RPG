@@ -11,12 +11,12 @@
 #include "CharacterList.h"
 #include "Enums.h"
 #include "CharacterManipulationStore.h"
+#include "TurnTimerList.h"
+#include "SetTurnTimerListToCharacterList.h"
 
 class BattleManager{
 
-//private:
-  
-public:
+private:
 
     enum turnTypes{NO_TARGET , PLAYER , ENEMY};
     
@@ -32,6 +32,9 @@ public:
     //List of enemies for the battle.
     CharacterList theEnemies;
 
+    //List of TurnTimers for theEnemies.
+    TurnTimerList turnTimerList;
+
     //Factory for the enemies.
     CharFactory enemyFactory;   
     
@@ -44,7 +47,7 @@ public:
     //Used to get the current player.
     GameManager *gameManager;
     
-//public:
+public:
     
     //Default constructor.
     BattleManager();
@@ -107,9 +110,6 @@ public:
     //Consume keyboard input from player for the battle.
     void consumePlayerInput();
 
-    //Executes the current action based off of the player, target, and action.
-    void executeAction();
-
     //Returns the list of Menu pointers.
     std::vector<Menu*>& getMenuList();   
 
@@ -134,6 +134,9 @@ public:
     //Determines if there are still enemies remaining.
     bool enemiesRemaining();    
 
+    //Update turnTimers.
+    void updateTurnTimers();
+
 /////////////////////////////////////Enemy Creator/////////////////////////////
     
     //Determines if a battle will occur.
@@ -141,4 +144,9 @@ public:
 
     //Generates the enemies for the battle.
     void generateEnemies(int maxNumberOfEnemies); 
+
+/////////////////////////////////////Battle End////////////////////////////////
+
+    //End of the battle, players won.
+    void playersVictory();
 };

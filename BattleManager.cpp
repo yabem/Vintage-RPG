@@ -290,26 +290,6 @@ void BattleManager::moveEnemyCursor(){
 //      the key is consumed by the menu enemy movement operations.
 void BattleManager::consumePlayerInput(){
 
-    /*
-    switch (currentTarget){    
-
-        case ENEMY:
-            //Determines if the menu cursor should be moved.
-            moveMenuCursor(gameManager);
-            break;
-
-        case NO_TARGET:
-            //Determines if the enemy cursor selector should be moved.
-            moveEnemyCursor(gameManager);
-            break;
-
-        default:
-            //Do nothing.
-            break;
-    }
-    */
-
-                        //switch(theKey){
     switch(gameManager->getPressedKey()){
 
         case UP:
@@ -339,15 +319,6 @@ void BattleManager::consumePlayerInput(){
                     gameManager->getFrontPlayer() , getCurrEnemy() ,
                     menus.back()->getCurrSelectionName());
 
-                /*
-                //Generate attack animation.
-                CharacterAttack charAttack;
-                charAttack.initialize(gameManager->getFrontPlayer() , 
-                    getCurrEnemy() , &imageStore ,
-                    &fontStore, &drawRepository);
-                charAttack.execute();
-                */
-
                 targetPlayers();
                 Draw::removeAllSubMenus(getMenuList());
 
@@ -373,43 +344,6 @@ void BattleManager::consumePlayerInput(){
 std::vector<Menu*>& BattleManager::getMenuList(){
 
     return menus;
-}
-
-//Executes the current action based off of the player, target, and action.
-//Pre:  None.
-//Post: Creates the CharacterManipulation object based off of the player,
-//      the enemy, and the selected action, then executes it.
-void BattleManager::executeAction(){
-    /*
-    //Generate attack animation.
-    CharacterAttack charAttack;
-    charAttack.initialize(gameManager.getFrontPlayer() , 
-        getCurrEnemy() , &imageStore , &fontStore);
-    charAttack.execute();
-
-    //Load the Animations to the animations queue.
-    while(!charAttack.animationsIsEmpty()){
-                                        
-        animations.push(charAttack.getFrontAnimation());
-        charAttack.removeFrontAnimation();
-    }
-
-    targetPlayers();
-    Draw::removeAllSubMenus(getMenuList());
-
-    //Reset target to NONE.
-    setTargetToNoTarget();
-    */
-
-    /*
-    characterManipulationStore->executeManipulation
-        (gameManager->getFrontPlayer() , getCurrEnemy() ,
-        menus.back()->getCurrSelectionName());
-    *///Z
-    //gameManager->get); replace with the character's current selection.
-    //located in menu. Need to put an accessor into game
-    
-    //x
 }
 
 //Moves the currently selected enemy down.
@@ -480,6 +414,15 @@ bool BattleManager::enemiesRemaining(){
     return !theEnemies.isEmpty();
 }
 
+//Update turnTimers.
+//Pre:  None.
+//Post: Updates all the turnTimers. If the turnTimers are full then
+//      the turnTimers are reset.
+void BattleManager::updateTurnTimers(){
+
+    turnTimerList.updateTurnTimers();
+}
+
 /////////////////////////////////////Enemy Creator/////////////////////////////
 
 //Determines if a battle will occur.
@@ -530,4 +473,31 @@ void BattleManager::generateEnemies(int maxNumberOfEnemies){
 
     //Reset iterator to the beginning.
     theEnemies.resetSelection();
+
+    //Adds the turnTimers to the enemies.
+    theEnemies.loadList(&turnTimerList);
+    SetTurnTimerListToCharacterList::setTurnTimerListToCharacterList(
+        &theEnemies , &turnTimerList);
+}
+
+/////////////////////////////////////Battle End////////////////////////////////
+
+//End of the battle, players won.
+//Pre:  None.
+//Post: Cleans up after the battle and ensures all memory is reclaimed.
+void BattleManager::playersVictory(){
+
+    //Create victory cutscene.
+    gameManager->generateVictoryCutScene();
+
+    //Reset battle menus.
+    Draw::removeAllSubMenus(getMenuList());
+
+    //Draw final battle frame.
+    Draw::drawArea(*gameManager->currMap , *gameManager->player);
+
+    //Switch to map variables.
+    gameManager->switchVariablesToMap();
+
+    turnTimerList.deleteList();
 }

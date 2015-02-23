@@ -12,3 +12,7 @@ bool IList::deleteSelection(int position){
 
     return false;
 }
+
+void IList::deleteList(){
+
+}

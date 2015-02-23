@@ -11,4 +11,5 @@ public:
     IList();
     virtual ~IList();
     virtual bool deleteSelection(int position);
+    virtual void deleteList();
 };

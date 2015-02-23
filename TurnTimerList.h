@@ -8,8 +8,7 @@
 
 class TurnTimerList : public IList{    //Change name to CharacterTimerList
 
-public:
-//private:
+private:
 
     struct CharacterTimer{
 
@@ -23,7 +22,7 @@ public:
     //Sets the variables of the turnTimer.
     void initializeTurnTimerToCharacter(CharacterTimer *characterTimer);
     
-//public:
+public:
 
     //Constructor.
     TurnTimerList();
@@ -41,16 +40,8 @@ public:
     virtual bool deleteSelection(int selection);
 
     //Delete all the CharacterTimers.
-    void deleteList();
+    virtual void deleteList();
 
-
-
-    //Checks if the list is empty.
-    //bool isEmpty();
-
-    //Returns the list.
-    //std::vector<TurnTimer*> getList();
-
-    //Deletes the currently selected TurnTimer.
-    //void deleteCurrSelectedTurnTimer();
+    //Update turnTimers and resets if full.
+    void updateTurnTimers();
 };
