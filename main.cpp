@@ -273,8 +273,8 @@ int main(int argc, char **argv){
     Movement::setStart(*gameManager.player, theMap , STARTCOL , STARTROW);
 
     //xRemove after testing.
-    TurnTimerList turnTimerList;
-    battleManager.theEnemies.loadList(&turnTimerList);
+    //xTurnTimerList turnTimerList;
+    //xbattleManager.theEnemies.loadList(&turnTimerList);
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////Game Loop////////////////////////////////////////////
@@ -311,13 +311,15 @@ int main(int argc, char **argv){
                     gameManager.saveAreaMapVariables();
                     gameManager.initializeBattle();
                     //x testign list
-                    SetTurnTimerListToCharacterList::setTurnTimerListToCharacterList(&battleManager.theEnemies , &turnTimerList);
+                    //xSetTurnTimerListToCharacterList::setTurnTimerListToCharacterList(
+                       //x &battleManager.theEnemies , &turnTimerList);
                 }
 
                 //Check for end of battle.
                 else if(gameManager.isKeyActive(Q) == TRUE 
                     || !battleManager.enemiesRemaining()){    
 
+                        /*
                     //Create victory cutscene.
                     gameManager.generateVictoryCutScene();
 
@@ -329,10 +331,10 @@ int main(int argc, char **argv){
 
                     //Switch to map variables.
                     gameManager.switchVariablesToMap();
-
-                    //xtesting list
-                    turnTimerList.deleteList();
-
+                    */
+                    //Delete turnTimer list.
+                    battleManager.playersVictory();
+                    
                 }
                 
                 //The battle continues.
@@ -344,15 +346,14 @@ int main(int argc, char **argv){
 
                     //xTesting TurnTimerList
 
-                    for(int i = 0 ; i < turnTimerList.listOfTimers.size() ; i++){
-                        turnTimerList.listOfTimers[i]->turnTimer->updateCurrentFill();
-                        turnTimerList.listOfTimers[i]->turnTimer->draw();
+                    for(int i = 0 ; i < battleManager.turnTimerList.listOfTimers.size() ; i++){
+                        battleManager.turnTimerList.listOfTimers[i]->turnTimer->updateCurrentFill();
+                        battleManager.turnTimerList.listOfTimers[i]->turnTimer->draw();
                 
-                        if(turnTimerList.listOfTimers[i]->turnTimer->innerBarIsFull())
-                            turnTimerList.listOfTimers[i]->turnTimer->resetCurrentFill();
+                        if(battleManager.turnTimerList.listOfTimers[i]->turnTimer->innerBarIsFull())
+                            battleManager.turnTimerList.listOfTimers[i]->turnTimer->resetCurrentFill();
                     }
                     //x
-
 
                     //Set the menus draw location.
                     battleManager.placeMenuToLeftOfCharacter

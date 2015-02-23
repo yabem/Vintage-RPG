@@ -431,9 +431,6 @@
     <ClInclude Include="SetTurnTimerListToCharacterList.h">
       <Filter>Header Files\Battle\TurnTimer\TurnTimerList</Filter>
     </ClInclude>
-    <ClInclude Include="BattleFormation.h">
-      <Filter>Source Files\Battle</Filter>
-    </ClInclude>
     <ClInclude Include="IList.h">
       <Filter>Header Files\List\Base Class</Filter>
     </ClInclude>
@@ -442,6 +439,9 @@
     </ClInclude>
     <ClInclude Include="TurnTimerList.h">
       <Filter>Header Files\List\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleFormation.h">
+      <Filter>Header Files\Battle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
