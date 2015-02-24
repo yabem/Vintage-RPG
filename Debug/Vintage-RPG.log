@@ -1,17 +1,10 @@
-﻿Build started 2/23/2015 12:52:40 PM.
+﻿Build started 2/23/2015 8:34:18 PM.
      1>Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Creating "Debug\RPG.unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Touching "Debug\RPG.unsuccessfulbuild".
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt BattleManager.cpp SetTurnTimerListToCharacterList.cpp TurnTimerList.cpp main.cpp
-         main.cpp
-         TurnTimerList.cpp
-     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\turntimerlist.cpp(62): warning C4018: '>' : signed/unsigned mismatch
-     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\turntimerlist.cpp(106): warning C4018: '<' : signed/unsigned mismatch
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         SetTurnTimerListToCharacterList.cpp
-         BattleManager.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt I_List.cpp
+         I_List.cpp
        Link:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe" /NOLOGO /LIBPATH:c:\allegro\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro-5.0.10-monolith-md-debug.lib" /MANIFEST /ManifestFile:"Debug\RPG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.lib" /MACHINE:X86 Debug\Animation.obj
          Debug\AreaMap.obj
@@ -21,7 +14,8 @@
          Debug\Character.obj
          Debug\CharacterAttack.obj
          Debug\CharacterTimer.obj
-         Debug\IList.obj
+         Debug\I_Creature.obj
+         Debug\I_List.obj
          Debug\SetTurnTimerListToCharacterList.obj
          Debug\TurnTimer.obj
          Debug\CharacterList.obj
@@ -53,7 +47,6 @@
          Debug\ThrowRock.obj
          Debug\TransferAnimations.obj
          Debug\TurnTimerList.obj
-         LINK : C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe not found or not built by the last incremental link; performing full link
          Vintage-RPG.vcxproj -> C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe
        Manifest:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe;#1" /manifest Debug\RPG.exe.intermediate.manifest
@@ -64,4 +57,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.22
+Time Elapsed 00:00:00.77

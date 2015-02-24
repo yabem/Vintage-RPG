@@ -5,9 +5,9 @@
 
 #include <vector>
 #include "Character.h"
-#include "IList.h"
+#include "I_List.h"
 
-class CharacterList : public IList{
+class CharacterList : virtual public I_List{
 
 private:
     //List of the enemies.
@@ -20,7 +20,7 @@ private:
     int currPosition;
 
     //List of timers.
-    IList *timerList;
+    I_List *timerList;
     
 public:
 
@@ -49,7 +49,7 @@ public:
     void loadChar(Character *character);
 
     //Loads a companion list.
-    void loadList(IList *timerList);
+    void loadList(I_List *timerList);
 
     //Checks if the list is empty.
     bool isEmpty();
@@ -62,4 +62,10 @@ public:
 
     //Deletes the currently selected Character.
     void deleteCurrSelectedCharacter();
+
+    //Delete the Character in the current position.
+    virtual bool deleteSelection(int position);    
+
+    //Removes all the elements from the list.
+    virtual void deleteList();
 };

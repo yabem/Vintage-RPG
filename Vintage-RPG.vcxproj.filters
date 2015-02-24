@@ -145,52 +145,52 @@
     <Filter Include="Source Files\List\Derived Class">
       <UniqueIdentifier>{32207718-334f-4be8-885e-142d20e984ab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Creature">
+    <Filter Include="Source Files\Character">
       <UniqueIdentifier>{d1b70676-8bea-481b-acb0-0be6e2ce11e6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Creature\CharacterManipulation">
+    <Filter Include="Source Files\Character\CharacterManipulation">
       <UniqueIdentifier>{0a81c056-7c66-456a-9a14-dd49b0b0d1d3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Creature\CharacterManipulation\SuperClass">
+    <Filter Include="Source Files\Character\CharacterManipulation\SuperClass">
       <UniqueIdentifier>{1339e876-e409-4fd3-9a56-a297b2c8e926}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Creature\CharacterManipulation\SubClass">
+    <Filter Include="Source Files\Character\CharacterManipulation\SubClass">
       <UniqueIdentifier>{5664d930-7481-4a29-bce5-e2b37a69a746}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Creature\CharacterManipulation\CharacterManipulationStore">
+    <Filter Include="Source Files\Character\CharacterManipulation\CharacterManipulationStore">
       <UniqueIdentifier>{aec276c7-269c-4420-b316-b0592b217c69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Creature\CharFactory">
+    <Filter Include="Source Files\Character\CharFactory">
       <UniqueIdentifier>{e31e149c-da7e-4e7a-aac4-a2ec10aa2e4a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Creature\Base Class">
+    <Filter Include="Source Files\Character\Base Class">
       <UniqueIdentifier>{f3c9840d-9993-4749-bb31-9f58819183da}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Creature\Derived Class">
+    <Filter Include="Source Files\Character\Derived Class">
       <UniqueIdentifier>{c34e0074-091c-418f-9fac-c188973bebc0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Creature">
+    <Filter Include="Header Files\Character">
       <UniqueIdentifier>{7cdbf2c6-7b48-4388-a40a-5b2ac162a0dc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Creature\CharacterManipulation">
+    <Filter Include="Header Files\Character\CharacterManipulation">
       <UniqueIdentifier>{8fd05183-b3db-460e-b36b-faccac577733}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Creature\CharacterManipulation\SuperClass">
+    <Filter Include="Header Files\Character\CharacterManipulation\SuperClass">
       <UniqueIdentifier>{64a7a777-9edf-4c40-8345-fddb0f177e6e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Creature\CharacterManipulation\SubClasses">
+    <Filter Include="Header Files\Character\CharacterManipulation\SubClasses">
       <UniqueIdentifier>{fb4c9da0-1099-4e83-bd35-319c3ed320be}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Creature\CharacterManipulation\CharacterManipulationStore">
+    <Filter Include="Header Files\Character\CharacterManipulation\CharacterManipulationStore">
       <UniqueIdentifier>{adb315a1-61d5-4640-bada-3cb659135641}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Creature\CharFactory">
+    <Filter Include="Header Files\Character\CharFactory">
       <UniqueIdentifier>{0ac95e19-bc79-4bca-8151-b9fc0c5f2512}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Creature\Base Class">
+    <Filter Include="Header Files\Character\Base Class">
       <UniqueIdentifier>{f5958a48-6b4c-4371-89d0-f1aa38d70b04}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Creature\Derived Class">
+    <Filter Include="Header Files\Character\Derived Class">
       <UniqueIdentifier>{b9f557d4-bd45-4259-bf89-f02e05e985eb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -229,10 +229,10 @@
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="CharacterManipulation.cpp">
-      <Filter>Source Files\Creature\CharacterManipulation\SuperClass</Filter>
+      <Filter>Source Files\Character\CharacterManipulation\SuperClass</Filter>
     </ClCompile>
     <ClCompile Include="CharacterAttack.cpp">
-      <Filter>Source Files\Creature\CharacterManipulation\SubClass</Filter>
+      <Filter>Source Files\Character\CharacterManipulation\SubClass</Filter>
     </ClCompile>
     <ClCompile Include="Stats.cpp">
       <Filter>Source Files\Stats\SuperClass</Filter>
@@ -241,10 +241,10 @@
       <Filter>Source Files\Stats\SubClass</Filter>
     </ClCompile>
     <ClCompile Include="CharacterManipulationStore.cpp">
-      <Filter>Source Files\Creature\CharacterManipulation\CharacterManipulationStore</Filter>
+      <Filter>Source Files\Character\CharacterManipulation\CharacterManipulationStore</Filter>
     </ClCompile>
     <ClCompile Include="CharFactory.cpp">
-      <Filter>Source Files\Creature\CharFactory</Filter>
+      <Filter>Source Files\Character\CharFactory</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Source Files\Map</Filter>
@@ -289,7 +289,7 @@
       <Filter>Source Files\DrawToScreen</Filter>
     </ClCompile>
     <ClCompile Include="ThrowRock.cpp">
-      <Filter>Source Files\Creature\CharacterManipulation\SubClass</Filter>
+      <Filter>Source Files\Character\CharacterManipulation\SubClass</Filter>
     </ClCompile>
     <ClCompile Include="TurnTimer.cpp">
       <Filter>Source Files\Battle\TurnTimer\Base Class</Filter>
@@ -303,9 +303,6 @@
     <ClCompile Include="SetTurnTimerListToCharacterList.cpp">
       <Filter>Source Files\Battle\TurnTimer\TurnTimerList</Filter>
     </ClCompile>
-    <ClCompile Include="IList.cpp">
-      <Filter>Source Files\List\Base Class</Filter>
-    </ClCompile>
     <ClCompile Include="CharacterList.cpp">
       <Filter>Source Files\List\Derived Class</Filter>
     </ClCompile>
@@ -313,10 +310,13 @@
       <Filter>Source Files\List\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="Character.cpp">
-      <Filter>Source Files\Creature\Derived Class</Filter>
+      <Filter>Source Files\Character\Base Class</Filter>
     </ClCompile>
-    <ClCompile Include="ICreature.cpp">
-      <Filter>Source Files\Creature\Base Class</Filter>
+    <ClCompile Include="I_Creature.cpp">
+      <Filter>Source Files\Character\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="I_List.cpp">
+      <Filter>Source Files\List\Base Class</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -363,10 +363,10 @@
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="CharacterManipulation.h">
-      <Filter>Header Files\Creature\CharacterManipulation\SuperClass</Filter>
+      <Filter>Header Files\Character\CharacterManipulation\SuperClass</Filter>
     </ClInclude>
     <ClInclude Include="CharacterAttack.h">
-      <Filter>Header Files\Creature\CharacterManipulation\SubClasses</Filter>
+      <Filter>Header Files\Character\CharacterManipulation\SubClasses</Filter>
     </ClInclude>
     <ClInclude Include="Stats.h">
       <Filter>Header Files\Stats\SuperClass</Filter>
@@ -375,10 +375,10 @@
       <Filter>Header Files\Stats\SubClass</Filter>
     </ClInclude>
     <ClInclude Include="CharacterManipulationStore.h">
-      <Filter>Header Files\Creature\CharacterManipulation\CharacterManipulationStore</Filter>
+      <Filter>Header Files\Character\CharacterManipulation\CharacterManipulationStore</Filter>
     </ClInclude>
     <ClInclude Include="CharFactory.h">
-      <Filter>Header Files\Creature\CharFactory</Filter>
+      <Filter>Header Files\Character\CharFactory</Filter>
     </ClInclude>
     <ClInclude Include="AreaMap.h">
       <Filter>Header Files\Map</Filter>
@@ -423,7 +423,7 @@
       <Filter>Header Files\DrawToScreen</Filter>
     </ClInclude>
     <ClInclude Include="ThrowRock.h">
-      <Filter>Header Files\Creature\CharacterManipulation\SubClasses</Filter>
+      <Filter>Header Files\Character\CharacterManipulation\SubClasses</Filter>
     </ClInclude>
     <ClInclude Include="InitEnemies.h">
       <Filter>Header Files\Battle</Filter>
@@ -437,9 +437,6 @@
     <ClInclude Include="SetTurnTimerListToCharacterList.h">
       <Filter>Header Files\Battle\TurnTimer\TurnTimerList</Filter>
     </ClInclude>
-    <ClInclude Include="IList.h">
-      <Filter>Header Files\List\Base Class</Filter>
-    </ClInclude>
     <ClInclude Include="CharacterList.h">
       <Filter>Header Files\List\Derived Class</Filter>
     </ClInclude>
@@ -447,10 +444,13 @@
       <Filter>Header Files\List\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
-      <Filter>Header Files\Creature\Derived Class</Filter>
+      <Filter>Header Files\Character\Base Class</Filter>
     </ClInclude>
-    <ClInclude Include="ICreature.h">
-      <Filter>Header Files\Creature\Base Class</Filter>
+    <ClInclude Include="I_Creature.h">
+      <Filter>Header Files\Character\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="I_List.h">
+      <Filter>Header Files\List\Base Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

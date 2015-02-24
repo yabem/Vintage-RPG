@@ -91,11 +91,11 @@ void CharacterList::loadChar(Character *character){
 }
 
 //Loads a companion list.
-//Pre:  The iList is not NULL. 
-//Post: Adds the iList to timerList.
-void CharacterList::loadList(IList *iList){
+//Pre:  The I_List is not NULL. 
+//Post: Adds the I_List to timerList.
+void CharacterList::loadList(I_List *i_List){
 
-    this->timerList = iList;
+    this->timerList = i_List;
 }
 
 //Checks if the list is empty.
@@ -141,4 +141,38 @@ void CharacterList::deleteCurrSelectedCharacter(){
         timerList->deleteSelection(currPosition);
 
     resetSelection();
+}
+
+//Delete the Character in the current position.
+//Pre:  None.
+//Post: Iterates through the vector to get to the position
+//      and then deletes it.
+bool CharacterList::deleteSelection(int position){
+
+    if(position > charList.size())
+        return false;
+
+    else{
+        vector<Character*>::iterator charIter = charList.begin();
+
+        //Sets the iterator to the correct delete position.
+        int i = 0;
+        while(i < position && charIter != charList.end()){
+
+            i++;
+            charIter++;
+        }
+
+        charList.erase(charIter);
+
+        return true;
+    }
+}
+
+//Removes all of the Characters from the list.
+//Pre:  None.
+//Post: Uses clear to remove all the elements from the list.
+void CharacterList::deleteList(){
+
+    charList.clear();
 }

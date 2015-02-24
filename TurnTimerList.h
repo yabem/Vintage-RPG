@@ -4,9 +4,9 @@
 #include "TurnTimer.h"
 #include <vector>
 #include "Character.h"
-#include "IList.h"
+#include "I_List.h"
 
-class TurnTimerList : public IList{    //Change name to CharacterTimerList
+class TurnTimerList : virtual public I_List{    //Change name to CharacterTimerList
 
 private:
 
