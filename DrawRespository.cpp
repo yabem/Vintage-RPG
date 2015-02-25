@@ -4,6 +4,7 @@
 //Constructor.
 DrawRepository::DrawRepository(){
 
+    //battleManager = NULL;
 }
 
 //Destructor.
@@ -88,6 +89,9 @@ bool DrawRepository::loadAnimation(Animation *animation){
 //Post: Plays each Animation and pops it off the queue once it's done.
 void DrawRepository::playAllAnimations(){
 
+    //Pause the battle until the animations are done.
+    //battleManager->pauseBattle();
+
     //Play all animations.
     if(!animations.empty()){
 
@@ -99,4 +103,8 @@ void DrawRepository::playAllAnimations(){
             animations.pop();
         }
     }
+
+    //Resume combat after the animations are done.
+    //if(animations.empty())
+      //  battleManager->unPauseBattle();
 }

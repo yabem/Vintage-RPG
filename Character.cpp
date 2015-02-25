@@ -18,6 +18,7 @@ Character::Character(){
     this->w = 0;
     this->h = 0;
     this->moveRate = 0;
+
    
     //Initialize collisions to false.
     for(int i = 0 ; i < DIRECTIONS ; i++)
@@ -67,6 +68,13 @@ Character::Character(ALLEGRO_BITMAP *bmap , int w , int h ,
     
     //Set upper right.
     this->upperRightX = x + w; this->upperRightY = y; 
+}
+
+
+//Destructor.
+Character::~Character(){
+
+    //Default is fine.
 }
 
 //Return x value. 
@@ -245,7 +253,6 @@ bool Character::setFacing(int dir){
     }
 }
 
-
 //Set collision index to true.
 bool Character::setColl(int index){
 
@@ -399,4 +406,12 @@ void Character::makeDead(){
 void Character::makeAlive(){
 
     stats->makeAlive();
+}
+
+//Executes a random attack.
+//Pre:  None.
+//Post: Pulls a random attack and executes it.
+void Character::executeRandomAttack(){
+
+
 }

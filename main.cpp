@@ -50,7 +50,8 @@
 //Make tangible collision better so you can't go through objects.
 
 //Tiles taken from http://opengameart.org/content/tiled-terrains
-
+//Images taken from http://rpg.hamsterrepublic.com/ohrrpgce/Free_Sprites
+//Fireblast taken from http://opengameart.org/content/fire-blast
 #define ttfaddon
 
 int checkInit();
@@ -333,11 +334,16 @@ int main(int argc, char **argv){
 
                     //Play animations.
                     if(!drawRepository.animationsEmpty()){
+
+                        battleManager.pauseBattle();
                         drawRepository.playAllAnimations();
                         
                         //Delete enemy after animation if it is dead.
                         if(drawRepository.animationsEmpty())
                             battleManager.deleteDeadCurrEnemy();
+
+                        if(drawRepository.animationsEmpty())
+                            battleManager.unPauseBattle();
                     }
 
                     else battleManager.consumePlayerInput();

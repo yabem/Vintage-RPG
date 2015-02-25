@@ -11,10 +11,10 @@
 #include <allegro5/allegro_image.h>
 #include "Enums.h"
 #include "Tangible.h"
-
 #include "Stats.h"
+#include "I_Creature.h"
 
-class Character{
+class Character: public I_Creature{
 
 private:
 
@@ -47,7 +47,8 @@ public:
     Character(ALLEGRO_BITMAP *bmap , int w , int h , 
         int framesPerSequence , int numSequence , int moveRate); 
    
-    //~Character();
+    //Destructor.
+    ~Character();
 
     int getX() const;                           //Return x value.   
     int getY() const;                           //Return y value.
@@ -73,10 +74,10 @@ public:
     void makeAlive();                           //Makes the Character alive.
 
     void setBmap(ALLEGRO_BITMAP *bmap);         //Set bitmap to input.
-    void setX(int x);                           //Set x to input.
-    void setY(int y);                           //Set y to input.
+    virtual void setX(int x);                   //Set x to input.
+    virtual void setY(int y);                   //Set y to input.
     void setW(int w);                           //Set w to input.
-    void setH(int h);                           //Set h to input.
+    virtual void setH(int h);                   //Set h to input.
     void addToAllCornerX(int add);              //Add value to all x coordinates.
     void addToAllCornerY(int add);              //Add value to all y coordinates
     bool setFacing(int dir);                    //Set facing direction.
@@ -86,7 +87,8 @@ public:
     void resetColl();                           //Reset all collisions to false.
     void refreshCorners();                      //Recalculate corners based off of x and y values.
 
-    int draw() const;                                 //Draw to buffer.
+    int draw() const;                           //Draw to buffer.
     void animate();                             //Increase frame count.
     int move(bool *keys , int keyPressed);      //Move character based off of keys.
+    virtual void executeRandomAttack();                 //Executes a random attack.
 };

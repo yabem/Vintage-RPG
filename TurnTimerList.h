@@ -1,10 +1,11 @@
-//Holds a list of TurnTimers that links the timer to a TurnTimer.
+//Holds a list of TurnTimers that links the TurnTimer to an I_Creature.
 
 #pragma once
 #include "TurnTimer.h"
 #include <vector>
 #include "Character.h"
 #include "I_List.h"
+#include "I_Creature.h"
 
 class TurnTimerList : virtual public I_List{    //Change name to CharacterTimerList
 
@@ -13,7 +14,7 @@ private:
     struct CharacterTimer{
 
         TurnTimer *turnTimer;
-        Character *character;
+        I_Creature *i_Creature;
     };
 
     //List of the enemies.
@@ -34,7 +35,7 @@ public:
     TurnTimer* getCurrSelection();  
 
     //Inserts a TurnTimer connected to a Character.
-    void addConnection(Character *character);
+    void addConnection(I_Creature *i_Creature);
 
     //Deletes the specified TurnTimer.
     virtual bool deleteSelection(int selection);
@@ -44,4 +45,7 @@ public:
 
     //Update turnTimers and resets if full.
     void updateTurnTimers();
+
+    //Draw all timers.
+    void drawTurnTimers();
 };

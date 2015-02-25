@@ -93,6 +93,21 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
         drawRepository);
     loadManipulation("Rock" , charManip);
+
+    charManip = new Fire1;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository);
+    loadManipulation("Fire1" , charManip);
+
+    charManip = new Fire2;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository);
+    loadManipulation("Fire2" , charManip);
+
+    charManip = new Fire3;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository);
+    loadManipulation("Fire3" , charManip);
 }
 
 //Retrieves a pointer to the CharacterManipulation.
@@ -110,7 +125,7 @@ CharacterManipulation* CharacterManipulationStore::getManip
     if(iter == characterManipulations.end()){
 
         //Element not found, return default.
-        iter = characterManipulations.find("attack");
+        iter = characterManipulations.find("Attack");
         return iter->second;   
     }
 
@@ -128,3 +143,21 @@ void CharacterManipulationStore::executeManipulation(Character *initiator ,
     charManip->execute();
 }
 
+//Executes a random manipulation.
+//Pre:  None.
+//Post: Executes the random manipulation based off of the receiver.
+void CharacterManipulationStore::executeRandomManipulation(Character *initiator ,
+    Character *receiver){
+
+    int randomNum = rand() % characterManipulations.size();
+
+    std::map<std::string , CharacterManipulation*>::iterator iter
+        = characterManipulations.begin();
+
+    for(int i = 0 ; i < randomNum ; i++)
+        iter++;
+
+    CharacterManipulation *charManip = getManip(iter->first);
+    charManip->loadCharacters(initiator , receiver);
+    charManip->execute();
+}

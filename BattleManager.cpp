@@ -5,6 +5,8 @@ BattleManager::BattleManager(){
 
     currentTarget = NO_TARGET;
     battleCursor = NULL;
+    gameManager = NULL;
+    isBattlePaused = false;
 }
 
 //Destructor.
@@ -315,7 +317,6 @@ void BattleManager::consumePlayerInput(){
             if(targettingEnemies()){
 
                 characterManipulationStore->executeManipulation(
-                    //gameManager->getFrontPlayer() , getCurrEnemy() , "attack");
                     gameManager->getFrontPlayer() , getCurrEnemy() ,
                     menus.back()->getCurrSelectionName());
 
@@ -416,11 +417,14 @@ bool BattleManager::enemiesRemaining(){
 
 //Update turnTimers.
 //Pre:  None.
-//Post: Updates all the turnTimers. If the turnTimers are full then
-//      the turnTimers are reset.
+//Post: Updates all the turnTimers if the battle is not paused. 
+//      If the turnTimers are full then the turnTimers are reset.
 void BattleManager::updateTurnTimers(){
 
-    turnTimerList.updateTurnTimers();
+    if(!isBattlePaused)
+        turnTimerList.updateTurnTimers();
+
+    turnTimerList.drawTurnTimers();
 }
 
 /////////////////////////////////////Enemy Creator/////////////////////////////
@@ -500,4 +504,16 @@ void BattleManager::playersVictory(){
     gameManager->switchVariablesToMap();
 
     turnTimerList.deleteList();
+}
+
+//Pause battle so timers don't increase.
+void BattleManager::pauseBattle(){
+
+    isBattlePaused = true;
+}
+
+//Unpause battle so timers start increasing.
+void BattleManager::unPauseBattle(){
+
+    isBattlePaused = false;
 }

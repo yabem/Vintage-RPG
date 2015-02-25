@@ -76,6 +76,9 @@
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CharacterAttack.cpp" />
     <ClCompile Include="CharacterTimer.cpp" />
+    <ClCompile Include="Fire1.cpp" />
+    <ClCompile Include="Fire2.cpp" />
+    <ClCompile Include="Fire3.cpp" />
     <ClCompile Include="I_Creature.cpp" />
     <ClCompile Include="I_List.cpp" />
     <ClCompile Include="SetTurnTimerListToCharacterList.cpp" />
@@ -115,13 +118,15 @@
     <ClInclude Include="AreaMap.h" />
     <ClInclude Include="AreaMapLayouts.h" />
     <ClInclude Include="BattleAction.h" />
-    <ClInclude Include="BattleCreator.h" />
     <ClInclude Include="BattleManager.h" />
     <ClInclude Include="BattleMap.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="CharacterAttack.h" />
     <ClInclude Include="CharacterManipulationStore.h" />
     <ClInclude Include="CharacterTimer.h" />
+    <ClInclude Include="Fire1.h" />
+    <ClInclude Include="Fire2.h" />
+    <ClInclude Include="Fire3.h" />
     <ClInclude Include="I_Creature.h" />
     <ClInclude Include="I_List.h" />
     <ClInclude Include="SetTurnTimerListToCharacterList.h" />

@@ -11,6 +11,9 @@
 #include "CharacterAttack.h"
 #include "GameManager.h"
 #include "ThrowRock.h"
+#include "Fire1.h"
+#include "Fire2.h"
+#include "Fire3.h"
 class Character;
 class ImageStore;
 class DrawRepository;
@@ -52,4 +55,7 @@ public:
 
     //Retrieves a pointer to the CharacterManipulation.
     CharacterManipulation* getManip(std::string charManip);  
+
+    //Executes a random manipulation.
+    void executeRandomManipulation(Character *initiator , Character *receiver);
 };

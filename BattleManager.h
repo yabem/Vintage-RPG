@@ -46,6 +46,9 @@ private:
 
     //Used to get the current player.
     GameManager *gameManager;
+
+    //Determines if the battle is paused.
+    bool isBattlePaused;
     
 public:
     
@@ -145,8 +148,14 @@ public:
     //Generates the enemies for the battle.
     void generateEnemies(int maxNumberOfEnemies); 
 
-/////////////////////////////////////Battle End////////////////////////////////
+//////////////////////////////////Battle Timing////////////////////////////////
 
     //End of the battle, players won.
     void playersVictory();
+
+    //Pause battle so timers don't increase.
+    void pauseBattle();
+
+    //Unpause battle so timers start increasing.
+    void unPauseBattle();
 };

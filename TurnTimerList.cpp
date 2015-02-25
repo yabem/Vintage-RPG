@@ -21,9 +21,9 @@ void TurnTimerList::initializeTurnTimerToCharacter(
     int finalTurnTimerDrawX = 0;
     int finalTurnTimerDrawY = 0;
 
-    int charX = characterTimer->character->getX();
-    int charY = characterTimer->character->getY();
-    int charHeight = characterTimer->character->getH();
+    int charX = characterTimer->i_Creature->getX();
+    int charY = characterTimer->i_Creature->getY();
+    int charHeight = characterTimer->i_Creature->getH();
 
     finalTurnTimerDrawX = charX;
     finalTurnTimerDrawY = charY + charHeight;
@@ -36,13 +36,13 @@ void TurnTimerList::initializeTurnTimerToCharacter(
 //Pre:  None.
 //Post: Creates a CharacterTimer with a TurnTimer and the input Character.
 //      The CharacterTimer is pushed to the end of the vector.
-void TurnTimerList::addConnection(Character *character){
+void TurnTimerList::addConnection(I_Creature *i_Creature){
 
     //Create and load the CharacterTimer.
     CharacterTimer *characterTimer = new CharacterTimer;
     TurnTimer *turnTimer = new TurnTimer;
     
-    characterTimer->character = character;
+    characterTimer->i_Creature = i_Creature;
     characterTimer->turnTimer = turnTimer;
 
     initializeTurnTimerToCharacter(characterTimer); 
@@ -105,12 +105,24 @@ void TurnTimerList::updateTurnTimers(){
 
     for(int i = 0 ; i < listOfTimers.size() ; i++){
         listOfTimers[i]->turnTimer->updateCurrentFill();
-        listOfTimers[i]->turnTimer->draw();
+        //listOfTimers[i]->turnTimer->draw();
                 
         if(listOfTimers[i]->turnTimer->innerBarIsFull()){
          
             listOfTimers[i]->turnTimer->resetCurrentFill();
             //listOfTimers[i]->character->executeAction();
         }
+    }
+}
+
+
+//Draw all timers.
+//Pre:  None.
+//Post: Draws all the turn timers to the screen.
+void TurnTimerList::drawTurnTimers(){
+
+    for(int i = 0 ; i < listOfTimers.size() ; i++){
+
+        listOfTimers[i]->turnTimer->draw();
     }
 }
