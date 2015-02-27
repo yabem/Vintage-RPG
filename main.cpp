@@ -58,7 +58,7 @@ int checkInit();
 void displayVariables(ALLEGRO_FONT *theFont , int theKey , Character *thePlayer , Layer &layer);
 
 int main(int argc, char **argv){
-
+    {
     //Memory leak checks.
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     _CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_DEBUG | _CRTDBG_MODE_WNDW);
@@ -66,7 +66,7 @@ int main(int argc, char **argv){
    ALLEGRO_DISPLAY *display = NULL;
    ALLEGRO_EVENT_QUEUE *event_queue = NULL;
    ALLEGRO_TIMER *timer = NULL;
-
+    
    //List of all the keys.
    bool keys[6] = {false , false , false , false , false , false};
    bool done = false;
@@ -89,6 +89,7 @@ int main(int argc, char **argv){
 
 #ifdef ttfaddon
    al_init_ttf_addon();
+
 #endif 
    
    al_init_image_addon();
@@ -103,6 +104,15 @@ int main(int argc, char **argv){
 
    //Characters
    Character thePlayer(imageStore.getBitMap("player") , 32 , 32 , 30 , 2 , rate);
+   Character thePlayer2(imageStore.getBitMap("warrior") , 32 , 32 , 30 , 2 , rate);
+   Character thePlayer3(imageStore.getBitMap("thief") , 32 , 32 , 30 , 2 , rate);
+   Character thePlayer4(imageStore.getBitMap("mage") , 32 , 32 , 30 , 2 , rate);
+   
+   CharacterList thePlayers;
+   thePlayers.loadChar(&thePlayer);
+   thePlayers.loadChar(&thePlayer2);
+   thePlayers.loadChar(&thePlayer3);
+   thePlayers.loadChar(&thePlayer4);
 
    //Character stats
    CharStats playerStats(1 ,25 , 10 , 100 , 10 , 1 , 100 , 10);
@@ -208,6 +218,7 @@ int main(int argc, char **argv){
    gameManager.player = &thePlayer;
    gameManager.battleMap = &battleMap; 
    gameManager.cutSceneMap = &cutScene;
+   gameManager.loadPlayers(&thePlayers);
 
    gameManager.loadEnemyModel(imageStore.getBitMap("rat"));
    gameManager.loadEnemyModel(imageStore.getBitMap("wolf"));
@@ -300,7 +311,8 @@ int main(int argc, char **argv){
                 if(gameManager.firstTime){
 
                     gameManager.saveAreaMapVariables();
-                    gameManager.initializeBattle();
+                    battleManager.generatePlayers(&thePlayers , 
+                        MAX_PLAYERS_PER_BATTLE);
                 }
 
                 //Check for end of battle.
@@ -315,7 +327,8 @@ int main(int argc, char **argv){
                 else{
                     
                     //Draw map.
-                    Draw::drawBattle(theBattleMap , players ,
+                    Draw::drawBattle(theBattleMap , 
+                        battleManager.getPlayersList() ,
                         battleManager.getEnemiesList());
 
                     //Testing TurnTimerList
@@ -398,6 +411,8 @@ int main(int argc, char **argv){
    al_destroy_timer(timer);
    al_destroy_event_queue(event_queue);
 
+   }
+   //al_shutdown_ttf_addon();
    return 0;
 }
 

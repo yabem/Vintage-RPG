@@ -66,6 +66,11 @@ void Menu::destroyMenu(){
 
     //Deallocate Menu.
     destroyMenuHelper();
+
+    if(font != NULL){
+        al_destroy_font(font);
+        font = NULL;
+    }
 }
 
 //Deallocate the memory from the menu.

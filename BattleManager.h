@@ -13,6 +13,7 @@
 #include "CharacterManipulationStore.h"
 #include "TurnTimerList.h"
 #include "SetTurnTimerListToCharacterList.h"
+#include "InitPlayers.h"
 
 class BattleManager{
 
@@ -29,11 +30,17 @@ private:
     //List of menus.
     vector<Menu*> menus;     
 
+    //List of players for the battle.
+    CharacterList thePlayers;
+
     //List of enemies for the battle.
     CharacterList theEnemies;
 
     //List of TurnTimers for theEnemies.
-    TurnTimerList turnTimerList;
+    TurnTimerList enemyTurnTimerList;
+
+    //List of TurnTimers for thePlayers.
+    TurnTimerList playerTurnTimerList;
 
     //Factory for the enemies.
     CharFactory enemyFactory;   
@@ -98,6 +105,9 @@ public:
     //Returns the enemies list.
     std::vector<Character*> getEnemiesList();  
 
+    //Returns the plaers list.
+    std::vector<Character*> getPlayersList();
+
     //Return current target.
     int getCurrentTarget();
 
@@ -147,6 +157,9 @@ public:
 
     //Generates the enemies for the battle.
     void generateEnemies(int maxNumberOfEnemies); 
+
+    //Generates the players for the battle.
+    void generatePlayers(CharacterList *characterList , int maxNumberPlayers); 
 
 //////////////////////////////////Battle Timing////////////////////////////////
 

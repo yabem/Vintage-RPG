@@ -8,14 +8,7 @@ FontStore::FontStore(){
 //Destructor.
 FontStore::~FontStore(){
 
-    std::map<std::string , ALLEGRO_FONT*>::iterator iter = fonts.begin();
-
-    while(iter != fonts.end()){
-
-        al_destroy_font(iter->second);
-        fonts.erase(iter);
-        iter = fonts.begin();
-    }
+    destroyFontStore();
 }
 
 //Loads a single font.
@@ -59,4 +52,17 @@ ALLEGRO_FONT* FontStore::getFont(std::string fontName){
     }
 
     else return iter->second;
+}
+
+//Destroy font store.
+void FontStore::destroyFontStore(){
+
+    std::map<std::string , ALLEGRO_FONT*>::iterator iter = fonts.begin();
+
+    while(iter != fonts.end()){
+
+        //al_destroy_font(iter->second);
+        fonts.erase(iter);
+        iter = fonts.begin();
+    }
 }

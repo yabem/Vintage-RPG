@@ -58,20 +58,8 @@
     <Filter Include="Header Files\TextBox">
       <UniqueIdentifier>{e18bb8e3-da9e-4ab6-9ef3-bf61e126ebee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\TextBox\SuperClass">
-      <UniqueIdentifier>{95ceadb7-cd77-4d63-b513-d0c5dbffee43}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\TextBox\SubClass">
-      <UniqueIdentifier>{3c661670-12cd-44e3-866b-a1820e39f2a8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\TextBox">
       <UniqueIdentifier>{83f9cfb8-1009-467a-ae97-f324b1fb90b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TextBox\SuperClass">
-      <UniqueIdentifier>{27e7bfce-d0fb-4c47-a5cf-2ede666576ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TextBox\SubClass">
-      <UniqueIdentifier>{f463e418-01da-489b-9d10-b077b16b1aa7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Font">
       <UniqueIdentifier>{82786b74-2a0c-400d-a6db-3f95e0df666f}</UniqueIdentifier>
@@ -88,20 +76,8 @@
     <Filter Include="Header Files\Battle\TurnTimer">
       <UniqueIdentifier>{ea6570d7-10c7-4735-ae5c-f4eff5f93f66}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Battle\TurnTimer">
-      <UniqueIdentifier>{288ca775-13ea-4cbb-b414-bc3fd81b6d36}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Battle\TurnTimer\TurnTimerList">
-      <UniqueIdentifier>{09413817-bcc2-4086-ab06-60a7307db87c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Battle\TurnTimer\TurnTimerList">
       <UniqueIdentifier>{c2e4f075-d3bb-4926-b175-6e0173495ce2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Battle\TurnTimer\Derived Class">
-      <UniqueIdentifier>{fd833bcf-6de1-450c-b2e5-27193726e38b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Battle\TurnTimer\Base Class">
-      <UniqueIdentifier>{675b5491-27d9-4a6e-ab64-656ec2056b6d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Battle\TurnTimer\Base Class">
       <UniqueIdentifier>{6f037d71-1719-4052-9f7d-bae716333bce}</UniqueIdentifier>
@@ -223,6 +199,48 @@
     <Filter Include="Header Files\Character\CharacterManipulation\Base Class">
       <UniqueIdentifier>{64a7a777-9edf-4c40-8345-fddb0f177e6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Character\AI">
+      <UniqueIdentifier>{0bce7d02-b5f9-443e-82b2-379af34e5889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\AI\Base Class">
+      <UniqueIdentifier>{915ffdf9-86f0-4dcf-8866-26bed35b3eb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\AI\Derived Class">
+      <UniqueIdentifier>{a69d54ea-e1cb-496a-b840-8a2abccfc688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\AI">
+      <UniqueIdentifier>{c194f4ac-812c-4165-862e-4b68d23b2d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\AI\Base Class">
+      <UniqueIdentifier>{a1f52918-9532-4d11-a7b1-d449e8aa6ff0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\AI\Derived Class">
+      <UniqueIdentifier>{8f32578e-46d3-47cb-9834-080a961ad14b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextBox\Derived Class">
+      <UniqueIdentifier>{f463e418-01da-489b-9d10-b077b16b1aa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextBox\Base Class">
+      <UniqueIdentifier>{27e7bfce-d0fb-4c47-a5cf-2ede666576ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TextBox\Derived Class">
+      <UniqueIdentifier>{3c661670-12cd-44e3-866b-a1820e39f2a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TextBox\Base Class">
+      <UniqueIdentifier>{95ceadb7-cd77-4d63-b513-d0c5dbffee43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Battle\TurnTimer">
+      <UniqueIdentifier>{288ca775-13ea-4cbb-b414-bc3fd81b6d36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Battle\TurnTimer\TurnTimerList">
+      <UniqueIdentifier>{09413817-bcc2-4086-ab06-60a7307db87c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Battle\TurnTimer\Derived Class">
+      <UniqueIdentifier>{fd833bcf-6de1-450c-b2e5-27193726e38b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Battle\TurnTimer\Base Class">
+      <UniqueIdentifier>{675b5491-27d9-4a6e-ab64-656ec2056b6d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -280,10 +298,10 @@
       <Filter>Source Files\Battle</Filter>
     </ClCompile>
     <ClCompile Include="TextBox.cpp">
-      <Filter>Source Files\TextBox\SuperClass</Filter>
+      <Filter>Source Files\TextBox\Base Class</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
-      <Filter>Source Files\TextBox\SubClass</Filter>
+      <Filter>Source Files\TextBox\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="FontStore.cpp">
       <Filter>Source Files\FontStore</Filter>
@@ -357,6 +375,15 @@
     <ClCompile Include="Fire3.cpp">
       <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
     </ClCompile>
+    <ClCompile Include="I_AI.cpp">
+      <Filter>Source Files\Character\AI\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ratAI.cpp">
+      <Filter>Source Files\Character\AI\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="InitPlayers.cpp">
+      <Filter>Source Files\Battle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleAction.h">
@@ -414,10 +441,10 @@
       <Filter>Header Files\Animation\SubClass</Filter>
     </ClInclude>
     <ClInclude Include="TextBox.h">
-      <Filter>Header Files\TextBox\SuperClass</Filter>
+      <Filter>Header Files\TextBox\Base Class</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
-      <Filter>Header Files\TextBox\SubClass</Filter>
+      <Filter>Header Files\TextBox\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="FontStore.h">
       <Filter>Header Files\Font</Filter>
@@ -496,6 +523,15 @@
     </ClInclude>
     <ClInclude Include="Fire2.h">
       <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="I_AI.h">
+      <Filter>Header Files\Character\AI\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ratAI.h">
+      <Filter>Header Files\Character\AI\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="InitPlayers.h">
+      <Filter>Header Files\Battle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

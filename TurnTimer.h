@@ -5,8 +5,6 @@
 #include "Enums.h"  //Used for FPS declaration.
 #include <allegro5/allegro_primitives.h>
 
-const int DEFAULT_BAR_WIDTH = 60;
-const int DEFAULT_BAR_HEIGHT = 15;
 const int INNER_OFFSET = 3;
 const float DEFAULT_BAR_AMOUNT = DEFAULT_BAR_WIDTH - (INNER_OFFSET * 2);
 

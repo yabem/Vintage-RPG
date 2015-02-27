@@ -125,15 +125,6 @@ void GameManager::saveAreaMapVariables(){
     firstTime = false;
 }
 
-//Sets the starting location of the player on the battle map.
-void GameManager::initializeBattle(){
-
-    //Set start location on the battle map.
-    Movement::setStart(*player , *battleMap , 17 , 7);
-    
-    player->setFacing(LEFT);
-}
-
 //Increments the game timer by 1.
 void GameManager::increaseGameTimer(){
 
@@ -177,6 +168,12 @@ void GameManager::loadEnemyModel(ALLEGRO_BITMAP *model){
     enemyModels.push_back(model);
 }
 
+//Loads the list of players.
+void GameManager::loadPlayers(CharacterList *characterList){
+
+    this->thePlayers = characterList;
+}
+
 //Sets the current pressed key to unpressed.
 void GameManager::resetPressedKey(){
 
@@ -192,7 +189,7 @@ void GameManager::resetPressedKey(){
 //Creates the victory CutScene.
 void GameManager::generateVictoryCutScene(){
 
-    BattleVictory *battleVictory = new BattleVictory(currMap , *player);
+    BattleVictory *battleVictory = new BattleVictory(currMap , thePlayers);
     loadCutscene(battleVictory);
 }
 

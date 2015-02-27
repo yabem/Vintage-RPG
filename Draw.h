@@ -5,15 +5,17 @@
 #include "Map.h"
 #include "AreaMap.h"
 #include "Character.h"
+#include "CharacterList.h"
 #include <vector>
 #include "Menu.h"
 
 namespace Draw{
 
-    //Draw the Character and the AreaMap to the buffer.
+    void drawArea(const AreaMap &areaMap);
     void drawArea(const AreaMap &areaMap , const Character &character);
     void drawBattle(Map &map , vector<Character*> characters , vector<Character*> enemies);
     void drawBattle(Map &map);
+    void drawCharList(CharacterList *characterList);
     
     //Draws all of the Menus in the vector.
     void drawMenus(vector<Menu*> menus);

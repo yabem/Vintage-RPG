@@ -181,6 +181,14 @@ std::vector<Character*> BattleManager::getEnemiesList(){
     return theEnemies.getList();
 }
 
+//Returns the players list.
+//Pre:  None.
+//Post: Returns the vector to the CharacterList.
+std::vector<Character*> BattleManager::getPlayersList(){
+
+    return thePlayers.getList();
+}
+
 //Get current target.
 //Pre:  None.
 //Post: Returns the int value of currentTarget.
@@ -319,7 +327,7 @@ void BattleManager::consumePlayerInput(){
                 characterManipulationStore->executeManipulation(
                     gameManager->getFrontPlayer() , getCurrEnemy() ,
                     menus.back()->getCurrSelectionName());
-
+                    
                 targetPlayers();
                 Draw::removeAllSubMenus(getMenuList());
 
@@ -421,10 +429,14 @@ bool BattleManager::enemiesRemaining(){
 //      If the turnTimers are full then the turnTimers are reset.
 void BattleManager::updateTurnTimers(){
 
-    if(!isBattlePaused)
-        turnTimerList.updateTurnTimers();
+    if(!isBattlePaused){
 
-    turnTimerList.drawTurnTimers();
+        enemyTurnTimerList.updateTurnTimers();
+        playerTurnTimerList.updateTurnTimers();
+    }
+
+    enemyTurnTimerList.drawTurnTimers();
+    playerTurnTimerList.drawTurnTimers();
 }
 
 /////////////////////////////////////Enemy Creator/////////////////////////////
@@ -479,9 +491,31 @@ void BattleManager::generateEnemies(int maxNumberOfEnemies){
     theEnemies.resetSelection();
 
     //Adds the turnTimers to the enemies.
-    theEnemies.loadList(&turnTimerList);
+    theEnemies.loadList(&enemyTurnTimerList);
     SetTurnTimerListToCharacterList::setTurnTimerListToCharacterList(
-        &theEnemies , &turnTimerList);
+        &theEnemies , &enemyTurnTimerList);
+}
+
+//Generates the players for the battle.
+void BattleManager::generatePlayers(CharacterList *characterList , 
+    int maxNumberPlayers){
+
+    for(int i = 0 ; i < maxNumberPlayers ; i++){
+
+        thePlayers.loadChar(characterList->getCurrSelection());
+        characterList->moveSelectionDown();
+    }
+
+    //Set spacing.
+    InitPlayers::initPlayersSpacing(thePlayers.getList());
+
+    //Reset iterator to the beginning.
+    thePlayers.resetSelection();
+
+    //Adds the turnTimers to the enemies.
+    thePlayers.loadList(&playerTurnTimerList);
+    SetTurnTimerListToCharacterList::setTurnTimerListToCharacterList(
+        &thePlayers , &playerTurnTimerList);
 }
 
 /////////////////////////////////////Battle End////////////////////////////////
@@ -503,7 +537,7 @@ void BattleManager::playersVictory(){
     //Switch to map variables.
     gameManager->switchVariablesToMap();
 
-    turnTimerList.deleteList();
+    theEnemies.deleteList();
 }
 
 //Pause battle so timers don't increase.

@@ -51,6 +51,9 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("fire1" , al_load_bitmap("fire1.png"));
     loadBitMap("fire2" , al_load_bitmap("fire2.png"));
     loadBitMap("fire3" , al_load_bitmap("fire3.png"));
+    loadBitMap("mage" , al_load_bitmap("mage.png"));
+    loadBitMap("warrior" , al_load_bitmap("warrior.png"));
+    loadBitMap("thief" , al_load_bitmap("thief.png"));
     loadBitMap("default" , al_load_bitmap("default.png"));
 
     std::map<std::string , ALLEGRO_BITMAP*>::iterator iter = images.begin();

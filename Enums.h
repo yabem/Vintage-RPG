@@ -12,7 +12,8 @@ enum LAYERTYPES {BACKGROUND , CENTERGROUND , FOREGROUND};
 enum IMAGES {ATTACK, BLOCK, MAGIC}; //Used for images indexing values.
 enum ENEMIES {RAT , WOLF , SOLDIER};
 const int MAX_ENEMIES = 3;  //Total number of possible enemies.
-const int MAX_ENEMIES_PER_BATTLE = 5; //Total number of enemies per battle.
+const int MAX_ENEMIES_PER_BATTLE = 4; //Total number of enemies per battle.
+const int MAX_PLAYERS_PER_BATTLE = 4;
 const int MAX_ENEMY_LEVEL = 3;
 const int DIRECTIONS = 4; //Used for collision creation.
 
@@ -42,11 +43,20 @@ const int DEFR = 255;           //Default red color.
 const int DEFG = 255;           //Default green color.
 const int DEFB = 255;           //Default blue color.
 
-const int BATTLESTARTX = SCREEN_W / 10;   //Starting width for enemies on the battle screen.
-const int BATTLESTARTY = SCREEN_H / 3;   //Starting height for enemies on the battle screen.
+//Starting width for enemies on the battle screen.
+const int BATTLE_START_X_ENEMIES = SCREEN_W / 10;  
 
+//Starting height for enemies on the battle screen.
+const int BATTLE_START_Y_ENEMIES = SCREEN_H / 3;   
 
-//ALLEGRO_FONT *font18;// = al_load_font("arial.ttf" , 18 , 0);
+//Starting width for players on the battle screen.
+const int BATTLE_START_X_PLAYERS = SCREEN_W - BATTLE_START_X_ENEMIES * 2;  
+
+//Starting height for players on the battle screen.
+const int BATTLE_START_Y_PLAYERS = SCREEN_H / 3;   
+
+const int DEFAULT_BAR_WIDTH = 60;   //Default TurnTimer width.
+const int DEFAULT_BAR_HEIGHT = 15;  //Default TurnTimer height.
 
 const int RATBASEHP = 5;
 const int RATBASEMP = 0;

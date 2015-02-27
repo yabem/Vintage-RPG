@@ -79,7 +79,7 @@ class BattleVictory: public Cutscene{
 
 public:
     BattleVictory();
-    BattleVictory(AreaMap *currMap , Character player);
+    BattleVictory(AreaMap *currMap , CharacterList *characterList);
     virtual ~BattleVictory();
     virtual bool play(const int pressedKey);
 
@@ -87,6 +87,6 @@ private:
 
     int mapSwitch;   //Determines which map to show. 
     AreaMap *currMap;   //Pointer to the current AreaMap that the player exists on.
-    Character thePlayer;   //Pointer to the player.
+    CharacterList *characterList;   //Pointer to the player.
     TextBox textBox;
 };

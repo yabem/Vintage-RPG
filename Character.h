@@ -13,6 +13,7 @@
 #include "Tangible.h"
 #include "Stats.h"
 #include "I_Creature.h"
+#include "I_AI.h"
 
 class Character: public I_Creature{
 
@@ -37,6 +38,7 @@ private:
     int lowerLeftX , lowerLeftY;  //Lower left coordinates.
 
     Stats *stats;   //Pointer to character statistics.
+    I_AI *AI;       //Stores the AI logic.
 
 public:
 

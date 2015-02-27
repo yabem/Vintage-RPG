@@ -84,8 +84,8 @@ void InitEnemies::soldier(Character *character , int enemyType ,
 //Set the spacing so the enemies are drawn correctly on the screen.
 void InitEnemies::initEnemiesSpacing(vector<Character*> theEnemies){
 
-    int totalWidth = BATTLESTARTX;
-    int totalHeight = BATTLESTARTY;
+    int totalWidth = BATTLE_START_X_ENEMIES;
+    int totalHeight = BATTLE_START_Y_ENEMIES;
 
     //Loop through all enemies to get the total height.
     for(vector<Character*>::iterator it = theEnemies.begin() ;
@@ -95,6 +95,6 @@ void InitEnemies::initEnemiesSpacing(vector<Character*> theEnemies){
         (*it)->setX(totalWidth);
         (*it)->setY(totalHeight);
         
-        totalHeight += (*it)->getH();
+        totalHeight += ((*it)->getH() + DEFAULT_BAR_HEIGHT);
     }
 }

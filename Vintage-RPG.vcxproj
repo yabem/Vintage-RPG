@@ -79,8 +79,11 @@
     <ClCompile Include="Fire1.cpp" />
     <ClCompile Include="Fire2.cpp" />
     <ClCompile Include="Fire3.cpp" />
+    <ClCompile Include="InitPlayers.cpp" />
+    <ClCompile Include="I_AI.cpp" />
     <ClCompile Include="I_Creature.cpp" />
     <ClCompile Include="I_List.cpp" />
+    <ClCompile Include="ratAI.cpp" />
     <ClCompile Include="SetTurnTimerListToCharacterList.cpp" />
     <ClCompile Include="TurnTimer.cpp" />
     <ClCompile Include="CharacterList.cpp" />
@@ -127,8 +130,11 @@
     <ClInclude Include="Fire1.h" />
     <ClInclude Include="Fire2.h" />
     <ClInclude Include="Fire3.h" />
+    <ClInclude Include="InitPlayers.h" />
+    <ClInclude Include="I_AI.h" />
     <ClInclude Include="I_Creature.h" />
     <ClInclude Include="I_List.h" />
+    <ClInclude Include="ratAI.h" />
     <ClInclude Include="SetTurnTimerListToCharacterList.h" />
     <ClInclude Include="TurnTimer.h" />
     <ClInclude Include="CharFactory.h" />

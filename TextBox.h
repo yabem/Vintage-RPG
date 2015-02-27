@@ -1,6 +1,4 @@
 #pragma once
-#include <allegro5\allegro.h>
-#include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_primitives.h>
 #include <string>
 #include "Enums.h"
@@ -18,8 +16,8 @@ protected:
     int bWid;           //Width of the border.
     int rows;           //Number of text rows.
     std::string text;   //Unformatted text that will be displayed.
-    vector<std::string> formattedText;   //One full box of text.
-    vector<vector<std::string> > fullText;  //Vector of full boxes of text.
+    std::vector<std::string> formattedText;   //One full box of text.
+    std::vector<vector<std::string> > fullText;  //Vector of full boxes of text.
     ALLEGRO_FONT *font;             //Font for the text.
 
 public:
@@ -34,4 +32,5 @@ public:
     void setSY(int sy);     //Sets sy.
     void setDX(int dx);     //Sets dx.
     void setDY(int dy);     //Sets dy.
+    void destroyTextBox();  //Destroys the TextBox.
 };

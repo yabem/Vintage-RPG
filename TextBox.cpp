@@ -45,6 +45,7 @@ void TextBox::loadText(std::string text){
 //Destructor.
 TextBox::~TextBox(){
 
+    destroyTextBox();
 }
 
 //Find the number of rows based on the length of the text.
@@ -134,4 +135,13 @@ void TextBox::setDX(int dx){
 void TextBox::setDY(int dy){
     
     this->dy = dy;
+}
+
+//Destroys the TextBox.
+void TextBox::destroyTextBox(){
+
+    if(font != NULL){
+        al_destroy_font(font);
+        font = NULL;
+    }
 }

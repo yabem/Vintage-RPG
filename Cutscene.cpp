@@ -141,12 +141,12 @@ BattleVictory::BattleVictory(){
 }
 
 //Constructor with parameters.
-BattleVictory::BattleVictory(AreaMap *currMap , Character thePlayer){
+BattleVictory::BattleVictory(AreaMap *currMap , CharacterList *characterList){
 
     frameCount = 0;
     mapSwitch = 1;
     this->currMap = currMap;
-    this->thePlayer = thePlayer;
+    this->characterList = characterList;
 
     textBox.loadText("You have slain all the enemies! "
     "You gained 10xp and 50gold.");
@@ -163,7 +163,8 @@ bool BattleVictory::play(const int pressedKey){
     
     frameCount++;
 
-    Draw::drawArea(*currMap , thePlayer);
+    Draw::drawArea(*currMap);
+    Draw::drawCharList(characterList);
 
     textBox.draw();
 

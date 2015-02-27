@@ -29,4 +29,7 @@ public:
 
     //Returns the desired font.
     ALLEGRO_FONT* getFont(std::string fontName);
+
+    //Destroy font store.
+    void destroyFontStore();
 };

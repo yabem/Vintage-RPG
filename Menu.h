@@ -19,8 +19,8 @@ private:
         Menu *subMenu;
     };
 
-    vector<Option*> options;  //Vector of Options for the menu.
-    vector<Option*>::iterator optionIter;    //Iterator for the options. 
+    std::vector<Option*> options;  //Vector of Options for the menu.
+    std::vector<Option*>::iterator optionIter;    //Iterator for the options. 
 
     int numOptions;     //Number options in the menu.
     int longestOption;  //Number of characters in the longest option.

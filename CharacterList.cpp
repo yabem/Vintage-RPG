@@ -88,14 +88,15 @@ bool CharacterList::lastCharOfList(){
 void CharacterList::loadChar(Character *character){
 
     charList.push_back(character);
+    resetSelection();
 }
 
-//Loads a companion list.
+//Loads a companion list 1.
 //Pre:  The I_List is not NULL. 
 //Post: Adds the I_List to timerList.
 void CharacterList::loadList(I_List *i_List){
 
-    this->timerList = i_List;
+    addedLists.push_back(i_List);
 }
 
 //Checks if the list is empty.
@@ -132,14 +133,8 @@ bool CharacterList::currSelectionIsDead(){
 //      vector.
 void CharacterList::deleteCurrSelectedCharacter(){
 
-    delete (*currSelection)->getStats();
-    delete *currSelection;
-    charList.erase(currSelection);
-
-    //Delete dependencies.
-    if(timerList != NULL)
-        timerList->deleteSelection(currPosition);
-
+    deleteSelection(currPosition); 
+    
     resetSelection();
 }
 
@@ -149,24 +144,33 @@ void CharacterList::deleteCurrSelectedCharacter(){
 //      and then deletes it.
 bool CharacterList::deleteSelection(int position){
 
-    if(position > charList.size())
-        return false;
+    delete (*currSelection)->getStats();
+    delete *currSelection;
+    charList.erase(currSelection);
 
-    else{
-        vector<Character*>::iterator charIter = charList.begin();
+    //Sets the iterator to the correct delete position.
+    std::vector<Character*>::iterator charIter = charList.begin();
 
-        //Sets the iterator to the correct delete position.
-        int i = 0;
-        while(i < position && charIter != charList.end()){
+    int i = 0;
+    while(i < currPosition && charIter != charList.end()){
 
-            i++;
-            charIter++;
-        }
-
-        charList.erase(charIter);
-
-        return true;
+        i++;
+        charIter++;
     }
+
+    //Delete position in the addedLists.
+    if(!addedLists.empty()){
+        std::vector<I_List*>::iterator currList = addedLists.begin(); 
+
+        //Delete elements from corresponding lists.
+        while(currList != addedLists.end()){
+
+            (*currList)->deleteSelection(position);
+            currList++;
+        }
+    }
+        
+    return true;
 }
 
 //Removes all of the Characters from the list.
@@ -174,5 +178,22 @@ bool CharacterList::deleteSelection(int position){
 //Post: Uses clear to remove all the elements from the list.
 void CharacterList::deleteList(){
 
+    deleteAddedLists();    
+
     charList.clear();
+}
+
+//Removes all of the added lists.
+//Pre:  None.
+//Post: Deletes all the lists in the dependencies vector.
+void CharacterList::deleteAddedLists(){
+
+    std::vector<I_List*>::iterator currList = addedLists.begin();
+
+    while(currList != addedLists.end()){
+        
+        (*currList)->deleteList();
+        addedLists.erase(currList);
+        currList = addedLists.begin();
+    }
 }

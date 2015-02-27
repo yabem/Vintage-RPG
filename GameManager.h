@@ -37,6 +37,8 @@ public:
     int numEnemies;
     vector<bool> keys;      
 
+    CharacterList *thePlayers;
+
     //Timer that counts up as the game progresses each frame.
     int gameTimer;          
     int pressedKey;
@@ -76,8 +78,6 @@ public:
 
     void saveAreaMapVariables();
 
-    void initializeBattle();
-
     //Increase the game timer by 1.
     void increaseGameTimer();  
     
@@ -92,6 +92,9 @@ public:
 
     //Loads all the input model.
     void loadEnemyModel(ALLEGRO_BITMAP *model);  
+
+    //Loads the list of players.
+    void loadPlayers(CharacterList *characterList);  
     
     //Sets the current pressed key to unpressed.
     void resetPressedKey(); 

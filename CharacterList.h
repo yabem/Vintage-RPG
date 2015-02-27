@@ -19,6 +19,9 @@ private:
     //Used for deletions.
     int currPosition;
 
+    //List of added lists.
+    vector<I_List*> addedLists;
+
     //List of timers.
     I_List *timerList;
     
@@ -48,8 +51,8 @@ public:
     //Inserts a Character the list.
     void loadChar(Character *character);
 
-    //Loads a companion list.
-    void loadList(I_List *timerList);
+    //Loads a list to the depencen.
+    void loadList(I_List *i_List);
 
     //Checks if the list is empty.
     bool isEmpty();
@@ -66,6 +69,9 @@ public:
     //Delete the Character in the current position.
     virtual bool deleteSelection(int position);    
 
-    //Removes all the elements from the list.
+    //Removes all the elements from the dependency lists.
     virtual void deleteList();
+
+    //Removes all of the dependencies from the list.
+    void deleteAddedLists();
 };

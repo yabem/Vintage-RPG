@@ -4,6 +4,22 @@
 #pragma once
 #include "Draw.h"
 
+//Draws the AreaMap to the buffer.
+void Draw::drawArea(const AreaMap &areaMap){
+
+    //Draw layers.
+    for(int i = 0 ; i < areaMap.getNumLayers() ; i++)
+        areaMap.getLayer(i).draw();
+
+    //Draw obstacles.
+    for(int i = 0 ; i < areaMap.getNumTangibles() ; i++)
+        areaMap.getTangible(i);//.draw();
+
+    //Draw clouds.
+    for(int i = 0 ; i < areaMap.getNumSceneries() ; i++)
+        areaMap.getScenery(i).draw();
+}
+
 //Draw the Character and the AreaMap to the buffer.
 void Draw::drawArea(const AreaMap &areaMap , const Character &character){
 
@@ -24,7 +40,6 @@ void Draw::drawArea(const AreaMap &areaMap , const Character &character){
     //Draw clouds.
     for(int i = 0 ; i < areaMap.getNumSceneries() ; i++)
         areaMap.getScenery(i).draw();
-
 }
 
 //Draw the battle with the map and the characters and enemies.
@@ -45,7 +60,6 @@ void Draw::drawBattle(Map &map , vector<Character*> characters , vector<Characte
     //Draw sceneries.
     for(int i = 0 ; i < map.getNumSceneries() ; i++)
         map.getScenery(i).draw();
-
 }
 
 //Draw the battle with the map and the characters and enemies.
@@ -58,6 +72,14 @@ void Draw::drawBattle(Map &map){
     //Draw sceneries.
     for(int i = 0 ; i < map.getNumSceneries() ; i++)
         map.getScenery(i).draw();
+}
+
+//Draws all the characters in the CharacterList.
+//Pre:  None.
+//Pro:  Draws all the characters to the screen.
+void Draw::drawCharList(CharacterList *characterList){
+
+
 }
 
 //Draws all menus in the vector in FIFO order.

@@ -59,7 +59,7 @@ void TurnTimerList::addConnection(I_Creature *i_Creature){
 //      returns false.
 bool TurnTimerList::deleteSelection(int position){
 
-    if(position > listOfTimers.size())
+    if(listOfTimers.empty())
         return false;
 
     else{
