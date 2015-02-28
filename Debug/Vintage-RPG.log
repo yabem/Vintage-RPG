@@ -1,4 +1,4 @@
-﻿Build started 2/26/2015 9:55:45 PM.
+﻿Build started 2/27/2015 11:03:18 PM.
      1>Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\RPG.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -20,6 +20,7 @@
          Debug\InitPlayers.obj
          Debug\I_AI.obj
          Debug\I_Creature.obj
+         Debug\I_Manager.obj
          Debug\I_List.obj
          Debug\ratAI.obj
          Debug\SetTurnTimerListToCharacterList.obj
@@ -64,4 +65,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.60
+Time Elapsed 00:00:01.44

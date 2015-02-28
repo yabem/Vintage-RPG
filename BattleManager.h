@@ -14,8 +14,9 @@
 #include "TurnTimerList.h"
 #include "SetTurnTimerListToCharacterList.h"
 #include "InitPlayers.h"
+#include "I_Manager.h"
 
-class BattleManager{
+class BattleManager: public I_Manager{
 
 private:
 
@@ -63,7 +64,7 @@ public:
     BattleManager();
 
     //Destructor.
-    ~BattleManager();
+    virtual ~BattleManager();
 
     //Switches the turnToAct to the specified type.
     void changeTarget(int currentTarget);
@@ -150,16 +151,20 @@ public:
     //Update turnTimers.
     void updateTurnTimers();
 
+    //Returns the charList.
+    virtual CharacterList* getList();
+
 /////////////////////////////////////Enemy Creator/////////////////////////////
     
     //Determines if a battle will occur.
     bool checkForBattle();  
 
     //Generates the enemies for the battle.
-    void generateEnemies(int maxNumberOfEnemies); 
+    virtual void generateEnemies(int maxNumberOfEnemies); 
 
     //Generates the players for the battle.
-    void generatePlayers(CharacterList *characterList , int maxNumberPlayers); 
+    virtual void generatePlayers(CharacterList *characterList ,
+        int maxNumberPlayers); 
 
 //////////////////////////////////Battle Timing////////////////////////////////
 

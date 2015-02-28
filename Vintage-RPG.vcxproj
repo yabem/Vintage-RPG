@@ -82,6 +82,7 @@
     <ClCompile Include="InitPlayers.cpp" />
     <ClCompile Include="I_AI.cpp" />
     <ClCompile Include="I_Creature.cpp" />
+    <ClCompile Include="I_Manager.cpp" />
     <ClCompile Include="I_List.cpp" />
     <ClCompile Include="ratAI.cpp" />
     <ClCompile Include="SetTurnTimerListToCharacterList.cpp" />
@@ -134,6 +135,7 @@
     <ClInclude Include="I_AI.h" />
     <ClInclude Include="I_Creature.h" />
     <ClInclude Include="I_List.h" />
+    <ClInclude Include="I_Manager.h" />
     <ClInclude Include="ratAI.h" />
     <ClInclude Include="SetTurnTimerListToCharacterList.h" />
     <ClInclude Include="TurnTimer.h" />

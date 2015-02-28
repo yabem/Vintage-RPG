@@ -4,7 +4,7 @@
 #pragma once
 #include <queue>
 #include "Cutscene.h"
-class Animation;
+#include "Animation.h"
 //Adding a battleManager here will cause a circular reference.
 
 class DrawRepository{

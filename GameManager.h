@@ -10,6 +10,7 @@
 #include "CharFactory.h"
 #include "Menu.h"
 #include "CharacterList.h"
+#include "I_Manager.h"
 
 class Cutscene;
 class Menu;
@@ -17,7 +18,7 @@ class Menu;
 const int RESET_TIMER = 2000;
 const int BATTLE_TIMER = 100;   //Determines when a battle will take place.
 
-class GameManager{
+class GameManager: public I_Manager{
 
 private:
 
@@ -59,6 +60,8 @@ public:
     vector<ALLEGRO_BITMAP*> enemyModels;    
 
     GameManager();
+    virtual ~GameManager();
+
     //x
     bool loadCutscene(Cutscene *cutscene);
     bool loadMenu(Menu *menu);
@@ -70,13 +73,16 @@ public:
     //Returns a pointer to the player at the front of the list.
     Character* getFrontPlayer();
 
+    //Returns the charList.
+    virtual CharacterList* getList();
+
     //Determines if the key is pressed.
     bool isKeyActive(int key);  
 
     //Makes a key inactive.
     void makeKeyInactive(int key);
 
-    void saveAreaMapVariables();
+    virtual void saveAreaMapVariables();
 
     //Increase the game timer by 1.
     void increaseGameTimer();  
@@ -85,7 +91,7 @@ public:
     bool isBattle();            
     
     //Switch variables bak to the player moving on the map.
-    void switchVariablesToMap();    
+    virtual void switchVariablesToMap();    
     
     //Reset game timer to 0.
     void resetGameTimer();      

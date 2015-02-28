@@ -22,6 +22,12 @@ GameManager::GameManager(){
     numEnemies = 0;
 }
 
+//Destructor.
+GameManager::~GameManager(){
+
+    //Default is fine.
+}
+
 void GameManager::updateKey(int key){
 
     pressedKey = key;
@@ -39,6 +45,14 @@ void GameManager::updateKey(int key){
 Character* GameManager::getFrontPlayer(){
 
     return player;
+}
+
+//Returns the charList.
+//Pre:  None.
+//Post: Returns a pointer to the players CharacterList.
+CharacterList* GameManager::getList(){
+
+    return thePlayers;
 }
 
 //Determines if the key is pressed.
@@ -189,7 +203,8 @@ void GameManager::resetPressedKey(){
 //Creates the victory CutScene.
 void GameManager::generateVictoryCutScene(){
 
-    BattleVictory *battleVictory = new BattleVictory(currMap , thePlayers);
+    BattleVictory *battleVictory = new BattleVictory(currMap , 
+        thePlayers , this);
     loadCutscene(battleVictory);
 }
 

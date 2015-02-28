@@ -452,7 +452,7 @@ bool BattleManager::checkForBattle(){
 
         //Load battle transition cutscene.
         BattleTrans *theBattle = new BattleTrans(gameManager->cutSceneMap ,
-            gameManager->currMap , gameManager->player);
+            gameManager->currMap , gameManager->player , gameManager , this);
         gameManager->loadCutscene(theBattle);
 
         //Create the enemies for the battle.
@@ -500,8 +500,14 @@ void BattleManager::generateEnemies(int maxNumberOfEnemies){
 void BattleManager::generatePlayers(CharacterList *characterList , 
     int maxNumberPlayers){
 
+    characterList->resetSelection();
+
     for(int i = 0 ; i < maxNumberPlayers ; i++){
 
+        //Character *insertChar = new Character;
+        //Character temp = characterList->getCurrSelection();
+        //*insertChar = *characterList->getCurrSelection();
+        //thePlayers.loadChar(insertChar);
         thePlayers.loadChar(characterList->getCurrSelection());
         characterList->moveSelectionDown();
     }
@@ -516,6 +522,14 @@ void BattleManager::generatePlayers(CharacterList *characterList ,
     thePlayers.loadList(&playerTurnTimerList);
     SetTurnTimerListToCharacterList::setTurnTimerListToCharacterList(
         &thePlayers , &playerTurnTimerList);
+}
+
+//Returns the charList.
+//Pre:  None.
+//Post: Returns a pointer to the players CharacterList.
+CharacterList* BattleManager::getList(){
+
+    return &thePlayers;
 }
 
 /////////////////////////////////////Battle End////////////////////////////////
@@ -535,9 +549,10 @@ void BattleManager::playersVictory(){
     Draw::drawArea(*gameManager->currMap , *gameManager->player);
 
     //Switch to map variables.
-    gameManager->switchVariablesToMap();
+    //gameManager->switchVariablesToMap();
 
     theEnemies.deleteList();
+    thePlayers.deleteList();
 }
 
 //Pause battle so timers don't increase.

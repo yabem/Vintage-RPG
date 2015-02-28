@@ -307,16 +307,8 @@ int main(int argc, char **argv){
 //////////////////////////////////////////Battle///////////////////////////////
             else if(gameManager.isBattle()){
 
-                //Save variables for end of battle.
-                if(gameManager.firstTime){
-
-                    gameManager.saveAreaMapVariables();
-                    battleManager.generatePlayers(&thePlayers , 
-                        MAX_PLAYERS_PER_BATTLE);
-                }
-
                 //Check for end of battle.
-                else if(gameManager.isKeyActive(Q) == TRUE 
+                if(gameManager.isKeyActive(Q) == TRUE 
                     || !battleManager.enemiesRemaining()){    
 
                     //Delete turnTimer list.

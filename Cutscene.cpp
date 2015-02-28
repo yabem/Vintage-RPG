@@ -85,7 +85,7 @@ bool Instruct::play(const int pressedKey){
     else return false;
 }
 
-/////////////////////////////////////BattleTrans Class/////////////////////////////////////////////
+/////////////////////////////////////BattleTrans Class/////////////////////////
 
 //Constructor.
 BattleTrans::BattleTrans(){
@@ -94,13 +94,16 @@ BattleTrans::BattleTrans(){
 }
 
 //Constructor with parameters.
-BattleTrans::BattleTrans(AreaMap *background , AreaMap *currMap , Character *thePlayer){
+BattleTrans::BattleTrans(AreaMap *background , AreaMap *currMap , 
+    Character *thePlayer , I_Manager *i_MapManager, I_Manager *i_BattleManager){
 
     frameCount = 0;
     mapSwitch = 1;
     this->currMap = currMap;
     this->background = background;
     this->thePlayer = thePlayer;
+    this->i_MapManager = i_MapManager;
+    this->i_BattleManager = i_BattleManager;
 }
 
 //Destructor.
@@ -129,10 +132,16 @@ bool BattleTrans::play(const int pressedKey){
         return false;
     }
 
-    else return true;
+    else{
+
+        i_MapManager->saveAreaMapVariables();
+        i_BattleManager->generatePlayers(i_MapManager->getList() ,
+            MAX_PLAYERS_PER_BATTLE);
+        return true;
+    }
 }
 
-/////////////////////////////////////BattleVictory Class/////////////////////////////////////////////
+/////////////////////////////////////BattleVictory Class///////////////////////
 
 //Constructor.
 BattleVictory::BattleVictory(){
@@ -141,12 +150,14 @@ BattleVictory::BattleVictory(){
 }
 
 //Constructor with parameters.
-BattleVictory::BattleVictory(AreaMap *currMap , CharacterList *characterList){
+BattleVictory::BattleVictory(AreaMap *currMap , CharacterList *characterList ,
+    I_Manager *i_Manager){
 
     frameCount = 0;
     mapSwitch = 1;
     this->currMap = currMap;
     this->characterList = characterList;
+    this->i_Manager = i_Manager;
 
     textBox.loadText("You have slain all the enemies! "
     "You gained 10xp and 50gold.");
@@ -164,12 +175,15 @@ bool BattleVictory::play(const int pressedKey){
     frameCount++;
 
     Draw::drawArea(*currMap);
-    Draw::drawCharList(characterList);
+    Draw::drawCharListForBattle(characterList);
 
     textBox.draw();
 
-    if(pressedKey == SPACE)
+    if(pressedKey == SPACE){
+
+        i_Manager->switchVariablesToMap();
         return true;
+    }
 
     else return false;
 }

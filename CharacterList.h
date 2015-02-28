@@ -24,6 +24,9 @@ private:
 
     //List of timers.
     I_List *timerList;
+
+    //Size of the list.
+    int size;
     
 public:
 
@@ -56,6 +59,9 @@ public:
 
     //Checks if the list is empty.
     bool isEmpty();
+
+    //Returns the size of the list.
+    int getSize() const;
 
     //Returns the list.
     std::vector<Character*> getList();

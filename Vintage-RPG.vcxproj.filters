@@ -154,14 +154,8 @@
     <Filter Include="Source Files\Cursor">
       <UniqueIdentifier>{2c00c58c-39ff-42c2-9382-1ab44a5baf40}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GameManager">
-      <UniqueIdentifier>{c24f8ed5-afa3-4011-953c-e1de1222dd1b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Cursor">
       <UniqueIdentifier>{99a1b4dc-7693-46e7-bf73-fdb66f6e19aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\GameManager">
-      <UniqueIdentifier>{5cde6395-3e2e-4c4b-b1f1-9858cb296aa5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Character\Stats">
       <UniqueIdentifier>{ae5d5e5c-9125-4a7f-8556-ac50d4149e8e}</UniqueIdentifier>
@@ -241,6 +235,24 @@
     <Filter Include="Source Files\Battle\TurnTimer\Base Class">
       <UniqueIdentifier>{675b5491-27d9-4a6e-ab64-656ec2056b6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Manager">
+      <UniqueIdentifier>{5cde6395-3e2e-4c4b-b1f1-9858cb296aa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Manager\Base Class">
+      <UniqueIdentifier>{24ce190f-ee57-46c0-9265-de13ae64e5f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Manager\Derived Class">
+      <UniqueIdentifier>{b081d3c4-ceaf-42c8-8056-a67536a73599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Manager">
+      <UniqueIdentifier>{c24f8ed5-afa3-4011-953c-e1de1222dd1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Manager\Base Class">
+      <UniqueIdentifier>{8d3bb1b9-473f-481d-93ee-b1bd51075e93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Manager\Derived Class">
+      <UniqueIdentifier>{1227e1ac-0456-4efa-8859-a637c6ba9821}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -293,9 +305,6 @@
     </ClCompile>
     <ClCompile Include="MovingText.cpp">
       <Filter>Source Files\Animation\SubClass</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleManager.cpp">
-      <Filter>Source Files\Battle</Filter>
     </ClCompile>
     <ClCompile Include="TextBox.cpp">
       <Filter>Source Files\TextBox\Base Class</Filter>
@@ -360,9 +369,6 @@
     <ClCompile Include="Cursor.cpp">
       <Filter>Source Files\Cursor</Filter>
     </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
     <ClCompile Include="Character.cpp">
       <Filter>Source Files\Character\Derived Class</Filter>
     </ClCompile>
@@ -383,6 +389,15 @@
     </ClCompile>
     <ClCompile Include="InitPlayers.cpp">
       <Filter>Source Files\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="I_Manager.cpp">
+      <Filter>Source Files\Manager\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files\Manager\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleManager.cpp">
+      <Filter>Source Files\Manager\Derived Class</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -427,9 +442,6 @@
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Header Files\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleManager.h">
-      <Filter>Header Files\Battle</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Header Files\Animation\SuperClass</Filter>
@@ -503,9 +515,6 @@
     <ClInclude Include="Cursor.h">
       <Filter>Header Files\Cursor</Filter>
     </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
     <ClInclude Include="Scenery.h">
       <Filter>Header Files\Scenery</Filter>
     </ClInclude>
@@ -532,6 +541,15 @@
     </ClInclude>
     <ClInclude Include="InitPlayers.h">
       <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="I_Manager.h">
+      <Filter>Header Files\Manager\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files\Manager\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleManager.h">
+      <Filter>Header Files\Manager\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

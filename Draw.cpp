@@ -77,9 +77,16 @@ void Draw::drawBattle(Map &map){
 //Draws all the characters in the CharacterList.
 //Pre:  None.
 //Pro:  Draws all the characters to the screen.
-void Draw::drawCharList(CharacterList *characterList){
+void Draw::drawCharListForBattle(CharacterList *characterList){
 
+    characterList->resetSelection();
 
+    for(int i = 0 ; i < characterList->getSize() && i <
+        MAX_PLAYERS_PER_BATTLE ; i++){
+
+        characterList->getCurrSelection()->draw();
+        characterList->moveSelectionDown();
+    }
 }
 
 //Draws all menus in the vector in FIFO order.
