@@ -68,7 +68,7 @@ int main(int argc, char **argv){
    ALLEGRO_TIMER *timer = NULL;
     
    //List of all the keys.
-   bool keys[6] = {false , false , false , false , false , false};
+   bool keys[7] = {false , false , false , false , false , false , false};
    bool done = false;
 
    int theKey = -1;
@@ -102,11 +102,17 @@ int main(int argc, char **argv){
    ImageStore imageStore;
    imageStore.loadAllDefaultImages();
 
+
    //Characters
    Character thePlayer(imageStore.getBitMap("player") , 32 , 32 , 30 , 2 , rate);
    Character thePlayer2(imageStore.getBitMap("warrior") , 32 , 32 , 30 , 2 , rate);
    Character thePlayer3(imageStore.getBitMap("thief") , 32 , 32 , 30 , 2 , rate);
    Character thePlayer4(imageStore.getBitMap("mage") , 32 , 32 , 30 , 2 , rate);
+
+   thePlayer.loadAbilities("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
+   thePlayer2.loadAbilities("Attack,Special|Upper Cut;Jump,Item|Potion,Antidote,Herb;Run;");
+   thePlayer3.loadAbilities("Attack,Special|Upper Cut;Jump,Item|Potion,Antidote,Herb;Run;");
+   thePlayer4.loadAbilities("Attack,Special|Upper Cut;Jump,Item|Potion,Antidote,Herb;Run;");
    
    CharacterList thePlayers;
    thePlayers.loadChar(&thePlayer);
@@ -245,7 +251,10 @@ int main(int argc, char **argv){
     
     Menu menu("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
     menu.formatText();
-    gameManager.loadMenu(&menu);
+
+    //Menu menu2("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
+    Menu menu2("Attack,Special|Upper Cut;Jump,Item|Potion,Antidote,Herb;Run;");
+    menu2.formatText();
 
     Cursor cursor;
     cursor.move(50 , 50);
@@ -325,6 +334,13 @@ int main(int argc, char **argv){
 
                     //Testing TurnTimerList
                     battleManager.updateTurnTimers();
+                    
+                    //Testing submenus.
+                    if(gameManager.getPressedKey() == U){
+                        
+                        Draw::removeAllSubMenus(battleManager.getMenuList());
+                        battleManager.loadMenu(&menu2);
+                    }
 
                     //Set the menus draw location.
                     battleManager.placeMenuToLeftOfCharacter
@@ -399,6 +415,7 @@ int main(int argc, char **argv){
    }
 
    //Cleanup memory allocations.
+   imageStore.destroyImages();
    al_destroy_display(display);
    al_destroy_timer(timer);
    al_destroy_event_queue(event_queue);

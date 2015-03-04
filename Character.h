@@ -9,11 +9,16 @@
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
+#include <string>
 #include "Enums.h"
 #include "Tangible.h"
 #include "Stats.h"
 #include "I_Creature.h"
 #include "I_AI.h"
+#include "I_InfoBox.h"
+//#include "TextBox.h"
+//#include "Menu.h"
+class Menu;
 
 class Character: public I_Creature{
 
@@ -38,6 +43,8 @@ private:
     int lowerLeftX , lowerLeftY;  //Lower left coordinates.
 
     Stats *stats;   //Pointer to character statistics.
+    Menu *menu;     //Stores the menu.
+    std::string abilities;    //The Character's abilities.
     I_AI *AI;       //Stores the AI logic.
 
 public:
@@ -71,7 +78,7 @@ public:
     int getAttack() const;                      //Returns the attack stat for the Character.
     int getDefense() const;                     //Returns the defense stat for the Character.
     void addToRemainingHP(int amount);          //Adds the value to the Character's remaining hitpoints.
-    bool isDead();                        //Returns the dead status of the Character.
+    bool isDead();                              //Returns the dead status of the Character.
     void makeDead();                            //Makes the Character dead.
     void makeAlive();                           //Makes the Character alive.
 
@@ -92,5 +99,12 @@ public:
     int draw() const;                           //Draw to buffer.
     void animate();                             //Increase frame count.
     int move(bool *keys , int keyPressed);      //Move character based off of keys.
-    virtual void executeRandomAttack();                 //Executes a random attack.
+
+    void loadAbilities(std::string abilities);  //Loads the choices for the Menu.
+    void createMenu(Menu *menu);                //Creates the Menu.
+    Menu* getMenu();                            //Retrieves the Menu.
+    std::string getAbilities();           //Gets abilities.
+
+    virtual void executeRandomAttack();         //Executes a random attack.
+    void destroyMenu();                         //Destroys the Menu.
 };

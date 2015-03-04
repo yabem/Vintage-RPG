@@ -5,6 +5,18 @@ Menu::Menu(){
 
     numOptions = 0;
     longestOption = 0;
+    currSelection = 0;
+    font = al_load_font("arial.ttf" , FONT_SIZE , 0);
+
+    this->sx = 0;           //X draw location.
+    this->sy = 0;           //y draw location.
+    this->dx = 0;
+    this->dy = 0;
+
+    tr = 255 ; tg = 255 ; tb = 255; //Hues for the text color.
+    rr = 0 ; rg = 0 ; rb = 200;     //Hues for rectangle color.
+    br = 255 ; bg = 255 ; bb = 255; //Hues for border color.
+    bWid = 2;           //Width of the border around the text box.
 }
 
 //Constructor with string input.
@@ -392,14 +404,14 @@ int Menu::getH() const{
 //Post: Sets the draw location of the left of the character
 //      location. The right side of the menu will meet the 
 //      left side of the character.
-void Menu::setMenuToLeftOfCharacter(Character *character){
+void Menu::setMenuToLeftOfCharacter(I_Creature *i_Creature){
 
     //Max width of the base menu.
     int maxMenuWidth = getW();
 
     //The character's x and y coordinate.
-    int charX = character->getX();
-    int charY = character->getY();
+    int charX = i_Creature->getX();
+    int charY = i_Creature->getY();
 
     //New start and end coordinates for the menu.
     int menuSX = charX - maxMenuWidth;
@@ -412,4 +424,37 @@ void Menu::setMenuToLeftOfCharacter(Character *character){
     setSY(menuSY);
     setDX(menuDX);
     setDY(menuDY);
+}
+
+
+//Sets sx.
+//Pre:  None.
+//Post: Sets sx to the passed in value.
+void Menu::setSX(int sx){
+
+    this->sx = sx;
+}
+
+//Sets sy.
+//Pre:  None.
+//Post: Sets sy to the passed in value.
+void Menu::setSY(int sy){
+
+    this->sy = sy;
+}
+
+//Sets dx.
+//Pre:  None.
+//Post: Sets dx to the passed in value.
+void Menu::setDX(int dx){
+    
+    this->dx = dx;
+}
+
+//Sets dy.
+//Pre:  None.
+//Post: Sets dy to the passed in value.
+void Menu::setDY(int dy){
+    
+    this->dy = dy;
 }

@@ -134,14 +134,40 @@ void Draw::removeAllSubMenus(std::vector<Menu*> &menus){
     }
 }
 
+//Removes all Menus from the vector.
+//Pre:  None.
+//Post: All the Menu objects are popped off the vector.
+void Draw::removeAllMenus(std::vector<Menu*> &menus){
+
+   //Do nothing if the vector is empty.
+    if(menus.empty())
+        return;
+
+    //Remove all subMenus until at the base subMenu.
+    else{
+
+        while (!menus.empty()){
+            //Resets the menu selection to the beginning of the list
+            //then removes it from the vector.
+            Draw::moveMenuSelectionToBegin(menus);
+            menus.pop_back();
+        } 
+    }
+}
+
 //Moves the menu selection to the beginning.
 //Pre:  None.
 //Post: Moves the menu's current selection to the beginning
 //      of the list.
 void Draw::moveMenuSelectionToBegin(vector<Menu*> menus){
 
-    //Resets the menu selection to the beginning of the list
-    //then removes it from the vector.
-    vector<Menu*>::iterator menuIter = menus.end() - 1;
-    (*menuIter)->moveCurrSelectionToBegin();
+    if(menus.empty())
+        return;
+
+    else{
+        //Resets the menu selection to the beginning of the list
+        //then removes it from the vector.
+        vector<Menu*>::iterator menuIter = menus.end() - 1;
+        (*menuIter)->moveCurrSelectionToBegin();
+    }
 }

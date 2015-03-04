@@ -1,10 +1,45 @@
-﻿Build started 2/27/2015 11:03:18 PM.
+﻿Build started 3/3/2015 9:27:14 PM.
      1>Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\RPG.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp AreaMap.cpp BattleAction.cpp BattleManager.cpp CharFactory.cpp Character.cpp CharacterAttack.cpp CharacterList.cpp CharacterManipulationStore.cpp Collision.cpp Cutscene.cpp Draw.cpp DrawRespository.cpp Fire1.cpp Fire2.cpp Fire3.cpp GameManager.cpp InitEnemies.cpp InitPlayers.cpp Menu.cpp MenuList.cpp Movement.cpp MovingImage.cpp MovingText.cpp SetTurnTimerListToCharacterList.cpp ThrowRock.cpp TransferAnimations.cpp TurnTimerList.cpp main.cpp ratAI.cpp
+         MenuList.cpp
+         Menu.cpp
+         Generating Code...
+         Compiling...
+         ratAI.cpp
          main.cpp
+         ThrowRock.cpp
+         GameManager.cpp
+     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\gamemanager.cpp(63): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\gamemanager.cpp(76): warning C4018: '>=' : signed/unsigned mismatch
+         Fire3.cpp
+         Fire2.cpp
+         Fire1.cpp
+         DrawRespository.cpp
+         Draw.cpp
+         Cutscene.cpp
+         CharacterManipulationStore.cpp
+         CharacterAttack.cpp
+         BattleManager.cpp
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         TurnTimerList.cpp
+         TransferAnimations.cpp
+         SetTurnTimerListToCharacterList.cpp
+         MovingText.cpp
+         MovingImage.cpp
+         Movement.cpp
+         InitPlayers.cpp
+         InitEnemies.cpp
+         Collision.cpp
+         CharacterList.cpp
+         Character.cpp
+         CharFactory.cpp
+         BattleAction.cpp
+         AreaMap.cpp
+         Animation.cpp
        Link:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe" /NOLOGO /LIBPATH:c:\allegro\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro-5.0.10-monolith-md-debug.lib" /MANIFEST /ManifestFile:"Debug\RPG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.lib" /MACHINE:X86 Debug\Animation.obj
          Debug\AreaMap.obj
@@ -20,8 +55,10 @@
          Debug\InitPlayers.obj
          Debug\I_AI.obj
          Debug\I_Creature.obj
+         Debug\I_InfoBox.obj
          Debug\I_Manager.obj
          Debug\I_List.obj
+         Debug\MenuList.obj
          Debug\ratAI.obj
          Debug\SetTurnTimerListToCharacterList.obj
          Debug\TurnTimer.obj
@@ -65,4 +102,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.44
+Time Elapsed 00:00:11.99

@@ -21,6 +21,9 @@ public:
 
     ImageStore();       //Default constructor.
     ~ImageStore();      //Destructor.
+    
+    //Destroys all the images.
+    void destroyImages();
 
     //Load a single bitmap to the store.
     void loadBitMap(std::string name , ALLEGRO_BITMAP *bmap); 

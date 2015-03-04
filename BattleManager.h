@@ -73,7 +73,7 @@ public:
     void loadCursor(Cursor *cursor);
 
     //Loads a menu.
-    bool loadMenu(Menu *menu);
+    void loadMenu(Menu *menu);
 
     //Loads all the input model.
     void loadEnemyModel(ALLEGRO_BITMAP *model);

@@ -3,46 +3,60 @@
 //Default constructor.
 BattleAction::BattleAction(){
 
-    this->initiator = NULL;
-    this->receiver = NULL;
-    this->action = "";
+
 }
 
-//Parameter constructor.
-BattleAction::BattleAction(Character *initiator , Character *receiver ,
-    std::string action){
+void BattleAction::loadMenuToManager(){
 
-    this->initiator = initiator;
-    this->receiver = receiver;
-    this->action = action;
+    //battleManager->pau
+    //battleManager->loadMenu(i_Creature->createMenu());
 }
 
-//Destructor.
-BattleAction::~BattleAction(){
+            /*xxx old
+            //Default constructor.
+            BattleAction::BattleAction(){
 
-    //Only call destroy animations if the vector has elements.
-    if(!animations.empty())
-        destroyAnimations();
-}
+                this->initiator = NULL;
+                this->receiver = NULL;
+                this->action = "";
+            }
 
-//Adds an Animation to the BattleAction.
-void BattleAction::addAnimation(Animation *animation){
+            //Parameter constructor.
+            BattleAction::BattleAction(Character *initiator , Character *receiver ,
+                std::string action){
 
-    animations.push_back(animation);
-}
+                this->initiator = initiator;
+                this->receiver = receiver;
+                this->action = action;
+            }
 
-//Deallocates all Animation objects.
-void BattleAction::destroyAnimations(){
+            //Destructor.
+            BattleAction::~BattleAction(){
 
-    vector<Animation*>::iterator iter;
+                //Only call destroy animations if the vector has elements.
+                if(!animations.empty())
+                    destroyAnimations();
+            }
 
-    //Delete the allocated memory for the animations.
-    while(iter != animations.end()){
+            //Adds an Animation to the BattleAction.
+            void BattleAction::addAnimation(Animation *animation){
 
-        delete *iter;
-        iter++;
-    }
+                animations.push_back(animation);
+            }
 
-    //Delete all the animations.
-    animations.clear();
-}
+            //Deallocates all Animation objects.
+            void BattleAction::destroyAnimations(){
+
+                vector<Animation*>::iterator iter;
+
+                //Delete the allocated memory for the animations.
+                while(iter != animations.end()){
+
+                    delete *iter;
+                    iter++;
+                }
+
+                //Delete all the animations.
+                animations.clear();
+            }
+            */

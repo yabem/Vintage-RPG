@@ -1,5 +1,6 @@
 #pragma once
 class CharacterList;
+class Menu;
 
 class I_Manager{
 
@@ -14,4 +15,6 @@ public:
 
     virtual void generatePlayers(CharacterList *characterList , 
         int maxNumberPlayers);
+
+    virtual void loadMenu(Menu *menu);
 };

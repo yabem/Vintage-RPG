@@ -17,3 +17,7 @@ void I_Manager::generatePlayers(CharacterList *characterList ,
         int maxNumberPlayers){
 
 }
+
+void I_Manager::loadMenu(Menu *menu){
+
+}

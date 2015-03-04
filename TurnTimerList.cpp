@@ -11,6 +11,12 @@ TurnTimerList::~TurnTimerList(){
     deleteList();
 }
 
+//Load I_Manager.
+void TurnTimerList::loadManager(I_Manager *i_Manager){
+
+    this->battleManager = i_Manager;
+}
+
 //Sets the variables of the turnTimer.
 //Pre:  The Character is not NULL.
 //Post: The TurnTimer is set to align with the center of the
@@ -49,7 +55,7 @@ void TurnTimerList::addConnection(I_Creature *i_Creature){
 
     turnTimer->calculateDrawPoints();
 
-    listOfTimers.push_back(characterTimer);
+    listOfCharTimers.push_back(characterTimer);
 }
 
 //Deletes the specified TurnTimer.
@@ -59,22 +65,22 @@ void TurnTimerList::addConnection(I_Creature *i_Creature){
 //      returns false.
 bool TurnTimerList::deleteSelection(int position){
 
-    if(listOfTimers.empty())
+    if(listOfCharTimers.empty())
         return false;
 
     else{
-        vector<CharacterTimer*>::iterator charTimerIter = listOfTimers.begin();
+        vector<CharacterTimer*>::iterator charTimerIter = listOfCharTimers.begin();
 
         //Sets the iterator to the correct delete position.
         int i = 0;
-        while(i < position && charTimerIter != listOfTimers.end()){
+        while(i < position && charTimerIter != listOfCharTimers.end()){
 
             i++;
             charTimerIter++;
         }
 
-        delete listOfTimers[position]->turnTimer;
-        listOfTimers.erase(charTimerIter);
+        delete listOfCharTimers[position]->turnTimer;
+        listOfCharTimers.erase(charTimerIter);
 
         return true;
     }
@@ -87,13 +93,13 @@ bool TurnTimerList::deleteSelection(int position){
 void TurnTimerList::deleteList(){
 
     std::vector<CharacterTimer*>::iterator timersIter
-        = listOfTimers.begin();
+        = listOfCharTimers.begin();
 
-    while(timersIter != listOfTimers.end()){
+    while(timersIter != listOfCharTimers.end()){
 
         delete (*timersIter)->turnTimer;
-        listOfTimers.erase(timersIter);
-        timersIter = listOfTimers.begin();
+        listOfCharTimers.erase(timersIter);
+        timersIter = listOfCharTimers.begin();
     }
 }
 
@@ -103,26 +109,31 @@ void TurnTimerList::deleteList(){
 //      the turnTimers are reset.
 void TurnTimerList::updateTurnTimers(){
 
-    for(int i = 0 ; i < listOfTimers.size() ; i++){
-        listOfTimers[i]->turnTimer->updateCurrentFill();
-        //listOfTimers[i]->turnTimer->draw();
+    for(int i = 0 ; i < listOfCharTimers.size() ; i++){
+        listOfCharTimers[i]->turnTimer->updateCurrentFill();
+        //listOfCharTimers[i]->turnTimer->draw();
                 
-        if(listOfTimers[i]->turnTimer->innerBarIsFull()){
+        if(listOfCharTimers[i]->turnTimer->innerBarIsFull()){
          
-            listOfTimers[i]->turnTimer->resetCurrentFill();
-            //listOfTimers[i]->character->executeAction();
+            //
+            //loadMenu(listOfCharTimers[i]->i_creature->getmenus());
+            //battleManager->loadMenu(listOfCharTimers[i]->i_Creature->getMenu();
+            //Resets the timer.
+            listOfCharTimers[i]->turnTimer->resetCurrentFill();
+            //listOfCharTimers[i]->i_Creature->
+            
+            //listOfCharTimers[i]->character->executeTurn();
         }
     }
 }
-
 
 //Draw all timers.
 //Pre:  None.
 //Post: Draws all the turn timers to the screen.
 void TurnTimerList::drawTurnTimers(){
 
-    for(int i = 0 ; i < listOfTimers.size() ; i++){
+    for(int i = 0 ; i < listOfCharTimers.size() ; i++){
 
-        listOfTimers[i]->turnTimer->draw();
+        listOfCharTimers[i]->turnTimer->draw();
     }
 }

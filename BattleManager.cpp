@@ -7,6 +7,9 @@ BattleManager::BattleManager(){
     battleCursor = NULL;
     gameManager = NULL;
     isBattlePaused = false;
+
+    enemyTurnTimerList.loadManager(this);
+    playerTurnTimerList.loadManager(this);
 }
 
 //Destructor.
@@ -65,17 +68,15 @@ void BattleManager::loadCharacterManipulationStore(CharacterManipulationStore
 
 //Loads a Menu to the BattleManager.
 //Pre:  None.
-//Post: Returns false if the Menu is NULL.
-//      Returns true if a Menu was added to the vector.
-bool BattleManager::loadMenu(Menu *menu){
+//Post: Loads the menu to the Menu vector.
+void BattleManager::loadMenu(Menu *menu){
 
     //Error loading.
     if(menu == NULL)
-        return false;
+        return;
     
     else{ 
         menus.push_back(menu);
-        return true;
     }
 }
 
@@ -94,7 +95,10 @@ void BattleManager::loadEnemyModel(ALLEGRO_BITMAP *model){
 //      left side of the character.
 void BattleManager::placeMenuToLeftOfCharacter(Character *character){
 
-    menus.front()->setMenuToLeftOfCharacter(character);
+    if(menus.empty())
+        return;
+
+    else menus.front()->setMenuToLeftOfCharacter(character);
 }
 
 //Draws cursor.
@@ -322,14 +326,15 @@ void BattleManager::consumePlayerInput(){
 
         case SPACE:
 
-            if(targettingEnemies()){
+            if(targettingEnemies() && !menus.empty()){
 
                 characterManipulationStore->executeManipulation(
                     gameManager->getFrontPlayer() , getCurrEnemy() ,
                     menus.back()->getCurrSelectionName());
                     
                 targetPlayers();
-                Draw::removeAllSubMenus(getMenuList());
+                Draw::removeAllMenus(getMenuList());
+                //Draw::removeAllSubMenus(getMenuList());
 
                 //Reset target to NONE.
                 setTargetToNoTarget();
@@ -448,7 +453,6 @@ bool BattleManager::checkForBattle(){
 
         //Set battle flags to true.
         gameManager->battle = true;
-        gameManager->firstTime = true;
 
         //Load battle transition cutscene.
         BattleTrans *theBattle = new BattleTrans(gameManager->cutSceneMap ,

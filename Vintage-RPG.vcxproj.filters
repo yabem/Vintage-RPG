@@ -306,9 +306,6 @@
     <ClCompile Include="MovingText.cpp">
       <Filter>Source Files\Animation\SubClass</Filter>
     </ClCompile>
-    <ClCompile Include="TextBox.cpp">
-      <Filter>Source Files\TextBox\Base Class</Filter>
-    </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files\TextBox\Derived Class</Filter>
     </ClCompile>
@@ -399,6 +396,15 @@
     <ClCompile Include="BattleManager.cpp">
       <Filter>Source Files\Manager\Derived Class</Filter>
     </ClCompile>
+    <ClCompile Include="I_InfoBox.cpp">
+      <Filter>Source Files\TextBox\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TextBox.cpp">
+      <Filter>Source Files\TextBox\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuList.cpp">
+      <Filter>Source Files\List\Derived Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleAction.h">
@@ -451,9 +457,6 @@
     </ClInclude>
     <ClInclude Include="MovingText.h">
       <Filter>Header Files\Animation\SubClass</Filter>
-    </ClInclude>
-    <ClInclude Include="TextBox.h">
-      <Filter>Header Files\TextBox\Base Class</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>Header Files\TextBox\Derived Class</Filter>
@@ -550,6 +553,15 @@
     </ClInclude>
     <ClInclude Include="BattleManager.h">
       <Filter>Header Files\Manager\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="I_InfoBox.h">
+      <Filter>Header Files\TextBox\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBox.h">
+      <Filter>Header Files\TextBox\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuList.h">
+      <Filter>Header Files\List\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

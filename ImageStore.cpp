@@ -9,11 +9,21 @@ ImageStore::ImageStore(){
 //Make sure no duplicate destroys in main().
 ImageStore::~ImageStore(){
 
+    destroyImages();
+}
+
+//Destroys all the images.
+//Pre:  None.
+//Post: All the images in the container are destroyed and
+//      the memory is reclaimed.
+void ImageStore::destroyImages(){
+
     std::map<std::string , ALLEGRO_BITMAP*>::iterator iter = images.begin();
 
     while(iter != images.end()){
 
         al_destroy_bitmap(iter->second);
+        iter->second = NULL;
         images.erase(iter);
         iter = images.begin();
     }

@@ -35,6 +35,9 @@ Character::Character(){
     
     //Set upper right.
     this->upperRightX = x + w; this->upperRightY = y; 
+
+    abilities = "";
+    menu = NULL;
 }
 
 //Constructor.
@@ -74,7 +77,7 @@ Character::Character(ALLEGRO_BITMAP *bmap , int w , int h ,
 //Destructor.
 Character::~Character(){
 
-    //Default is fine.
+    destroyMenu();
 }
 
 //Return x value. 
@@ -414,4 +417,51 @@ void Character::makeAlive(){
 void Character::executeRandomAttack(){
 
 
+}
+
+//Loads the Menu choices.
+//Pre:  The string is formatted correctley.
+//Post: 
+void Character::loadAbilities(std::string abilities){
+
+    this->abilities= abilities;
+}
+
+//Creates the Menu.
+//Pre:  The Menu is valid.
+//Post: Loads the Menu to the Character.
+void Character::createMenu(Menu *menu){
+
+    //if(menuChoices == "")
+      //  return;
+
+    //else{
+    
+        //menu = new Menu("menuChoices");
+    //}
+}
+
+//Retrieves the menuChoices.
+//Pre:  None.
+//Post: Returns the 
+std::string Character::getAbilities(){
+
+    return abilities;
+}
+
+//Retrieves the Menu.
+//Pre: None.
+//Post: Returns a pointer to the Menu.
+Menu* Character::getMenu(){
+
+    return menu;
+}
+
+//Destroys the Menu.
+//Pre:  None.
+//Post: Destroys the Menu and reclaims the memory.
+void Character::destroyMenu(){
+
+  //  if(menu != NULL)
+      //  delete menu;
 }

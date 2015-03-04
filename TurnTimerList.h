@@ -6,8 +6,9 @@
 #include "Character.h"
 #include "I_List.h"
 #include "I_Creature.h"
+#include "I_Manager.h"
 
-class TurnTimerList : virtual public I_List{    //Change name to CharacterTimerList
+class TurnTimerList : public I_List{    //Change name to CharacterTimerList
 
 private:
 
@@ -17,8 +18,10 @@ private:
         I_Creature *i_Creature;
     };
 
+    I_Manager *battleManager;
+
     //List of the enemies.
-    std::vector<CharacterTimer*> listOfTimers;   
+    std::vector<CharacterTimer*> listOfCharTimers;   
 
     //Sets the variables of the turnTimer.
     void initializeTurnTimerToCharacter(CharacterTimer *characterTimer);
@@ -30,6 +33,9 @@ public:
 
     //Destructor.
     virtual ~TurnTimerList();
+
+    //Load I_Manager.
+    void loadManager(I_Manager *i_Manager);
 
     //Returns a pointer to the currently selected enemy.
     TurnTimer* getCurrSelection();  

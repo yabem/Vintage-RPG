@@ -1,6 +1,8 @@
 #pragma once
 #include "TextBox.h"
 #include "Character.h"
+#include "I_Creature.h"
+#include "I_InfoBox.h"
 
 const int SELECTOR_WIDTH = 20;  //Width for the cursor selector.
 const int SELECTOR_HEIGHT = 18;  //Height for the cursor selector.
@@ -9,7 +11,7 @@ const int DEFAULT_SY = 200; //Starting y for formatMenu()
 
 class Option;
 
-class Menu: public TextBox {
+class Menu: public I_InfoBox {
 
 private:
 
@@ -36,11 +38,21 @@ private:
     int midRightX;          //Middle.
     int midRightY;          //Middle.
 
+    std::string text;   //Unformatted text that will be displayed.
+    std::vector<std::string> formattedText;   //One full box of text.
+    ALLEGRO_FONT *font;             //Font for the text.
+    int sx , dx;        //X draw locations.
+    int sy , dy;        //Y draw locations.
+    int tr , tg , tb;   //Hues for the text color.
+    int rr , rg , rb;   //Hues for rectactle color.
+    int br , bg , bb;   //Hues for border color.
+    int bWid;           //Width of the border.
+
 public:
 
     Menu();                         //Default constructor.
     Menu(std::string text);         //Constructor with string input.
-    ~Menu();                        //Destructor.
+    virtual ~Menu();                //Destructor.
     void destroyMenu();             //Deallocate a Menu and all subMenus.
     void destroyMenuHelper();       //Deallocate a Menu.
     virtual void loadText(std::string text);   //Loads text into the TextBox.
@@ -89,5 +101,10 @@ public:
     int getH() const;
 
     //Place Menu to left of the Character.
-    void setMenuToLeftOfCharacter(Character *character);
+    void setMenuToLeftOfCharacter(I_Creature *i_Creature);
+
+    void setSX(int sx);     //Sets sx.
+    void setSY(int sy);     //Sets sy.
+    void setDX(int dx);     //Sets dx.
+    void setDY(int dy);     //Sets dy.
 };

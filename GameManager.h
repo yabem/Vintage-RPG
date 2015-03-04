@@ -45,10 +45,7 @@ public:
     int pressedKey;
 
     //Flag for if a battle is happening.
-    bool battle;   
-
-    //Flag for first time through the battle to save the variables.
-    bool firstTime;     
+    bool battle;       
     
     //The the x and y locations on the areamap.
     int charOnMapX , charOnMapY;  
@@ -64,7 +61,7 @@ public:
 
     //x
     bool loadCutscene(Cutscene *cutscene);
-    bool loadMenu(Menu *menu);
+
 
     //x
     void playCutscenes();

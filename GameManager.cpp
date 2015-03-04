@@ -9,7 +9,6 @@ GameManager::GameManager(){
 
     pressedKey = 0;
     battle = false;
-    firstTime = true;
     gameTimer = 0;
     charOnMapX = 0 , charOnMapY = 0;
     charOnMapFacing = 0;
@@ -93,21 +92,6 @@ bool GameManager::loadCutscene(Cutscene *cutscene){
     }
 }
 
-//Loads a Menu to the GameManager. Returns false
-//if the Menu is NULL. Returns true if a Menu was added
-//to the vector.
-bool GameManager::loadMenu(Menu *menu){
-
-    //Error loading.
-    if(menu == NULL)
-        return false;
-    
-    else{ 
-        menus.push_back(menu);
-        return true;
-    }
-}
-
 void GameManager::playCutscenes(){
 
     if(cutscenes.empty())
@@ -135,8 +119,6 @@ void GameManager::saveAreaMapVariables(){
     charOnMapFacing = player->getFacing();
     prevMap = currMap;
     currMap = battleMap;
-
-    firstTime = false;
 }
 
 //Increments the game timer by 1.

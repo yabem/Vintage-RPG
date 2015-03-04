@@ -12,8 +12,6 @@ private:
 
 public:
 
-
-
     //Constructor.
     CharStats(int level , int baseHP , int baseMP , int baseAtk , int baseDef ,
         int ttlXP , int currLvlXP , int toLvlXP);

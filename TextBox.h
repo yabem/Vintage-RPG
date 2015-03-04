@@ -4,8 +4,9 @@
 #include "Enums.h"
 #include <allegro5/allegro_font.h>
 #include <vector>
+#include "I_InfoBox.h"
 
-class TextBox{
+class TextBox: public I_InfoBox{
 
 protected:
     int sx , dx;        //X draw locations.
