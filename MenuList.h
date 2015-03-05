@@ -27,6 +27,9 @@ public:
     //Inserts a Menu connected to a Character.
     void addMenuConnection(I_Creature *i_Creature);
 
+    //Gets the specified Menu.
+    virtual Menu* getSelection(int selection);
+
     //Deletes the specified Menu.
     virtual bool deleteSelection(int selection);
 

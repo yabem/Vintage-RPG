@@ -43,7 +43,8 @@ void MenuList::initializeMenuToCharacter(
 //      The CharacterTimer is pushed to the end of the vector.
 void MenuList::addMenuConnection(I_Creature *i_Creature){
 
-    Menu *menu = new Menu(i_Creature->getAbilities());//("ergsrg");
+    Menu *menu = new Menu(i_Creature->getAbilities());
+    menu->formatText();
     menu->setMenuToLeftOfCharacter(i_Creature);
     listOfMenus.push_back(menu);
     /*
@@ -58,8 +59,32 @@ void MenuList::addMenuConnection(I_Creature *i_Creature){
     */
 }
 
+//Gets the specified Menu.
+//Pre: The selection is within the bounds of the vector.
+//Post: Returns a pointer to the menu. If the position is outside of the
+//      vector returns NULL.
+Menu* MenuList::getSelection(int selection){
+
+    if(listOfMenus.empty())
+        return NULL;
+
+    else{
+        vector<Menu*>::iterator menusIter = listOfMenus.begin();
+
+        //Sets the iterator to the correct delete selection.
+        int i = 0;
+        while(i < selection && menusIter != listOfMenus.end()){
+
+            i++;
+            menusIter++;
+        }
+
+        return listOfMenus[selection];
+    }
+}
+
 //Deletes the specified Menu.
-//Pre:  The positio is within the bounds of the vector.
+//Pre:  The position is within the bounds of the vector.
 //Post: Deletes the Menu in the position.
 //      Returns true if the delete was successful, otherwise
 //      returns false.

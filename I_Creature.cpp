@@ -8,3 +8,8 @@ std::string I_Creature::getAbilities(){
 
     return "";
 }
+
+bool I_Creature::isPlayable() const{
+
+    return false;
+}

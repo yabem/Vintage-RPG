@@ -12,7 +12,8 @@ public:
     virtual int getX() const = 0;
     virtual int getY() const = 0;
     virtual int getH() const = 0;
-    std::string getAbilities();
+    virtual std::string getAbilities();
+    virtual bool isPlayable() const; 
 
     virtual void executeRandomAttack() = 0;
 };

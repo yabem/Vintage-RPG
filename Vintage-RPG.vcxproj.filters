@@ -43,18 +43,6 @@
     <Filter Include="Source Files\Animation">
       <UniqueIdentifier>{77d8d180-c556-4789-a059-174b1714ec5a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Animation\SuperClass">
-      <UniqueIdentifier>{77134c8a-f038-43a4-9881-7f673a4bce59}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Animation\SubClass">
-      <UniqueIdentifier>{21ce656a-8b79-4103-a25e-2d3c834e00bb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Animation\SuperClass">
-      <UniqueIdentifier>{908e79d2-d322-4919-86e7-fe29bbff87dc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Animation\SubClass">
-      <UniqueIdentifier>{4358334f-2016-40ba-8734-16be237d1b0f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\TextBox">
       <UniqueIdentifier>{e18bb8e3-da9e-4ab6-9ef3-bf61e126ebee}</UniqueIdentifier>
     </Filter>
@@ -75,9 +63,6 @@
     </Filter>
     <Filter Include="Header Files\Battle\TurnTimer">
       <UniqueIdentifier>{ea6570d7-10c7-4735-ae5c-f4eff5f93f66}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Battle\TurnTimer\TurnTimerList">
-      <UniqueIdentifier>{c2e4f075-d3bb-4926-b175-6e0173495ce2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Battle\TurnTimer\Base Class">
       <UniqueIdentifier>{6f037d71-1719-4052-9f7d-bae716333bce}</UniqueIdentifier>
@@ -226,9 +211,6 @@
     <Filter Include="Source Files\Battle\TurnTimer">
       <UniqueIdentifier>{288ca775-13ea-4cbb-b414-bc3fd81b6d36}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Battle\TurnTimer\TurnTimerList">
-      <UniqueIdentifier>{09413817-bcc2-4086-ab06-60a7307db87c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Battle\TurnTimer\Derived Class">
       <UniqueIdentifier>{fd833bcf-6de1-450c-b2e5-27193726e38b}</UniqueIdentifier>
     </Filter>
@@ -252,6 +234,18 @@
     </Filter>
     <Filter Include="Source Files\Manager\Derived Class">
       <UniqueIdentifier>{1227e1ac-0456-4efa-8859-a637c6ba9821}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation\Derived Class">
+      <UniqueIdentifier>{21ce656a-8b79-4103-a25e-2d3c834e00bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation\Base Class">
+      <UniqueIdentifier>{77134c8a-f038-43a4-9881-7f673a4bce59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation\Derived Class">
+      <UniqueIdentifier>{4358334f-2016-40ba-8734-16be237d1b0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation\Base Class">
+      <UniqueIdentifier>{908e79d2-d322-4919-86e7-fe29bbff87dc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -298,13 +292,13 @@
       <Filter>Source Files\Map</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>Source Files\Animation\SuperClass</Filter>
+      <Filter>Source Files\Animation\Base Class</Filter>
     </ClCompile>
     <ClCompile Include="MovingImage.cpp">
-      <Filter>Source Files\Animation\SubClass</Filter>
+      <Filter>Source Files\Animation\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="MovingText.cpp">
-      <Filter>Source Files\Animation\SubClass</Filter>
+      <Filter>Source Files\Animation\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files\TextBox\Derived Class</Filter>
@@ -332,9 +326,6 @@
     </ClCompile>
     <ClCompile Include="CharacterTimer.cpp">
       <Filter>Source Files\Battle\TurnTimer\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="SetTurnTimerListToCharacterList.cpp">
-      <Filter>Source Files\Battle\TurnTimer\TurnTimerList</Filter>
     </ClCompile>
     <ClCompile Include="CharacterList.cpp">
       <Filter>Source Files\List\Derived Class</Filter>
@@ -405,6 +396,12 @@
     <ClCompile Include="MenuList.cpp">
       <Filter>Source Files\List\Derived Class</Filter>
     </ClCompile>
+    <ClCompile Include="SetTurnTimerListToCharacterList.cpp">
+      <Filter>Source Files\List</Filter>
+    </ClCompile>
+    <ClCompile Include="SetMenuListToCharacterList.cpp">
+      <Filter>Source Files\List</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleAction.h">
@@ -450,13 +447,13 @@
       <Filter>Header Files\Map</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Header Files\Animation\SuperClass</Filter>
+      <Filter>Header Files\Animation\Base Class</Filter>
     </ClInclude>
     <ClInclude Include="MovingImage.h">
-      <Filter>Header Files\Animation\SubClass</Filter>
+      <Filter>Header Files\Animation\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="MovingText.h">
-      <Filter>Header Files\Animation\SubClass</Filter>
+      <Filter>Header Files\Animation\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>Header Files\TextBox\Derived Class</Filter>
@@ -484,9 +481,6 @@
     </ClInclude>
     <ClInclude Include="TurnTimer.h">
       <Filter>Header Files\Battle\TurnTimer\Base Class</Filter>
-    </ClInclude>
-    <ClInclude Include="SetTurnTimerListToCharacterList.h">
-      <Filter>Header Files\Battle\TurnTimer\TurnTimerList</Filter>
     </ClInclude>
     <ClInclude Include="CharacterList.h">
       <Filter>Header Files\List\Derived Class</Filter>
@@ -562,6 +556,12 @@
     </ClInclude>
     <ClInclude Include="MenuList.h">
       <Filter>Header Files\List\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="SetTurnTimerListToCharacterList.h">
+      <Filter>Header Files\List</Filter>
+    </ClInclude>
+    <ClInclude Include="SetMenuListToCharacterList.h">
+      <Filter>Header Files\List</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

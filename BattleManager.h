@@ -13,8 +13,10 @@
 #include "CharacterManipulationStore.h"
 #include "TurnTimerList.h"
 #include "SetTurnTimerListToCharacterList.h"
+#include "SetMenuListToCharacterList.h"
 #include "InitPlayers.h"
 #include "I_Manager.h"
+#include "MenuList.h"
 
 class BattleManager: public I_Manager{
 
@@ -42,6 +44,9 @@ private:
 
     //List of TurnTimers for thePlayers.
     TurnTimerList playerTurnTimerList;
+
+    //List of Menus for thePlayers.
+    MenuList playerMenuList;
 
     //Factory for the enemies.
     CharFactory enemyFactory;   
@@ -176,4 +181,7 @@ public:
 
     //Unpause battle so timers start increasing.
     void unPauseBattle();
+
+    //Determines if the battle is active.
+    bool battlePaused();
 };

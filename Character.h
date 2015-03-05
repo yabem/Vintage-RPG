@@ -34,6 +34,7 @@ private:
     int w, h;               //The width and the height of the bitmap to draw from.
     int moveRate;           //The number of x and y values that the player increases when moving.
     bool collCheck[DIRECTIONS]; //Bool of collisions for up, down, left, and right.
+    bool playable;        //Determines if the Character can be played by the user.
 
     //These variables move along the coordinate plane which means whenever there is movement, either by the
     //player or the map, these values increase and decrease.
@@ -72,6 +73,7 @@ public:
     int getLowerRightY() const;                 //Return lower right y value.
     int getLowerLeftX() const;                  //Return lower left x value.
     int getLowerLeftY() const;                  //Return lower left y value.
+    bool isPlayable() const;                    //Returns if the player is playable.
     bool getCollision(int direction);           //Return the collision value for the direction.
     Stats* getStats();                          //Return a pointer to the character stats.
 
@@ -79,6 +81,7 @@ public:
     int getDefense() const;                     //Returns the defense stat for the Character.
     void addToRemainingHP(int amount);          //Adds the value to the Character's remaining hitpoints.
     bool isDead();                              //Returns the dead status of the Character.
+    void makePlayable();                        //Makes the Character Playable.
     void makeDead();                            //Makes the Character dead.
     void makeAlive();                           //Makes the Character alive.
 

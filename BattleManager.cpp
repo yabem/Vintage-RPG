@@ -9,7 +9,9 @@ BattleManager::BattleManager(){
     isBattlePaused = false;
 
     enemyTurnTimerList.loadManager(this);
+
     playerTurnTimerList.loadManager(this);
+    playerTurnTimerList.loadList(&playerMenuList);
 }
 
 //Destructor.
@@ -526,6 +528,11 @@ void BattleManager::generatePlayers(CharacterList *characterList ,
     thePlayers.loadList(&playerTurnTimerList);
     SetTurnTimerListToCharacterList::setTurnTimerListToCharacterList(
         &thePlayers , &playerTurnTimerList);
+
+    //Adds menuList to the players.
+    thePlayers.loadList(&playerMenuList);
+    SetMenuListToCharacterList::setMenuListToCharacterList(
+        &thePlayers , &playerMenuList);
 }
 
 //Returns the charList.
@@ -569,4 +576,12 @@ void BattleManager::pauseBattle(){
 void BattleManager::unPauseBattle(){
 
     isBattlePaused = false;
+}
+
+//Determines if the battle is active.
+//Pre:  None.
+//Post: Returns isBattlePaused.
+bool BattleManager::battlePaused(){
+
+    return isBattlePaused;
 }

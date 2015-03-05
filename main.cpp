@@ -118,7 +118,7 @@ int main(int argc, char **argv){
    thePlayers.loadChar(&thePlayer);
    thePlayers.loadChar(&thePlayer2);
    thePlayers.loadChar(&thePlayer3);
-   thePlayers.loadChar(&thePlayer4);
+   //thePlayers.loadChar(&thePlayer4);
 
    //Character stats
    CharStats playerStats(1 ,25 , 10 , 100 , 10 , 1 , 100 , 10);

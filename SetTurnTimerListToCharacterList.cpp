@@ -1,6 +1,5 @@
 #include "SetTurnTimerListToCharacterList.h"
 
-
 //Adds a connection for each Character from the 
 //Characterlist to the TurnTimerList.
 //Pre:  The TurnTimerList and the CharacterList are not empty.

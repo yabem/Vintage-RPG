@@ -17,6 +17,14 @@ void TurnTimerList::loadManager(I_Manager *i_Manager){
     this->battleManager = i_Manager;
 }
 
+//Load I_List.
+//Pre:  None.
+//Post: Changes the menuList pointer to the list i_List is pointing to.
+void TurnTimerList::loadList(I_List *i_List){
+
+    this->menusList = i_List;
+}
+
 //Sets the variables of the turnTimer.
 //Pre:  The Character is not NULL.
 //Post: The TurnTimer is set to align with the center of the
@@ -109,20 +117,38 @@ void TurnTimerList::deleteList(){
 //      the turnTimers are reset.
 void TurnTimerList::updateTurnTimers(){
 
-    for(int i = 0 ; i < listOfCharTimers.size() ; i++){
-        listOfCharTimers[i]->turnTimer->updateCurrentFill();
-        //listOfCharTimers[i]->turnTimer->draw();
+    if(battleManager->battlePaused())
+        return;
+
+    else{
+        for(int i = 0 ; i < listOfCharTimers.size() ; i++){
+        
+            listOfCharTimers[i]->turnTimer->updateCurrentFill();
+            //listOfCharTimers[i]->turnTimer->draw();
                 
-        if(listOfCharTimers[i]->turnTimer->innerBarIsFull()){
+            if(listOfCharTimers[i]->turnTimer->innerBarIsFull()){
          
-            //
-            //loadMenu(listOfCharTimers[i]->i_creature->getmenus());
-            //battleManager->loadMenu(listOfCharTimers[i]->i_Creature->getMenu();
-            //Resets the timer.
-            listOfCharTimers[i]->turnTimer->resetCurrentFill();
-            //listOfCharTimers[i]->i_Creature->
-            
-            //listOfCharTimers[i]->character->executeTurn();
+                //Player's turn.
+                if(listOfCharTimers[i]->i_Creature->isPlayable()){
+                
+                    battleManager->pauseBattle();
+                    battleManager->loadMenu(menusList->getSelection(i));
+                    listOfCharTimers[i]->turnTimer->resetCurrentFill();
+                    return;
+                }
+
+                //Enemie's turn.
+                else{
+                //battleManager->loadMenu(listOfCharTimers[]
+                //
+                //loadMenu(listOfCharTimers[i]->i_creature->getmenus());
+                //battleManager->loadMenu(listOfCharTimers[i]->i_Creature->getMenu();
+                //Resets the timer.
+                listOfCharTimers[i]->turnTimer->resetCurrentFill();
+                //listOfCharTimers[i]->i_Creature->
+                }
+                //listOfCharTimers[i]->character->executeTurn();
+            }
         }
     }
 }

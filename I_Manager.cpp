@@ -13,6 +13,15 @@ void I_Manager::saveAreaMapVariables(){
 
 }
 
+void I_Manager::pauseBattle(){
+
+}
+
+bool I_Manager::battlePaused(){
+    
+    return false;
+}
+
 void I_Manager::generatePlayers(CharacterList *characterList , 
         int maxNumberPlayers){
 

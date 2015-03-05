@@ -18,7 +18,7 @@ Character::Character(){
     this->w = 0;
     this->h = 0;
     this->moveRate = 0;
-
+    playable = false;
    
     //Initialize collisions to false.
     for(int i = 0 ; i < DIRECTIONS ; i++)
@@ -150,6 +150,14 @@ int Character::getLowerLeftX() const{
 int Character::getLowerLeftY() const{
 
     return lowerLeftY;
+}
+
+//Returns if the player is playable.
+//Pre:  None.
+//Post: Returns the value of isPlayable.
+bool Character::isPlayable() const{
+
+    return playable;
 }
 
 //Return facing direction.
@@ -391,6 +399,14 @@ int Character::move(bool *keys , int keyPressed){
 bool Character::isDead(){
 
     return this->getStats()->isDead();
+}
+
+//Makes the Character Playable.
+//Pre:  None.
+//Post: Makes the isPlayable bool true.
+void Character::makePlayable(){
+
+    playable = true;
 }
 
 //Makes the Character dead.

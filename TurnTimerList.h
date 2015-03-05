@@ -18,7 +18,11 @@ private:
         I_Creature *i_Creature;
     };
 
+    //Used for adding Menus to the BattleManager.
     I_Manager *battleManager;
+
+    //Used for getting the Menus from the MenuList.
+    I_List *menusList;
 
     //List of the enemies.
     std::vector<CharacterTimer*> listOfCharTimers;   
@@ -36,6 +40,9 @@ public:
 
     //Load I_Manager.
     void loadManager(I_Manager *i_Manager);
+
+    //Load I_List.
+    void loadList(I_List *i_List);
 
     //Returns a pointer to the currently selected enemy.
     TurnTimer* getCurrSelection();  
