@@ -5,14 +5,19 @@
 #include <queue>
 #include "Cutscene.h"
 #include "Animation.h"
-//Adding a battleManager here will cause a circular reference.
 
 class DrawRepository{
 
 private:
 
-    std::queue<Cutscene*> cutscenes;     //Stores the Cutscenes that will be played.
-    std::queue<Animation*> animations;   //Stores the animations to be played.
+    //Stores the Cutscenes that will be played.
+    std::queue<Cutscene*> cutscenes;    
+
+    //Stores the animations to be played.
+    std::queue<Animation*> animations; 
+
+    //Used to delete enemies once animations are done.
+    I_Manager *battleManager;           
 
 public:
 
@@ -35,5 +40,5 @@ public:
     bool loadAnimation(Animation *animation);
 
     //Plays all the loaded Animations.
-    void playAllAnimations();
+    bool playAllAnimations();
 };

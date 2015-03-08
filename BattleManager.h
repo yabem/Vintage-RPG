@@ -141,6 +141,12 @@ public:
     //Gets the currently selected enemy.
     Character* getCurrEnemy();   
 
+    //Sets the current target to the position.
+    void setCurrPlayer(int position);
+
+    //Gets the currently selected player.
+    Character* getCurrPlayer();
+
     //Returns whether or not the currently selected enemy is dead.
     bool currEnemyDead();   
 
@@ -148,7 +154,7 @@ public:
     void deleteCurrEnemy(); 
 
     //Delete's the current enemy if it is dead.
-    bool deleteDeadCurrEnemy();
+    bool deleteCurrEnemyIfDead();
 
     //Determines if there are still enemies remaining.
     bool enemiesRemaining();    

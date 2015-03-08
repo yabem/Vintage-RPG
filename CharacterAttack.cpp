@@ -21,13 +21,6 @@ CharacterAttack::CharacterAttack(){
 //Destructor.
 CharacterAttack::~CharacterAttack(){
 
-    /*
-    if(!animations.empty()){
-
-        delete animations.front();
-        animations.pop();
-    }
-    */
 }
 
 //Loads the Characters.
@@ -40,20 +33,6 @@ void CharacterAttack::loadCharacters(Character *initiator ,
     this->receiver = receiver;
 }
 
-//Loads the two characters.
-//Pre:  Both Characters have valid stats.
-//Post: The initiator, receiver, and imageStore are loaded.
-void CharacterAttack::initialize(Character *initiator , 
-    Character *receiver , ImageStore *imageStore , FontStore *fontStore ,
-    DrawRepository *drawRepository){
-    
-    this->initiator = initiator;
-    this->receiver = receiver;
-    this->imageStore = imageStore;
-    this->font = fontStore->getFont("default");
-    this->drawRepository = drawRepository;
-}
- 
 //Initiates the attack action between the two Characters.
 //Pre:  Both characters have been loaded.
 //Post: The initiator's attack is checked against the
@@ -102,10 +81,13 @@ void CharacterAttack::loadAnimations(){
     damageStay->initialize(theDamage , receiver->getX() , receiver->getY() , 
         receiver->getX() , receiver->getY());
                                     
+    UnPauseBattle *unPause = new UnPauseBattle(battleManager);
+
     //Load all the animations to the animations queue.
     drawRepository->loadAnimation(weaponAttack);
     drawRepository->loadAnimation(damage);
     drawRepository->loadAnimation(damageStay);   
+    drawRepository->loadAnimation(unPause);
 }
 
 //Calculates the damage to the receiver.
@@ -124,50 +106,4 @@ void CharacterAttack::calculateDamage(){
     //No damage done, the defense negated the attack.
     if(damageToReceiver < 0)
         damageToReceiver = 0;
-}
-
-/*
-//Returns the first animation from the queue.
-//Pre:  The Animations queue has been loaded with Animation objects.
-//Post: Returns a pointer to the animation in the front of the Animations
-//      queue.
-Animation* CharacterAttack::getFrontAnimation(){
-    
- 
-    if(animations.empty())
-        return NULL;
-
-    return animations.front();
-    
-}
-*/
-
-
-//Removes the pointer at the front of the Animation queue.
-//Pre:  N/A
-//Post: The front Animation pointer is removed from the queue.
-void CharacterAttack::removeFrontAnimation(){
-
-/*    
-    if(animations.empty())
-        return;
-
-    else animations.pop();
-*/    
-}
-
-
-
-//Checks if the Animation queue is empty.
-//Pre:  N/A
-//Post: Returns true if the queue is empty. Returns false if the
-//      queue has at least one element.
-bool CharacterAttack::animationsIsEmpty(){
-    return true;
-/*    
-    if(animations.empty())
-        return true;
-
-    else return false;
-  */  
 }

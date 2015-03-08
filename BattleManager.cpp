@@ -70,7 +70,7 @@ void BattleManager::loadCharacterManipulationStore(CharacterManipulationStore
 
 //Loads a Menu to the BattleManager.
 //Pre:  None.
-//Post: Loads the menu to the Menu vector.
+//Post: Loads the menu to the Menu vector and pauses the battle.
 void BattleManager::loadMenu(Menu *menu){
 
     //Error loading.
@@ -78,6 +78,7 @@ void BattleManager::loadMenu(Menu *menu){
         return;
     
     else{ 
+
         menus.push_back(menu);
     }
 }
@@ -313,45 +314,66 @@ void BattleManager::consumePlayerInput(){
             moveEnemyCursor();
             moveMenuCursor();
             moveCursorToTarget(getCurrEnemy());
-                                                  
-            gameManager->setPressedKeyToInactive();
             break;
 
         case DOWN:
 
             moveEnemyCursor();
             moveMenuCursor();
-            moveCursorToTarget(getCurrEnemy());
-                                
-            gameManager->setPressedKeyToInactive();
+            moveCursorToTarget(getCurrEnemy());               
+            break;
+
+        case RIGHT:
+
+            moveMenuCursor();
+            break;
+
+        case LEFT:
+
+            moveMenuCursor();
             break;
 
         case SPACE:
 
-            if(targettingEnemies() && !menus.empty()){
-
-                characterManipulationStore->executeManipulation(
-                    gameManager->getFrontPlayer() , getCurrEnemy() ,
-                    menus.back()->getCurrSelectionName());
-                    
-                targetPlayers();
-                Draw::removeAllMenus(getMenuList());
-                //Draw::removeAllSubMenus(getMenuList());
-
-                //Reset target to NONE.
-                setTargetToNoTarget();
+            //Not players turn.
+            if(menus.empty())  
                 break;
-            }
 
-            else {
+            //Players turn.
+            else{   
+
+                //Execution selection.
+                std::string selection = menus.back()->getCurrSelectionName(); 
+
+                //Invalid selection, disregard input.
+                if(!characterManipulationStore->isValidManipulation(selection))
+                    break;
+
+                else if(targettingEnemies()){
+
+                    //Execute selection.
+                    characterManipulationStore->executeManipulation(
+                        thePlayers.getCurrSelection() , getCurrEnemy() ,
+                        selection);
+                    
+                    targetPlayers();
+                    Draw::removeAllMenus(getMenuList());
+                    setTargetToNoTarget();
+                }
+    
                 //Sets target to enemies.
-                targetEnemies();
-                moveCursorToTarget(getCurrEnemy());
+                else{   
+                    
+                    targetEnemies();
+                    moveCursorToTarget(getCurrEnemy());
+                    
+                }
             }
 
-            gameManager->setPressedKeyToInactive();
             break;
     }
+
+    gameManager->setPressedKeyToInactive();
 }
 
 //Returns the list of Menu pointers.
@@ -388,6 +410,31 @@ Character* BattleManager::getCurrEnemy(){
     return theEnemies.getCurrSelection();
 }
 
+//Sets the current player to the position.
+//Pre:  None.
+//Post: Iterates through the list until it reaches the position.
+//      Sets the current target of the CharacterList to that Character.
+void BattleManager::setCurrPlayer(int position){
+
+    if(position > thePlayers.getSize())
+        return;
+
+    thePlayers.resetSelection();
+
+    for(int i = 0 ; i < position ; i++){
+
+        thePlayers.moveSelectionDown();
+    }
+}
+
+//Gets the currently selected enemy.
+//Pre:  None.
+//Post: Returns a pointer to the current enemy.
+Character* BattleManager::getCurrPlayer(){
+
+    return thePlayers.getCurrSelection();
+}
+
 //Returns whether or not the currently selected enemy is dead.
 //Pre:  None.
 //Post: Returns TRUE if the current selection has 0 HP. Returns
@@ -410,7 +457,7 @@ void BattleManager::deleteCurrEnemy(){
 //Post: Checks if the currentSelected enemy is dead. If
 //      dead, the enemy is deleted and returns true. If
 //      not dead, the enemy is not deleted and returns false.
-bool BattleManager::deleteDeadCurrEnemy(){
+bool BattleManager::deleteCurrEnemyIfDead(){
 
     //Check if enemy is dead.
     if(currEnemyDead()){
@@ -524,7 +571,7 @@ void BattleManager::generatePlayers(CharacterList *characterList ,
     //Reset iterator to the beginning.
     thePlayers.resetSelection();
 
-    //Adds the turnTimers to the enemies.
+    //Adds the turnTimers to the players.
     thePlayers.loadList(&playerTurnTimerList);
     SetTurnTimerListToCharacterList::setTurnTimerListToCharacterList(
         &thePlayers , &playerTurnTimerList);

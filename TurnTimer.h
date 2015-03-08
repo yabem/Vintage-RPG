@@ -8,7 +8,7 @@
 const int INNER_OFFSET = 3;
 const float DEFAULT_BAR_AMOUNT = DEFAULT_BAR_WIDTH - (INNER_OFFSET * 2);
 
-const float DEFAULT_SECONDS = 5;    //Time it takes for the bar to fill.
+const float DEFAULT_SECONDS = 2;    //Time it takes for the bar to fill.
 const float DEFAULT_FILL_RATE = DEFAULT_BAR_AMOUNT / (FPS * DEFAULT_SECONDS);
 const int DEFAULT_DRAWX = 100;
 const int DEFAULT_DRAWY = 100;

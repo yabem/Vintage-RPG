@@ -402,6 +402,12 @@
     <ClCompile Include="SetMenuListToCharacterList.cpp">
       <Filter>Source Files\List</Filter>
     </ClCompile>
+    <ClCompile Include="PauseBattle.cpp">
+      <Filter>Source Files\Animation\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="UnPauseBattle.cpp">
+      <Filter>Source Files\Animation\Derived Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleAction.h">
@@ -562,6 +568,12 @@
     </ClInclude>
     <ClInclude Include="SetMenuListToCharacterList.h">
       <Filter>Header Files\List</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseBattle.h">
+      <Filter>Header Files\Animation\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="UnPauseBattle.h">
+      <Filter>Header Files\Animation\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

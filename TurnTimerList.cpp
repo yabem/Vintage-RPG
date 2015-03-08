@@ -132,12 +132,15 @@ void TurnTimerList::updateTurnTimers(){
                 if(listOfCharTimers[i]->i_Creature->isPlayable()){
                 
                     battleManager->pauseBattle();
+                    battleManager->setCurrPlayer(i);
+
+                    //Load the players Menu for selection.
                     battleManager->loadMenu(menusList->getSelection(i));
                     listOfCharTimers[i]->turnTimer->resetCurrentFill();
                     return;
                 }
 
-                //Enemie's turn.
+                //Enemy's turn.
                 else{
                 //battleManager->loadMenu(listOfCharTimers[]
                 //

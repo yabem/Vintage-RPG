@@ -34,20 +34,6 @@ void Fire1::loadCharacters(Character *initiator ,
     this->initiator = initiator;
     this->receiver = receiver;
 }
-
-//Loads the two characters.
-//Pre:  Both Characters have valid stats.
-//Post: The initiator, receiver, and imageStore are loaded.
-void Fire1::initialize(Character *initiator , 
-    Character *receiver , ImageStore *imageStore , FontStore *fontStore ,
-    DrawRepository *drawRepository){
-    
-    this->initiator = initiator;
-    this->receiver = receiver;
-    this->imageStore = imageStore;
-    this->font = fontStore->getFont("default");
-    this->drawRepository = drawRepository;
-}
  
 //Initiates the attack action between the two Characters.
 //Pre:  Both characters have been loaded.
@@ -97,10 +83,13 @@ void Fire1::loadAnimations(){
     damageStay->initialize(theDamage , receiver->getX() , receiver->getY() , 
         receiver->getX() , receiver->getY());
                                     
+    UnPauseBattle *unPause = new UnPauseBattle(battleManager);
+
     //Load all the animations to the animations queue.
     drawRepository->loadAnimation(weaponAttack);
     drawRepository->loadAnimation(damage);
     drawRepository->loadAnimation(damageStay);   
+    drawRepository->loadAnimation(unPause);
 }
 
 //Calculates the damage to the receiver.

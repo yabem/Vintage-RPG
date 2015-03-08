@@ -3,12 +3,14 @@
 
 #pragma once
 #include <queue>
+#include "FontStore.h"
 class Character;
 class ImageStore;
 class FontStore;
 class Animation;
 class GameManager;
 class DrawRepository;
+class I_Manager;
 struct ALLEGRO_FONT;
 
 class CharacterManipulation{
@@ -21,6 +23,7 @@ protected:
     FontStore *fontStore;   //Used to retrieve the font.
     DrawRepository *drawRepository;    //Repository of animations.
     ALLEGRO_FONT *font;     //Font for the text.
+    I_Manager *battleManager;       //Used for pausing and unpausing.
 
 public:
 
@@ -32,7 +35,7 @@ public:
     //Initialize to defaults, must loadCharacters before use.
     virtual void initialize(Character *initiator , Character *receiver ,
         ImageStore *imageStore , FontStore *fontStore , 
-        DrawRepository *drawRepository);
+        DrawRepository *drawRepository , I_Manager *i_Manager);
     
     virtual void execute();             //Executes the manipulation.
 };

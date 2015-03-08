@@ -42,25 +42,18 @@ void CharacterManipulationStore::loadFontStore(FontStore *fontStore){
 //Loads the drawRepository.
 //Pre:  None.
 //Post: Loads the pointer to the drawRepository.
-void CharacterManipulationStore::loadDrawRepository(DrawRepository *drawRepository){
+void CharacterManipulationStore::loadDrawRepository(
+    DrawRepository *drawRepository){
 
     this->drawRepository = drawRepository;
 }
+//Loads the battleManager which is an I_Manager.
+//Pre:  None.
+//Post: Loads the specified I_Manager pointer.
+void CharacterManipulationStore::loadBattleManager(I_Manager *battleManager){
 
-/*
-//Generates and executes the manipulation.
-void CharacterManipulationStore::generateManipulation(Character *initiator ,
-    Character *receiver , std::string manipulation){
-        
-    switch(){
-
-        CharacterAttack characterAttack;
-        characterAttack.loadAttack(initiator , receiver ,
-            imageStore , font18);
-        characterAttack.execute();
-    } 
+    this->battleManager = battleManager;
 }
-*/
 
 //Load a single CharacterManipulation to the store.
 //Pre:  The charManip is valid.
@@ -85,28 +78,29 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
 
     CharacterManipulation *charManip = new CharacterAttack;
 
+    //add i_Manager *battleManager here
     charManip->initialize(NULL , NULL , imageStore , fontStore , 
-        drawRepository);
+        drawRepository , battleManager);
     loadManipulation("Attack" , charManip);
 
     charManip = new ThrowRock;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
-        drawRepository);
+        drawRepository , battleManager);
     loadManipulation("Rock" , charManip);
 
     charManip = new Fire1;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
-        drawRepository);
+        drawRepository , battleManager);
     loadManipulation("Fire1" , charManip);
 
     charManip = new Fire2;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
-        drawRepository);
+        drawRepository , battleManager);
     loadManipulation("Fire2" , charManip);
 
     charManip = new Fire3;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
-        drawRepository);
+        drawRepository , battleManager);
     loadManipulation("Fire3" , charManip);
 }
 
@@ -160,4 +154,25 @@ void CharacterManipulationStore::executeRandomManipulation(Character *initiator 
     CharacterManipulation *charManip = getManip(iter->first);
     charManip->loadCharacters(initiator , receiver);
     charManip->execute();
+}
+
+//Determines if the selection is valid.
+//Pre:  None.
+//Post: Returns true if the manipulation is within the store. Returns false
+//      otherwise.
+bool CharacterManipulationStore::isValidManipulation(std::string manipulation){
+
+    //Create iterator for testing if the element exists.
+    std::map<std::string , CharacterManipulation*>::iterator iter
+        = characterManipulations.begin();
+
+    iter = characterManipulations.find(manipulation);
+
+    if(iter == characterManipulations.end()){
+
+        //Element not found, return false.
+        return false;
+    }
+
+    else return true;
 }

@@ -14,6 +14,7 @@
 #include "Fire1.h"
 #include "Fire2.h"
 #include "Fire3.h"
+#include "I_Manager.h"
 class Character;
 class ImageStore;
 class DrawRepository;
@@ -25,6 +26,7 @@ private:
     ImageStore *imageStore;
     FontStore *fontStore;
     GameManager *gameManager;
+    I_Manager *battleManager;
     DrawRepository *drawRepository;
 
     void addAllManipulations();     //Adds all the manipulations to the store.
@@ -41,6 +43,7 @@ public:
     void loadGameManager(GameManager *gameManager);
     void loadFontStore(FontStore*fontStore);
     void loadDrawRepository(DrawRepository *drawRepository);
+    void loadBattleManager(I_Manager *battleManager);
 
     //Load a single CharacterManipulation to the store.
     void loadManipulation(std::string name , 
@@ -58,4 +61,7 @@ public:
 
     //Executes a random manipulation.
     void executeRandomManipulation(Character *initiator , Character *receiver);
+
+    //Determines if the selection is valid.
+    bool isValidManipulation(std::string manipulation);
 };

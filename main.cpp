@@ -110,19 +110,28 @@ int main(int argc, char **argv){
    Character thePlayer4(imageStore.getBitMap("mage") , 32 , 32 , 30 , 2 , rate);
 
    thePlayer.loadAbilities("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
-   thePlayer2.loadAbilities("Attack,Special|Upper Cut;Jump,Item|Potion,Antidote,Herb;Run;");
-   thePlayer3.loadAbilities("Attack,Special|Upper Cut;Jump,Item|Potion,Antidote,Herb;Run;");
-   thePlayer4.loadAbilities("Attack,Special|Upper Cut;Jump,Item|Potion,Antidote,Herb;Run;");
+   thePlayer2.loadAbilities("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
+   thePlayer3.loadAbilities("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
+   thePlayer4.loadAbilities("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
    
    CharacterList thePlayers;
    thePlayers.loadChar(&thePlayer);
    thePlayers.loadChar(&thePlayer2);
    thePlayers.loadChar(&thePlayer3);
-   //thePlayers.loadChar(&thePlayer4);
+   thePlayers.loadChar(&thePlayer4);
 
    //Character stats
    CharStats playerStats(1 ,25 , 10 , 100 , 10 , 1 , 100 , 10);
    thePlayer.setStats(&playerStats);
+
+   CharStats playerStats2(1 ,25 , 10 , 100 , 10 , 1 , 100 , 10);
+   thePlayer2.setStats(&playerStats);
+
+   CharStats playerStats3(1 ,25 , 10 , 100 , 10 , 1 , 100 , 10);
+   thePlayer3.setStats(&playerStats);
+
+   CharStats playerStats4(1 ,25 , 10 , 100 , 10 , 1 , 100 , 10);
+   thePlayer4.setStats(&playerStats);
 
    //Animations queue
    queue<Animation*> animations;
@@ -263,6 +272,8 @@ int main(int argc, char **argv){
     FontStore fontStore;
     fontStore.loadAllDefaultFonts();
 
+    BattleManager battleManager;
+
     DrawRepository drawRepository;
 
     CharacterManipulationStore characterManipulationStore;
@@ -270,11 +281,10 @@ int main(int argc, char **argv){
     characterManipulationStore.loadGameManager(&gameManager);
     characterManipulationStore.loadDrawRepository(&drawRepository);
     characterManipulationStore.loadFontStore(&fontStore);
+    characterManipulationStore.loadBattleManager(&battleManager);
     characterManipulationStore.loadAllDefaultManipulations();
 
-    BattleManager battleManager;
     battleManager.loadCursor(&cursor);
-    battleManager.loadMenu(&menu);
     battleManager.loadGameManager(&gameManager);
     battleManager.loadCharacterManipulationStore(&characterManipulationStore);
 
@@ -309,62 +319,39 @@ int main(int argc, char **argv){
 
 //////////////////////////////////////////Cutscene/////////////////////////////
             
-            if(!gameManager.cutscenesEmpty()){
+            if(!gameManager.cutscenesEmpty())
                 gameManager.playCutscenes();
-            }
 
 //////////////////////////////////////////Battle///////////////////////////////
             else if(gameManager.isBattle()){
 
                 //Check for end of battle.
-                if(gameManager.isKeyActive(Q) == TRUE 
-                    || !battleManager.enemiesRemaining()){    
-
-                    //Delete turnTimer list.
+                if(!battleManager.enemiesRemaining())
                     battleManager.playersVictory();
-                }
-                
+
                 //The battle continues.
                 else{
                     
-                    //Draw map.
+                    //Draw map, players, and enemies.
                     Draw::drawBattle(theBattleMap , 
                         battleManager.getPlayersList() ,
                         battleManager.getEnemiesList());
 
-                    //Testing TurnTimerList
+                    //Update TurnTimerList
                     battleManager.updateTurnTimers();
-                    
-                    //Testing submenus.
-                    if(gameManager.getPressedKey() == U){
-                        
-                        Draw::removeAllSubMenus(battleManager.getMenuList());
-                        battleManager.loadMenu(&menu2);
-                    }
-
-                    //Set the menus draw location.
-                    battleManager.placeMenuToLeftOfCharacter
-                        (gameManager.getFrontPlayer());
 
                     //Draw cursor.
                     battleManager.drawCursor();
                     
                     //Draw battle menus.
                     Draw::drawMenus(battleManager.getMenuList());
-                    battleManager.moveMenuCursor();
 
                     //Play animations.
-                    if(!drawRepository.animationsEmpty()){
-
-                        battleManager.pauseBattle();
-                        drawRepository.playAllAnimations();
+                    if(drawRepository.playAllAnimations()){
                         
                         //Delete enemy after animation if it is dead.
                         if(drawRepository.animationsEmpty())
-                            battleManager.deleteDeadCurrEnemy();
-
-                        if(drawRepository.animationsEmpty())
-                            battleManager.unPauseBattle();
+                            battleManager.deleteCurrEnemyIfDead();
                     }
 
                     else battleManager.consumePlayerInput();

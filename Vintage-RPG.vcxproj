@@ -86,6 +86,7 @@
     <ClCompile Include="I_Manager.cpp" />
     <ClCompile Include="I_List.cpp" />
     <ClCompile Include="MenuList.cpp" />
+    <ClCompile Include="PauseBattle.cpp" />
     <ClCompile Include="ratAI.cpp" />
     <ClCompile Include="SetMenuListToCharacterList.cpp" />
     <ClCompile Include="SetTurnTimerListToCharacterList.cpp" />
@@ -119,6 +120,7 @@
     <ClCompile Include="ThrowRock.cpp" />
     <ClCompile Include="TransferAnimations.cpp" />
     <ClCompile Include="TurnTimerList.cpp" />
+    <ClCompile Include="UnPauseBattle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -141,6 +143,7 @@
     <ClInclude Include="I_List.h" />
     <ClInclude Include="I_Manager.h" />
     <ClInclude Include="MenuList.h" />
+    <ClInclude Include="PauseBattle.h" />
     <ClInclude Include="ratAI.h" />
     <ClInclude Include="SetMenuListToCharacterList.h" />
     <ClInclude Include="SetTurnTimerListToCharacterList.h" />
@@ -174,6 +177,7 @@
     <ClInclude Include="ThrowRock.h" />
     <ClInclude Include="TransferAnimations.h" />
     <ClInclude Include="TurnTimerList.h" />
+    <ClInclude Include="UnPauseBattle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

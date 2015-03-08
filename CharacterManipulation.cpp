@@ -14,10 +14,16 @@ CharacterManipulation::~CharacterManipulation(){
 //Sets the character information.
 void CharacterManipulation::initialize(Character *initiator , 
     Character *receiver , ImageStore *imageStore , 
-    FontStore *fontStore , DrawRepository *drawRepository){
+    FontStore *fontStore , DrawRepository *drawRepository,
+    I_Manager *i_Manager){
 
-        //Fill in later
-   }
+     this->initiator = initiator;
+    this->receiver = receiver;
+    this->imageStore = imageStore;
+    this->font = fontStore->getFont("default");
+    this->drawRepository = drawRepository;
+    this->battleManager = i_Manager;
+}
 
 //Loads the Characters.
 void CharacterManipulation::loadCharacters(Character *initiator ,

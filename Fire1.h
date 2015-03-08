@@ -12,6 +12,7 @@
 #include "ImageStore.h"
 #include "FontStore.h"
 #include "DrawRepository.h"
+#include "UnPauseBattle.h"
 
 class Fire1 : public CharacterManipulation{
 
@@ -26,11 +27,6 @@ public:
 
     //Loads the Characters.
     void loadCharacters(Character *initiator , Character *receiver);
-
-    //Initiates the attack between the two characters.
-    void initialize(Character *initiator , Character *receiver ,
-        ImageStore *imageStore , FontStore *fontStore , 
-        DrawRepository *drawRepository);
 
     //Initiates the attack action between the two characters.
     void execute();   
