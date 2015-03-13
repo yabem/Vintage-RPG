@@ -81,13 +81,13 @@ void CharacterAttack::loadAnimations(){
     damageStay->initialize(theDamage , receiver->getX() , receiver->getY() , 
         receiver->getX() , receiver->getY());
                                     
-    UnPauseBattle *unPause = new UnPauseBattle(battleManager);
+   // UnPauseBattle *unPause = new UnPauseBattle(battleManager);
 
     //Load all the animations to the animations queue.
     drawRepository->loadAnimation(weaponAttack);
     drawRepository->loadAnimation(damage);
     drawRepository->loadAnimation(damageStay);   
-    drawRepository->loadAnimation(unPause);
+    //drawRepository->loadAnimation(unPause);
 }
 
 //Calculates the damage to the receiver.

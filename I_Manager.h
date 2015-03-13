@@ -1,6 +1,11 @@
 #pragma once
+
+#include <stdio.h>
 class CharacterList;
 class Menu;
+class CharacterManipulationStore;
+class DrawRepository;
+class I_Event;
 
 class I_Manager{
 
@@ -37,4 +42,22 @@ public:
 
     //Used to load a Menu in TurnTimerList.
     virtual void loadMenu(Menu *menu);
+
+    //Used to load an I_Event for the TurnTimerList.
+    virtual void loadEvent(I_Event *i_Event);
+
+    //Used for the AI.
+    virtual CharacterManipulationStore* getCharManipStore();
+
+    //Used for AI.
+    virtual DrawRepository* getDrawRepository();
+
+    //Returns the enemies list.
+    virtual CharacterList* getEnemiesList();
+
+    //Returns the players list.
+    virtual CharacterList* getPlayersList();
+
+    //Used for PlayerEvent.
+    virtual bool emptyMenus();
 };

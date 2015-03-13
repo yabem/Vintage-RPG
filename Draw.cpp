@@ -43,19 +43,20 @@ void Draw::drawArea(const AreaMap &areaMap , const Character &character){
 }
 
 //Draw the battle with the map and the characters and enemies.
-void Draw::drawBattle(Map &map , vector<Character*> characters , vector<Character*> enemies){
+void Draw::drawBattle(Map &map , I_List *thePlayers , 
+    I_List *theEnemies){
 
     //Draw layers.
     for(int i = 0 ; i < map.getNumLayers() ; i++) 
         map.getLayer(i).draw();
 
     //Draw characters.
-    for(unsigned int i = 0 ; i < characters.size() ; i++) 
-        characters[i]->draw();
+    for(unsigned int i = 0 ; i < thePlayers->getSize() ; i++)
+        thePlayers->getCharacterSelection(i)->draw();
 
     //Draw enemies.
-    for(unsigned int i = 0 ; i < enemies.size() ; i++) 
-        enemies[i]->draw();
+    for(unsigned int i = 0 ; i < theEnemies->getSize() ; i++) 
+        theEnemies->getCharacterSelection(i)->draw();
 
     //Draw sceneries.
     for(int i = 0 ; i < map.getNumSceneries() ; i++)
@@ -95,6 +96,9 @@ void Draw::drawCharListForBattle(CharacterList *characterList){
 //      the draw method on each Menu until the end of the list
 //      is reached.
 void Draw::drawMenus(vector<Menu*> menus){
+
+    if(menus.size() == 1)
+        int i = 0;
 
     if(menus.empty())
         return;

@@ -5,6 +5,7 @@
 #include "Map.h"
 #include "AreaMap.h"
 #include "Character.h"
+#include "I_List.h"
 #include "CharacterList.h"
 #include <vector>
 #include "Menu.h"
@@ -14,8 +15,10 @@ namespace Draw{
 
     void drawArea(const AreaMap &areaMap);
     void drawArea(const AreaMap &areaMap , const Character &character);
-    void drawBattle(Map &map , vector<Character*> characters ,
-        vector<Character*> enemies);
+    void drawBattle(Map &map , I_List *thePlayers , 
+        I_List *theEnemies);
+        //vector<Character*> characters ,
+        //vector<Character*> enemies);
     void drawBattle(Map &map);
     void drawCharListForBattle(CharacterList *characterList);
     

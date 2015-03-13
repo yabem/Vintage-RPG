@@ -77,7 +77,6 @@ Character::Character(ALLEGRO_BITMAP *bmap , int w , int h ,
 //Destructor.
 Character::~Character(){
 
-    destroyMenu();
 }
 
 //Return x value. 
@@ -440,7 +439,7 @@ void Character::executeRandomAttack(){
 //Post: 
 void Character::loadAbilities(std::string abilities){
 
-    this->abilities= abilities;
+    this->abilities = abilities;
 }
 
 //Creates the Menu.
@@ -471,13 +470,4 @@ std::string Character::getAbilities(){
 Menu* Character::getMenu(){
 
     return menu;
-}
-
-//Destroys the Menu.
-//Pre:  None.
-//Post: Destroys the Menu and reclaims the memory.
-void Character::destroyMenu(){
-
-  //  if(menu != NULL)
-      //  delete menu;
 }

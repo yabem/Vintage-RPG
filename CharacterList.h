@@ -38,6 +38,9 @@ public:
 
     //Returns a pointer to the currently selected enemy.
     Character* getCurrSelection();  
+
+    //Returns a pointer to the specified position.
+    Character* getCharacterSelection(int position);
     
     //Moves the current selection up the list of Characters.
     void moveSelectionUp();
@@ -61,7 +64,7 @@ public:
     bool isEmpty();
 
     //Returns the size of the list.
-    int getSize() const;
+    virtual int getSize() const;
 
     //Returns the list.
     std::vector<Character*> getList();

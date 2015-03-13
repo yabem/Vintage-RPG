@@ -291,6 +291,7 @@ int main(int argc, char **argv){
     battleManager.loadEnemyModel(imageStore.getBitMap("rat"));
     battleManager.loadEnemyModel(imageStore.getBitMap("wolf"));
     battleManager.loadEnemyModel(imageStore.getBitMap("soldier"));
+    battleManager.loadDrawRepository(&drawRepository);
 
     //Initialize starting position.
     Movement::setStart(*gameManager.player, theMap , STARTCOL , STARTROW);
@@ -336,6 +337,15 @@ int main(int argc, char **argv){
                     Draw::drawBattle(theBattleMap , 
                         battleManager.getPlayersList() ,
                         battleManager.getEnemiesList());
+
+                    
+                    if(!battleManager.emptyEvents()){
+                        battleManager.pauseBattle();
+                        battleManager.playCurrEvent();
+                        
+                        if(battleManager.emptyEvents())
+                            battleManager.unPauseBattle();
+                    }            
 
                     //Update TurnTimerList
                     battleManager.updateTurnTimers();

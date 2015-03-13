@@ -118,13 +118,16 @@ bool MenuList::deleteSelection(int position){
 void MenuList::deleteList(){
 
     std::vector<Menu*>::iterator menusIter
-        = listOfMenus.begin();
+        = (listOfMenus.begin());
+
+    int testing = 0;
 
     while(menusIter != listOfMenus.end()){
 
         delete (*menusIter);
         listOfMenus.erase(menusIter);
         menusIter = listOfMenus.begin();
+        testing++;
     }
 }
 

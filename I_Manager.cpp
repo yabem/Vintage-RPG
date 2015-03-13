@@ -18,3 +18,15 @@ void I_Manager::generatePlayers(CharacterList *characterList ,
         int maxNumberPlayers){}
 
 void I_Manager::loadMenu(Menu *menu){}
+
+void I_Manager::loadEvent(I_Event *i_Event){}
+
+CharacterManipulationStore* I_Manager::getCharManipStore(){return NULL;}
+
+DrawRepository* I_Manager::getDrawRepository(){return NULL;}
+
+CharacterList* I_Manager::getEnemiesList(){return NULL;}
+
+CharacterList* I_Manager::getPlayersList(){return NULL;}
+
+bool I_Manager::emptyMenus(){return false;}

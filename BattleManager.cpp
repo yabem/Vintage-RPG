@@ -6,6 +6,7 @@ BattleManager::BattleManager(){
     currentTarget = NO_TARGET;
     battleCursor = NULL;
     gameManager = NULL;
+    drawRepository = NULL;
     isBattlePaused = false;
 
     enemyTurnTimerList.loadManager(this);
@@ -66,6 +67,22 @@ void BattleManager::loadCharacterManipulationStore(CharacterManipulationStore
     *characterManipulationStore){
 
         this->characterManipulationStore = characterManipulationStore;
+}
+
+//Load DrawRepository.
+//Pre:  The DrawRepository is not NULL.
+//Post: The DrawRepository pointer is loaded to the BattleManager.
+void BattleManager::loadDrawRepository(DrawRepository *drawRepository){
+
+    this->drawRepository = drawRepository;
+}
+
+//Loads an I_Event.
+//Pre:  The I_Event is valid.
+//Post: The I_Event is loaded to the back of the events queue.
+void BattleManager::loadEvent(I_Event *i_Event){
+
+    events.push(i_Event);
 }
 
 //Loads a Menu to the BattleManager.
@@ -183,17 +200,29 @@ void BattleManager::setTargetToNoTarget(){
 //Returns the enemies list.
 //Pre:  None.
 //Post: Returns the vector to the CharacterList.
-std::vector<Character*> BattleManager::getEnemiesList(){
+CharacterList* BattleManager::getEnemiesList(){
 
-    return theEnemies.getList();
+    return &theEnemies;
 }
 
 //Returns the players list.
 //Pre:  None.
 //Post: Returns the vector to the CharacterList.
-std::vector<Character*> BattleManager::getPlayersList(){
+CharacterList* BattleManager::getPlayersList(){
 
-    return thePlayers.getList();
+    return &thePlayers;
+}
+
+//Retrieves a pointer to the CharacterManipulationStore.
+CharacterManipulationStore* BattleManager::getCharManipStore(){
+
+    return characterManipulationStore;
+}
+
+//Retrieves a pointer to the DrawRepository.
+DrawRepository* BattleManager::getDrawRepository(){
+
+    return drawRepository;
 }
 
 //Get current target.
@@ -484,9 +513,11 @@ bool BattleManager::enemiesRemaining(){
 void BattleManager::updateTurnTimers(){
 
     if(!isBattlePaused){
+        enemyTurnTimerList.updateTurnTimers();  
+    }
 
-        enemyTurnTimerList.updateTurnTimers();
-        playerTurnTimerList.updateTurnTimers();
+    if(!isBattlePaused){
+       playerTurnTimerList.updateTurnTimers(); 
     }
 
     enemyTurnTimerList.drawTurnTimers();
@@ -503,6 +534,8 @@ bool BattleManager::checkForBattle(){
         //Set battle flags to true.
         gameManager->battle = true;
 
+        unPauseBattle();
+
         //Load battle transition cutscene.
         BattleTrans *theBattle = new BattleTrans(gameManager->cutSceneMap ,
             gameManager->currMap , gameManager->player , gameManager , this);
@@ -510,6 +543,8 @@ bool BattleManager::checkForBattle(){
 
         //Create the enemies for the battle.
         generateEnemies(MAX_ENEMIES_PER_BATTLE);
+
+        //enemyTurnTimerList.loadDrawRepository(
 
         return true;
     }
@@ -590,6 +625,19 @@ CharacterList* BattleManager::getList(){
     return &thePlayers;
 }
 
+//Removes all the remaining events in the list.
+//Pre:  None.
+//Pro:  Cycles through the events queue and deletes all of the remaining
+//      events.
+void BattleManager::removeAllEvents(){
+
+    while(!events.empty()){
+
+      delete events.front();
+        events.pop();
+    }
+}
+
 /////////////////////////////////////Battle End////////////////////////////////
 
 //End of the battle, players won.
@@ -601,13 +649,16 @@ void BattleManager::playersVictory(){
     gameManager->generateVictoryCutScene();
 
     //Reset battle menus.
-    Draw::removeAllSubMenus(getMenuList());
+    //Draw::removeAllSubMenus(getMenuList());
+    Draw::removeAllMenus(getMenuList());
 
     //Draw final battle frame.
     Draw::drawArea(*gameManager->currMap , *gameManager->player);
 
     //Switch to map variables.
     //gameManager->switchVariablesToMap();
+
+    removeAllEvents();
 
     theEnemies.deleteList();
     thePlayers.deleteList();
@@ -632,3 +683,44 @@ bool BattleManager::battlePaused(){
 
     return isBattlePaused;
 }
+
+//Determines if there are Events.
+//Pre:  None.
+//Post: Returns true if there are no events left.
+//      Returns false if there are events left..
+bool BattleManager::emptyEvents(){
+
+    return events.empty();
+}
+
+//Determines if there are Menus left.
+//Pre:  None.
+//Post: Returns true if there are no Menus in the menus vector.
+//      Returns fase if there are Menus remaining.
+bool BattleManager::emptyMenus(){
+
+    return menus.empty();
+}
+
+//Plays all the I_Events in the I_Events queue.
+//Pre:  None.
+//Post: The I_Event at the front of the queue is played.
+//      Returns true if there are more events left to play.
+//      Returns false if there are no longer Events to play.
+bool BattleManager::playCurrEvent(){
+
+    if(events.empty())
+        return false;
+
+    else{
+        
+        //Pop off the event if it is complete.
+        if(events.front()->execute()){
+            delete events.front();
+            events.pop();
+        }
+        
+        return true;
+    }
+}
+

@@ -2,9 +2,10 @@
 //enemies, and variables.
 
 #pragma once
+#include <vector>
+#include <queue>
 #include "Cursor.h"
 #include "Character.h"
-#include <vector>
 #include "Menu.h"
 #include "Draw.h"
 #include "GameManager.h"
@@ -17,6 +18,8 @@
 #include "InitPlayers.h"
 #include "I_Manager.h"
 #include "MenuList.h"
+#include "I_Event.h"
+class DrawRepository;
 
 class BattleManager: public I_Manager{
 
@@ -32,6 +35,12 @@ private:
 
     //List of menus.
     vector<Menu*> menus;     
+
+    //Queue of events.
+    queue<I_Event*> events;
+    
+    //Passed through to TurnTimerLists.
+    DrawRepository *drawRepository;
 
     //List of players for the battle.
     CharacterList thePlayers;
@@ -90,6 +99,12 @@ public:
     void loadCharacterManipulationStore(CharacterManipulationStore 
         *CharacterManipulationStore);
 
+    //Load DrawRepository.
+    void loadDrawRepository(DrawRepository *drawRepository);
+
+    //Loads an Event.
+    void loadEvent(I_Event *i_Event);
+
     //Set menu draw location to character.
     void placeMenuToLeftOfCharacter(Character *character);
 
@@ -109,10 +124,18 @@ public:
     void setTargetToNoTarget();
 
     //Returns the enemies list.
-    std::vector<Character*> getEnemiesList();  
+    //std::vector<Character*> getEnemiesList();  
+    virtual CharacterList* getEnemiesList();
 
     //Returns the plaers list.
-    std::vector<Character*> getPlayersList();
+    //std::vector<Character*> getPlayersList();
+    virtual CharacterList* getPlayersList();
+
+    //Retrieves a pointer to the DrawRepository.
+    DrawRepository* getDrawRepository();
+
+    //Retrieves a pointer to the CharacterManipulationStore.
+    CharacterManipulationStore* getCharManipStore();
 
     //Return current target.
     int getCurrentTarget();
@@ -165,6 +188,9 @@ public:
     //Returns the charList.
     virtual CharacterList* getList();
 
+    //Removes all the events.
+    void removeAllEvents();
+
 /////////////////////////////////////Enemy Creator/////////////////////////////
     
     //Determines if a battle will occur.
@@ -190,4 +216,13 @@ public:
 
     //Determines if the battle is active.
     bool battlePaused();
+
+    //Determines if there are Events left.
+    bool emptyEvents();
+
+    //Determines if there are Menus left.
+    bool emptyMenus();
+
+    //Executes the events.
+    bool playCurrEvent();
 };

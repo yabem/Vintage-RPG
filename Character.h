@@ -16,8 +16,6 @@
 #include "I_Creature.h"
 #include "I_AI.h"
 #include "I_InfoBox.h"
-//#include "TextBox.h"
-//#include "Menu.h"
 class Menu;
 
 class Character: public I_Creature{
@@ -106,8 +104,7 @@ public:
     void loadAbilities(std::string abilities);  //Loads the choices for the Menu.
     void createMenu(Menu *menu);                //Creates the Menu.
     Menu* getMenu();                            //Retrieves the Menu.
-    std::string getAbilities();           //Gets abilities.
+    std::string getAbilities();                 //Gets abilities.
 
     virtual void executeRandomAttack();         //Executes a random attack.
-    void destroyMenu();                         //Destroys the Menu.
 };

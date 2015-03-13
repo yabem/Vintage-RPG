@@ -7,6 +7,11 @@
 #include "I_List.h"
 #include "I_Creature.h"
 #include "I_Manager.h"
+#include "ratAI.h"
+#include "EnemyTurn.h"
+#include "PlayerTurn.h"
+#include "ResetTurnTimer.h"
+class DrawRepository;
 
 class TurnTimerList : public I_List{    //Change name to CharacterTimerList
 
@@ -20,6 +25,9 @@ private:
 
     //Used for adding Menus to the BattleManager.
     I_Manager *battleManager;
+
+    //Used for creating Events.
+    DrawRepository *drawRepository;
 
     //Used for getting the Menus from the MenuList.
     I_List *menusList;
@@ -44,6 +52,9 @@ public:
     //Load I_List.
     void loadList(I_List *i_List);
 
+    //Load DrawRepository;
+    void loadDrawRepository(DrawRepository *drawRepository);
+
     //Returns a pointer to the currently selected enemy.
     TurnTimer* getCurrSelection();  
 
@@ -58,6 +69,9 @@ public:
 
     //Update turnTimers and resets if full.
     void updateTurnTimers();
+
+    //Reset turnTimer for specific position.
+    void resetTurnTimerAtPosition(int position);
 
     //Draw all timers.
     void drawTurnTimers();

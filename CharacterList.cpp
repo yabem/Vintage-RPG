@@ -24,7 +24,19 @@ Character* CharacterList::getCurrSelection(){
 
     else return NULL;
 }
-    
+ 
+//Returns the Character at the position.
+//Pre:  The position is within the bounds of the list.
+//Post: Returns a pointer to the Character. If not in the bounds
+//      of the list, returns NULL;
+Character* CharacterList::getCharacterSelection(int position){
+
+    if(position < 0 || position > charList.size())
+        return NULL;
+
+    else return charList[position];
+}
+
 //Moves the current selection up the list of Characters.
 //Pre:  None.
 //Post: Moves the currSelection pointer back one location.
@@ -184,7 +196,7 @@ bool CharacterList::deleteSelection(int position){
             }
         }
     
-        size++;
+        size--;
         return true;
     }
 }
@@ -212,4 +224,6 @@ void CharacterList::deleteAddedLists(){
         addedLists.erase(currList);
         currList = addedLists.begin();
     }
+
+    size = 0;
 }

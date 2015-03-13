@@ -17,6 +17,13 @@ void TurnTimerList::loadManager(I_Manager *i_Manager){
     this->battleManager = i_Manager;
 }
 
+
+//Loads the DrawRepository.
+void TurnTimerList::loadDrawRepository(DrawRepository *drawRepository){
+
+    this->drawRepository = drawRepository;
+}
+
 //Load I_List.
 //Pre:  None.
 //Post: Changes the menuList pointer to the list i_List is pointing to.
@@ -134,26 +141,74 @@ void TurnTimerList::updateTurnTimers(){
                     battleManager->pauseBattle();
                     battleManager->setCurrPlayer(i);
 
+                    //LoadMenu loadMenu(listOfCharTimers[i]->turnTimer->resetCurrentFill());
+                    //battleManager->loadEvent(loadMenu);
+
+                    //New version
+                    
+                    PlayerTurn *playerTurn = new PlayerTurn(battleManager ,
+                        menusList->getSelection(i));
+                    
+                    battleManager->loadEvent(playerTurn);
+
+                    ResetTurnTimer *resetTurnTimer = new ResetTurnTimer(
+                        listOfCharTimers[i]->turnTimer);
+
+                    battleManager->loadEvent(resetTurnTimer);
+                    
+                    int i = 0;
                     //Load the players Menu for selection.
-                    battleManager->loadMenu(menusList->getSelection(i));
-                    listOfCharTimers[i]->turnTimer->resetCurrentFill();
-                    return;
+                    //listOfCharTimers[i]->turnTimer->resetCurrentFill();
+
+                    //old version
+                    //battleManager->loadMenu(menusList->getSelection(i));
+                    //resetTurnTimerAtPosition(i);
+                    //return;
                 }
 
                 //Enemy's turn.
                 else{
+
+                    battleManager->pauseBattle();
+
+                    ratAI *theAI = new ratAI(battleManager->getCharManipStore() , 
+                        battleManager->getEnemiesList(),
+                        battleManager->getPlayersList());
+
+                    EnemyTurn *enemyTurn = new EnemyTurn(theAI , 
+                        battleManager->getDrawRepository());
+                    battleManager->loadEvent(enemyTurn);
+
+                    //theAI->executeBattleLogic();
+
+                    ResetTurnTimer *resetTurnTimer = new ResetTurnTimer(
+                        listOfCharTimers[i]->turnTimer);
+
+                    battleManager->loadEvent(resetTurnTimer);
+                                                            
+                    //resetTurnTimerAtPosition(i);
+                    //listOfCharTimers[i]->turnTimer->resetCurrentFill();
+
                 //battleManager->loadMenu(listOfCharTimers[]
                 //
                 //loadMenu(listOfCharTimers[i]->i_creature->getmenus());
                 //battleManager->loadMenu(listOfCharTimers[i]->i_Creature->getMenu();
                 //Resets the timer.
-                listOfCharTimers[i]->turnTimer->resetCurrentFill();
+                
                 //listOfCharTimers[i]->i_Creature->
                 }
                 //listOfCharTimers[i]->character->executeTurn();
             }
         }
     }
+}
+
+//Resets the turnTimer for the timer in the position.
+//Pre:  The position is within the bounds of the vector.
+//Post: Accesses the vector to get the timer then resets it.
+void TurnTimerList::resetTurnTimerAtPosition(int position){
+
+    listOfCharTimers[position]->turnTimer->resetCurrentFill();
 }
 
 //Draw all timers.

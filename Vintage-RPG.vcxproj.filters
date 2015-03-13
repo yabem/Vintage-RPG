@@ -247,6 +247,24 @@
     <Filter Include="Source Files\Animation\Base Class">
       <UniqueIdentifier>{908e79d2-d322-4919-86e7-fe29bbff87dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Event">
+      <UniqueIdentifier>{92aaa502-8f8e-4612-ac3f-c22c716309d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Event\Base Class">
+      <UniqueIdentifier>{be5e67ad-2e4c-4528-b8c5-43fba73d0a44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Event\Derived Class">
+      <UniqueIdentifier>{0ecd901b-22b1-4dcc-a157-1e0d8693963d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Event">
+      <UniqueIdentifier>{cb16a47f-f621-40f1-9edf-0c0c47380ad5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Event\Base Class">
+      <UniqueIdentifier>{ed765b99-dec5-4d01-80f9-8f1bd32db792}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Event\Derived Class">
+      <UniqueIdentifier>{9ec6b890-aa00-42eb-a45f-bc3ee1f9f102}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -407,6 +425,18 @@
     </ClCompile>
     <ClCompile Include="UnPauseBattle.cpp">
       <Filter>Source Files\Animation\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="I_Event.cpp">
+      <Filter>Source Files\Event\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyTurn.cpp">
+      <Filter>Source Files\Event\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerTurn.cpp">
+      <Filter>Source Files\Event\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ResetTurnTimer.cpp">
+      <Filter>Source Files\Event\Derived Class</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -574,6 +604,18 @@
     </ClInclude>
     <ClInclude Include="UnPauseBattle.h">
       <Filter>Header Files\Animation\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="I_Event.h">
+      <Filter>Header Files\Event\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyTurn.h">
+      <Filter>Header Files\Event\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerTurn.h">
+      <Filter>Header Files\Event\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ResetTurnTimer.h">
+      <Filter>Header Files\Event\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
