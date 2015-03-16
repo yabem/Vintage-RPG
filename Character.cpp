@@ -397,7 +397,7 @@ int Character::move(bool *keys , int keyPressed){
 //Returns the dead status of the Character.
 bool Character::isDead(){
 
-    return this->getStats()->isDead();
+    return getStats()->isDead();
 }
 
 //Makes the Character Playable.
@@ -414,6 +414,7 @@ void Character::makePlayable(){
 //      dead status to true.
 void Character::makeDead(){
 
+    facing = DEAD;
     stats->makeDead();
 }
 

@@ -133,6 +133,7 @@ void CharacterManipulationStore::executeManipulation(Character *initiator ,
     Character *receiver , std::string manipulation){
 
     CharacterManipulation *charManip = getManip(manipulation);
+
     charManip->loadCharacters(initiator , receiver);
     charManip->execute();
 }

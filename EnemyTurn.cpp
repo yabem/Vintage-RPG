@@ -1,10 +1,23 @@
 #include "EnemyTurn.h"
 
 //Constructor.
-EnemyTurn::EnemyTurn(I_AI *i_AI , DrawRepository *drawRepository){
+EnemyTurn::EnemyTurn(Character *enemy ,
+        DrawRepository *drawRepository ,
+        CharacterManipulationStore *characterManipulationStore ,
+        I_List *listOfPlayers ,
+        I_List *listOfEnemies , 
+        I_Manager *battleManager,
+        TurnTimer *turnTimer){
 
-    this->i_AI = i_AI;
+    this->enemy = enemy;
     this->drawRepository = drawRepository;
+    this->characterManipulationStore = characterManipulationStore;
+    this->listOfPlayers = listOfPlayers;
+    this->listOfEnemies = listOfEnemies;
+    this->i_AI = NULL;
+    this->battleManager = battleManager;
+    this->turnTimer = turnTimer;
+
     this->isExecuted = false;
 }
 
@@ -19,17 +32,31 @@ EnemyTurn::~EnemyTurn(){
 //Post: Returns false if not done. Returns true if done.
 bool EnemyTurn::execute(){
 
-    //Execute for the first time.
-    if(!isExecuted){
-        i_AI->executeBattleLogic();
-        isExecuted = true;
-        return false;
+    //Execute the EnemyLogic.
+    ratAI *i_AI = new ratAI(enemy ,
+        characterManipulationStore , 
+        listOfPlayers ,
+        listOfEnemies ,
+        drawRepository);
+
+    ProcessAI *processAI = new ProcessAI(i_AI , drawRepository);
+    battleManager->loadEvent(processAI);
+
+    //Check if any players died after the enemyAI.
+    for(int i = 0 ; i < listOfPlayers->getSize() ; i++){
+
+        CheckForDeadPlayer *checkForDeadPlayer = new CheckForDeadPlayer(
+            listOfPlayers->getCharacterSelection(i) , 
+            drawRepository);
+
+        battleManager->loadEvent(checkForDeadPlayer);
     }
 
-    //Enemy turn is not done yet.
-    else if(!drawRepository->animationsEmpty())
-        return false;  
-    
-    //Execution is complete.
-    else return true;
+    //Load the ResetTurnTimer event.
+    ResetTurnTimer *resetTurnTimer = new ResetTurnTimer(turnTimer);
+    battleManager->loadEvent(resetTurnTimer);
+
+    isExecuted = true;
+
+    return true;
 }

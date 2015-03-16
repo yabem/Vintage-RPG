@@ -3,6 +3,8 @@
 #pragma once
 #include <string>
 
+class Stats;
+
 class I_Creature{
 
 private:
@@ -14,6 +16,9 @@ public:
     virtual int getH() const = 0;
     virtual std::string getAbilities();
     virtual bool isPlayable() const; 
+    virtual bool isDead();
+    virtual Stats* getStats();
+    virtual void makeDead();
 
     virtual void executeRandomAttack() = 0;
 };

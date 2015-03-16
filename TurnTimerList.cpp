@@ -127,77 +127,40 @@ void TurnTimerList::updateTurnTimers(){
     if(battleManager->battlePaused())
         return;
 
-    else{
-        for(int i = 0 ; i < listOfCharTimers.size() ; i++){
+    else for(int i = 0 ; i < listOfCharTimers.size() ; i++){
         
-            listOfCharTimers[i]->turnTimer->updateCurrentFill();
-            //listOfCharTimers[i]->turnTimer->draw();
+        listOfCharTimers[i]->turnTimer->updateCurrentFill();
                 
-            if(listOfCharTimers[i]->turnTimer->innerBarIsFull()){
+        if(listOfCharTimers[i]->turnTimer->innerBarIsFull()){
          
-                //Player's turn.
-                if(listOfCharTimers[i]->i_Creature->isPlayable()){
+            //Player's turn.
+            if(listOfCharTimers[i]->i_Creature->isPlayable()){
+                                        
+                //Load the PlayerTurn.
+                PlayerTurn *playerTurn = new PlayerTurn(i , battleManager ,
+                    menusList->getSelection(i) , listOfCharTimers[i]->turnTimer);
                 
-                    battleManager->pauseBattle();
-                    battleManager->setCurrPlayer(i);
+                battleManager->loadEvent(playerTurn);
+            }
 
-                    //LoadMenu loadMenu(listOfCharTimers[i]->turnTimer->resetCurrentFill());
-                    //battleManager->loadEvent(loadMenu);
-
-                    //New version
-                    
-                    PlayerTurn *playerTurn = new PlayerTurn(battleManager ,
-                        menusList->getSelection(i));
-                    
-                    battleManager->loadEvent(playerTurn);
-
-                    ResetTurnTimer *resetTurnTimer = new ResetTurnTimer(
-                        listOfCharTimers[i]->turnTimer);
-
-                    battleManager->loadEvent(resetTurnTimer);
-                    
-                    int i = 0;
-                    //Load the players Menu for selection.
-                    //listOfCharTimers[i]->turnTimer->resetCurrentFill();
-
-                    //old version
-                    //battleManager->loadMenu(menusList->getSelection(i));
-                    //resetTurnTimerAtPosition(i);
-                    //return;
-                }
-
-                //Enemy's turn.
-                else{
-
-                    battleManager->pauseBattle();
-
-                    ratAI *theAI = new ratAI(battleManager->getCharManipStore() , 
-                        battleManager->getEnemiesList(),
-                        battleManager->getPlayersList());
-
-                    EnemyTurn *enemyTurn = new EnemyTurn(theAI , 
-                        battleManager->getDrawRepository());
-                    battleManager->loadEvent(enemyTurn);
-
-                    //theAI->executeBattleLogic();
-
-                    ResetTurnTimer *resetTurnTimer = new ResetTurnTimer(
-                        listOfCharTimers[i]->turnTimer);
-
-                    battleManager->loadEvent(resetTurnTimer);
-                                                            
-                    //resetTurnTimerAtPosition(i);
-                    //listOfCharTimers[i]->turnTimer->resetCurrentFill();
-
-                //battleManager->loadMenu(listOfCharTimers[]
-                //
-                //loadMenu(listOfCharTimers[i]->i_creature->getmenus());
-                //battleManager->loadMenu(listOfCharTimers[i]->i_Creature->getMenu();
-                //Resets the timer.
+            //Enemy's turn.
+            else{
                 
-                //listOfCharTimers[i]->i_Creature->
-                }
-                //listOfCharTimers[i]->character->executeTurn();
+                battleManager->setCurrEnemy(i);
+
+                //Load the EnemyTurn.
+                EnemyTurn *enemyTurn = new EnemyTurn(
+                    battleManager->getCurrEnemy() ,
+                    battleManager->getDrawRepository() ,
+                    battleManager->getCharManipStore() ,
+                    battleManager->getPlayersList() ,
+                    battleManager->getEnemiesList() ,
+                    battleManager , 
+                    listOfCharTimers[i]->turnTimer);
+
+                battleManager->loadEvent(enemyTurn);
+                    
+                battleManager->getEnemiesList()->resetSelection();
             }
         }
     }

@@ -78,7 +78,7 @@ public:
     int getAttack() const;                      //Returns the attack stat for the Character.
     int getDefense() const;                     //Returns the defense stat for the Character.
     void addToRemainingHP(int amount);          //Adds the value to the Character's remaining hitpoints.
-    bool isDead();                              //Returns the dead status of the Character.
+    virtual bool isDead();                      //Returns the dead status of the Character.
     void makePlayable();                        //Makes the Character Playable.
     void makeDead();                            //Makes the Character dead.
     void makeAlive();                           //Makes the Character alive.

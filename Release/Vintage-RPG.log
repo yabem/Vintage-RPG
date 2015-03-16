@@ -1,0 +1,88 @@
+﻿Build started 3/13/2015 12:51:03 PM.
+     1>Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\RPG.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt BattleManager.cpp CharacterManipulationStore.cpp GameManager.cpp SetTurnTimerListToCharacterList.cpp TurnTimerList.cpp main.cpp ratAI.cpp
+         BattleManager.cpp
+         CharacterManipulationStore.cpp
+         GameManager.cpp
+     1>GameManager.cpp(62): warning C4018: '>=' : signed/unsigned mismatch
+     1>GameManager.cpp(75): warning C4018: '>=' : signed/unsigned mismatch
+         SetTurnTimerListToCharacterList.cpp
+         TurnTimerList.cpp
+     1>TurnTimerList.cpp(130): warning C4018: '<' : signed/unsigned mismatch
+     1>TurnTimerList.cpp(193): warning C4018: '<' : signed/unsigned mismatch
+         main.cpp
+         ratAI.cpp
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.exe" /NOLOGO /LIBPATH:c:\allegro\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro-5.0.10-monolith-mt.lib" /MANIFEST /ManifestFile:"Release\RPG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.lib" /MACHINE:X86 Release\Animation.obj
+         Release\AreaMap.obj
+         Release\BattleAction.obj
+         Release\BattleManager.obj
+         Release\BattleMap.obj
+         Release\Character.obj
+         Release\CharacterAttack.obj
+         Release\CharacterTimer.obj
+         Release\EnemyTurn.obj
+         Release\Fire1.obj
+         Release\Fire2.obj
+         Release\Fire3.obj
+         Release\InitPlayers.obj
+         Release\I_AI.obj
+         Release\I_Creature.obj
+         Release\I_Event.obj
+         Release\I_InfoBox.obj
+         Release\I_Manager.obj
+         Release\I_List.obj
+         Release\MenuList.obj
+         Release\PauseBattle.obj
+         Release\PlayerTurn.obj
+         Release\ratAI.obj
+         Release\ResetTurnTimer.obj
+         Release\SetMenuListToCharacterList.obj
+         Release\SetTurnTimerListToCharacterList.obj
+         Release\TurnTimer.obj
+         Release\CharacterList.obj
+         Release\CharacterManipulation.obj
+         Release\CharacterManipulationStore.obj
+         Release\CharFactory.obj
+         Release\CharStats.obj
+         Release\Collision.obj
+         Release\Controls.obj
+         Release\Cursor.obj
+         Release\Cutscene.obj
+         Release\Draw.obj
+         Release\DrawRespository.obj
+         Release\FontStore.obj
+         Release\GameManager.obj
+         Release\ImageStore.obj
+         Release\InitEnemies.obj
+         Release\Layer.obj
+         Release\main.obj
+         Release\Map.obj
+         Release\Menu.obj
+         Release\Movement.obj
+         Release\MovingImage.obj
+         Release\MovingText.obj
+         Release\Scenery.obj
+         Release\Stats.obj
+         Release\Tangible.obj
+         Release\TextBox.obj
+         Release\ThrowRock.obj
+         Release\TransferAnimations.obj
+         Release\TurnTimerList.obj
+         Release\UnPauseBattle.obj
+         Generating code
+         Finished generating code
+         Vintage-RPG.vcxproj -> C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.exe;#1" /manifest Release\RPG.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\RPG.unsuccessfulbuild".
+         Touching "Release\RPG.lastbuildstate".
+     1>Done Building Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:06.09

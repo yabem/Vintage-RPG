@@ -41,11 +41,23 @@ bool MovingImage::play(){
         dx += xRate;
         dy += yRate;
 
-        //Draw bitmap to the buffer.
-        al_draw_bitmap_region(bmap , 
-            BMAPXSTART , BMAPYSTART ,             //X and y draw from on bitmap.
-            w , h ,                               //X and y draw to on bitmap.
-            dx , dy , 0);                         //X and y draw to on buffer.
+        if(sx < ex){
+
+            //Draw bitmap to the buffer.
+            al_draw_rotated_bitmap(bmap , 
+                w / 2 , h / 2,  //Center point for rotation.
+                dx , dy ,       //X and y draw location on bitmap.
+                PI  , 0);       //Rotation amount in radians.
+        }
+
+        else{
+
+            //Draw bitmap to the buffer.
+            al_draw_bitmap_region(bmap , 
+                BMAPXSTART , BMAPYSTART ,       //X and y draw from on bitmap.
+                w , h ,                         //X and y draw to on bitmap.
+                dx , dy , 0);                   //X and y draw to on buffer.
+        }
     }
 
     return result;

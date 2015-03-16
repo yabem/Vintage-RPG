@@ -14,6 +14,8 @@ bool I_Manager::battlePaused(){return false;}
 
 void I_Manager::setCurrPlayer(int position){}
 
+void I_Manager::setCurrEnemy(int position){}
+
 void I_Manager::generatePlayers(CharacterList *characterList , 
         int maxNumberPlayers){}
 
@@ -30,3 +32,11 @@ CharacterList* I_Manager::getEnemiesList(){return NULL;}
 CharacterList* I_Manager::getPlayersList(){return NULL;}
 
 bool I_Manager::emptyMenus(){return false;}
+
+Character* I_Manager::getCurrEnemy(){return NULL;}
+
+int I_Manager::getPressedKey() const{return 0;}
+
+void I_Manager::setPressedKeyToInactive(){}
+
+void I_Manager::setEndOfGameLoopToEnd(){}

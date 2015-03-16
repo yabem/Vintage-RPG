@@ -22,22 +22,6 @@ Animation::Animation(){
 //Constructor with parameters.
 Animation::Animation(int w , int h , float ttlFrames){
 
-    /*
-    //this->bmap = bmap;
-    this->w = w;
-    this->h = h;
-    this->sx = 0;
-    this->sy = 0;
-    this->dx = 0;
-    this->dy = 0;
-    this->ex = 0;
-    this->ey = 0;
-    this->xRate = 0;
-    this->yRate = 0;
-    this->ttlFrames = ttlFrames;
-    this->currFrame = 0;
-    this->initialized = false;
-    */
 }
 
 Animation::~Animation(){
@@ -45,13 +29,11 @@ Animation::~Animation(){
     //Default is fine.
 }
 
-
 //Draws the animaton. Returns false if not complete. Returns true if complete.
 bool Animation::play(){
 
     return false;
 }
-
 
 //Initialize the start and end locations.
 void Animation::initialize(int sx , int sy , int ex , int ey){
@@ -67,4 +49,5 @@ void Animation::initialize(int sx , int sy , int ex , int ey){
     this->yRate = (ey - sy) / ttlFrames;
 
     this->initialized = true;
+    this->rotate180Rads = atan2(double(sx - ex) , double(sy - ey));
 }

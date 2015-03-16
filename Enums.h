@@ -16,6 +16,7 @@ const int MAX_ENEMIES_PER_BATTLE = 4; //Total number of enemies per battle.
 const int MAX_PLAYERS_PER_BATTLE = 4;
 const int MAX_ENEMY_LEVEL = 3;
 const int DIRECTIONS = 4; //Used for collision creation.
+const int DEAD = 4; //Used to set the facing direction to dead.
 
 const int FPS = 60;
 const int rate = 4;

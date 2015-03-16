@@ -145,12 +145,6 @@
     <Filter Include="Header Files\Character\Stats">
       <UniqueIdentifier>{ae5d5e5c-9125-4a7f-8556-ac50d4149e8e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Character\Stats\SuperClass">
-      <UniqueIdentifier>{6e2f23ca-cc55-4dfc-8764-cd06ea78ba9c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Character\Stats\SubClass">
-      <UniqueIdentifier>{1c16c4fd-d3da-4797-a26f-1ce9d3a9a5f4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Scenery">
       <UniqueIdentifier>{a60268b4-32ff-48d8-a38b-544bad140b6f}</UniqueIdentifier>
     </Filter>
@@ -159,12 +153,6 @@
     </Filter>
     <Filter Include="Source Files\Character\Stats">
       <UniqueIdentifier>{6a165bd6-cbff-4998-87d3-e9d3b511fd36}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Character\Stats\SuperClass">
-      <UniqueIdentifier>{53528d19-3d42-43ca-9d5c-1c6d5d242b3f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Character\Stats\SubClass">
-      <UniqueIdentifier>{9a7add79-0cb4-4f5c-9e71-973ce1591d0a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Character\CharacterManipulation\Base Class">
       <UniqueIdentifier>{1339e876-e409-4fd3-9a56-a297b2c8e926}</UniqueIdentifier>
@@ -265,6 +253,30 @@
     <Filter Include="Source Files\Event\Derived Class">
       <UniqueIdentifier>{9ec6b890-aa00-42eb-a45f-bc3ee1f9f102}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Character\Stats\Derived Class">
+      <UniqueIdentifier>{6e2f23ca-cc55-4dfc-8764-cd06ea78ba9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\Stats\Base Class">
+      <UniqueIdentifier>{1c16c4fd-d3da-4797-a26f-1ce9d3a9a5f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\Stats\Base Class">
+      <UniqueIdentifier>{9a7add79-0cb4-4f5c-9e71-973ce1591d0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\Stats\Derived Class">
+      <UniqueIdentifier>{53528d19-3d42-43ca-9d5c-1c6d5d242b3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cutscene\Base Class">
+      <UniqueIdentifier>{cc621123-3d6b-4a5c-8e69-672c4fd2d271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cutscene\Derived Class">
+      <UniqueIdentifier>{ce8cdd5a-e396-4fae-b598-09068e932508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Cutscene\Base Class">
+      <UniqueIdentifier>{2cb6835f-cf59-4456-9e86-92992310ac0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Cutscene\Derived Class">
+      <UniqueIdentifier>{869b7b59-2859-4451-8db7-2937692dbdf2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -289,10 +301,10 @@
       <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="Stats.cpp">
-      <Filter>Source Files\Character\Stats\SuperClass</Filter>
+      <Filter>Source Files\Character\Stats\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="CharStats.cpp">
-      <Filter>Source Files\Character\Stats\SubClass</Filter>
+      <Filter>Source Files\Character\Stats\Base Class</Filter>
     </ClCompile>
     <ClCompile Include="CharacterManipulationStore.cpp">
       <Filter>Source Files\Character\CharacterManipulation\CharacterManipulationStore</Filter>
@@ -362,9 +374,6 @@
     </ClCompile>
     <ClCompile Include="Movement.cpp">
       <Filter>Source Files\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Cutscene.cpp">
-      <Filter>Source Files\Cutscene</Filter>
     </ClCompile>
     <ClCompile Include="Scenery.cpp">
       <Filter>Source Files\Scenery</Filter>
@@ -438,6 +447,21 @@
     <ClCompile Include="ResetTurnTimer.cpp">
       <Filter>Source Files\Event\Derived Class</Filter>
     </ClCompile>
+    <ClCompile Include="CheckForDeadPlayer.cpp">
+      <Filter>Source Files\Event\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadAMenu.cpp">
+      <Filter>Source Files\Event\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessAI.cpp">
+      <Filter>Source Files\Event\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="Cutscene.cpp">
+      <Filter>Source Files\Cutscene\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleLoss.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleAction.h">
@@ -462,10 +486,10 @@
       <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="Stats.h">
-      <Filter>Header Files\Character\Stats\SuperClass</Filter>
+      <Filter>Header Files\Character\Stats\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="CharStats.h">
-      <Filter>Header Files\Character\Stats\SubClass</Filter>
+      <Filter>Header Files\Character\Stats\Base Class</Filter>
     </ClInclude>
     <ClInclude Include="CharacterManipulationStore.h">
       <Filter>Header Files\Character\CharacterManipulation\CharacterManipulationStore</Filter>
@@ -542,9 +566,6 @@
     <ClInclude Include="Enums.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="Cutscene.h">
-      <Filter>Header Files\Cutscene</Filter>
-    </ClInclude>
     <ClInclude Include="Cursor.h">
       <Filter>Header Files\Cursor</Filter>
     </ClInclude>
@@ -616,6 +637,21 @@
     </ClInclude>
     <ClInclude Include="ResetTurnTimer.h">
       <Filter>Header Files\Event\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckForDeadPlayer.h">
+      <Filter>Header Files\Event\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadAMenu.h">
+      <Filter>Header Files\Event\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessAI.h">
+      <Filter>Header Files\Event\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="Cutscene.h">
+      <Filter>Header Files\Cutscene\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleLoss.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

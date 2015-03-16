@@ -431,6 +431,21 @@ void BattleManager::moveEnemySelectionUp(){
     theEnemies.moveSelectionUp();
 }
 
+//Sets the current enemy to the position.
+//Pre:  None.
+//Post: Iterates through the list until it reaches the position.
+//      Sets the current target of the CharacterList to that Character.
+void BattleManager::setCurrEnemy(int position){
+
+    if(position > theEnemies.getSize())
+        return;
+
+    theEnemies.resetSelection();
+
+    for(int i = 0 ; i < position ; i++)
+        theEnemies.moveSelectionDown();
+}
+
 //Gets the currently selected enemy.
 //Pre:  None.
 //Post: Returns a pointer to the current enemy.
@@ -450,10 +465,8 @@ void BattleManager::setCurrPlayer(int position){
 
     thePlayers.resetSelection();
 
-    for(int i = 0 ; i < position ; i++){
-
+    for(int i = 0 ; i < position ; i++)
         thePlayers.moveSelectionDown();
-    }
 }
 
 //Gets the currently selected enemy.
@@ -529,26 +542,34 @@ void BattleManager::updateTurnTimers(){
 //Determines if a battle will occur.
 bool BattleManager::checkForBattle(){
 
-    if(gameManager->gameTimer == BATTLE_TIMER && gameManager->battle == false){
+    //if(gameManager->gameTimer == BATTLE_TIMER && gameManager->battle == false){
+    if(gameManager->getPressedKey() == Q && gameManager->battle == false){
+
+        initializeBattle();
+
+        return true;
+    }
+    else return false;
+}
+
+//Initializes the variables to the beginning of a new battle.
+//Pre:  None.
+//Post: Sets the variables so that the battle will be like a new battle.
+void BattleManager::initializeBattle(){
 
         //Set battle flags to true.
         gameManager->battle = true;
 
+        //Sets battle to unpause.
         unPauseBattle();
 
         //Load battle transition cutscene.
         BattleTrans *theBattle = new BattleTrans(gameManager->cutSceneMap ,
             gameManager->currMap , gameManager->player , gameManager , this);
-        gameManager->loadCutscene(theBattle);
+        drawRepository->loadCutscene(theBattle);
 
         //Create the enemies for the battle.
         generateEnemies(MAX_ENEMIES_PER_BATTLE);
-
-        //enemyTurnTimerList.loadDrawRepository(
-
-        return true;
-    }
-    else return false;
 }
 
 //Generates the enemies for the battle.
@@ -592,10 +613,6 @@ void BattleManager::generatePlayers(CharacterList *characterList ,
 
     for(int i = 0 ; i < maxNumberPlayers ; i++){
 
-        //Character *insertChar = new Character;
-        //Character temp = characterList->getCurrSelection();
-        //*insertChar = *characterList->getCurrSelection();
-        //thePlayers.loadChar(insertChar);
         thePlayers.loadChar(characterList->getCurrSelection());
         characterList->moveSelectionDown();
     }
@@ -649,20 +666,40 @@ void BattleManager::playersVictory(){
     gameManager->generateVictoryCutScene();
 
     //Reset battle menus.
-    //Draw::removeAllSubMenus(getMenuList());
     Draw::removeAllMenus(getMenuList());
 
     //Draw final battle frame.
     Draw::drawArea(*gameManager->currMap , *gameManager->player);
-
-    //Switch to map variables.
-    //gameManager->switchVariablesToMap();
 
     removeAllEvents();
 
     theEnemies.deleteList();
     thePlayers.deleteList();
 }
+
+//End of the battle, enemies won.
+//Pre:  None.
+//Post: Cleans up after the battle and ensures all memory is reclaimed.
+void BattleManager::enemiesVictory(){
+
+    //Create loss cutscene.
+    BattleLoss *battleLoss = new BattleLoss(gameManager->currMap , 
+        &thePlayers , &theEnemies , gameManager);
+
+    drawRepository->loadCutscene(battleLoss);
+
+    //Reset battle menus.
+    Draw::removeAllMenus(getMenuList());
+
+    //Draw final battle frame.
+    Draw::drawArea(*gameManager->currMap , *gameManager->player);
+
+    removeAllEvents();
+
+    theEnemies.deleteList();
+    thePlayers.deleteList();
+}
+
 
 //Pause battle so timers don't increase.
 void BattleManager::pauseBattle(){
@@ -709,7 +746,9 @@ bool BattleManager::emptyMenus(){
 //      Returns false if there are no longer Events to play.
 bool BattleManager::playCurrEvent(){
 
-    if(events.empty())
+    //Only play an event when the events queue is full and when
+    //no other events are playing.
+    if(events.empty() || !drawRepository->animationsEmpty())
         return false;
 
     else{

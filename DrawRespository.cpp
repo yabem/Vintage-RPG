@@ -24,7 +24,13 @@ DrawRepository::~DrawRepository(){
     }
 }
 
-//Loads a cutscene to the GameManager.
+//Loads the GameManager.
+void DrawRepository::loadGameManager(I_Manager *gameManager){
+
+    this->gameManager = gameManager;
+}
+
+//Loads a Cutscene to the cutscenes queue.
 bool DrawRepository::loadCutscene(Cutscene *cutscene){
 
     //Error loading.
@@ -37,25 +43,28 @@ bool DrawRepository::loadCutscene(Cutscene *cutscene){
     }
 }
 
+//Draws all the cutscenes.
+//Pre:  None.
+//Post: Continually draws the cutscene until the cutscene is done
+//      or the correct key is pressed by the player.
 void DrawRepository::playCutscenes(){
 
-    /*
+    int pressedKey = gameManager->getPressedKey();
+
     if(cutscenes.empty())
         return;
 
     else if(cutscenes.front()->play(pressedKey) == true){
 
         if(pressedKey != NO_KEY)
-            keys[pressedKey] = false;
-        
-        pressedKey = NO_KEY;
+            gameManager->setPressedKeyToInactive();
+
         if(cutscenes.front() != NULL){
             delete cutscenes.front();
         }
 
         cutscenes.pop();
     }
-    */
 }
 
 //Checks if there are any remaining animations.
@@ -64,6 +73,14 @@ void DrawRepository::playCutscenes(){
 bool DrawRepository::animationsEmpty(){
 
     return animations.empty();
+}
+
+//Checks if there are any remaining Cutscenes.
+//Pre:  None.
+//Post: Returns true if the queue is empty otherwise returns false.
+bool DrawRepository::cutscenesEmpty(){
+
+    return cutscenes.empty();
 }
 
 

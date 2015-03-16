@@ -8,7 +8,7 @@
 #include <cmath>
 
 //Constructor.
-Scenery::Scenery(ALLEGRO_BITMAP *bmap , int sx , int sy, int w , int h , int moveRateX , int moveRateY){
+Scenery::Scenery(ALLEGRO_BITMAP *bmap , int sx , int sy, int moveRateX , int moveRateY){
 
     this->bmap = bmap;
     this->sx = sx;
@@ -16,10 +16,22 @@ Scenery::Scenery(ALLEGRO_BITMAP *bmap , int sx , int sy, int w , int h , int mov
     this->dx = this->sx;
     this->dy = this->sy;
     crFrame = 0;
-    this->w = w;
-    this->h = h;
+    this->w = al_get_bitmap_width(bmap);
+    this->h = al_get_bitmap_height(bmap);
     this->moveRateX = moveRateX;
     this->moveRateY = moveRateY;
+}
+
+//Sets the draw X.
+void Scenery::setDX(int DX){
+
+    this->dx = DX;
+}
+
+//Sets the draw Y.
+void Scenery::setDY(int DY){
+
+    this->dy = DY;
 }
 
 //Increases the frame count and moves through the animation sequence.

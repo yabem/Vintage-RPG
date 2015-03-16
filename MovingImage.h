@@ -10,8 +10,11 @@ private:
 
 public:
 
-    MovingImage(ALLEGRO_BITMAP *bmap , int w , int h , float ttlFrames); //Constructor.
-    virtual~MovingImage();          //Destuctor.
+    //Constructor.
+    MovingImage(ALLEGRO_BITMAP *bmap , int w , int h , float ttlFrames); 
+
+    //Destuctor.
+    virtual~MovingImage();          
 
     virtual bool play();            //Draws the bitmap animation.
 };

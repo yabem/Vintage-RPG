@@ -6,6 +6,7 @@ class Menu;
 class CharacterManipulationStore;
 class DrawRepository;
 class I_Event;
+class Character;
 
 class I_Manager{
 
@@ -36,6 +37,9 @@ public:
     //Used in TurnTimerList to move the Character to the correct position.
     virtual void setCurrPlayer(int position);
 
+    //Used in TurnTimerList to move the Character to the correct position.
+    virtual void setCurrEnemy(int position);
+
     //Used to generate players in BattleManager.
     virtual void generatePlayers(CharacterList *characterList , 
         int maxNumberPlayers);
@@ -60,4 +64,16 @@ public:
 
     //Used for PlayerEvent.
     virtual bool emptyMenus();
+
+    //Gets the currently selected enemy.
+    virtual Character* getCurrEnemy();
+
+    //Returns the pressedKey
+    virtual int getPressedKey() const;
+
+    //Sets the pressed key to unused.
+    virtual void setPressedKeyToInactive();
+
+    //Sets the gameloop to end.
+    virtual void setEndOfGameLoopToEnd();
 };

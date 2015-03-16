@@ -35,7 +35,4 @@ public:
 
     //Delete all the CharacterTimers.
     virtual void deleteList();
-
-    //Update Menus and resets if full.
-    void updateMenus();
 };

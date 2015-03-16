@@ -12,19 +12,35 @@ GameManager::GameManager(){
     gameTimer = 0;
     charOnMapX = 0 , charOnMapY = 0;
     charOnMapFacing = 0;
-    menuChoice = 0;
     prevMap = NULL;
     currMap = NULL;
     battleMap = NULL;
     cutSceneMap = NULL;
     player = NULL;
     numEnemies = 0;
+    endOfGameLoop = false; 
 }
 
 //Destructor.
 GameManager::~GameManager(){
 
     //Default is fine.
+}
+
+//Sets the endOfGameLoop to exit.
+//Pre:  None.
+//Post: Sets endOfGameLoop to true.
+void GameManager::setEndOfGameLoopToEnd(){
+
+    endOfGameLoop = true;
+}
+
+//Gets the value of endOfGameLoop.
+//Pre:  None.
+//Post: Returns the value of isEndOfGameLoop.
+bool GameManager::isEndOfGameLoop(){
+
+    return endOfGameLoop;
 }
 
 void GameManager::updateKey(int key){
@@ -79,37 +95,6 @@ void GameManager::makeKeyInactive(int key){
     else keys[key] = false;
 }
 
-//Loads a cutscene to the GameManager.
-bool GameManager::loadCutscene(Cutscene *cutscene){
-
-    //Error loading.
-    if(cutscene == NULL)
-        return false;
-    
-    else{ 
-        cutscenes.push(cutscene);
-        return true;
-    }
-}
-
-void GameManager::playCutscenes(){
-
-    if(cutscenes.empty())
-        return;
-
-    else if(cutscenes.front()->play(pressedKey) == true){
-
-        if(pressedKey != NO_KEY)
-            keys[pressedKey] = false;
-        
-        pressedKey = NO_KEY;
-        if(cutscenes.front() != NULL){
-            delete cutscenes.front();
-        }
-
-        cutscenes.pop();
-    }
-}
 
 //Save the variables before switching to the battleMap.
 void GameManager::saveAreaMapVariables(){
@@ -158,6 +143,14 @@ void GameManager::resetGameTimer(){
     gameTimer = 0;
 }
 
+//Loads the DrawRepository
+//Pre:  The DrawRepository is valid.
+//Post: Loads the DrawRespository to the GameManager.
+void GameManager::loadDrawRepository(DrawRepository *drawRepository){
+
+    this->drawRepository = drawRepository;
+}
+
 //Loads all the input model.
 void GameManager::loadEnemyModel(ALLEGRO_BITMAP *model){
 
@@ -187,17 +180,8 @@ void GameManager::generateVictoryCutScene(){
 
     BattleVictory *battleVictory = new BattleVictory(currMap , 
         thePlayers , this);
-    loadCutscene(battleVictory);
+    drawRepository->loadCutscene(battleVictory);
 }
-
-//Determines if there are remaining cutscenes.
-//Pre:  None.
-//Post: Returns true if the cutscenes vector is empty.
-//      Returns false otherwise.
-bool GameManager::cutscenesEmpty() const{
-    
-    return cutscenes.empty();
-}      
 
 //Returns the pressedKey
 //Pre:  None.

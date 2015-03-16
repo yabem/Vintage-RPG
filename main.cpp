@@ -69,7 +69,6 @@ int main(int argc, char **argv){
     
    //List of all the keys.
    bool keys[7] = {false , false , false , false , false , false , false};
-   bool done = false;
 
    int theKey = -1;
    
@@ -102,9 +101,9 @@ int main(int argc, char **argv){
    ImageStore imageStore;
    imageStore.loadAllDefaultImages();
 
-
    //Characters
    Character thePlayer(imageStore.getBitMap("player") , 32 , 32 , 30 , 2 , rate);
+   thePlayer.setFacing(DOWN);
    Character thePlayer2(imageStore.getBitMap("warrior") , 32 , 32 , 30 , 2 , rate);
    Character thePlayer3(imageStore.getBitMap("thief") , 32 , 32 , 30 , 2 , rate);
    Character thePlayer4(imageStore.getBitMap("mage") , 32 , 32 , 30 , 2 , rate);
@@ -121,17 +120,17 @@ int main(int argc, char **argv){
    thePlayers.loadChar(&thePlayer4);
 
    //Character stats
-   CharStats playerStats(1 ,25 , 10 , 100 , 10 , 1 , 100 , 10);
+   CharStats playerStats(1 , 1 , 10 , 100 , 10 , 1 , 100 , 10);
    thePlayer.setStats(&playerStats);
 
-   CharStats playerStats2(1 ,25 , 10 , 100 , 10 , 1 , 100 , 10);
-   thePlayer2.setStats(&playerStats);
+   CharStats playerStats2(1 , 2 , 10 , 100 , 10 , 1 , 100 , 10);
+   thePlayer2.setStats(&playerStats2);
 
-   CharStats playerStats3(1 ,25 , 10 , 100 , 10 , 1 , 100 , 10);
-   thePlayer3.setStats(&playerStats);
+   CharStats playerStats3(1 , 3 , 10 , 100 , 10 , 1 , 100 , 10);
+   thePlayer3.setStats(&playerStats3);
 
-   CharStats playerStats4(1 ,25 , 10 , 100 , 10 , 1 , 100 , 10);
-   thePlayer4.setStats(&playerStats);
+   CharStats playerStats4(1 , 4 , 10 , 100 , 10 , 1 , 100 , 10);
+   thePlayer4.setStats(&playerStats4);
 
    //Animations queue
    queue<Animation*> animations;
@@ -145,15 +144,24 @@ int main(int argc, char **argv){
    Tangible theRock1(imageStore.getBitMap("rock") , 60 , 60 , 32 , 32 , 60 , 60 , 32 , 32);
    Tangible theRock2(imageStore.getBitMap("rock") , 888 , 888 , 32 , 32 , 888 , 888 , 32 , 32);
 
-   Scenery cloud1(imageStore.getBitMap("cloud") , SCREEN_W , 0 , 100 , 100 , -4 , 1);
-   Scenery cloud2(imageStore.getBitMap("cloud") , SCREEN_W , 40 , 100 , 100 , -8 , 0);
-   Scenery cloud3(imageStore.getBitMap("cloud") , SCREEN_W , 80 , 100 , 100 , -6 , 0);
-   Scenery cloud4(imageStore.getBitMap("cloud") , SCREEN_W , 120 , 100 , 100 , -10 , 2);
-   Scenery cloud5(imageStore.getBitMap("cloud") , SCREEN_W , 160 , 100 , 100 , -3 , 0);
-   Scenery cloud6(imageStore.getBitMap("cloud") , SCREEN_W , 200 , 100 , 100 , -2 , 0);
-   Scenery cloud7(imageStore.getBitMap("cloud") , SCREEN_W , 240 , 100 , 100 , -8 , -2);
-   Scenery cloud8(imageStore.getBitMap("cloud") , SCREEN_W , 280 , 100 , 100 , -9 , 0);
-   Scenery cloud9(imageStore.getBitMap("cloud") , SCREEN_W , 380 , 100 , 100 , -5 , -1);
+   Scenery cloud1(imageStore.getBitMap("cloud") , SCREEN_W , 0 , -4 , 1);
+   cloud1.setDX(80);    cloud1.setDY(0);
+   Scenery cloud2(imageStore.getBitMap("cloud") , SCREEN_W , 40 , -8 , 0);
+   cloud2.setDX(500);    cloud2.setDY(40);
+   Scenery cloud3(imageStore.getBitMap("cloud") , SCREEN_W , 80 , -6 , 0);
+   cloud3.setDX(540);    cloud3.setDY(80);
+   Scenery cloud4(imageStore.getBitMap("cloud") , SCREEN_W , 120 , -10 , 2);
+   cloud4.setDX(290);    cloud4.setDY(120);
+   Scenery cloud5(imageStore.getBitMap("cloud") , SCREEN_W , 160 , -3 , 0);
+   cloud5.setDX(360);    cloud5.setDY(160);
+   Scenery cloud6(imageStore.getBitMap("cloud") , SCREEN_W , 200 , -2 , 0);
+   cloud6.setDX(430);    cloud6.setDY(200);
+   Scenery cloud7(imageStore.getBitMap("cloud") , SCREEN_W , 240 , -8 , -2);
+   cloud7.setDX(150);    cloud7.setDY(240);
+   Scenery cloud8(imageStore.getBitMap("cloud") , SCREEN_W , 280 , -9 , 0);
+   cloud8.setDX(220);    cloud8.setDY(280);
+   Scenery cloud9(imageStore.getBitMap("cloud") , SCREEN_W , 380 , -5 , -1);
+   cloud9.setDX(SCREEN_W);    cloud9.setDY(380);
 
    Layer trans0(imageStore.getBitMap("terrain") , 8 , 4 , 32 , 32 , 15 , 20 , cutscene0 , 300);
    Layer trans1(imageStore.getBitMap("terrain") , 8 , 4 , 32 , 32 , 15 , 20 , cutscene1 , 300); 
@@ -239,18 +247,9 @@ int main(int argc, char **argv){
    gameManager.loadEnemyModel(imageStore.getBitMap("wolf"));
    gameManager.loadEnemyModel(imageStore.getBitMap("soldier"));
 
-   //Cutscenes
-   Intro *theIntro = new Intro(); 
-   Instruct *theInstruct = new Instruct();
-
-   gameManager.loadCutscene(theIntro);   
-   gameManager.loadCutscene(theInstruct);  
-
-   int cutsceneFrameCount = 0 , miniCount = 0;  //For display.
+   int cutsceneFrameCount = 0;  //For display.
    srand (time(NULL));  //Seed random
    
-   al_start_timer(timer);
-
    TextBox textBox("You awaken in a strange town that you have never seen before. "
        "You don't know where you are and why you are there. "
        "Your first task is to find some clues and figure out what happened. " 
@@ -261,7 +260,6 @@ int main(int argc, char **argv){
     Menu menu("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
     menu.formatText();
 
-    //Menu menu2("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
     Menu menu2("Attack,Special|Upper Cut;Jump,Item|Potion,Antidote,Herb;Run;");
     menu2.formatText();
 
@@ -275,6 +273,7 @@ int main(int argc, char **argv){
     BattleManager battleManager;
 
     DrawRepository drawRepository;
+    drawRepository.loadGameManager(&gameManager);
 
     CharacterManipulationStore characterManipulationStore;
     characterManipulationStore.loadImageStore(&imageStore);
@@ -293,13 +292,24 @@ int main(int argc, char **argv){
     battleManager.loadEnemyModel(imageStore.getBitMap("soldier"));
     battleManager.loadDrawRepository(&drawRepository);
 
+    gameManager.loadDrawRepository(&drawRepository);
+
+    //Cutscenes
+    Intro *theIntro = new Intro(); 
+    Instruct *theInstruct = new Instruct();
+
+    drawRepository.loadCutscene(theIntro);   
+    drawRepository.loadCutscene(theInstruct);
+
     //Initialize starting position.
     Movement::setStart(*gameManager.player, theMap , STARTCOL , STARTROW);
+
+    al_start_timer(timer);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////Game Loop///////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-   while(!done){
+    while(!gameManager.isEndOfGameLoop()){
 
       ALLEGRO_EVENT ev;
       al_wait_for_event(event_queue, &ev);
@@ -320,8 +330,8 @@ int main(int argc, char **argv){
 
 //////////////////////////////////////////Cutscene/////////////////////////////
             
-            if(!gameManager.cutscenesEmpty())
-                gameManager.playCutscenes();
+            if(!drawRepository.cutscenesEmpty())
+                drawRepository.playCutscenes();
 
 //////////////////////////////////////////Battle///////////////////////////////
             else if(gameManager.isBattle()){
@@ -329,6 +339,9 @@ int main(int argc, char **argv){
                 //Check for end of battle.
                 if(!battleManager.enemiesRemaining())
                     battleManager.playersVictory();
+
+                //else if(battleManager.getCurrPlayer()->isDead())
+                  //  battleManager.enemiesVictory();
 
                 //The battle continues.
                 else{
@@ -338,7 +351,6 @@ int main(int argc, char **argv){
                         battleManager.getPlayersList() ,
                         battleManager.getEnemiesList());
 
-                    
                     if(!battleManager.emptyEvents()){
                         battleManager.pauseBattle();
                         battleManager.playCurrEvent();
@@ -408,7 +420,7 @@ int main(int argc, char **argv){
 
         //Close if X clicked.
         if(ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
-            done = true;
+            gameManager.setEndOfGameLoopToEnd();
    }
 
    //Cleanup memory allocations.
@@ -418,7 +430,7 @@ int main(int argc, char **argv){
    al_destroy_event_queue(event_queue);
 
    }
-   //al_shutdown_ttf_addon();
+
    return 0;
 }
 

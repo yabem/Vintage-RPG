@@ -7,10 +7,8 @@
 #include "I_List.h"
 #include "I_Creature.h"
 #include "I_Manager.h"
-#include "ratAI.h"
 #include "EnemyTurn.h"
 #include "PlayerTurn.h"
-#include "ResetTurnTimer.h"
 class DrawRepository;
 
 class TurnTimerList : public I_List{    //Change name to CharacterTimerList

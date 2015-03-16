@@ -12,7 +12,6 @@
 #include "ImageStore.h"
 #include "FontStore.h"
 #include "DrawRepository.h"
-#include "UnPauseBattle.h"
 
 class Fire1 : public CharacterManipulation{
 

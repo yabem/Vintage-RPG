@@ -2,35 +2,31 @@
 #include "PlayerTurn.h"
 
 //Constructor.
-PlayerTurn::PlayerTurn(I_Manager *battleManager , Menu *menu){
+PlayerTurn::PlayerTurn(int playerPosition, I_Manager *battleManager ,
+    Menu *menu , TurnTimer *turnTimer){
 
+    this->playerPosition = playerPosition;
     this->battleManager = battleManager;
     this->menu = menu;
-    this->isExecuted = false;
+    this->turnTimer = turnTimer;
 }
 
 //Destructor.
 PlayerTurn::~PlayerTurn(){
 
-    //delete menu;
 }
 
 //Executes the player's turn.
 //Pre:  The menu is valid.
-//Post: Returns false if not done. Returns true if done.
+//Post: Always returns true since this event only executes once..
 bool PlayerTurn::execute(){
 
-    //Execute for the first time.
-    if(!isExecuted){
-        battleManager->loadMenu(menu);
-        isExecuted = true;
-        return false;
-    }
+    LoadAMenu *loadAMenu = new LoadAMenu(battleManager , playerPosition , menu);
+    battleManager->loadEvent(loadAMenu);
 
-    //Enemy turn is not done yet.
-    else if(!battleManager->emptyMenus())
-        return false;  
-    
-    //Execution is complete.
-    else return true;
+    //Load the ResetTurnTimer Event.
+    ResetTurnTimer *resetTurnTimer = new ResetTurnTimer(turnTimer);
+    battleManager->loadEvent(resetTurnTimer);
+
+    return true;
 }

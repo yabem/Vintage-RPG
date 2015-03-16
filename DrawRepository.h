@@ -16,8 +16,11 @@ private:
     //Stores the animations to be played.
     std::queue<Animation*> animations; 
 
+    //Used for getting the pressed key.
+    I_Manager *gameManager;   
+
     //Used to delete enemies once animations are done.
-    I_Manager *battleManager;           
+    //I_Manager *battleManager;           
 
 public:
 
@@ -27,6 +30,9 @@ public:
     //Destructor.
     ~DrawRepository();
 
+    //Loads the GameManager.
+    void loadGameManager(I_Manager *gameManager);
+
     //Loads a single Cutscene.
     bool loadCutscene(Cutscene *cutscene);
 
@@ -35,6 +41,9 @@ public:
 
     //Checks if there are any remaining animations.
     bool animationsEmpty();
+
+    //Checks if there are any cutscenes remaining.
+    bool cutscenesEmpty();
 
     //Loads a single Animation.
     bool loadAnimation(Animation *animation);

@@ -32,7 +32,7 @@ void InitEnemies::rat(Character *character , int enemyType , int level , vector<
     //Calculate stat values based off of level.
     int hp = RATBASEHP + (level * 5);
     int mp = RATBASEMP + (level * 2);
-    int atk = RATBASEATK + (level * 2);
+    int atk = RATBASEATK + (level * 20);
     int def = RATBASEDEF + (level * 2);
 
     CharStats *charStats = new CharStats(level , hp , mp , atk , def, 0 , 0 , 0);
@@ -52,7 +52,7 @@ void InitEnemies::wolf(Character *character , int enemyType , int level , vector
     //Calculate stat values based off of level.
     int hp = WOLFBASEHP + (level * 7);
     int mp = WOLFBASEMP + (level * 4);
-    int atk = WOLFBASEATK + (level * 4);
+    int atk = WOLFBASEATK + (level * 40);
     int def = WOLFBASEDEF + (level * 4);
 
     CharStats *charStats = new CharStats(level , hp , mp , atk , def, 0 , 0 , 0);
@@ -73,7 +73,7 @@ void InitEnemies::soldier(Character *character , int enemyType ,
     //Calculate stat values based off of level.
     int hp = SOLDIERBASEHP + (level * 6);
     int mp = SOLDIERBASEMP + (level * 3);
-    int atk = SOLDIERBASEATK + (level * 3);
+    int atk = SOLDIERBASEATK + (level * 30);
     int def = SOLDIERBASEDEF + (level * 3);
 
     CharStats *charStats = new CharStats(level , hp , mp , atk , def, 0 , 0 , 0);

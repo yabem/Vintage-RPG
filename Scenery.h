@@ -26,8 +26,10 @@ private:
 public:
 
     //Constructor.
-    Scenery(ALLEGRO_BITMAP *bmap , int sx , int sy, int w , int h , int moveRateX , int moveRateY);
+    Scenery(ALLEGRO_BITMAP *bmap , int sx , int sy , int moveRateX , int moveRateY);
     
-    void animate();  //Increases the frame count and moves through the animation sequence.
-    void draw();     //Draws the Scenery to the buffer.
+    void animate(); //Increases the frame count and moves through the animation sequence.
+    void setDX(int DX);   //Sets the draw X.
+    void setDY(int DY);   //Sets the draw Y.
+    void draw();    //Draws the Scenery to the buffer.
 };

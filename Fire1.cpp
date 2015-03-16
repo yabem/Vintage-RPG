@@ -21,8 +21,7 @@ Fire1::Fire1(){
 //Destructor.
 Fire1::~Fire1(){
 
-    //Deletion is handled by the 
-
+    //Deletion is handled by the ImageStore.
 }
 
 //Loads the Characters.
@@ -82,14 +81,11 @@ void Fire1::loadAnimations(){
         receiver->getX() , receiver->getY() - 50);
     damageStay->initialize(theDamage , receiver->getX() , receiver->getY() , 
         receiver->getX() , receiver->getY());
-                                    
-    //UnPauseBattle *unPause = new UnPauseBattle(battleManager);
-
+                                   
     //Load all the animations to the animations queue.
     drawRepository->loadAnimation(weaponAttack);
     drawRepository->loadAnimation(damage);
     drawRepository->loadAnimation(damageStay);   
-    //drawRepository->loadAnimation(unPause);
 }
 
 //Calculates the damage to the receiver.

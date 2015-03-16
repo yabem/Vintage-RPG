@@ -209,6 +209,8 @@ void CharacterList::deleteList(){
     deleteAddedLists();    
 
     charList.clear();
+
+    resetSelection();
 }
 
 //Removes all of the added lists.

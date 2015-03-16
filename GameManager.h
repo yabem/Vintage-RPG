@@ -2,18 +2,14 @@
 #include <time.h>
 #include <vector>
 #include <queue>
-#include "Cutscene.h"
 #include <allegro5/allegro_font.h>
 #include "Animation.h"
 #include "Movement.h"
 #include "InitEnemies.h"
 #include "CharFactory.h"
-#include "Menu.h"
 #include "CharacterList.h"
 #include "I_Manager.h"
-
-class Cutscene;
-class Menu;
+#include "DrawRepository.h"
 
 const int RESET_TIMER = 2000;
 const int BATTLE_TIMER = 100;   //Determines when a battle will take place.
@@ -22,14 +18,14 @@ class GameManager: public I_Manager{
 
 private:
 
-    queue<Cutscene*> cutscenes;
-    queue<Animation*> animations;   //Stores the animations to be played.
-    vector<Menu*> menus;
     ALLEGRO_FONT *introFont;
+    DrawRepository *drawRepository;
+
+    //Determines when the gameloop exits.
+    bool endOfGameLoop; 
 
 public:
 
-    int menuChoice;
     AreaMap *prevMap;       //Previous AreaMap.
     AreaMap *currMap;       //Current AreaMap.
     AreaMap *battleMap;     //Battle AreaMap.
@@ -46,7 +42,7 @@ public:
 
     //Flag for if a battle is happening.
     bool battle;       
-    
+
     //The the x and y locations on the areamap.
     int charOnMapX , charOnMapY;  
 
@@ -56,15 +52,19 @@ public:
     //Vector of pointers to enemy bitmaps.
     vector<ALLEGRO_BITMAP*> enemyModels;    
 
+    //Constructor.
     GameManager();
+
+    //Destructor.
     virtual ~GameManager();
 
-    //x
-    bool loadCutscene(Cutscene *cutscene);
+    //Sets the endOfGameLoop to exit.
+    virtual void setEndOfGameLoopToEnd();
 
+    //Gets the value of endOfGameLoop.
+    bool isEndOfGameLoop();
 
-    //x
-    void playCutscenes();
+    //Updates the pressed key.
     void updateKey(int key);
 
     //Returns a pointer to the player at the front of the list.
@@ -93,6 +93,9 @@ public:
     //Reset game timer to 0.
     void resetGameTimer();      
 
+    //Loads the DrawRepository
+    void loadDrawRepository(DrawRepository *drawRepository);
+
     //Loads all the input model.
     void loadEnemyModel(ALLEGRO_BITMAP *model);  
 
@@ -105,12 +108,9 @@ public:
     //Creates the victory CutScene.
     void generateVictoryCutScene(); 
 
-    //Determines if there are remaining cutscenes.
-    bool cutscenesEmpty() const;      
-
     //Returns the pressedKey
-    int getPressedKey() const;
+    virtual int getPressedKey() const;
 
     //Sets the pressedKey to inactive.
-    void setPressedKeyToInactive();
+    virtual void setPressedKeyToInactive();
 };

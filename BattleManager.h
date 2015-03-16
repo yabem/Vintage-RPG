@@ -19,6 +19,7 @@
 #include "I_Manager.h"
 #include "MenuList.h"
 #include "I_Event.h"
+#include "BattleLoss.h"
 class DrawRepository;
 
 class BattleManager: public I_Manager{
@@ -124,11 +125,9 @@ public:
     void setTargetToNoTarget();
 
     //Returns the enemies list.
-    //std::vector<Character*> getEnemiesList();  
     virtual CharacterList* getEnemiesList();
 
     //Returns the plaers list.
-    //std::vector<Character*> getPlayersList();
     virtual CharacterList* getPlayersList();
 
     //Retrieves a pointer to the DrawRepository.
@@ -161,14 +160,17 @@ public:
     //Moves the currently selected enemy up.
     void moveEnemySelectionUp();  
 
+    //Sets the current enemy to the position.
+    void setCurrEnemy(int position);
+
     //Gets the currently selected enemy.
-    Character* getCurrEnemy();   
+    virtual Character* getCurrEnemy();   
 
     //Sets the current target to the position.
     void setCurrPlayer(int position);
 
     //Gets the currently selected player.
-    Character* getCurrPlayer();
+    virtual Character* getCurrPlayer();
 
     //Returns whether or not the currently selected enemy is dead.
     bool currEnemyDead();   
@@ -196,6 +198,9 @@ public:
     //Determines if a battle will occur.
     bool checkForBattle();  
 
+    //Initializes the variables to the beginning of a new battle.
+    void initializeBattle();
+
     //Generates the enemies for the battle.
     virtual void generateEnemies(int maxNumberOfEnemies); 
 
@@ -207,6 +212,9 @@ public:
 
     //End of the battle, players won.
     void playersVictory();
+
+    //End of the battle, the enemies won.
+    void enemiesVictory();
 
     //Pause battle so timers don't increase.
     void pauseBattle();
