@@ -14,7 +14,7 @@ public:
 
     //Constructor.
     CharStats(int level , int baseHP , int baseMP , int baseAtk , int baseDef ,
-        int ttlXP , int currLvlXP , int toLvlXP);
+        int ttlXP , int currLvlXP , int toLvlXP , float speed);
     
     virtual ~CharStats();   //Destructor.
 

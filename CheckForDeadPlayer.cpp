@@ -1,6 +1,5 @@
 #include "CheckForDeadPlayer.h"
 
-
 //Constructor.
 CheckForDeadPlayer::CheckForDeadPlayer(I_Creature *thePlayer ,
     DrawRepository *drawRepository){

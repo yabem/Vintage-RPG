@@ -2,7 +2,7 @@
 
 //Constructor.
 CharStats::CharStats(int level , int baseHP , int baseMP , int baseAtk , int baseDef ,
-    int ttlXP , int currLvlXP , int toLvlXP){
+    int ttlXP , int currLvlXP , int toLvlXP , float speed){
 
     this->level = level;
     this->baseHP = baseHP;
@@ -22,6 +22,8 @@ CharStats::CharStats(int level , int baseHP , int baseMP , int baseAtk , int bas
     this->ttlXP = ttlXP;
     this->currLvlXP = currLvlXP;
     this->toLvlXP = toLvlXP;
+
+    this->speed = speed;
 }
  
 //Destructor.

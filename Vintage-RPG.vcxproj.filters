@@ -300,12 +300,6 @@
     <ClCompile Include="CharacterAttack.cpp">
       <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
     </ClCompile>
-    <ClCompile Include="Stats.cpp">
-      <Filter>Source Files\Character\Stats\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="CharStats.cpp">
-      <Filter>Source Files\Character\Stats\Base Class</Filter>
-    </ClCompile>
     <ClCompile Include="CharacterManipulationStore.cpp">
       <Filter>Source Files\Character\CharacterManipulation\CharacterManipulationStore</Filter>
     </ClCompile>
@@ -447,9 +441,6 @@
     <ClCompile Include="ResetTurnTimer.cpp">
       <Filter>Source Files\Event\Derived Class</Filter>
     </ClCompile>
-    <ClCompile Include="CheckForDeadPlayer.cpp">
-      <Filter>Source Files\Event\Derived Class</Filter>
-    </ClCompile>
     <ClCompile Include="LoadAMenu.cpp">
       <Filter>Source Files\Event\Derived Class</Filter>
     </ClCompile>
@@ -461,6 +452,18 @@
     </ClCompile>
     <ClCompile Include="BattleLoss.cpp">
       <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="Stats.cpp">
+      <Filter>Source Files\Character\Stats\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="CharStats.cpp">
+      <Filter>Source Files\Character\Stats\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckForDeadEnemy.cpp">
+      <Filter>Source Files\Event\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckForDeadPlayer.cpp">
+      <Filter>Source Files\Event\Derived Class</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -484,12 +487,6 @@
     </ClInclude>
     <ClInclude Include="CharacterAttack.h">
       <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="Stats.h">
-      <Filter>Header Files\Character\Stats\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="CharStats.h">
-      <Filter>Header Files\Character\Stats\Base Class</Filter>
     </ClInclude>
     <ClInclude Include="CharacterManipulationStore.h">
       <Filter>Header Files\Character\CharacterManipulation\CharacterManipulationStore</Filter>
@@ -638,9 +635,6 @@
     <ClInclude Include="ResetTurnTimer.h">
       <Filter>Header Files\Event\Derived Class</Filter>
     </ClInclude>
-    <ClInclude Include="CheckForDeadPlayer.h">
-      <Filter>Header Files\Event\Derived Class</Filter>
-    </ClInclude>
     <ClInclude Include="LoadAMenu.h">
       <Filter>Header Files\Event\Derived Class</Filter>
     </ClInclude>
@@ -652,6 +646,18 @@
     </ClInclude>
     <ClInclude Include="BattleLoss.h">
       <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="Stats.h">
+      <Filter>Header Files\Character\Stats\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="CharStats.h">
+      <Filter>Header Files\Character\Stats\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckForDeadEnemy.h">
+      <Filter>Header Files\Event\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckForDeadPlayer.h">
+      <Filter>Header Files\Event\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

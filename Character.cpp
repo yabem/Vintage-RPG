@@ -283,6 +283,14 @@ void Character::setStats(Stats *stats){
     this->stats = stats;
 }
 
+//Resets the sequence.
+//Pre:  None.
+//Post: Makes the sequence 0.
+void Character::resetSequence(){
+
+    sequence = 0;
+}
+
 //Reset all collisions to false.
 void Character::resetColl(){
 
@@ -311,6 +319,9 @@ void Character::refreshCorners(){
 //Draw to buffer.
 int Character::draw() const{
     
+    if(sequence == 1)
+        int i = 1;
+
     al_draw_bitmap_region(bmap , 
     w * facing * 2 + (w * sequence) , 0 , //X and y draw from on bitmap.
     w , h ,                               //X and y draw to on bitmap.

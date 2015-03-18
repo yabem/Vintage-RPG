@@ -78,6 +78,7 @@
     <ClCompile Include="CharacterAttack.cpp" />
     <ClCompile Include="CharacterTimer.cpp" />
     <ClCompile Include="CheckForDeadPlayer.cpp" />
+    <ClCompile Include="CheckForDeadEnemy.cpp" />
     <ClCompile Include="EnemyTurn.cpp" />
     <ClCompile Include="Fire1.cpp" />
     <ClCompile Include="Fire2.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="CharacterManipulationStore.h" />
     <ClInclude Include="CharacterTimer.h" />
     <ClInclude Include="CheckForDeadPlayer.h" />
+    <ClInclude Include="CheckForDeadEnemy.h" />
     <ClInclude Include="EnemyTurn.h" />
     <ClInclude Include="Fire1.h" />
     <ClInclude Include="Fire2.h" />

@@ -66,6 +66,8 @@ void TurnTimerList::addConnection(I_Creature *i_Creature){
     characterTimer->i_Creature = i_Creature;
     characterTimer->turnTimer = turnTimer;
 
+    turnTimer->setRate(i_Creature->getStats()->getSpeed());
+
     initializeTurnTimerToCharacter(characterTimer); 
 
     turnTimer->calculateDrawPoints();
@@ -129,8 +131,11 @@ void TurnTimerList::updateTurnTimers(){
 
     else for(int i = 0 ; i < listOfCharTimers.size() ; i++){
         
-        listOfCharTimers[i]->turnTimer->updateCurrentFill();
+        //Only update of the Character is alive.
+        if(!listOfCharTimers[i]->i_Creature->isDead())
+            listOfCharTimers[i]->turnTimer->updateCurrentFill();
                 
+        //Cycle through the entire list of Characters.
         if(listOfCharTimers[i]->turnTimer->innerBarIsFull()){
          
             //Player's turn.
@@ -138,7 +143,10 @@ void TurnTimerList::updateTurnTimers(){
                                         
                 //Load the PlayerTurn.
                 PlayerTurn *playerTurn = new PlayerTurn(i , battleManager ,
-                    menusList->getSelection(i) , listOfCharTimers[i]->turnTimer);
+                    menusList->getSelection(i) , 
+                    listOfCharTimers[i]->turnTimer ,
+                    battleManager->getEnemiesList() ,
+                    battleManager->getDrawRepository());
                 
                 battleManager->loadEvent(playerTurn);
             }

@@ -38,12 +38,13 @@ TurnTimer::~TurnTimer(){
     //Default is fine.
 }
 
-//Sets the rate.
+//Sets the rate in seconds.
 //Pre:  None.
-//Post: Sets the rate.
-void TurnTimer::setRate(int fillRate){
+//Post: Sets the rate by finding out how much should be filled
+//      based on the desired fillRate in seconds.
+void TurnTimer::setRate(float fillRate){
 
-    this->fillRate = fillRate;
+    this->fillRate =  DEFAULT_BAR_AMOUNT / (FPS * fillRate);
 }
 
 //Sets the X draw coordinate.

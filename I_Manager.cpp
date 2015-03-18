@@ -40,3 +40,5 @@ int I_Manager::getPressedKey() const{return 0;}
 void I_Manager::setPressedKeyToInactive(){}
 
 void I_Manager::setEndOfGameLoopToEnd(){}
+
+void I_Manager::deleteCurrEnemy(){}

@@ -46,7 +46,6 @@
 //Make controls a class
 //Get rid of setStart() dupe function and create a colToX() and rowToY() functions
 //Get rid of #includes
-//Make battle sequence.
 //Make tangible collision better so you can't go through objects.
 
 //Tiles taken from http://opengameart.org/content/tiled-terrains
@@ -120,16 +119,16 @@ int main(int argc, char **argv){
    thePlayers.loadChar(&thePlayer4);
 
    //Character stats
-   CharStats playerStats(1 , 1 , 10 , 100 , 10 , 1 , 100 , 10);
+   CharStats playerStats(1 , 1 , 10 , 100 , 10 , 1 , 100 , 10 , 1.8);
    thePlayer.setStats(&playerStats);
 
-   CharStats playerStats2(1 , 2 , 10 , 100 , 10 , 1 , 100 , 10);
+   CharStats playerStats2(1 , 2 , 10 , 20 , 10 , 1 , 100 , 10 , 2.3);
    thePlayer2.setStats(&playerStats2);
 
-   CharStats playerStats3(1 , 3 , 10 , 100 , 10 , 1 , 100 , 10);
+   CharStats playerStats3(1 , 3 , 10 , 10 , 10 , 1 , 100 , 10 , 4.2);
    thePlayer3.setStats(&playerStats3);
 
-   CharStats playerStats4(1 , 4 , 10 , 100 , 10 , 1 , 100 , 10);
+   CharStats playerStats4(1 , 4 , 10 , 30 , 10 , 1 , 100 , 10 , 2.1);
    thePlayer4.setStats(&playerStats4);
 
    //Animations queue
@@ -336,15 +335,7 @@ int main(int argc, char **argv){
 //////////////////////////////////////////Battle///////////////////////////////
             else if(gameManager.isBattle()){
 
-                //Check for end of battle.
-                if(!battleManager.enemiesRemaining())
-                    battleManager.playersVictory();
-
-                //else if(battleManager.getCurrPlayer()->isDead())
-                  //  battleManager.enemiesVictory();
-
-                //The battle continues.
-                else{
+                if(!battleManager.isEndOfBattle()){
                     
                     //Draw map, players, and enemies.
                     Draw::drawBattle(theBattleMap , 
@@ -363,19 +354,15 @@ int main(int argc, char **argv){
                     battleManager.updateTurnTimers();
 
                     //Draw cursor.
-                    battleManager.drawCursor();
+                    drawRepository.drawTopCursor();
                     
                     //Draw battle menus.
                     Draw::drawMenus(battleManager.getMenuList());
 
                     //Play animations.
-                    if(drawRepository.playAllAnimations()){
+                    if(!drawRepository.animationsEmpty())
+                        drawRepository.playAllAnimations();
                         
-                        //Delete enemy after animation if it is dead.
-                        if(drawRepository.animationsEmpty())
-                            battleManager.deleteCurrEnemyIfDead();
-                    }
-
                     else battleManager.consumePlayerInput();
                 }
             }

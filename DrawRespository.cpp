@@ -100,6 +100,34 @@ bool DrawRepository::loadAnimation(Animation *animation){
     }
 }
 
+//Loads a cursor.
+//Pre:  The Cursor is not NULL.
+//Post: A Cursor is loaded to the vector.
+void DrawRepository::loadCursor(Cursor *cursor){
+
+    if(cursor == NULL)
+        return;
+
+    else cursors.push(cursor);
+}
+
+//Draws the top cursor.
+//Pre:  None.
+//Post: Draws the top cursor to the screen.
+void DrawRepository::drawTopCursor(){
+
+    if(!cursors.empty())
+        cursors.front()->draw();
+}
+
+//Remove the top cursor.
+//Pre:  None.
+//Post: Removes the top cursor from the list.
+void DrawRepository::removeTopCursor(){
+
+    cursors.pop();
+}
+
 //Plays all the loaded Animations.
 //Pre:  None.
 //Post: Plays each Animation and pops it off the queue once it's done.

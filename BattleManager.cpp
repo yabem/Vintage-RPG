@@ -121,16 +121,6 @@ void BattleManager::placeMenuToLeftOfCharacter(Character *character){
     else menus.front()->setMenuToLeftOfCharacter(character);
 }
 
-//Draws cursor.
-//Pre:  None.
-//Post: The battleCursor  is drawn to the screen if it is the
-//      enemies' turn.
-void BattleManager::drawCursor() const{
-
-   if(currentTarget == ENEMY)
-        battleCursor->draw();
-}
-
 //Adjust cursor to target.
 //Pre:  The Character* is not NULL and all the x and y coordinates
 //      are defined.
@@ -179,6 +169,7 @@ void BattleManager::moveCursorToTarget(Character *character){
 void BattleManager::targetEnemies(){
 
     currentTarget = ENEMY;
+    drawRepository->loadCursor(battleCursor);
 }
 
 //Changes currentTarget to players.
@@ -187,6 +178,7 @@ void BattleManager::targetEnemies(){
 void BattleManager::targetPlayers(){
 
     currentTarget = PLAYER;
+    drawRepository->removeTopCursor();
 }
 
 //Changes currentTarget to no target.
@@ -656,6 +648,40 @@ void BattleManager::removeAllEvents(){
 }
 
 /////////////////////////////////////Battle End////////////////////////////////
+
+//Check for end of battle.
+//Pre:  None.
+//Post: Returns true if the players win or if the enemies win.
+//      Returns false if the battle continues.
+bool BattleManager::isEndOfBattle(){
+
+    //If all the enemies are dead. End the battle.
+    if(!enemiesRemaining()){
+
+        playersVictory();
+        return true;
+    }
+
+    int playersAlive = 0;
+
+    //Count number of players still alive.
+    for(int i = 0 ; i < thePlayers.getSize() ; i ++){
+
+        if(!thePlayers.getCharacterSelection(i)->isDead())
+            playersAlive++;
+    }
+
+    //If all the players are dead and the animations are done
+    //the battle is over.
+    if(playersAlive == 0 && drawRepository->animationsEmpty()){
+
+        enemiesVictory();
+        return true;
+    }
+
+    //If at least one player is alive continue the battle.
+    else return false;
+}
 
 //End of the battle, players won.
 //Pre:  None.

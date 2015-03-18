@@ -25,11 +25,24 @@ ratAI::~ratAI(){
 //Post: Attacks a random player.
 void ratAI::executeBattleLogic(){
 
-    int randomNum = rand() % listOfEnemies->getSize();
+    int randomPlayer = rand() % listOfEnemies->getSize();
     int randomAttack = rand() % possibleAttacks.size();
 
+    //Player is already dead, choose another.
+    if(listOfPlayers->getCharacterSelection(randomPlayer)->isDead()){
+
+        randomPlayer = 0;
+
+        while(listOfPlayers->getCharacterSelection(randomPlayer)->isDead() &&
+            randomPlayer < listOfPlayers->getSize()){
+            
+                randomPlayer++;
+        }  
+    }  
+
+    //Execute a manipulation from the available abilities.
     characterManipulationStore->executeManipulation(
         initiator , 
-        listOfPlayers->getCharacterSelection(randomNum) ,
+        listOfPlayers->getCharacterSelection(randomPlayer) ,
         possibleAttacks[randomAttack]);
 }

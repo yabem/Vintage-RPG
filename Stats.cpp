@@ -18,11 +18,14 @@ Stats::Stats(){
     this->baseDef = 0;
     this->ttlAtk = 0;
 
+    this->speed = 2;
+
     this->dead = false;
 }
 
 //Constructor.
-Stats::Stats(int level , int baseHP , int baseMP , int baseAtk , int baseDef){
+Stats::Stats(int level , int baseHP , int baseMP , int baseAtk , int baseDef ,
+    float speed){
 
     this->level = level;
     this->baseHP = baseHP;
@@ -40,6 +43,8 @@ Stats::Stats(int level , int baseHP , int baseMP , int baseAtk , int baseDef){
     this->ttlAtk = baseDef;
 
     this->dead = false;
+
+    this->speed = speed;
 }
 
 Stats::~Stats(){
@@ -112,6 +117,12 @@ int Stats::getTtlDef() const{
 
     return ttlDef;
 }     
+
+//Returns the speed.
+float Stats::getSpeed() const{
+
+    return speed;
+}
 
 //Adds to currHP.
 //Pre:  The currHP is initialized.

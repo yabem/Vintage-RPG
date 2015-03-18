@@ -13,7 +13,7 @@ void Draw::drawArea(const AreaMap &areaMap){
 
     //Draw obstacles.
     for(int i = 0 ; i < areaMap.getNumTangibles() ; i++)
-        areaMap.getTangible(i);//.draw();
+        areaMap.getTangible(i);
 
     //Draw clouds.
     for(int i = 0 ; i < areaMap.getNumSceneries() ; i++)
@@ -51,11 +51,11 @@ void Draw::drawBattle(Map &map , I_List *thePlayers ,
         map.getLayer(i).draw();
 
     //Draw characters.
-    for(unsigned int i = 0 ; i < thePlayers->getSize() ; i++)
+    for(int i = 0 ; i < thePlayers->getSize() ; i++)
         thePlayers->getCharacterSelection(i)->draw();
 
     //Draw enemies.
-    for(unsigned int i = 0 ; i < theEnemies->getSize() ; i++) 
+    for(int i = 0 ; i < theEnemies->getSize() ; i++) 
         theEnemies->getCharacterSelection(i)->draw();
 
     //Draw sceneries.

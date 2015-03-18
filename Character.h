@@ -93,6 +93,7 @@ public:
     bool setFacing(int dir);                    //Set facing direction.
     bool setColl(int index);                    //Set collision index to true.
     void setStats(Stats *stats);                //Set stats pointer to input.
+    void resetSequence();                       //Resets the sequence.
 
     void resetColl();                           //Reset all collisions to false.
     void refreshCorners();                      //Recalculate corners based off of x and y values.

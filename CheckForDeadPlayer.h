@@ -1,5 +1,5 @@
-//Checks in the player is dead. If it's dead then it sets
-//the player to dead.
+//Checks in the Player is dead. If it's dead then it sets
+//the Player to dead.
 
 #pragma once
 #include "I_Event.h"

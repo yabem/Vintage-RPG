@@ -5,6 +5,9 @@
 #include "I_Manager.h"
 #include "ResetTurnTimer.h"
 #include "LoadAMenu.h"
+#include "CheckForDeadEnemy.h"
+#include "I_List.h"
+class DrawRepository;
 class Menu;
 class TurnTimer;
 
@@ -16,12 +19,15 @@ private:
     I_Manager *battleManager;
     Menu *menu;
     TurnTimer *turnTimer;
+    I_List *listOfEnemies;  //All the enemies.
+    DrawRepository *drawRepository;
 
 public:
 
     //Constructor.
     PlayerTurn(int playerPosition , I_Manager *battleManager , Menu *menu ,
-        TurnTimer *turnTimer);
+        TurnTimer *turnTimer , I_List *listOfEnemies , 
+        DrawRepository *drawRepository);
     
     //Destructor.
     virtual ~PlayerTurn();

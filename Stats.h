@@ -26,13 +26,16 @@ protected:
     int baseDef;    //Character's base DEF before augments.
     int ttlDef;     //Character's total DEF after augments.
 
+    float speed;    //Character's speed for battle in seconds.
+
     bool dead;     //Character's status of being alive or dead.
 
 public:
 
     //Constructor.
     Stats();
-    Stats(int level , int baseHP , int baseMP , int baseAtk , int baseDef);
+    Stats(int level , int baseHP , int baseMP , int baseAtk , int baseDef ,
+        float speed);
 
     //Destructor.
     virtual ~Stats();
@@ -52,6 +55,8 @@ public:
 
     int getBaseDef() const;    //Returns baseDef.
     int virtual getTtlDef() const;     //Returns ttlDef.
+
+    float getSpeed() const;     //Returns the speed.
 
     void addToCurrHP(int amount);        //Adds to currHP.
 

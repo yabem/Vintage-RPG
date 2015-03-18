@@ -35,7 +35,7 @@ void InitEnemies::rat(Character *character , int enemyType , int level , vector<
     int atk = RATBASEATK + (level * 20);
     int def = RATBASEDEF + (level * 2);
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def, 0 , 0 , 0);
+    CharStats *charStats = new CharStats(level , hp , mp , atk , def, 0 , 0 , 0 , 2.7);
 
     character->setStats(charStats);
 }
@@ -55,12 +55,12 @@ void InitEnemies::wolf(Character *character , int enemyType , int level , vector
     int atk = WOLFBASEATK + (level * 40);
     int def = WOLFBASEDEF + (level * 4);
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def, 0 , 0 , 0);
+    CharStats *charStats = new CharStats(level , hp , mp , atk , def, 0 , 0 , 0 , 4);
 
     character->setStats(charStats);
 }
 
-//Initialize to a wolf.
+//Initialize to a soldier.
 void InitEnemies::soldier(Character *character , int enemyType ,
     int level , vector<ALLEGRO_BITMAP*> enemies){
 
@@ -76,7 +76,7 @@ void InitEnemies::soldier(Character *character , int enemyType ,
     int atk = SOLDIERBASEATK + (level * 30);
     int def = SOLDIERBASEDEF + (level * 3);
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def, 0 , 0 , 0);
+    CharStats *charStats = new CharStats(level , hp , mp , atk , def, 0 , 0 , 0 , 3);
 
     character->setStats(charStats);
 }

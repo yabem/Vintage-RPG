@@ -5,6 +5,7 @@
 #include <queue>
 #include "Cutscene.h"
 #include "Animation.h"
+#include "Cursor.h"
 
 class DrawRepository{
 
@@ -18,6 +19,9 @@ private:
 
     //Used for getting the pressed key.
     I_Manager *gameManager;   
+
+    //Stores the Cursors that are drawn to the screen.
+    std::queue<Cursor*> cursors;
 
     //Used to delete enemies once animations are done.
     //I_Manager *battleManager;           
@@ -44,6 +48,15 @@ public:
 
     //Checks if there are any cutscenes remaining.
     bool cutscenesEmpty();
+
+    //Loads a Cursor.
+    void loadCursor(Cursor *cursor);
+
+    //Draws the top cursor.
+    void drawTopCursor();
+
+    //Remove the top cursor.
+    void removeTopCursor();
 
     //Loads a single Animation.
     bool loadAnimation(Animation *animation);

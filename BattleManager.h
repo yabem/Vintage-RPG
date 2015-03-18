@@ -109,9 +109,6 @@ public:
     //Set menu draw location to character.
     void placeMenuToLeftOfCharacter(Character *character);
 
-    //Draws cursor.
-    void drawCursor() const;
-
     //Adjust cursor to target.
     void moveCursorToTarget(Character *character);
 
@@ -176,7 +173,7 @@ public:
     bool currEnemyDead();   
 
     //Deletes the currently selected enemy.
-    void deleteCurrEnemy(); 
+    virtual void deleteCurrEnemy(); 
 
     //Delete's the current enemy if it is dead.
     bool deleteCurrEnemyIfDead();
@@ -209,6 +206,9 @@ public:
         int maxNumberPlayers); 
 
 //////////////////////////////////Battle Timing////////////////////////////////
+
+    //Check for end of battle.
+    bool isEndOfBattle();
 
     //End of the battle, players won.
     void playersVictory();

@@ -14,8 +14,12 @@ void InitPlayers::initPlayersSpacing(vector<Character*> thePlayers){
         //Set x and y start locations.
         (*it)->setX(totalWidth);
         (*it)->setY(totalHeight);
+        (*it)->resetSequence();
 
-        (*it)->setFacing(LEFT);
+        if((*it)->isDead())
+            (*it)->makeDead();
+
+        else (*it)->setFacing(LEFT);
         
         totalHeight += ((*it)->getH() + DEFAULT_BAR_HEIGHT);
     }

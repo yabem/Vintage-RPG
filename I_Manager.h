@@ -76,4 +76,7 @@ public:
 
     //Sets the gameloop to end.
     virtual void setEndOfGameLoopToEnd();
+
+    //Used for enemyTurn.
+    virtual void deleteCurrEnemy();
 };
