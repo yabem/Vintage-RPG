@@ -6,6 +6,7 @@
 #include <iostream>
 #include "I_Manager.h"
 #include "Enums.h"
+#include "TreasureBox.h"
 struct ALLEGRO_FONT;
 
 //////////////////////////////////Cutscene Class/////////////////////////////
@@ -83,11 +84,12 @@ private:
     CharacterList *characterList;   //Pointer to the player.
     TextBox textBox;
     I_Manager *i_Manager;
+    TreasureBox *treasureBox;
 
 public:
     BattleVictory();
     BattleVictory(AreaMap *currMap , CharacterList *characterList ,
-        I_Manager *i_Manager);
+        I_Manager *i_Manager , TreasureBox *treasureBox);
     virtual ~BattleVictory();
     virtual bool play(const int pressedKey);
 };

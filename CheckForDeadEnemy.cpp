@@ -24,8 +24,18 @@ bool CheckForDeadEnemy::execute(){
     if(theEnemy->getStats()->getCurrHP() <= 0){
 
         if(drawRepository->animationsEmpty()){
+          
+            GainedExperiencePoints *gainedExperiencePoints =
+                new GainedExperiencePoints(battleManager->getPlayersList() ,
+                theEnemy->getXPReward());
+
+            GainedMoney *gainedMoney =
+                new GainedMoney(theEnemy->getMoneyReward());
+            
+            battleManager->loadReward(gainedMoney);
+            battleManager->loadReward(gainedExperiencePoints);
+
             battleManager->deleteCurrEnemy();
-            //rewards->addXP(theEnemy);
         }
     }
 

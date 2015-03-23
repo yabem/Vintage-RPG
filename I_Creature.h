@@ -21,4 +21,7 @@ public:
     virtual void makeDead();
 
     virtual void executeRandomAttack() = 0;
+
+    virtual int getXPReward();
+    virtual int getMoneyReward();
 };

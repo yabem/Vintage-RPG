@@ -59,17 +59,8 @@ const int BATTLE_START_Y_PLAYERS = SCREEN_H / 3;
 const int DEFAULT_BAR_WIDTH = 60;   //Default TurnTimer width.
 const int DEFAULT_BAR_HEIGHT = 15;  //Default TurnTimer height.
 
-const int RATBASEHP = 5;
-const int RATBASEMP = 0;
-const int RATBASEATK = 1;
-const int RATBASEDEF = 1;
+//Inventory Constants
+const std::string MONEY_TYPE = "Gold";  //Currency type for the game.
+const std::string EXPERIENCE_TYPE = "XP";  
 
-const int WOLFBASEHP = 10;
-const int WOLFBASEMP = 0;
-const int WOLFBASEATK = 1;
-const int WOLFBASEDEF = 1;
-
-const int SOLDIERBASEHP = 10;
-const int SOLDIERBASEMP = 0;
-const int SOLDIERBASEATK = 1;
-const int SOLDIERBASEDEF = 1;
+const int DEFAULT_ITEM_CAPACITY = 99;

@@ -202,6 +202,12 @@ void Character::addToRemainingHP(int amount){
     stats->addToCurrHP(amount);
 }
 
+//Adds to the Character's total XP.
+void Character::addToTotalXP(int amount){
+
+    stats->addToTtlXP(amount);
+}
+
 //Set bitmap to input.
 void Character::setBmap(ALLEGRO_BITMAP *bmap){
 
@@ -482,4 +488,20 @@ std::string Character::getAbilities(){
 Menu* Character::getMenu(){
 
     return menu;
+}
+
+//Retrieves the XP reward for killing the Character.
+//Pre:  None.
+//Post: Returns the XP reward from the Stats object.
+int Character::getXPReward(){
+
+    return stats->getXPRewardForSlaying();
+}
+
+//Retrieves the money reward for killing the Character.
+//Pre:  None.
+//Post: Returns the money reward from the Stats object.
+int Character::getMoneyReward(){
+
+    return stats->getMoneyRewardForSlaying();
 }

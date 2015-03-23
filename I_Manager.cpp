@@ -42,3 +42,5 @@ void I_Manager::setPressedKeyToInactive(){}
 void I_Manager::setEndOfGameLoopToEnd(){}
 
 void I_Manager::deleteCurrEnemy(){}
+
+void I_Manager::loadReward(I_Reward *i_Reward){}

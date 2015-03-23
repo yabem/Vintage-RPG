@@ -6,6 +6,9 @@
 #include "I_Creature.h"
 #include "I_Manager.h"
 #include "DrawRepository.h"
+#include "GainedExperiencePoints.h"
+#include "GainedMoney.h"
+
 
 class CheckForDeadEnemy : public I_Event {
 

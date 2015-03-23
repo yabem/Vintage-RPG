@@ -11,3 +11,7 @@ bool I_Creature::isDead(){return false;}
 void I_Creature::makeDead(){}
 
 Stats* I_Creature::getStats(){return NULL;}
+
+int I_Creature::getXPReward(){return 0;}
+
+int I_Creature::getMoneyReward(){return 0;}

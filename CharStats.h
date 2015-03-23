@@ -1,24 +1,36 @@
 #pragma once
 #include "Stats.h"
+#include <vector>
+#include "I_CharacterValuesList.h"
 
 
 class CharStats: public Stats{
 
 private:
 
-    int ttlXP;          //Total gained experience.
+    int ttlXPGained;    //Total gained experience.
     int currLvlXP;      //Total XP for this level.
-    int toLvlXP;        //Remaining XP to next level.
+    int toLvlXP;        //Remaining XP to next level.    
+    int xpRewardForSlaying; //The amount of XP awarded for killing this creature.
+    int moneyRewardForSlaying;  //The amount of money awarded for killing the creature.
+    I_CharacterValuesList *XPToLevel;    //Stores the amount needed to level.
 
 public:
 
     //Constructor.
-    CharStats(int level , int baseHP , int baseMP , int baseAtk , int baseDef ,
-        int ttlXP , int currLvlXP , int toLvlXP , float speed);
+    CharStats(int level , int baseHP , int baseMP , int baseAtk ,
+        int baseDef , int ttlXPGained , int currLvlXP , int toLvlXP ,
+        float speed , int xpRewardForSlaying , int moneyRewardForSlaying);
     
     virtual ~CharStats();   //Destructor.
 
-    int getTtlXP() const;       //Total gained XP.
-    int getCurrLvlXP() const;   //Returns currLvlXP;
-    int getToLvlXP() const;     //Returns toLvlXP;
+    int getTtlXPGained() const;     //Total gained XP.
+
+    //Reward for killing the Character.
+    virtual int getXPRewardForSlaying() const;
+    virtual int getMoneyRewardForSlaying() const;
+
+    int getCurrLvlXP() const;       //Returns currLvlXP;
+    int getToLvlXP() const;         //Returns toLvlXP;
+    void addTottlXPGained(int amount);    //Add to ttlXPGained;
 };

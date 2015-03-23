@@ -9,14 +9,11 @@ void SetTurnTimerListToCharacterList::setTurnTimerListToCharacterList
     (CharacterList *characterList , TurnTimerList *turnTimerList){
 
     //Cycles through CharacterList and adds a connection for each Character.
-    while(!characterList->lastCharOfList()){
+    for(int i = 0 ; i < characterList->getSize() ; i++){
 
         turnTimerList->addConnection(characterList->getCurrSelection());
         characterList->moveSelectionDown();
     }
-
-    //Add the final connections.
-    turnTimerList->addConnection(characterList->getCurrSelection());
 
     characterList->resetSelection();
 }

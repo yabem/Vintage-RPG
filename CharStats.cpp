@@ -1,8 +1,9 @@
 #include "CharStats.h"
 
 //Constructor.
-CharStats::CharStats(int level , int baseHP , int baseMP , int baseAtk , int baseDef ,
-    int ttlXP , int currLvlXP , int toLvlXP , float speed){
+CharStats::CharStats(int level , int baseHP , int baseMP , int baseAtk ,
+    int baseDef , int ttlXPGained , int currLvlXP , int toLvlXP ,
+    float speed , int xpRewardForSlaying , int moneyRewardForSlaying){
 
     this->level = level;
     this->baseHP = baseHP;
@@ -19,11 +20,14 @@ CharStats::CharStats(int level , int baseHP , int baseMP , int baseAtk , int bas
     this->baseDef = baseDef;
     this->ttlDef = baseDef;
 
-    this->ttlXP = ttlXP;
+    this->ttlXPGained = ttlXPGained;
     this->currLvlXP = currLvlXP;
     this->toLvlXP = toLvlXP;
 
     this->speed = speed;
+
+    this->xpRewardForSlaying = xpRewardForSlaying;
+    this->moneyRewardForSlaying = moneyRewardForSlaying;
 }
  
 //Destructor.
@@ -33,9 +37,21 @@ CharStats::~CharStats(){
 }
 
 //Total gained XP.
-int CharStats::getTtlXP() const{
+int CharStats::getTtlXPGained() const{
 
-    return ttlXP;
+    return ttlXPGained;
+}
+
+//Returns XPRewardForSlaying.
+int CharStats::getXPRewardForSlaying() const{
+
+    return this->xpRewardForSlaying;
+}
+
+//Returns moneyRewardForSlaying
+int CharStats::getMoneyRewardForSlaying() const{
+
+    return this->moneyRewardForSlaying;
 }
 
 //Returns currLvlXP;
@@ -48,4 +64,10 @@ int CharStats::getCurrLvlXP() const{
 int CharStats::getToLvlXP() const{
 
     return toLvlXP;
+}
+
+//Increases the total xp by the amount.
+void CharStats::addTottlXPGained(int amount){
+
+    ttlXPGained += amount;
 }

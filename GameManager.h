@@ -104,9 +104,6 @@ public:
     
     //Sets the current pressed key to unpressed.
     void resetPressedKey(); 
-    
-    //Creates the victory CutScene.
-    void generateVictoryCutScene(); 
 
     //Returns the pressedKey
     virtual int getPressedKey() const;

@@ -20,6 +20,7 @@
 #include "MenuList.h"
 #include "I_Event.h"
 #include "BattleLoss.h"
+#include "TreasureBox.h"
 class DrawRepository;
 
 class BattleManager: public I_Manager{
@@ -70,6 +71,9 @@ private:
     //Used to get the current player.
     GameManager *gameManager;
 
+    //Holds the treasure.
+    TreasureBox treasureBox;
+
     //Determines if the battle is paused.
     bool isBattlePaused;
     
@@ -105,6 +109,12 @@ public:
 
     //Loads an Event.
     void loadEvent(I_Event *i_Event);
+
+    //Loads a Reward to the TreasureBox.
+    void loadReward(I_Reward *i_Reward);
+
+    //Delivers all the rewards to the player.
+    void distributeAllRewards();
 
     //Set menu draw location to character.
     void placeMenuToLeftOfCharacter(Character *character);

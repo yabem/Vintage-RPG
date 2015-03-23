@@ -151,7 +151,7 @@ BattleVictory::BattleVictory(){
 
 //Constructor with parameters.
 BattleVictory::BattleVictory(AreaMap *currMap , CharacterList *characterList ,
-    I_Manager *i_Manager){
+    I_Manager *i_Manager , TreasureBox *treasureBox){
 
     frameCount = 0;
     mapSwitch = 1;
@@ -159,8 +159,30 @@ BattleVictory::BattleVictory(AreaMap *currMap , CharacterList *characterList ,
     this->characterList = characterList;
     this->i_Manager = i_Manager;
 
-    textBox.loadText("You have slain all the enemies! "
-    "You gained 10xp and 50gold.");
+    std::string victoryMessage = "";
+    victoryMessage += "You have slain all the enemies! ";
+    victoryMessage += "You gained ";
+
+    int numberOfRewards = treasureBox->getSize();
+    char tempString[10];
+    for(int i = 0 ; i < numberOfRewards ; i++){
+    
+        _itoa_s(treasureBox->getFrontRewardAmount(), tempString , 10);
+
+        if(i == (numberOfRewards - 1) && numberOfRewards >= 2)
+            victoryMessage += " and ";
+
+        victoryMessage += tempString;
+        victoryMessage += treasureBox->getFrontRewardName();
+        treasureBox->removeReward(treasureBox->getFrontRewardName());
+        
+        if(i != (numberOfRewards - 1) && numberOfRewards > 2)
+            victoryMessage += " , ";
+    }
+
+    victoryMessage += ".";
+
+    textBox.loadText(victoryMessage);
 }
 
 //Destructor.

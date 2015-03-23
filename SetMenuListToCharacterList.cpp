@@ -7,14 +7,11 @@ void SetMenuListToCharacterList::setMenuListToCharacterList
     (CharacterList *characterList , MenuList *menuList){
 
     //Cycles through CharacterList and adds a connection for each Character.
-    while(!characterList->lastCharOfList()){
+    for(int i = 0 ; i < characterList->getSize() ; i++){
 
         menuList->addMenuConnection(characterList->getCurrSelection());
         characterList->moveSelectionDown();
     }
-
-    //Add the final connections.
-    menuList->addMenuConnection(characterList->getCurrSelection());
 
     characterList->resetSelection();
 }

@@ -2,7 +2,8 @@
 
 //Initialize character based off of the level and type
 //or enemy.
-void InitEnemies::init(Character *character , int enemyType , int level , vector<ALLEGRO_BITMAP*> enemies){
+void InitEnemies::init(Character *character , int enemyType , int level ,
+    vector<ALLEGRO_BITMAP*> enemies){
 
     switch(enemyType){
         case RAT:
@@ -21,7 +22,8 @@ void InitEnemies::init(Character *character , int enemyType , int level , vector
 }
 
 //Initialize to a rat.
-void InitEnemies::rat(Character *character , int enemyType , int level , vector<ALLEGRO_BITMAP*> enemies){
+void InitEnemies::rat(Character *character , int enemyType , int level ,
+    vector<ALLEGRO_BITMAP*> enemies){
 
     character->setBmap(enemies[enemyType]);
 
@@ -30,18 +32,23 @@ void InitEnemies::rat(Character *character , int enemyType , int level , vector<
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = RATBASEHP + (level * 5);
-    int mp = RATBASEMP + (level * 2);
-    int atk = RATBASEATK + (level * 20);
-    int def = RATBASEDEF + (level * 2);
+    int hp = RAT_BASE_HP + (level * 5);
+    int mp = RAT_BASE_MP + (level * 2);
+    int atk = RAT_BASE_ATK + (level * 20);
+    int def = RAT_BASE_DEF + (level * 2);
+    float spd = RAT_BASE_SPEED - (level * 0.1);
+    int rewardXP = RAT_BASE_REWARD_XP + (level * 5);
+    int moneyReward = RAT_BASE_MONEY_REWARD;
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def, 0 , 0 , 0 , 2.7);
+    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+        0 , 0 , 0 , spd , rewardXP , moneyReward);
 
     character->setStats(charStats);
 }
 
 //Initialize to a wolf.
-void InitEnemies::wolf(Character *character , int enemyType , int level , vector<ALLEGRO_BITMAP*> enemies){
+void InitEnemies::wolf(Character *character , int enemyType , int level ,
+    vector<ALLEGRO_BITMAP*> enemies){
 
     character->setBmap(enemies[enemyType]);
 
@@ -50,12 +57,16 @@ void InitEnemies::wolf(Character *character , int enemyType , int level , vector
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = WOLFBASEHP + (level * 7);
-    int mp = WOLFBASEMP + (level * 4);
-    int atk = WOLFBASEATK + (level * 40);
-    int def = WOLFBASEDEF + (level * 4);
+    int hp = WOLF_BASE_HP + (level * 7);
+    int mp = WOLF_BASE_MP + (level * 4);
+    int atk = WOLF_BASE_ATK + (level * 40);
+    int def = WOLF_BASE_DEF + (level * 4);
+    float spd = WOLF_BASE_SPEED - (level * 0.1);
+    int rewardXP = WOLF_BASE_REWARD_XP + (level * 5);
+    int moneyReward = WOLF_BASE_MONEY_REWARD;
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def, 0 , 0 , 0 , 4);
+    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+        0 , 0 , 0 , spd , rewardXP , moneyReward);
 
     character->setStats(charStats);
 }
@@ -71,12 +82,16 @@ void InitEnemies::soldier(Character *character , int enemyType ,
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = SOLDIERBASEHP + (level * 6);
-    int mp = SOLDIERBASEMP + (level * 3);
-    int atk = SOLDIERBASEATK + (level * 30);
-    int def = SOLDIERBASEDEF + (level * 3);
+    int hp = SOLDIER_BASE_HP + (level * 6);
+    int mp = SOLDIER_BASE_MP + (level * 3);
+    int atk = SOLDIER_BASE_ATK + (level * 30);
+    int def = SOLDIER_BASE_DEF + (level * 3);
+    float spd = SOLDIER_BASE_SPEED - (level * 0.1);
+    int rewardXP = SOLDIER_BASE_REWARD_XP + (level * 5);
+    int moneyReward = SOLDIER_BASE_MONEY_REWARD;
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def, 0 , 0 , 0 , 3);
+    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+        0 , 0 , 0 , spd , rewardXP , moneyReward);
 
     character->setStats(charStats);
 }

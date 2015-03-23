@@ -124,6 +124,18 @@ float Stats::getSpeed() const{
     return speed;
 }
 
+//Returns the XP reward.
+int Stats::getXPRewardForSlaying() const{
+
+    return 0;
+}
+
+//Returns money reward.
+int Stats::getMoneyRewardForSlaying() const{
+
+    return 0;
+}
+
 //Adds to currHP.
 //Pre:  The currHP is initialized.
 //Post: The amount is added to the currHP.
@@ -143,6 +155,12 @@ void Stats::addToCurrHP(int amount){
         currHP = 0;
         dead = true;
     }
+}
+
+//Adds to the Character's total XP.
+void Stats::addToTtlXP(int amount){
+    
+    //Goes to the subclass.
 }
 
 //Determines if currHP are all gone.

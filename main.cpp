@@ -42,6 +42,10 @@
 #include <stdlib.h>
 #include <crtdbg.h>
 
+//Testing
+#include "Backpack.h"
+#include "HealingItem.h"
+
 //To do:
 //Make controls a class
 //Get rid of setStart() dupe function and create a colToX() and rowToY() functions
@@ -119,16 +123,16 @@ int main(int argc, char **argv){
    thePlayers.loadChar(&thePlayer4);
 
    //Character stats
-   CharStats playerStats(1 , 1 , 10 , 100 , 10 , 1 , 100 , 10 , 1.8);
+   CharStats playerStats(1 , 100 , 10 , 100 , 10 , 1 , 100 , 10 , 1.8 , 0 , 0);
    thePlayer.setStats(&playerStats);
 
-   CharStats playerStats2(1 , 2 , 10 , 20 , 10 , 1 , 100 , 10 , 2.3);
+   CharStats playerStats2(1 , 50 , 10 , 20 , 10 , 1 , 100 , 10 , 2.3 , 0 , 0);
    thePlayer2.setStats(&playerStats2);
 
-   CharStats playerStats3(1 , 3 , 10 , 10 , 10 , 1 , 100 , 10 , 4.2);
+   CharStats playerStats3(1 , 100 , 10 , 10 , 10 , 1 , 100 , 10 , 4.2 , 0 , 0);
    thePlayer3.setStats(&playerStats3);
 
-   CharStats playerStats4(1 , 4 , 10 , 30 , 10 , 1 , 100 , 10 , 2.1);
+   CharStats playerStats4(1 , 50 , 10 , 30 , 10 , 1 , 100 , 10 , 2.1 , 0 , 0);
    thePlayer4.setStats(&playerStats4);
 
    //Animations queue
@@ -302,6 +306,37 @@ int main(int argc, char **argv){
 
     //Initialize starting position.
     Movement::setStart(*gameManager.player, theMap , STARTCOL , STARTROW);
+
+    //Tests
+    /*
+    TreasureBox treasureBox;
+
+    GainedExperiencePoints *gainedExperiencePoints1 = new GainedExperiencePoints(&thePlayers , 500);
+    GainedExperiencePoints *gainedExperiencePoints2 = new GainedExperiencePoints(&thePlayers , 600);
+    GainedExperiencePoints *gainedExperiencePoints3 = new GainedExperiencePoints(&thePlayers , 700);
+    GainedExperiencePoints *gainedExperiencePoints4 = new GainedExperiencePoints(&thePlayers , 800);
+
+    treasureBox.addReward(gainedExperiencePoints1);
+    treasureBox.addReward(gainedExperiencePoints2);
+    treasureBox.addReward(gainedExperiencePoints3);
+    treasureBox.addReward(gainedExperiencePoints4);
+
+    treasureBox.deliverAllRewards();
+    thePlayers;
+    */
+
+    Backpack backpack;
+
+    HealingItem healingItem("Potion" , 3);
+    HealingItem healingItem2("Potion" , -100);
+    HealingItem healingItem3("Potion" , 5);
+
+    HealingItem healingItem4("Potion2" , 1000);
+
+    backpack.addItem(&healingItem);
+    backpack.addItem(&healingItem2);
+    backpack.addItem(&healingItem3);
+    backpack.addItem(&healingItem4);
 
     al_start_timer(timer);
 

@@ -277,6 +277,72 @@
     <Filter Include="Header Files\Cutscene\Derived Class">
       <UniqueIdentifier>{869b7b59-2859-4451-8db7-2937692dbdf2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TreasureBox">
+      <UniqueIdentifier>{9288e5be-55e7-4941-9429-c09e8334d5aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TreasureBox\Reward">
+      <UniqueIdentifier>{85a28d87-e965-4c9d-aa27-f0e3e19fe0dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TreasureBox\Reward\Base Class">
+      <UniqueIdentifier>{113ef3b9-5aca-4315-b824-2d2028a8c65a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TreasureBox\Reward\Derived Class">
+      <UniqueIdentifier>{48e2ed4f-d98c-411f-8712-1ef6d21d45ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TreasureBox">
+      <UniqueIdentifier>{ffe06e5d-7d7b-45b4-9640-295a48b77275}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TreasureBox\Reward">
+      <UniqueIdentifier>{a645751c-ce65-4616-98a8-07135bf1cd6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TreasureBox\Reward\Base Class">
+      <UniqueIdentifier>{d4c1d848-e928-4061-9c03-24e48dc7b5d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TreasureBox\Reward\Derived Class">
+      <UniqueIdentifier>{7eaf1068-497d-4939-b521-39092d41bd19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\Stats\CharacterValuesTable">
+      <UniqueIdentifier>{08ca119d-a3b1-470a-89fe-859a22cf5893}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\Stats\CharacterValuesTable\Base Class">
+      <UniqueIdentifier>{32589580-72be-4fe2-94c5-8cdae9d2a837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\Stats\CharacterValuesTable">
+      <UniqueIdentifier>{22ff3549-8918-46bf-b4e2-7ba9e89f594b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\Stats\CharacterValuesTable\Derived Class">
+      <UniqueIdentifier>{732d2c21-24aa-4721-bf71-b597f32144a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\Stats\CharacterValuesTable\Derived Class">
+      <UniqueIdentifier>{1bbc7d6c-fc0e-4a2c-b060-07d79abcbd08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\Stats\CharacterValuesTable\Base Class">
+      <UniqueIdentifier>{794028a0-214f-4849-9731-64293df8f80c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Backpack">
+      <UniqueIdentifier>{05ef9c02-bc8b-4c59-af10-a605a4cc6781}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Backpack\I_InventoryItem">
+      <UniqueIdentifier>{27d8f3a8-5a82-4408-b0bc-abd640a9c2bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Backpack">
+      <UniqueIdentifier>{32225126-702a-4f05-89cf-a2387f6ee80e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Backpack\I_InventoryItem">
+      <UniqueIdentifier>{e5cd0192-ab2c-45e8-850b-90d3d06e92b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Backpack\I_InventoryItem\Base Class">
+      <UniqueIdentifier>{36941af0-6d62-456d-b1f7-3d237d69f1d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Backpack\I_InventoryItem\Derived Class">
+      <UniqueIdentifier>{ac3be31b-c256-47ad-a2a5-67bc956d4272}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Backpack\I_InventoryItem\Base Class">
+      <UniqueIdentifier>{59506318-a39c-4e3b-bc03-8d41b8d481b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Backpack\I_InventoryItem\Derived Class">
+      <UniqueIdentifier>{2201bbfa-e9cb-407b-9c64-e362716ab8b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -464,6 +530,33 @@
     </ClCompile>
     <ClCompile Include="CheckForDeadPlayer.cpp">
       <Filter>Source Files\Event\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TreasureBox.cpp">
+      <Filter>Source Files\TreasureBox</Filter>
+    </ClCompile>
+    <ClCompile Include="I_Reward.cpp">
+      <Filter>Source Files\TreasureBox\Reward\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="GainedExperiencePoints.cpp">
+      <Filter>Source Files\TreasureBox\Reward\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="XPToLevel.cpp">
+      <Filter>Source Files\Character\Stats\CharacterValuesTable\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="I_CharacterValuesList.cpp">
+      <Filter>Source Files\Character\Stats\CharacterValuesTable\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="GainedMoney.cpp">
+      <Filter>Source Files\TreasureBox\Reward\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="I_InventoryItem.cpp">
+      <Filter>Source Files\Backpack\I_InventoryItem\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="Backpack.cpp">
+      <Filter>Source Files\Backpack\I_InventoryItem</Filter>
+    </ClCompile>
+    <ClCompile Include="HealingItem.cpp">
+      <Filter>Source Files\Backpack\I_InventoryItem\Derived Class</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -658,6 +751,33 @@
     </ClInclude>
     <ClInclude Include="CheckForDeadPlayer.h">
       <Filter>Header Files\Event\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TreasureBox.h">
+      <Filter>Header Files\TreasureBox</Filter>
+    </ClInclude>
+    <ClInclude Include="I_Reward.h">
+      <Filter>Header Files\TreasureBox\Reward\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="GainedExperiencePoints.h">
+      <Filter>Header Files\TreasureBox\Reward\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="XPToLevel.h">
+      <Filter>Header Files\Character\Stats\CharacterValuesTable\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="I_CharacterValuesList.h">
+      <Filter>Header Files\Character\Stats\CharacterValuesTable\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="GainedMoney.h">
+      <Filter>Header Files\TreasureBox\Reward\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="Backpack.h">
+      <Filter>Header Files\Backpack</Filter>
+    </ClInclude>
+    <ClInclude Include="I_InventoryItem.h">
+      <Filter>Header Files\Backpack\I_InventoryItem\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="HealingItem.h">
+      <Filter>Header Files\Backpack\I_InventoryItem\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

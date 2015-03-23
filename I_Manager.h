@@ -7,6 +7,7 @@ class CharacterManipulationStore;
 class DrawRepository;
 class I_Event;
 class Character;
+class I_Reward;
 
 class I_Manager{
 
@@ -79,4 +80,7 @@ public:
 
     //Used for enemyTurn.
     virtual void deleteCurrEnemy();
+
+    //Loads a Reward to the TreasureBox.
+    virtual void loadReward(I_Reward *i_Reward);
 };

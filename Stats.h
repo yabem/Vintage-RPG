@@ -58,7 +58,12 @@ public:
 
     float getSpeed() const;     //Returns the speed.
 
+    virtual int getXPRewardForSlaying() const;
+    virtual int getMoneyRewardForSlaying() const;
+    //virtual vector of items, in an item is a string and int, so name and qty.
+
     void addToCurrHP(int amount);        //Adds to currHP.
+    virtual void addToTtlXP(int amount);        //Adds to the Character's total XP.
 
     bool isDead();        //Determines if currHP are all gone.
     void makeDead();            //Sets the dead status to true.

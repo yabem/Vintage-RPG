@@ -175,14 +175,6 @@ void GameManager::resetPressedKey(){
     }
 }
 
-//Creates the victory CutScene.
-void GameManager::generateVictoryCutScene(){
-
-    BattleVictory *battleVictory = new BattleVictory(currMap , 
-        thePlayers , this);
-    drawRepository->loadCutscene(battleVictory);
-}
-
 //Returns the pressedKey
 //Pre:  None.
 //Post: Returns the pressedKey.

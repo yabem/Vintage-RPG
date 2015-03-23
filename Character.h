@@ -78,6 +78,7 @@ public:
     int getAttack() const;                      //Returns the attack stat for the Character.
     int getDefense() const;                     //Returns the defense stat for the Character.
     void addToRemainingHP(int amount);          //Adds the value to the Character's remaining hitpoints.
+    void addToTotalXP(int amount);              //Adds to the Character's total xp.
     virtual bool isDead();                      //Returns the dead status of the Character.
     void makePlayable();                        //Makes the Character Playable.
     void makeDead();                            //Makes the Character dead.
@@ -108,4 +109,7 @@ public:
     std::string getAbilities();                 //Gets abilities.
 
     virtual void executeRandomAttack();         //Executes a random attack.
+
+    virtual int getXPReward();
+    virtual int getMoneyReward();
 };

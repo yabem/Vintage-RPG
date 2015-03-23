@@ -85,6 +85,22 @@ void BattleManager::loadEvent(I_Event *i_Event){
     events.push(i_Event);
 }
 
+//Loads a Reward to the TreasureBox.
+//Pre:  The Reward is valid.
+//Post: The Reward is permanetly added to the TreasureBox.
+void BattleManager::loadReward(I_Reward *i_Reward){
+
+    treasureBox.addReward(i_Reward);
+}
+
+//Delivers all the rewards to the player.
+//Pre:  None.
+//Post: Delivers all the rewards and empty's the TreasureBox.
+void BattleManager::distributeAllRewards(){
+
+    treasureBox.deliverAllRewards();
+}
+
 //Loads a Menu to the BattleManager.
 //Pre:  None.
 //Post: Loads the menu to the Menu vector and pauses the battle.
@@ -688,8 +704,13 @@ bool BattleManager::isEndOfBattle(){
 //Post: Cleans up after the battle and ensures all memory is reclaimed.
 void BattleManager::playersVictory(){
 
+    treasureBox.deliverAllRewards();
+
     //Create victory cutscene.
-    gameManager->generateVictoryCutScene();
+    BattleVictory *battleVictory = new BattleVictory(gameManager->currMap , 
+        &thePlayers , gameManager , &treasureBox);
+
+    drawRepository->loadCutscene(battleVictory);
 
     //Reset battle menus.
     Draw::removeAllMenus(getMenuList());
@@ -724,6 +745,8 @@ void BattleManager::enemiesVictory(){
 
     theEnemies.deleteList();
     thePlayers.deleteList();
+
+    treasureBox.removeAllRewards();
 }
 
 

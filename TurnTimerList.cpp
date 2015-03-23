@@ -129,7 +129,7 @@ void TurnTimerList::updateTurnTimers(){
     if(battleManager->battlePaused())
         return;
 
-    else for(int i = 0 ; i < listOfCharTimers.size() ; i++){
+    else for(unsigned int i = 0 ; i < listOfCharTimers.size() ; i++){
         
         //Only update of the Character is alive.
         if(!listOfCharTimers[i]->i_Creature->isDead())
@@ -187,7 +187,7 @@ void TurnTimerList::resetTurnTimerAtPosition(int position){
 //Post: Draws all the turn timers to the screen.
 void TurnTimerList::drawTurnTimers(){
 
-    for(int i = 0 ; i < listOfCharTimers.size() ; i++){
+    for(unsigned int i = 0 ; i < listOfCharTimers.size() ; i++){
 
         listOfCharTimers[i]->turnTimer->draw();
     }
