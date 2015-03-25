@@ -2,7 +2,7 @@
 //rate.
 
 #pragma once;
-#include "Enums.h"  //Used for FPS declaration.
+#include "GameConfig.h"  //Used for FPS declaration.
 #include <allegro5/allegro_primitives.h>
 
 const int INNER_OFFSET = 3;

@@ -136,6 +136,19 @@ int Stats::getMoneyRewardForSlaying() const{
     return 0;
 }
 
+//Returns the rewards.
+std::vector<std::string> Stats::getRewards() const{
+
+    std::vector<std::string> temp;
+
+    return temp;
+}
+
+//Adds a reward.
+void Stats::addReward(std::string reward){
+
+}
+
 //Adds to currHP.
 //Pre:  The currHP is initialized.
 //Post: The amount is added to the currHP.

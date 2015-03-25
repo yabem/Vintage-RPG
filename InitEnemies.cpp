@@ -39,11 +39,24 @@ void InitEnemies::rat(Character *character , int enemyType , int level ,
     float spd = RAT_BASE_SPEED - (level * 0.1);
     int rewardXP = RAT_BASE_REWARD_XP + (level * 5);
     int moneyReward = RAT_BASE_MONEY_REWARD;
+    std::vector<std::string> itemRewards = ratRewards();
 
     CharStats *charStats = new CharStats(level , hp , mp , atk , def,
-        0 , 0 , 0 , spd , rewardXP , moneyReward);
+        0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
+}
+
+//Gets the rat's rewards.
+std::vector<std::string> InitEnemies::ratRewards(){
+
+    std::vector<std::string> rewards;
+    int randomNum = rand() % 100;
+
+    if(randomNum < 20)
+        rewards.push_back("Potion");
+
+    return rewards;
 }
 
 //Initialize to a wolf.
@@ -64,11 +77,27 @@ void InitEnemies::wolf(Character *character , int enemyType , int level ,
     float spd = WOLF_BASE_SPEED - (level * 0.1);
     int rewardXP = WOLF_BASE_REWARD_XP + (level * 5);
     int moneyReward = WOLF_BASE_MONEY_REWARD;
+    std::vector<std::string> itemRewards = wolfRewards();
 
     CharStats *charStats = new CharStats(level , hp , mp , atk , def,
-        0 , 0 , 0 , spd , rewardXP , moneyReward);
+        0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
+}
+
+//Gets the wolf's rewards.
+std::vector<std::string> InitEnemies::wolfRewards(){
+
+    std::vector<std::string> rewards;
+    int randomNum = rand() % 100;
+
+    if(randomNum < 30)
+        rewards.push_back("Potion");
+
+    if(randomNum < 10)
+        rewards.push_back("Potion2");
+
+    return rewards;
 }
 
 //Initialize to a soldier.
@@ -89,12 +118,32 @@ void InitEnemies::soldier(Character *character , int enemyType ,
     float spd = SOLDIER_BASE_SPEED - (level * 0.1);
     int rewardXP = SOLDIER_BASE_REWARD_XP + (level * 5);
     int moneyReward = SOLDIER_BASE_MONEY_REWARD;
+    std::vector<std::string> itemRewards = soldierRewards();
 
     CharStats *charStats = new CharStats(level , hp , mp , atk , def,
-        0 , 0 , 0 , spd , rewardXP , moneyReward);
+        0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
 }
+
+//Gets the soldier's rewards.
+std::vector<std::string> InitEnemies::soldierRewards(){
+
+    std::vector<std::string> rewards;
+    int randomNum = rand() % 100;
+
+    if(randomNum < 40)
+        rewards.push_back("Potion");
+
+    if(randomNum < 20)
+        rewards.push_back("Potion2");
+
+    if(randomNum < 10)
+        rewards.push_back("Potion3");
+
+    return rewards;
+}
+
 
 //Set the spacing so the enemies are drawn correctly on the screen.
 void InitEnemies::initEnemiesSpacing(vector<Character*> theEnemies){

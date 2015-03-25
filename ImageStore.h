@@ -4,7 +4,7 @@
 #pragma once
 #include <vector>
 #include <map>
-#include "Enums.h"
+#include "GameConfig.h"
 #include <string>
 #include <allegro5/allegro_font.h>  //Used for al_load_bitmap().
 

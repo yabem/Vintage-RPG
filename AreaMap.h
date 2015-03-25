@@ -12,7 +12,7 @@
 
 #include <vector>
 #include "Layer.h"
-#include "Enums.h"
+#include "GameConfig.h"
 #include "Tangible.h"
 #include "Scenery.h"
 #include "Character.h"

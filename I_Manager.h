@@ -8,6 +8,8 @@ class DrawRepository;
 class I_Event;
 class Character;
 class I_Reward;
+class Backpack;
+class I_List;
 
 class I_Manager{
 
@@ -61,7 +63,7 @@ public:
     virtual CharacterList* getEnemiesList();
 
     //Returns the players list.
-    virtual CharacterList* getPlayersList();
+    virtual I_List* getPlayersList();
 
     //Used for PlayerEvent.
     virtual bool emptyMenus();
@@ -83,4 +85,10 @@ public:
 
     //Loads a Reward to the TreasureBox.
     virtual void loadReward(I_Reward *i_Reward);
+
+    //Load backpack.
+    virtual void loadBackpack(Backpack *backpack);
+
+    //Get backpack.
+    virtual Backpack* getBackpack();
 };

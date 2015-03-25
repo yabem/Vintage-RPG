@@ -8,7 +8,7 @@
 
 #include <vector>
 #include "Layer.h"
-#include "Enums.h"
+#include "GameConfig.h"
 #include "Scenery.h"
 
 class Map{

@@ -9,7 +9,6 @@ HealingItem::HealingItem(std::string name , int amount){
 
     //Sets currentAmount.
     addToAmount(amount);
-
 }
 
 //Destructor.

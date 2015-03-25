@@ -1,10 +1,10 @@
 #include "GainedMoney.h"
 
 //Constructor.
-GainedMoney::GainedMoney(//Addbackpack object
-    int amountGained){
+GainedMoney::GainedMoney(int amountGained , Backpack *backpack){
 
     this->amountGained = amountGained;
+    this->backpack = backpack;
 }
 
 //Destructor.
@@ -17,7 +17,7 @@ GainedMoney::~GainedMoney(){
 //Post: Delivers the experience points to the player.
 bool GainedMoney::deliverToPlayer(){
 
-    //Need to deliver to the player via a backpack object.
+    backpack->addMoney(this->amountGained);
 
     return true;
 }

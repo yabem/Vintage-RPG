@@ -2,7 +2,7 @@
 
 #pragma once
 #include "I_InventoryItem.h"
-#include "Enums.h"
+#include "GameConfig.h"
 
 class HealingItem : public I_InventoryItem{
 

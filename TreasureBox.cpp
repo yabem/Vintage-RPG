@@ -79,8 +79,12 @@ void TreasureBox::removeReward(std::string rewardName){
 //Post: Permanently removes the first reward from the queue.
 void TreasureBox::removeFrontReward(){
 
-    if(!rewards.empty())
+    if(!rewards.empty()){
+        
+        delete rewards.front();
+        rewards.front() = NULL;
         rewards.pop();
+    }
 }
 
 //Removes all the Rewards in the treasure box.
@@ -116,6 +120,7 @@ void TreasureBox::deliverAllRewards(){
 
         rewards.front()->deliverToPlayer();
         delete rewards.front();
+        rewards.front() = NULL;
         rewards.pop();
     }
 }

@@ -151,12 +151,6 @@ void GameManager::loadDrawRepository(DrawRepository *drawRepository){
     this->drawRepository = drawRepository;
 }
 
-//Loads all the input model.
-void GameManager::loadEnemyModel(ALLEGRO_BITMAP *model){
-
-    enemyModels.push_back(model);
-}
-
 //Loads the list of players.
 void GameManager::loadPlayers(CharacterList *characterList){
 

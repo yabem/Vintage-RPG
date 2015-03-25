@@ -8,7 +8,8 @@
 #include "DrawRepository.h"
 #include "GainedExperiencePoints.h"
 #include "GainedMoney.h"
-
+#include "GainedItem.h"
+#include "CalculateRewards.h"
 
 class CheckForDeadEnemy : public I_Event {
 

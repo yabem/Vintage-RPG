@@ -343,13 +343,16 @@
     <Filter Include="Header Files\Backpack\I_InventoryItem\Derived Class">
       <UniqueIdentifier>{2201bbfa-e9cb-407b-9c64-e362716ab8b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\PlayerEntity">
+      <UniqueIdentifier>{bc03bf40-3971-4bfd-9c36-9340e25c50ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PlayerEntity">
+      <UniqueIdentifier>{95ffc779-2d63-4e26-bd87-7bf8d79c5635}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleAction.cpp">
-      <Filter>Source Files\Battle</Filter>
     </ClCompile>
     <ClCompile Include="ImageStore.cpp">
       <Filter>Source Files\Images</Filter>
@@ -558,14 +561,17 @@
     <ClCompile Include="HealingItem.cpp">
       <Filter>Source Files\Backpack\I_InventoryItem\Derived Class</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerEntity.cpp">
+      <Filter>Source Files\PlayerEntity</Filter>
+    </ClCompile>
+    <ClCompile Include="CalculateRewards.cpp">
+      <Filter>Source Files\TreasureBox</Filter>
+    </ClCompile>
+    <ClCompile Include="GainedItem.cpp">
+      <Filter>Source Files\TreasureBox\Reward\Derived Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BattleAction.h">
-      <Filter>Header Files\Battle</Filter>
-    </ClInclude>
-    <ClInclude Include="CreateBattleAnimation.h">
-      <Filter>Header Files\Battle</Filter>
-    </ClInclude>
     <ClInclude Include="ImageStore.h">
       <Filter>Header Files\Images</Filter>
     </ClInclude>
@@ -652,9 +658,6 @@
     </ClInclude>
     <ClInclude Include="Movement.h">
       <Filter>Header Files\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Enums.h">
-      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Cursor.h">
       <Filter>Header Files\Cursor</Filter>
@@ -778,6 +781,18 @@
     </ClInclude>
     <ClInclude Include="HealingItem.h">
       <Filter>Header Files\Backpack\I_InventoryItem\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="GameConfig.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerEntity.h">
+      <Filter>Header Files\PlayerEntity</Filter>
+    </ClInclude>
+    <ClInclude Include="GainedItem.h">
+      <Filter>Header Files\TreasureBox\Reward\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="CalculateRewards.h">
+      <Filter>Header Files\TreasureBox\Reward</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -14,13 +14,15 @@ private:
     int xpRewardForSlaying; //The amount of XP awarded for killing this creature.
     int moneyRewardForSlaying;  //The amount of money awarded for killing the creature.
     I_CharacterValuesList *XPToLevel;    //Stores the amount needed to level.
+    std::vector<std::string> listOfRewards;
 
 public:
 
     //Constructor.
     CharStats(int level , int baseHP , int baseMP , int baseAtk ,
         int baseDef , int ttlXPGained , int currLvlXP , int toLvlXP ,
-        float speed , int xpRewardForSlaying , int moneyRewardForSlaying);
+        float speed , int xpRewardForSlaying , int moneyRewardForSlaying ,
+        std::vector<std::string> listOfRewards);
     
     virtual ~CharStats();   //Destructor.
 
@@ -30,7 +32,12 @@ public:
     virtual int getXPRewardForSlaying() const;
     virtual int getMoneyRewardForSlaying() const;
 
-    int getCurrLvlXP() const;       //Returns currLvlXP;
-    int getToLvlXP() const;         //Returns toLvlXP;
-    void addTottlXPGained(int amount);    //Add to ttlXPGained;
+    //Returns listOfRewards.
+    virtual std::vector<std::string>getRewards() const; 
+    virtual void addReward(std::string reward);
+
+    int getCurrLvlXP() const;       //Returns currLvlXP.
+    int getToLvlXP() const;         //Returns toLvlXP.
+    
+    void addTottlXPGained(int amount);    //Add to ttlXPGained.
 };

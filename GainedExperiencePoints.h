@@ -4,7 +4,7 @@
 #include "I_Reward.h"
 #include "I_List.h"
 #include "Character.h"
-#include "Enums.h"
+#include "GameConfig.h"
 
 class GainedExperiencePoints : public I_Reward{
 

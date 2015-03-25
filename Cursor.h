@@ -3,7 +3,7 @@
 
 #pragma once
 #include <allegro5/allegro_primitives.h>
-#include "Enums.h"  //Used for UP, RIGHT, DOWN, LEFT enumerations.
+#include "GameConfig.h"  //Used for UP, RIGHT, DOWN, LEFT enumerations.
 
 const int DEFAULT_HEIGHT = 20;
 const int DEFAULT_WIDTH = 15;

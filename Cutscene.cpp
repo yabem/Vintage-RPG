@@ -164,16 +164,24 @@ BattleVictory::BattleVictory(AreaMap *currMap , CharacterList *characterList ,
     victoryMessage += "You gained ";
 
     int numberOfRewards = treasureBox->getSize();
-    char tempString[10];
+    char qty[10];
     for(int i = 0 ; i < numberOfRewards ; i++){
     
-        _itoa_s(treasureBox->getFrontRewardAmount(), tempString , 10);
+        _itoa_s(treasureBox->getFrontRewardAmount(), qty , 10);
 
         if(i == (numberOfRewards - 1) && numberOfRewards >= 2)
             victoryMessage += " and ";
 
-        victoryMessage += tempString;
+        victoryMessage += qty;
+        victoryMessage += " ";
         victoryMessage += treasureBox->getFrontRewardName();
+
+        //Add s when not XP and Gold.
+        if(treasureBox->getFrontRewardName() != "XP" && 
+            treasureBox->getFrontRewardName() != "Gold" &&
+            treasureBox->getFrontRewardAmount() > 1)
+            victoryMessage += "s";
+        
         treasureBox->removeReward(treasureBox->getFrontRewardName());
         
         if(i != (numberOfRewards - 1) && numberOfRewards > 2)

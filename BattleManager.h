@@ -10,7 +10,7 @@
 #include "Draw.h"
 #include "GameManager.h"
 #include "CharacterList.h"
-#include "Enums.h"
+#include "GameConfig.h"
 #include "CharacterManipulationStore.h"
 #include "TurnTimerList.h"
 #include "SetTurnTimerListToCharacterList.h"
@@ -76,6 +76,9 @@ private:
 
     //Determines if the battle is paused.
     bool isBattlePaused;
+
+    //Holds the player's inventory.
+    Backpack *backpack;
     
 public:
     
@@ -135,7 +138,7 @@ public:
     virtual CharacterList* getEnemiesList();
 
     //Returns the plaers list.
-    virtual CharacterList* getPlayersList();
+    virtual I_List* getPlayersList();
 
     //Retrieves a pointer to the DrawRepository.
     DrawRepository* getDrawRepository();
@@ -199,6 +202,12 @@ public:
 
     //Removes all the events.
     void removeAllEvents();
+
+    //Load backpack.
+    virtual void loadBackpack(Backpack *backpack);
+
+    //Get backpack.
+    virtual Backpack* getBackpack();
 
 /////////////////////////////////////Enemy Creator/////////////////////////////
     

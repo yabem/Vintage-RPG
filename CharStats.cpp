@@ -3,7 +3,8 @@
 //Constructor.
 CharStats::CharStats(int level , int baseHP , int baseMP , int baseAtk ,
     int baseDef , int ttlXPGained , int currLvlXP , int toLvlXP ,
-    float speed , int xpRewardForSlaying , int moneyRewardForSlaying){
+    float speed , int xpRewardForSlaying , int moneyRewardForSlaying ,
+    std::vector<std::string> listOfRewards){
 
     this->level = level;
     this->baseHP = baseHP;
@@ -28,6 +29,8 @@ CharStats::CharStats(int level , int baseHP , int baseMP , int baseAtk ,
 
     this->xpRewardForSlaying = xpRewardForSlaying;
     this->moneyRewardForSlaying = moneyRewardForSlaying;
+
+    this->listOfRewards = listOfRewards;
 }
  
 //Destructor.
@@ -70,4 +73,16 @@ int CharStats::getToLvlXP() const{
 void CharStats::addTottlXPGained(int amount){
 
     ttlXPGained += amount;
+}
+
+//Returns listOfRewards.
+std::vector<std::string> CharStats::getRewards() const{
+
+    return listOfRewards;
+}
+
+//Adds a reward to listOfRewards.
+void CharStats::addReward(std::string reward){
+
+    listOfRewards.push_back(reward);
 }

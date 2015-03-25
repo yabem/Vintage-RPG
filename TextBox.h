@@ -1,7 +1,7 @@
 #pragma once
 #include <allegro5/allegro_primitives.h>
 #include <string>
-#include "Enums.h"
+#include "GameConfig.h"
 #include <allegro5/allegro_font.h>
 #include <vector>
 #include "I_InfoBox.h"

@@ -1,5 +1,5 @@
 #include "CharFactory.h"
-#include "Enums.h"
+#include "GameConfig.h"
 
 
 CharFactory::CharFactory(){

@@ -9,7 +9,7 @@
 #include "CharacterList.h"
 #include <vector>
 #include "Menu.h"
-#include "Enums.h"
+#include "GameConfig.h"
 
 namespace Draw{
 

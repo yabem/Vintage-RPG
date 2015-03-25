@@ -98,7 +98,7 @@ void Cursor::reverseDirection(){
 //Returns the current direction the cursor is pointing.
 //Pre:  None.
 //Post: Returns the integer value that the cursor is currently
-//      pointing to. For the meanings of the values see "Enums.h"
+//      pointing to. For the meanings of the values see "GameConfig.h"
 int Cursor::getPointingDirection() const{
 
     return pointingDirection;

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 //Forward declarations.
 class string;
@@ -58,9 +59,10 @@ public:
 
     float getSpeed() const;     //Returns the speed.
 
-    virtual int getXPRewardForSlaying() const;
-    virtual int getMoneyRewardForSlaying() const;
-    //virtual vector of items, in an item is a string and int, so name and qty.
+    virtual int getXPRewardForSlaying() const = 0;
+    virtual int getMoneyRewardForSlaying() const = 0;
+    virtual std::vector<std::string> getRewards() const = 0;
+    virtual void addReward(std::string reward) = 0;
 
     void addToCurrHP(int amount);        //Adds to currHP.
     virtual void addToTtlXP(int amount);        //Adds to the Character's total XP.

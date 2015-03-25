@@ -29,7 +29,7 @@ DrawRepository* I_Manager::getDrawRepository(){return NULL;}
 
 CharacterList* I_Manager::getEnemiesList(){return NULL;}
 
-CharacterList* I_Manager::getPlayersList(){return NULL;}
+I_List* I_Manager::getPlayersList(){return NULL;}
 
 bool I_Manager::emptyMenus(){return false;}
 
@@ -44,3 +44,9 @@ void I_Manager::setEndOfGameLoopToEnd(){}
 void I_Manager::deleteCurrEnemy(){}
 
 void I_Manager::loadReward(I_Reward *i_Reward){}
+
+//Load backpack.
+void I_Manager::loadBackpack(Backpack *backpack){}
+
+//Get backpack.
+Backpack* I_Manager::getBackpack(){ return NULL;}

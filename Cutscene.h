@@ -5,7 +5,7 @@
 #include <allegro5/allegro_font.h>
 #include <iostream>
 #include "I_Manager.h"
-#include "Enums.h"
+#include "GameConfig.h"
 #include "TreasureBox.h"
 struct ALLEGRO_FONT;
 

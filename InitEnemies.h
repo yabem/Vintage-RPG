@@ -40,6 +40,11 @@ namespace InitEnemies{
     void soldier(Character *character , int enemyType , int level , 
         vector<ALLEGRO_BITMAP*> enemies);
 
+    //Figure out rewards.
+    std::vector<std::string> ratRewards();
+    std::vector<std::string> wolfRewards();
+    std::vector<std::string> soldierRewards();
+
     //Set the spacing so the enemies are drawn correctly on the screen.
     void initEnemiesSpacing(vector<Character*> theEnemies);
     

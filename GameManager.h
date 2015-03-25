@@ -96,9 +96,6 @@ public:
     //Loads the DrawRepository
     void loadDrawRepository(DrawRepository *drawRepository);
 
-    //Loads all the input model.
-    void loadEnemyModel(ALLEGRO_BITMAP *model);  
-
     //Loads the list of players.
     void loadPlayers(CharacterList *characterList);  
     

@@ -3,7 +3,7 @@
 
 #pragma once
 #include <allegro5\allegro.h>
-#include "Enums.h"
+#include "GameConfig.h"
 using namespace std;
 
 int getKeyboardInput(ALLEGRO_EVENT *ev , bool *keys);   //Return the key represented as an int.

@@ -37,14 +37,11 @@
 #include "CharacterManipulationStore.h"
 #include "FontStore.h"
 #include "DrawRepository.h"
+#include "PlayerEntity.h"
 
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
-
-//Testing
-#include "Backpack.h"
-#include "HealingItem.h"
 
 //To do:
 //Make controls a class
@@ -100,6 +97,10 @@ int main(int argc, char **argv){
    al_register_event_source(event_queue, al_get_keyboard_event_source());
    al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
+   //Loads the information for the player.
+   PlayerEntity playerEntity;
+   playerEntity.loadBackpack();
+
    //Create imageStore and load all known bitmaps.
    ImageStore imageStore;
    imageStore.loadAllDefaultImages();
@@ -122,17 +123,23 @@ int main(int argc, char **argv){
    thePlayers.loadChar(&thePlayer3);
    thePlayers.loadChar(&thePlayer4);
 
+   std::vector<std::string> emptyStringVector;
+
    //Character stats
-   CharStats playerStats(1 , 100 , 10 , 100 , 10 , 1 , 100 , 10 , 1.8 , 0 , 0);
+   CharStats playerStats(1 , 100 , 10 , 100 , 10 , 1 , 100 , 10 , 1.8 , 0 , 0 ,
+       emptyStringVector);
    thePlayer.setStats(&playerStats);
 
-   CharStats playerStats2(1 , 50 , 10 , 20 , 10 , 1 , 100 , 10 , 2.3 , 0 , 0);
+   CharStats playerStats2(1 , 50 , 10 , 100 , 10 , 1 , 100 , 10 , 2.3 , 0 , 0 ,
+       emptyStringVector);
    thePlayer2.setStats(&playerStats2);
 
-   CharStats playerStats3(1 , 100 , 10 , 10 , 10 , 1 , 100 , 10 , 4.2 , 0 , 0);
+   CharStats playerStats3(1 , 100 , 10 , 100 , 10 , 1 , 100 , 10 , 4.2 , 0 , 0,
+       emptyStringVector);
    thePlayer3.setStats(&playerStats3);
 
-   CharStats playerStats4(1 , 50 , 10 , 30 , 10 , 1 , 100 , 10 , 2.1 , 0 , 0);
+   CharStats playerStats4(1 , 50 , 10 , 100 , 10 , 1 , 100 , 10 , 2.1 , 0 , 0,
+       emptyStringVector);
    thePlayer4.setStats(&playerStats4);
 
    //Animations queue
@@ -246,26 +253,9 @@ int main(int argc, char **argv){
    gameManager.cutSceneMap = &cutScene;
    gameManager.loadPlayers(&thePlayers);
 
-   gameManager.loadEnemyModel(imageStore.getBitMap("rat"));
-   gameManager.loadEnemyModel(imageStore.getBitMap("wolf"));
-   gameManager.loadEnemyModel(imageStore.getBitMap("soldier"));
-
    int cutsceneFrameCount = 0;  //For display.
    srand (time(NULL));  //Seed random
-   
-   TextBox textBox("You awaken in a strange town that you have never seen before. "
-       "You don't know where you are and why you are there. "
-       "Your first task is to find some clues and figure out what happened. " 
-       "Go forth and start your quest.");
-    TextBox victoryBox("You have slain all the enemies! "
-    "You gained 10xp and 50gold.");
-    
-    Menu menu("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
-    menu.formatText();
-
-    Menu menu2("Attack,Special|Upper Cut;Jump,Item|Potion,Antidote,Herb;Run;");
-    menu2.formatText();
-
+  
     Cursor cursor;
     cursor.move(50 , 50);
     cursor.reverseDirection();
@@ -294,6 +284,7 @@ int main(int argc, char **argv){
     battleManager.loadEnemyModel(imageStore.getBitMap("wolf"));
     battleManager.loadEnemyModel(imageStore.getBitMap("soldier"));
     battleManager.loadDrawRepository(&drawRepository);
+    battleManager.loadBackpack(playerEntity.getPlayerInventory());
 
     gameManager.loadDrawRepository(&drawRepository);
 
@@ -306,37 +297,6 @@ int main(int argc, char **argv){
 
     //Initialize starting position.
     Movement::setStart(*gameManager.player, theMap , STARTCOL , STARTROW);
-
-    //Tests
-    /*
-    TreasureBox treasureBox;
-
-    GainedExperiencePoints *gainedExperiencePoints1 = new GainedExperiencePoints(&thePlayers , 500);
-    GainedExperiencePoints *gainedExperiencePoints2 = new GainedExperiencePoints(&thePlayers , 600);
-    GainedExperiencePoints *gainedExperiencePoints3 = new GainedExperiencePoints(&thePlayers , 700);
-    GainedExperiencePoints *gainedExperiencePoints4 = new GainedExperiencePoints(&thePlayers , 800);
-
-    treasureBox.addReward(gainedExperiencePoints1);
-    treasureBox.addReward(gainedExperiencePoints2);
-    treasureBox.addReward(gainedExperiencePoints3);
-    treasureBox.addReward(gainedExperiencePoints4);
-
-    treasureBox.deliverAllRewards();
-    thePlayers;
-    */
-
-    Backpack backpack;
-
-    HealingItem healingItem("Potion" , 3);
-    HealingItem healingItem2("Potion" , -100);
-    HealingItem healingItem3("Potion" , 5);
-
-    HealingItem healingItem4("Potion2" , 1000);
-
-    backpack.addItem(&healingItem);
-    backpack.addItem(&healingItem2);
-    backpack.addItem(&healingItem3);
-    backpack.addItem(&healingItem4);
 
     al_start_timer(timer);
 
@@ -404,6 +364,8 @@ int main(int argc, char **argv){
 
 //////////////////////////////////////////Moving on Map////////////////////////
             else{
+                playerEntity;
+
                 //Check collisions.
                 Collision::characterToAreaMap(*gameManager.player ,
                     gameManager.currMap);
@@ -450,9 +412,8 @@ int main(int argc, char **argv){
    al_destroy_display(display);
    al_destroy_timer(timer);
    al_destroy_event_queue(event_queue);
-
+   
    }
-
    return 0;
 }
 

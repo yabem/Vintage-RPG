@@ -40,5 +40,8 @@ void Backpack::addItem(I_InventoryItem *i_InventoryItem){
     }
         
     //Reward already exists so add the quantity.
-    else (*contentsIter).second->addToAmount(i_InventoryItem->getAmount());
+    else {
+        (*contentsIter).second->addToAmount(i_InventoryItem->getAmount());
+        delete i_InventoryItem;
+    }
 }

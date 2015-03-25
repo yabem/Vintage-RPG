@@ -10,7 +10,7 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
 #include <string>
-#include "Enums.h"
+#include "GameConfig.h"
 #include "Tangible.h"
 #include "Stats.h"
 #include "I_Creature.h"

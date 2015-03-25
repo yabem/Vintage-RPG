@@ -216,7 +216,7 @@ CharacterList* BattleManager::getEnemiesList(){
 //Returns the players list.
 //Pre:  None.
 //Post: Returns the vector to the CharacterList.
-CharacterList* BattleManager::getPlayersList(){
+I_List* BattleManager::getPlayersList(){
 
     return &thePlayers;
 }
@@ -663,6 +663,18 @@ void BattleManager::removeAllEvents(){
     }
 }
 
+//Load backpack.
+void BattleManager::loadBackpack(Backpack *backpack){
+
+    this->backpack = backpack;
+}
+
+//Get backpack.
+Backpack* BattleManager::getBackpack(){
+
+    return backpack;
+}
+
 /////////////////////////////////////Battle End////////////////////////////////
 
 //Check for end of battle.
@@ -748,7 +760,6 @@ void BattleManager::enemiesVictory(){
 
     treasureBox.removeAllRewards();
 }
-
 
 //Pause battle so timers don't increase.
 void BattleManager::pauseBattle(){
