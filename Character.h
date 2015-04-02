@@ -22,7 +22,7 @@ class Character: public I_Creature{
 
 private:
 
-    ALLEGRO_BITMAP *bmap;   //Bitmap to draw from.
+    ALLEGRO_BITMAP *image;   //Bitmap to draw from.
     int facing;             //Direction the character is facing.
     int x , y;              //The x and y values of the upper left corner to start drawing from.
     int crFrame;            //Frame the character is currently on.
@@ -52,7 +52,7 @@ public:
     Character();
 
     //Constructor.
-    Character(ALLEGRO_BITMAP *bmap , int w , int h , 
+    Character(ALLEGRO_BITMAP *image , int w , int h , 
         int framesPerSequence , int numSequence , int moveRate); 
    
     //Destructor.
@@ -75,6 +75,9 @@ public:
     bool getCollision(int direction);           //Return the collision value for the direction.
     Stats* getStats();                          //Return a pointer to the character stats.
 
+    virtual int getCurrHP();                    //Returns the current HP.
+    virtual int getTtlHP();                     //Returns the total HP.
+
     int getAttack() const;                      //Returns the attack stat for the Character.
     int getDefense() const;                     //Returns the defense stat for the Character.
     void addToRemainingHP(int amount);          //Adds the value to the Character's remaining hitpoints.
@@ -84,14 +87,14 @@ public:
     void makeDead();                            //Makes the Character dead.
     void makeAlive();                           //Makes the Character alive.
 
-    void setBmap(ALLEGRO_BITMAP *bmap);         //Set bitmap to input.
+    virtual void setImage(ALLEGRO_BITMAP *image);         //Set bitmap to input.
     virtual void setX(int x);                   //Set x to input.
     virtual void setY(int y);                   //Set y to input.
     void setW(int w);                           //Set w to input.
     virtual void setH(int h);                   //Set h to input.
     void addToAllCornerX(int add);              //Add value to all x coordinates.
     void addToAllCornerY(int add);              //Add value to all y coordinates
-    bool setFacing(int dir);                    //Set facing direction.
+    bool setFacing(int direction);                    //Set facing direction.
     bool setColl(int index);                    //Set collision index to true.
     void setStats(Stats *stats);                //Set stats pointer to input.
     void resetSequence();                       //Resets the sequence.

@@ -2,8 +2,8 @@
 
 
 //Transfers all the animations from the source to the destination.
-void TransferAnimations::transferAnimations(std::queue<Animation*> source , 
-    std::queue<Animation*> destination){
+void TransferAnimations::transferAnimations(std::queue<I_Animation*> source , 
+    std::queue<I_Animation*> destination){
 
     while(!source.empty()){
                                 

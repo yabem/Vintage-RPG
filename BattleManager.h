@@ -9,18 +9,21 @@
 #include "Menu.h"
 #include "Draw.h"
 #include "GameManager.h"
-#include "CharacterList.h"
 #include "GameConfig.h"
 #include "CharacterManipulationStore.h"
+#include "CharacterList.h"
 #include "TurnTimerList.h"
+#include "FloatingTextList.h"
 #include "SetTurnTimerListToCharacterList.h"
 #include "SetMenuListToCharacterList.h"
+#include "SetFloatingTextListToCharacterList.h"
 #include "InitPlayers.h"
 #include "I_Manager.h"
 #include "MenuList.h"
 #include "I_Event.h"
 #include "BattleLoss.h"
 #include "TreasureBox.h"
+#include "FontStore.h"
 class DrawRepository;
 
 class BattleManager: public I_Manager{
@@ -56,6 +59,9 @@ private:
     //List of TurnTimers for thePlayers.
     TurnTimerList playerTurnTimerList;
 
+    //List of FloatingTexts for thePlayers.
+    FloatingTextList playerFloatingTextList;
+
     //List of Menus for thePlayers.
     MenuList playerMenuList;
 
@@ -70,6 +76,9 @@ private:
 
     //Used to get the current player.
     GameManager *gameManager;
+
+    //Used for obtaining fonts for text.
+    FontStore *fontStore;
 
     //Holds the treasure.
     TreasureBox treasureBox;
@@ -115,6 +124,12 @@ public:
 
     //Loads a Reward to the TreasureBox.
     void loadReward(I_Reward *i_Reward);
+
+    //Loads the FontStore.
+    void loadFontStore(FontStore *fontStore);
+
+    //Set fontStore for FloatingTextList.
+    void setFontStoreForFloatingTextList();
 
     //Delivers all the rewards to the player.
     void distributeAllRewards();
@@ -194,8 +209,14 @@ public:
     //Determines if there are still enemies remaining.
     bool enemiesRemaining();    
 
-    //Update turnTimers.
-    void updateTurnTimers();
+    //Updates and draws the turnTimers.
+    void updateAndDrawTurnTimers();
+
+    //Updates the FloatingTexts.
+    virtual void updateFloatingTexts();
+    
+    //Draws the FloatingTexts.
+    virtual void drawFloatingTexts();
 
     //Returns the charList.
     virtual CharacterList* getList();

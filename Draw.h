@@ -15,15 +15,16 @@ namespace Draw{
 
     void drawArea(const AreaMap &areaMap);
     void drawArea(const AreaMap &areaMap , const Character &character);
-    void drawBattle(Map &map , I_List *thePlayers , 
-        I_List *theEnemies);
-        //vector<Character*> characters ,
-        //vector<Character*> enemies);
+    void drawBattle(Map &map , I_List *thePlayers , I_List *theEnemies);
+
     void drawBattle(Map &map);
     void drawCharListForBattle(CharacterList *characterList);
     
     //Draws all of the Menus in the vector.
     void drawMenus(vector<Menu*> menus);
+
+    //Draws IList.
+    void drawList(I_List *i_List);
     
     //Removes all of the subMenus from the vector leaving only the base Menu.
     void removeAllSubMenus(std::vector<Menu*> &menus);

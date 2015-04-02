@@ -77,8 +77,8 @@ void TurnTimer::calculateDrawPoints(){
 
     upLeftOutterX = drawX;
     upLeftOutterY = drawY;
-    lowRightOutterX = drawX + DEFAULT_BAR_WIDTH;
-    lowRightOutterY = drawY + DEFAULT_BAR_HEIGHT;
+    lowRightOutterX = upLeftOutterX + DEFAULT_BAR_WIDTH;
+    lowRightOutterY = upLeftOutterY + DEFAULT_BAR_HEIGHT;
    
     upLeftInnerX = upLeftOutterX + INNER_OFFSET;
     upLeftInnerY = upLeftOutterY + INNER_OFFSET;

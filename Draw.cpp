@@ -113,6 +113,14 @@ void Draw::drawMenus(vector<Menu*> menus){
     }
 }
 
+//Draws IList.
+void Draw::drawList(I_List *i_List){
+
+    //Draw characters.
+    for(int i = 0 ; i < i_List->getSize() ; i++)
+        i_List->getCharacterSelection(i)->draw();
+}
+
 //Removes all of the subMenus from the vector leaving only the base Menu.
 //Pre:  None.
 //Post: Removes each Menu from the list in LIFO order until the Menu

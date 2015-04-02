@@ -2,13 +2,11 @@
 
 #pragma once
 #include <queue>
-#include "Animation.h"
+#include "I_Animation.h"
 
 namespace TransferAnimations{
 
     //Transfers all the animations from the source to the destination.
-    void transferAnimations(std::queue<Animation*> source , 
-        std::queue<Animation*> destination);
-
-
+    void transferAnimations(std::queue<I_Animation*> source , 
+        std::queue<I_Animation*> destination);
 };

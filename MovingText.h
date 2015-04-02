@@ -1,5 +1,5 @@
 #pragma once
-#include "Animation.h"
+#include "I_Animation.h"
 #include <allegro5/allegro_font.h>
 
 //Forward declarations.
@@ -7,9 +7,20 @@ struct ALLEGRO_FONT;
 //al_draw_textf(font, al_map_rgb(tr , tg , tb), sx + FONTSIZE , sy + FONTHEIGHT * i , 0, it->c_str());
 
 
-class MovingText: public Animation{
+class MovingText: public I_Animation{
 
 private:
+
+    int w , h;              //Width and height of the bitmap.
+    int sx , sy;            //Start location.
+    float dx , dy;            //Draw location.
+    int ex , ey;            //Destination location.
+    float xRate , yRate;      //Rate at which x and y increase in order to get from sx and sy to
+                            //dx and dy within the number of frames.
+    int currFrame;          //Frame the animation is currently on.
+    float ttlFrames;          //Total number of frames the animation lasts.
+    bool initialized;       //Keeps track of whether or not the animation has been set.
+    double rotate180Rads;   //Radians to rotate 180 degrees.
 
     std::string text;       //Text to draw.
     ALLEGRO_FONT *font;     //

@@ -7,7 +7,7 @@ class MenuList: public I_List{
 
 private:
 
-    //List of the enemies.
+    //List of the Menus.
     std::vector<Menu*> listOfMenus;   
 
     //Sets the variables of the Menu.

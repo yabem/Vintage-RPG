@@ -5,7 +5,7 @@
 #pragma once
 #include "CharacterManipulation.h"
 #include "Character.h"
-#include "Animation.h"
+#include "I_Animation.h"
 #include <queue>
 #include "MovingImage.h"
 #include "MovingText.h"
@@ -38,7 +38,7 @@ public:
     void calculateDamage();
 
     //Returns a pointer to the Animation at the front of the list.
-    Animation* getFrontAnimation();
+    I_Animation* getFrontAnimation();
 
     //Removes the pointer at the front of the Animation list.
     void removeFrontAnimation();

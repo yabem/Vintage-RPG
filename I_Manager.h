@@ -91,4 +91,10 @@ public:
 
     //Get backpack.
     virtual Backpack* getBackpack();
+
+    //Updates the FloatingTexts.
+    virtual void updateFloatingTexts();
+    
+    //Draws the FloatingTexts.
+    virtual void drawFloatingTexts();
 };

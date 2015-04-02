@@ -4,6 +4,7 @@
 #include <string>
 
 class Stats;
+struct ALLEGRO_BITMAP;
 
 class I_Creature{
 
@@ -24,4 +25,10 @@ public:
 
     virtual int getXPReward();
     virtual int getMoneyReward();
+    virtual int getCurrHP();
+    virtual int getTtlHP();
+    virtual void setX(int x);   
+    virtual void setY(int y);               
+    virtual void setImage(ALLEGRO_BITMAP *image);
+    virtual bool setFacing(int direction);
 };

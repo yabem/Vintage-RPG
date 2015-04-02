@@ -10,6 +10,7 @@
 #include "DrawRepository.h"
 #include "ProcessAI.h"
 #include "CheckForDeadPlayer.h"
+#include "UpdatePlayersHP.h"
 class TurnTimer;
 
 class EnemyTurn : public I_Event{

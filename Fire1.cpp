@@ -60,7 +60,7 @@ void Fire1::loadAnimations(){
 
     ALLEGRO_BITMAP *bmap = imageStore->getBitMap("fire1");
 
-    //Throws a rock between the initiator and the receiver.
+    //Throws a fire1 between the initiator and the receiver.
     MovingImage *weaponAttack = new MovingImage(
         bmap , al_get_bitmap_width(bmap) , al_get_bitmap_height(bmap) , 30);
     

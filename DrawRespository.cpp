@@ -89,7 +89,7 @@ bool DrawRepository::cutscenesEmpty(){
 //Post: Loads the Animation to the animations queue. Returns true
 //      if the Animation was successfully loaded otherwise returns
 //      false.
-bool DrawRepository::loadAnimation(Animation *animation){
+bool DrawRepository::loadAnimation(I_Animation *animation){
 
     if(animation == NULL)
         return false;

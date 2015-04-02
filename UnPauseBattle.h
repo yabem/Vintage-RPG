@@ -1,10 +1,10 @@
 //Unpauses the battle so the battle resumes.
 
 #pragma once
-#include "Animation.h"
+#include "I_Animation.h"
 #include "I_Manager.h"
 
-class UnPauseBattle : public Animation{
+class UnPauseBattle : public I_Animation{
 
 private:
 

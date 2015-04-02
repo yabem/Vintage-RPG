@@ -5,7 +5,7 @@
 #pragma once
 #include "CharacterManipulation.h"
 #include "Character.h"
-#include "Animation.h"
+#include "I_Animation.h"
 #include <queue>
 #include "MovingImage.h"
 #include "MovingText.h"
@@ -13,6 +13,10 @@
 #include "FontStore.h"
 #include "DrawRepository.h"
 #include "UnPauseBattle.h"
+#include "MovingCreature.h"
+#include "ChangeCreatureImage.h"
+#include "SetCreatureFacingDirection.h"
+#include "DelayInSeconds.h"
 
 class Fire2 : public CharacterManipulation{
 

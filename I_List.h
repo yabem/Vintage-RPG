@@ -5,6 +5,7 @@
 class Menu;
 class Character;
 class CharacterManipulationStore;
+class FloatingText;
 
 class I_List{
 
@@ -15,14 +16,10 @@ public:
     virtual ~I_List();
     virtual bool deleteSelection(int position) = 0;
     virtual void deleteList() = 0;
-    virtual Menu* getSelection(int selection);
+    
     virtual int getSize() const;
 
-    //Used to get the player for Draw.
+    virtual Menu* getSelection(int selection);
     virtual Character* getCharacterSelection(int position); 
-
-
-    //virtual void loadMenu(Menu *menu);
-    //virtual void pauseBattle();
-    //virtual void unPauseBattle();
+    virtual FloatingText* getFloatingTextSelection(int selection);
 };

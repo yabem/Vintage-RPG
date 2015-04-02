@@ -7,7 +7,7 @@
 class Character;
 class ImageStore;
 class FontStore;
-class Animation;
+class I_Animation;
 class GameManager;
 class DrawRepository;
 class I_Manager;

@@ -3,7 +3,7 @@
 #include <vector>
 #include <queue>
 #include <allegro5/allegro_font.h>
-#include "Animation.h"
+#include "I_Animation.h"
 #include "Movement.h"
 #include "InitEnemies.h"
 #include "CharFactory.h"

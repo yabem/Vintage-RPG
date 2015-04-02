@@ -93,6 +93,19 @@ void BattleManager::loadReward(I_Reward *i_Reward){
     treasureBox.addReward(i_Reward);
 }
 
+//Loads the FontStore.
+void BattleManager::loadFontStore(FontStore *fontStore){
+
+    this->fontStore = fontStore;
+    setFontStoreForFloatingTextList();
+}
+
+//Set fontStore for FloatingTextList.
+void BattleManager::setFontStoreForFloatingTextList(){
+
+    playerFloatingTextList.loadFontStore(fontStore);
+}
+
 //Delivers all the rewards to the player.
 //Pre:  None.
 //Post: Delivers all the rewards and empty's the TreasureBox.
@@ -531,7 +544,8 @@ bool BattleManager::enemiesRemaining(){
 //Pre:  None.
 //Post: Updates all the turnTimers if the battle is not paused. 
 //      If the turnTimers are full then the turnTimers are reset.
-void BattleManager::updateTurnTimers(){
+//      Always draws the turnTimers.
+void BattleManager::updateAndDrawTurnTimers(){
 
     if(!isBattlePaused){
         enemyTurnTimerList.updateTurnTimers();  
@@ -543,6 +557,18 @@ void BattleManager::updateTurnTimers(){
 
     enemyTurnTimerList.drawTurnTimers();
     playerTurnTimerList.drawTurnTimers();
+}
+
+//Updates the FloatingTexts.
+void BattleManager::updateFloatingTexts(){
+
+    playerFloatingTextList.updateFloatingTexts();
+}
+
+//Draws the FloatingTexts to the screen
+void BattleManager::drawFloatingTexts(){
+
+    playerFloatingTextList.drawFloatingTexts();
 }
 
 /////////////////////////////////////Enemy Creator/////////////////////////////
@@ -640,6 +666,12 @@ void BattleManager::generatePlayers(CharacterList *characterList ,
     thePlayers.loadList(&playerMenuList);
     SetMenuListToCharacterList::setMenuListToCharacterList(
         &thePlayers , &playerMenuList);
+
+    //Adds floatingTextList to the players.
+    thePlayers.loadList(&playerFloatingTextList);
+    SetFloatingTextListToCharacterList::SetFloatingTextListToCharacterList(
+        &thePlayers , &playerFloatingTextList);
+    playerFloatingTextList.updateFloatingTexts();
 }
 
 //Returns the charList.

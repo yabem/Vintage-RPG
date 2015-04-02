@@ -102,6 +102,11 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
         drawRepository , battleManager);
     loadManipulation("Fire3" , charManip);
+
+    charManip = new Jump;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Jump" , charManip);
 }
 
 //Retrieves a pointer to the CharacterManipulation.

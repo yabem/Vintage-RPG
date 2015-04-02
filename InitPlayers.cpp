@@ -21,6 +21,7 @@ void InitPlayers::initPlayersSpacing(vector<Character*> thePlayers){
 
         else (*it)->setFacing(LEFT);
         
-        totalHeight += ((*it)->getH() + DEFAULT_BAR_HEIGHT);
+        totalHeight += ((*it)->getH() + DEFAULT_BAR_HEIGHT + 
+            DEFAULT_HEALTH_HEIGHT);
     }
 }

@@ -20,7 +20,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include "TextBox.h"
-#include "Animation.h"
+#include "I_Animation.h"
 #include "MovingImage.h"
 #include "MovingText.h"
 #include "Stats.h"
@@ -38,6 +38,9 @@
 #include "FontStore.h"
 #include "DrawRepository.h"
 #include "PlayerEntity.h"
+
+//testing
+#include "FloatingText.h"
 
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
@@ -112,9 +115,16 @@ int main(int argc, char **argv){
    Character thePlayer3(imageStore.getBitMap("thief") , 32 , 32 , 30 , 2 , rate);
    Character thePlayer4(imageStore.getBitMap("mage") , 32 , 32 , 30 , 2 , rate);
 
+   /*
    thePlayer.loadAbilities("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
    thePlayer2.loadAbilities("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
    thePlayer3.loadAbilities("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
+   thePlayer4.loadAbilities("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
+   */
+
+   thePlayer.loadAbilities("Attack,Jump,Item|Potion,Antidote,Herb;Run;");
+   thePlayer2.loadAbilities("Attack,Rock,Item|Potion,Antidote,Herb;Run;");
+   thePlayer3.loadAbilities("Attack,Backstab,Item|Potion,Antidote,Herb;Run;");
    thePlayer4.loadAbilities("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
    
    CharacterList thePlayers;
@@ -143,7 +153,7 @@ int main(int argc, char **argv){
    thePlayer4.setStats(&playerStats4);
 
    //Animations queue
-   queue<Animation*> animations;
+   queue<I_Animation*> animations;
 
    //Character vectors
    vector<Character*> players;
@@ -285,6 +295,7 @@ int main(int argc, char **argv){
     battleManager.loadEnemyModel(imageStore.getBitMap("soldier"));
     battleManager.loadDrawRepository(&drawRepository);
     battleManager.loadBackpack(playerEntity.getPlayerInventory());
+    battleManager.loadFontStore(&fontStore);
 
     gameManager.loadDrawRepository(&drawRepository);
 
@@ -324,18 +335,33 @@ int main(int argc, char **argv){
 
 //////////////////////////////////////////Cutscene/////////////////////////////
             
-            if(!drawRepository.cutscenesEmpty())
+            if(!drawRepository.cutscenesEmpty()){
                 drawRepository.playCutscenes();
+            }
 
 //////////////////////////////////////////Battle///////////////////////////////
             else if(gameManager.isBattle()){
 
                 if(!battleManager.isEndOfBattle()){
                     
+                    Draw::drawBattle(theBattleMap);
+                    battleManager.updateAndDrawTurnTimers();
+                    Draw::drawList(battleManager.getEnemiesList());
+                    Draw::drawList(battleManager.getPlayersList());
+                    Draw::drawMenus(battleManager.getMenuList());
+
+                    //Updates and draws character hit points.
+                    battleManager.drawFloatingTexts();
+
+                    //Draw cursor.
+                    drawRepository.drawTopCursor();
+
+                    /*
                     //Draw map, players, and enemies.
                     Draw::drawBattle(theBattleMap , 
                         battleManager.getPlayersList() ,
                         battleManager.getEnemiesList());
+                    */
 
                     if(!battleManager.emptyEvents()){
                         battleManager.pauseBattle();
@@ -345,14 +371,7 @@ int main(int argc, char **argv){
                             battleManager.unPauseBattle();
                     }            
 
-                    //Update TurnTimerList
-                    battleManager.updateTurnTimers();
 
-                    //Draw cursor.
-                    drawRepository.drawTopCursor();
-                    
-                    //Draw battle menus.
-                    Draw::drawMenus(battleManager.getMenuList());
 
                     //Play animations.
                     if(!drawRepository.animationsEmpty())

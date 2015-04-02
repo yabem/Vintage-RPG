@@ -4,7 +4,7 @@
 #pragma once
 #include <queue>
 #include "Cutscene.h"
-#include "Animation.h"
+#include "I_Animation.h"
 #include "Cursor.h"
 
 class DrawRepository{
@@ -15,7 +15,7 @@ private:
     std::queue<Cutscene*> cutscenes;    
 
     //Stores the animations to be played.
-    std::queue<Animation*> animations; 
+    std::queue<I_Animation*> animations; 
 
     //Used for getting the pressed key.
     I_Manager *gameManager;   
@@ -59,7 +59,7 @@ public:
     void removeTopCursor();
 
     //Loads a single Animation.
-    bool loadAnimation(Animation *animation);
+    bool loadAnimation(I_Animation *animation);
 
     //Plays all the loaded Animations.
     bool playAllAnimations();

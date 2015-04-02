@@ -5,7 +5,7 @@
 #pragma once
 #include "CharacterManipulation.h"
 #include "Character.h"
-#include "Animation.h"
+#include "I_Animation.h"
 #include <queue>
 #include "MovingImage.h"
 #include "MovingText.h"

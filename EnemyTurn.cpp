@@ -56,6 +56,10 @@ bool EnemyTurn::execute(){
     ResetTurnTimer *resetTurnTimer = new ResetTurnTimer(turnTimer);
     battleManager->loadEvent(resetTurnTimer);
 
+    //Load the UpdatePlayersHP event.
+    UpdatePlayersHP *updatePlayersHP = new UpdatePlayersHP(battleManager);
+    battleManager->loadEvent(updatePlayersHP);
+
     isExecuted = true;
 
     return true;

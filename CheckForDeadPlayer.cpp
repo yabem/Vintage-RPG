@@ -19,7 +19,7 @@ CheckForDeadPlayer::~CheckForDeadPlayer(){
 //Post: Always returns true because the event only executes once.
 bool CheckForDeadPlayer::execute(){
 
-    if(thePlayer->getStats()->getCurrHP() <= 0){
+    if(thePlayer->getCurrHP() <= 0){
 
         thePlayer->makeDead();
     }

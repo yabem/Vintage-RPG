@@ -45,8 +45,10 @@ void I_Manager::deleteCurrEnemy(){}
 
 void I_Manager::loadReward(I_Reward *i_Reward){}
 
-//Load backpack.
 void I_Manager::loadBackpack(Backpack *backpack){}
 
-//Get backpack.
 Backpack* I_Manager::getBackpack(){ return NULL;}
+
+void I_Manager::updateFloatingTexts(){}
+    
+void I_Manager::drawFloatingTexts(){}

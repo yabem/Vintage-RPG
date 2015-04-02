@@ -14,6 +14,7 @@
 #include "Fire1.h"
 #include "Fire2.h"
 #include "Fire3.h"
+#include "Jump.h"
 #include "I_Manager.h"
 class Character;
 class ImageStore;

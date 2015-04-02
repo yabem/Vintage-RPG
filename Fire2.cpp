@@ -61,11 +61,10 @@ void Fire2::loadAnimations(){
 
     ALLEGRO_BITMAP *bmap = imageStore->getBitMap("fire2");
 
-    //Throws a rock between the initiator and the receiver.
+    //Throws a fire2 between the initiator and the receiver.
     MovingImage *weaponAttack = new MovingImage(
         bmap , al_get_bitmap_width(bmap) , al_get_bitmap_height(bmap) , 30);
     
-    //The rock will move from the initiator to the receiver.
     weaponAttack->initialize(initiator->getX() , initiator->getY() , 
         receiver->getX() , receiver->getY());
 
@@ -83,10 +82,50 @@ void Fire2::loadAnimations(){
     damageStay->initialize(theDamage , receiver->getX() , receiver->getY() , 
         receiver->getX() , receiver->getY());
 
+    /*
+    //Testing
+    int saveX , saveY;
+    saveX = initiator->getX();
+    saveY = initiator->getY();
+    ALLEGRO_BITMAP *originalImage = imageStore->getBitMap("player");
+
+    MovingCreature *jumpUp = new MovingCreature(initiator , 20);
+    jumpUp->initialize(initiator->getX() , initiator->getY() , initiator->getX() , -initiator->getH());
+
+    MovingCreature *diveToEnemy = new MovingCreature(initiator , 10);
+    diveToEnemy->initialize(initiator->getX() , -initiator->getH() , receiver->getX() , receiver->getY());
+
+    MovingCreature *returnToOriginalSpot = new MovingCreature(initiator , 15);
+    returnToOriginalSpot->initialize(initiator->getX() , initiator->getY() , saveX , saveY);
+
+    ChangeCreatureImage *kneel = new ChangeCreatureImage(initiator , imageStore->getBitMap("playerKneel"));
+    ChangeCreatureImage *jump = new ChangeCreatureImage(initiator , imageStore->getBitMap("playerJump"));
+    ChangeCreatureImage *diving = new ChangeCreatureImage(initiator , imageStore->getBitMap("playerLanceDive"));
+    ChangeCreatureImage *origImage = new ChangeCreatureImage(initiator , imageStore->getBitMap("player"));
+
+    SetCreatureFacingDirection *initialDirection = new SetCreatureFacingDirection(initiator , 0);
+    SetCreatureFacingDirection *endingDirection = new SetCreatureFacingDirection(initiator , LEFT);
+
+    DelayInSeconds *delayInSeconds = new DelayInSeconds(.3);
+
+    //Load all the animations to the animations queue.
+    drawRepository->loadAnimation(initialDirection);
+    drawRepository->loadAnimation(kneel);
+    drawRepository->loadAnimation(delayInSeconds);
+    drawRepository->loadAnimation(jump);
+    drawRepository->loadAnimation(jumpUp);
+    drawRepository->loadAnimation(diving);
+    //drawRepository->loadAnimation(delayInSeconds);
+
+    drawRepository->loadAnimation(returnToOriginalSpot);
+    drawRepository->loadAnimation(origImage);
+    drawRepository->loadAnimation(endingDirection);
+    */
+
     //Load all the animations to the animations queue.
     drawRepository->loadAnimation(weaponAttack);
     drawRepository->loadAnimation(damage);
-    drawRepository->loadAnimation(damageStay);   
+    drawRepository->loadAnimation(damageStay); 
 }
 
 //Calculates the damage to the receiver.

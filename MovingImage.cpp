@@ -62,3 +62,20 @@ bool MovingImage::play(){
 
     return result;
 }
+
+//Initialize the start and end locations.
+void MovingImage::initialize(int sx , int sy , int ex , int ey){
+
+    this->sx = sx;
+    this->sy = sy;
+    this->dx = sx;
+    this->dy = sy;
+    this->ex = ex;
+    this->ey = ey;
+
+    this->xRate = (ex - sx) / ttlFrames;
+    this->yRate = (ey - sy) / ttlFrames;
+
+    this->initialized = true;
+    this->rotate180Rads = atan2(double(sx - ex) , double(sy - ey));
+}

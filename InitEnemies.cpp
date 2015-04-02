@@ -25,7 +25,7 @@ void InitEnemies::init(Character *character , int enemyType , int level ,
 void InitEnemies::rat(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
-    character->setBmap(enemies[enemyType]);
+    character->setImage(enemies[enemyType]);
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
@@ -63,7 +63,7 @@ std::vector<std::string> InitEnemies::ratRewards(){
 void InitEnemies::wolf(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
-    character->setBmap(enemies[enemyType]);
+    character->setImage(enemies[enemyType]);
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
@@ -104,7 +104,7 @@ std::vector<std::string> InitEnemies::wolfRewards(){
 void InitEnemies::soldier(Character *character , int enemyType ,
     int level , vector<ALLEGRO_BITMAP*> enemies){
 
-    character->setBmap(enemies[enemyType]);
+    character->setImage(enemies[enemyType]);
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));

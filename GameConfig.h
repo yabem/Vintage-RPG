@@ -58,6 +58,7 @@ const int BATTLE_START_Y_PLAYERS = SCREEN_H / 3;
 
 const int DEFAULT_BAR_WIDTH = 60;   //Default TurnTimer width.
 const int DEFAULT_BAR_HEIGHT = 15;  //Default TurnTimer height.
+const int DEFAULT_HEALTH_HEIGHT = 15;  //Default player health height.
 
 //Inventory Constants
 const std::string MONEY_TYPE = "Gold";  //Currency type for the game.

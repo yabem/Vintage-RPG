@@ -7,7 +7,7 @@
 
 Character::Character(){
 
-    this->bmap = NULL;
+    this->image = NULL;
     this->x = 0;
     this->y = 0;
     this->facing = UP;
@@ -41,10 +41,10 @@ Character::Character(){
 }
 
 //Constructor.
-Character::Character(ALLEGRO_BITMAP *bmap , int w , int h , 
+Character::Character(ALLEGRO_BITMAP *image , int w , int h , 
     int framesPerSequence , int numSequence , int moveRate){
 
-    this->bmap = bmap;
+    this->image = image;
     this->x = x;
     this->y = y;
     this->facing = UP;
@@ -180,6 +180,18 @@ Stats* Character::getStats(){
     return stats;
 }
 
+//Returns the current HP.
+int Character::getCurrHP(){
+
+    return stats->getCurrHP();
+}
+
+//Returns the total HP.
+int Character::getTtlHP(){
+
+    return stats->getTtlHP();
+}
+
 //Returns the attack stat for the character.
 int Character::getAttack() const{
 
@@ -208,10 +220,12 @@ void Character::addToTotalXP(int amount){
     stats->addToTtlXP(amount);
 }
 
-//Set bitmap to input.
-void Character::setBmap(ALLEGRO_BITMAP *bmap){
+//Sets the pointer to the image.
+//Pre:  The image must be in the .png format.
+//Post: The image pointer is permanently updated.
+void Character::setImage(ALLEGRO_BITMAP *image){
 
-    this->bmap = bmap;
+    this->image = image;
 }
 
 //Set x to input.
@@ -257,14 +271,14 @@ void Character::addToAllCornerY(int add){
 }
 
 //Set facing direction.
-bool Character::setFacing(int dir){
+bool Character::setFacing(int direction){
 
     //Check for bad input.
-    if(dir < 0 || dir >= DIRECTIONS)
+    if(direction < 0 || direction >= DIRECTIONS)
         return false;
 
     else{
-        facing = dir;
+        facing = direction;
         return true;
     }
 }
@@ -328,7 +342,7 @@ int Character::draw() const{
     if(sequence == 1)
         int i = 1;
 
-    al_draw_bitmap_region(bmap , 
+    al_draw_bitmap_region(image , 
     w * facing * 2 + (w * sequence) , 0 , //X and y draw from on bitmap.
     w , h ,                               //X and y draw to on bitmap.
     x , y , 0);                           //X and y draw to on buffer.
