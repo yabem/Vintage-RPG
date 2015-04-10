@@ -125,7 +125,8 @@ void DrawRepository::drawTopCursor(){
 //Post: Removes the top cursor from the list.
 void DrawRepository::removeTopCursor(){
 
-    cursors.pop();
+    if(!cursors.empty())
+        cursors.pop();
 }
 
 //Plays all the loaded Animations.

@@ -383,6 +383,20 @@ void BattleManager::consumePlayerInput(){
             moveMenuCursor();
             break;
 
+        //Undo target selection.
+        case B:
+
+            //Not players turn.
+            if(menus.empty() || currentTarget == NO_TARGET)  
+                break;
+
+            else{   
+
+                targetPlayers();
+                setTargetToNoTarget();
+                break;
+            }
+
         case SPACE:
 
             //Not players turn.
@@ -399,7 +413,7 @@ void BattleManager::consumePlayerInput(){
                 if(!characterManipulationStore->isValidManipulation(selection))
                     break;
 
-                else if(targettingEnemies()){
+                else if(targettingEnemies() || selection == "Recover"){
 
                     //Execute selection.
                     characterManipulationStore->executeManipulation(
@@ -415,8 +429,7 @@ void BattleManager::consumePlayerInput(){
                 else{   
                     
                     targetEnemies();
-                    moveCursorToTarget(getCurrEnemy());
-                    
+                    moveCursorToTarget(getCurrEnemy());    
                 }
             }
 
@@ -505,6 +518,15 @@ Character* BattleManager::getCurrPlayer(){
 bool BattleManager::currEnemyDead(){
 
     return theEnemies.currSelectionIsDead();
+}
+
+//Returns whether or not the currently selected enemy is dead.
+//Pre:  None.
+//Post: Returns TRUE if the current selection has 0 HP. Returns
+//      FALSE otherwise.
+bool BattleManager::currPlayerDead(){
+
+    return thePlayers.currSelectionIsDead();
 }
 
 //Deletes the currently selected enemy.

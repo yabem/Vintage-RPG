@@ -71,7 +71,7 @@ int main(int argc, char **argv){
    ALLEGRO_TIMER *timer = NULL;
     
    //List of all the keys.
-   bool keys[7] = {false , false , false , false , false , false , false};
+   bool keys[8] = {false , false , false , false , false , false , false , false};
 
    int theKey = -1;
    
@@ -122,10 +122,10 @@ int main(int argc, char **argv){
    thePlayer4.loadAbilities("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
    */
 
-   thePlayer.loadAbilities("Attack,Jump,Item|Potion,Antidote,Herb;Run;");
-   thePlayer2.loadAbilities("Attack,Rock,Item|Potion,Antidote,Herb;Run;");
-   thePlayer3.loadAbilities("Attack,Backstab,Item|Potion,Antidote,Herb;Run;");
-   thePlayer4.loadAbilities("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Run;");
+   thePlayer.loadAbilities("Attack,Jump,Item|Potion,Antidote,Herb;Recover;");
+   thePlayer2.loadAbilities("Attack,Shield Bash,Item|Potion,Antidote,Herb;Recover;");
+   thePlayer3.loadAbilities("Attack,Backstab,Item|Potion,Antidote,Herb;Recover;");
+   thePlayer4.loadAbilities("Attack,Magic|Fire|Fire1,Fire2,Fire3;Rock,Chain Lightning;Item|Potion,Antidote,Herb;Recover;");
    
    CharacterList thePlayers;
    thePlayers.loadChar(&thePlayer);
@@ -140,11 +140,11 @@ int main(int argc, char **argv){
        emptyStringVector);
    thePlayer.setStats(&playerStats);
 
-   CharStats playerStats2(1 , 50 , 10 , 100 , 10 , 1 , 100 , 10 , 2.3 , 0 , 0 ,
+   CharStats playerStats2(1 , 50 , 10 , 100 , 10 , 1 , 100 , 10 , 1.9 , 0 , 0 ,
        emptyStringVector);
    thePlayer2.setStats(&playerStats2);
 
-   CharStats playerStats3(1 , 100 , 10 , 100 , 10 , 1 , 100 , 10 , 4.2 , 0 , 0,
+   CharStats playerStats3(1 , 100 , 10 , 100 , 10 , 1 , 100 , 10 , 2.0 , 0 , 0,
        emptyStringVector);
    thePlayer3.setStats(&playerStats3);
 
@@ -356,13 +356,6 @@ int main(int argc, char **argv){
                     //Draw cursor.
                     drawRepository.drawTopCursor();
 
-                    /*
-                    //Draw map, players, and enemies.
-                    Draw::drawBattle(theBattleMap , 
-                        battleManager.getPlayersList() ,
-                        battleManager.getEnemiesList());
-                    */
-
                     if(!battleManager.emptyEvents()){
                         battleManager.pauseBattle();
                         battleManager.playCurrEvent();
@@ -370,8 +363,6 @@ int main(int argc, char **argv){
                         if(battleManager.emptyEvents())
                             battleManager.unPauseBattle();
                     }            
-
-
 
                     //Play animations.
                     if(!drawRepository.animationsEmpty())

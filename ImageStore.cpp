@@ -67,6 +67,13 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("playerKneel" , al_load_bitmap("playerKneel.png"));
     loadBitMap("playerJump" , al_load_bitmap("playerJump.png"));
     loadBitMap("playerLanceDive" , al_load_bitmap("playerLanceDive.png"));
+    loadBitMap("magePrepareSpell" , al_load_bitmap("magePrepareSpell.png"));
+    loadBitMap("mageCastSpell" , al_load_bitmap("mageCastSpell.png"));
+    loadBitMap("thiefPrepareStab" , al_load_bitmap("thiefPrepareStab.png"));
+    loadBitMap("thiefPrepareStabWindUp" , al_load_bitmap("thiefPrepareStabWindUp.png"));
+    loadBitMap("thiefStab" , al_load_bitmap("thiefStab.png"));
+    loadBitMap("warriorPrepareShieldBash" , al_load_bitmap("warriorPrepareShieldBash.png"));
+    loadBitMap("warriorShieldBash" , al_load_bitmap("warriorShieldBash.png"));
     loadBitMap("default" , al_load_bitmap("default.png"));
 
     std::map<std::string , ALLEGRO_BITMAP*>::iterator iter = images.begin();

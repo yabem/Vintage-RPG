@@ -41,5 +41,9 @@ bool PlayerTurn::execute(){
     ResetTurnTimer *resetTurnTimer = new ResetTurnTimer(turnTimer);
     battleManager->loadEvent(resetTurnTimer);
 
+    //Load the UpdatePlayersHP event.
+    UpdatePlayersHP *updatePlayersHP = new UpdatePlayersHP(battleManager);
+    battleManager->loadEvent(updatePlayersHP);
+
     return true;
 }

@@ -107,6 +107,21 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
         drawRepository , battleManager);
     loadManipulation("Jump" , charManip);
+
+    charManip = new Backstab;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Backstab" , charManip);
+
+    charManip = new ShieldBash;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Shield Bash" , charManip);
+
+    charManip = new Recover;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Recover" , charManip);
 }
 
 //Retrieves a pointer to the CharacterManipulation.

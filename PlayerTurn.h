@@ -7,6 +7,7 @@
 #include "LoadAMenu.h"
 #include "CheckForDeadEnemy.h"
 #include "I_List.h"
+#include "UpdatePlayersHP.h"
 class DrawRepository;
 class Menu;
 class TurnTimer;

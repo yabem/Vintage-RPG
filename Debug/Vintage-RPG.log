@@ -1,12 +1,24 @@
-﻿Build started 4/2/2015 12:52:34 PM.
+﻿Build started 4/9/2015 4:55:39 PM.
      1>Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Touching "Debug\RPG.unsuccessfulbuild".
+         Creating "Debug\RPG.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt BattleManager.cpp CharacterManipulationStore.cpp EnemyTurn.cpp Recover.cpp SetTurnTimerListToCharacterList.cpp TurnTimerList.cpp main.cpp ratAI.cpp
+         BattleManager.cpp
+         Generating Code...
+         Compiling...
+         ratAI.cpp
          main.cpp
+         TurnTimerList.cpp
+         SetTurnTimerListToCharacterList.cpp
+         Recover.cpp
+         EnemyTurn.cpp
+         CharacterManipulationStore.cpp
+         Generating Code...
        Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe" /NOLOGO /LIBPATH:c:\allegro\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro-5.0.10-monolith-md-debug.lib" /MANIFEST /ManifestFile:"Debug\RPG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.lib" /MACHINE:X86 Debug\I_Animation.obj
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe" /NOLOGO /LIBPATH:c:\allegro\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro-5.0.10-monolith-md-debug.lib" /MANIFEST /ManifestFile:"Debug\RPG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.lib" /MACHINE:X86 Debug\Backstab.obj
+         Debug\Recover.obj
+         Debug\I_Animation.obj
          Debug\AreaMap.obj
          Debug\Backpack.obj
          Debug\BattleLoss.obj
@@ -54,6 +66,7 @@
          Debug\SetFloatingTextListToCharacterList.obj
          Debug\SetMenuListToCharacterList.obj
          Debug\SetTurnTimerListToCharacterList.obj
+         Debug\ShieldBash.obj
          Debug\TreasureBox.obj
          Debug\TurnTimer.obj
          Debug\CharacterList.obj
@@ -89,6 +102,43 @@
          Debug\UpdatePlayersHP.obj
          Debug\XPToLevel.obj
          LINK : C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe not found or not built by the last incremental link; performing full link
+     1>XPToLevel.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'XPToLevel.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>UnPauseBattle.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'UnPauseBattle.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>TreasureBox.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'TreasureBox.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>ShieldBash.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'ShieldBash.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>SetMenuListToCharacterList.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'SetMenuListToCharacterList.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>SetFloatingTextListToCharacterList.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'SetFloatingTextListToCharacterList.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>SetCreatureFacingDirection.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'SetCreatureFacingDirection.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>I_Reward.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'I_Reward.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>ResetTurnTimer.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'ResetTurnTimer.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>ProcessAI.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'ProcessAI.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>PlayerEntity.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'PlayerEntity.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>PauseBattle.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'PauseBattle.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>MovingCreature.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'MovingCreature.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>MenuList.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'MenuList.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>LoadAMenu.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'LoadAMenu.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>Jump.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'Jump.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>I_Manager.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'I_Manager.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>I_InventoryItem.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'I_InventoryItem.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>I_InfoBox.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'I_InfoBox.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>I_Event.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'I_Event.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>InitPlayers.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'InitPlayers.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>GainedExperiencePoints.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'GainedExperiencePoints.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>CheckForDeadEnemy.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'CheckForDeadEnemy.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>CheckForDeadPlayer.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'CheckForDeadPlayer.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>I_CharacterValuesList.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'I_CharacterValuesList.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>HealingItem.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'HealingItem.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>GainedMoney.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'GainedMoney.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>GainedItem.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'GainedItem.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>FloatingTextList.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'FloatingTextList.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>FloatingText.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'FloatingText.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>DelayInSeconds.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'DelayInSeconds.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>ChangeCreatureImage.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'ChangeCreatureImage.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>CalculateRewards.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'CalculateRewards.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>BattleLoss.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'BattleLoss.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>Backpack.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'Backpack.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>I_Animation.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'I_Animation.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
+     1>Backstab.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'Backstab.obj' or at 'C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\vc100.pdb'; linking object as if no debug info
          Vintage-RPG.vcxproj -> C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe
        Manifest:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe;#1" /manifest Debug\RPG.exe.intermediate.manifest
@@ -99,4 +149,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.63
+Time Elapsed 00:00:07.33

@@ -597,6 +597,15 @@
     <ClCompile Include="I_Animation.cpp">
       <Filter>Source Files\Animation\Base Class</Filter>
     </ClCompile>
+    <ClCompile Include="Backstab.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ShieldBash.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="Recover.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageStore.h">
@@ -847,6 +856,15 @@
     </ClInclude>
     <ClInclude Include="I_Animation.h">
       <Filter>Header Files\Animation\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="Backstab.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ShieldBash.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="Recover.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -185,7 +185,7 @@ BattleVictory::BattleVictory(AreaMap *currMap , CharacterList *characterList ,
         treasureBox->removeReward(treasureBox->getFrontRewardName());
         
         if(i != (numberOfRewards - 1) && numberOfRewards > 2)
-            victoryMessage += " , ";
+            victoryMessage += ", ";
     }
 
     victoryMessage += ".";

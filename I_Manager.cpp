@@ -52,3 +52,5 @@ Backpack* I_Manager::getBackpack(){ return NULL;}
 void I_Manager::updateFloatingTexts(){}
     
 void I_Manager::drawFloatingTexts(){}
+   
+bool I_Manager::currPlayerDead(){return false;}

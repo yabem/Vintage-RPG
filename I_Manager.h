@@ -97,4 +97,7 @@ public:
     
     //Draws the FloatingTexts.
     virtual void drawFloatingTexts();
+
+    //Determines if the currently selected player is dead.
+    virtual bool currPlayerDead(); 
 };

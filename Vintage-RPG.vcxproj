@@ -68,6 +68,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Backstab.cpp" />
+    <ClCompile Include="Recover.cpp" />
     <ClCompile Include="I_Animation.cpp" />
     <ClCompile Include="AreaMap.cpp" />
     <ClCompile Include="Backpack.cpp" />
@@ -116,6 +118,7 @@
     <ClCompile Include="SetFloatingTextListToCharacterList.cpp" />
     <ClCompile Include="SetMenuListToCharacterList.cpp" />
     <ClCompile Include="SetTurnTimerListToCharacterList.cpp" />
+    <ClCompile Include="ShieldBash.cpp" />
     <ClCompile Include="TreasureBox.cpp" />
     <ClCompile Include="TurnTimer.cpp" />
     <ClCompile Include="CharacterList.cpp" />
@@ -152,6 +155,8 @@
     <ClCompile Include="XPToLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Backstab.h" />
+    <ClInclude Include="Recover.h" />
     <ClInclude Include="I_Animation.h" />
     <ClInclude Include="AreaMap.h" />
     <ClInclude Include="AreaMapLayouts.h" />
@@ -202,6 +207,7 @@
     <ClInclude Include="SetFloatingTextListToCharacterList.h" />
     <ClInclude Include="SetMenuListToCharacterList.h" />
     <ClInclude Include="SetTurnTimerListToCharacterList.h" />
+    <ClInclude Include="ShieldBash.h" />
     <ClInclude Include="TreasureBox.h" />
     <ClInclude Include="TurnTimer.h" />
     <ClInclude Include="CharFactory.h" />

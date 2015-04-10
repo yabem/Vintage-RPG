@@ -58,16 +58,6 @@ void Fire1::execute(){
 //Loads the animations to the animations vector.
 void Fire1::loadAnimations(){
 
-    ALLEGRO_BITMAP *bmap = imageStore->getBitMap("fire1");
-
-    //Throws a fire1 between the initiator and the receiver.
-    MovingImage *weaponAttack = new MovingImage(
-        bmap , al_get_bitmap_width(bmap) , al_get_bitmap_height(bmap) , 30);
-    
-    //The rock will move from the initiator to the receiver.
-    weaponAttack->initialize(initiator->getX() , initiator->getY() , 
-        receiver->getX() , receiver->getY());
-
     //Creates the text that will display the damage above the receiver.
     MovingText *damage = new MovingText(font , 10 , 10 , 8 , false);
     MovingText *damageStay = new MovingText(font , 10 , 10 , 16 , false);
@@ -81,11 +71,71 @@ void Fire1::loadAnimations(){
         receiver->getX() , receiver->getY() - 50);
     damageStay->initialize(theDamage , receiver->getX() , receiver->getY() , 
         receiver->getX() , receiver->getY());
-                                   
+    
+    int origPositionX = initiator->getX();
+    int origPositionY = initiator->getY();
+    int moveIntoAttackPositionX = 0;
+    int moveIntoAttackPositionY = 0;
+
+    MovingCreature *positionBeforeAttack = new MovingCreature(initiator , 10);
+    MovingCreature *backToStartingPosition = new MovingCreature(initiator , 10);
+    
+    setInitiatorAttackPosition(initiator , receiver , moveIntoAttackPositionX ,
+        moveIntoAttackPositionY);
+
+    positionBeforeAttack->initialize(origPositionX , origPositionY ,
+        moveIntoAttackPositionX, moveIntoAttackPositionY);
+
+    backToStartingPosition->initialize(moveIntoAttackPositionX,
+        moveIntoAttackPositionY, origPositionX , origPositionY);
+
+    ALLEGRO_BITMAP *bmap = imageStore->getBitMap("fire1");
+    int spellDestinationX = 0;
+    int spellDestinationY = 0;
+
+    setSpellDestinationPosition(initiator , bmap , spellDestinationX , 
+        spellDestinationY);
+
+    int spellStartFromX = 0;
+    int spellStartFromY = 0;
+
+    setSpellStartPosition(initiator , bmap , spellStartFromX , spellStartFromY ,
+        moveIntoAttackPositionX , moveIntoAttackPositionY);
+
+    //Throws a fire1 between the initiator and the receiver.
+    MovingImage *weaponAttack = new MovingImage(
+        bmap , al_get_bitmap_width(bmap) , al_get_bitmap_height(bmap) , 15);
+
+    //The fire will move from the initiator to the receiver.
+    weaponAttack->initialize(spellStartFromX , 
+        spellStartFromY , spellDestinationX , spellDestinationY);
+    
+    SetCreatureFacingDirection *originalFacingDirection =
+        new SetCreatureFacingDirection(initiator , LEFT);
+    SetCreatureFacingDirection *attackFacingDirection =
+        new SetCreatureFacingDirection(initiator , 0);
+
+    ChangeCreatureImage *prepareSpell = new ChangeCreatureImage(initiator
+        , imageStore->getBitMap("magePrepareSpell"));
+    ChangeCreatureImage *castSpell = new ChangeCreatureImage(initiator
+        , imageStore->getBitMap("mageCastSpell"));
+    ChangeCreatureImage *origImage = new ChangeCreatureImage(initiator
+        , imageStore->getBitMap("mage"));
+
+    DelayInSeconds *delayForSpellPrep = new DelayInSeconds(.3);
+
     //Load all the animations to the animations queue.
+    drawRepository->loadAnimation(positionBeforeAttack);
+    drawRepository->loadAnimation(attackFacingDirection);
+    drawRepository->loadAnimation(prepareSpell);
+    drawRepository->loadAnimation(delayForSpellPrep);
+    drawRepository->loadAnimation(castSpell);
     drawRepository->loadAnimation(weaponAttack);
     drawRepository->loadAnimation(damage);
-    drawRepository->loadAnimation(damageStay);   
+    drawRepository->loadAnimation(damageStay); 
+    drawRepository->loadAnimation(origImage); 
+    drawRepository->loadAnimation(originalFacingDirection); 
+    drawRepository->loadAnimation(backToStartingPosition); 
 }
 
 //Calculates the damage to the receiver.
@@ -104,4 +154,68 @@ void Fire1::calculateDamage(){
     //No damage done, the defense negated the attack.
     if(damageToReceiver < 0)
         damageToReceiver = 0;
+}
+
+//Sets the draw to spell location.
+void Fire1::setInitiatorAttackPosition(Character *initiator , 
+    Character *receiver , int &moveIntoAttackPositionX ,
+    int &moveIntoAttackPositionY){
+
+    moveIntoAttackPositionX = receiver->getX() + SCREEN_W / 2;
+
+    //Receiver is taller than initiator.
+    if(receiver->getH() > initiator->getH()){
+
+        moveIntoAttackPositionY = receiver->getY() +
+            ((receiver->getH() - initiator->getH()) / 2);
+    }
+
+    //Initiator is taller than receiver.
+    else{
+        moveIntoAttackPositionY = receiver->getY() -
+            ((initiator->getH() - receiver->getH()) / 2);
+    }
+}
+
+//Sets the spell's destination position.
+void Fire1::setSpellDestinationPosition(Character *initiator , 
+    ALLEGRO_BITMAP *bmap , int &spellDestinationX , int &spellDestinationY){
+
+    spellDestinationX = receiver->getX();
+
+    //Receiver is taller than spell.
+    if(receiver->getH() > al_get_bitmap_height(bmap)){
+        
+        spellDestinationY = receiver->getY() +
+            ((receiver->getH() - al_get_bitmap_height(bmap)) / 2);
+    }
+
+    //The spell is taller than receiver.
+    else{
+
+        spellDestinationY = receiver->getY() -
+            ((al_get_bitmap_height(bmap) - receiver->getH()) / 2);
+    }
+}
+
+//Sets the spell's start position.
+void Fire1::setSpellStartPosition(Character *initiator , 
+    ALLEGRO_BITMAP *bmap , int &spellStartFromX , int &spellStartFromY ,
+    int moveIntoAttackPositionX , int moveIntoAttackPositionY){
+
+    spellStartFromX = moveIntoAttackPositionX - al_get_bitmap_width(bmap);
+
+    //Initiator is taller than spell.
+    if(initiator->getH() > al_get_bitmap_height(bmap)){
+
+        spellStartFromY = moveIntoAttackPositionY +
+            ((al_get_bitmap_height(bmap) - initiator->getH()) / 2);
+    }
+
+    //The spell is taller than initiator.
+    else{
+
+        spellStartFromY = moveIntoAttackPositionY -
+            ((al_get_bitmap_height(bmap) - initiator->getH()) / 2);
+    }
 }

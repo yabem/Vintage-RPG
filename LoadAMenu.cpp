@@ -23,10 +23,18 @@ bool LoadAMenu::execute(){
 
     if(!isExecuted){
 
-        battleManager->loadMenu(menu);
         battleManager->setCurrPlayer(playerPosition);
-        isExecuted = true;
-        return false;
+
+        //If the player is dead.
+        if(battleManager->currPlayerDead()){
+            return true;
+        }
+
+        else{
+            battleManager->loadMenu(menu);
+            isExecuted = true;
+            return false;
+        }
     }
 
     //Player turn is not done yet.

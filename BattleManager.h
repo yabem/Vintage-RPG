@@ -200,6 +200,9 @@ public:
     //Returns whether or not the currently selected enemy is dead.
     bool currEnemyDead();   
 
+    //Returns whether or not the currently selected player is dead.
+    bool currPlayerDead();   
+
     //Deletes the currently selected enemy.
     virtual void deleteCurrEnemy(); 
 
