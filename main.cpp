@@ -134,176 +134,9 @@ int main(int argc, char **argv){
 
     BattleTransitionScreen battleTransitionScreen(&imageStore);
     battleTransitionScreen.loadDefaults();
-    /*
-    //Characters
-    Character thePlayer(imageStore.getBitMap("player") , 32 , 32 , 30 , 2 , rate);
-    thePlayer.setFacing(DOWN);
-    Character thePlayer2(imageStore.getBitMap("warrior") , 32 , 32 , 30 , 2 , rate);
-    Character thePlayer3(imageStore.getBitMap("thief") , 32 , 32 , 30 , 2 , rate);
-    Character thePlayer4(imageStore.getBitMap("mage") , 32 , 32 , 30 , 2 , rate);
-
-    thePlayer.loadAbilities("Attack,Jump,Item|Potion;Recover;");
-    thePlayer2.loadAbilities("Attack,Shield Bash,Item|Potion;Recover;");
-    thePlayer3.loadAbilities("Attack,Backstab,Item|Potion;Recover;");
-    thePlayer4.loadAbilities("Attack,Magic|Fire1,Fire2,Fire3;Item|Potion;Recover;");
-   
-    CharacterList thePlayers;
-    thePlayers.loadChar(&thePlayer);
-    thePlayers.loadChar(&thePlayer2);
-    thePlayers.loadChar(&thePlayer3);
-    thePlayers.loadChar(&thePlayer4);
-
-    std::vector<std::string> emptyStringVector;
-
-    //Character stats
-    CharStats playerStats(1 , 1 , 10 , 100 , 10 , 1 , 100 , 10 , 1.8 , 0 , 0 ,
-        emptyStringVector);
-    thePlayer.setStats(&playerStats);
-
-    CharStats playerStats2(1 , 5 , 10 , 100 , 10 , 1 , 100 , 10 , 1.9 , 0 , 0 ,
-        emptyStringVector);
-    thePlayer2.setStats(&playerStats2);
-
-    CharStats playerStats3(1 , 1 , 10 , 100 , 10 , 1 , 100 , 10 , 2.0 , 0 , 0,
-        emptyStringVector);
-    thePlayer3.setStats(&playerStats3);
-
-    CharStats playerStats4(1 , 5 , 10 , 100 , 10 , 1 , 100 , 10 , 1.3 , 0 , 0,
-        emptyStringVector);
-    thePlayer4.setStats(&playerStats4);
-
-    //Character vectors
-    vector<Character*> players;
-    vector<Character*> enemies;
-
-    players.push_back(&thePlayer);
-    */
-
-    //Animations queue
-    //queue<I_Animation*> animations;
 
     Tangible theRock1(imageStore.getBitMap("rock") , 60 , 60 , 32 , 32 , 60 , 60 , 32 , 32);
     Tangible theRock2(imageStore.getBitMap("rock") , 888 , 888 , 32 , 32 , 888 , 888 , 32 , 32);
-
-    /*
-    Scenery cloud1(imageStore.getBitMap("cloud") , SCREEN_W , 0 , -4 , 1);
-    cloud1.setDX(80);    cloud1.setDY(0);
-    Scenery cloud2(imageStore.getBitMap("cloud") , SCREEN_W , 40 , -8 , 0);
-    cloud2.setDX(500);    cloud2.setDY(40);
-    Scenery cloud3(imageStore.getBitMap("cloud") , SCREEN_W , 80 , -6 , 0);
-    cloud3.setDX(540);    cloud3.setDY(80);
-    Scenery cloud4(imageStore.getBitMap("cloud") , SCREEN_W , 120 , -10 , 2);
-    cloud4.setDX(290);    cloud4.setDY(120);
-    Scenery cloud5(imageStore.getBitMap("cloud") , SCREEN_W , 160 , -3 , 0);
-    cloud5.setDX(360);    cloud5.setDY(160);
-    Scenery cloud6(imageStore.getBitMap("cloud") , SCREEN_W , 200 , -2 , 0);
-    cloud6.setDX(430);    cloud6.setDY(200);
-    Scenery cloud7(imageStore.getBitMap("cloud") , SCREEN_W , 240 , -8 , -2);
-    cloud7.setDX(150);    cloud7.setDY(240);
-    Scenery cloud8(imageStore.getBitMap("cloud") , SCREEN_W , 280 , -9 , 0);
-    cloud8.setDX(220);    cloud8.setDY(280);
-    Scenery cloud9(imageStore.getBitMap("cloud") , SCREEN_W , 380 , -5 , -1);
-    cloud9.setDX(SCREEN_W);    cloud9.setDY(380);
-    */
-
-    /*
-    Layer trans0(imageStore.getBitMap("terrain") , 8 , 4 , 32 , 32 , 15 , 20 , cutscene0 , 300);
-    Layer trans1(imageStore.getBitMap("terrain") , 8 , 4 , 32 , 32 , 15 , 20 , cutscene1 , 300); 
-    */
-
-    /*
-    Layer layer0(imageStore.getBitMap("terrain") , 8 , 4 , 32 , 32 , 50 , 50 , town0 , 2500);
-    Layer layer1(imageStore.getBitMap("town") , 10 , 13 , 32 , 32 , 50 , 50 , town1 , 2500);
-    Layer layer2(imageStore.getBitMap("town") , 10 , 13 , 32 , 32  , 50 , 50 , town2 , 2500);
-    */
-
-    //Layer shop0(imageStore.getBitMap("town") , 10 , 13 , 32 , 32 , 8 , 8 , theShop0 , 64);
-    //Layer shop1(imageStore.getBitMap("town") , 10 , 13 , 32 , 32  , 8 , 8 , theShop1 , 64);
-
-    //Layer battle0(imageStore.getBitMap("terrain") , 8 , 4 , 32 , 32 , 15 , 20 , battleScreen0 , 300);
-    //Layer battle1(imageStore.getBitMap("terrain") , 8 , 4 , 32 , 32 , 15 , 20 , battleScreen1 , 300);
-
-    /*
-    vector<Layer*> layers;
-    layers.push_back(&layer0);
-    layers.push_back(&layer1);
-    layers.push_back(&layer2);
-    */
-    /*
-    AreaMap theShop;
-    theShop.loadLayer(&shop0);
-    theShop.loadLayer(&shop1);
-    */
-
-    /*
-    AreaMap theMap;
-    theMap.loadLayer(&layer0);
-    theMap.loadLayer(&layer1);
-    theMap.loadLayer(&layer2);
-    */
-
-    /*
-    AreaMap theMap2;
-    theMap2.loadLayer(&layer0);
-    theMap2.loadLayer(&layer1);
-    */
-
-    //AreaMap battleMap;
-    //battleMap.loadLayer(&battle0);
-    //battleMap.loadLayer(&battle1);
-
-    //AreaMap theBattleMap;
-    //theBattleMap.loadLayer(&battle0);
-
-    /*
-    AreaMap cutScene;
-    cutScene.loadLayer(&trans0);
-    cutScene.loadLayer(&trans1);
-    */
-
-    /*
-    theMap.loadExit(0 , 25 , &theMap2 , 48 , 25);
-    theMap.loadExit(25 , 0 , &theMap2 , 25 , 48);
-    theMap.loadExit(49 , 25 , &theMap2 , 2 , 25);
-    theMap.loadExit(25 , 49 , &theMap2 , 25 , 2);
-    theMap.loadExit(29 , 10 , &theShop , 4 , 5);
-    theMap.loadExit(28 , 10 , &theShop , 4 , 5);
-    */
-
-    /*
-    theMap2.loadExit(0 , 25 , &theMap , 48 , 25);
-    theMap2.loadExit(25 , 0 , &theMap , 25, 48);
-    theMap2.loadExit(49 , 25 , &theMap , 2 , 25);
-    theMap2.loadExit(25 , 49 , &theMap , 25 , 2);
-    */
-
-    /*
-    theMap2.loadExit(0 , 25 , &homeTown , 48 , 25);
-    theMap2.loadExit(25 , 0 , &homeTown , 25, 48);
-    theMap2.loadExit(49 , 25 , &homeTown , 2 , 25);
-    theMap2.loadExit(25 , 49 , &homeTown , 25 , 2);
-    */
-
-    //theShop.loadExit(4 , 7 , &theMap , 28 , 12);
-    //theShop.loadExit(4 , 7 , &homeTown , 28 , 12);
-
-    //AreaMap *currMap = &theMap;
-    //AreaMap *currMap = &homeTown;
-
-    /*
-    theMap.loadScenery(&cloud1);
-    theMap.loadScenery(&cloud2);
-    theMap.loadScenery(&cloud3);
-    theMap.loadScenery(&cloud4);
-    theMap.loadScenery(&cloud5);
-    theMap.loadScenery(&cloud6);
-    theMap.loadScenery(&cloud7);
-    theMap.loadScenery(&cloud8);
-    theMap.loadScenery(&cloud9);
-    */
-
-    //theMap.loadTangible(&theRock1);
-    //theMap.loadTangible(&theRock2);
 
     homeTown.loadTangible(&theRock1);
     homeTown.loadTangible(&theRock2);
@@ -312,11 +145,8 @@ int main(int argc, char **argv){
     GameManager gameManager = GameManager();
     gameManager.currMap = &homeTown;
     gameManager.player = playerEntity.getFirstPlayer();
-    //gameManager.battleMap = &battleMap;
     gameManager.battleMap = &homeTownBattleScreen;
-    //gameManager.cutSceneMap = &cutscene;
     gameManager.cutSceneMap = &battleTransitionScreen;
-    //gameManager.loadPlayers(&thePlayers);
     gameManager.loadPlayers(playerEntity.getThePlayers());
 
     int cutsceneFrameCount = 0;  //For display.
@@ -358,7 +188,6 @@ int main(int argc, char **argv){
     drawRepository.loadCutscene(theInstruct);
 
     //Initialize starting position.
-    //LoadExitsForHomeTown::LoadExitsForHomeTown(&homeTown , &homeTownShop , &theMap2);
     LoadExitsForHomeTown::LoadExitsForHomeTown(&homeTown , &homeTownShop , &northernSnow);
     LoadExitsForHomeTownShop::LoadExitsForHomeTownShop(&homeTownShop , &homeTown);
     LoadExitsForNorthernSnow::LoadExitsForNorthernSnow(&northernSnow , &homeTown);
