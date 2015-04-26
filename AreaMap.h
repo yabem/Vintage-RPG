@@ -19,7 +19,7 @@
 
 class AreaMap{
 
-private:
+protected:
 
     //Stores an exit location, the destination map, and the destination location.
     struct Exit{
@@ -37,6 +37,7 @@ private:
 public:
 
     AreaMap();                      //Constructor.
+    virtual ~AreaMap();                     //Destructor.
 
     int getNumLayers() const;       //Return the number of Layers.
     int getNumTangibles() const;    //Return the number of Tangibles.

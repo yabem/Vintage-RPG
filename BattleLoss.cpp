@@ -7,12 +7,31 @@ BattleLoss::BattleLoss(AreaMap *currMap , CharacterList *listOfPlayers ,
     frameCount = 0;
     mapSwitch = 1;
     this->currMap = currMap;
-    this->listOfPlayers = listOfPlayers;
-    this->listOfEnemies = listOfEnemies;
+    this->listOfPlayers =  new CharacterList();
+    this->listOfEnemies =  new CharacterList();
     this->gameManager = gameManager;
 
     textBox.loadText("You have been slain by the enemies. Press SPACE to "
         "close the game.");
+
+    listOfPlayers->resetSelection();
+    listOfEnemies->resetSelection();
+
+    for(int i = 0 ; i < listOfPlayers->getSize() ; i++){
+
+        Character *copyOfCharacter = new Character();
+        *copyOfCharacter = *listOfPlayers->getCurrSelection();
+        this->listOfPlayers->loadChar(copyOfCharacter);
+        listOfPlayers->moveSelectionDown();
+    }
+
+    for(int i = 0 ; i < listOfEnemies->getSize() ; i++){
+
+        Character *copyOfCharacter = new Character();
+        *copyOfCharacter = *listOfEnemies->getCurrSelection();
+        this->listOfEnemies->loadChar(copyOfCharacter);
+        listOfEnemies->moveSelectionDown();
+    }
 }
 
 //Destructor.
@@ -27,11 +46,25 @@ bool BattleLoss::play(const int pressedKey){
     frameCount++;
 
     Draw::drawArea(*currMap);
-    Draw::drawCharListForBattle(listOfPlayers);
-    Draw::drawCharListForBattle(listOfEnemies);
+    Draw::drawCharListForBattle(this->listOfPlayers);
+    Draw::drawCharListForBattle(this->listOfEnemies);
     textBox.draw();
 
     if(pressedKey == SPACE){
+
+        listOfPlayers->resetSelection();
+        for(int i = 0 ; i < listOfPlayers->getSize() ; i++){
+
+            delete listOfPlayers->getCurrSelection();
+            listOfPlayers->moveSelectionDown();
+        }
+
+        listOfEnemies->resetSelection();
+        for(int i = 0 ; i < listOfEnemies->getSize() ; i++){
+
+            delete listOfEnemies->getCurrSelection();
+            listOfEnemies->moveSelectionDown();
+        }
 
         gameManager->setEndOfGameLoopToEnd();
         return true;

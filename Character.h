@@ -74,6 +74,7 @@ public:
     bool isPlayable() const;                    //Returns if the player is playable.
     bool getCollision(int direction);           //Return the collision value for the direction.
     Stats* getStats();                          //Return a pointer to the character stats.
+    void deleteStats();                         //Deletes the character stats.
 
     virtual int getCurrHP();                    //Returns the current HP.
     virtual int getTtlHP();                     //Returns the total HP.

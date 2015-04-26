@@ -78,6 +78,9 @@ public:
     //Delete the Character in the current position.
     virtual bool deleteSelection(int position);    
 
+    //Removes all the Characters in the charList.
+    void deleteCharList();
+
     //Removes all the elements from the dependency lists.
     virtual void deleteList();
 

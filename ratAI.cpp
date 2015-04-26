@@ -25,7 +25,14 @@ ratAI::~ratAI(){
 //Post: Attacks a random player.
 void ratAI::executeBattleLogic(){
 
-    int randomPlayer = rand() % listOfEnemies->getSize();
+    int numberOfPossiblePlayers = 0;
+
+    if(listOfPlayers->getSize() < MAX_PLAYERS_PER_BATTLE)
+        numberOfPossiblePlayers = listOfPlayers->getSize();
+
+    else numberOfPossiblePlayers = MAX_PLAYERS_PER_BATTLE;
+
+    int randomPlayer = rand() % numberOfPossiblePlayers;
     int randomAttack = rand() % possibleAttacks.size();
 
     //Player is already dead, choose another.

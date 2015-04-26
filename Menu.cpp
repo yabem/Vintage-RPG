@@ -7,7 +7,7 @@ Menu::Menu(){
     longestOption = 0;
     currSelection = 0;
     font = al_load_font("arial.ttf" , FONT_SIZE , 0);
-
+    
     this->sx = 0;           //X draw location.
     this->sy = 0;           //y draw location.
     this->dx = 0;

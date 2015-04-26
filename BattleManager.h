@@ -22,8 +22,11 @@
 #include "MenuList.h"
 #include "I_Event.h"
 #include "BattleLoss.h"
+#include "BattleVictory.h"
+#include "BattleTrans.h"
 #include "TreasureBox.h"
 #include "FontStore.h"
+
 class DrawRepository;
 
 class BattleManager: public I_Manager{
@@ -88,6 +91,12 @@ private:
 
     //Holds the player's inventory.
     Backpack *backpack;
+
+    //Initiator of an action.
+    Character *initiator;
+
+    //Target of the action.
+    Character *receiver;
     
 public:
     
@@ -170,20 +179,14 @@ public:
     //Determines if the menu cursor should be moved.
     void moveMenuCursor();
 
-    //Determines if the enemy cursor selector should be moved.
-    void moveEnemyCursor();
+    //Moves the target cursor.
+    void moveTargetCursor();
 
     //Consume keyboard input from player for the battle.
     void consumePlayerInput();
 
     //Returns the list of Menu pointers.
     std::vector<Menu*>& getMenuList();   
-
-    //Moves the currently selected enemy down.
-    void moveEnemySelectionDown();  
-
-    //Moves the currently selected enemy up.
-    void moveEnemySelectionUp();  
 
     //Sets the current enemy to the position.
     void setCurrEnemy(int position);

@@ -1,8 +1,6 @@
 #include "I_List.h"
 
-I_List::~I_List(){
-
-}
+I_List::~I_List(){}
 
 int I_List::getSize() const{return 0;}
 
@@ -12,3 +10,4 @@ Character* I_List::getCharacterSelection(int position){return NULL;}
 
 FloatingText* I_List::getFloatingTextSelection(int selection){return NULL;}
 
+void I_List::deleteList(){}

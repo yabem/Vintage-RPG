@@ -349,6 +349,24 @@
     <Filter Include="Source Files\PlayerEntity">
       <UniqueIdentifier>{95ffc779-2d63-4e26-bd87-7bf8d79c5635}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Map\AreaMap">
+      <UniqueIdentifier>{219c22ff-4183-49e6-a935-18bc8f2ed8f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map\AreaMap\Base Class">
+      <UniqueIdentifier>{57bdbb75-7b6f-49e2-9016-f7e95a912c59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map\AreaMap\Derived Class">
+      <UniqueIdentifier>{4ae0275a-2d7c-4df7-a82f-b35ce7e863f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map\AreaMap">
+      <UniqueIdentifier>{bd7c3872-29e6-4515-b181-4824a6c51acb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map\AreaMap\Base Class">
+      <UniqueIdentifier>{c511e5e1-4274-4abe-b432-4b9c9b0d7f38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map\AreaMap\Derived Class">
+      <UniqueIdentifier>{cf89af8c-b621-4a54-8979-7957c21e3e1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -376,12 +394,6 @@
       <Filter>Source Files\Character\CharFactory</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>Source Files\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleMap.cpp">
-      <Filter>Source Files\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="AreaMap.cpp">
       <Filter>Source Files\Map</Filter>
     </ClCompile>
     <ClCompile Include="MovingImage.cpp">
@@ -606,6 +618,48 @@
     <ClCompile Include="Recover.cpp">
       <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
     </ClCompile>
+    <ClCompile Include="Potion.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleVictory.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="Intro.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="Instruct.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleTrans.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="AreaMap.cpp">
+      <Filter>Source Files\Map\AreaMap\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeTown.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadExitsForHomeTown.cpp">
+      <Filter>Source Files\Map\AreaMap</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeTownShop.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadExitsForHomeTownShop.cpp">
+      <Filter>Source Files\Map\AreaMap</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeTownBattleScreen.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="NorthernSnow.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadExitsForNothernSnow.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleTransitionScreen.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageStore.h">
@@ -628,9 +682,6 @@
     </ClInclude>
     <ClInclude Include="CharFactory.h">
       <Filter>Header Files\Character\CharFactory</Filter>
-    </ClInclude>
-    <ClInclude Include="AreaMap.h">
-      <Filter>Header Files\Map</Filter>
     </ClInclude>
     <ClInclude Include="AreaMapLayouts.h">
       <Filter>Header Files\Map</Filter>
@@ -682,9 +733,6 @@
     </ClInclude>
     <ClInclude Include="I_List.h">
       <Filter>Header Files\List\Base Class</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleMap.h">
-      <Filter>Header Files\Map</Filter>
     </ClInclude>
     <ClInclude Include="Layer.h">
       <Filter>Header Files\Map</Filter>
@@ -865,6 +913,48 @@
     </ClInclude>
     <ClInclude Include="Recover.h">
       <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="Potion.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleVictory.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleTrans.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="Instruct.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="Intro.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="AreaMap.h">
+      <Filter>Header Files\Map\AreaMap\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeTown.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadExitsForHomeTown.h">
+      <Filter>Header Files\Map\AreaMap</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeTownShop.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadExitsForHomeTownShop.h">
+      <Filter>Header Files\Map\AreaMap</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeTownBattleScreen.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="NorthernSnow.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadExitsForNorthernSnow.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleTransitionScreen.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

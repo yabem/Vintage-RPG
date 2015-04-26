@@ -10,6 +10,11 @@ AreaMap::AreaMap(){
 
 }
 
+//Destructor.
+AreaMap::~AreaMap(){
+
+}
+
 //Return the number of Layers.
 int AreaMap::getNumLayers() const{
 

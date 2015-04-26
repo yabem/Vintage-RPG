@@ -15,7 +15,7 @@ public:
 
     virtual ~I_List();
     virtual bool deleteSelection(int position) = 0;
-    virtual void deleteList() = 0;
+    virtual void deleteList();
     
     virtual int getSize() const;
 

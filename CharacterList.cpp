@@ -12,6 +12,8 @@ CharacterList::CharacterList(){
 CharacterList::~CharacterList(){
 
     //Default is fine.
+    if(this->charList.size() > 0)
+        this->deleteList();
 }
 
 //Returns a pointer to the currently selected Character.
@@ -199,6 +201,21 @@ bool CharacterList::deleteSelection(int position){
         size--;
         return true;
     }
+}
+
+//Removes all the Characters in the charList.
+//Pre:  None.
+//Post: Deletes all the characters in CharList.
+void CharacterList::deleteCharList(){
+
+    while(charList.size() > 0){
+
+        delete charList.back()->getStats();
+        delete charList.back();
+        charList.pop_back();
+    }
+
+    charList.clear();
 }
 
 //Removes all of the Characters from the list.

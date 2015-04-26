@@ -21,10 +21,7 @@ private:
     I_Manager *gameManager;   
 
     //Stores the Cursors that are drawn to the screen.
-    std::queue<Cursor*> cursors;
-
-    //Used to delete enemies once animations are done.
-    //I_Manager *battleManager;           
+    std::queue<Cursor*> cursors;        
 
 public:
 

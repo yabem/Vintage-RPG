@@ -62,10 +62,10 @@ int getKeyboardInput(ALLEGRO_EVENT *ev , bool *keys){
                 theKey = U;
 		        break;
 
-	        case ALLEGRO_KEY_B:
+	        case ALLEGRO_KEY_C:
                 resetKeys(keys);
-		        keys[B] = true;
-                theKey = B;
+		        keys[C] = true;
+                theKey = C;
 		        break;
         }
     }
@@ -117,9 +117,9 @@ int getKeyboardInput(ALLEGRO_EVENT *ev , bool *keys){
                 }
                 break;
 
-            case ALLEGRO_KEY_B:
-                if(B == theKey){
-    		        keys[B] = false;
+            case ALLEGRO_KEY_C:
+                if(C == theKey){
+    		        keys[C] = false;
                     theKey = -1;
                 }
                 break;

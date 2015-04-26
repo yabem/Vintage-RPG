@@ -22,6 +22,13 @@ DrawRepository::~DrawRepository(){
         delete animations.front();
         animations.pop();
     }
+
+    //Deallocate cursors remaining in queue.
+    while(!cursors.empty()){
+
+        delete cursors.front();
+        cursors.pop();
+    }
 }
 
 //Loads the GameManager.
@@ -125,8 +132,11 @@ void DrawRepository::drawTopCursor(){
 //Post: Removes the top cursor from the list.
 void DrawRepository::removeTopCursor(){
 
-    if(!cursors.empty())
+    if(!cursors.empty()){
+        
+        delete cursors.front();
         cursors.pop();
+    }
 }
 
 //Plays all the loaded Animations.

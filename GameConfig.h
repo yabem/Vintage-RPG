@@ -6,7 +6,7 @@
 
 using namespace std;
 
-enum MYKEYS {UP , RIGHT , DOWN , LEFT , SPACE , Q , U , B};
+enum MYKEYS {UP , RIGHT , DOWN , LEFT , SPACE , Q , U , C};
 const int MAX_NUM_KEYS = 8;
 enum LAYERTYPES {BACKGROUND , CENTERGROUND , FOREGROUND};
 enum IMAGES {ATTACK, BLOCK, MAGIC}; //Used for images indexing values.
@@ -16,7 +16,8 @@ const int MAX_ENEMIES_PER_BATTLE = 4; //Total number of enemies per battle.
 const int MAX_PLAYERS_PER_BATTLE = 4;
 const int MAX_ENEMY_LEVEL = 3;
 const int DIRECTIONS = 4; //Used for collision creation.
-const int DEAD = 4; //Used to set the facing direction to dead.
+const int DEAD = 5; //Used to set the facing direction to dead.
+const int CELEBRATE = 4; //Used to set the facing direction to dead.
 
 const int FPS = 60;
 const int rate = 4;

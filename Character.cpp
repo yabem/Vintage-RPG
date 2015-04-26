@@ -180,6 +180,13 @@ Stats* Character::getStats(){
     return stats;
 }
 
+//Deletes the character's stats.
+void Character::deleteStats(){
+
+    if(stats != NULL)
+        delete stats;
+}
+
 //Returns the current HP.
 int Character::getCurrHP(){
 
@@ -211,7 +218,10 @@ int Character::getDefense() const{
 //      remaining the Character is now dead.
 void Character::addToRemainingHP(int amount){
 
-    stats->addToCurrHP(amount);
+    if(isDead())
+        return;
+
+    else stats->addToCurrHP(amount);
 }
 
 //Adds to the Character's total XP.
@@ -274,7 +284,7 @@ void Character::addToAllCornerY(int add){
 bool Character::setFacing(int direction){
 
     //Check for bad input.
-    if(direction < 0 || direction >= DIRECTIONS)
+    if(direction < 0)// || direction >= DIRECTIONS)
         return false;
 
     else{

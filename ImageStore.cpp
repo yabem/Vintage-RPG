@@ -74,6 +74,11 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("thiefStab" , al_load_bitmap("thiefStab.png"));
     loadBitMap("warriorPrepareShieldBash" , al_load_bitmap("warriorPrepareShieldBash.png"));
     loadBitMap("warriorShieldBash" , al_load_bitmap("warriorShieldBash.png"));
+    loadBitMap("potionSparkleFirst" , al_load_bitmap("potionSparkleFirst.png"));
+    loadBitMap("potionSparkleSecond" , al_load_bitmap("potionSparkleSecond.png"));
+    loadBitMap("potionSparkleThird" , al_load_bitmap("potionSparkleThird.png"));
+    loadBitMap("potionSparkleFourth" , al_load_bitmap("potionSparkleFourth.png"));
+
     loadBitMap("default" , al_load_bitmap("default.png"));
 
     std::map<std::string , ALLEGRO_BITMAP*>::iterator iter = images.begin();

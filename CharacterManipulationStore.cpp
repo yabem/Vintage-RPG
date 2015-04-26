@@ -122,6 +122,11 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
         drawRepository , battleManager);
     loadManipulation("Recover" , charManip);
+
+    charManip = new Potion;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Potion" , charManip);
 }
 
 //Retrieves a pointer to the CharacterManipulation.

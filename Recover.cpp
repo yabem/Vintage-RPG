@@ -30,7 +30,7 @@ void Recover::loadCharacters(Character *initiator ,
  
 //Initiates the recovery amount to teh character.
 //Pre:  Both characters have been loaded.
-//Post: The initiator's HP increase by the calculated amount.
+//Post: The receiver's HP increase by the calculated amount.
 void Recover::execute(){
 
     if(initiator == NULL || receiver == NULL)
@@ -40,7 +40,7 @@ void Recover::execute(){
     calculateRecovery();
 
     //Remove receiver's hitpoints.
-    initiator->addToRemainingHP(recoveryAmount);
+    receiver->addToRemainingHP(recoveryAmount);
 
     loadAnimations();
 }
@@ -57,10 +57,10 @@ void Recover::loadAnimations(){
     _itoa_s(recoveryAmount , theRecovery , 10);
 
     //Sets the start and end coordinates.
-    recovery->initialize(theRecovery , initiator->getX() , initiator->getY() , 
-        initiator->getX() , initiator->getY() - 50);
-    recoveryStay->initialize(theRecovery , initiator->getX() , initiator->getY() , 
-        initiator->getX() , initiator->getY());
+    recovery->initialize(theRecovery , receiver->getX() , receiver->getY() , 
+        receiver->getX() , receiver->getY() - 50);
+    recoveryStay->initialize(theRecovery , receiver->getX() , receiver->getY() , 
+        receiver->getX() , receiver->getY());
 
     drawRepository->loadAnimation(recovery);
     drawRepository->loadAnimation(recoveryStay); 
@@ -70,6 +70,6 @@ void Recover::loadAnimations(){
 void Recover::calculateRecovery(){
 
     //Get attack and defense for calculation.
-    this->recoveryAmount = initiator->getTtlHP() * 0.10;
+    this->recoveryAmount = receiver->getTtlHP() * 0.10;
 }
 

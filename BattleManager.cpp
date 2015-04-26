@@ -8,6 +8,8 @@ BattleManager::BattleManager(){
     gameManager = NULL;
     drawRepository = NULL;
     isBattlePaused = false;
+    initiator = NULL;
+    receiver = NULL;
 
     enemyTurnTimerList.loadManager(this);
 
@@ -163,6 +165,9 @@ void BattleManager::moveCursorToTarget(Character *character){
     int charX = 0;
     int charMidY = 0;
 
+    if(this->battleCursor == NULL)
+        return;
+
     switch(battleCursor->getPointingDirection()){
 
         //Sets to the middle of the left side of the Character.
@@ -198,7 +203,7 @@ void BattleManager::moveCursorToTarget(Character *character){
 void BattleManager::targetEnemies(){
 
     currentTarget = ENEMY;
-    drawRepository->loadCursor(battleCursor);
+    //drawRepository->loadCursor(battleCursor);
 }
 
 //Changes currentTarget to players.
@@ -207,7 +212,6 @@ void BattleManager::targetEnemies(){
 void BattleManager::targetPlayers(){
 
     currentTarget = PLAYER;
-    drawRepository->removeTopCursor();
 }
 
 //Changes currentTarget to no target.
@@ -295,7 +299,7 @@ void BattleManager::moveMenuCursor(){
     }
 
     //Check if a Menu needs to be removed. Does not remove the last Menu.
-    else if(pressedKey == LEFT && menus.size() > 1){
+    else if(pressedKey == C && menus.size() > 1){
 
         //Resets key to ensure only one Menu is removed.
         if(pressedKey != NO_KEY)
@@ -310,7 +314,7 @@ void BattleManager::moveMenuCursor(){
         gameManager->resetPressedKey();
     }   
 
-    else if(pressedKey == RIGHT && (*menuIter)->currSelectionHasSubMenu()){
+    else if(pressedKey == SPACE && (*menuIter)->currSelectionHasSubMenu()){
 
         Menu *menuPtr = (*menuIter);
         Menu *subMenuPtr = (*menuIter)->getSelectionsSubMenu(); 
@@ -321,11 +325,11 @@ void BattleManager::moveMenuCursor(){
     }
 } 
 
-//Determines if the enemy cursor selector should be moved.
+//Moves the target cursor.
 //Pre:  None.
-//Post: Checks if the player is navigating through the enemy list.
+//Post: Checks if the player is navigating through the enemy or player list.
 //      If the player is, then UP and DOWN navigating through the list.
-void BattleManager::moveEnemyCursor(){
+void BattleManager::moveTargetCursor(){
 
     if(menus.empty())
         return;
@@ -336,11 +340,33 @@ void BattleManager::moveEnemyCursor(){
         switch (gameManager->getPressedKey()){
 
             case UP:
-                moveEnemySelectionUp();  
+                theEnemies.moveSelectionUp();
+                receiver = this->getCurrEnemy();
                 break;
 
             case DOWN:
-                moveEnemySelectionDown();
+                theEnemies.moveSelectionDown();
+                receiver = this->getCurrEnemy();
+                break;
+
+            default:
+                //Do nothing.
+                break;
+        }
+    }
+
+    else if(currentTarget == PLAYER){
+    
+        switch (gameManager->getPressedKey()){
+
+            case UP:
+                thePlayers.moveSelectionUp();
+                receiver = this->getCurrPlayer();
+                break;
+
+            case DOWN:
+                thePlayers.moveSelectionDown();
+                receiver = this->getCurrPlayer();
                 break;
 
             default:
@@ -361,16 +387,16 @@ void BattleManager::consumePlayerInput(){
 
         case UP:
 
-            moveEnemyCursor();
+            moveTargetCursor();
             moveMenuCursor();
-            moveCursorToTarget(getCurrEnemy());
+            moveCursorToTarget(receiver);
             break;
 
         case DOWN:
 
-            moveEnemyCursor();
+            moveTargetCursor();
             moveMenuCursor();
-            moveCursorToTarget(getCurrEnemy());               
+            moveCursorToTarget(receiver);
             break;
 
         case RIGHT:
@@ -384,15 +410,20 @@ void BattleManager::consumePlayerInput(){
             break;
 
         //Undo target selection.
-        case B:
+        case C:
 
             //Not players turn.
-            if(menus.empty() || currentTarget == NO_TARGET)  
+            if(menus.empty())
                 break;
+
+            else if(this->currentTarget == NO_TARGET){
+                this->moveMenuCursor();
+            }
 
             else{   
 
-                targetPlayers();
+                drawRepository->removeTopCursor();
+                battleCursor = NULL;
                 setTargetToNoTarget();
                 break;
             }
@@ -411,25 +442,47 @@ void BattleManager::consumePlayerInput(){
 
                 //Invalid selection, disregard input.
                 if(!characterManipulationStore->isValidManipulation(selection))
-                    break;
+                    moveMenuCursor();
 
-                else if(targettingEnemies() || selection == "Recover"){
+                else if(targettingEnemies() || this->currentTarget == PLAYER){
 
                     //Execute selection.
                     characterManipulationStore->executeManipulation(
-                        thePlayers.getCurrSelection() , getCurrEnemy() ,
+                        initiator , receiver ,
                         selection);
                     
+                    //Turn over, reset values.
                     targetPlayers();
                     Draw::removeAllMenus(getMenuList());
+                    drawRepository->removeTopCursor();
                     setTargetToNoTarget();
+                    this->initiator = NULL;
+                    this->receiver = NULL;
+                    this->battleCursor = NULL;
                 }
     
                 //Sets target to enemies.
                 else{   
                     
-                    targetEnemies();
-                    moveCursorToTarget(getCurrEnemy());    
+                    this->initiator = this->getCurrPlayer();
+
+                    //Healing item.
+                    if(selection == "Recover" || selection == "Potion"){
+                        this->receiver = this->getCurrPlayer();
+                        this->currentTarget = PLAYER;
+                    }
+
+                    //Attack on enemy.
+                    else{
+                        this->receiver = this->getCurrEnemy();
+                        this->currentTarget = ENEMY;
+                    }
+                    
+                    this->battleCursor = new Cursor();
+                    this->battleCursor->move(50 , 50);
+                    this->battleCursor->reverseDirection();
+                    drawRepository->loadCursor(this->battleCursor);
+                    moveCursorToTarget(receiver);
                 }
             }
 
@@ -445,24 +498,6 @@ void BattleManager::consumePlayerInput(){
 std::vector<Menu*>& BattleManager::getMenuList(){
 
     return menus;
-}
-
-//Moves the currently selected enemy down.
-//Pre:  None.
-//Post: Moves the currently selected enemy down unless it is
-//      already at the bottom.
-void BattleManager::moveEnemySelectionDown(){
-
-    theEnemies.moveSelectionDown();
-}
-
-//Moves the currently selected enemy up.
-//Pre:  None.
-//Post: Moves the currently selected enemy up unless it is
-//      already at the top.
-void BattleManager::moveEnemySelectionUp(){
-
-    theEnemies.moveSelectionUp();
 }
 
 //Sets the current enemy to the position.
@@ -667,7 +702,8 @@ void BattleManager::generatePlayers(CharacterList *characterList ,
 
     characterList->resetSelection();
 
-    for(int i = 0 ; i < maxNumberPlayers ; i++){
+    for(int i = 0 ; i < maxNumberPlayers 
+        && i < characterList->getSize() ; i++){
 
         thePlayers.loadChar(characterList->getCurrSelection());
         characterList->moveSelectionDown();
@@ -755,7 +791,8 @@ bool BattleManager::isEndOfBattle(){
 
     //If all the players are dead and the animations are done
     //the battle is over.
-    if(playersAlive == 0 && drawRepository->animationsEmpty()){
+    if(playersAlive == 0 && drawRepository->animationsEmpty() 
+        && this->events.size() == 0 ){
 
         enemiesVictory();
         return true;
@@ -782,7 +819,9 @@ void BattleManager::playersVictory(){
     Draw::removeAllMenus(getMenuList());
 
     //Draw final battle frame.
-    Draw::drawArea(*gameManager->currMap , *gameManager->player);
+    Draw::drawArea(*gameManager->currMap);
+    Draw::drawList(&thePlayers);
+    Draw::drawList(&theEnemies);
 
     removeAllEvents();
 

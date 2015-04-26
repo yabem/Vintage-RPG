@@ -69,13 +69,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Backstab.cpp" />
+    <ClCompile Include="BattleTransitionScreen.cpp" />
+    <ClCompile Include="HomeTownBattleScreen.cpp" />
+    <ClCompile Include="BattleTrans.cpp" />
+    <ClCompile Include="BattleVictory.cpp" />
+    <ClCompile Include="HomeTown.cpp" />
+    <ClCompile Include="Instruct.cpp" />
+    <ClCompile Include="Intro.cpp" />
+    <ClCompile Include="LoadExitsForHomeTown.cpp" />
+    <ClCompile Include="LoadExitsForHomeTownShop.cpp" />
+    <ClCompile Include="LoadExitsForNothernSnow.cpp" />
+    <ClCompile Include="NorthernSnow.cpp" />
+    <ClCompile Include="Potion.cpp" />
     <ClCompile Include="Recover.cpp" />
     <ClCompile Include="I_Animation.cpp" />
     <ClCompile Include="AreaMap.cpp" />
     <ClCompile Include="Backpack.cpp" />
     <ClCompile Include="BattleLoss.cpp" />
     <ClCompile Include="BattleManager.cpp" />
-    <ClCompile Include="BattleMap.cpp" />
     <ClCompile Include="CalculateRewards.cpp" />
     <ClCompile Include="ChangeCreatureImage.cpp" />
     <ClCompile Include="Character.cpp" />
@@ -119,6 +130,7 @@
     <ClCompile Include="SetMenuListToCharacterList.cpp" />
     <ClCompile Include="SetTurnTimerListToCharacterList.cpp" />
     <ClCompile Include="ShieldBash.cpp" />
+    <ClCompile Include="HomeTownShop.cpp" />
     <ClCompile Include="TreasureBox.cpp" />
     <ClCompile Include="TurnTimer.cpp" />
     <ClCompile Include="CharacterList.cpp" />
@@ -156,6 +168,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Backstab.h" />
+    <ClInclude Include="BattleTransitionScreen.h" />
+    <ClInclude Include="HomeTownBattleScreen.h" />
+    <ClInclude Include="BattleTrans.h" />
+    <ClInclude Include="BattleVictory.h" />
+    <ClInclude Include="HomeTown.h" />
+    <ClInclude Include="Instruct.h" />
+    <ClInclude Include="Intro.h" />
+    <ClInclude Include="LoadExitsForHomeTown.h" />
+    <ClInclude Include="LoadExitsForHomeTownShop.h" />
+    <ClInclude Include="LoadExitsForNorthernSnow.h" />
+    <ClInclude Include="NorthernSnow.h" />
+    <ClInclude Include="Potion.h" />
     <ClInclude Include="Recover.h" />
     <ClInclude Include="I_Animation.h" />
     <ClInclude Include="AreaMap.h" />
@@ -163,7 +187,6 @@
     <ClInclude Include="Backpack.h" />
     <ClInclude Include="BattleLoss.h" />
     <ClInclude Include="BattleManager.h" />
-    <ClInclude Include="BattleMap.h" />
     <ClInclude Include="CalculateRewards.h" />
     <ClInclude Include="ChangeCreatureImage.h" />
     <ClInclude Include="Character.h" />
@@ -208,6 +231,7 @@
     <ClInclude Include="SetMenuListToCharacterList.h" />
     <ClInclude Include="SetTurnTimerListToCharacterList.h" />
     <ClInclude Include="ShieldBash.h" />
+    <ClInclude Include="HomeTownShop.h" />
     <ClInclude Include="TreasureBox.h" />
     <ClInclude Include="TurnTimer.h" />
     <ClInclude Include="CharFactory.h" />

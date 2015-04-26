@@ -19,6 +19,7 @@
 #include "ShieldBash.h"
 #include "Recover.h"
 #include "I_Manager.h"
+#include "Potion.h"
 class Character;
 class ImageStore;
 class DrawRepository;
