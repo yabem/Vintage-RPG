@@ -367,6 +367,24 @@
     <Filter Include="Header Files\Map\AreaMap\Derived Class">
       <UniqueIdentifier>{cf89af8c-b621-4a54-8979-7957c21e3e1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Scenery\Base Class">
+      <UniqueIdentifier>{9d821935-32f5-4bec-aad4-30c1ddb307b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scenery\Derived Class">
+      <UniqueIdentifier>{58795a1b-9fff-41e7-ad13-d6e3a8770a1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenery\Base Class">
+      <UniqueIdentifier>{1f822ec3-536f-4706-a1d0-c23e7e7bc20e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenery\Derived Class">
+      <UniqueIdentifier>{48bdc925-18cb-4455-915e-9de6392bf892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map\AreaMap\Exit Loaders">
+      <UniqueIdentifier>{313261aa-b5a7-4565-aefb-f11172eed4c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map\AreaMap\Exit Loaders">
+      <UniqueIdentifier>{7dd8e865-6f66-4fae-ad68-d085d86794c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -446,9 +464,6 @@
     </ClCompile>
     <ClCompile Include="Movement.cpp">
       <Filter>Source Files\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenery.cpp">
-      <Filter>Source Files\Scenery</Filter>
     </ClCompile>
     <ClCompile Include="Tangible.cpp">
       <Filter>Source Files\Tangible</Filter>
@@ -639,14 +654,8 @@
     <ClCompile Include="HomeTown.cpp">
       <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
     </ClCompile>
-    <ClCompile Include="LoadExitsForHomeTown.cpp">
-      <Filter>Source Files\Map\AreaMap</Filter>
-    </ClCompile>
     <ClCompile Include="HomeTownShop.cpp">
       <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="LoadExitsForHomeTownShop.cpp">
-      <Filter>Source Files\Map\AreaMap</Filter>
     </ClCompile>
     <ClCompile Include="HomeTownBattleScreen.cpp">
       <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
@@ -654,11 +663,50 @@
     <ClCompile Include="NorthernSnow.cpp">
       <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
     </ClCompile>
-    <ClCompile Include="LoadExitsForNothernSnow.cpp">
-      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
-    </ClCompile>
     <ClCompile Include="BattleTransitionScreen.cpp">
       <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenery.cpp">
+      <Filter>Source Files\Scenery\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="FallingSnow.cpp">
+      <Filter>Source Files\Scenery\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="WesternDesert.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadExitsForHomeTown.cpp">
+      <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadExitsForWesternDesert.cpp">
+      <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadExitsForHomeTownShop.cpp">
+      <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadExitsForNothernSnow.cpp">
+      <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="HeatWave.cpp">
+      <Filter>Source Files\Scenery\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="SouthernForest.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadExitsForSouthernForest.cpp">
+      <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="EasternCastle.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadExitsForEasternCastle.cpp">
+      <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Darkness.cpp">
+      <Filter>Source Files\Scenery\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="Fog.cpp">
+      <Filter>Source Files\Scenery\Derived Class</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -682,9 +730,6 @@
     </ClInclude>
     <ClInclude Include="CharFactory.h">
       <Filter>Header Files\Character\CharFactory</Filter>
-    </ClInclude>
-    <ClInclude Include="AreaMapLayouts.h">
-      <Filter>Header Files\Map</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Header Files\Map</Filter>
@@ -742,9 +787,6 @@
     </ClInclude>
     <ClInclude Include="Cursor.h">
       <Filter>Header Files\Cursor</Filter>
-    </ClInclude>
-    <ClInclude Include="Scenery.h">
-      <Filter>Header Files\Scenery</Filter>
     </ClInclude>
     <ClInclude Include="Tangible.h">
       <Filter>Header Files\Tangible</Filter>
@@ -935,14 +977,8 @@
     <ClInclude Include="HomeTown.h">
       <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
     </ClInclude>
-    <ClInclude Include="LoadExitsForHomeTown.h">
-      <Filter>Header Files\Map\AreaMap</Filter>
-    </ClInclude>
     <ClInclude Include="HomeTownShop.h">
       <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="LoadExitsForHomeTownShop.h">
-      <Filter>Header Files\Map\AreaMap</Filter>
     </ClInclude>
     <ClInclude Include="HomeTownBattleScreen.h">
       <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
@@ -950,11 +986,50 @@
     <ClInclude Include="NorthernSnow.h">
       <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
     </ClInclude>
-    <ClInclude Include="LoadExitsForNorthernSnow.h">
-      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
-    </ClInclude>
     <ClInclude Include="BattleTransitionScreen.h">
       <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenery.h">
+      <Filter>Header Files\Scenery\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="FallingSnow.h">
+      <Filter>Header Files\Scenery\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="WesternDesert.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadExitsForHomeTown.h">
+      <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadExitsForWesternDesert.h">
+      <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadExitsForHomeTownShop.h">
+      <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadExitsForNorthernSnow.h">
+      <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="HeatWave.h">
+      <Filter>Header Files\Scenery\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="SouthernForest.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadExitsForSouthernForest.h">
+      <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="EasternCastle.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadExitsForEasternCastle.h">
+      <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Darkness.h">
+      <Filter>Header Files\Scenery\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="Fog.h">
+      <Filter>Header Files\Scenery\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

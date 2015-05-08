@@ -36,7 +36,7 @@ BattleTransitionScreen::~BattleTransitionScreen(){
 void BattleTransitionScreen::loadLayers(){
 
     Layer *backgroundLayer = new Layer(imageStore->getBitMap("terrain") ,
-        8 , 4 , 32 , 32 , 15 , 20 , this->backgroundLayerLayout , 300);
+        15 , 20 , this->backgroundLayerLayout , 300);
 
     this->loadLayer(backgroundLayer);
 }

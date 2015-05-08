@@ -34,8 +34,8 @@ HomeTownBattleScreen::~HomeTownBattleScreen(){
 
 void HomeTownBattleScreen::loadLayers(){
 
-    Layer *backgroundLayer = new Layer(imageStore->getBitMap("terrain") , 8 , 4 ,
-        32 , 32 , 15 , 20 , this->backgroundLayerLayout , 300);
+    Layer *backgroundLayer = new Layer(imageStore->getBitMap("terrain") ,
+        15 , 20 , this->backgroundLayerLayout , 300);
 
     this->loadLayer(backgroundLayer);
 }

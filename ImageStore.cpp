@@ -78,7 +78,21 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("potionSparkleSecond" , al_load_bitmap("potionSparkleSecond.png"));
     loadBitMap("potionSparkleThird" , al_load_bitmap("potionSparkleThird.png"));
     loadBitMap("potionSparkleFourth" , al_load_bitmap("potionSparkleFourth.png"));
-
+    loadBitMap("northernSnow" , al_load_bitmap("northernSnow.png"));
+    loadBitMap("terrainForNorthernSnow" , al_load_bitmap("terrainForNorthernSnow.png"));
+    loadBitMap("snowFall" , al_load_bitmap("snowFall.png"));
+    loadBitMap("snowFall2" , al_load_bitmap("snowFall2.png"));
+    loadBitMap("snowFall3" , al_load_bitmap("snowFall3.png"));
+    loadBitMap("westernDesert" , al_load_bitmap("westernDesert.png"));
+    loadBitMap("heatWave" , al_load_bitmap("heatWave.png"));
+    loadBitMap("southernForest" , al_load_bitmap("southernForest.png"));
+    loadBitMap("snowTerrain" , al_load_bitmap("snowTerrain.png"));
+    loadBitMap("easternCastle" , al_load_bitmap("easternCastle.png"));
+    loadBitMap("easternCastleTerrain" , al_load_bitmap("easternCastleTerrain.png"));
+    loadBitMap("darkness" , al_load_bitmap("darkness.png"));
+    loadBitMap("fog" , al_load_bitmap("fog.png"));
+    loadBitMap("fogInner" , al_load_bitmap("fogInner.png"));
+ 
     loadBitMap("default" , al_load_bitmap("default.png"));
 
     std::map<std::string , ALLEGRO_BITMAP*>::iterator iter = images.begin();

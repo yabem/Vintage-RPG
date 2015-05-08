@@ -25,8 +25,8 @@ private:
 public:
 
     //Constructor.
-    Layer(ALLEGRO_BITMAP *bmap , int bMapCols , int bMapRows , int tw , int th ,
-        int numRows , int numCols , int *layout , int laySize);
+    Layer(ALLEGRO_BITMAP *bmap , int numRows , int numCols ,
+        int *layout , int laySize);
 
     ~Layer();                                           //Destructor.
     Layer(const Layer &rhs);                            //Copy constructor.

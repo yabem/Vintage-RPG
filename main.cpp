@@ -8,31 +8,15 @@
 #include <vector>
 #include <queue>
 #include "Controls.h"
-#include "Scenery.h"
-#include "Tangible.h"
-#include "Character.h"
-#include "Layer.h"
 #include "AreaMap.h"
 #include "Collision.h"
 #include "Movement.h"
 #include "Draw.h"
-#include "AreaMapLayouts.h"
 #include <time.h>
 #include <stdlib.h>
-#include "TextBox.h"
-#include "I_Animation.h"
-#include "MovingImage.h"
-#include "MovingText.h"
-#include "Stats.h"
-#include "CharStats.h"
-
-#include "InitEnemies.h"
 #include "Cutscene.h"
 #include "GameManager.h"
-#include "Menu.h"
 #include "ImageStore.h"
-#include "CharacterAttack.h"
-#include "Cursor.h"
 #include "BattleManager.h"
 #include "CharacterManipulationStore.h"
 #include "FontStore.h"
@@ -40,7 +24,6 @@
 #include "PlayerEntity.h"
 #include "Intro.h"
 #include "Instruct.h"
-
 #include "HomeTown.h"
 #include "LoadExitsForHomeTown.h"
 #include "HomeTownShop.h"
@@ -49,9 +32,12 @@
 #include "NorthernSnow.h"
 #include "LoadExitsForNorthernSnow.h"
 #include "BattleTransitionScreen.h"
-
-//testing
-#include "FloatingText.h"
+#include "WesternDesert.h"
+#include "LoadExitsForWesternDesert.h"
+#include "SouthernForest.h"
+#include "LoadExitsForSouthernForest.h"
+#include "EasternCastle.h"
+#include "LoadExitsForEasternCastle.h"
 
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
@@ -60,10 +46,10 @@
 //To do:
 //Make controls a class
 //Get rid of setStart() dupe function and create a colToX() and rowToY() functions
-//Get rid of #includes
 //Make tangible collision better so you can't go through objects.
 
 //Tiles taken from http://opengameart.org/content/tiled-terrains
+//More tiles taken from http://opengameart.org/content/lpc-tile-atlas
 //Images taken from http://rpg.hamsterrepublic.com/ohrrpgce/Free_Sprites
 //Fireblast taken from http://opengameart.org/content/fire-blast
 #define ttfaddon
@@ -135,11 +121,14 @@ int main(int argc, char **argv){
     BattleTransitionScreen battleTransitionScreen(&imageStore);
     battleTransitionScreen.loadDefaults();
 
-    Tangible theRock1(imageStore.getBitMap("rock") , 60 , 60 , 32 , 32 , 60 , 60 , 32 , 32);
-    Tangible theRock2(imageStore.getBitMap("rock") , 888 , 888 , 32 , 32 , 888 , 888 , 32 , 32);
+    WesternDesert westernDesert(&imageStore);
+    westernDesert.loadDefaults();
 
-    homeTown.loadTangible(&theRock1);
-    homeTown.loadTangible(&theRock2);
+    SouthernForest southernForest(&imageStore);
+    southernForest.loadDefaults();
+
+    EasternCastle easternCastle(&imageStore);
+    easternCastle.loadDefaults();
 
     //Create GameManager.
     GameManager gameManager = GameManager();
@@ -188,9 +177,13 @@ int main(int argc, char **argv){
     drawRepository.loadCutscene(theInstruct);
 
     //Initialize starting position.
-    LoadExitsForHomeTown::LoadExitsForHomeTown(&homeTown , &homeTownShop , &northernSnow);
+    LoadExitsForHomeTown::LoadExitsForHomeTown(&homeTown , &homeTownShop , &northernSnow ,
+        &westernDesert , &easternCastle , &southernForest);
     LoadExitsForHomeTownShop::LoadExitsForHomeTownShop(&homeTownShop , &homeTown);
     LoadExitsForNorthernSnow::LoadExitsForNorthernSnow(&northernSnow , &homeTown);
+    LoadExitsForWesternDesert::LoadExitsForWesternDesert(&westernDesert , &homeTown);
+    LoadExitsForSouthernForest::LoadExitsForSouthernForest(&southernForest , &homeTown);
+    LoadExitsForEasternCastle::LoadExitsForEasternCastle(&easternCastle , &homeTown);
     Movement::setStart(*gameManager.player, homeTown , STARTCOL , STARTROW);
 
     al_start_timer(timer);
@@ -220,7 +213,7 @@ int main(int argc, char **argv){
 //////////////////////////////////////////Cutscene/////////////////////////////
             
             if(!drawRepository.cutscenesEmpty()){
-                drawRepository.playCutscenes();
+                drawRepository.playCutscenes(); 
             }
 
 //////////////////////////////////////////Battle///////////////////////////////

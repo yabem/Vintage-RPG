@@ -138,18 +138,18 @@ bool Movement::setStart(Character &character , AreaMap &areaMap , int col , int 
     int screenY = 0;
 
     //Check if x is in the left most part of the map.
-    if(col * TILESIZE < SCREEN_W / 2){
+    if(col * TILE_SIZE < SCREEN_W / 2){
 
         //Adjust only the player, not the screen.
-        playerX = col * TILESIZE;
+        playerX = col * TILE_SIZE;
         screenX = 0;
     }
 
     //Check if x is in the right most part of the map.
-    else if(col * TILESIZE > areaMap.getLayer(BACKGROUND).getW() - SCREEN_W / 2){
+    else if(col * TILE_SIZE > areaMap.getLayer(BACKGROUND).getW() - SCREEN_W / 2){
 
         //Adjust the player and the screen.
-        playerX = SCREEN_W / 2 + (SCREEN_W / 2 - (areaMap.getLayer(BACKGROUND).getW() - (col * TILESIZE)));
+        playerX = SCREEN_W / 2 + (SCREEN_W / 2 - (areaMap.getLayer(BACKGROUND).getW() - (col * TILE_SIZE)));
         screenX = areaMap.getLayer(BACKGROUND).getW() - SCREEN_W;
     }
 
@@ -157,20 +157,20 @@ bool Movement::setStart(Character &character , AreaMap &areaMap , int col , int 
     else{
         //Adjust the player and the screen.
         playerX = SCREEN_W / 2;
-        screenX = col * TILESIZE - playerX;
+        screenX = col * TILE_SIZE - playerX;
     }
 
     //Check if y is in the lower part of the map.
-    if(row * TILESIZE < SCREEN_H / 2){
+    if(row * TILE_SIZE < SCREEN_H / 2){
         //Adjust the player, not the screen.
-        playerY = row * TILESIZE;
+        playerY = row * TILE_SIZE;
         screenY = 0;
     }
 
     //Check if y is in the upper part of the map.
-    else if(row * TILESIZE > areaMap.getLayer(BACKGROUND).getH() - SCREEN_H / 2){
+    else if(row * TILE_SIZE > areaMap.getLayer(BACKGROUND).getH() - SCREEN_H / 2){
         //Adjust the map and the player.
-        playerY = SCREEN_H / 2 + (SCREEN_H / 2 - (areaMap.getLayer(BACKGROUND).getH() - (row * TILESIZE)));
+        playerY = SCREEN_H / 2 + (SCREEN_H / 2 - (areaMap.getLayer(BACKGROUND).getH() - (row * TILE_SIZE)));
         screenY = areaMap.getLayer(BACKGROUND).getH() - SCREEN_H;
     }
 
@@ -178,7 +178,7 @@ bool Movement::setStart(Character &character , AreaMap &areaMap , int col , int 
     else{
         //Adjust the map and the player.
         playerY = SCREEN_H / 2;
-        screenY = row * TILESIZE - playerY;
+        screenY = row * TILE_SIZE - playerY;
     }
 
     //Check if layer width is smaller than the screen width and adjust.

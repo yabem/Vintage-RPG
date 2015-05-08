@@ -14,17 +14,18 @@ private:
 
     ImageStore *imageStore;
     int sizeHomeTownLayout;
-    int *grassLayerLayout;
-    int *townCollisionLayerLayout;
-    int *townCanGoBehindLayerLayout;
+    int *backgroundLayerLayout;
+    int *collisionLayerLayout;
+    int *canGoBehindLayerLayout;
 
     void loadClouds();
+    void loadRocks();
     void loadLayers();
     void loadAllMapConfigurationsForLayers();
 
-    void loadGrassLayerMapConfiguration();
-    void loadTownCollisionLayerMapConfiguration();
-    void loadTownCanGoBehindLayerMapConfiguration();
+    void loadBackgroundLayerMapConfiguration();
+    void loadCollisionLayerMapConfiguration();
+    void loadCanGoBehindLayerMapConfiguration();
     void deleteAllLayerConfigurations();
 
 public:

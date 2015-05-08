@@ -5,6 +5,10 @@ HomeTown::HomeTown(ImageStore *imageStore){
 
     this->imageStore = imageStore;
     this->sizeHomeTownLayout = HOME_TOWN_LAYOUT_SIZE;
+
+    backgroundLayerLayout = NULL;
+    collisionLayerLayout = NULL;
+    canGoBehindLayerLayout = NULL;
 }
 
 //Destructor.
@@ -21,6 +25,16 @@ HomeTown::~HomeTown(){
 
     sceneries.clear();
 
+    vector<Tangible*>::iterator tangiblesIter = tangibles.begin();
+
+    while(tangiblesIter != tangibles.end()){
+
+        delete (*tangiblesIter);
+        (*tangiblesIter) = NULL;
+        tangiblesIter++;
+    }
+
+    tangibles.clear();
 
     vector<Layer*>::iterator layerIter = layers.begin();
 
@@ -39,6 +53,7 @@ HomeTown::~HomeTown(){
 void HomeTown::loadDefaults(){
 
     this->loadClouds();
+    this->loadRocks();
     this->loadAllMapConfigurationsForLayers();
     this->loadLayers();
 }
@@ -76,32 +91,43 @@ void HomeTown::loadClouds(){
     this->loadScenery(cloud9);
 }
 
+void HomeTown::loadRocks(){
+
+    Tangible *theRock1 = new Tangible(imageStore->getBitMap("rock") ,
+        60 , 60 , 32 , 32 , 60 , 60 , 32 , 32);
+    Tangible *theRock2 = new Tangible(imageStore->getBitMap("rock") ,
+        888 , 888 , 32 , 32 , 888 , 888 , 32 , 32);
+
+    this->loadTangible(theRock1);
+    this->loadTangible(theRock2);
+}
+
 //Loads all the layers to the areaMap.
 void HomeTown::loadLayers(){
 
-    Layer *grassLayer = new Layer(imageStore->getBitMap("terrain") , 8 , 4 ,
-        32 , 32 , 50 , 50 , this->grassLayerLayout , 2500);
-    Layer *townCollisionLayer = new Layer(imageStore->getBitMap("town") , 10 , 13 ,
-        32 , 32 , 50 , 50 , this->townCollisionLayerLayout , 2500);
-    Layer *townCanGoBehindLayer = new Layer(imageStore->getBitMap("town") , 10 , 13 ,
-        32 , 32  , 50 , 50 , this->townCanGoBehindLayerLayout , 2500);
+    Layer *backgroundLayer = new Layer(imageStore->getBitMap("terrain") ,
+        50 , 50 , this->backgroundLayerLayout , 2500);
+    Layer *collisionLayer = new Layer(imageStore->getBitMap("town") ,
+        50 , 50 , this->collisionLayerLayout , 2500);
+    Layer *canGoBehindLayer = new Layer(imageStore->getBitMap("town") ,
+        50 , 50 , this->canGoBehindLayerLayout , 2500);
    
-    this->loadLayer(grassLayer);
-    this->loadLayer(townCollisionLayer);
-    this->loadLayer(townCanGoBehindLayer);
+    this->loadLayer(backgroundLayer);
+    this->loadLayer(collisionLayer);
+    this->loadLayer(canGoBehindLayer);
 }
 
 //Loads all of the map configurations for each of the layers.
 void HomeTown::loadAllMapConfigurationsForLayers(){
 
-    loadGrassLayerMapConfiguration();
-    loadTownCollisionLayerMapConfiguration();
-    loadTownCanGoBehindLayerMapConfiguration();
+    loadBackgroundLayerMapConfiguration();
+    loadCollisionLayerMapConfiguration();
+    loadCanGoBehindLayerMapConfiguration();
 }
 
-void HomeTown::loadGrassLayerMapConfiguration(){
+void HomeTown::loadBackgroundLayerMapConfiguration(){
 
-int grassLayerLayout[] = {
+int backgroundLayerLayout[] = {
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -206,14 +232,14 @@ int grassLayerLayout[] = {
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
     }; 
 
-    this->grassLayerLayout = new int[this->sizeHomeTownLayout];
+    this->backgroundLayerLayout = new int[this->sizeHomeTownLayout];
     for(int i = 0 ; i < this->sizeHomeTownLayout ; i++)    
-        this->grassLayerLayout[i] = grassLayerLayout[i];
+        this->backgroundLayerLayout[i] = backgroundLayerLayout[i];
 }
 
-void HomeTown::loadTownCollisionLayerMapConfiguration(){
+void HomeTown::loadCollisionLayerMapConfiguration(){
 
-    int townCollisionLayerLayout[] ={
+    int collisionLayerLayout[] ={
        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
         0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
         1,
@@ -323,14 +349,14 @@ void HomeTown::loadTownCollisionLayerMapConfiguration(){
         0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
     };
 
-    this->townCollisionLayerLayout = new int[this->sizeHomeTownLayout];
+    this->collisionLayerLayout = new int[this->sizeHomeTownLayout];
     for(int i = 0 ; i < this->sizeHomeTownLayout ; i++)    
-        this->townCollisionLayerLayout[i] = townCollisionLayerLayout[i];
+        this->collisionLayerLayout[i] = collisionLayerLayout[i];
 }
 
-void HomeTown::loadTownCanGoBehindLayerMapConfiguration(){
+void HomeTown::loadCanGoBehindLayerMapConfiguration(){
 
-    int townCanGoBehindLayerLayout[] ={
+    int canGoBehindLayerLayout[] ={
        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
         0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
         1,
@@ -442,20 +468,20 @@ void HomeTown::loadTownCanGoBehindLayerMapConfiguration(){
         0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
     };
 
-    this->townCanGoBehindLayerLayout = new int[this->sizeHomeTownLayout];
+    this->canGoBehindLayerLayout = new int[this->sizeHomeTownLayout];
 
     for(int i = 0 ; i < this->sizeHomeTownLayout ; i++)    
-        this->townCanGoBehindLayerLayout[i] = townCanGoBehindLayerLayout[i];
+        this->canGoBehindLayerLayout[i] = canGoBehindLayerLayout[i];
 }
 
 void HomeTown::deleteAllLayerConfigurations(){
 
-    delete this->grassLayerLayout;
-    this->grassLayerLayout = NULL;
+    delete this->backgroundLayerLayout;
+    this->backgroundLayerLayout = NULL;
 
-    delete this->townCollisionLayerLayout;
-    this->townCollisionLayerLayout = NULL;
+    delete this->collisionLayerLayout;
+    this->collisionLayerLayout = NULL;
 
-    delete this->townCanGoBehindLayerLayout;
-    this->townCanGoBehindLayerLayout = NULL;
+    delete this->canGoBehindLayerLayout;
+    this->canGoBehindLayerLayout = NULL;
 }

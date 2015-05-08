@@ -14,22 +14,25 @@
 
 class Scenery{
 
-private:
+protected:
 
     ALLEGRO_BITMAP *bmap;       //Bitmap with graphics.
-    int sx , sy;                //Start location.
-    int dx , dy;                //Draw to location.
+    float sx , sy;                //Start location.
+    float dx , dy;                //Draw to location.
     int crFrame;                //Frame the Scenery is currently on.
     int w, h;                   //Width and height of the bitmap graphic.
-    int moveRateX , moveRateY;  //Rate at which the animation moves.
+    float moveRateX , moveRateY;  //Rate at which the animation moves.
 
 public:
 
     //Constructor.
-    Scenery(ALLEGRO_BITMAP *bmap , int sx , int sy , int moveRateX , int moveRateY);
+    Scenery(ALLEGRO_BITMAP *bmap , float sx , float sy , float moveRateX , float moveRateY);
     
-    void animate(); //Increases the frame count and moves through the animation sequence.
+    //Destructor.
+    virtual ~Scenery();
+    
+    virtual void animate(); //Increases the frame count and moves through the animation sequence.
     void setDX(int DX);   //Sets the draw X.
     void setDY(int DY);   //Sets the draw Y.
-    void draw();    //Draws the Scenery to the buffer.
+    virtual void draw();    //Draws the Scenery to the buffer.
 };

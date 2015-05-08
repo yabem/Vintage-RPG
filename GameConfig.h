@@ -23,7 +23,7 @@ const int FPS = 60;
 const int rate = 4;
 const int SCREEN_W = 640;
 const int SCREEN_H = 480;
-const int TILESIZE = 32;
+const int TILE_SIZE = 32;
 const int maxDirections = 4;
 
 const int MAXTEXTNUMROWS = 6;

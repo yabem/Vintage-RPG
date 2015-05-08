@@ -70,15 +70,22 @@
   <ItemGroup>
     <ClCompile Include="Backstab.cpp" />
     <ClCompile Include="BattleTransitionScreen.cpp" />
+    <ClCompile Include="Darkness.cpp" />
+    <ClCompile Include="EasternCastle.cpp" />
+    <ClCompile Include="FallingSnow.cpp" />
+    <ClCompile Include="Fog.cpp" />
     <ClCompile Include="HomeTownBattleScreen.cpp" />
     <ClCompile Include="BattleTrans.cpp" />
     <ClCompile Include="BattleVictory.cpp" />
     <ClCompile Include="HomeTown.cpp" />
     <ClCompile Include="Instruct.cpp" />
     <ClCompile Include="Intro.cpp" />
+    <ClCompile Include="LoadExitsForEasternCastle.cpp" />
     <ClCompile Include="LoadExitsForHomeTown.cpp" />
     <ClCompile Include="LoadExitsForHomeTownShop.cpp" />
     <ClCompile Include="LoadExitsForNothernSnow.cpp" />
+    <ClCompile Include="LoadExitsForSouthernForest.cpp" />
+    <ClCompile Include="LoadExitsForWesternDesert.cpp" />
     <ClCompile Include="NorthernSnow.cpp" />
     <ClCompile Include="Potion.cpp" />
     <ClCompile Include="Recover.cpp" />
@@ -131,6 +138,8 @@
     <ClCompile Include="SetTurnTimerListToCharacterList.cpp" />
     <ClCompile Include="ShieldBash.cpp" />
     <ClCompile Include="HomeTownShop.cpp" />
+    <ClCompile Include="HeatWave.cpp" />
+    <ClCompile Include="SouthernForest.cpp" />
     <ClCompile Include="TreasureBox.cpp" />
     <ClCompile Include="TurnTimer.cpp" />
     <ClCompile Include="CharacterList.cpp" />
@@ -164,26 +173,33 @@
     <ClCompile Include="TurnTimerList.cpp" />
     <ClCompile Include="UnPauseBattle.cpp" />
     <ClCompile Include="UpdatePlayersHP.cpp" />
+    <ClCompile Include="WesternDesert.cpp" />
     <ClCompile Include="XPToLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Backstab.h" />
     <ClInclude Include="BattleTransitionScreen.h" />
+    <ClInclude Include="Darkness.h" />
+    <ClInclude Include="EasternCastle.h" />
+    <ClInclude Include="Fog.h" />
+    <ClInclude Include="HeatWave.h" />
     <ClInclude Include="HomeTownBattleScreen.h" />
     <ClInclude Include="BattleTrans.h" />
     <ClInclude Include="BattleVictory.h" />
     <ClInclude Include="HomeTown.h" />
     <ClInclude Include="Instruct.h" />
     <ClInclude Include="Intro.h" />
+    <ClInclude Include="LoadExitsForEasternCastle.h" />
     <ClInclude Include="LoadExitsForHomeTown.h" />
     <ClInclude Include="LoadExitsForHomeTownShop.h" />
     <ClInclude Include="LoadExitsForNorthernSnow.h" />
+    <ClInclude Include="LoadExitsForSouthernForest.h" />
+    <ClInclude Include="LoadExitsForWesternDesert.h" />
     <ClInclude Include="NorthernSnow.h" />
     <ClInclude Include="Potion.h" />
     <ClInclude Include="Recover.h" />
     <ClInclude Include="I_Animation.h" />
     <ClInclude Include="AreaMap.h" />
-    <ClInclude Include="AreaMapLayouts.h" />
     <ClInclude Include="Backpack.h" />
     <ClInclude Include="BattleLoss.h" />
     <ClInclude Include="BattleManager.h" />
@@ -232,6 +248,8 @@
     <ClInclude Include="SetTurnTimerListToCharacterList.h" />
     <ClInclude Include="ShieldBash.h" />
     <ClInclude Include="HomeTownShop.h" />
+    <ClInclude Include="FallingSnow.h" />
+    <ClInclude Include="SouthernForest.h" />
     <ClInclude Include="TreasureBox.h" />
     <ClInclude Include="TurnTimer.h" />
     <ClInclude Include="CharFactory.h" />
@@ -264,6 +282,7 @@
     <ClInclude Include="TurnTimerList.h" />
     <ClInclude Include="UnPauseBattle.h" />
     <ClInclude Include="UpdatePlayersHP.h" />
+    <ClInclude Include="WesternDesert.h" />
     <ClInclude Include="XPToLevel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

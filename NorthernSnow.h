@@ -1,7 +1,9 @@
 //Area north of the hometown that is covered in snow.
 
+#pragma once
 #include "AreaMap.h"
 #include "ImageStore.h"
+#include "FallingSnow.h"
 
 const int LAYOUT_NORTHERN_SNOW_SIZE = 2500;
 
@@ -13,15 +15,13 @@ private:
     int sizeNorthernSnowLayout;
     int *backgroundLayerLayout;
     int *collisionLayerLayout;
-    int *canGoBehindLayerLayout;
 
     void loadClouds();
     void loadLayers();
     void loadAllMapConfigurationsForLayers();
 
-    void loadGrassLayerMapConfiguration();
-    void loadTownCollisionLayerMapConfiguration();
-    void loadTownCanGoBehindLayerMapConfiguration();
+    void loadBackgroundLayerMapConfiguration();
+    void loadCollisionLayerMapConfiguration();
     void deleteAllLayerConfigurations();
 
 public:

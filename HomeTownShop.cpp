@@ -40,10 +40,10 @@ void HomeTownShop::loadDefaults(){
 
 void HomeTownShop::loadLayers(){
 
-    Layer *backgroundLayer = new Layer(imageStore->getBitMap("town") , 10 ,
-        13 , 32 , 32 , 8 , 8 , this->backgroundLayerLayout , 64);
-    Layer *shopCollisionLayer = new Layer(imageStore->getBitMap("town") , 10 ,
-        13 , 32 , 32  , 8 , 8 , this->shopCollisionLayerLayout , 64);
+    Layer *backgroundLayer = new Layer(imageStore->getBitMap("town") ,
+        8 , 8 , this->backgroundLayerLayout , 64);
+    Layer *shopCollisionLayer = new Layer(imageStore->getBitMap("town") ,
+        8 , 8 , this->shopCollisionLayerLayout , 64);
 
     this->loadLayer(backgroundLayer);
     this->loadLayer(shopCollisionLayer);

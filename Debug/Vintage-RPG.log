@@ -1,22 +1,29 @@
-﻿Build started 4/25/2015 5:36:19 PM.
+﻿Build started 5/7/2015 9:54:09 PM.
      1>Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\RPG.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
-         main.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt SouthernForest.cpp
+         SouthernForest.cpp
        Link:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe" /NOLOGO /LIBPATH:c:\allegro\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro-5.0.10-monolith-md-debug.lib" /MANIFEST /ManifestFile:"Debug\RPG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.lib" /MACHINE:X86 Debug\Backstab.obj
          Debug\BattleTransitionScreen.obj
+         Debug\Darkness.obj
+         Debug\EasternCastle.obj
+         Debug\FallingSnow.obj
+         Debug\Fog.obj
          Debug\HomeTownBattleScreen.obj
          Debug\BattleTrans.obj
          Debug\BattleVictory.obj
          Debug\HomeTown.obj
          Debug\Instruct.obj
          Debug\Intro.obj
+         Debug\LoadExitsForEasternCastle.obj
          Debug\LoadExitsForHomeTown.obj
          Debug\LoadExitsForHomeTownShop.obj
          Debug\LoadExitsForNothernSnow.obj
+         Debug\LoadExitsForSouthernForest.obj
+         Debug\LoadExitsForWesternDesert.obj
          Debug\NorthernSnow.obj
          Debug\Potion.obj
          Debug\Recover.obj
@@ -69,6 +76,8 @@
          Debug\SetTurnTimerListToCharacterList.obj
          Debug\ShieldBash.obj
          Debug\HomeTownShop.obj
+         Debug\HeatWave.obj
+         Debug\SouthernForest.obj
          Debug\TreasureBox.obj
          Debug\TurnTimer.obj
          Debug\CharacterList.obj
@@ -102,6 +111,7 @@
          Debug\TurnTimerList.obj
          Debug\UnPauseBattle.obj
          Debug\UpdatePlayersHP.obj
+         Debug\WesternDesert.obj
          Debug\XPToLevel.obj
          LINK : C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe not found or not built by the last incremental link; performing full link
          Vintage-RPG.vcxproj -> C:\Users\Mike\Documents\GitHub\Vintage-RPG\Debug\RPG.exe
@@ -114,4 +124,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.77
+Time Elapsed 00:00:01.79

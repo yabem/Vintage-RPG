@@ -5,14 +5,14 @@
 #include "Layer.h"
 
 //Constructor.
-Layer::Layer(ALLEGRO_BITMAP *bmap , int bMapCols , int bMapRows , int tw , int th ,
+Layer::Layer(ALLEGRO_BITMAP *bmap ,
     int numRows , int numCols , int *layout , int laySize){
 
     this->bmap = bmap; 
-    this->bMapRows = bMapRows;
-    this->bMapCols = bMapCols;
-    this->tw = tw;
-    this->th = th;
+    this->bMapRows = al_get_bitmap_height(bmap) / TILE_SIZE;
+    this->bMapCols = al_get_bitmap_width(bmap) / TILE_SIZE;
+    this->tw = TILE_SIZE;
+    this->th = TILE_SIZE;
     this->dx = 0;
     this->dy = 0;
     this->numRows = numRows;

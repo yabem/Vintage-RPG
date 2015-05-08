@@ -7,8 +7,11 @@
 #include "Scenery.h"
 #include <cmath>
 
+
+
 //Constructor.
-Scenery::Scenery(ALLEGRO_BITMAP *bmap , int sx , int sy, int moveRateX , int moveRateY){
+Scenery::Scenery(ALLEGRO_BITMAP *bmap , float sx , float sy,
+    float moveRateX , float moveRateY){
 
     this->bmap = bmap;
     this->sx = sx;
@@ -20,6 +23,11 @@ Scenery::Scenery(ALLEGRO_BITMAP *bmap , int sx , int sy, int moveRateX , int mov
     this->h = al_get_bitmap_height(bmap);
     this->moveRateX = moveRateX;
     this->moveRateY = moveRateY;
+}
+
+//Destructor.
+Scenery::~Scenery(){
+
 }
 
 //Sets the draw X.
