@@ -5,7 +5,7 @@
 #include "ImageStore.h"
 #include "Scenery.h"
 #include "Movement.h"
-#include "HeatWave.h"
+#include "PulsingImage.h"
 
 const int WESTERN_DESERT_LAYOUT_SIZE = 2500;
 

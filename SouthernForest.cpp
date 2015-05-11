@@ -60,8 +60,8 @@ void SouthernForest::loadDefaults(){
 //Loads all the cloud Scenery objects.
 void SouthernForest::loadTheSceneries(){
 
-    Fog *fog = new Fog(imageStore->getBitMap("fog") , 0 , 0 , 0 , 0);
-    HeatWave *fogInner = new HeatWave(imageStore->getBitMap("fogInner") , 0 , 0 , 0 , 0);
+    FilterImage *fog = new FilterImage(imageStore->getBitMap("fog") , 0 , 0 , 0 , 0);
+    PulsingImage *fogInner = new PulsingImage(imageStore->getBitMap("fogInner") , 0 , 0 , 0 , 0);
 
     fogInner->setMinTransparency(.35);
     fogInner->setMaxTransparency(.65);

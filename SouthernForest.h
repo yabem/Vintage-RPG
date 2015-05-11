@@ -5,8 +5,8 @@
 #include "ImageStore.h"
 #include "Scenery.h"
 #include "Movement.h"
-#include "Fog.h"
-#include "HeatWave.h"
+#include "FilterImage.h"
+#include "PulsingImage.h"
 
 const int SOUTHERN_FOREST_LAYOUT_SIZE = 2500;
 

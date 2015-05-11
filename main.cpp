@@ -52,6 +52,7 @@
 //More tiles taken from http://opengameart.org/content/lpc-tile-atlas
 //Images taken from http://rpg.hamsterrepublic.com/ohrrpgce/Free_Sprites
 //Fireblast taken from http://opengameart.org/content/fire-blast
+//Lightning http://opengameart.org/content/painterly-spell-icons-part-2
 #define ttfaddon
 
 int checkInit();

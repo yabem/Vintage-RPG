@@ -60,7 +60,7 @@ void WesternDesert::loadDefaults(){
 //Loads all the cloud Scenery objects.
 void WesternDesert::loadTheSceneries(){
 
-    HeatWave *heatWave = new HeatWave(imageStore->getBitMap("heatWave") , 0 , 0 , 0 , 0);
+    PulsingImage *heatWave = new PulsingImage(imageStore->getBitMap("heatWave") , 0 , 0 , 0 , 0);
 
     this->loadScenery(heatWave);
 }

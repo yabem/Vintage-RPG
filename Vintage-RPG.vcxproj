@@ -70,16 +70,17 @@
   <ItemGroup>
     <ClCompile Include="Backstab.cpp" />
     <ClCompile Include="BattleTransitionScreen.cpp" />
-    <ClCompile Include="Darkness.cpp" />
     <ClCompile Include="EasternCastle.cpp" />
-    <ClCompile Include="FallingSnow.cpp" />
-    <ClCompile Include="Fog.cpp" />
+    <ClCompile Include="FallingImage.cpp" />
+    <ClCompile Include="FilterImage.cpp" />
+    <ClCompile Include="FlashingImage.cpp" />
     <ClCompile Include="HomeTownBattleScreen.cpp" />
     <ClCompile Include="BattleTrans.cpp" />
     <ClCompile Include="BattleVictory.cpp" />
     <ClCompile Include="HomeTown.cpp" />
     <ClCompile Include="Instruct.cpp" />
     <ClCompile Include="Intro.cpp" />
+    <ClCompile Include="Lightning.cpp" />
     <ClCompile Include="LoadExitsForEasternCastle.cpp" />
     <ClCompile Include="LoadExitsForHomeTown.cpp" />
     <ClCompile Include="LoadExitsForHomeTownShop.cpp" />
@@ -88,6 +89,7 @@
     <ClCompile Include="LoadExitsForWesternDesert.cpp" />
     <ClCompile Include="NorthernSnow.cpp" />
     <ClCompile Include="Potion.cpp" />
+    <ClCompile Include="Rain.cpp" />
     <ClCompile Include="Recover.cpp" />
     <ClCompile Include="I_Animation.cpp" />
     <ClCompile Include="AreaMap.cpp" />
@@ -138,7 +140,7 @@
     <ClCompile Include="SetTurnTimerListToCharacterList.cpp" />
     <ClCompile Include="ShieldBash.cpp" />
     <ClCompile Include="HomeTownShop.cpp" />
-    <ClCompile Include="HeatWave.cpp" />
+    <ClCompile Include="PulsingImage.cpp" />
     <ClCompile Include="SouthernForest.cpp" />
     <ClCompile Include="TreasureBox.cpp" />
     <ClCompile Include="TurnTimer.cpp" />
@@ -179,10 +181,11 @@
   <ItemGroup>
     <ClInclude Include="Backstab.h" />
     <ClInclude Include="BattleTransitionScreen.h" />
-    <ClInclude Include="Darkness.h" />
     <ClInclude Include="EasternCastle.h" />
-    <ClInclude Include="Fog.h" />
-    <ClInclude Include="HeatWave.h" />
+    <ClInclude Include="FilterImage.h" />
+    <ClInclude Include="FlashingImage.h" />
+    <ClInclude Include="Lightning.h" />
+    <ClInclude Include="PulsingImage.h" />
     <ClInclude Include="HomeTownBattleScreen.h" />
     <ClInclude Include="BattleTrans.h" />
     <ClInclude Include="BattleVictory.h" />
@@ -197,6 +200,7 @@
     <ClInclude Include="LoadExitsForWesternDesert.h" />
     <ClInclude Include="NorthernSnow.h" />
     <ClInclude Include="Potion.h" />
+    <ClInclude Include="Rain.h" />
     <ClInclude Include="Recover.h" />
     <ClInclude Include="I_Animation.h" />
     <ClInclude Include="AreaMap.h" />
@@ -248,7 +252,7 @@
     <ClInclude Include="SetTurnTimerListToCharacterList.h" />
     <ClInclude Include="ShieldBash.h" />
     <ClInclude Include="HomeTownShop.h" />
-    <ClInclude Include="FallingSnow.h" />
+    <ClInclude Include="FallingImage.h" />
     <ClInclude Include="SouthernForest.h" />
     <ClInclude Include="TreasureBox.h" />
     <ClInclude Include="TurnTimer.h" />

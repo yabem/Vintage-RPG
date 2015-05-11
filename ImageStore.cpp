@@ -92,6 +92,9 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("darkness" , al_load_bitmap("darkness.png"));
     loadBitMap("fog" , al_load_bitmap("fog.png"));
     loadBitMap("fogInner" , al_load_bitmap("fogInner.png"));
+    loadBitMap("lightning" , al_load_bitmap("lightning.png"));
+    loadBitMap("whiteFlash" , al_load_bitmap("whiteFlash.png"));
+    loadBitMap("rain" , al_load_bitmap("rain.png"));
  
     loadBitMap("default" , al_load_bitmap("default.png"));
 

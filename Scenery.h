@@ -25,6 +25,8 @@ protected:
 
 public:
 
+    Scenery();
+
     //Constructor.
     Scenery(ALLEGRO_BITMAP *bmap , float sx , float sy , float moveRateX , float moveRateY);
     

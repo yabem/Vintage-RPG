@@ -3,7 +3,7 @@
 #pragma once
 #include "AreaMap.h"
 #include "ImageStore.h"
-#include "FallingSnow.h"
+#include "FallingImage.h"
 
 const int LAYOUT_NORTHERN_SNOW_SIZE = 2500;
 

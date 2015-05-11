@@ -60,9 +60,24 @@ void EasternCastle::loadDefaults(){
 //Loads all the cloud Scenery objects.
 void EasternCastle::loadTheSceneries(){
 
-    Darkness *darkness = new Darkness(imageStore->getBitMap("darkness") , 0 , 0 , 0 , 0);
+    FilterImage *darkness = new FilterImage(imageStore->getBitMap("darkness") ,
+        0 , 0 , 0 , 0);
+    Lightning *lightning = new Lightning(imageStore);
+    Rain *rainSlow = new Rain(imageStore->getBitMap("rain") ,
+        0 , -(SCREEN_H / 2) , 0 , 3);
+    Rain *rainFast = new Rain(imageStore->getBitMap("rain") ,
+        0 , -(SCREEN_H / 2) , 0 , 5);
+
+    darkness->setTransparencyLevel(.5);
+    darkness->setTransparencyIncrementer(.01);
+    darkness->setRedTransparency(1);
+    darkness->setGreenTransparency(1);
+    darkness->setBlueTransparency(1);
 
     this->loadScenery(darkness);
+    this->loadScenery(lightning);
+    this->loadScenery(rainSlow);
+    this->loadScenery(rainFast);
 }
 
 //Loads all the layers to the areaMap.

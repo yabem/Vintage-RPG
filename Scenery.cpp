@@ -7,7 +7,21 @@
 #include "Scenery.h"
 #include <cmath>
 
+//Default constructor.
 
+Scenery::Scenery(){
+
+    this->bmap = NULL;
+    this->sx = 0;
+    this->sy = 0;
+    this->dx = 0;
+    this->dy = 0;
+    crFrame = 0;
+    this->w = 0;
+    this->h = 0;
+    this->moveRateX = 0;
+    this->moveRateY = 0;
+}
 
 //Constructor.
 Scenery::Scenery(ALLEGRO_BITMAP *bmap , float sx , float sy,

@@ -5,7 +5,9 @@
 #include "ImageStore.h"
 #include "Scenery.h"
 #include "Movement.h"
-#include "Darkness.h"
+#include "FilterImage.h"
+#include "Lightning.h"
+#include "Rain.h"
 
 const int EASTERN_CASTLE_LAYOUT_SIZE = 2500;
 

@@ -1,7 +1,7 @@
-#include "HeatWave.h"
+#include "PulsingImage.h"
 
 //Constructor.
-HeatWave::HeatWave(ALLEGRO_BITMAP *bmap , float sx , float sy,
+PulsingImage::PulsingImage(ALLEGRO_BITMAP *bmap , float sx , float sy,
     float moveRateX , float moveRateY): 
       Scenery(bmap , sx , sy, moveRateX , moveRateY){
 
@@ -17,27 +17,27 @@ HeatWave::HeatWave(ALLEGRO_BITMAP *bmap , float sx , float sy,
 }
 
 //Destructor.
-HeatWave::~HeatWave(){
+PulsingImage::~PulsingImage(){
 
 }
 
-void HeatWave::setMinTransparency(float minTransparency){
+void PulsingImage::setMinTransparency(float minTransparency){
     
     this->minTransparency = minTransparency;
 }
 
-void HeatWave::setMaxTransparency(float maxTransparency){
+void PulsingImage::setMaxTransparency(float maxTransparency){
     
     this->maxTransparency = maxTransparency;
 }
 
-void HeatWave::setTransparencyIncrementer(float transparencyIncrementer){
+void PulsingImage::setTransparencyIncrementer(float transparencyIncrementer){
 
     this->transparencyIncrementer = transparencyIncrementer;
 }
 
 //Increases the frame count and moves through the animation sequence.
-void HeatWave::animate(){
+void PulsingImage::animate(){
 
     if(redTransparency <= minTransparency || redTransparency >= maxTransparency)
         transparencyIncrementer *= reverse;
@@ -48,7 +48,7 @@ void HeatWave::animate(){
 }
 
 //Draws the Scenery to the buffer.
-void HeatWave::draw(){
+void PulsingImage::draw(){
 
     al_draw_tinted_bitmap(bmap ,al_map_rgba_f(redTransparency,
         greenTransparency , BlueTransparency , transparencyLevel), 0, 0, 0);

@@ -48,11 +48,11 @@ void NorthernSnow::loadDefaults(){
 //Loads all the cloud Scenery objects.
 void NorthernSnow::loadClouds(){
 
-    FallingSnow *fallingSnow1 = new FallingSnow
+    FallingImage *fallingSnow1 = new FallingImage
         (imageStore->getBitMap("snowFall") , 0 , -(SCREEN_H / 2) , 0 , 2);
-    FallingSnow *fallingSnow2 = new FallingSnow
+    FallingImage *fallingSnow2 = new FallingImage
         (imageStore->getBitMap("snowFall2") , 0 , -(SCREEN_H / 2) , 0 , .7);
-    FallingSnow *fallingSnow3 = new FallingSnow
+    FallingImage *fallingSnow3 = new FallingImage
         (imageStore->getBitMap("snowFall3") , 0 , -(SCREEN_H / 2) , 0 , .3);
 
     fallingSnow1->setDY(-240);

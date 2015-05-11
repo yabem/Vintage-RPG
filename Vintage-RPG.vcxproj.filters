@@ -669,9 +669,6 @@
     <ClCompile Include="Scenery.cpp">
       <Filter>Source Files\Scenery\Base Class</Filter>
     </ClCompile>
-    <ClCompile Include="FallingSnow.cpp">
-      <Filter>Source Files\Scenery\Derived Class</Filter>
-    </ClCompile>
     <ClCompile Include="WesternDesert.cpp">
       <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
     </ClCompile>
@@ -687,9 +684,6 @@
     <ClCompile Include="LoadExitsForNothernSnow.cpp">
       <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
     </ClCompile>
-    <ClCompile Include="HeatWave.cpp">
-      <Filter>Source Files\Scenery\Derived Class</Filter>
-    </ClCompile>
     <ClCompile Include="SouthernForest.cpp">
       <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
     </ClCompile>
@@ -702,10 +696,22 @@
     <ClCompile Include="LoadExitsForEasternCastle.cpp">
       <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
     </ClCompile>
-    <ClCompile Include="Darkness.cpp">
+    <ClCompile Include="PulsingImage.cpp">
       <Filter>Source Files\Scenery\Derived Class</Filter>
     </ClCompile>
-    <ClCompile Include="Fog.cpp">
+    <ClCompile Include="FallingImage.cpp">
+      <Filter>Source Files\Scenery\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="FilterImage.cpp">
+      <Filter>Source Files\Scenery\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="FlashingImage.cpp">
+      <Filter>Source Files\Scenery\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="Lightning.cpp">
+      <Filter>Source Files\Scenery\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="Rain.cpp">
       <Filter>Source Files\Scenery\Derived Class</Filter>
     </ClCompile>
   </ItemGroup>
@@ -992,9 +998,6 @@
     <ClInclude Include="Scenery.h">
       <Filter>Header Files\Scenery\Base Class</Filter>
     </ClInclude>
-    <ClInclude Include="FallingSnow.h">
-      <Filter>Header Files\Scenery\Derived Class</Filter>
-    </ClInclude>
     <ClInclude Include="WesternDesert.h">
       <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
     </ClInclude>
@@ -1010,9 +1013,6 @@
     <ClInclude Include="LoadExitsForNorthernSnow.h">
       <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
     </ClInclude>
-    <ClInclude Include="HeatWave.h">
-      <Filter>Header Files\Scenery\Derived Class</Filter>
-    </ClInclude>
     <ClInclude Include="SouthernForest.h">
       <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
     </ClInclude>
@@ -1025,10 +1025,22 @@
     <ClInclude Include="LoadExitsForEasternCastle.h">
       <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
     </ClInclude>
-    <ClInclude Include="Darkness.h">
+    <ClInclude Include="PulsingImage.h">
       <Filter>Header Files\Scenery\Derived Class</Filter>
     </ClInclude>
-    <ClInclude Include="Fog.h">
+    <ClInclude Include="FallingImage.h">
+      <Filter>Header Files\Scenery\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterImage.h">
+      <Filter>Header Files\Scenery\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="FlashingImage.h">
+      <Filter>Header Files\Scenery\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="Lightning.h">
+      <Filter>Header Files\Scenery\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="Rain.h">
       <Filter>Header Files\Scenery\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
