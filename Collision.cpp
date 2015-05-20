@@ -4,7 +4,8 @@
 #include "Collision.h"
 
 //Check collisions with every possible collision of the character with the AreaMap.
-bool Collision::characterToAreaMap(Character &character , AreaMap *&areaMap){
+bool Collision::characterToAreaMap(Character &character , AreaMap *&areaMap ,
+    GameManager *gameManager){
 
     bool result = false;
 
@@ -13,13 +14,14 @@ bool Collision::characterToAreaMap(Character &character , AreaMap *&areaMap){
         result = true;
 
     //Check for collisions with exits.
-    if(characterToExit(character , areaMap))
+    if(characterToExit(character , areaMap , gameManager))
         result = true;
 
     //Check collisions with all the tangibles in the tangible vector.
     for(int i = 0 ; i < areaMap->getNumTangibles() ; i ++){
 
-        int index = characterToTangible(character , areaMap->getTangible(i));;
+        int index = characterToTangible(character , areaMap->getTangible(i) ,
+            gameManager);
 
         //Collision with tangible found.
         if(index != -1){
@@ -108,39 +110,84 @@ bool Collision::characterToLayer(Character &character , Layer &layer){
 }
 
 //Check collisions between a character and a tangible.
-int Collision::characterToTangible(Character &character , Tangible &tangible){
+int Collision::characterToTangible(Character &character , Tangible &tangible ,
+    GameManager *gameManager){
 
-    if(character.getX() > tangible.getCX() + tangible.getCW() ||   //Check if left A is greater than right B 
-       character.getX() + character.getW() < tangible.getCX() ||   //Check if right A is less than left B 
-       character.getY() > tangible.getCY() + tangible.getCH() ||   //Check if top A is less than bottom B 
-       character.getY() + character.getH() < tangible.getCY())     //Check if bottom A is greater than top B 
+    if(character.getX() > tangible.getDX() + tangible.getCW()  ||   //Check if left A is greater than right B 
+       character.getX() + character.getW() < tangible.getDX() ||   //Check if right A is less than left B 
+       character.getY() > tangible.getDY() + tangible.getCH()  ||   //Check if top A is less than bottom B 
+       character.getY() + character.getH() < tangible.getDY())     //Check if bottom A is greater than top B 
            return -1;
-  
+
     else{
         
-        //Left collision.
-        if(character.getX() == (tangible.getCX() + tangible.getCW()))
-            return LEFT;
+        switch(character.getFacing()){
 
-        //Right collision.
-        else if((character.getX() + character.getW()) == tangible.getCX())   
-            return RIGHT;
+            //Collision with tangible on the left.
+            case LEFT:
+            if((character.getX() < tangible.getDX() + tangible.getW() &&
+                character.getX() > tangible.getDX())){
 
-        //Up collision.
-        else if(character.getY() == (tangible.getCY() + tangible.getCH()))
-            return UP;
+                if(gameManager->pressedKey == SPACE)
+                    tangible.playCutscene(gameManager->pressedKey);
+                    
+                return LEFT;
+            }
+                break;
+            
 
-        //Down collision.
-        else if((character.getY() + character.getH()) == tangible.getCY())   
-            return DOWN;
+            //Collision with tangible on the right.
+            case RIGHT:
+            if((character.getX() + character.getW()) < tangible.getDX() +
+                tangible.getW() && (character.getX() + character.getW()) >
+                tangible.getDX()){
+                
+                    if(gameManager->pressedKey == SPACE)
+                        tangible.playCutscene(gameManager->pressedKey);
 
+                return RIGHT;
+            }
+                break;
+            
+                
+            //Collision with tangible above.
+            case UP:
+            if((character.getY() < (tangible.getDY() + tangible.getH()) &&
+                character.getY() > tangible.getDY())){
+
+                if(gameManager->pressedKey == SPACE)
+                    tangible.playCutscene(gameManager->pressedKey);
+                    
+                return UP;
+            }
+                break;
+            
+            
+            //Collision with tangible below.
+            case DOWN:
+            if((character.getY() + character.getH() < tangible.getDY() +
+                tangible.getH() && character.getY() + character.getH() >
+                tangible.getDY())){
+                
+                if(gameManager->pressedKey == SPACE)
+                    tangible.playCutscene(gameManager->pressedKey);                    
+                
+                return DOWN;
+            }
+                break;
+            
+            
         //Error.
-        else return -2;
+            default:
+                return -2;
+                break;
+        }
     }
 }
 
 //Check collisions between a character and an exit.
-bool Collision::characterToExit(Character &character , AreaMap *&areaMap){
+bool Collision::characterToExit(Character &character , AreaMap *&areaMap ,
+    GameManager *gameManager){
 
     bool result = false;
 
@@ -164,6 +211,9 @@ bool Collision::characterToExit(Character &character , AreaMap *&areaMap){
 
             //Set map to the destination map.
             areaMap = areaMap->getToMap(i); 
+
+            //Set battleMap.
+            gameManager->battleMap = areaMap->getBattleMap();
 
             //Set the start point based off of the previous map's destination.
             Movement::setStart(character , *areaMap , prevMap->getExitDestC(i) , prevMap->getExitDestR(i));

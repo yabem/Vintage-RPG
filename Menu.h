@@ -50,8 +50,8 @@ private:
 
 public:
 
-    Menu();                         //Default constructor.
-    Menu(std::string text);         //Constructor with string input.
+    Menu(ALLEGRO_FONT *font);                       //Default constructor.
+    Menu(std::string text , ALLEGRO_FONT *font);    //Constructor with string input.
     virtual ~Menu();                //Destructor.
     void destroyMenu();             //Deallocate a Menu and all subMenus.
     void destroyMenuHelper();       //Deallocate a Menu.

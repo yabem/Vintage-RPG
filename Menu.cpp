@@ -1,12 +1,12 @@
 #include "Menu.h"
 
 //Defaut constructor.
-Menu::Menu(){
+Menu::Menu(ALLEGRO_FONT *font){
 
     numOptions = 0;
     longestOption = 0;
     currSelection = 0;
-    font = al_load_font("arial.ttf" , FONT_SIZE , 0);
+    this->font = font;
     
     this->sx = 0;           //X draw location.
     this->sy = 0;           //y draw location.
@@ -20,7 +20,7 @@ Menu::Menu(){
 }
 
 //Constructor with string input.
-Menu::Menu(std::string text){
+Menu::Menu(std::string text , ALLEGRO_FONT *font){
 
     //Checks if input is empty.
     if(text == "")
@@ -31,7 +31,7 @@ Menu::Menu(std::string text){
     currSelection = 0;
 
     this->text = text;  
-    font = al_load_font("arial.ttf" , FONT_SIZE , 0);
+    this->font = font;
 
     w = 0;
     h = 0;
@@ -78,11 +78,6 @@ void Menu::destroyMenu(){
 
     //Deallocate Menu.
     destroyMenuHelper();
-
-    if(font != NULL){
-        al_destroy_font(font);
-        font = NULL;
-    }
 }
 
 //Deallocate the memory from the menu.
@@ -177,7 +172,7 @@ void Menu::formatTextHelper(std::string text ,
 
                     stringIter++;
                     
-                    Menu *additionalSubMenu = new Menu();
+                    Menu *additionalSubMenu = new Menu(font);
                     option->subMenu = additionalSubMenu;
 
                     additionalSubMenu->formatTextHelper(text , stringIter);

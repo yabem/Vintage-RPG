@@ -7,6 +7,6 @@
 namespace SetMenuListToCharacterList{
 
     //Connects a MenuList to a CharacterList.
-    void setMenuListToCharacterList(CharacterList *characterList ,
-        MenuList *menuList);
+    void setMenuListToCharacterList (CharacterList *characterList ,
+        MenuList *menuList , ALLEGRO_FONT *font);
 }

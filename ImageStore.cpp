@@ -83,7 +83,7 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("snowFall" , al_load_bitmap("snowFall.png"));
     loadBitMap("snowFall2" , al_load_bitmap("snowFall2.png"));
     loadBitMap("snowFall3" , al_load_bitmap("snowFall3.png"));
-    loadBitMap("westernDesert" , al_load_bitmap("westernDesert.png"));
+    loadBitMap("desertRegion" , al_load_bitmap("desertRegion.png"));
     loadBitMap("heatWave" , al_load_bitmap("heatWave.png"));
     loadBitMap("southernForest" , al_load_bitmap("southernForest.png"));
     loadBitMap("snowTerrain" , al_load_bitmap("snowTerrain.png"));
@@ -95,6 +95,14 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("lightning" , al_load_bitmap("lightning.png"));
     loadBitMap("whiteFlash" , al_load_bitmap("whiteFlash.png"));
     loadBitMap("rain" , al_load_bitmap("rain.png"));
+    loadBitMap("storeOwner" , al_load_bitmap("storeOwner.png"));
+    loadBitMap("mysteriousMan" , al_load_bitmap("mysteriousMan.png"));
+    loadBitMap("iceBull" , al_load_bitmap("iceBull.png"));
+    loadBitMap("witch" , al_load_bitmap("witch.png"));
+    loadBitMap("strife" , al_load_bitmap("strife.png"));
+    loadBitMap("monk" , al_load_bitmap("monk.png"));
+    loadBitMap("clod" , al_load_bitmap("clod.png"));
+    loadBitMap("joanna" , al_load_bitmap("joanna.png"));
  
     loadBitMap("default" , al_load_bitmap("default.png"));
 

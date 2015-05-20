@@ -633,8 +633,8 @@ void BattleManager::drawFloatingTexts(){
 //Determines if a battle will occur.
 bool BattleManager::checkForBattle(){
 
-    //if(gameManager->gameTimer == BATTLE_TIMER && gameManager->battle == false){
-    if(gameManager->getPressedKey() == Q && gameManager->battle == false){
+    if((gameManager->getPressedKey() == Q && gameManager->battle == false) || 
+        gameManager->battle == true){
 
         initializeBattle();
 
@@ -648,23 +648,45 @@ bool BattleManager::checkForBattle(){
 //Post: Sets the variables so that the battle will be like a new battle.
 void BattleManager::initializeBattle(){
 
-        //Set battle flags to true.
-        gameManager->battle = true;
+    //Set battle flags to true.
+    gameManager->battle = true;
 
-        //Sets battle to unpause.
-        unPauseBattle();
+    //Sets battle to unpause.
+    unPauseBattle();
 
-        //Load battle transition cutscene.
-        BattleTrans *theBattle = new BattleTrans(gameManager->cutSceneMap ,
-            gameManager->currMap , gameManager->player , gameManager , this);
-        drawRepository->loadCutscene(theBattle);
+    //Load battle transition cutscene.
+    BattleTrans *theBattle = new BattleTrans(gameManager->cutSceneMap ,
+        gameManager->currMap , gameManager->player , gameManager , this);
+    drawRepository->loadCutscene(theBattle);
 
-        //Create the enemies for the battle.
-        generateEnemies(MAX_ENEMIES_PER_BATTLE);
+    //Create the enemies for the battle.
+    generateRandomEnemies(MAX_ENEMIES_PER_BATTLE);
+}
+
+//Initializes the variables to the beginning of a new battle.
+//Pre:  None.
+//Post: Sets the variables so that the battle will be like a new battle.
+//      The inputs determine which enemies will populate the battle.
+void BattleManager::initializeBattle(std::vector<int> enemyList , 
+    std::vector<int> enemyLevels){
+
+    //Set battle flags to true.
+    gameManager->battle = true;
+
+    //Sets battle to unpause.
+    unPauseBattle();
+
+    //Load battle transition cutscene.
+    BattleTrans *theBattle = new BattleTrans(gameManager->cutSceneMap ,
+        gameManager->currMap , gameManager->player , gameManager , this);
+    drawRepository->loadCutscene(theBattle);
+
+    //Create the enemies for the battle.
+    generateEnemies(enemyList , enemyLevels);
 }
 
 //Generates the enemies for the battle.
-void BattleManager::generateEnemies(int maxNumberOfEnemies){
+void BattleManager::generateRandomEnemies(int maxNumberOfEnemies){
 
     //Choose a random number of enemies.
     int numEnemies = rand() % maxNumberOfEnemies + 1;
@@ -679,8 +701,37 @@ void BattleManager::generateEnemies(int maxNumberOfEnemies){
         int randomEnemyLevel = rand() % MAX_ENEMY_LEVEL + 1;      
 
         //Create and add the enemy to the battle.
-        Character *addEnemy = enemyFactory.createChar(randomEnemyType);
+        Character *addEnemy = new Character();
         InitEnemies::init(addEnemy , randomEnemyType , randomEnemyLevel , enemyModels);
+        theEnemies.loadChar(addEnemy);
+    }
+
+    //Set spacing.
+    InitEnemies::initEnemiesSpacing(theEnemies.getList());
+
+    //Reset iterator to the beginning.
+    theEnemies.resetSelection();
+
+    //Adds the turnTimers to the enemies.
+    theEnemies.loadList(&enemyTurnTimerList);
+    SetTurnTimerListToCharacterList::setTurnTimerListToCharacterList(
+        &theEnemies , &enemyTurnTimerList);
+}
+
+//Generates the enemies for the battle.
+void BattleManager::generateEnemies(std::vector<int> enemiesToFight ,
+    std::vector<int> enemyLevels){
+
+    std::vector<int>::iterator enemyIter;
+    std::vector<int>::iterator enemyLevelsIter;
+
+    for(enemyIter = enemiesToFight.begin() , enemyLevelsIter = enemyLevels.begin();
+        enemyIter != enemiesToFight.end() && enemyLevelsIter != enemyLevels.end();
+        enemyIter++ , enemyLevelsIter++){
+
+        //Create and add the enemy to the battle.
+        Character *addEnemy = new Character();
+        InitEnemies::init(addEnemy , (*enemyIter) , (*enemyLevelsIter) , enemyModels);
         theEnemies.loadChar(addEnemy);
     }
 
@@ -723,7 +774,7 @@ void BattleManager::generatePlayers(CharacterList *characterList ,
     //Adds menuList to the players.
     thePlayers.loadList(&playerMenuList);
     SetMenuListToCharacterList::setMenuListToCharacterList(
-        &thePlayers , &playerMenuList);
+        &thePlayers , &playerMenuList , fontStore->getFont("default"));
 
     //Adds floatingTextList to the players.
     thePlayers.loadList(&playerFloatingTextList);
@@ -811,7 +862,7 @@ void BattleManager::playersVictory(){
 
     //Create victory cutscene.
     BattleVictory *battleVictory = new BattleVictory(gameManager->currMap , 
-        &thePlayers , gameManager , &treasureBox);
+        &thePlayers , gameManager , &treasureBox , fontStore->getFont("default"));
 
     drawRepository->loadCutscene(battleVictory);
 
@@ -836,7 +887,7 @@ void BattleManager::enemiesVictory(){
 
     //Create loss cutscene.
     BattleLoss *battleLoss = new BattleLoss(gameManager->currMap , 
-        &thePlayers , &theEnemies , gameManager);
+        &thePlayers , &theEnemies , gameManager , fontStore->getFont("default"));
 
     drawRepository->loadCutscene(battleLoss);
 

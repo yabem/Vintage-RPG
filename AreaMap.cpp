@@ -99,6 +99,16 @@ Layer *AreaMap::getBackground(){
     return layers[BACKGROUND];
 }
 
+void AreaMap::setBattleMap(AreaMap *battleMap){
+
+    this->battleMap = battleMap;
+}
+
+AreaMap* AreaMap::getBattleMap(){
+
+    return this->battleMap;
+}
+
 //Add a Layer to Layers.
 bool AreaMap::loadLayer(Layer *layer){
 

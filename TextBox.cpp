@@ -1,15 +1,15 @@
 #include"TextBox.h"
 
 //Default text box initializer. Makes a text box in the upper 1/2 of the screen.
-TextBox::TextBox(){
+TextBox::TextBox(ALLEGRO_FONT *font){
 
     this->text = text;  
-    font = al_load_font("arial.ttf" , FONT_SIZE , 0);
+    this->font = font;
 
     this->sx = 1;           //X draw location.
     this->sy = 1;           //y draw location.
     this->dx = SCREEN_W - 1;
-    this->dy = 0;//formattedText.size() * FONTHEIGHT;//SCREEN_H / 2;//
+    this->dy = 0;
 
     tr = 255 ; tg = 255 ; tb = 255;  //Hues for the text color.
     rr = 0 ; rg = 0 ; rb = 200;  //Hues for rectactle color.
@@ -18,10 +18,10 @@ TextBox::TextBox(){
 }
 
 //Default text box initializer. Makes a text box in the upper 1/2 of the screen.
-TextBox::TextBox(std::string text){
+TextBox::TextBox(std::string text , ALLEGRO_FONT *font){
 
     this->text = text;  
-    font = al_load_font("arial.ttf" , FONT_SIZE , 0);
+    this->font = font;
     formatText();           //Put the text into vectors.
     this->sx = 1;           //X draw location.
     this->sy = 1;           //y draw location.
@@ -39,13 +39,12 @@ void TextBox::loadText(std::string text){
 
     this->text = text;
     formatText();           //Put the text into vectors.
-    this->dy = formattedText.size() * FONT_HEIGHT;//SCREEN_H / 2;//
+    this->dy = formattedText.size() * FONT_HEIGHT;
 }
 
 //Destructor.
 TextBox::~TextBox(){
 
-    destroyTextBox();
 }
 
 //Find the number of rows based on the length of the text.
@@ -135,13 +134,4 @@ void TextBox::setDX(int dx){
 void TextBox::setDY(int dy){
     
     this->dy = dy;
-}
-
-//Destroys the TextBox.
-void TextBox::destroyTextBox(){
-
-    if(font != NULL){
-        al_destroy_font(font);
-        font = NULL;
-    }
 }

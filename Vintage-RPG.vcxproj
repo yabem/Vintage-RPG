@@ -70,11 +70,12 @@
   <ItemGroup>
     <ClCompile Include="Backstab.cpp" />
     <ClCompile Include="BattleTransitionScreen.cpp" />
+    <ClCompile Include="Dialogue.cpp" />
     <ClCompile Include="EasternCastle.cpp" />
     <ClCompile Include="FallingImage.cpp" />
     <ClCompile Include="FilterImage.cpp" />
     <ClCompile Include="FlashingImage.cpp" />
-    <ClCompile Include="HomeTownBattleScreen.cpp" />
+    <ClCompile Include="EasternCastleBattle.cpp" />
     <ClCompile Include="BattleTrans.cpp" />
     <ClCompile Include="BattleVictory.cpp" />
     <ClCompile Include="HomeTown.cpp" />
@@ -88,6 +89,10 @@
     <ClCompile Include="LoadExitsForSouthernForest.cpp" />
     <ClCompile Include="LoadExitsForWesternDesert.cpp" />
     <ClCompile Include="NorthernSnow.cpp" />
+    <ClCompile Include="NorthernSnowBattle.cpp" />
+    <ClCompile Include="NPCWithDialogue.cpp" />
+    <ClCompile Include="NPCWithDialogueThenBattle.cpp" />
+    <ClCompile Include="PixelConversion.cpp" />
     <ClCompile Include="Potion.cpp" />
     <ClCompile Include="Rain.cpp" />
     <ClCompile Include="Recover.cpp" />
@@ -142,12 +147,13 @@
     <ClCompile Include="HomeTownShop.cpp" />
     <ClCompile Include="PulsingImage.cpp" />
     <ClCompile Include="SouthernForest.cpp" />
+    <ClCompile Include="SouthernForestBattle.cpp" />
+    <ClCompile Include="StartBattle.cpp" />
     <ClCompile Include="TreasureBox.cpp" />
     <ClCompile Include="TurnTimer.cpp" />
     <ClCompile Include="CharacterList.cpp" />
     <ClCompile Include="CharacterManipulation.cpp" />
     <ClCompile Include="CharacterManipulationStore.cpp" />
-    <ClCompile Include="CharFactory.cpp" />
     <ClCompile Include="CharStats.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Controls.cpp" />
@@ -176,17 +182,24 @@
     <ClCompile Include="UnPauseBattle.cpp" />
     <ClCompile Include="UpdatePlayersHP.cpp" />
     <ClCompile Include="WesternDesert.cpp" />
+    <ClCompile Include="WesternDesertBattle.cpp" />
     <ClCompile Include="XPToLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Backstab.h" />
     <ClInclude Include="BattleTransitionScreen.h" />
+    <ClInclude Include="Dialogue.h" />
+    <ClInclude Include="DUMMY.h" />
     <ClInclude Include="EasternCastle.h" />
     <ClInclude Include="FilterImage.h" />
     <ClInclude Include="FlashingImage.h" />
     <ClInclude Include="Lightning.h" />
+    <ClInclude Include="NorthernSnowBattle.h" />
+    <ClInclude Include="NPCWithDialogue.h" />
+    <ClInclude Include="NPCWithDialogueThenBattle.h" />
+    <ClInclude Include="PixelConversion.h" />
     <ClInclude Include="PulsingImage.h" />
-    <ClInclude Include="HomeTownBattleScreen.h" />
+    <ClInclude Include="EasternCastleBattle.h" />
     <ClInclude Include="BattleTrans.h" />
     <ClInclude Include="BattleVictory.h" />
     <ClInclude Include="HomeTown.h" />
@@ -254,9 +267,10 @@
     <ClInclude Include="HomeTownShop.h" />
     <ClInclude Include="FallingImage.h" />
     <ClInclude Include="SouthernForest.h" />
+    <ClInclude Include="SouthernForestBattle.h" />
+    <ClInclude Include="StartBattle.h" />
     <ClInclude Include="TreasureBox.h" />
     <ClInclude Include="TurnTimer.h" />
-    <ClInclude Include="CharFactory.h" />
     <ClInclude Include="CharStats.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Controls.h" />
@@ -287,6 +301,7 @@
     <ClInclude Include="UnPauseBattle.h" />
     <ClInclude Include="UpdatePlayersHP.h" />
     <ClInclude Include="WesternDesert.h" />
+    <ClInclude Include="WesternDesertBattle.h" />
     <ClInclude Include="XPToLevel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

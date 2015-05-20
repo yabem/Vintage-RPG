@@ -34,6 +34,8 @@ protected:
     vector<Scenery*> sceneries;  //Clouds and such.
     vector<Exit> exits;          //Exits to other maps.
 
+    AreaMap *battleMap;          //Map for the battles in this area.
+
 public:
 
     AreaMap();                      //Constructor.
@@ -54,6 +56,8 @@ public:
     Scenery& getScenery(int index) const;   //Return a reference to the indexed Scenery.
     Layer* getBackground();             //Return a pointer to the 0th layer.
 
+    void setBattleMap(AreaMap *battleMap);  //Sets the battlemap.
+    AreaMap* getBattleMap();
     bool loadLayer(Layer *layer);           //Add a Layer to Layers.
     bool loadTangible(Tangible *tangible);  //Add a Tangible to tangibles.
     bool loadScenery(Scenery *scenery);     //Add a Scenery to sceneries.

@@ -4,12 +4,13 @@
 //Pre:  None.
 //Post: A Menu is added to the MenuList.
 void SetMenuListToCharacterList::setMenuListToCharacterList
-    (CharacterList *characterList , MenuList *menuList){
+    (CharacterList *characterList , MenuList *menuList ,
+    ALLEGRO_FONT *font){
 
     //Cycles through CharacterList and adds a connection for each Character.
     for(int i = 0 ; i < characterList->getSize() ; i++){
 
-        menuList->addMenuConnection(characterList->getCurrSelection());
+        menuList->addMenuConnection(characterList->getCurrSelection() , font);
         characterList->moveSelectionDown();
     }
 

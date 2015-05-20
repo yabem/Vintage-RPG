@@ -67,9 +67,6 @@ private:
 
     //List of Menus for thePlayers.
     MenuList playerMenuList;
-
-    //Factory for the enemies.
-    CharFactory enemyFactory;   
     
     //Vector of pointers to enemy bitmaps.
     vector<ALLEGRO_BITMAP*> enemyModels;    
@@ -244,8 +241,15 @@ public:
     //Initializes the variables to the beginning of a new battle.
     void initializeBattle();
 
+    void initializeBattle(std::vector<int> enemyList , 
+        std::vector<int> enemyLevels);
+
     //Generates the enemies for the battle.
-    virtual void generateEnemies(int maxNumberOfEnemies); 
+    virtual void generateRandomEnemies(int maxNumberOfEnemies); 
+
+    //Generates the enemies for the battle.
+    virtual void generateEnemies(std::vector<int> enemiesToFight ,
+        std::vector<int> enemyLevels); 
 
     //Generates the players for the battle.
     virtual void generatePlayers(CharacterList *characterList ,

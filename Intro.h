@@ -15,7 +15,7 @@ private:
     ALLEGRO_FONT *introFont;
 
 public:
-    Intro();
+    Intro(ALLEGRO_FONT *introfont);
     virtual ~Intro();
     virtual bool play(const int pressedKey);  
 };

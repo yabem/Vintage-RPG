@@ -25,7 +25,7 @@ public:
     Menu* getCurrSelection();  
 
     //Inserts a Menu connected to a Character.
-    void addMenuConnection(I_Creature *i_Creature);
+    void addMenuConnection(I_Creature *i_Creature , ALLEGRO_FONT *font);
 
     //Gets the specified Menu.
     virtual Menu* getSelection(int selection);

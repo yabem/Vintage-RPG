@@ -28,7 +28,7 @@
 #include "LoadExitsForHomeTown.h"
 #include "HomeTownShop.h"
 #include "LoadExitsForHomeTownShop.h"
-#include "HomeTownBattleScreen.h"
+#include "EasternCastleBattle.h"
 #include "NorthernSnow.h"
 #include "LoadExitsForNorthernSnow.h"
 #include "BattleTransitionScreen.h"
@@ -38,6 +38,9 @@
 #include "LoadExitsForSouthernForest.h"
 #include "EasternCastle.h"
 #include "LoadExitsForEasternCastle.h"
+#include "SouthernForestBattle.h"
+#include "WesternDesertBattle.h"
+#include "NorthernSnowBattle.h"
 
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
@@ -102,22 +105,33 @@ int main(int argc, char **argv){
     ImageStore imageStore;
     imageStore.loadAllDefaultImages();
 
+    FontStore fontStore;
+    fontStore.loadAllDefaultFonts();
+
+    DrawRepository drawRepository;
+    GameManager gameManager = GameManager();
+    BattleManager battleManager;
+
     //Loads the information for the player.
     PlayerEntity playerEntity(&imageStore);
     playerEntity.loadBackpack();
     playerEntity.loadDefaultPlayers();
 
-    HomeTown homeTown(&imageStore);
+    HomeTown homeTown(&imageStore , &drawRepository , &gameManager , &fontStore);
     homeTown.loadDefaults();
 
     HomeTownShop homeTownShop(&imageStore);
     homeTownShop.loadDefaults();
 
-    HomeTownBattleScreen homeTownBattleScreen(&imageStore);
-    homeTownBattleScreen.loadDefaults();
-
-    NorthernSnow northernSnow(&imageStore);
+    EasternCastleBattle easternCastleBattle(&imageStore);
+    easternCastleBattle.loadDefaults();
+    
+    NorthernSnow northernSnow(&imageStore , &drawRepository , &gameManager , 
+        &battleManager , &fontStore);
     northernSnow.loadDefaults();
+
+    NorthernSnowBattle northernSnowBattle(&imageStore);
+    northernSnowBattle.loadDefaults();
 
     BattleTransitionScreen battleTransitionScreen(&imageStore);
     battleTransitionScreen.loadDefaults();
@@ -125,29 +139,34 @@ int main(int argc, char **argv){
     WesternDesert westernDesert(&imageStore);
     westernDesert.loadDefaults();
 
+    WesternDesertBattle westernDesertBattle(&imageStore);
+    westernDesertBattle.loadDefaults();
+
     SouthernForest southernForest(&imageStore);
     southernForest.loadDefaults();
+
+    SouthernForestBattle southernForestBattle(&imageStore);
+    southernForestBattle.loadDefaults();
 
     EasternCastle easternCastle(&imageStore);
     easternCastle.loadDefaults();
 
-    //Create GameManager.
-    GameManager gameManager = GameManager();
+    //Set battlemaps.
+    homeTown.setBattleMap(&easternCastleBattle);
+    northernSnow.setBattleMap(&northernSnowBattle);
+    westernDesert.setBattleMap(&westernDesertBattle);
+    southernForest.setBattleMap(&southernForestBattle);
+    easternCastle.setBattleMap(&easternCastleBattle);
+
     gameManager.currMap = &homeTown;
     gameManager.player = playerEntity.getFirstPlayer();
-    gameManager.battleMap = &homeTownBattleScreen;
+    gameManager.battleMap = &easternCastleBattle;
     gameManager.cutSceneMap = &battleTransitionScreen;
     gameManager.loadPlayers(playerEntity.getThePlayers());
 
     int cutsceneFrameCount = 0;  //For display.
     srand (time(NULL));  //Seed random
 
-    FontStore fontStore;
-    fontStore.loadAllDefaultFonts();
-
-    BattleManager battleManager;
-
-    DrawRepository drawRepository;
     drawRepository.loadGameManager(&gameManager);
 
     CharacterManipulationStore characterManipulationStore;
@@ -164,6 +183,7 @@ int main(int argc, char **argv){
     battleManager.loadEnemyModel(imageStore.getBitMap("rat"));
     battleManager.loadEnemyModel(imageStore.getBitMap("wolf"));
     battleManager.loadEnemyModel(imageStore.getBitMap("soldier"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("iceBull"));
     battleManager.loadDrawRepository(&drawRepository);
     battleManager.loadBackpack(playerEntity.getPlayerInventory());
     battleManager.loadFontStore(&fontStore);
@@ -171,8 +191,8 @@ int main(int argc, char **argv){
     gameManager.loadDrawRepository(&drawRepository);
 
     //Cutscenes
-    Intro *theIntro = new Intro(); 
-    Instruct *theInstruct = new Instruct();
+    Intro *theIntro = new Intro(fontStore.getFont("default")); 
+    Instruct *theInstruct = new Instruct(fontStore.getFont("default"));
 
     drawRepository.loadCutscene(theIntro);   
     drawRepository.loadCutscene(theInstruct);
@@ -255,7 +275,7 @@ int main(int argc, char **argv){
 
                 //Check collisions.
                 Collision::characterToAreaMap(*gameManager.player ,
-                    gameManager.currMap);
+                    gameManager.currMap , &gameManager);
             
                 //Move the player on the map.
                 Movement::moveMap(*gameManager.player , *gameManager.currMap ,
@@ -272,10 +292,9 @@ int main(int argc, char **argv){
 
                 //Draw map.
                 Draw::drawArea(*gameManager.currMap , *gameManager.player);
-                                     
+ 
                 //Show variables.
 #ifdef ttfaddon
-
                 displayVariables(fontStore.getFont("default") ,
                     gameManager.getPressedKey() , gameManager.player ,
                     gameManager.currMap->getLayer(CENTERGROUND));

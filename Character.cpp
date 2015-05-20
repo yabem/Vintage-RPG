@@ -347,17 +347,12 @@ void Character::refreshCorners(){
 }
 
 //Draw to buffer.
-int Character::draw() const{
+void Character::draw() const{
     
-    if(sequence == 1)
-        int i = 1;
-
     al_draw_bitmap_region(image , 
     w * facing * 2 + (w * sequence) , 0 , //X and y draw from on bitmap.
     w , h ,                               //X and y draw to on bitmap.
     x , y , 0);                           //X and y draw to on buffer.
-
-    return 1;
 }
 
 //Increase frame count.

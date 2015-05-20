@@ -8,7 +8,7 @@ BattleVictory::BattleVictory(){
 
 //Constructor with parameters.
 BattleVictory::BattleVictory(AreaMap *currMap , CharacterList *characterList ,
-    I_Manager *i_Manager , TreasureBox *treasureBox){
+    I_Manager *i_Manager , TreasureBox *treasureBox , ALLEGRO_FONT *font){
 
     frameCount = 0;
     mapSwitch = 1;
@@ -16,6 +16,7 @@ BattleVictory::BattleVictory(AreaMap *currMap , CharacterList *characterList ,
     this->characterList = characterList;
     this->i_Manager = i_Manager;
     this->treasureBox = treasureBox;
+    this->font = font;
 
     createVictoryMessage();
     createCelebratingPlayers();
@@ -26,6 +27,8 @@ BattleVictory::~BattleVictory(){
 
     if(playersForVictoryCelebration.size() > 0)
         deletePlayers();
+
+    delete textBox;
 }
 
 //Deletes all of the Characters and reclaims the allocated memory.
@@ -112,7 +115,8 @@ void BattleVictory::createVictoryMessage(){
     }
 
     victoryMessage += ".";
-    textBox.loadText(victoryMessage);
+    //textBox->loadText(victoryMessage);
+    this->textBox = new TextBox(victoryMessage , font);
 }
 
 //Plays the battle victory. The cutscene switches back and forth
@@ -125,7 +129,7 @@ bool BattleVictory::play(const int pressedKey){
 
     playCelebratingPlayers();
 
-    textBox.draw();
+    textBox->draw();
 
     if(pressedKey == SPACE){
 

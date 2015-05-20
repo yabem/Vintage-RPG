@@ -1,10 +1,15 @@
 #include "NorthernSnow.h"
 
 //Constructor.
-NorthernSnow::NorthernSnow(ImageStore *imageStore){
+NorthernSnow::NorthernSnow(ImageStore *imageStore ,  DrawRepository *drawRepository ,
+        GameManager *gameManager , BattleManager *battleManager , FontStore *fontStore){
 
     this->imageStore = imageStore;
     this->sizeNorthernSnowLayout = LAYOUT_NORTHERN_SNOW_SIZE;
+    this->drawRepository = drawRepository;
+    this->gameManager = gameManager;
+    this->battleManager = battleManager;
+    this->fontStore = fontStore;
 
     backgroundLayerLayout = NULL;
     collisionLayerLayout = NULL;
@@ -40,13 +45,14 @@ NorthernSnow::~NorthernSnow(){
 //Loads all the default values and objects.
 void NorthernSnow::loadDefaults(){
 
-    this->loadClouds();
+    this->loadTheSceneries();
+    this->loadTheTangibles();
     this->loadAllMapConfigurationsForLayers();
     this->loadLayers();
 }
 
 //Loads all the cloud Scenery objects.
-void NorthernSnow::loadClouds(){
+void NorthernSnow::loadTheSceneries(){
 
     FallingImage *fallingSnow1 = new FallingImage
         (imageStore->getBitMap("snowFall") , 0 , -(SCREEN_H / 2) , 0 , 2);
@@ -62,6 +68,33 @@ void NorthernSnow::loadClouds(){
     this->loadScenery(fallingSnow3);
     this->loadScenery(fallingSnow2);
     this->loadScenery(fallingSnow1);
+}
+
+//Load the interactive models.
+void NorthernSnow::loadTheTangibles(){
+
+    NPCWithDialogueThenBattle *iceBull = new NPCWithDialogueThenBattle(imageStore->getBitMap("iceBull") ,
+        PixelConversion::convertTilesToPixels(20) , 
+        PixelConversion::convertTilesToPixels(20) ,        
+        this->drawRepository ,
+        this->gameManager , "Do you dare challenge the great Bull of the North?" ,
+        this->battleManager ,
+        this->fontStore->getFont("default"));
+    iceBull->createCharacter(130 , 78 , 60 , 1 , 4 , this);
+
+    std::vector<int> enemies;
+    enemies.push_back(RAT);
+    enemies.push_back(ICE_BULL);
+    enemies.push_back(RAT);
+
+    std::vector<int> enemyLevels;
+    enemyLevels.push_back(5);
+    enemyLevels.push_back(7);
+    enemyLevels.push_back(5);
+
+    iceBull->loadEnemies(enemies , enemyLevels);
+
+    this->loadTangible(iceBull);
 }
 
 //Loads all the layers to the areaMap.

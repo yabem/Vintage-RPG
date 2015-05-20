@@ -35,7 +35,7 @@ void Draw::drawArea(const AreaMap &areaMap , const Character &character){
 
     //Draw obstacles.
     for(int i = 0 ; i < areaMap.getNumTangibles() ; i++)
-        areaMap.getTangible(i);//.draw();
+        areaMap.getTangible(i).draw();
 
     //Draw clouds.
     for(int i = 0 ; i < areaMap.getNumSceneries() ; i++)

@@ -2,10 +2,7 @@
 #include "I_Animation.h"
 #include <allegro5/allegro_font.h>
 
-//Forward declarations.
 struct ALLEGRO_FONT;
-//al_draw_textf(font, al_map_rgb(tr , tg , tb), sx + FONTSIZE , sy + FONTHEIGHT * i , 0, it->c_str());
-
 
 class MovingText: public I_Animation{
 

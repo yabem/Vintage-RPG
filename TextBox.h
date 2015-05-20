@@ -9,6 +9,7 @@
 class TextBox: public I_InfoBox{
 
 protected:
+
     int sx , dx;        //X draw locations.
     int sy , dy;        //Y draw locations.
     int tr , tg , tb;   //Hues for the text color.
@@ -23,8 +24,8 @@ protected:
 
 public:
 
-    TextBox();                    //Default constructor.
-    TextBox(std::string text);    //Constructor.
+    TextBox(ALLEGRO_FONT *font);                        //Default constructor.
+    TextBox(std::string text , ALLEGRO_FONT *font);    //Constructor.
     virtual ~TextBox();
     virtual void loadText(std::string text);   //Loads text into the TextBox.
     virtual void formatText();     //Find number of rows based on length of text.
@@ -33,5 +34,4 @@ public:
     void setSY(int sy);     //Sets sy.
     void setDX(int dx);     //Sets dx.
     void setDY(int dy);     //Sets dy.
-    void destroyTextBox();  //Destroys the TextBox.
 };

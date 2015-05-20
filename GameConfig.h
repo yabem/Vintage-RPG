@@ -10,7 +10,7 @@ enum MYKEYS {UP , RIGHT , DOWN , LEFT , SPACE , Q , U , C};
 const int MAX_NUM_KEYS = 8;
 enum LAYERTYPES {BACKGROUND , CENTERGROUND , FOREGROUND};
 enum IMAGES {ATTACK, BLOCK, MAGIC}; //Used for images indexing values.
-enum ENEMIES {RAT , WOLF , SOLDIER};
+enum ENEMIES {RAT , WOLF , SOLDIER , ICE_BULL};
 const int MAX_ENEMIES = 3;  //Total number of possible enemies.
 const int MAX_ENEMIES_PER_BATTLE = 4; //Total number of enemies per battle.
 const int MAX_PLAYERS_PER_BATTLE = 4;
@@ -41,9 +41,13 @@ const int NO_KEY = -1;           //Default for resetting key.
 const int STARTCOL = 20;        //Initial starting col.
 const int STARTROW = 20;        //Initial starting row.
 
-const int DEFR = 255;           //Default red color.
-const int DEFG = 255;           //Default green color.
-const int DEFB = 255;           //Default blue color.
+const int DEFR = 0;           //Default red color.
+const int DEFG = 0;           //Default green color.
+const int DEFB = 0;           //Default blue color.
+
+const int DEFAULT_RED = 0;    //Red for text above players' heads during battle.
+const int DEFAULT_GREEN = 0;  //Green for text above players' heads during battle.
+const int DEFAULT_BLUE = 0;   //Blue for text above players' heads during battle.
 
 //Starting width for enemies on the battle screen.
 const int BATTLE_START_X_ENEMIES = SCREEN_W / 10;  

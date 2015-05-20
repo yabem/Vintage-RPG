@@ -12,10 +12,10 @@ private:
     int fade;
     int r , g , b;  //Red, green, and blue values for fading.
     ALLEGRO_FONT *introFont;
-    TextBox textBox;
+    TextBox *textBox;
 
 public:
-    Instruct();
+    Instruct(ALLEGRO_FONT *font);
     virtual ~Instruct();
     virtual bool play(const int pressedKey);
 };

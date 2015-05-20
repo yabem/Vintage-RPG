@@ -210,7 +210,6 @@ bool Movement::setStart(Character &character , AreaMap &areaMap , int col , int 
     return true;
 }
 
-
 //Set player and map to specified x and y coordinates.
 bool Movement::setStartCoords(Character &character , AreaMap &areaMap , int x , int y){
 

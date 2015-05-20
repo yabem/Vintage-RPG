@@ -2,7 +2,7 @@
 
 //Constructor with parameters.
 BattleLoss::BattleLoss(AreaMap *currMap , CharacterList *listOfPlayers ,
-        CharacterList *listOfEnemies , I_Manager *gameManager){
+        CharacterList *listOfEnemies , I_Manager *gameManager , ALLEGRO_FONT *font){
 
     frameCount = 0;
     mapSwitch = 1;
@@ -10,9 +10,12 @@ BattleLoss::BattleLoss(AreaMap *currMap , CharacterList *listOfPlayers ,
     this->listOfPlayers =  new CharacterList();
     this->listOfEnemies =  new CharacterList();
     this->gameManager = gameManager;
+    this->font = font;
 
-    textBox.loadText("You have been slain by the enemies. Press SPACE to "
-        "close the game.");
+    this->textBox = new TextBox("You have been slain by the enemies. Press SPACE to "
+        "close the game." , font);
+    //textBox->loadText("You have been slain by the enemies. Press SPACE to "
+    //    "close the game.");
 
     listOfPlayers->resetSelection();
     listOfEnemies->resetSelection();
@@ -37,6 +40,7 @@ BattleLoss::BattleLoss(AreaMap *currMap , CharacterList *listOfPlayers ,
 //Destructor.
 BattleLoss::~BattleLoss(){
 
+    delete textBox;
 }
 
 //Plays the battle victory. The cutscene switches back and forth
@@ -48,7 +52,7 @@ bool BattleLoss::play(const int pressedKey){
     Draw::drawArea(*currMap);
     Draw::drawCharListForBattle(this->listOfPlayers);
     Draw::drawCharListForBattle(this->listOfEnemies);
-    textBox.draw();
+    textBox->draw();
 
     if(pressedKey == SPACE){
 

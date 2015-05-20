@@ -17,14 +17,15 @@ private:
     AreaMap *currMap;   //Pointer to the current AreaMap that the player exists on.
     CharacterList *characterList;   //Pointer to the player.
     std::vector<Character*> playersForVictoryCelebration;
-    TextBox textBox;
+    TextBox *textBox;
     I_Manager *i_Manager;
     TreasureBox *treasureBox;
+    ALLEGRO_FONT *font;
 
 public:
     BattleVictory();
     BattleVictory(AreaMap *currMap , CharacterList *characterList ,
-        I_Manager *i_Manager , TreasureBox *treasureBox);
+        I_Manager *i_Manager , TreasureBox *treasureBox , ALLEGRO_FONT *font);
     virtual ~BattleVictory();
     void createCelebratingPlayers();
     void playCelebratingPlayers();

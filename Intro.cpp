@@ -1,12 +1,12 @@
 #include "Intro.h"
 
 //Default constructor.
-Intro::Intro(){
+Intro::Intro(ALLEGRO_FONT *introFont){
 
     fade = 8;
     r = 0 , g = 0 , b = 0;
     frameCount = 0;
-    introFont = al_load_font("arial.ttf" , 18 , 0);
+    this->introFont = introFont;
 }
 
 //Destructor.

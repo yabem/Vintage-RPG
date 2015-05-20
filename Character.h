@@ -103,7 +103,7 @@ public:
     void resetColl();                           //Reset all collisions to false.
     void refreshCorners();                      //Recalculate corners based off of x and y values.
 
-    int draw() const;                           //Draw to buffer.
+    void draw() const;                           //Draw to buffer.
     void animate();                             //Increase frame count.
     int move(bool *keys , int keyPressed);      //Move character based off of keys.
 

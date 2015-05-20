@@ -6,7 +6,6 @@
 #include "I_Animation.h"
 #include "Movement.h"
 #include "InitEnemies.h"
-#include "CharFactory.h"
 #include "CharacterList.h"
 #include "I_Manager.h"
 #include "DrawRepository.h"

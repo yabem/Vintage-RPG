@@ -8,10 +8,6 @@
 #include "Stats.h"
 #include "GameConfig.h"
 
-const int DEFAULT_RED = 255;
-const int DEFAULT_GREEN = 255;
-const int DEFAULT_BLUE = 255;
-
 class FloatingText : public I_InfoBox{
 
 private:

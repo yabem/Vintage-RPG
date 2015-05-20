@@ -16,6 +16,9 @@ void InitEnemies::init(Character *character , int enemyType , int level ,
         case SOLDIER:
             soldier(character , enemyType , level , enemies);
 
+        case ICE_BULL:
+            iceBull(character , enemyType , level , enemies);
+
         default:
             return;
     }
@@ -144,6 +147,49 @@ std::vector<std::string> InitEnemies::soldierRewards(){
     return rewards;
 }
 
+//Initialize to an ice bull.
+void InitEnemies::iceBull(Character *character , int enemyType ,
+    int level , vector<ALLEGRO_BITMAP*> enemies){
+
+    character->setImage(enemies[enemyType]);
+
+    //Base stats times level.
+    character->setW(al_get_bitmap_width(enemies[enemyType]));
+    character->setH(al_get_bitmap_height(enemies[enemyType])); 
+    
+    //Calculate stat values based off of level.
+    int hp = ICE_BULL_BASE_HP + (level * 6);
+    int mp = ICE_BULL_BASE_MP + (level * 3);
+    int atk = ICE_BULL_BASE_ATK + (level * 30);
+    int def = ICE_BULL_BASE_DEF + (level * 3);
+    float spd = ICE_BULL_BASE_SPEED - (level * 0.1);
+    int rewardXP = ICE_BULL_BASE_REWARD_XP + (level * 5);
+    int moneyReward = ICE_BULL_BASE_MONEY_REWARD;
+    std::vector<std::string> itemRewards = iceBullRewards();
+
+    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+        0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
+
+    character->setStats(charStats);
+}
+
+//Gets the iceBull's rewards.
+std::vector<std::string> InitEnemies::iceBullRewards(){
+
+    std::vector<std::string> rewards;
+    int randomNum = rand() % 100;
+
+    if(randomNum < 40)
+        rewards.push_back("Potion");
+
+    if(randomNum < 20)
+        rewards.push_back("Potion2");
+
+    if(randomNum < 10)
+        rewards.push_back("Potion3");
+
+    return rewards;
+}
 
 //Set the spacing so the enemies are drawn correctly on the screen.
 void InitEnemies::initEnemiesSpacing(vector<Character*> theEnemies){

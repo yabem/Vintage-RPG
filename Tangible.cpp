@@ -5,19 +5,23 @@
 #include "Tangible.h"
 
 //Constructor.
-Tangible::Tangible(ALLEGRO_BITMAP *bmap , int sx , int sy , int w , int h , int cx , int cy , int cw , int ch){
+Tangible::Tangible(ALLEGRO_BITMAP *image , int sx , int sy){
 
-    this->bmap = bmap;
+    this->image = image;
     this->sx = sx;
     this->sy = sy;
     this->dx = sx;
     this->dy = sy;
-    this->w = w;
-    this->h = h;
-    this->cx = cx;
-    this->cy = cy;
-    this->cw = cw;
-    this->ch = ch;
+    this->w = al_get_bitmap_width(image);
+    this->h = al_get_bitmap_height(image);
+    this->cx = 0;   //not used
+    this->cy = 0;   //not used
+    this->cw = w;
+    this->ch = h;
+}
+
+Tangible::~Tangible(){
+
 }
 
 //Return SX value.
@@ -68,7 +72,19 @@ int Tangible::getCH() const{
     return ch;
 }
 
-//Return DX value.
+//Return the height.
+int Tangible::getH() const{
+
+    return h;
+}
+
+//Return the width.
+int Tangible::getW() const{
+
+    return w;
+}
+
+//Sets DX value.
 bool Tangible::setDX(int dx){
     
     this->cx -= this->dx - dx;
@@ -84,6 +100,18 @@ bool Tangible::setDY(int dy){
     this->dy = dy;
 
     return true;
+}
+
+//set the collision width.
+void Tangible::setCW(int cw){
+
+    this->cw = cw;
+}
+
+//Sets the collision height.
+void Tangible::setCH(int ch){
+
+    this->ch = ch;
 }
 
 //Add value to DX.
@@ -103,8 +131,12 @@ bool Tangible::addToDY(int add){
 //Draw to the buffer.
 void Tangible::draw(){
     
-    al_draw_bitmap_region(bmap , 
+    al_draw_bitmap_region(image , 
         0 , 0 ,             //X and y draw from on bitmap.
         w , h ,             //X and y draw to on bitmap.
         dx , dy , 0);       //X and y draw to on buffer.
+}
+
+void Tangible::playCutscene(int pressedKey){
+
 }

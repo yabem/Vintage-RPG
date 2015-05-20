@@ -5,6 +5,11 @@
 #include "ImageStore.h"
 #include "Scenery.h"
 #include "Movement.h"
+#include "DrawRepository.h"
+#include "NPCWithDialogue.h"
+#include "GameManager.h"
+#include "PixelConversion.h"
+#include "FontStore.h"
 
 const int HOME_TOWN_LAYOUT_SIZE = 2500;
 
@@ -13,13 +18,14 @@ class HomeTown : public AreaMap{
 private:
 
     ImageStore *imageStore;
+    DrawRepository *drawRepository;
     int sizeHomeTownLayout;
     int *backgroundLayerLayout;
     int *collisionLayerLayout;
     int *canGoBehindLayerLayout;
 
-    void loadClouds();
-    void loadRocks();
+    void loadSceneries();
+    void loadTangibles();
     void loadLayers();
     void loadAllMapConfigurationsForLayers();
 
@@ -28,9 +34,13 @@ private:
     void loadCanGoBehindLayerMapConfiguration();
     void deleteAllLayerConfigurations();
 
+    GameManager *gameManager;
+    FontStore *fontStore;
+
 public:
 
-    HomeTown(ImageStore *imageStore);
+    HomeTown(ImageStore *imageStore , DrawRepository *drawRepository ,
+        GameManager *gameManager , FontStore *fontStore);
     virtual ~HomeTown();
     void loadDefaults();
 };

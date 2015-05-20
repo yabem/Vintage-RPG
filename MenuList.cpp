@@ -15,9 +15,9 @@ MenuList::~MenuList(){
 //Pre:  None.
 //Post: Creates a CharacterTimer with a Menu and the input Character.
 //      The CharacterTimer is pushed to the end of the vector.
-void MenuList::addMenuConnection(I_Creature *i_Creature){
+void MenuList::addMenuConnection(I_Creature *i_Creature , ALLEGRO_FONT *font){
 
-    Menu *menu = new Menu(i_Creature->getAbilities());
+    Menu *menu = new Menu(i_Creature->getAbilities() , font);
     menu->formatText();
     menu->setMenuToLeftOfCharacter(i_Creature);
     listOfMenus.push_back(menu);

@@ -4,9 +4,9 @@
 #include "AreaMap.h"
 #include "ImageStore.h"
 
-const int BATTLE_SCREEN_LAYOUT_SIZE = 300;
+const int WESTERN_DESERT_BATTLE_LAYOUT_SIZE = 300;
 
-class HomeTownBattleScreen : public AreaMap{
+class WesternDesertBattle : public AreaMap{
 
 private:
 
@@ -21,7 +21,7 @@ private:
 
 public:
 
-    HomeTownBattleScreen(ImageStore *imageStore);
-    virtual ~HomeTownBattleScreen();
+    WesternDesertBattle(ImageStore *imageStore);
+    virtual ~WesternDesertBattle();
     void loadDefaults();
 };

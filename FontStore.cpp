@@ -30,7 +30,7 @@ void FontStore::loadFont(std::string name , ALLEGRO_FONT *font){
 void FontStore::loadAllDefaultFonts(){
 
     loadFont("default" , al_load_font("arial.ttf" , 18 , 0));
-    loadFont("battleFont" , al_load_font("arial.ttf" , 14 , 0));
+    loadFont("battleFont" , al_load_font("arial.ttf" , 18 , 0));
 }
 
 //Returns the desired font.

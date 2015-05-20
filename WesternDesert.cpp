@@ -68,11 +68,11 @@ void WesternDesert::loadTheSceneries(){
 //Loads all the layers to the areaMap.
 void WesternDesert::loadLayers(){
 
-    Layer *backgroundLayer = new Layer(imageStore->getBitMap("westernDesert") ,
+    Layer *backgroundLayer = new Layer(imageStore->getBitMap("desertRegion") ,
         50 , 50 , this->backgroundLayerLayout , 2500);
-    Layer *collisionLayer = new Layer(imageStore->getBitMap("westernDesert") , 
+    Layer *collisionLayer = new Layer(imageStore->getBitMap("desertRegion") , 
         50 , 50 , this->collisionLayerLayout , 2500);
-    Layer *canGoBehindLayer = new Layer(imageStore->getBitMap("westernDesert") ,
+    Layer *canGoBehindLayer = new Layer(imageStore->getBitMap("desertRegion") ,
         50 , 50 , this->canGoBehindLayerLayout , 2500);
    
     this->loadLayer(backgroundLayer);

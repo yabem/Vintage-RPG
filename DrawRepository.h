@@ -6,6 +6,7 @@
 #include "Cutscene.h"
 #include "I_Animation.h"
 #include "Cursor.h"
+#include "I_InfoBox.h"
 
 class DrawRepository{
 
@@ -22,6 +23,9 @@ private:
 
     //Stores the Cursors that are drawn to the screen.
     std::queue<Cursor*> cursors;        
+
+    //Stores I_InfoBoxes to draw to the screen.
+    //std::queue<I_InfoBox*> infoBoxes;
 
 public:
 
@@ -60,4 +64,12 @@ public:
 
     //Plays all the loaded Animations.
     bool playAllAnimations();
+
+    /*
+    //Loads an InfoBox.
+    void loadInfoBox(I_InfoBox *infoBox);
+
+    //Draws the top InfoBox.
+    void drawTopInfoBox();
+    */
 };

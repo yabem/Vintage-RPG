@@ -11,14 +11,16 @@ private:
     AreaMap *currMap;   //Pointer to the current AreaMap that the player exists on.
     CharacterList *listOfPlayers;   //All the players.
     CharacterList *listOfEnemies;   //All the enemies.
-    TextBox textBox;
+    TextBox *textBox;
     I_Manager *gameManager;
+    ALLEGRO_FONT *font;
 
 public:
 
     //Constructor.
     BattleLoss(AreaMap *currMap , CharacterList *listOfPlayers ,
-        CharacterList *listOfEnemies , I_Manager *gameManager);
+        CharacterList *listOfEnemies , I_Manager *gameManager ,
+        ALLEGRO_FONT *font);
 
     //Destructor.
     virtual ~BattleLoss();
