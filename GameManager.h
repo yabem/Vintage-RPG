@@ -106,4 +106,7 @@ public:
 
     //Sets the pressedKey to inactive.
     virtual void setPressedKeyToInactive();
+
+    //Removes a tangible from the current area map.
+    bool removeTangibleFromCurrMap(std::string identifierName);
 };

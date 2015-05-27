@@ -9,6 +9,7 @@ SouthernForestBattle::SouthernForestBattle(ImageStore *imageStore){
 
 SouthernForestBattle::~SouthernForestBattle(){
 
+    /*
     vector<Scenery*>::iterator sceneryIter = sceneries.begin();
 
     while(sceneryIter != sceneries.end()){
@@ -29,7 +30,7 @@ SouthernForestBattle::~SouthernForestBattle(){
         layerIter++;
     }
     layers.clear();
-
+    */
     deleteAllLayerConfigurations();
 }
 

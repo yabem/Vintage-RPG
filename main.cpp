@@ -127,7 +127,7 @@ int main(int argc, char **argv){
     easternCastleBattle.loadDefaults();
     
     NorthernSnow northernSnow(&imageStore , &drawRepository , &gameManager , 
-        &battleManager , &fontStore);
+        &battleManager , &fontStore , 2500);
     northernSnow.loadDefaults();
 
     NorthernSnowBattle northernSnowBattle(&imageStore);
@@ -191,7 +191,8 @@ int main(int argc, char **argv){
     gameManager.loadDrawRepository(&drawRepository);
 
     //Cutscenes
-    Intro *theIntro = new Intro(fontStore.getFont("default")); 
+    Intro *theIntro = new Intro(fontStore.getFont("default") , &imageStore); 
+    theIntro->loadBackground();
     Instruct *theInstruct = new Instruct(fontStore.getFont("default"));
 
     drawRepository.loadCutscene(theIntro);   

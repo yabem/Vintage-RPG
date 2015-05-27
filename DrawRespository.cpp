@@ -63,7 +63,7 @@ void DrawRepository::playCutscenes(){
 
     else if(cutscenes.front()->play(pressedKey) == true){
 
-         if(pressedKey != NO_KEY)
+        if(pressedKey != NO_KEY)
             gameManager->setPressedKeyToInactive();
 
         if(cutscenes.front() != NULL){
@@ -163,16 +163,3 @@ bool DrawRepository::playAllAnimations(){
         return true;
     }
 }
-/*
-//Loads an InfoBox.
-void DrawRepository::loadInfoBox(I_InfoBox *infoBox){
-
-    infoBoxes.push(infoBox);
-}
-
-//Draws the top InfoBox.
-void DrawRepository::drawTopInfoBox(){
-
-    infoBoxes.front()
-}
-*/

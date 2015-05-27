@@ -40,10 +40,17 @@ void PlayerEntity::loadDefaultPlayers(){
 
     thePlayer->setFacing(DOWN);
 
+    /*
     thePlayer->loadAbilities("Attack,Jump,Item|Potion;Recover;");
     thePlayer2->loadAbilities("Attack,Shield Bash,Item|Potion;Recover;");
     thePlayer3->loadAbilities("Attack,Backstab,Item|Potion;Recover;");
     thePlayer4->loadAbilities("Attack,Magic|Fire1,Fire2,Fire3;Item|Potion;Recover;");
+    */
+
+    thePlayer->loadAbilities("Attack;");
+    thePlayer2->loadAbilities("Attack;");
+    thePlayer3->loadAbilities("Attack;");
+    thePlayer4->loadAbilities("Attack;");
    
     //CharacterList thePlayers;
     this->thePlayers->loadChar(thePlayer);

@@ -103,7 +103,12 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("monk" , al_load_bitmap("monk.png"));
     loadBitMap("clod" , al_load_bitmap("clod.png"));
     loadBitMap("joanna" , al_load_bitmap("joanna.png"));
- 
+    loadBitMap("forestBackground" , al_load_bitmap("forestBackground.png"));
+    loadBitMap("forestMidground" , al_load_bitmap("forestMidground.png"));
+    loadBitMap("forestForeground" , al_load_bitmap("forestForeground.png"));
+    loadBitMap("introPlayer" , al_load_bitmap("introPlayer.png"));
+    loadBitMap("moon" , al_load_bitmap("moon.png"));
+    
     loadBitMap("default" , al_load_bitmap("default.png"));
 
     std::map<std::string , ALLEGRO_BITMAP*>::iterator iter = images.begin();

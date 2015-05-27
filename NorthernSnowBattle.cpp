@@ -7,7 +7,7 @@ NorthernSnowBattle::NorthernSnowBattle(ImageStore *imageStore){
 }
 
 NorthernSnowBattle::~NorthernSnowBattle(){
-
+    /*
     vector<Scenery*>::iterator sceneryIter = sceneries.begin();
 
     while(sceneryIter != sceneries.end()){
@@ -28,6 +28,7 @@ NorthernSnowBattle::~NorthernSnowBattle(){
         layerIter++;
     }
     layers.clear();
+    */
 
     deleteAllLayerConfigurations();
 }

@@ -187,3 +187,12 @@ void GameManager::setPressedKeyToInactive(){
 
     pressedKey = NO_KEY;
 }
+
+//Removes a tangible from the current area map.
+//Pre:  None.
+//Post: Removes the Tangible that has the same identifierName as
+//      the input identifierName.
+bool GameManager::removeTangibleFromCurrMap(std::string identifierName){
+
+    return currMap->removeTangible(identifierName);
+}

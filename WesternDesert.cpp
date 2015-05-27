@@ -14,6 +14,7 @@ WesternDesert::WesternDesert(ImageStore *imageStore){
 //Destructor.
 WesternDesert::~WesternDesert(){
 
+    /*
     vector<Scenery*>::iterator sceneryIter = sceneries.begin();
 
     while(sceneryIter != sceneries.end()){
@@ -45,6 +46,7 @@ WesternDesert::~WesternDesert(){
         layerIter++;
     }
     layers.clear();
+    */
 
     deleteAllLayerConfigurations();
 }

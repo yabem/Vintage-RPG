@@ -14,6 +14,7 @@ EasternCastle::EasternCastle(ImageStore *imageStore){
 //Destructor.
 EasternCastle::~EasternCastle(){
 
+    /*
     vector<Scenery*>::iterator sceneryIter = sceneries.begin();
 
     while(sceneryIter != sceneries.end()){
@@ -45,7 +46,7 @@ EasternCastle::~EasternCastle(){
         layerIter++;
     }
     layers.clear();
-
+    */
     deleteAllLayerConfigurations();
 }
 

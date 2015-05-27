@@ -8,7 +8,6 @@
 #include <cmath>
 
 //Default constructor.
-
 Scenery::Scenery(){
 
     this->bmap = NULL;

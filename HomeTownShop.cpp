@@ -8,6 +8,7 @@ HomeTownShop::HomeTownShop(ImageStore *imageStore){
 
 HomeTownShop::~HomeTownShop(){
 
+    /*
     vector<Scenery*>::iterator sceneryIter = sceneries.begin();
 
     while(sceneryIter != sceneries.end()){
@@ -28,7 +29,7 @@ HomeTownShop::~HomeTownShop(){
         layerIter++;
     }
     layers.clear();
-
+    */
     deleteAllLayerConfigurations();
 }
 

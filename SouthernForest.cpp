@@ -14,6 +14,7 @@ SouthernForest::SouthernForest(ImageStore *imageStore){
 //Destructor.
 SouthernForest::~SouthernForest(){
 
+    /*
     vector<Scenery*>::iterator sceneryIter = sceneries.begin();
 
     while(sceneryIter != sceneries.end()){
@@ -45,7 +46,7 @@ SouthernForest::~SouthernForest(){
         layerIter++;
     }
     layers.clear();
-
+    */
     deleteAllLayerConfigurations();
 }
 

@@ -18,6 +18,7 @@ Tangible::Tangible(ALLEGRO_BITMAP *image , int sx , int sy){
     this->cy = 0;   //not used
     this->cw = w;
     this->ch = h;
+    this->identifierName = "";
 }
 
 Tangible::~Tangible(){
@@ -84,6 +85,12 @@ int Tangible::getW() const{
     return w;
 }
 
+//Return the identifierName.
+std::string Tangible::getIdentifierName(){
+
+    return identifierName;
+}
+
 //Sets DX value.
 bool Tangible::setDX(int dx){
     
@@ -126,6 +133,12 @@ bool Tangible::addToDY(int add){
 
     this->dy += add;
     return true;
+}
+
+//Sets the name identifier.
+void Tangible::setIdentifierName(std::string identifierName){
+
+    this->identifierName = identifierName;
 }
 
 //Draw to the buffer.

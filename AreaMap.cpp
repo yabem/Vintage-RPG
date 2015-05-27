@@ -13,6 +13,9 @@ AreaMap::AreaMap(){
 //Destructor.
 AreaMap::~AreaMap(){
 
+    deleteLayers();
+    deleteTangibles();
+    deleteSceneries();     
 }
 
 //Return the number of Layers.
@@ -67,6 +70,25 @@ int AreaMap::getExitDestR(int index) const{
 int AreaMap::getExitDestC(int index) const{
 
     return exits[index].destCol;
+}
+
+//Removes the tangible that matches the name.
+bool AreaMap::removeTangible(std::string identifierName){
+
+    std::vector<Tangible*>::iterator tangibleIter = tangibles.begin();
+
+    while(tangibleIter != tangibles.end()){
+
+        if((*tangibleIter)->getIdentifierName() == identifierName){
+
+            tangibles.erase(tangibleIter);
+            return true;
+        }
+
+        tangibleIter++;
+    }
+
+    return false;
 }
 
 //Return a pointer to the indexed exits destination map.
@@ -185,4 +207,48 @@ void AreaMap::animateSceneries(){
 
     for(iter = sceneries.begin() ; iter != sceneries.end() ; iter++)
         (*iter)->animate();
+}
+
+//Deallocates all Layers.
+void AreaMap::deleteLayers(){
+
+    vector<Layer*>::iterator layerIter = layers.begin();
+
+    while(layerIter != layers.end()){
+
+        delete (*layerIter);
+        (*layerIter) = NULL;
+        layerIter++;
+    }
+    layers.clear();
+}
+
+//Deallocates all Tangibles.
+void AreaMap::deleteTangibles(){
+
+    vector<Tangible*>::iterator tangibleIter = tangibles.begin();
+
+    while(tangibleIter != tangibles.end()){
+
+        delete (*tangibleIter);
+        (*tangibleIter) = NULL;
+        tangibleIter++;
+    }
+    tangibles.clear();
+
+}
+
+//Deallocates all Sceneries.
+void AreaMap::deleteSceneries(){
+
+    vector<Scenery*>::iterator sceneryIter = sceneries.begin();
+
+    while(sceneryIter != sceneries.end()){
+
+        delete (*sceneryIter);
+        (*sceneryIter) = NULL;
+        sceneryIter++;
+    }
+
+    sceneries.clear();
 }

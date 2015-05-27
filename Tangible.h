@@ -20,6 +20,7 @@ protected:
     int cx , cy;            //Start point for collision detection. Unused at the moment.
     int cw , ch;            //Width and height for collision detection. Unused at the moment.
     int sx , sy;            //Need to add this so I can calculate based off of the original start point.
+    std::string identifierName;  //Name used to delete the tangible. Optional.
     
 public:
 
@@ -39,13 +40,15 @@ public:
     int getCH() const;      //Return CH value. Unused at the moment.
     int getH() const;       //Returns the height.
     int getW() const;       //Returns the width.
+    std::string getIdentifierName();    //Returns the identifier name.
     
     bool setDX(int dx);     //Set DX to input.
     bool setDY(int dy);     //Set DY to input.
     void setCW(int cw);     //set the collision width.
     void setCH(int ch);     //Sets the collision height.
     bool addToDX(int add);  //Add value to DX.
-    bool addToDY(int add);  //Add vaue to DY.
+    bool addToDY(int add);  //Add value to DY.
+    void setIdentifierName(std::string identifierName); //Sets the identifier name.
     
     virtual void draw();             //Draw the Tangible to the buffer.
     virtual void playCutscene(int pressedKey);

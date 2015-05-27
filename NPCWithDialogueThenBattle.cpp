@@ -2,11 +2,13 @@
 
 NPCWithDialogueThenBattle::NPCWithDialogueThenBattle(ALLEGRO_BITMAP *image , int sx , int sy ,
     DrawRepository *drawRepository , GameManager *gameManager , 
-    std::string message , BattleManager *battleManager , ALLEGRO_FONT *font) : 
+    std::string message , BattleManager *battleManager , ALLEGRO_FONT *font ,
+    std::string nameOfNPC ) : 
     NPCWithDialogue(image , sx , sy , drawRepository , gameManager , message , font){
 
     this->battleManager = battleManager;
     this->font = font;
+    this->nameOfNPC = nameOfNPC;
 }
 
 NPCWithDialogueThenBattle::~NPCWithDialogueThenBattle(){
@@ -29,6 +31,10 @@ void NPCWithDialogueThenBattle::playCutscene(int pressedKey){
     StartBattle *startBattle = new StartBattle(this->battleManager ,
         enemyList , enemyLevels);
     this->drawRepository->loadCutscene(startBattle);
+
+    RemoveTangible *removeTangible = new RemoveTangible(this->gameManager ,
+        this->nameOfNPC);
+    this->drawRepository->loadCutscene(removeTangible);
 
     gameManager->resetPressedKey();
 }

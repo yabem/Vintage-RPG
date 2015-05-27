@@ -64,12 +64,4 @@ public:
 
     //Plays all the loaded Animations.
     bool playAllAnimations();
-
-    /*
-    //Loads an InfoBox.
-    void loadInfoBox(I_InfoBox *infoBox);
-
-    //Draws the top InfoBox.
-    void drawTopInfoBox();
-    */
 };

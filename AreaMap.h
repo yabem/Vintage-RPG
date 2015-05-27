@@ -39,7 +39,7 @@ protected:
 public:
 
     AreaMap();                      //Constructor.
-    virtual ~AreaMap();                     //Destructor.
+    virtual ~AreaMap();             //Destructor.
 
     int getNumLayers() const;       //Return the number of Layers.
     int getNumTangibles() const;    //Return the number of Tangibles.
@@ -49,6 +49,7 @@ public:
     int getExitC(int index) const;  //Return the exit col of the indexed exit.
     int getExitDestR(int index) const; //Return the destination row of the indexed exit.
     int getExitDestC(int index) const; //Return the destination col of the indexed exit.
+    bool removeTangible(std::string identifierName); //Removes the tangible that matches the name.
 
     AreaMap* getToMap(int index) const; //Return a pointer to the indexed exits destination map.   
     Layer& getLayer(int index) const;         //Return a reference to the indexed Layer.
@@ -69,4 +70,8 @@ public:
     void setLayersDY(int y);                //Set the DY values for every layer.
 
     void animateSceneries();                //Animate each Scenery in the sceneries vector.
+
+    void deleteLayers();        //Deallocates all Layers.
+    void deleteTangibles();     //Deallocates all Tangibles.
+    void deleteSceneries();     //Deallocates all Sceneries.
 };

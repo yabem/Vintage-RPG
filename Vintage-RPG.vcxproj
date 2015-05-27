@@ -70,6 +70,7 @@
   <ItemGroup>
     <ClCompile Include="Backstab.cpp" />
     <ClCompile Include="BattleTransitionScreen.cpp" />
+    <ClCompile Include="CustomAreaMap.cpp" />
     <ClCompile Include="Dialogue.cpp" />
     <ClCompile Include="EasternCastle.cpp" />
     <ClCompile Include="FallingImage.cpp" />
@@ -81,6 +82,8 @@
     <ClCompile Include="HomeTown.cpp" />
     <ClCompile Include="Instruct.cpp" />
     <ClCompile Include="Intro.cpp" />
+    <ClCompile Include="RemoveTangible.cpp" />
+    <ClCompile Include="RightToLeftImage.cpp" />
     <ClCompile Include="Lightning.cpp" />
     <ClCompile Include="LoadExitsForEasternCastle.cpp" />
     <ClCompile Include="LoadExitsForHomeTown.cpp" />
@@ -188,11 +191,14 @@
   <ItemGroup>
     <ClInclude Include="Backstab.h" />
     <ClInclude Include="BattleTransitionScreen.h" />
+    <ClInclude Include="CustomAreaMap.h" />
     <ClInclude Include="Dialogue.h" />
     <ClInclude Include="DUMMY.h" />
     <ClInclude Include="EasternCastle.h" />
     <ClInclude Include="FilterImage.h" />
     <ClInclude Include="FlashingImage.h" />
+    <ClInclude Include="RemoveTangible.h" />
+    <ClInclude Include="RightToLeftImage.h" />
     <ClInclude Include="Lightning.h" />
     <ClInclude Include="NorthernSnowBattle.h" />
     <ClInclude Include="NPCWithDialogue.h" />

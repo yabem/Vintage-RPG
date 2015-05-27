@@ -9,6 +9,7 @@ WesternDesertBattle::WesternDesertBattle(ImageStore *imageStore){
 
 WesternDesertBattle::~WesternDesertBattle(){
 
+    /*
     vector<Scenery*>::iterator sceneryIter = sceneries.begin();
 
     while(sceneryIter != sceneries.end()){
@@ -29,7 +30,7 @@ WesternDesertBattle::~WesternDesertBattle(){
         layerIter++;
     }
     layers.clear();
-
+    */
     deleteAllLayerConfigurations();
 }
 

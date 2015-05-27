@@ -2,10 +2,13 @@
 
 //Constructor.
 NorthernSnow::NorthernSnow(ImageStore *imageStore ,  DrawRepository *drawRepository ,
-        GameManager *gameManager , BattleManager *battleManager , FontStore *fontStore){
+        GameManager *gameManager , BattleManager *battleManager , FontStore *fontStore ,
+        int layoutSize) : CustomAreaMap(imageStore , drawRepository , gameManager , 
+        battleManager , fontStore , layoutSize){
 
+            /*
     this->imageStore = imageStore;
-    this->sizeNorthernSnowLayout = LAYOUT_NORTHERN_SNOW_SIZE;
+    this->layoutSize = layoutSize;
     this->drawRepository = drawRepository;
     this->gameManager = gameManager;
     this->battleManager = battleManager;
@@ -13,11 +16,13 @@ NorthernSnow::NorthernSnow(ImageStore *imageStore ,  DrawRepository *drawReposit
 
     backgroundLayerLayout = NULL;
     collisionLayerLayout = NULL;
+    */
 }
 
 //Destructor.
 NorthernSnow::~NorthernSnow(){
 
+    /*
     vector<Scenery*>::iterator sceneryIter = sceneries.begin();
 
     while(sceneryIter != sceneries.end()){
@@ -39,9 +44,21 @@ NorthernSnow::~NorthernSnow(){
     }
     layers.clear();
 
-    deleteAllLayerConfigurations();
-}
+    vector<Tangible*>::iterator tangibleIter = tangibles.begin();
 
+    while(tangibleIter != tangibles.end()){
+
+        delete (*tangibleIter);
+        (*tangibleIter) = NULL;
+        tangibleIter++;
+    }
+    tangibles.clear();
+
+    
+    deleteAllLayerConfigurations();
+    */
+}
+/*
 //Loads all the default values and objects.
 void NorthernSnow::loadDefaults(){
 
@@ -50,6 +67,7 @@ void NorthernSnow::loadDefaults(){
     this->loadAllMapConfigurationsForLayers();
     this->loadLayers();
 }
+*/
 
 //Loads all the cloud Scenery objects.
 void NorthernSnow::loadTheSceneries(){
@@ -79,8 +97,11 @@ void NorthernSnow::loadTheTangibles(){
         this->drawRepository ,
         this->gameManager , "Do you dare challenge the great Bull of the North?" ,
         this->battleManager ,
-        this->fontStore->getFont("default"));
+        this->fontStore->getFont("default") ,
+        "iceBull"); //Used when deleting the Tangible once the fight is over.
+
     iceBull->createCharacter(130 , 78 , 60 , 1 , 4 , this);
+    iceBull->setIdentifierName("iceBull");
 
     std::vector<int> enemies;
     enemies.push_back(RAT);
@@ -110,12 +131,14 @@ void NorthernSnow::loadLayers(){
     this->loadLayer(collisionLayer);
 }
 
+/*
 //Loads all of the map configurations for each of the layers.
 void NorthernSnow::loadAllMapConfigurationsForLayers(){
 
     loadBackgroundLayerMapConfiguration();
     loadCollisionLayerMapConfiguration();
 }
+*/
 
 void NorthernSnow::loadBackgroundLayerMapConfiguration(){
 
@@ -223,9 +246,10 @@ int backgroundLayerLayout[] = {
         12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,13
     };
 
-    this->backgroundLayerLayout = new int[this->sizeNorthernSnowLayout];
+    //this->backgroundLayerLayout = new int[this->sizeNorthernSnowLayout];
+    this->backgroundLayerLayout = new int[this->layoutSize];
 
-    for(int i = 0 ; i < this->sizeNorthernSnowLayout ; i++)    
+    for(int i = 0 ; i < this->layoutSize ; i++)    
         this->backgroundLayerLayout[i] = backgroundLayerLayout[i];
 }
 
@@ -335,8 +359,8 @@ void NorthernSnow::loadCollisionLayerMapConfiguration(){
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1,48,48, 0, 0, 0,48,48, 1, 1, 1, 1, 1, 1, 1, 1
     };
 
-    this->collisionLayerLayout = new int[this->sizeNorthernSnowLayout];
-    for(int i = 0 ; i < this->sizeNorthernSnowLayout ; i++)    
+    this->collisionLayerLayout = new int[this->layoutSize];
+    for(int i = 0 ; i < this->layoutSize ; i++)    
         this->collisionLayerLayout[i] = collisionLayerLayout[i];
 }
 

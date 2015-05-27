@@ -9,6 +9,7 @@ BattleTransitionScreen::BattleTransitionScreen(ImageStore *imageStore){
 
 BattleTransitionScreen::~BattleTransitionScreen(){
 
+    /*
     vector<Scenery*>::iterator sceneryIter = sceneries.begin();
 
     while(sceneryIter != sceneries.end()){
@@ -29,7 +30,7 @@ BattleTransitionScreen::~BattleTransitionScreen(){
         layerIter++;
     }
     layers.clear();
-
+    */
     deleteAllLayerConfigurations();
 }
 

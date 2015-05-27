@@ -18,7 +18,7 @@ HomeTown::HomeTown(ImageStore *imageStore , DrawRepository *drawRepository ,
 
 //Destructor.
 HomeTown::~HomeTown(){
-
+    /*
     vector<Scenery*>::iterator sceneryIter = sceneries.begin();
 
     while(sceneryIter != sceneries.end()){
@@ -50,7 +50,7 @@ HomeTown::~HomeTown(){
         layerIter++;
     }
     layers.clear();
-
+    */
     deleteAllLayerConfigurations();
 }
 
@@ -133,7 +133,7 @@ void HomeTown::loadTangibles(){
         PixelConversion::convertTilesToPixels(46) , 
         PixelConversion::convertTilesToPixels(4) ,        
         this->drawRepository ,
-        this->gameManager , "Witch: There sure are some extreme seasons in this country." ,
+        this->gameManager , "Witch: There are some extreme seasons in this country." ,
         this->fontStore->getFont("default"));
     witch->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     witch->setCW(32);
@@ -144,7 +144,7 @@ void HomeTown::loadTangibles(){
         PixelConversion::convertTilesToPixels(33) , 
         PixelConversion::convertTilesToPixels(36) ,        
         this->drawRepository ,
-        this->gameManager , "Strife: I don't need these shades with all the clouds in the sky." ,
+        this->gameManager , "Strife: This wind is really killing my hair..." ,
         this->fontStore->getFont("default"));
     strife->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     strife->setCW(32);
@@ -174,7 +174,7 @@ void HomeTown::loadTangibles(){
     clod->setCharacterFacing(DOWN);
 
     NPCWithDialogue *joanna = new NPCWithDialogue(imageStore->getBitMap("joanna") ,
-        PixelConversion::convertTilesToPixels(8) , 
+        PixelConversion::convertTilesToPixels(6) , 
         PixelConversion::convertTilesToPixels(19) ,        
         this->drawRepository ,
         this->gameManager , "Joanna: Dickle punch with lightning!" ,

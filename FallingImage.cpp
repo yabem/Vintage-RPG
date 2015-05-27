@@ -17,7 +17,7 @@ void FallingImage::animate(){
     dx += moveRateX;
     dy += moveRateY;
 
-    //Check if the Scenery has gone across the entire screen width.
+    //Check if the Scenery has gone across the entire screen height.
     if(dy >= 0){
 
         dx = sx;

@@ -741,6 +741,15 @@
     <ClCompile Include="EasternCastleBattle.cpp">
       <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
     </ClCompile>
+    <ClCompile Include="RightToLeftImage.cpp">
+      <Filter>Source Files\Scenery\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="RemoveTangible.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomAreaMap.cpp">
+      <Filter>Source Files\Map\AreaMap\Base Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageStore.h">
@@ -1093,6 +1102,15 @@
     </ClInclude>
     <ClInclude Include="EasternCastleBattle.h">
       <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="RightToLeftImage.h">
+      <Filter>Header Files\Scenery\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="RemoveTangible.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomAreaMap.h">
+      <Filter>Header Files\Map\AreaMap\Base Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

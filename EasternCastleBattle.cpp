@@ -8,6 +8,7 @@ EasternCastleBattle::EasternCastleBattle(ImageStore *imageStore){
 
 EasternCastleBattle::~EasternCastleBattle(){
 
+    /*
     vector<Scenery*>::iterator sceneryIter = sceneries.begin();
 
     while(sceneryIter != sceneries.end()){
@@ -28,7 +29,7 @@ EasternCastleBattle::~EasternCastleBattle(){
         layerIter++;
     }
     layers.clear();
-
+    */
     deleteAllLayerConfigurations();
 }
 
