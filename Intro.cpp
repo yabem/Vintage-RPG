@@ -35,7 +35,7 @@ void Intro::loadBackground(){
     this->character = new Character(imageStore->getBitMap("introPlayer")
         , 32 , 32 , 10 , 5 , rate);
     character->setFacing(UP);
-    character->setX(15);
+    character->setX(PixelConversion::convertTilesToPixels(9));
     character->setY(313);
 
     this->foreground = new RightToLeftImage(

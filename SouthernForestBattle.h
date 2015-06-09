@@ -1,27 +1,19 @@
 //The battle map for when the players fight in the town.
 
 #pragma once
-#include "AreaMap.h"
-#include "ImageStore.h"
+#include "CustomAreaMap.h"
 
-const int SOUTHERN_FOREST_BATTLE_SCREEN_LAYOUT_SIZE = 300;
+class ImageStore;
 
-class SouthernForestBattle : public AreaMap{
+class SouthernForestBattle : public CustomAreaMap{
 
 private:
 
-    ImageStore *imageStore;
-    int sizeOfBattleCutsceneLayout;
-    int *backgroundLayerLayout;
-
     void loadLayers();
-    void loadAllMapConfigurationsForLayers();
-    void loadBackgroundLayerConfiguration();
-    void deleteAllLayerConfigurations();
+    void loadBackgroundLayerMapConfiguration();
 
 public:
 
-    SouthernForestBattle(ImageStore *imageStore);
+    SouthernForestBattle(ImageStore *imageStore , int layoutSize);
     virtual ~SouthernForestBattle();
-    void loadDefaults();
 };

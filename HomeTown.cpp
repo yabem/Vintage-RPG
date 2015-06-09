@@ -2,69 +2,18 @@
 
 //Constructor.
 HomeTown::HomeTown(ImageStore *imageStore , DrawRepository *drawRepository ,
-    GameManager *gameManager , FontStore *fontStore){
-
-    this->imageStore = imageStore;
-    this->drawRepository = drawRepository;
-    this->sizeHomeTownLayout = HOME_TOWN_LAYOUT_SIZE;
-
-    backgroundLayerLayout = NULL;
-    collisionLayerLayout = NULL;
-    canGoBehindLayerLayout = NULL;
-
-    this->gameManager = gameManager;
-    this->fontStore = fontStore;
+        GameManager *gameManager , BattleManager *battleManager , 
+        FontStore *fontStore , int layoutSize) : 
+            CustomAreaMap(imageStore , drawRepository , gameManager , 
+            battleManager , fontStore , layoutSize){
 }
 
 //Destructor.
 HomeTown::~HomeTown(){
-    /*
-    vector<Scenery*>::iterator sceneryIter = sceneries.begin();
-
-    while(sceneryIter != sceneries.end()){
-
-        delete (*sceneryIter);
-        (*sceneryIter) = NULL;
-        sceneryIter++;
-    }
-
-    sceneries.clear();
-
-    vector<Tangible*>::iterator tangiblesIter = tangibles.begin();
-
-    while(tangiblesIter != tangibles.end()){
-
-        delete (*tangiblesIter);
-        (*tangiblesIter) = NULL;
-        tangiblesIter++;
-    }
-
-    tangibles.clear();
-
-    vector<Layer*>::iterator layerIter = layers.begin();
-
-    while(layerIter != layers.end()){
-
-        delete (*layerIter);
-        (*layerIter) = NULL;
-        layerIter++;
-    }
-    layers.clear();
-    */
-    deleteAllLayerConfigurations();
-}
-
-//Loads all the default values and objects.
-void HomeTown::loadDefaults(){
-
-    this->loadSceneries();
-    this->loadTangibles();
-    this->loadAllMapConfigurationsForLayers();
-    this->loadLayers();
 }
 
 //Loads all the cloud Scenery objects.
-void HomeTown::loadSceneries(){
+void HomeTown::loadTheSceneries(){
 
     Scenery *cloud1 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 0 , -4 , 1);
     cloud1->setDX(80);    cloud1->setDY(0);
@@ -96,51 +45,67 @@ void HomeTown::loadSceneries(){
     this->loadScenery(cloud9);
 }
 
-void HomeTown::loadTangibles(){
+void HomeTown::loadTheTangibles(){
 
-    NPCWithDialogue *talkingRock = new NPCWithDialogue(imageStore->getBitMap("rock") ,
+    NPCWithDialogue *talkingRock = new NPCWithDialogue(
+        imageStore->getBitMap("rock") ,
         PixelConversion::convertTilesToPixels(26) , 
         PixelConversion::convertTilesToPixels(26) ,
         this->drawRepository ,
-        this->gameManager , "Mighty Rock: I'm a rock, are you really trying to talk to a rock?" ,
+        this->gameManager , 
+        "Mighty Rock: I'm a rock, are you really trying to talk to a rock?" ,
         this->fontStore->getFont("default"));
     talkingRock->createCharacter(32 , 32 , 60 , 1 , 4 , this);
 
-    NPCWithDialogue *storeOwner = new NPCWithDialogue(imageStore->getBitMap("player") ,
+    NPCWithDialogueAndGift *storeOwner = new NPCWithDialogueAndGift(
+        imageStore->getBitMap("player") ,
         PixelConversion::convertTilesToPixels(25) , 
         PixelConversion::convertTilesToPixels(25) ,
         this->drawRepository ,
-        this->gameManager , "Store Owner: Help! The town is deserted. You need to figure out what happened!",
-        this->fontStore->getFont("default"));
+        this->gameManager , 
+        "Store Owner: Hey! You look a lot like me! Take this and help us figure out what happened.",
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity());
     storeOwner->createCharacter(32 , 32 , 90 , 2 , 4 , this);
     storeOwner->setCW(32);
     storeOwner->setCH(32);
+    storeOwner->setGift("player" , "Jump");
+    storeOwner->setRewardNotification("Player received the Jump ability!");
+    storeOwner->setMessageAfterGiftDelivery("Sorry, that's all I have to give you.");
     storeOwner->setCharacterFacing(DOWN);
 
-    NPCWithDialogue *mysteriousMan = new NPCWithDialogue(imageStore->getBitMap("mysteriousMan") ,
+    NPCWithDialogueAndGift *mysteriousMan = new NPCWithDialogueAndGift(
+        imageStore->getBitMap("mysteriousMan") ,
         PixelConversion::convertTilesToPixels(3) , 
         PixelConversion::convertTilesToPixels(3) ,        
         this->drawRepository ,
-        this->gameManager , "Mysterious Man: Hey you, come here. I have a secret I need to tell you. It's about"
-        "the mysterious dickle punch. Learn it and you ascertain great power... at a price..." ,
-        this->fontStore->getFont("default"));
+        this->gameManager , 
+        "Mysterious Man: I bet your mage could use this handy spell." ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity());
     mysteriousMan->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     mysteriousMan->setCW(32);
     mysteriousMan->setCH(32);
+    mysteriousMan->setGift("mage" , "Fire1");
+    mysteriousMan->setRewardNotification("mage received the Fire1 spell!");
+    mysteriousMan->setMessageAfterGiftDelivery("Try out the spell, I'm sure you'll enjoy it. Hadouken!");
     mysteriousMan->setCharacterFacing(DOWN);
 
-    NPCWithDialogue *witch = new NPCWithDialogue(imageStore->getBitMap("witch") ,
+    NPCWithDialogue *witch = new NPCWithDialogue(
+        imageStore->getBitMap("witch") ,
         PixelConversion::convertTilesToPixels(46) , 
         PixelConversion::convertTilesToPixels(4) ,        
         this->drawRepository ,
-        this->gameManager , "Witch: There are some extreme seasons in this country." ,
+        this->gameManager , 
+        "Witch: There are some extreme seasons in this country." ,
         this->fontStore->getFont("default"));
     witch->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     witch->setCW(32);
     witch->setCH(32);
     witch->setCharacterFacing(DOWN);
 
-    NPCWithDialogue *strife = new NPCWithDialogue(imageStore->getBitMap("strife") ,
+    NPCWithDialogue *strife = new NPCWithDialogue(
+        imageStore->getBitMap("strife") ,
         PixelConversion::convertTilesToPixels(33) , 
         PixelConversion::convertTilesToPixels(36) ,        
         this->drawRepository ,
@@ -151,47 +116,198 @@ void HomeTown::loadTangibles(){
     strife->setCH(32);
     strife->setCharacterFacing(DOWN);
 
-    NPCWithDialogue *monk = new NPCWithDialogue(imageStore->getBitMap("monk") ,
-        PixelConversion::convertTilesToPixels(9) , 
-        PixelConversion::convertTilesToPixels(40) ,        
-        this->drawRepository ,
-        this->gameManager , "Monk: Monk monk monk monk monk monk... MONK!" ,
-        this->fontStore->getFont("default"));
-    monk->createCharacter(32 , 32 , 60 , 2 , 4 , this);
-    monk->setCW(32);
-    monk->setCH(32);
-    monk->setCharacterFacing(DOWN);
-
-    NPCWithDialogue *clod = new NPCWithDialogue(imageStore->getBitMap("clod") ,
+    NPCWithDialogue *clod = new NPCWithDialogue(
+        imageStore->getBitMap("clod") ,
         PixelConversion::convertTilesToPixels(8) , 
         PixelConversion::convertTilesToPixels(19) ,        
         this->drawRepository ,
-        this->gameManager , "Clod: I am the proud one!" ,
+        this->gameManager , 
+        "Clod: I am the proud one!" ,
         this->fontStore->getFont("default"));
     clod->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     clod->setCW(32);
     clod->setCH(32);
     clod->setCharacterFacing(DOWN);
 
-    NPCWithDialogue *joanna = new NPCWithDialogue(imageStore->getBitMap("joanna") ,
+    NPCWithDialogue *joanna = new NPCWithDialogue(
+        imageStore->getBitMap("joanna") ,
         PixelConversion::convertTilesToPixels(6) , 
         PixelConversion::convertTilesToPixels(19) ,        
         this->drawRepository ,
-        this->gameManager , "Joanna: Dickle punch with lightning!" ,
+        this->gameManager , 
+        "Joanna: Dickle punch with lightning!" ,
         this->fontStore->getFont("default"));
     joanna->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     joanna->setCW(32);
     joanna->setCH(32);
     joanna->setCharacterFacing(DOWN);
 
+    ItemLocationWithGift *treasureBoxWithRecoverForPlayer = new ItemLocationWithGift(
+        imageStore->getBitMap("treasureBox1") ,
+        PixelConversion::convertTilesToPixels(18) , 
+        PixelConversion::convertTilesToPixels(18) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    treasureBoxWithRecoverForPlayer->setRewardNotification(
+        "Player learned the Recover ability!");
+    treasureBoxWithRecoverForPlayer->setGift(
+        "player" , "Recover");
+    treasureBoxWithRecoverForPlayer->setMessageAfterGiftDelivery(
+        "Nothing out of the ordinary.");
+
+    ItemLocationWithGift *treasureBoxWithRecoverForMage = new ItemLocationWithGift(
+        imageStore->getBitMap("treasureBox2") ,
+        PixelConversion::convertTilesToPixels(19) , 
+        PixelConversion::convertTilesToPixels(18) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    treasureBoxWithRecoverForMage->setRewardNotification(
+        "Mage learned the Recover ability!");
+    treasureBoxWithRecoverForMage->setGift(
+        "mage" , "Recover");
+    treasureBoxWithRecoverForMage->setMessageAfterGiftDelivery(
+        "The box is empty.");
+
+    ItemLocationWithGift *treasureBarrelWithRecoverForThief = new ItemLocationWithGift(
+        imageStore->getBitMap("treasureBarrel") ,
+        PixelConversion::convertTilesToPixels(12) , 
+        PixelConversion::convertTilesToPixels(10) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    treasureBarrelWithRecoverForThief->setRewardNotification(
+        "Thief learned the Recover ability!");
+    treasureBarrelWithRecoverForThief->setGift(
+        "thief" , "Recover");
+    treasureBarrelWithRecoverForThief->setMessageAfterGiftDelivery(
+        "Nothing worth noting.");
+
+    ItemLocationWithGift *treasureBarrelWithRecoverForWarrior = new ItemLocationWithGift(
+        imageStore->getBitMap("treasureBarrel") ,
+        PixelConversion::convertTilesToPixels(33) , 
+        PixelConversion::convertTilesToPixels(37) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    treasureBarrelWithRecoverForWarrior->setRewardNotification(
+        "Warrior learned the Recover ability!");
+    treasureBarrelWithRecoverForWarrior->setGift(
+        "warrior" , "Recover");
+    treasureBarrelWithRecoverForWarrior->setMessageAfterGiftDelivery(
+        "The barrel is empty.");
+
+    NPCWithDialogueAndQuest *strifeTheQuestGiver = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("strife") ,
+        PixelConversion::convertTilesToPixels(17) , 
+        PixelConversion::convertTilesToPixels(17) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    strifeTheQuestGiver->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    strifeTheQuestGiver->setCW(32);
+    strifeTheQuestGiver->setCH(32);
+    strifeTheQuestGiver->setCharacterFacing(DOWN);
+    strifeTheQuestGiver->setQuestExplanation(
+        "I'm making a delicious stew but I'm all out of rat eyeballs."  
+        "I need you to kill 3 rats so I can get the last 6 eyes that " 
+        "the recipe requires. Can you do that for me? Of course you will! " 
+        "Thanks in advance!");
+    strifeTheQuestGiver->setQuestReminder(
+        "Have you killed those 3 rats yet? Chop chop, I don't have much time!");
+    strifeTheQuestGiver->setQuestCompleteMessage(
+        "Wow, these eyes are so big and juicy, they'll be perfect! Here take this...");
+    strifeTheQuestGiver->setRewardNotification(
+        "Player received the Jump ability!");
+    strifeTheQuestGiver->setGift("player" , "Jump");
+    strifeTheQuestGiver->setQuestAfterCompleteMessage(
+        "The soup turned out great. Thanks for the eye balls."
+        );
+
+    KillQuest *kill3Rats = new KillQuest();
+    kill3Rats->setQuestDisplayName("Three Semi-Blind Mice");
+    kill3Rats->addObjective("rat" , 3);
+    kill3Rats->addObjective("wolf" , 8);
+    kill3Rats->addObjective("soldier" , 6);
+    kill3Rats->setMustBeActiveForPlayerToUpdate();
+    strifeTheQuestGiver->loadQuest(kill3Rats);
+    gameManager->getPlayerEntity()->addQuest("ratQuest" , kill3Rats);
+
+    NPCWithDialogueAndQuest *skugsTheQuestGiver = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("monk") ,
+        PixelConversion::convertTilesToPixels(9) , 
+        PixelConversion::convertTilesToPixels(40) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    skugsTheQuestGiver->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    skugsTheQuestGiver->setCW(32);
+    skugsTheQuestGiver->setCH(32);
+    skugsTheQuestGiver->setCharacterFacing(DOWN);
+    skugsTheQuestGiver->setQuestExplanation(
+        "I was out training in the dessert... no the desert... and "  
+        "I ran into a demon near the graves and I ran away because it was " 
+        "too strong. Please go kill it so I can continue my training and " 
+        "get me a neon orange belt.");
+    skugsTheQuestGiver->setQuestReminder(
+        "Any luck killing the demon in the desert? ");
+    skugsTheQuestGiver->setQuestCompleteMessage(
+        "I really didn't think you could do it to be honest. I'm impressed. Take "
+        "this as a token of my gratitude.");
+    skugsTheQuestGiver->setRewardNotification(
+        "Player received the Triple Thrust ability!");
+    skugsTheQuestGiver->setGift("player" , "Triple Thrust");
+    skugsTheQuestGiver->setQuestAfterCompleteMessage(
+        "You're my hero, peculiar person that doesn't say anything."
+        );
+
+    KillQuest *killDesertDemon= new KillQuest();
+    killDesertDemon->setQuestDisplayName("A Demon in the Desert");
+    killDesertDemon->addObjective("demon" , 1);
+    skugsTheQuestGiver->loadQuest(killDesertDemon);
+    gameManager->getPlayerEntity()->addQuest("demonQuest" , killDesertDemon);
+
+    /*
+    NPCWithDialogue *monk = new NPCWithDialogue(
+        imageStore->getBitMap("monk") ,
+        PixelConversion::convertTilesToPixels(9) , 
+        PixelConversion::convertTilesToPixels(40) ,        
+        this->drawRepository ,
+        this->gameManager , 
+        "Monk: Monk monk monk monk monk monk... MONK!" ,
+        this->fontStore->getFont("default"));
+    monk->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    monk->setCW(32);
+    monk->setCH(32);
+    monk->setCharacterFacing(DOWN);
+    */
+
     this->loadTangible(talkingRock);
     this->loadTangible(storeOwner);
     this->loadTangible(mysteriousMan);
     this->loadTangible(witch);
     this->loadTangible(strife);
-    this->loadTangible(monk);
     this->loadTangible(clod);
     this->loadTangible(joanna);
+    this->loadTangible(treasureBoxWithRecoverForPlayer);
+    this->loadTangible(treasureBoxWithRecoverForMage);
+    this->loadTangible(treasureBarrelWithRecoverForThief);
+    this->loadTangible(treasureBarrelWithRecoverForWarrior);
+    this->loadTangible(strifeTheQuestGiver);
+    this->loadTangible(skugsTheQuestGiver);
 }
 
 //Loads all the layers to the areaMap.
@@ -207,14 +323,6 @@ void HomeTown::loadLayers(){
     this->loadLayer(backgroundLayer);
     this->loadLayer(collisionLayer);
     this->loadLayer(canGoBehindLayer);
-}
-
-//Loads all of the map configurations for each of the layers.
-void HomeTown::loadAllMapConfigurationsForLayers(){
-
-    loadBackgroundLayerMapConfiguration();
-    loadCollisionLayerMapConfiguration();
-    loadCanGoBehindLayerMapConfiguration();
 }
 
 void HomeTown::loadBackgroundLayerMapConfiguration(){
@@ -323,8 +431,8 @@ void HomeTown::loadBackgroundLayerMapConfiguration(){
         1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
     }; 
 
-    this->backgroundLayerLayout = new int[this->sizeHomeTownLayout];
-    for(int i = 0 ; i < this->sizeHomeTownLayout ; i++)    
+    this->backgroundLayerLayout = new int[this->layoutSize];
+    for(int i = 0 ; i < this->layoutSize ; i++)    
         this->backgroundLayerLayout[i] = backgroundLayerLayout[i];
 }
 
@@ -440,8 +548,8 @@ void HomeTown::loadCollisionLayerMapConfiguration(){
         0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
     };
 
-    this->collisionLayerLayout = new int[this->sizeHomeTownLayout];
-    for(int i = 0 ; i < this->sizeHomeTownLayout ; i++)    
+    this->collisionLayerLayout = new int[this->layoutSize];
+    for(int i = 0 ; i < this->layoutSize ; i++)    
         this->collisionLayerLayout[i] = collisionLayerLayout[i];
 }
 
@@ -559,20 +667,8 @@ void HomeTown::loadCanGoBehindLayerMapConfiguration(){
         0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
     };
 
-    this->canGoBehindLayerLayout = new int[this->sizeHomeTownLayout];
+    this->canGoBehindLayerLayout = new int[this->layoutSize];
 
-    for(int i = 0 ; i < this->sizeHomeTownLayout ; i++)    
+    for(int i = 0 ; i < this->layoutSize ; i++)    
         this->canGoBehindLayerLayout[i] = canGoBehindLayerLayout[i];
-}
-
-void HomeTown::deleteAllLayerConfigurations(){
-
-    delete this->backgroundLayerLayout;
-    this->backgroundLayerLayout = NULL;
-
-    delete this->collisionLayerLayout;
-    this->collisionLayerLayout = NULL;
-
-    delete this->canGoBehindLayerLayout;
-    this->canGoBehindLayerLayout = NULL;
 }

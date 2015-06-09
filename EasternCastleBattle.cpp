@@ -1,36 +1,12 @@
 #include "EasternCastleBattle.h"
 
-EasternCastleBattle::EasternCastleBattle(ImageStore *imageStore){
+EasternCastleBattle::EasternCastleBattle(ImageStore *imageStore , int layoutSize) : 
+    CustomAreaMap(imageStore , NULL , NULL , NULL , NULL , layoutSize){
 
-    this->imageStore = imageStore;
-    this->sizeOfBattleCutsceneLayout = BATTLE_SCREEN_LAYOUT_SIZE;
 }
 
 EasternCastleBattle::~EasternCastleBattle(){
 
-    /*
-    vector<Scenery*>::iterator sceneryIter = sceneries.begin();
-
-    while(sceneryIter != sceneries.end()){
-
-        delete (*sceneryIter);
-        (*sceneryIter) = NULL;
-        sceneryIter++;
-    }
-
-    sceneries.clear();
-
-    vector<Layer*>::iterator layerIter = layers.begin();
-
-    while(layerIter != layers.end()){
-
-        delete (*layerIter);
-        (*layerIter) = NULL;
-        layerIter++;
-    }
-    layers.clear();
-    */
-    deleteAllLayerConfigurations();
 }
 
 void EasternCastleBattle::loadLayers(){
@@ -41,12 +17,7 @@ void EasternCastleBattle::loadLayers(){
     this->loadLayer(backgroundLayer);
 }
 
-void EasternCastleBattle::loadAllMapConfigurationsForLayers(){
-
-    loadBackgroundLayerConfiguration();
-}
-
-void EasternCastleBattle::loadBackgroundLayerConfiguration(){
+void EasternCastleBattle::loadBackgroundLayerMapConfiguration(){
     
     int backgroundLayerLayout[] ={
         12,12,12,13,12,12,13,12,13,14,15,15,15,12,12,12,13,14,14,13,
@@ -66,19 +37,7 @@ void EasternCastleBattle::loadBackgroundLayerConfiguration(){
         1,22,27,28,24,1,1,1,1,1,11,7,3,7,11,22,23,23,24,8
     };
 
-    this->backgroundLayerLayout = new int[this->sizeOfBattleCutsceneLayout];
-    for(int i = 0 ; i < this->sizeOfBattleCutsceneLayout ; i++)    
+    this->backgroundLayerLayout = new int[this->layoutSize];
+    for(int i = 0 ; i < this->layoutSize ; i++)    
         this->backgroundLayerLayout[i] = backgroundLayerLayout[i];
-}
-
-void EasternCastleBattle::deleteAllLayerConfigurations(){
-
-    delete this->backgroundLayerLayout;
-    this->backgroundLayerLayout = NULL;
-}
-
-void EasternCastleBattle::loadDefaults(){
-
-    this->loadAllMapConfigurationsForLayers();
-    this->loadLayers();
 }

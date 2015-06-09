@@ -26,6 +26,7 @@ bool CheckForDeadEnemy::execute(){
           
             CalculateRewards calculateRewards(battleManager , theEnemy);
             calculateRewards.deliverAllRewards();
+            battleManager->addToDefeatedEnemyList(theEnemy->getIdentifierName());
 
             battleManager->deleteCurrEnemy();
         }

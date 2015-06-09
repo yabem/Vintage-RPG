@@ -38,6 +38,7 @@ Character::Character(){
 
     abilities = "";
     menu = NULL;
+    this->identifierName = "";
 }
 
 //Constructor.
@@ -321,6 +322,22 @@ void Character::resetSequence(){
     sequence = 0;
 }
 
+//Sets the IdentifierName.
+//Pre:  None.
+//Post: Permanently sets the identifierName.
+void Character::setIdentifierName(std::string identifierName){
+
+    this->identifierName = identifierName;
+}
+
+//Returns the identifierName.
+//Pre:  None.
+//Post: Returns the identifierName.
+std::string Character::getIdentifierName(){
+
+    return this->identifierName;
+}
+
 //Reset all collisions to false.
 void Character::resetColl(){
 
@@ -472,25 +489,28 @@ void Character::executeRandomAttack(){
 }
 
 //Loads the Menu choices.
-//Pre:  The string is formatted correctley.
+//Pre:  The string is formatted correctly.
 //Post: 
 void Character::loadAbilities(std::string abilities){
 
     this->abilities = abilities;
 }
 
-//Creates the Menu.
-//Pre:  The Menu is valid.
-//Post: Loads the Menu to the Character.
-void Character::createMenu(Menu *menu){
+//Loads an ability,
+//Pre:  The string is a valid ability.
+//Post: Permanently adds the ability to abilities.
+void Character::addAbility(std::string ability){
 
-    //if(menuChoices == "")
-      //  return;
+    int i = 0;
+    std::string tempStr = "";
 
-    //else{
-    
-        //menu = new Menu("menuChoices");
-    //}
+    while(this->abilities[i] != ';'){
+
+        tempStr += abilities[i];
+        i++;
+    }
+
+    this->abilities = tempStr + ("," + ability + ";");
 }
 
 //Retrieves the menuChoices.

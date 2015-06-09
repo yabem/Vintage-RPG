@@ -33,7 +33,7 @@ Character* CharacterList::getCurrSelection(){
 //      of the list, returns NULL;
 Character* CharacterList::getCharacterSelection(int position){
 
-    if(position < 0 || position > charList.size())
+    if(position < 0 || position >= charList.size())
         return NULL;
 
     else return charList[position];
@@ -65,7 +65,7 @@ void CharacterList::moveSelectionDown(){
 
     //Make sure the increment won't take 
     //currSelection out of the vector bounds.
-    if(currSelection + 1 != charList.end()){
+    if((currSelection + 1) != charList.end()){
         currSelection++;
         currPosition++;
     }

@@ -1,46 +1,28 @@
 //Area north of the hometown that is covered in snow.
 
 #pragma once
-//#include "AreaMap.h"
 #include "CustomAreaMap.h"
-#include "ImageStore.h"
-#include "Scenery.h"
-#include "Movement.h"
-#include "DrawRepository.h"
 #include "NPCWithDialogueThenBattle.h"
-#include "GameManager.h"
-#include "BattleManager.h"
 #include "PixelConversion.h"
 #include "FallingImage.h"
 
-//const int LAYOUT_NORTHERN_SNOW_SIZE = 2500;
+class GameManager;
+class BattleManager;
+class ImageStore;
+class Scenery;
+class DrawRepository;
+class FontStore;
 
 class NorthernSnow : public CustomAreaMap{
 
 private:
 
-    /*
-    ImageStore *imageStore;
-    DrawRepository *drawRepository;
-    int sizeNorthernSnowLayout;
-    int *backgroundLayerLayout;
-    int *collisionLayerLayout;
-    */
-    void loadTheSceneries();
-    void loadLayers();
-    void loadTheTangibles();
+    virtual void loadTheSceneries();
+    virtual void loadLayers();
+    virtual void loadTheTangibles();
 
-    //void loadAllMapConfigurationsForLayers();
-
-    void loadBackgroundLayerMapConfiguration();
-    void loadCollisionLayerMapConfiguration();
-
-    void deleteAllLayerConfigurations();
-    /*
-    GameManager *gameManager;
-    BattleManager *battleManager;
-    FontStore *fontStore;
-    */
+    virtual void loadBackgroundLayerMapConfiguration();
+    virtual void loadCollisionLayerMapConfiguration();
 
 public:
 
@@ -48,5 +30,4 @@ public:
         GameManager *gameManager , BattleManager *battleManager , 
         FontStore *fontStore , int layoutSize);
     virtual ~NorthernSnow();
-    //void loadDefaults();
 };

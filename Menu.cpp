@@ -8,8 +8,8 @@ Menu::Menu(ALLEGRO_FONT *font){
     currSelection = 0;
     this->font = font;
     
-    this->sx = 0;           //X draw location.
-    this->sy = 0;           //y draw location.
+    this->sx = DEFAULT_SX;  //X draw location.
+    this->sy = DEFAULT_SY;  //y draw location.
     this->dx = 0;
     this->dy = 0;
 
@@ -100,21 +100,6 @@ void Menu::destroyMenuHelper(){
     return;
 }
 
-//Use the text and format the menu.
-void Menu::formatMenu(){
-
-    w = longestOption * FONT_WIDTH;
-    h = options.size() * FONT_HEIGHT;
-
-    this->sx = DEFAULT_SX;           //X draw location.
-    this->sy = DEFAULT_SY;           //y draw location.
-    this->dx = sx + w;
-    this->dy = sy + h;
-
-    calculateSelectorCoords();
-    optionIter = options.begin();
-}
-
 //Find number of rows based on length of text.
 void Menu::formatText(){
 
@@ -154,9 +139,12 @@ void Menu::formatTextHelper(std::string text ,
                 option->subMenu = NULL;
                 options.push_back(option);
 
+                int lengthOfNewOption = al_get_text_width(font ,
+                    (char*)tempText.c_str());
+
                 //Replace longest option as necessary.
-                if(countChars > longestOption)
-                    longestOption = countChars;
+                if(lengthOfNewOption > longestOption)
+                    longestOption = lengthOfNewOption;
 
                 tempText.clear();
                 countChars = 0;
@@ -195,6 +183,25 @@ void Menu::formatTextHelper(std::string text ,
     }
 
     formatMenu();
+}
+
+//Use the text and format the menu.
+void Menu::formatMenu(){
+
+    w = longestOption;// * FONT_WIDTH;
+    h = options.size() * FONT_HEIGHT;
+
+    recalculateMenuEndCoordinates();
+
+    calculateSelectorCoords();
+    optionIter = options.begin();
+}
+
+//Calculates end coords based off of start coords.
+void Menu::recalculateMenuEndCoordinates(){
+
+    this->dx = sx + w + MENU_WIDTH_BUFFER;
+    this->dy = sy + h;
 }
 
 //Returns true if the selection has a subMenu. Returns false if
@@ -291,20 +298,19 @@ void Menu::draw(){
     
     //Create iterator.
     vector<Option*>::iterator selecIter = options.begin();
-    
+
     //Draw the text to the screen.
     for(int i = 0 ; selecIter != options.end() ; selecIter++ , i++){
         
         al_draw_textf(font,                 //Font.
             al_map_rgb(tr , tg , tb),       //Color.
-            sx + FONT_SIZE ,                //X draw location.
+            sx + HALF_MENU_WIDTH_BUFFER,                //X draw location.
             sy + FONT_HEIGHT * i ,          //Y draw location.
             0,                              //Flag. 
             (*selecIter)->Name.c_str());    //Text.
     }
     
     //Calculate then draw the selector.
-    //x
     calculateSelectorCoords();
     drawSelector();
 }
@@ -347,9 +353,8 @@ void Menu::setDrawToPrevSelection(Menu *prevMenu){
 
     this->sx = prevMenu->midRightX;           //X draw location.
     this->sy = prevMenu->midRightY;           //y draw location.
-    this->dx = sx + w;
-    this->dy = sy + h;
 
+    recalculateMenuEndCoordinates();
     calculateSelectorCoords();
 }
 
@@ -402,25 +407,17 @@ int Menu::getH() const{
 void Menu::setMenuToLeftOfCharacter(I_Creature *i_Creature){
 
     //Max width of the base menu.
-    int maxMenuWidth = getW();
+    int maxMenuWidth = w + MENU_WIDTH_BUFFER;
 
     //The character's x and y coordinate.
     int charX = i_Creature->getX();
     int charY = i_Creature->getY();
-
+    
     //New start and end coordinates for the menu.
-    int menuSX = charX - maxMenuWidth;
-    int menuSY = charY;
-    int menuDX = menuSX + getW();
-    int menuDY = menuSY + getH();
-
-    //x figure out why this isn't working
-    setSX(menuSX);
-    setSY(menuSY);
-    setDX(menuDX);
-    setDY(menuDY);
+    setSX(charX - maxMenuWidth);
+    setSY(charY);
+    recalculateMenuEndCoordinates();
 }
-
 
 //Sets sx.
 //Pre:  None.

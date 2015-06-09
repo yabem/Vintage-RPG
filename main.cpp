@@ -48,7 +48,6 @@
 
 //To do:
 //Make controls a class
-//Get rid of setStart() dupe function and create a colToX() and rowToY() functions
 //Make tangible collision better so you can't go through objects.
 
 //Tiles taken from http://opengameart.org/content/tiled-terrains
@@ -113,42 +112,49 @@ int main(int argc, char **argv){
     BattleManager battleManager;
 
     //Loads the information for the player.
-    PlayerEntity playerEntity(&imageStore);
-    playerEntity.loadBackpack();
+    PlayerEntity playerEntity(&imageStore , &fontStore);
+    playerEntity.createBackpack();
+    playerEntity.createQuestLog();
     playerEntity.loadDefaultPlayers();
+    gameManager.setPlayerEntity(&playerEntity);
 
-    HomeTown homeTown(&imageStore , &drawRepository , &gameManager , &fontStore);
+    HomeTown homeTown(&imageStore , &drawRepository , &gameManager , 
+        &battleManager , &fontStore , AREA_MAP_SIZE);
     homeTown.loadDefaults();
 
-    HomeTownShop homeTownShop(&imageStore);
+    HomeTownShop homeTownShop(&imageStore , &drawRepository , &gameManager , 
+        &battleManager , &fontStore , BATTLE_MAP_SIZE);
     homeTownShop.loadDefaults();
 
-    EasternCastleBattle easternCastleBattle(&imageStore);
+    EasternCastleBattle easternCastleBattle(&imageStore , BATTLE_MAP_SIZE);
     easternCastleBattle.loadDefaults();
     
     NorthernSnow northernSnow(&imageStore , &drawRepository , &gameManager , 
-        &battleManager , &fontStore , 2500);
+        &battleManager , &fontStore , AREA_MAP_SIZE);
     northernSnow.loadDefaults();
 
-    NorthernSnowBattle northernSnowBattle(&imageStore);
+    NorthernSnowBattle northernSnowBattle(&imageStore , BATTLE_MAP_SIZE);
     northernSnowBattle.loadDefaults();
 
     BattleTransitionScreen battleTransitionScreen(&imageStore);
     battleTransitionScreen.loadDefaults();
 
-    WesternDesert westernDesert(&imageStore);
+    WesternDesert westernDesert(&imageStore , &drawRepository , &gameManager , 
+        &battleManager , &fontStore , AREA_MAP_SIZE);
     westernDesert.loadDefaults();
 
-    WesternDesertBattle westernDesertBattle(&imageStore);
+    WesternDesertBattle westernDesertBattle(&imageStore , BATTLE_MAP_SIZE);
     westernDesertBattle.loadDefaults();
 
-    SouthernForest southernForest(&imageStore);
+    SouthernForest southernForest(&imageStore , &drawRepository , &gameManager , 
+        &battleManager , &fontStore , AREA_MAP_SIZE);
     southernForest.loadDefaults();
 
-    SouthernForestBattle southernForestBattle(&imageStore);
+    SouthernForestBattle southernForestBattle(&imageStore , BATTLE_MAP_SIZE);
     southernForestBattle.loadDefaults();
 
-    EasternCastle easternCastle(&imageStore);
+    EasternCastle easternCastle(&imageStore , &drawRepository , &gameManager , 
+        &battleManager , &fontStore , AREA_MAP_SIZE);
     easternCastle.loadDefaults();
 
     //Set battlemaps.
@@ -184,6 +190,9 @@ int main(int argc, char **argv){
     battleManager.loadEnemyModel(imageStore.getBitMap("wolf"));
     battleManager.loadEnemyModel(imageStore.getBitMap("soldier"));
     battleManager.loadEnemyModel(imageStore.getBitMap("iceBull"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("blobKing"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("guardian"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("demon"));
     battleManager.loadDrawRepository(&drawRepository);
     battleManager.loadBackpack(playerEntity.getPlayerInventory());
     battleManager.loadFontStore(&fontStore);
@@ -206,7 +215,9 @@ int main(int argc, char **argv){
     LoadExitsForWesternDesert::LoadExitsForWesternDesert(&westernDesert , &homeTown);
     LoadExitsForSouthernForest::LoadExitsForSouthernForest(&southernForest , &homeTown);
     LoadExitsForEasternCastle::LoadExitsForEasternCastle(&easternCastle , &homeTown);
-    Movement::setStart(*gameManager.player, homeTown , STARTCOL , STARTROW);
+    Movement::setStartCoords(*gameManager.player, homeTown , 
+        PixelConversion::convertTilesToPixels(STARTCOL) , 
+        PixelConversion::convertTilesToPixels(STARTROW));
 
     al_start_timer(timer);
 
@@ -236,6 +247,7 @@ int main(int argc, char **argv){
             
             if(!drawRepository.cutscenesEmpty()){
                 drawRepository.playCutscenes(); 
+                playerEntity.displayActiveQuestsInQuestLog();
             }
 
 //////////////////////////////////////////Battle///////////////////////////////
@@ -295,6 +307,7 @@ int main(int argc, char **argv){
                 Draw::drawArea(*gameManager.currMap , *gameManager.player);
  
                 //Show variables.
+                
 #ifdef ttfaddon
                 displayVariables(fontStore.getFont("default") ,
                     gameManager.getPressedKey() , gameManager.player ,
@@ -302,7 +315,9 @@ int main(int argc, char **argv){
                 al_draw_textf(fontStore.getFont("default"),
                     al_map_rgb(0, 0, 0), 500, 310, 0, 
                     "Cutscn count: %i" , cutsceneFrameCount);
+                    
 #endif
+                    
         }
 
         al_flip_display();

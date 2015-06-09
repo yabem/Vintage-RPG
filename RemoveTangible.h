@@ -1,5 +1,6 @@
 //Removes a tangible from the current map.
 
+#pragma once
 #include "Cutscene.h"
 #include "GameManager.h"
 

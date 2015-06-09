@@ -94,6 +94,9 @@ private:
 
     //Target of the action.
     Character *receiver;
+
+    //List of defeated enemies.
+    std::vector<std::string> listOfDefeatedEnemies;
     
 public:
     
@@ -207,7 +210,7 @@ public:
     virtual void deleteCurrEnemy(); 
 
     //Delete's the current enemy if it is dead.
-    bool deleteCurrEnemyIfDead();
+    //bool deleteCurrEnemyIfDead();
 
     //Determines if there are still enemies remaining.
     bool enemiesRemaining();    
@@ -232,6 +235,9 @@ public:
 
     //Get backpack.
     virtual Backpack* getBackpack();
+
+    //Adds to the defeated enemy list.
+    void addToDefeatedEnemyList(std::string defeatedEnemy);
 
 /////////////////////////////////////Enemy Creator/////////////////////////////
     

@@ -36,6 +36,30 @@ namespace InitEnemies{
     const int ICE_BULL_BASE_REWARD_XP = 10;
     const int ICE_BULL_BASE_MONEY_REWARD = 10;
 
+    const int BLOB_KING_BASE_HP = 10;
+    const int BLOB_KING_BASE_MP = 0;
+    const int BLOB_KING_BASE_ATK = 1;
+    const int BLOB_KING_BASE_DEF = 1;
+    const int BLOB_KING_BASE_SPEED = 3;
+    const int BLOB_KING_BASE_REWARD_XP = 10;
+    const int BLOB_KING_BASE_MONEY_REWARD = 10;
+
+    const int GUARDIAN_BASE_HP = 10;
+    const int GUARDIAN_BASE_MP = 0;
+    const int GUARDIAN_BASE_ATK = 1;
+    const int GUARDIAN_BASE_DEF = 1;
+    const int GUARDIAN_BASE_SPEED = 3;
+    const int GUARDIAN_BASE_REWARD_XP = 10;
+    const int GUARDIAN_BASE_MONEY_REWARD = 10;
+
+    const int DEMON_BASE_HP = 10;
+    const int DEMON_BASE_MP = 0;
+    const int DEMON_BASE_ATK = 1;
+    const int DEMON_BASE_DEF = 1;
+    const int DEMON_BASE_SPEED = 3;
+    const int DEMON_BASE_REWARD_XP = 10;
+    const int DEMON_BASE_MONEY_REWARD = 10;
+
     //Initialize character based off of the level and type or enemy.
     void init(Character *character , int enemyType , int level , 
         vector<ALLEGRO_BITMAP*> enemies);
@@ -49,12 +73,21 @@ namespace InitEnemies{
         vector<ALLEGRO_BITMAP*> enemies);
     void iceBull(Character *character , int enemyType , int level , 
         vector<ALLEGRO_BITMAP*> enemies);
+    void blobKing(Character *character , int enemyType , int level , 
+        vector<ALLEGRO_BITMAP*> enemies);
+    void guardian(Character *character , int enemyType , int level , 
+        vector<ALLEGRO_BITMAP*> enemies);
+    void demon(Character *character , int enemyType , int level , 
+        vector<ALLEGRO_BITMAP*> enemies);
 
     //Figure out rewards.
     std::vector<std::string> ratRewards();
     std::vector<std::string> wolfRewards();
     std::vector<std::string> soldierRewards();
     std::vector<std::string> iceBullRewards();
+    std::vector<std::string> blobKingRewards();
+    std::vector<std::string> guardianRewards();
+    std::vector<std::string> demonRewards();
 
     //Set the spacing so the enemies are drawn correctly on the screen.
     void initEnemiesSpacing(vector<Character*> theEnemies);

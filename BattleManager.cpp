@@ -572,6 +572,7 @@ void BattleManager::deleteCurrEnemy(){
     theEnemies.deleteCurrSelectedCharacter();
 }
 
+/*
 //Delete's the current enemy if it is dead.
 //Pre:  None.
 //Post: Checks if the currentSelected enemy is dead. If
@@ -587,6 +588,7 @@ bool BattleManager::deleteCurrEnemyIfDead(){
 
     else return false;
 }
+*/
 
 //Determines if there are still enemies remaining.
 //Pre:  None.
@@ -816,6 +818,11 @@ Backpack* BattleManager::getBackpack(){
     return backpack;
 }
 
+//Adds to the defeated enemy list.
+void BattleManager::addToDefeatedEnemyList(std::string defeatedEnemy){
+
+    this->listOfDefeatedEnemies.push_back(defeatedEnemy);
+}
 /////////////////////////////////////Battle End////////////////////////////////
 
 //Check for end of battle.
@@ -876,6 +883,9 @@ void BattleManager::playersVictory(){
 
     removeAllEvents();
 
+    gameManager->getPlayerEntity()->updateQuestLog(listOfDefeatedEnemies);
+    listOfDefeatedEnemies.clear();
+
     theEnemies.deleteList();
     thePlayers.deleteList();
 }
@@ -898,6 +908,8 @@ void BattleManager::enemiesVictory(){
     Draw::drawArea(*gameManager->currMap , *gameManager->player);
 
     removeAllEvents();
+
+    listOfDefeatedEnemies.clear();
 
     theEnemies.deleteList();
     thePlayers.deleteList();

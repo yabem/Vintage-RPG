@@ -31,4 +31,5 @@ public:
     virtual void setY(int y);               
     virtual void setImage(ALLEGRO_BITMAP *image);
     virtual bool setFacing(int direction);
+    virtual std::string getIdentifierName();
 };

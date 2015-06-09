@@ -1,36 +1,35 @@
 //Configurations for the HomeTown map where the player starts.
 
 #pragma once
-#include "AreaMap.h"
-#include "ImageStore.h"
-#include "Scenery.h"
+#include "CustomAreaMap.h"
 #include "Movement.h"
 #include "PulsingImage.h"
+#include "NPCWithDialogueThenBattle.h"
+#include "PixelConversion.h"
 
-const int WESTERN_DESERT_LAYOUT_SIZE = 2500;
+class GameManager;
+class BattleManager;
+class ImageStore;
+class Scenery;
+class DrawRepository;
+class FontStore;
 
-class WesternDesert : public AreaMap{
+class WesternDesert : public CustomAreaMap{
     
 private:
 
-    ImageStore *imageStore;
-    int layoutSize;
-    int *backgroundLayerLayout;
-    int *collisionLayerLayout;
-    int *canGoBehindLayerLayout;
+    virtual void loadTheSceneries();
+    virtual void loadLayers();
+    virtual void loadTheTangibles();
 
-    void loadTheSceneries();
-    void loadLayers();
-    void loadAllMapConfigurationsForLayers();
-
-    void loadBackgroundLayerMapConfiguration();
-    void loadCollisionLayerMapConfiguration();
-    void loadCanGoBehindLayerMapConfiguration();
-    void deleteAllLayerConfigurations();
+    virtual void loadBackgroundLayerMapConfiguration();
+    virtual void loadCollisionLayerMapConfiguration();
+    virtual void loadCanGoBehindLayerMapConfiguration();
 
 public:
 
-    WesternDesert(ImageStore *imageStore);
+    WesternDesert(ImageStore *imageStore , DrawRepository *drawRepository ,
+        GameManager *gameManager , BattleManager *battleManager , 
+        FontStore *fontStore , int layoutSize);
     virtual ~WesternDesert();
-    void loadDefaults();
 };

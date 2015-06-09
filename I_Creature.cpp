@@ -27,3 +27,5 @@ void I_Creature::setY(int y){}
 void I_Creature::setImage(ALLEGRO_BITMAP *image){}
 
 bool I_Creature::setFacing(int direction){return false;}
+
+std::string I_Creature::getIdentifierName(){return "";}

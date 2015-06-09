@@ -1,42 +1,13 @@
 #include "HomeTownShop.h"
 
-HomeTownShop::HomeTownShop(ImageStore *imageStore){
-
-    this->imageStore = imageStore;
-    this->sizeHomeTownShopLayout = HOME_TOWN_SHOP_LAYOUT_SIZE;
+HomeTownShop::HomeTownShop(ImageStore *imageStore ,  DrawRepository *drawRepository ,
+        GameManager *gameManager , BattleManager *battleManager , FontStore *fontStore ,
+        int layoutSize) : CustomAreaMap(imageStore , drawRepository , gameManager , 
+        battleManager , fontStore , layoutSize){
 }
 
 HomeTownShop::~HomeTownShop(){
 
-    /*
-    vector<Scenery*>::iterator sceneryIter = sceneries.begin();
-
-    while(sceneryIter != sceneries.end()){
-
-        delete (*sceneryIter);
-        (*sceneryIter) = NULL;
-        sceneryIter++;
-    }
-
-    sceneries.clear();
-
-    vector<Layer*>::iterator layerIter = layers.begin();
-
-    while(layerIter != layers.end()){
-
-        delete (*layerIter);
-        (*layerIter) = NULL;
-        layerIter++;
-    }
-    layers.clear();
-    */
-    deleteAllLayerConfigurations();
-}
-
-void HomeTownShop::loadDefaults(){
-
-    this->loadAllMapConfigurationsForLayers();
-    this->loadLayers();
 }
 
 void HomeTownShop::loadLayers(){
@@ -44,7 +15,7 @@ void HomeTownShop::loadLayers(){
     Layer *backgroundLayer = new Layer(imageStore->getBitMap("town") ,
         8 , 8 , this->backgroundLayerLayout , 64);
     Layer *shopCollisionLayer = new Layer(imageStore->getBitMap("town") ,
-        8 , 8 , this->shopCollisionLayerLayout , 64);
+        8 , 8 , this->collisionLayerLayout , 64);
 
     this->loadLayer(backgroundLayer);
     this->loadLayer(shopCollisionLayer);
@@ -70,9 +41,9 @@ void HomeTownShop::loadBackgroundLayerConfiguration(){
         126,126,126,126,126,126,126,126
     };
 
-    this->backgroundLayerLayout = new int[this->sizeHomeTownShopLayout];
+    this->backgroundLayerLayout = new int[this->layoutSize];
 
-    for(int i = 0 ; i < this->sizeHomeTownShopLayout ; i++)    
+    for(int i = 0 ; i < this->layoutSize ; i++)    
         this->backgroundLayerLayout[i] = backgroundLayerLayout[i];
 }
 
@@ -89,17 +60,8 @@ void HomeTownShop::loadShopCollisionLayerConfiguration(){
         127, 0, 0, 0, 0, 0, 0, 127
     };
 
-    this->shopCollisionLayerLayout = new int[this->sizeHomeTownShopLayout];
+    this->collisionLayerLayout = new int[this->layoutSize];
 
-    for(int i = 0 ; i < this->sizeHomeTownShopLayout ; i++)    
-        this->shopCollisionLayerLayout[i] = shopCollisionLayerLayout[i];
-}
-
-void HomeTownShop::deleteAllLayerConfigurations(){
-
-    delete this->backgroundLayerLayout;
-    this->backgroundLayerLayout = NULL;
-
-    delete this->shopCollisionLayerLayout;
-    this->shopCollisionLayerLayout = NULL;
+    for(int i = 0 ; i < this->layoutSize ; i++)    
+        this->collisionLayerLayout[i] = shopCollisionLayerLayout[i];
 }

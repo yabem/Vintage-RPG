@@ -4,6 +4,8 @@
 #include "I_Creature.h"
 #include "I_InfoBox.h"
 
+const int MENU_WIDTH_BUFFER = 20;
+const int HALF_MENU_WIDTH_BUFFER = MENU_WIDTH_BUFFER / 2;
 const int SELECTOR_WIDTH = 20;  //Width for the cursor selector.
 const int SELECTOR_HEIGHT = 18;  //Height for the cursor selector.
 const int DEFAULT_SX = 200; //Starting x for formatMenu()
@@ -48,6 +50,11 @@ private:
     int br , bg , bb;   //Hues for border color.
     int bWid;           //Width of the border.
 
+    void formatMenu();  //Formats the text into the menu and submenus.
+
+    //Calculates end coords based off of start coords.
+    void recalculateMenuEndCoordinates(); 
+
 public:
 
     Menu(ALLEGRO_FONT *font);                       //Default constructor.
@@ -70,8 +77,6 @@ public:
     int getCurrSelX() const;        //Returns the X value for the middle of the selection.
     int getCurrSelY() const;        //Returns the Y value for the middle of the selection.
     virtual void draw();            //Draws the menu and the selector.
-
-    void formatMenu();  //Formats the text into the menu and submenus.
 
     void drawSelector();    //Draws the Selector.
 

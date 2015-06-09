@@ -64,11 +64,15 @@ void TextBox::formatText(){
         for(int i = 0 ; it != text.end() ; it++){
             
             countChars++;
+            int pixelWidthInLine = al_get_text_width(font ,
+                (char*)partial.c_str());
             partial.push_back(*it);
 
             //Insert full row of text.
-            if(countChars > MAXTEXTLENGTH && *it == ' '){
+            if(pixelWidthInLine > (SCREEN_W - SCREEN_TEXT_WIDTH_BUFFER) &&
+                *it == ' '){
                 formattedText.push_back(partial);
+
                 partial.clear();
                 countChars = 0;
             }

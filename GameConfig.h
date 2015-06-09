@@ -10,7 +10,8 @@ enum MYKEYS {UP , RIGHT , DOWN , LEFT , SPACE , Q , U , C};
 const int MAX_NUM_KEYS = 8;
 enum LAYERTYPES {BACKGROUND , CENTERGROUND , FOREGROUND};
 enum IMAGES {ATTACK, BLOCK, MAGIC}; //Used for images indexing values.
-enum ENEMIES {RAT , WOLF , SOLDIER , ICE_BULL};
+enum ENEMIES {RAT , WOLF , SOLDIER , ICE_BULL , BLOB_KING , GUARDIAN , DEMON};
+const int SCREEN_TEXT_WIDTH_BUFFER = 75;
 const int MAX_ENEMIES = 3;  //Total number of possible enemies.
 const int MAX_ENEMIES_PER_BATTLE = 4; //Total number of enemies per battle.
 const int MAX_PLAYERS_PER_BATTLE = 4;
@@ -23,6 +24,8 @@ const int FPS = 60;
 const int rate = 4;
 const int SCREEN_W = 640;
 const int SCREEN_H = 480;
+const int AREA_MAP_SIZE = 2500;
+const int BATTLE_MAP_SIZE = 300; 
 const int TILE_SIZE = 32;
 const int maxDirections = 4;
 

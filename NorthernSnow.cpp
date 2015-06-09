@@ -5,69 +5,11 @@ NorthernSnow::NorthernSnow(ImageStore *imageStore ,  DrawRepository *drawReposit
         GameManager *gameManager , BattleManager *battleManager , FontStore *fontStore ,
         int layoutSize) : CustomAreaMap(imageStore , drawRepository , gameManager , 
         battleManager , fontStore , layoutSize){
-
-            /*
-    this->imageStore = imageStore;
-    this->layoutSize = layoutSize;
-    this->drawRepository = drawRepository;
-    this->gameManager = gameManager;
-    this->battleManager = battleManager;
-    this->fontStore = fontStore;
-
-    backgroundLayerLayout = NULL;
-    collisionLayerLayout = NULL;
-    */
 }
 
 //Destructor.
 NorthernSnow::~NorthernSnow(){
-
-    /*
-    vector<Scenery*>::iterator sceneryIter = sceneries.begin();
-
-    while(sceneryIter != sceneries.end()){
-
-        delete (*sceneryIter);
-        (*sceneryIter) = NULL;
-        sceneryIter++;
-    }
-
-    sceneries.clear();
-
-    vector<Layer*>::iterator layerIter = layers.begin();
-
-    while(layerIter != layers.end()){
-
-        delete (*layerIter);
-        (*layerIter) = NULL;
-        layerIter++;
-    }
-    layers.clear();
-
-    vector<Tangible*>::iterator tangibleIter = tangibles.begin();
-
-    while(tangibleIter != tangibles.end()){
-
-        delete (*tangibleIter);
-        (*tangibleIter) = NULL;
-        tangibleIter++;
-    }
-    tangibles.clear();
-
-    
-    deleteAllLayerConfigurations();
-    */
 }
-/*
-//Loads all the default values and objects.
-void NorthernSnow::loadDefaults(){
-
-    this->loadTheSceneries();
-    this->loadTheTangibles();
-    this->loadAllMapConfigurationsForLayers();
-    this->loadLayers();
-}
-*/
 
 //Loads all the cloud Scenery objects.
 void NorthernSnow::loadTheSceneries(){
@@ -91,6 +33,8 @@ void NorthernSnow::loadTheSceneries(){
 //Load the interactive models.
 void NorthernSnow::loadTheTangibles(){
 
+    std::string identifierName = "iceBull"; //Used when deleting the Tangible once the fight is over.
+
     NPCWithDialogueThenBattle *iceBull = new NPCWithDialogueThenBattle(imageStore->getBitMap("iceBull") ,
         PixelConversion::convertTilesToPixels(20) , 
         PixelConversion::convertTilesToPixels(20) ,        
@@ -98,10 +42,10 @@ void NorthernSnow::loadTheTangibles(){
         this->gameManager , "Do you dare challenge the great Bull of the North?" ,
         this->battleManager ,
         this->fontStore->getFont("default") ,
-        "iceBull"); //Used when deleting the Tangible once the fight is over.
+        identifierName); 
 
     iceBull->createCharacter(130 , 78 , 60 , 1 , 4 , this);
-    iceBull->setIdentifierName("iceBull");
+    iceBull->setIdentifierName(identifierName);
 
     std::vector<int> enemies;
     enemies.push_back(RAT);
@@ -131,18 +75,9 @@ void NorthernSnow::loadLayers(){
     this->loadLayer(collisionLayer);
 }
 
-/*
-//Loads all of the map configurations for each of the layers.
-void NorthernSnow::loadAllMapConfigurationsForLayers(){
-
-    loadBackgroundLayerMapConfiguration();
-    loadCollisionLayerMapConfiguration();
-}
-*/
-
 void NorthernSnow::loadBackgroundLayerMapConfiguration(){
 
-int backgroundLayerLayout[] = {
+    int backgroundLayerLayout[] = {
         12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
         12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,
         13,
@@ -246,7 +181,6 @@ int backgroundLayerLayout[] = {
         12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,13
     };
 
-    //this->backgroundLayerLayout = new int[this->sizeNorthernSnowLayout];
     this->backgroundLayerLayout = new int[this->layoutSize];
 
     for(int i = 0 ; i < this->layoutSize ; i++)    
@@ -362,13 +296,4 @@ void NorthernSnow::loadCollisionLayerMapConfiguration(){
     this->collisionLayerLayout = new int[this->layoutSize];
     for(int i = 0 ; i < this->layoutSize ; i++)    
         this->collisionLayerLayout[i] = collisionLayerLayout[i];
-}
-
-void NorthernSnow::deleteAllLayerConfigurations(){
-
-    delete this->backgroundLayerLayout;
-    this->backgroundLayerLayout = NULL;
-
-    delete this->collisionLayerLayout;
-    this->collisionLayerLayout = NULL;
 }

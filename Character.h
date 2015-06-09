@@ -45,6 +45,7 @@ private:
     Menu *menu;     //Stores the menu.
     std::string abilities;    //The Character's abilities.
     I_AI *AI;       //Stores the AI logic.
+    std::string identifierName; //Used for retrieval.
 
 public:
 
@@ -95,10 +96,13 @@ public:
     virtual void setH(int h);                   //Set h to input.
     void addToAllCornerX(int add);              //Add value to all x coordinates.
     void addToAllCornerY(int add);              //Add value to all y coordinates
-    bool setFacing(int direction);                    //Set facing direction.
+    bool setFacing(int direction);                  //Set facing direction.
     bool setColl(int index);                    //Set collision index to true.
     void setStats(Stats *stats);                //Set stats pointer to input.
     void resetSequence();                       //Resets the sequence.
+    
+    void setIdentifierName(std::string identifierName); //Sets the IdentifierName
+    std::string getIdentifierName();            //Returns the identifierName.
 
     void resetColl();                           //Reset all collisions to false.
     void refreshCorners();                      //Recalculate corners based off of x and y values.
@@ -108,7 +112,7 @@ public:
     int move(bool *keys , int keyPressed);      //Move character based off of keys.
 
     void loadAbilities(std::string abilities);  //Loads the choices for the Menu.
-    void createMenu(Menu *menu);                //Creates the Menu.
+    void addAbility(std::string ability);       //Adds an ability to the Character's abilities.
     Menu* getMenu();                            //Retrieves the Menu.
     std::string getAbilities();                 //Gets abilities.
 

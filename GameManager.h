@@ -9,6 +9,8 @@
 #include "CharacterList.h"
 #include "I_Manager.h"
 #include "DrawRepository.h"
+#include "PlayerEntity.h"
+#include "PixelConversion.h"
 
 const int RESET_TIMER = 2000;
 const int BATTLE_TIMER = 100;   //Determines when a battle will take place.
@@ -19,6 +21,7 @@ private:
 
     ALLEGRO_FONT *introFont;
     DrawRepository *drawRepository;
+    PlayerEntity *playerEntity;
 
     //Determines when the gameloop exits.
     bool endOfGameLoop; 
@@ -109,4 +112,10 @@ public:
 
     //Removes a tangible from the current area map.
     bool removeTangibleFromCurrMap(std::string identifierName);
+
+    //Sets the PlayerEntity.
+    void setPlayerEntity(PlayerEntity *playerEntity);
+
+    //Gets the PlayerEntity.
+    PlayerEntity* getPlayerEntity();
 };

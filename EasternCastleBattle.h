@@ -1,27 +1,19 @@
 //The battle map for when the players fight in the town.
 
 #pragma once
-#include "AreaMap.h"
-#include "ImageStore.h"
+#include "CustomAreaMap.h"
 
-const int BATTLE_SCREEN_LAYOUT_SIZE = 300;
+class ImageStore;
 
-class EasternCastleBattle : public AreaMap{
+class EasternCastleBattle : public CustomAreaMap{
 
 private:
 
-    ImageStore *imageStore;
-    int sizeOfBattleCutsceneLayout;
-    int *backgroundLayerLayout;
-
     void loadLayers();
-    void loadAllMapConfigurationsForLayers();
-    void loadBackgroundLayerConfiguration();
-    void deleteAllLayerConfigurations();
+    void loadBackgroundLayerMapConfiguration();
 
 public:
 
-    EasternCastleBattle(ImageStore *imageStore);
+    EasternCastleBattle(ImageStore *imageStore , int layoutSize);
     virtual ~EasternCastleBattle();
-    void loadDefaults();
 };

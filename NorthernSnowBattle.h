@@ -1,27 +1,19 @@
-//The battle map for when the players fight in the town.
+//The battle map for when the players fight in the northern snow area.
 
 #pragma once
-#include "AreaMap.h"
-#include "ImageStore.h"
+#include "CustomAreaMap.h"
 
-const int NORTHERN_SNOW_BATTLE_LAYOUT_SIZE = 300;
+class ImageStore;
 
-class NorthernSnowBattle : public AreaMap{
+class NorthernSnowBattle : public CustomAreaMap{
 
 private:
 
-    ImageStore *imageStore;
-    int sizeOfBattleCutsceneLayout;
-    int *backgroundLayerLayout;
-
     void loadLayers();
-    void loadAllMapConfigurationsForLayers();
-    void loadBackgroundLayerConfiguration();
-    void deleteAllLayerConfigurations();
+    void loadBackgroundLayerMapConfiguration();
 
 public:
 
-    NorthernSnowBattle(ImageStore *imageStore);
+    NorthernSnowBattle(ImageStore *imageStore , int layoutSize);
     virtual ~NorthernSnowBattle();
-    void loadDefaults();
 };

@@ -1,37 +1,12 @@
 #include "SouthernForestBattle.h"
 
-SouthernForestBattle::SouthernForestBattle(ImageStore *imageStore){
+SouthernForestBattle::SouthernForestBattle(ImageStore *imageStore , int layoutSize) : 
+    CustomAreaMap(imageStore , NULL , NULL , NULL , NULL , layoutSize){
 
-    this->imageStore = imageStore;
-    this->sizeOfBattleCutsceneLayout = 
-        SOUTHERN_FOREST_BATTLE_SCREEN_LAYOUT_SIZE;
 }
 
 SouthernForestBattle::~SouthernForestBattle(){
 
-    /*
-    vector<Scenery*>::iterator sceneryIter = sceneries.begin();
-
-    while(sceneryIter != sceneries.end()){
-
-        delete (*sceneryIter);
-        (*sceneryIter) = NULL;
-        sceneryIter++;
-    }
-
-    sceneries.clear();
-
-    vector<Layer*>::iterator layerIter = layers.begin();
-
-    while(layerIter != layers.end()){
-
-        delete (*layerIter);
-        (*layerIter) = NULL;
-        layerIter++;
-    }
-    layers.clear();
-    */
-    deleteAllLayerConfigurations();
 }
 
 void SouthernForestBattle::loadLayers(){
@@ -42,12 +17,7 @@ void SouthernForestBattle::loadLayers(){
     this->loadLayer(backgroundLayer);
 }
 
-void SouthernForestBattle::loadAllMapConfigurationsForLayers(){
-
-    loadBackgroundLayerConfiguration();
-}
-
-void SouthernForestBattle::loadBackgroundLayerConfiguration(){
+void SouthernForestBattle::loadBackgroundLayerMapConfiguration(){
     
     int backgroundLayerLayout[] ={
         150,150,150,150,150,150,150,150,150,150,150,150,150,150,150,150,150,150,
@@ -82,19 +52,7 @@ void SouthernForestBattle::loadBackgroundLayerConfiguration(){
         156
     };
 
-    this->backgroundLayerLayout = new int[this->sizeOfBattleCutsceneLayout];
-    for(int i = 0 ; i < this->sizeOfBattleCutsceneLayout ; i++)    
+    this->backgroundLayerLayout = new int[this->layoutSize];
+    for(int i = 0 ; i < this->layoutSize ; i++)    
         this->backgroundLayerLayout[i] = backgroundLayerLayout[i];
-}
-
-void SouthernForestBattle::deleteAllLayerConfigurations(){
-
-    delete this->backgroundLayerLayout;
-    this->backgroundLayerLayout = NULL;
-}
-
-void SouthernForestBattle::loadDefaults(){
-
-    this->loadAllMapConfigurationsForLayers();
-    this->loadLayers();
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdio.h>
+#include <string>
 class CharacterList;
 class Menu;
 class CharacterManipulationStore;
@@ -100,4 +101,7 @@ public:
 
     //Determines if the currently selected player is dead.
     virtual bool currPlayerDead(); 
+
+    //Adds a defeated enemy to the defeated enemies list.
+    virtual void addToDefeatedEnemyList(std::string defeatedEnemy);
 };

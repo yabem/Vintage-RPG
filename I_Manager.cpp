@@ -54,3 +54,5 @@ void I_Manager::updateFloatingTexts(){}
 void I_Manager::drawFloatingTexts(){}
    
 bool I_Manager::currPlayerDead(){return false;}
+
+void I_Manager::addToDefeatedEnemyList(std::string defeatedEnemy){}

@@ -1,29 +1,28 @@
 //Configurations for the Shop.
 
 #pragma once
-#include "AreaMap.h"
-#include "ImageStore.h"
+#include "CustomAreaMap.h"
 
-const int HOME_TOWN_SHOP_LAYOUT_SIZE = 300;
+class GameManager;
+class BattleManager;
+class ImageStore;
+class Scenery;
+class DrawRepository;
+class FontStore;
 
-class HomeTownShop : public AreaMap{
+class HomeTownShop : public CustomAreaMap{
 
 private:
-
-    ImageStore *imageStore;
-    int sizeHomeTownShopLayout;
-    int *backgroundLayerLayout;
-    int *shopCollisionLayerLayout;
 
     void loadLayers();
     void loadAllMapConfigurationsForLayers();
     void loadBackgroundLayerConfiguration();
     void loadShopCollisionLayerConfiguration();
-    void deleteAllLayerConfigurations();
 
 public:
 
-    HomeTownShop(ImageStore *imageStore);
+    HomeTownShop(ImageStore *imageStore , DrawRepository *drawRepository ,
+        GameManager *gameManager , BattleManager *battleManager , 
+        FontStore *fontStore , int layoutSize);
     virtual ~HomeTownShop();
-    void loadDefaults();
 };

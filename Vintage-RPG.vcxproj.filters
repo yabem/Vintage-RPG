@@ -391,6 +391,120 @@
     <Filter Include="Source Files\Tangible\Derived Class">
       <UniqueIdentifier>{5bb87f28-6462-4b16-83d8-8523ce12362c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\List\List Setup">
+      <UniqueIdentifier>{2182a72c-b230-4c9a-bbf3-022bd9f00b17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\List\List Setup">
+      <UniqueIdentifier>{1bd94384-38a0-44e8-9eee-243da18ce0f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tangible\Derived Class\NPCWithDialogue">
+      <UniqueIdentifier>{0eb5db6b-e4bc-4158-8e82-76e9f8ce113a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tangible\Derived Class\NPCWithDialogue\Base Class">
+      <UniqueIdentifier>{36c1843e-5918-469a-840d-7e5e5b773f65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class">
+      <UniqueIdentifier>{6383f958-1c7a-42c0-8d84-7b4da1093d7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift">
+      <UniqueIdentifier>{ff85bbab-97a8-4fc6-85bc-a4f0376afdda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Base Class">
+      <UniqueIdentifier>{4f364b85-09e5-4fa7-b618-451369e04e10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Derived Class">
+      <UniqueIdentifier>{2124e940-7724-4bb1-bb84-903a1331bd6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueThenBattle">
+      <UniqueIdentifier>{f3d1ba54-d3d9-4382-a729-b8c1670ab80a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tangible\Derived Class\NPCWithDialogue">
+      <UniqueIdentifier>{0989bf87-0692-473f-ac06-688b40bf70a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tangible\Derived Class\NPCWithDialogue\Base Class">
+      <UniqueIdentifier>{d568db18-93c5-4097-85a4-464822ff71ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class">
+      <UniqueIdentifier>{e4e89381-834d-4614-abb1-9919cfde5d05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift">
+      <UniqueIdentifier>{ac148d36-8838-4d5c-a0b8-54c51cfd9a9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Base Class">
+      <UniqueIdentifier>{b5d6bc51-0883-43a8-b3f5-8e23e5b5045d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Derived Class">
+      <UniqueIdentifier>{0334b979-d66d-4dd5-9835-24d569bf8c67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map\AreaMap\Derived Class\CustomAreaMap">
+      <UniqueIdentifier>{44147830-ff6f-4c98-bd33-8e6f2fb3fec1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Base Class">
+      <UniqueIdentifier>{4afd10a1-8f24-42f2-b513-f1f2efe09cbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class">
+      <UniqueIdentifier>{5af41a37-1418-4d43-9715-4bb1d9570bf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map\AreaMap\Derived Class\BattleTransitionScreen">
+      <UniqueIdentifier>{a3f5d989-b644-4d91-b670-10f50ab50003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map\AreaMap\Derived Class\CustomAreaMap">
+      <UniqueIdentifier>{637518ac-bdcc-40e9-a33f-ad1f02f30938}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map\AreaMap\Derived Class\CustomAreaMap\BaseClass">
+      <UniqueIdentifier>{73a3557d-34f2-4bb8-a770-d4829560cee4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class">
+      <UniqueIdentifier>{f915dbbb-e948-443e-b37e-601c29921c52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map\AreaMap\Derived Class\CustomAreaMap\BattleTransitionScreen">
+      <UniqueIdentifier>{93645c1d-cb6a-4490-aab6-dd094f6007e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map\AreaMap\Layer">
+      <UniqueIdentifier>{fd45ecc2-c3fa-47e7-b285-60fd27a9931b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map\AreaMap\Map">
+      <UniqueIdentifier>{072aa497-9c87-4335-8205-c0333c121553}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map\AreaMap\Movement">
+      <UniqueIdentifier>{a108b6ad-cf87-4dfd-a1c0-5d7c4424e5de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map\AreaMap\Layer">
+      <UniqueIdentifier>{9b5e457c-9b77-4328-90ed-89ae86c5d0d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map\AreaMap\Map">
+      <UniqueIdentifier>{38e123fb-64e3-46b4-b07f-bcd3d1f35637}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map\AreaMap\Movement">
+      <UniqueIdentifier>{57fd3dd8-a6a7-42a9-b0a8-3cbd338361c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueThenBattle">
+      <UniqueIdentifier>{4926994f-b2bc-4ecc-a441-4f5e8db98ed6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Quest">
+      <UniqueIdentifier>{03bc7368-36d4-4edc-86b1-a0b6275395f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Quest\Base Class">
+      <UniqueIdentifier>{ff38dcbe-a6d6-4a7c-b889-628c4c4b622c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Quest\Derived Class">
+      <UniqueIdentifier>{b86bf532-2adc-4ebb-a354-d67df3f52a61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Quest">
+      <UniqueIdentifier>{fd5b84a7-dc20-42f5-bd24-bb5b443b9ca3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Quest\Base Class">
+      <UniqueIdentifier>{24c9b800-ed69-42ac-9e4a-b330cd2ff43d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Quest\Derived Class">
+      <UniqueIdentifier>{71f51f42-aff1-4935-8b4c-c36b3862e8f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Quest\QuestLog">
+      <UniqueIdentifier>{edf772fc-2638-40b3-9cc0-cea357318f92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Quest\QuestLog">
+      <UniqueIdentifier>{0fa61fbd-64ce-41cf-99e4-5a303e21e8a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -413,9 +527,6 @@
     </ClCompile>
     <ClCompile Include="CharacterManipulationStore.cpp">
       <Filter>Source Files\Character\CharacterManipulation\CharacterManipulationStore</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Source Files\Map</Filter>
     </ClCompile>
     <ClCompile Include="MovingImage.cpp">
       <Filter>Source Files\Animation\Derived Class</Filter>
@@ -462,12 +573,6 @@
     <ClCompile Include="I_List.cpp">
       <Filter>Source Files\List\Base Class</Filter>
     </ClCompile>
-    <ClCompile Include="Layer.cpp">
-      <Filter>Source Files\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Movement.cpp">
-      <Filter>Source Files\Map</Filter>
-    </ClCompile>
     <ClCompile Include="Cursor.cpp">
       <Filter>Source Files\Cursor</Filter>
     </ClCompile>
@@ -509,12 +614,6 @@
     </ClCompile>
     <ClCompile Include="MenuList.cpp">
       <Filter>Source Files\List\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="SetTurnTimerListToCharacterList.cpp">
-      <Filter>Source Files\List</Filter>
-    </ClCompile>
-    <ClCompile Include="SetMenuListToCharacterList.cpp">
-      <Filter>Source Files\List</Filter>
     </ClCompile>
     <ClCompile Include="PauseBattle.cpp">
       <Filter>Source Files\Animation\Derived Class</Filter>
@@ -600,9 +699,6 @@
     <ClCompile Include="FloatingTextList.cpp">
       <Filter>Source Files\List\Derived Class</Filter>
     </ClCompile>
-    <ClCompile Include="SetFloatingTextListToCharacterList.cpp">
-      <Filter>Source Files\List</Filter>
-    </ClCompile>
     <ClCompile Include="UpdatePlayersHP.cpp">
       <Filter>Source Files\Event\Derived Class</Filter>
     </ClCompile>
@@ -651,23 +747,8 @@
     <ClCompile Include="AreaMap.cpp">
       <Filter>Source Files\Map\AreaMap\Base Class</Filter>
     </ClCompile>
-    <ClCompile Include="HomeTown.cpp">
-      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="HomeTownShop.cpp">
-      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="NorthernSnow.cpp">
-      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleTransitionScreen.cpp">
-      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
-    </ClCompile>
     <ClCompile Include="Scenery.cpp">
       <Filter>Source Files\Scenery\Base Class</Filter>
-    </ClCompile>
-    <ClCompile Include="WesternDesert.cpp">
-      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="LoadExitsForHomeTown.cpp">
       <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
@@ -681,14 +762,8 @@
     <ClCompile Include="LoadExitsForNothernSnow.cpp">
       <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
     </ClCompile>
-    <ClCompile Include="SouthernForest.cpp">
-      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
-    </ClCompile>
     <ClCompile Include="LoadExitsForSouthernForest.cpp">
       <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
-    </ClCompile>
-    <ClCompile Include="EasternCastle.cpp">
-      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="LoadExitsForEasternCastle.cpp">
       <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
@@ -714,14 +789,8 @@
     <ClCompile Include="Tangible.cpp">
       <Filter>Source Files\Tangible\Base Class</Filter>
     </ClCompile>
-    <ClCompile Include="NPCWithDialogue.cpp">
-      <Filter>Source Files\Tangible\Derived Class</Filter>
-    </ClCompile>
     <ClCompile Include="PixelConversion.cpp">
       <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="NPCWithDialogueThenBattle.cpp">
-      <Filter>Source Files\Tangible\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="StartBattle.cpp">
       <Filter>Source Files\Cutscene\Derived Class</Filter>
@@ -729,26 +798,95 @@
     <ClCompile Include="Dialogue.cpp">
       <Filter>Source Files\Cutscene\Derived Class</Filter>
     </ClCompile>
-    <ClCompile Include="NorthernSnowBattle.cpp">
-      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="SouthernForestBattle.cpp">
-      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="WesternDesertBattle.cpp">
-      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="EasternCastleBattle.cpp">
-      <Filter>Source Files\Map\AreaMap\Derived Class</Filter>
-    </ClCompile>
     <ClCompile Include="RightToLeftImage.cpp">
       <Filter>Source Files\Scenery\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="RemoveTangible.cpp">
       <Filter>Source Files\Cutscene\Derived Class</Filter>
     </ClCompile>
+    <ClCompile Include="SetTurnTimerListToCharacterList.cpp">
+      <Filter>Source Files\List\List Setup</Filter>
+    </ClCompile>
+    <ClCompile Include="SetFloatingTextListToCharacterList.cpp">
+      <Filter>Source Files\List\List Setup</Filter>
+    </ClCompile>
+    <ClCompile Include="SetMenuListToCharacterList.cpp">
+      <Filter>Source Files\List\List Setup</Filter>
+    </ClCompile>
+    <ClCompile Include="AddAbilityToCharacterInList.cpp">
+      <Filter>Source Files\List\List Setup</Filter>
+    </ClCompile>
+    <ClCompile Include="RewardAbility.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCWithDialogue.cpp">
+      <Filter>Source Files\Tangible\Derived Class\NPCWithDialogue\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCWithDialogueAndGift.cpp">
+      <Filter>Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Base Class</Filter>
+    </ClCompile>
     <ClCompile Include="CustomAreaMap.cpp">
-      <Filter>Source Files\Map\AreaMap\Base Class</Filter>
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\BaseClass</Filter>
+    </ClCompile>
+    <ClCompile Include="WesternDesert.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="SouthernForest.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="NorthernSnow.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeTown.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="EasternCastle.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="SouthernForestBattle.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="WesternDesertBattle.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="NorthernSnowBattle.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeTownShop.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="EasternCastleBattle.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleTransitionScreen.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\BattleTransitionScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Source Files\Map\AreaMap\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\Map\AreaMap\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Movement.cpp">
+      <Filter>Source Files\Map\AreaMap\Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemLocationWithGift.cpp">
+      <Filter>Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCWithDialogueThenBattle.cpp">
+      <Filter>Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueThenBattle</Filter>
+    </ClCompile>
+    <ClCompile Include="Quest.cpp">
+      <Filter>Source Files\Quest\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="KillQuest.cpp">
+      <Filter>Source Files\Quest\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCWithDialogueAndQuest.cpp">
+      <Filter>Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestLog.cpp">
+      <Filter>Source Files\Quest\QuestLog</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -769,9 +907,6 @@
     </ClInclude>
     <ClInclude Include="CharacterManipulationStore.h">
       <Filter>Header Files\Character\CharacterManipulation\CharacterManipulationStore</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Header Files\Map</Filter>
     </ClInclude>
     <ClInclude Include="MovingImage.h">
       <Filter>Header Files\Animation\Derived Class</Filter>
@@ -818,12 +953,6 @@
     <ClInclude Include="I_List.h">
       <Filter>Header Files\List\Base Class</Filter>
     </ClInclude>
-    <ClInclude Include="Layer.h">
-      <Filter>Header Files\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Movement.h">
-      <Filter>Header Files\Map</Filter>
-    </ClInclude>
     <ClInclude Include="Cursor.h">
       <Filter>Header Files\Cursor</Filter>
     </ClInclude>
@@ -865,12 +994,6 @@
     </ClInclude>
     <ClInclude Include="MenuList.h">
       <Filter>Header Files\List\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="SetTurnTimerListToCharacterList.h">
-      <Filter>Header Files\List</Filter>
-    </ClInclude>
-    <ClInclude Include="SetMenuListToCharacterList.h">
-      <Filter>Header Files\List</Filter>
     </ClInclude>
     <ClInclude Include="PauseBattle.h">
       <Filter>Header Files\Animation\Derived Class</Filter>
@@ -959,9 +1082,6 @@
     <ClInclude Include="FloatingTextList.h">
       <Filter>Header Files\List\Derived Class</Filter>
     </ClInclude>
-    <ClInclude Include="SetFloatingTextListToCharacterList.h">
-      <Filter>Header Files\List</Filter>
-    </ClInclude>
     <ClInclude Include="UpdatePlayersHP.h">
       <Filter>Header Files\Event\Derived Class</Filter>
     </ClInclude>
@@ -1010,23 +1130,8 @@
     <ClInclude Include="AreaMap.h">
       <Filter>Header Files\Map\AreaMap\Base Class</Filter>
     </ClInclude>
-    <ClInclude Include="HomeTown.h">
-      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="HomeTownShop.h">
-      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="NorthernSnow.h">
-      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleTransitionScreen.h">
-      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
-    </ClInclude>
     <ClInclude Include="Scenery.h">
       <Filter>Header Files\Scenery\Base Class</Filter>
-    </ClInclude>
-    <ClInclude Include="WesternDesert.h">
-      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="LoadExitsForHomeTown.h">
       <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
@@ -1040,14 +1145,8 @@
     <ClInclude Include="LoadExitsForNorthernSnow.h">
       <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
     </ClInclude>
-    <ClInclude Include="SouthernForest.h">
-      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
-    </ClInclude>
     <ClInclude Include="LoadExitsForSouthernForest.h">
       <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
-    </ClInclude>
-    <ClInclude Include="EasternCastle.h">
-      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="LoadExitsForEasternCastle.h">
       <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
@@ -1073,14 +1172,8 @@
     <ClInclude Include="Tangible.h">
       <Filter>Header Files\Tangible\Base Class</Filter>
     </ClInclude>
-    <ClInclude Include="NPCWithDialogue.h">
-      <Filter>Header Files\Tangible\Derived Class</Filter>
-    </ClInclude>
     <ClInclude Include="PixelConversion.h">
       <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="NPCWithDialogueThenBattle.h">
-      <Filter>Header Files\Tangible\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="StartBattle.h">
       <Filter>Header Files\Cutscene\Derived Class</Filter>
@@ -1088,20 +1181,8 @@
     <ClInclude Include="Dialogue.h">
       <Filter>Header Files\Cutscene\Derived Class</Filter>
     </ClInclude>
-    <ClInclude Include="NorthernSnowBattle.h">
-      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
-    </ClInclude>
     <ClInclude Include="DUMMY.h">
       <Filter>Header Files\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="WesternDesertBattle.h">
-      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="SouthernForestBattle.h">
-      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="EasternCastleBattle.h">
-      <Filter>Header Files\Map\AreaMap\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="RightToLeftImage.h">
       <Filter>Header Files\Scenery\Derived Class</Filter>
@@ -1109,8 +1190,89 @@
     <ClInclude Include="RemoveTangible.h">
       <Filter>Header Files\Cutscene\Derived Class</Filter>
     </ClInclude>
+    <ClInclude Include="SetTurnTimerListToCharacterList.h">
+      <Filter>Header Files\List\List Setup</Filter>
+    </ClInclude>
+    <ClInclude Include="SetFloatingTextListToCharacterList.h">
+      <Filter>Header Files\List\List Setup</Filter>
+    </ClInclude>
+    <ClInclude Include="SetMenuListToCharacterList.h">
+      <Filter>Header Files\List\List Setup</Filter>
+    </ClInclude>
+    <ClInclude Include="AddAbilityToCharacterInList.h">
+      <Filter>Header Files\List\List Setup</Filter>
+    </ClInclude>
+    <ClInclude Include="RewardAbility.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCWithDialogue.h">
+      <Filter>Header Files\Tangible\Derived Class\NPCWithDialogue\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCWithDialogueAndGift.h">
+      <Filter>Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemLocationWithGift.h">
+      <Filter>Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCWithDialogueThenBattle.h">
+      <Filter>Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueThenBattle</Filter>
+    </ClInclude>
     <ClInclude Include="CustomAreaMap.h">
-      <Filter>Header Files\Map\AreaMap\Base Class</Filter>
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="EasternCastle.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeTown.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="NorthernSnow.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="SouthernForest.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeTownShop.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="WesternDesert.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="EasternCastleBattle.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="WesternDesertBattle.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="NorthernSnowBattle.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="SouthernForestBattle.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleTransitionScreen.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\BattleTransitionScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Header Files\Map\AreaMap\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files\Map\AreaMap\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Movement.h">
+      <Filter>Header Files\Map\AreaMap\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="Quest.h">
+      <Filter>Header Files\Quest\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="KillQuest.h">
+      <Filter>Header Files\Quest\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCWithDialogueAndQuest.h">
+      <Filter>Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestLog.h">
+      <Filter>Header Files\Quest\QuestLog</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

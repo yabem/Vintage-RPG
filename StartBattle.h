@@ -1,5 +1,6 @@
 //Initiates a battle.
 
+#pragma once
 #include "Cutscene.h"
 #include "BattleManager.h"
 

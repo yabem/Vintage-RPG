@@ -5,17 +5,10 @@ Instruct::Instruct(ALLEGRO_FONT *font){
 
    frameCount = 0;
 
-   this->textBox = new TextBox("You awaken in a strange town that you have never seen before. "
-       "You don't know where you are and why you are there. "
-       "Your first task is to find some clues and figure out what happened. " 
-       "Go forth and start your quest." , font);
-
-       /*
-   textBox.loadText("You awaken in a strange town that you have never seen before. "
-       "You don't know where you are and why you are there. "
-       "Your first task is to find some clues and figure out what happened. " 
-       "Go forth and start your quest.");
-       */
+   this->textBox = new TextBox("You awaken in a strange town that you have never seen before."
+       "You don't know where you are and how you got here."
+       "The last thing you remember was running away from something in the woods."
+       "Find some clues and figure out what happened. " , font);
 }
 
 //Destructor.

@@ -196,3 +196,17 @@ bool GameManager::removeTangibleFromCurrMap(std::string identifierName){
 
     return currMap->removeTangible(identifierName);
 }
+
+//Sets the PlayerEntity.
+//Pre:  The PlayerEntity is valid.
+//Post: Sets the PlayerEntity.
+void GameManager::setPlayerEntity(PlayerEntity *playerEntity){
+
+    this->playerEntity = playerEntity;
+}
+
+//Gets the PlayerEntity.
+PlayerEntity* GameManager::getPlayerEntity(){
+
+    return playerEntity;
+}

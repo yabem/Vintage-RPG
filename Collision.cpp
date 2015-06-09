@@ -216,7 +216,9 @@ bool Collision::characterToExit(Character &character , AreaMap *&areaMap ,
             gameManager->battleMap = areaMap->getBattleMap();
 
             //Set the start point based off of the previous map's destination.
-            Movement::setStart(character , *areaMap , prevMap->getExitDestC(i) , prevMap->getExitDestR(i));
+            Movement::setStartCoords(character , *areaMap ,
+                PixelConversion::convertTilesToPixels(prevMap->getExitDestC(i)) ,
+                PixelConversion::convertTilesToPixels(prevMap->getExitDestR(i)));
 
             result = true;
         }

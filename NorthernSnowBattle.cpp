@@ -1,36 +1,12 @@
 #include "NorthernSnowBattle.h"
 
-NorthernSnowBattle::NorthernSnowBattle(ImageStore *imageStore){
+NorthernSnowBattle::NorthernSnowBattle(ImageStore *imageStore , int layoutSize) : 
+    CustomAreaMap(imageStore , NULL , NULL , NULL , NULL , layoutSize){
 
-    this->imageStore = imageStore;
-    this->sizeOfBattleCutsceneLayout = NORTHERN_SNOW_BATTLE_LAYOUT_SIZE;
 }
 
 NorthernSnowBattle::~NorthernSnowBattle(){
-    /*
-    vector<Scenery*>::iterator sceneryIter = sceneries.begin();
-
-    while(sceneryIter != sceneries.end()){
-
-        delete (*sceneryIter);
-        (*sceneryIter) = NULL;
-        sceneryIter++;
-    }
-
-    sceneries.clear();
-
-    vector<Layer*>::iterator layerIter = layers.begin();
-
-    while(layerIter != layers.end()){
-
-        delete (*layerIter);
-        (*layerIter) = NULL;
-        layerIter++;
-    }
-    layers.clear();
-    */
-
-    deleteAllLayerConfigurations();
+    
 }
 
 void NorthernSnowBattle::loadLayers(){
@@ -41,12 +17,7 @@ void NorthernSnowBattle::loadLayers(){
     this->loadLayer(backgroundLayer);
 }
 
-void NorthernSnowBattle::loadAllMapConfigurationsForLayers(){
-
-    loadBackgroundLayerConfiguration();
-}
-
-void NorthernSnowBattle::loadBackgroundLayerConfiguration(){
+void NorthernSnowBattle::loadBackgroundLayerMapConfiguration(){
     
     int backgroundLayerLayout[] ={
         35,36,37,37,38,35,36,37,38,35,35,39,39,40,39,39,39,40,39,39,
@@ -66,19 +37,7 @@ void NorthernSnowBattle::loadBackgroundLayerConfiguration(){
         12,42,42,42,42,12,12,12,12,12,12,12,12,12,12,42,42,42,42,12
     };
 
-    this->backgroundLayerLayout = new int[this->sizeOfBattleCutsceneLayout];
-    for(int i = 0 ; i < this->sizeOfBattleCutsceneLayout ; i++)    
+    this->backgroundLayerLayout = new int[this->layoutSize];
+    for(int i = 0 ; i < this->layoutSize ; i++)    
         this->backgroundLayerLayout[i] = backgroundLayerLayout[i];
-}
-
-void NorthernSnowBattle::deleteAllLayerConfigurations(){
-
-    delete this->backgroundLayerLayout;
-    this->backgroundLayerLayout = NULL;
-}
-
-void NorthernSnowBattle::loadDefaults(){
-
-    this->loadAllMapConfigurationsForLayers();
-    this->loadLayers();
 }

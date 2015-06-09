@@ -1,5 +1,6 @@
 //NPC says a message then a battle ensues.
 
+#pragma once
 #include "NPCWithDialogue.h"
 #include "BattleManager.h"
 #include "StartBattle.h"

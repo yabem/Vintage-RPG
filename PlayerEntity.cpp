@@ -1,25 +1,72 @@
 #include "PlayerEntity.h"
 
 //Constructor.
-PlayerEntity::PlayerEntity(ImageStore *imageStore){
+PlayerEntity::PlayerEntity(ImageStore *imageStore , FontStore *fontStore){
 
     this->backpack = NULL;
     this->imageStore = imageStore;
+    this->questLog = NULL;
+    this->fontStore = fontStore;
 }
 
 //Destructor.    
 PlayerEntity::~PlayerEntity(){
     
     delete backpack;
+    delete questLog;
     thePlayers->deleteCharList();
     delete thePlayers;
 }
 
-//Pre:  None.
-//Post: Dynamically allocates a backpack.
-void PlayerEntity::loadBackpack(){
+//Pre:  The backpack does not already exist.
+//Post: Dynamically allocates a backpack. Returns true if
+//      successful. Returns false if the Backpack already exists.
+bool PlayerEntity::createBackpack(){
 
-    backpack = new Backpack();
+    if(backpack == NULL){
+
+        backpack = new Backpack();
+        return true;
+    }
+    
+    else return false;
+}
+
+//Pre:  None.
+//Post: Displays all the active quests for the player
+void PlayerEntity::displayActiveQuestsInQuestLog(){
+
+    this->questLog->displayActiveQuests();
+}
+
+//Pre:  The QuestLog does not exist.
+//Post: Dynamically allocates a QuestLog. Returns true if
+//      successful otherwise returns false.
+bool PlayerEntity::createQuestLog(){
+
+    if(questLog == NULL){
+
+        questLog = new QuestLog(fontStore);
+        return true;
+    }
+
+    else return false;
+}
+
+//Pre:  The Quest is valid.
+//Post: The Quest is added to questLog. Returns true if the addition
+//      was successful added and did not exist already. Otherwise returns false.
+bool PlayerEntity::addQuest(std::string questName , Quest *quest){
+
+    return questLog->addQuest(questName , quest);
+}
+
+//Updates all the quests in the QuestLog.
+//Pre:  The list is not NULL.
+//Post: Updates every quest in the questLog using the list.
+void PlayerEntity::updateQuestLog(std::vector<std::string> list){
+
+    questLog->updateAllQuestObjectives(list);
 }
 
 //Pre: None.
@@ -30,15 +77,21 @@ void PlayerEntity::loadDefaultPlayers(){
 
     //Characters
     Character *thePlayer = new Character(imageStore->getBitMap("player")
-        , 32 , 32 , 30 , 2 , rate);
+        , 32 , 32 , 30 , 1 , rate);
+    thePlayer->setIdentifierName("player");
+    thePlayer->setFacing(DOWN);
+
     Character *thePlayer2 = new Character(imageStore->getBitMap("warrior") ,
         32 , 32 , 30 , 2 , rate);
+    thePlayer2->setIdentifierName("warrior");
+    
     Character *thePlayer3 = new Character(imageStore->getBitMap("thief") ,
         32 , 32 , 30 , 2 , rate);
+    thePlayer3->setIdentifierName("thief");
+    
     Character *thePlayer4 = new Character(imageStore->getBitMap("mage") ,
         32 , 32 , 30 , 2 , rate);
-
-    thePlayer->setFacing(DOWN);
+    thePlayer4->setIdentifierName("mage");
 
     /*
     thePlayer->loadAbilities("Attack,Jump,Item|Potion;Recover;");
@@ -57,6 +110,10 @@ void PlayerEntity::loadDefaultPlayers(){
     this->thePlayers->loadChar(thePlayer2);
     this->thePlayers->loadChar(thePlayer3);
     this->thePlayers->loadChar(thePlayer4);
+
+    //thePlayer->addAbility("Jump");
+    //AddAbilityToCharacterInList::AddAbilityToCharacterInList("player",thePlayers,"Jump");
+    //AddAbilityToCharacterInList::AddAbilityToCharacterInList("mage",thePlayers,"Jump");
 
     std::vector<std::string> emptyStringVector;
 

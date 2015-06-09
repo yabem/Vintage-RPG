@@ -68,6 +68,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddAbilityToCharacterInList.cpp" />
     <ClCompile Include="Backstab.cpp" />
     <ClCompile Include="BattleTransitionScreen.cpp" />
     <ClCompile Include="CustomAreaMap.cpp" />
@@ -82,7 +83,14 @@
     <ClCompile Include="HomeTown.cpp" />
     <ClCompile Include="Instruct.cpp" />
     <ClCompile Include="Intro.cpp" />
+    <ClCompile Include="ItemLocationWithGift.cpp" />
+    <ClCompile Include="KillQuest.cpp" />
+    <ClCompile Include="NPCWithDialogueAndGift.cpp" />
+    <ClCompile Include="NPCWithDialogueAndQuest.cpp" />
+    <ClCompile Include="Quest.cpp" />
+    <ClCompile Include="QuestLog.cpp" />
     <ClCompile Include="RemoveTangible.cpp" />
+    <ClCompile Include="RewardAbility.cpp" />
     <ClCompile Include="RightToLeftImage.cpp" />
     <ClCompile Include="Lightning.cpp" />
     <ClCompile Include="LoadExitsForEasternCastle.cpp" />
@@ -189,6 +197,7 @@
     <ClCompile Include="XPToLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddAbilityToCharacterInList.h" />
     <ClInclude Include="Backstab.h" />
     <ClInclude Include="BattleTransitionScreen.h" />
     <ClInclude Include="CustomAreaMap.h" />
@@ -197,7 +206,14 @@
     <ClInclude Include="EasternCastle.h" />
     <ClInclude Include="FilterImage.h" />
     <ClInclude Include="FlashingImage.h" />
+    <ClInclude Include="ItemLocationWithGift.h" />
+    <ClInclude Include="KillQuest.h" />
+    <ClInclude Include="NPCWithDialogueAndGift.h" />
+    <ClInclude Include="NPCWithDialogueAndQuest.h" />
+    <ClInclude Include="Quest.h" />
+    <ClInclude Include="QuestLog.h" />
     <ClInclude Include="RemoveTangible.h" />
+    <ClInclude Include="RewardAbility.h" />
     <ClInclude Include="RightToLeftImage.h" />
     <ClInclude Include="Lightning.h" />
     <ClInclude Include="NorthernSnowBattle.h" />

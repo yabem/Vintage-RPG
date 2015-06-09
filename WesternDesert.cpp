@@ -1,62 +1,14 @@
 #include "WesternDesert.h"
 
 //Constructor.
-WesternDesert::WesternDesert(ImageStore *imageStore){
-
-    this->imageStore = imageStore;
-    this->layoutSize = WESTERN_DESERT_LAYOUT_SIZE;
-
-    backgroundLayerLayout = NULL;
-    collisionLayerLayout = NULL;
-    canGoBehindLayerLayout = NULL;
+WesternDesert::WesternDesert(ImageStore *imageStore ,  DrawRepository *drawRepository ,
+        GameManager *gameManager , BattleManager *battleManager , FontStore *fontStore ,
+        int layoutSize) : CustomAreaMap(imageStore , drawRepository , gameManager , 
+        battleManager , fontStore , layoutSize){
 }
 
 //Destructor.
 WesternDesert::~WesternDesert(){
-
-    /*
-    vector<Scenery*>::iterator sceneryIter = sceneries.begin();
-
-    while(sceneryIter != sceneries.end()){
-
-        delete (*sceneryIter);
-        (*sceneryIter) = NULL;
-        sceneryIter++;
-    }
-
-    sceneries.clear();
-
-    vector<Tangible*>::iterator tangiblesIter = tangibles.begin();
-
-    while(tangiblesIter != tangibles.end()){
-
-        delete (*tangiblesIter);
-        (*tangiblesIter) = NULL;
-        tangiblesIter++;
-    }
-
-    tangibles.clear();
-
-    vector<Layer*>::iterator layerIter = layers.begin();
-
-    while(layerIter != layers.end()){
-
-        delete (*layerIter);
-        (*layerIter) = NULL;
-        layerIter++;
-    }
-    layers.clear();
-    */
-
-    deleteAllLayerConfigurations();
-}
-
-//Loads all the default values and objects.
-void WesternDesert::loadDefaults(){
-
-    this->loadTheSceneries();
-    this->loadAllMapConfigurationsForLayers();
-    this->loadLayers();
 }
 
 //Loads all the cloud Scenery objects.
@@ -65,6 +17,38 @@ void WesternDesert::loadTheSceneries(){
     PulsingImage *heatWave = new PulsingImage(imageStore->getBitMap("heatWave") , 0 , 0 , 0 , 0);
 
     this->loadScenery(heatWave);
+}
+
+//Load the interactive models.
+void WesternDesert::loadTheTangibles(){
+
+    std::string identifierName = "demon"; //Used when deleting the Tangible once the fight is over.
+
+    NPCWithDialogueThenBattle *demon = new NPCWithDialogueThenBattle(imageStore->getBitMap("demon") ,
+        PixelConversion::convertTilesToPixels(22) , 
+        PixelConversion::convertTilesToPixels(43) ,        
+        this->drawRepository ,
+        this->gameManager , "Hurgle burgle burgle... Rooooooo... ROOOAR!!!" ,
+        this->battleManager ,
+        this->fontStore->getFont("default") ,
+        identifierName); 
+
+    demon->createCharacter(160 , 80 , 60 , 1 , 4 , this);
+    demon->setIdentifierName(identifierName);
+
+    std::vector<int> enemies;
+    enemies.push_back(RAT);
+    enemies.push_back(DEMON);
+    enemies.push_back(RAT);
+
+    std::vector<int> enemyLevels;
+    enemyLevels.push_back(5);
+    enemyLevels.push_back(7);
+    enemyLevels.push_back(5);
+
+    demon->loadEnemies(enemies , enemyLevels);
+
+    this->loadTangible(demon);
 }
 
 //Loads all the layers to the areaMap.
@@ -80,14 +64,6 @@ void WesternDesert::loadLayers(){
     this->loadLayer(backgroundLayer);
     this->loadLayer(collisionLayer);
     this->loadLayer(canGoBehindLayer);
-}
-
-//Loads all of the map configurations for each of the layers.
-void WesternDesert::loadAllMapConfigurationsForLayers(){
-
-    loadBackgroundLayerMapConfiguration();
-    loadCollisionLayerMapConfiguration();
-    loadCanGoBehindLayerMapConfiguration();
 }
 
 void WesternDesert::loadBackgroundLayerMapConfiguration(){
@@ -422,16 +398,4 @@ void WesternDesert::loadCanGoBehindLayerMapConfiguration(){
 
     for(int i = 0 ; i < this->layoutSize ; i++)    
         this->canGoBehindLayerLayout[i] = canGoBehindLayerLayout[i];
-}
-
-void WesternDesert::deleteAllLayerConfigurations(){
-
-    delete this->backgroundLayerLayout;
-    this->backgroundLayerLayout = NULL;
-
-    delete this->collisionLayerLayout;
-    this->collisionLayerLayout = NULL;
-
-    delete this->canGoBehindLayerLayout;
-    this->canGoBehindLayerLayout = NULL;
 }

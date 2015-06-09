@@ -1,61 +1,14 @@
 #include "EasternCastle.h"
 
 //Constructor.
-EasternCastle::EasternCastle(ImageStore *imageStore){
-
-    this->imageStore = imageStore;
-    this->layoutSize = EASTERN_CASTLE_LAYOUT_SIZE;
-
-    backgroundLayerLayout = NULL;
-    collisionLayerLayout = NULL;
-    canGoBehindLayerLayout = NULL;
+EasternCastle::EasternCastle(ImageStore *imageStore ,  DrawRepository *drawRepository ,
+        GameManager *gameManager , BattleManager *battleManager , FontStore *fontStore ,
+        int layoutSize) : CustomAreaMap(imageStore , drawRepository , gameManager , 
+        battleManager , fontStore , layoutSize){
 }
 
 //Destructor.
 EasternCastle::~EasternCastle(){
-
-    /*
-    vector<Scenery*>::iterator sceneryIter = sceneries.begin();
-
-    while(sceneryIter != sceneries.end()){
-
-        delete (*sceneryIter);
-        (*sceneryIter) = NULL;
-        sceneryIter++;
-    }
-
-    sceneries.clear();
-
-    vector<Tangible*>::iterator tangiblesIter = tangibles.begin();
-
-    while(tangiblesIter != tangibles.end()){
-
-        delete (*tangiblesIter);
-        (*tangiblesIter) = NULL;
-        tangiblesIter++;
-    }
-
-    tangibles.clear();
-
-    vector<Layer*>::iterator layerIter = layers.begin();
-
-    while(layerIter != layers.end()){
-
-        delete (*layerIter);
-        (*layerIter) = NULL;
-        layerIter++;
-    }
-    layers.clear();
-    */
-    deleteAllLayerConfigurations();
-}
-
-//Loads all the default values and objects.
-void EasternCastle::loadDefaults(){
-
-    this->loadTheSceneries();
-    this->loadAllMapConfigurationsForLayers();
-    this->loadLayers();
 }
 
 //Loads all the cloud Scenery objects.
@@ -81,6 +34,38 @@ void EasternCastle::loadTheSceneries(){
     this->loadScenery(rainFast);
 }
 
+//Load the interactive models.
+void EasternCastle::loadTheTangibles(){
+
+    std::string identifierName = "guardian"; //Used when deleting the Tangible once the fight is over.
+
+    NPCWithDialogueThenBattle *guardian = new NPCWithDialogueThenBattle(imageStore->getBitMap("guardian") ,
+        PixelConversion::convertTilesToPixels(18) , 
+        PixelConversion::convertTilesToPixels(42) ,        
+        this->drawRepository ,
+        this->gameManager , "You shall not pass!" ,
+        this->battleManager ,
+        this->fontStore->getFont("default") ,
+        identifierName); 
+
+    guardian->createCharacter(160 , 80 , 60 , 1 , 4 , this);
+    guardian->setIdentifierName(identifierName);
+
+    std::vector<int> enemies;
+    enemies.push_back(RAT);
+    enemies.push_back(GUARDIAN);
+    enemies.push_back(RAT);
+
+    std::vector<int> enemyLevels;
+    enemyLevels.push_back(5);
+    enemyLevels.push_back(7);
+    enemyLevels.push_back(5);
+
+    guardian->loadEnemies(enemies , enemyLevels);
+
+    this->loadTangible(guardian);
+}
+
 //Loads all the layers to the areaMap.
 void EasternCastle::loadLayers(){
 
@@ -94,14 +79,6 @@ void EasternCastle::loadLayers(){
     this->loadLayer(backgroundLayer);
     this->loadLayer(collisionLayer);
     this->loadLayer(canGoBehindLayer);
-}
-
-//Loads all of the map configurations for each of the layers.
-void EasternCastle::loadAllMapConfigurationsForLayers(){
-
-    loadBackgroundLayerMapConfiguration();
-    loadCollisionLayerMapConfiguration();
-    loadCanGoBehindLayerMapConfiguration();
 }
 
 void EasternCastle::loadBackgroundLayerMapConfiguration(){
@@ -444,16 +421,4 @@ void EasternCastle::loadCanGoBehindLayerMapConfiguration(){
 
     for(int i = 0 ; i < this->layoutSize ; i++)    
         this->canGoBehindLayerLayout[i] = canGoBehindLayerLayout[i];
-}
-
-void EasternCastle::deleteAllLayerConfigurations(){
-
-    delete this->backgroundLayerLayout;
-    this->backgroundLayerLayout = NULL;
-
-    delete this->collisionLayerLayout;
-    this->collisionLayerLayout = NULL;
-
-    delete this->canGoBehindLayerLayout;
-    this->canGoBehindLayerLayout = NULL;
 }

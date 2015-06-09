@@ -1,27 +1,19 @@
-//The battle map for when the players fight in the town.
+//The battle map for when the players fight in the western desert.
 
 #pragma once
-#include "AreaMap.h"
-#include "ImageStore.h"
+#include "CustomAreaMap.h"
 
-const int WESTERN_DESERT_BATTLE_LAYOUT_SIZE = 300;
+class ImageStore;
 
-class WesternDesertBattle : public AreaMap{
+class WesternDesertBattle : public CustomAreaMap{
 
 private:
 
-    ImageStore *imageStore;
-    int sizeOfBattleCutsceneLayout;
-    int *backgroundLayerLayout;
-
     void loadLayers();
-    void loadAllMapConfigurationsForLayers();
-    void loadBackgroundLayerConfiguration();
-    void deleteAllLayerConfigurations();
+    void loadBackgroundLayerMapConfiguration();
 
 public:
 
-    WesternDesertBattle(ImageStore *imageStore);
+    WesternDesertBattle(ImageStore *imageStore , int layoutSize);
     virtual ~WesternDesertBattle();
-    void loadDefaults();
 };

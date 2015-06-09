@@ -108,6 +108,12 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("forestForeground" , al_load_bitmap("forestForeground.png"));
     loadBitMap("introPlayer" , al_load_bitmap("introPlayer.png"));
     loadBitMap("moon" , al_load_bitmap("moon.png"));
+    loadBitMap("demon" , al_load_bitmap("demon.png"));
+    loadBitMap("blobKing" , al_load_bitmap("blobKing.png"));
+    loadBitMap("guardian" , al_load_bitmap("guardian.png"));
+    loadBitMap("treasureBox1" , al_load_bitmap("treasureBox1.png"));
+    loadBitMap("treasureBox2" , al_load_bitmap("treasureBox2.png"));
+    loadBitMap("treasureBarrel" , al_load_bitmap("treasureBarrel.png"));
     
     loadBitMap("default" , al_load_bitmap("default.png"));
 
