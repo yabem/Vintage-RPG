@@ -6,8 +6,8 @@
 
 using namespace std;
 
-enum MYKEYS {UP , RIGHT , DOWN , LEFT , SPACE , Q , U , C};
-const int MAX_NUM_KEYS = 8;
+enum MYKEYS {UP , RIGHT , DOWN , LEFT , SPACE , Q , U , C , L};
+const int MAX_NUM_KEYS = 9;
 enum LAYERTYPES {BACKGROUND , CENTERGROUND , FOREGROUND};
 enum IMAGES {ATTACK, BLOCK, MAGIC}; //Used for images indexing values.
 enum ENEMIES {RAT , WOLF , SOLDIER , ICE_BULL , BLOB_KING , GUARDIAN , DEMON};

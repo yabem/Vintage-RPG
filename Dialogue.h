@@ -3,7 +3,6 @@
 #pragma once
 #include "Cutscene.h"
 #include "GameManager.h"
-#include "Collision.h"
 
 class Dialogue : public Cutscene{
 

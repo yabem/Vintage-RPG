@@ -6,6 +6,7 @@
 #include "TextBox.h"
 #include "FontStore.h"
 #include "Menu.h"
+#include "InfoTable.h"
 
 class QuestLog{
 
@@ -13,6 +14,10 @@ private:
 
     std::map<std::string , Quest*> _quests;
     FontStore *fontStore;
+    InfoTable *activeQuestDisplay;
+    InfoTable *completedQuestDisplay;
+    void centerActiveQuestDisplayToScreen();
+    void centerCompletedQuestDisplayToScreen();
 
 public:
 
@@ -21,6 +26,10 @@ public:
     bool addQuest(std::string questName , Quest *quest);
     void updateAllQuestObjectives(std::vector<std::string> listOfAccomplishments);
     void removeAllQuests();
+    void updateQuestDisplay();
+    void updateActiveQuestsDisplay();
+    void updateCompletedQuestsDisplay();
     void displayActiveQuests();
+    void displayCompletedQuests();
     Quest* getQuest(std::string questName);
 };

@@ -39,6 +39,13 @@ void PlayerEntity::displayActiveQuestsInQuestLog(){
     this->questLog->displayActiveQuests();
 }
 
+//Pre:  None.
+//Post: Displays all the completed quests for the player
+void PlayerEntity::displayCompletedQuestsInQuestLog(){
+
+    this->questLog->displayCompletedQuests();
+}
+
 //Pre:  The QuestLog does not exist.
 //Post: Dynamically allocates a QuestLog. Returns true if
 //      successful otherwise returns false.
@@ -77,7 +84,7 @@ void PlayerEntity::loadDefaultPlayers(){
 
     //Characters
     Character *thePlayer = new Character(imageStore->getBitMap("player")
-        , 32 , 32 , 30 , 1 , rate);
+        , 32 , 32 , 30 , 2 , rate);
     thePlayer->setIdentifierName("player");
     thePlayer->setFacing(DOWN);
 

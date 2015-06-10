@@ -81,6 +81,7 @@
     <ClCompile Include="BattleTrans.cpp" />
     <ClCompile Include="BattleVictory.cpp" />
     <ClCompile Include="HomeTown.cpp" />
+    <ClCompile Include="InfoTable.cpp" />
     <ClCompile Include="Instruct.cpp" />
     <ClCompile Include="Intro.cpp" />
     <ClCompile Include="ItemLocationWithGift.cpp" />
@@ -157,6 +158,8 @@
     <ClCompile Include="ShieldBash.cpp" />
     <ClCompile Include="HomeTownShop.cpp" />
     <ClCompile Include="PulsingImage.cpp" />
+    <ClCompile Include="ShowActiveQuestLog.cpp" />
+    <ClCompile Include="ShowCompletedQuestLog.cpp" />
     <ClCompile Include="SouthernForest.cpp" />
     <ClCompile Include="SouthernForestBattle.cpp" />
     <ClCompile Include="StartBattle.cpp" />
@@ -206,6 +209,7 @@
     <ClInclude Include="EasternCastle.h" />
     <ClInclude Include="FilterImage.h" />
     <ClInclude Include="FlashingImage.h" />
+    <ClInclude Include="InfoTable.h" />
     <ClInclude Include="ItemLocationWithGift.h" />
     <ClInclude Include="KillQuest.h" />
     <ClInclude Include="NPCWithDialogueAndGift.h" />
@@ -288,6 +292,8 @@
     <ClInclude Include="ShieldBash.h" />
     <ClInclude Include="HomeTownShop.h" />
     <ClInclude Include="FallingImage.h" />
+    <ClInclude Include="ShowActiveQuestLog.h" />
+    <ClInclude Include="ShowCompletedQuestLog.h" />
     <ClInclude Include="SouthernForest.h" />
     <ClInclude Include="SouthernForestBattle.h" />
     <ClInclude Include="StartBattle.h" />

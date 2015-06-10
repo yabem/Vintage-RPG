@@ -15,7 +15,7 @@ class Option;
 
 class Menu: public I_InfoBox {
 
-private:
+protected:
 
     struct Option{
 
@@ -52,9 +52,6 @@ private:
 
     void formatMenu();  //Formats the text into the menu and submenus.
 
-    //Calculates end coords based off of start coords.
-    void recalculateMenuEndCoordinates(); 
-
 public:
 
     Menu(ALLEGRO_FONT *font);                       //Default constructor.
@@ -90,6 +87,9 @@ public:
     //Returns true if the selection has a subMenu.
     bool currSelectionHasSubMenu(); 
 
+    //Calculates end coords based off of start coords.
+    void calculateMenuEndCoordinates(); 
+
     //Determines the selector draw locations based off of the current option.
     void calculateSelectorCoords(); 
 
@@ -104,6 +104,12 @@ public:
 
     //Returns the height of the menu.
     int getH() const;
+
+    //Returns the start x for the menu.
+    int getSX() const;
+
+    //Returns the destination x for the menu.
+    int getDX() const;
 
     //Place Menu to left of the Character.
     void setMenuToLeftOfCharacter(I_Creature *i_Creature);

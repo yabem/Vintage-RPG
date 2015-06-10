@@ -27,8 +27,10 @@ public:
     KillQuest();
     virtual ~KillQuest();
     virtual bool completedByPlayer();
+    virtual void makeCompletedByPlayer();
     virtual bool isActiveForPlayer();
-    void makeActiveForPlayer();
+    virtual void makeActiveForPlayer();
+    virtual void makeInactiveForPlayer();
     virtual bool objectivesAreUpdateable();
     void setMustBeActiveForPlayerToUpdate();
     virtual void updateQuestObjectives(std::vector<std::string> list);

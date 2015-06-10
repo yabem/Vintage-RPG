@@ -23,7 +23,7 @@ bool Movement::moveMap(Character &character , AreaMap &areaMap , int theKey , bo
         case RIGHT:        
             Movement::moveRight(character , areaMap , theKey , keys);
             break;
-
+        
         default:
             return false;   //Invalid entry.
     }

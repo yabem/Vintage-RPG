@@ -41,6 +41,8 @@
 #include "SouthernForestBattle.h"
 #include "WesternDesertBattle.h"
 #include "NorthernSnowBattle.h"
+#include "ShowActiveQuestLog.h"
+#include "ShowCompletedQuestLog.h"
 
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
@@ -58,7 +60,8 @@
 #define ttfaddon
 
 int checkInit();
-void displayVariables(ALLEGRO_FONT *theFont , int theKey , Character *thePlayer , Layer &layer);
+void displayVariables(ALLEGRO_FONT *theFont , int theKey ,
+    Character *thePlayer , Layer &layer);
 
 int main(int argc, char **argv){
     {
@@ -71,7 +74,8 @@ int main(int argc, char **argv){
    ALLEGRO_TIMER *timer = NULL;
     
    //List of all the keys.
-   bool keys[8] = {false , false , false , false , false , false , false , false};
+   bool keys[9] = {false , false , false , false , false , false ,
+       false, false , false};
 
    int theKey = -1;
    
@@ -247,7 +251,7 @@ int main(int argc, char **argv){
             
             if(!drawRepository.cutscenesEmpty()){
                 drawRepository.playCutscenes(); 
-                playerEntity.displayActiveQuestsInQuestLog();
+                //playerEntity.displayActiveQuestsInQuestLog();
             }
 
 //////////////////////////////////////////Battle///////////////////////////////
@@ -290,6 +294,22 @@ int main(int argc, char **argv){
                 Collision::characterToAreaMap(*gameManager.player ,
                     gameManager.currMap , &gameManager);
             
+                //Display active quest log.
+                if(gameManager.getPressedKey() == L){
+                    ShowActiveQuestLog *showActiveQuestLog = new 
+                        ShowActiveQuestLog(&gameManager , &playerEntity);
+                    drawRepository.loadCutscene(showActiveQuestLog);
+                    gameManager.resetPressedKey();
+                }
+
+                //Display completed quest log.
+                if(gameManager.getPressedKey() == C){
+                    ShowCompletedQuestLog *showCompletedQuestLog = new 
+                        ShowCompletedQuestLog(&gameManager , &playerEntity);
+                    drawRepository.loadCutscene(showCompletedQuestLog);
+                    gameManager.resetPressedKey();
+                }
+
                 //Move the player on the map.
                 Movement::moveMap(*gameManager.player , *gameManager.currMap ,
                     gameManager.getPressedKey(), keys);

@@ -14,7 +14,9 @@ public:
     Quest();
     virtual ~Quest();
     virtual bool completedByPlayer() = 0;
+    virtual void makeCompletedByPlayer() = 0;
     virtual bool isActiveForPlayer() = 0;
+    virtual void makeInactiveForPlayer() = 0;
     virtual void makeActiveForPlayer() = 0;
     virtual bool objectivesAreUpdateable() = 0;
     virtual void updateQuestObjectives(std::vector<std::string> list) = 0;

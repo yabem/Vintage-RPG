@@ -191,14 +191,14 @@ void Menu::formatMenu(){
     w = longestOption;// * FONT_WIDTH;
     h = options.size() * FONT_HEIGHT;
 
-    recalculateMenuEndCoordinates();
+    calculateMenuEndCoordinates();
 
     calculateSelectorCoords();
     optionIter = options.begin();
 }
 
 //Calculates end coords based off of start coords.
-void Menu::recalculateMenuEndCoordinates(){
+void Menu::calculateMenuEndCoordinates(){
 
     this->dx = sx + w + MENU_WIDTH_BUFFER;
     this->dy = sy + h;
@@ -354,7 +354,7 @@ void Menu::setDrawToPrevSelection(Menu *prevMenu){
     this->sx = prevMenu->midRightX;           //X draw location.
     this->sy = prevMenu->midRightY;           //y draw location.
 
-    recalculateMenuEndCoordinates();
+    calculateMenuEndCoordinates();
     calculateSelectorCoords();
 }
 
@@ -399,6 +399,22 @@ int Menu::getH() const{
     return h;
 }
 
+//Returns the start x for the menu.
+//Pre:  None.
+//Post: Returns SX.
+int Menu::getSX() const{
+
+    return sx;
+}
+
+//Returns the destination x for the menu.
+//Pre:  None.
+//Post: Returns DX.
+int Menu::getDX() const{
+
+    return dx;
+}
+
 //Set menu draw location to character.
 //Pre:  None.
 //Post: Sets the draw location of the left of the character
@@ -416,7 +432,7 @@ void Menu::setMenuToLeftOfCharacter(I_Creature *i_Creature){
     //New start and end coordinates for the menu.
     setSX(charX - maxMenuWidth);
     setSY(charY);
-    recalculateMenuEndCoordinates();
+    calculateMenuEndCoordinates();
 }
 
 //Sets sx.

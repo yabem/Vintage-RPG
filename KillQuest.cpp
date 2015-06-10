@@ -18,6 +18,11 @@ bool KillQuest::completedByPlayer(){
     return _isCompletedByPlayer;
 }
 
+void KillQuest::makeCompletedByPlayer(){
+
+    _isCompletedByPlayer = true;
+}
+
 bool KillQuest::isActiveForPlayer(){
 
     return _isActiveForPlayer;
@@ -26,6 +31,11 @@ bool KillQuest::isActiveForPlayer(){
 void KillQuest::makeActiveForPlayer(){
 
     _isActiveForPlayer = true;
+}
+
+void KillQuest::makeInactiveForPlayer(){
+
+    _isActiveForPlayer = false;
 }
 
 //Determines if the quest is updateable.

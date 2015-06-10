@@ -505,6 +505,36 @@
     <Filter Include="Source Files\Quest\QuestLog">
       <UniqueIdentifier>{0fa61fbd-64ce-41cf-99e4-5a303e21e8a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TextBox\Derived Class\FloatingText">
+      <UniqueIdentifier>{361b714d-4c68-474b-94ae-2a1f3f19d6a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextBox\Derived Class\Menu">
+      <UniqueIdentifier>{6539a33b-1915-4564-ba1f-b779d5641e2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextBox\Derived Class\TextBox">
+      <UniqueIdentifier>{134a3479-00cd-4f2f-a888-ae8bbb8122bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextBox\Derived Class\Menu\Base Class">
+      <UniqueIdentifier>{16fad051-053e-4641-b82e-afcdb87e3dfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextBox\Derived Class\Menu\Derived Class">
+      <UniqueIdentifier>{fda13829-cd33-43f0-af02-f938115b3f7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TextBox\Derived Class\FloatingText">
+      <UniqueIdentifier>{c4d00f8b-6163-48bf-840d-b322ebf0b7e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TextBox\Derived Class\Menu">
+      <UniqueIdentifier>{62e2110d-745e-4ba8-9f9b-f9e7c64e0e40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TextBox\Derived Class\TextBox">
+      <UniqueIdentifier>{c8b4d279-019f-4f08-a19d-2e9bef023762}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TextBox\Derived Class\Menu\Base Class">
+      <UniqueIdentifier>{9d65c535-13c5-41fe-8728-b77ea99fc33e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TextBox\Derived Class\Menu\Derived Class">
+      <UniqueIdentifier>{0a8b1609-7845-4eeb-bc54-e9b557f017f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -533,9 +563,6 @@
     </ClCompile>
     <ClCompile Include="MovingText.cpp">
       <Filter>Source Files\Animation\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files\TextBox\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="FontStore.cpp">
       <Filter>Source Files\FontStore</Filter>
@@ -608,9 +635,6 @@
     </ClCompile>
     <ClCompile Include="I_InfoBox.cpp">
       <Filter>Source Files\TextBox\Base Class</Filter>
-    </ClCompile>
-    <ClCompile Include="TextBox.cpp">
-      <Filter>Source Files\TextBox\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="MenuList.cpp">
       <Filter>Source Files\List\Derived Class</Filter>
@@ -692,9 +716,6 @@
     </ClCompile>
     <ClCompile Include="GainedItem.cpp">
       <Filter>Source Files\TreasureBox\Reward\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="FloatingText.cpp">
-      <Filter>Source Files\TextBox\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="FloatingTextList.cpp">
       <Filter>Source Files\List\Derived Class</Filter>
@@ -888,6 +909,24 @@
     <ClCompile Include="QuestLog.cpp">
       <Filter>Source Files\Quest\QuestLog</Filter>
     </ClCompile>
+    <ClCompile Include="ShowActiveQuestLog.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ShowCompletedQuestLog.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TextBox.cpp">
+      <Filter>Source Files\TextBox\Derived Class\TextBox</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatingText.cpp">
+      <Filter>Source Files\TextBox\Derived Class\FloatingText</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\TextBox\Derived Class\Menu\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoTable.cpp">
+      <Filter>Source Files\TextBox\Derived Class\Menu\Derived Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageStore.h">
@@ -913,9 +952,6 @@
     </ClInclude>
     <ClInclude Include="MovingText.h">
       <Filter>Header Files\Animation\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Header Files\TextBox\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="FontStore.h">
       <Filter>Header Files\Font</Filter>
@@ -988,9 +1024,6 @@
     </ClInclude>
     <ClInclude Include="I_InfoBox.h">
       <Filter>Header Files\TextBox\Base Class</Filter>
-    </ClInclude>
-    <ClInclude Include="TextBox.h">
-      <Filter>Header Files\TextBox\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="MenuList.h">
       <Filter>Header Files\List\Derived Class</Filter>
@@ -1075,9 +1108,6 @@
     </ClInclude>
     <ClInclude Include="CalculateRewards.h">
       <Filter>Header Files\TreasureBox\Reward</Filter>
-    </ClInclude>
-    <ClInclude Include="FloatingText.h">
-      <Filter>Header Files\TextBox\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="FloatingTextList.h">
       <Filter>Header Files\List\Derived Class</Filter>
@@ -1273,6 +1303,24 @@
     </ClInclude>
     <ClInclude Include="QuestLog.h">
       <Filter>Header Files\Quest\QuestLog</Filter>
+    </ClInclude>
+    <ClInclude Include="ShowActiveQuestLog.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ShowCompletedQuestLog.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatingText.h">
+      <Filter>Header Files\TextBox\Derived Class\FloatingText</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBox.h">
+      <Filter>Header Files\TextBox\Derived Class\TextBox</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files\TextBox\Derived Class\Menu\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoTable.h">
+      <Filter>Header Files\TextBox\Derived Class\Menu\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

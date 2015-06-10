@@ -6,6 +6,7 @@
 #include "Layer.h"
 #include "Tangible.h"
 #include "AreaMap.h"
+#include "GameManager.h"
 
 namespace Movement{
 

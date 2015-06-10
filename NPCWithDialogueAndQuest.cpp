@@ -74,6 +74,8 @@ void NPCWithDialogueAndQuest::playCutscene(int pressedKey){
         rewardAbility->setText(rewardNotification);
         this->drawRepository->loadCutscene(rewardAbility);
 
+        quest->makeInactiveForPlayer();
+        quest->completedByPlayer();
         giftDelivered = true;
     }
 

@@ -26,6 +26,7 @@ public:
     bool createBackpack();
     bool createQuestLog();
     void displayActiveQuestsInQuestLog();
+    void displayCompletedQuestsInQuestLog();
     bool addQuest(std::string questName , Quest *quest);
     void updateQuestLog(std::vector<std::string> list);
     void loadDefaultPlayers();
