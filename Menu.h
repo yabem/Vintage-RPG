@@ -50,7 +50,7 @@ protected:
     int br , bg , bb;   //Hues for border color.
     int bWid;           //Width of the border.
 
-    void formatMenu();  //Formats the text into the menu and submenus.
+    virtual void formatMenu();  //Formats the text into the menu and submenus.
 
 public:
 

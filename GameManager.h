@@ -11,6 +11,7 @@
 #include "DrawRepository.h"
 #include "PlayerEntity.h"
 #include "PixelConversion.h"
+#include "StatsByLevelStore.h"
 
 const int RESET_TIMER = 2000;
 const int BATTLE_TIMER = 100;   //Determines when a battle will take place.
@@ -22,6 +23,7 @@ private:
     ALLEGRO_FONT *introFont;
     DrawRepository *drawRepository;
     PlayerEntity *playerEntity;
+    StatsByLevelStore *statsByLevelStore;
 
     //Determines when the gameloop exits.
     bool endOfGameLoop; 
@@ -118,4 +120,10 @@ public:
 
     //Gets the PlayerEntity.
     PlayerEntity* getPlayerEntity();
+
+    //Sets the StatsByLevelStore.
+    void setStatsByLevelStore(StatsByLevelStore *statsByLevelStore);
+
+    //Gets the StatsByLevelStore.
+    StatsByLevelStore* getStatsByLevelStore();    
 };

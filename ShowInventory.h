@@ -1,10 +1,10 @@
-//Displays the player's completed quests.
+//Displays the player's inventory.
 
 #pragma once
 #include "Cutscene.h"
 #include "GameManager.h"
 
-class ShowCompletedQuestLog : public Cutscene{
+class ShowInventory : public Cutscene{
 
 protected:
     
@@ -14,7 +14,7 @@ protected:
 
 public:
 
-    ShowCompletedQuestLog(GameManager *gameManager , PlayerEntity *playerEntity);
-    ~ShowCompletedQuestLog();
+    ShowInventory(GameManager *gameManager , PlayerEntity *playerEntity);
+    ~ShowInventory();
     bool play(const int pressedKey);
 };

@@ -1,10 +1,10 @@
-//Displays the player's completed quests.
+//Displays the status of every character in the party.
 
 #pragma once
 #include "Cutscene.h"
 #include "GameManager.h"
 
-class ShowCompletedQuestLog : public Cutscene{
+class ShowPartyStatus : public Cutscene{
 
 protected:
     
@@ -14,7 +14,7 @@ protected:
 
 public:
 
-    ShowCompletedQuestLog(GameManager *gameManager , PlayerEntity *playerEntity);
-    ~ShowCompletedQuestLog();
+    ShowPartyStatus(GameManager *gameManager , PlayerEntity *playerEntity);
+    ~ShowPartyStatus();
     bool play(const int pressedKey);
 };

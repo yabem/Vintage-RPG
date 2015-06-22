@@ -13,5 +13,6 @@ public:
     virtual ~I_InventoryItem();
     virtual std::string getName() = 0;
     virtual int getAmount() = 0;
-    virtual void addToAmount(int amountToAdd) = 0;
+    virtual int getCapacity() = 0;
+    virtual bool addToAmount(int amountToAdd) = 0;
 };

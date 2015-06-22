@@ -114,6 +114,10 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("treasureBox1" , al_load_bitmap("treasureBox1.png"));
     loadBitMap("treasureBox2" , al_load_bitmap("treasureBox2.png"));
     loadBitMap("treasureBarrel" , al_load_bitmap("treasureBarrel.png"));
+    loadBitMap("playerLookalike" , al_load_bitmap("playerLookalike.png"));
+    loadBitMap("oldMan" , al_load_bitmap("oldMan.png"));
+    loadBitMap("friendlyGentleman" , al_load_bitmap("friendlyGentleman.png"));
+    
     
     loadBitMap("default" , al_load_bitmap("default.png"));
 

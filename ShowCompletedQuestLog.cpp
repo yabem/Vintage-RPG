@@ -5,6 +5,7 @@ ShowCompletedQuestLog::ShowCompletedQuestLog(GameManager *gameManager ,
 
     this->playerEntity = playerEntity;
     this->gameManager = gameManager;
+    this->firstTimeThrough = true;
 }
 
 ShowCompletedQuestLog::~ShowCompletedQuestLog(){
@@ -14,6 +15,12 @@ ShowCompletedQuestLog::~ShowCompletedQuestLog(){
 //Plays the cutscene. Returns false if not done playing, returns true
 //when done playing.
 bool ShowCompletedQuestLog::play(const int pressedKey){
+
+    if(firstTimeThrough){
+
+        playerEntity->updateQuestDisplays();
+        firstTimeThrough = false;
+    }
 
     //Animate player.
     gameManager->player->animate();
@@ -26,7 +33,7 @@ bool ShowCompletedQuestLog::play(const int pressedKey){
 
     playerEntity->displayCompletedQuestsInQuestLog();
 
-    if(pressedKey == C){
+    if(pressedKey == O){
         return true;
     }
 

@@ -1,6 +1,6 @@
-#include "ShowActiveQuestLog.h"
+#include "ShowInventory.h"
     
-ShowActiveQuestLog::ShowActiveQuestLog(GameManager *gameManager ,
+ShowInventory::ShowInventory(GameManager *gameManager ,
     PlayerEntity *playerEntity){
 
     this->playerEntity = playerEntity;
@@ -8,17 +8,17 @@ ShowActiveQuestLog::ShowActiveQuestLog(GameManager *gameManager ,
     this->firstTimeThrough = true;
 }
 
-ShowActiveQuestLog::~ShowActiveQuestLog(){
+ShowInventory::~ShowInventory(){
 
 }
 
 //Plays the cutscene. Returns false if not done playing, returns true
 //when done playing.
-bool ShowActiveQuestLog::play(const int pressedKey){
+bool ShowInventory::play(const int pressedKey){
 
     if(firstTimeThrough){
 
-        playerEntity->updateQuestDisplays();
+        playerEntity->getPlayerInventory()->updateInventoryDisplay();
         firstTimeThrough = false;
     }
 
@@ -31,9 +31,9 @@ bool ShowActiveQuestLog::play(const int pressedKey){
     //Draw map.
     Draw::drawArea(*gameManager->currMap , *gameManager->player);
 
-    playerEntity->displayActiveQuestsInQuestLog();
+    playerEntity->getPlayerInventory()->displayInventory();
 
-    if(pressedKey == L){
+    if(pressedKey == I){
         return true;
     }
 

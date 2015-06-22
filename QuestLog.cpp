@@ -194,7 +194,6 @@ void QuestLog::centerCompletedQuestDisplayToScreen(){
 //Post: Displays all quests marked as active but not complete.
 void QuestLog::displayActiveQuests(){
 
-    updateQuestDisplay();
     activeQuestDisplay->draw();
 }
 
@@ -203,7 +202,6 @@ void QuestLog::displayActiveQuests(){
 //Post: Displays all quests marked as inactive and complete.
 void QuestLog::displayCompletedQuests(){
 
-    updateQuestDisplay();
     completedQuestDisplay->draw();
 }
 

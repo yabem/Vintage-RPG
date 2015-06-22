@@ -5,7 +5,7 @@
 #include <map>
 #include "TextBox.h"
 #include "FontStore.h"
-#include "Menu.h"
+
 #include "InfoTable.h"
 
 class QuestLog{

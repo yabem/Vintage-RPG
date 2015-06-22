@@ -10,6 +10,7 @@ protected:
     
     PlayerEntity *playerEntity;
     GameManager *gameManager;
+    bool firstTimeThrough;
 
 public:
 

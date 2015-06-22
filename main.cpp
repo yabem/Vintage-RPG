@@ -43,6 +43,9 @@
 #include "NorthernSnowBattle.h"
 #include "ShowActiveQuestLog.h"
 #include "ShowCompletedQuestLog.h"
+#include "ShowInventory.h"
+#include "ShowPartyStatus.h"
+#include "StatsByLevelStore.h"
 
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
@@ -74,8 +77,8 @@ int main(int argc, char **argv){
    ALLEGRO_TIMER *timer = NULL;
     
    //List of all the keys.
-   bool keys[9] = {false , false , false , false , false , false ,
-       false, false , false};
+   bool keys[11] = {false , false , false , false , false , false ,
+       false, false , false , false , false};
 
    int theKey = -1;
    
@@ -108,6 +111,10 @@ int main(int argc, char **argv){
     ImageStore imageStore;
     imageStore.loadAllDefaultImages();
 
+    //Creates the StatsByLevelStore.
+    StatsByLevelStore statsByLevelStore;
+    statsByLevelStore.loadAllCharacterStats();
+
     FontStore fontStore;
     fontStore.loadAllDefaultFonts();
 
@@ -121,6 +128,7 @@ int main(int argc, char **argv){
     playerEntity.createQuestLog();
     playerEntity.loadDefaultPlayers();
     gameManager.setPlayerEntity(&playerEntity);
+    gameManager.setStatsByLevelStore(&statsByLevelStore);
 
     HomeTown homeTown(&imageStore , &drawRepository , &gameManager , 
         &battleManager , &fontStore , AREA_MAP_SIZE);
@@ -251,7 +259,6 @@ int main(int argc, char **argv){
             
             if(!drawRepository.cutscenesEmpty()){
                 drawRepository.playCutscenes(); 
-                //playerEntity.displayActiveQuestsInQuestLog();
             }
 
 //////////////////////////////////////////Battle///////////////////////////////
@@ -303,10 +310,26 @@ int main(int argc, char **argv){
                 }
 
                 //Display completed quest log.
-                if(gameManager.getPressedKey() == C){
+                if(gameManager.getPressedKey() == O){
                     ShowCompletedQuestLog *showCompletedQuestLog = new 
                         ShowCompletedQuestLog(&gameManager , &playerEntity);
                     drawRepository.loadCutscene(showCompletedQuestLog);
+                    gameManager.resetPressedKey();
+                }
+
+                //Display player inventory.
+                if(gameManager.getPressedKey() == I){
+                    ShowInventory *showInvenory= new 
+                        ShowInventory(&gameManager , &playerEntity);
+                    drawRepository.loadCutscene(showInvenory);
+                    gameManager.resetPressedKey();
+                }
+
+                //Display party statuses.
+                if(gameManager.getPressedKey() == U){
+                    ShowPartyStatus *showPartyStatus= new 
+                        ShowPartyStatus(&gameManager , &playerEntity);
+                    drawRepository.loadCutscene(showPartyStatus);
                     gameManager.resetPressedKey();
                 }
 

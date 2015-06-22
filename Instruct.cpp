@@ -6,9 +6,10 @@ Instruct::Instruct(ALLEGRO_FONT *font){
    frameCount = 0;
 
    this->textBox = new TextBox("You awaken in a strange town that you have never seen before."
-       "You don't know where you are and how you got here."
-       "The last thing you remember was running away from something in the woods."
-       "Find some clues and figure out what happened. " , font);
+       "You don't know where you are and how you got here. "
+       "Oddly enough you are in a party with three other people. Good thing because you are "
+       "going to understand this riddle, which is wrapped in an enigma, that's nestled inside a "
+       "conundrum. Find some clues and figure out what happened. Duh duh DUH!!! ", font);
 }
 
 //Destructor.

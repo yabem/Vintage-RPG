@@ -1,5 +1,6 @@
 #pragma once
 #include "Stats.h"
+#include "GameConfig.h"
 #include <vector>
 #include "I_CharacterValuesList.h"
 
@@ -8,6 +9,7 @@ class CharStats: public Stats{
 
 private:
 
+    
     int ttlXPGained;    //Total gained experience.
     int currLvlXP;      //Total XP for this level.
     int toLvlXP;        //Remaining XP to next level.    
@@ -38,6 +40,11 @@ public:
 
     int getCurrLvlXP() const;       //Returns currLvlXP.
     int getToLvlXP() const;         //Returns toLvlXP.
-    
-    void addTottlXPGained(int amount);    //Add to ttlXPGained.
+    void addToTtlXP(int amount);     //Add to ttlXPGained.
+    bool hasLeveledUp();    //Checks if the character has leveled up.
+
+    virtual void setToLvlXP(int toLvlXP);  //Sets the ToLvlXP.
+
+    //Retrieves a summary of the pertinent stats to display.
+    virtual std::string getSummary();  
 };

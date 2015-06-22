@@ -21,6 +21,7 @@ public:
     virtual bool objectivesAreUpdateable() = 0;
     virtual void updateQuestObjectives(std::vector<std::string> list) = 0;
     virtual void checkComplete() = 0;
+    virtual void removeQuestItemsFromBackPack();
     virtual void setQuestDisplayName(std::string displayName) = 0;
     virtual std::string getQuestDisplayName() = 0;
     virtual std::string getObjectiveSummary() = 0;

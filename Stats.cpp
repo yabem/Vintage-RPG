@@ -64,10 +64,10 @@ int Stats::getBaseHP() const{
     return baseHP;
 }
 
-//Returns ttlHP.
+//Returns ttlHP plus any bonuses.
 int Stats::getTtlHP() const{
 
-    return ttlHP;
+    return baseHP;
 }
 
 //Returns currHP.
@@ -82,10 +82,10 @@ int Stats::getBaseMP() const{
     return baseMP;
 }
 
-//Returns ttlMP.
+//Returns ttlMP plus any bonuses.
 int Stats::getTtlMP() const{
 
-    return ttlMP;
+    return baseMP;
 }
 
 //Returns currMP.
@@ -100,10 +100,10 @@ int Stats::getBaseAtk() const{
     return baseAtk;
 }
 
-//Returns ttlAtk.
+//Returns baseAtk plus any bonuses.
 int Stats::getTtlAtk() const{
 
-    return ttlAtk;
+    return baseAtk;
 }
 
 //Returns baseDef.
@@ -112,16 +112,58 @@ int Stats::getBaseDef() const{
     return baseDef;
 }
 
-//Returns ttlDef.
+//Returns ttlDef plus any bonuses.
 int Stats::getTtlDef() const{
 
-    return ttlDef;
+    return baseDef;
 }     
 
 //Returns the speed.
 float Stats::getSpeed() const{
 
     return speed;
+}
+
+//Returns the level.
+void Stats::setLevel(int level){
+
+    this->level = level;
+}
+
+//Sets the baseHP.
+void Stats::setBaseHP(int baseHP){
+
+    this->baseHP = baseHP;
+}
+
+//Sets the currHP.
+void Stats::setCurrHP(int currHP){
+
+    this->currHP = currHP;
+}
+
+//Sets the baseMP.
+void Stats::setBaseMP(int baseMP){
+
+    this->baseMP = baseMP;
+}
+
+//Sets the baseAtk.
+void Stats::setBaseAtk(int baseAtk){
+
+    this->baseAtk = baseAtk;
+}
+
+//Sets the baseDef.
+void Stats::setBaseDef(int baseDef){
+
+    this->baseDef = baseDef;
+}
+
+//Sets the speed.
+void Stats::setSpeed(int speed){
+
+    this->speed = speed;
 }
 
 //Returns the XP reward.
@@ -170,10 +212,17 @@ void Stats::addToCurrHP(int amount){
     }
 }
 
-//Adds to the Character's total XP.
-void Stats::addToTtlXP(int amount){
-    
-    //Goes to the subclass.
+//Gets the role.
+std::string Stats::getRole(){
+
+    return role;
+}
+
+
+//Sets the role.
+void Stats::setRole(std::string role){
+
+    this->role = role;
 }
 
 //Determines if currHP are all gone.
@@ -199,4 +248,42 @@ void Stats::makeDead(){
 void Stats::makeAlive(){
 
     dead = false;
+}
+
+//Recreates the player's stats.
+//Pre:  None.
+//Post: Permanently updates the statsDisplay.
+std::string Stats::getSummary(){
+
+    std::string statsSummary = "";
+
+    char tempChar[10];
+
+    statsSummary += "Class: ";
+    statsSummary += role;
+    
+    statsSummary += "   Level: ";
+    _itoa_s(level , tempChar , 10);
+    statsSummary += tempChar; 
+
+    statsSummary += "   HP: ";
+    _itoa_s(currHP , tempChar , 10);
+    statsSummary += tempChar; 
+    statsSummary += "/";
+    _itoa_s(ttlHP , tempChar , 10);
+    statsSummary += tempChar; 
+
+    statsSummary += "   Attack: ";
+    _itoa_s(ttlAtk , tempChar , 10);
+    statsSummary += tempChar; 
+
+    statsSummary += "   Defense: ";
+    _itoa_s(ttlDef , tempChar , 10);
+    statsSummary += tempChar; 
+
+    statsSummary += "   Speed: ";
+    _itoa_s(speed , tempChar , 10);
+    statsSummary += tempChar; 
+
+    return statsSummary;
 }

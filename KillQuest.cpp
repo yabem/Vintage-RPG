@@ -81,13 +81,13 @@ void KillQuest::updateQuestObjectives(std::vector<std::string> list){
             objectiveIter != _objectives.end() ;
             objectiveIter++){
 
-                //Only add to numberKilled when the string matches and it won't
-                //increase the numberKilled above the totalToKill.
-                if((*strIter) == (*objectiveIter)->enemy && 
-                    (*objectiveIter)->numberKilled < 
-                    (*objectiveIter)->totalToKill){
+                //Only add to _numberAcquired when the string matches and it won't
+                //increase the _numberAcquired above the _totalNecessaryToAchieveGoal.
+                if((*strIter) == (*objectiveIter)->_goalToAccomplish && 
+                    (*objectiveIter)->_numberAcquired < 
+                    (*objectiveIter)->_totalNecessaryToAchieveGoal){
 
-                (*objectiveIter)->numberKilled++;
+                (*objectiveIter)->_numberAcquired++;
             }
         }
     }
@@ -103,19 +103,20 @@ void KillQuest::checkComplete(){
         objIter != _objectives.end() ;
         objIter++){
 
-            if((*objIter)->numberKilled < (*objIter)->totalToKill)
+            if((*objIter)->_numberAcquired < (*objIter)->_totalNecessaryToAchieveGoal)
                 complete = false;
     }
 
     this->_isCompletedByPlayer = complete;
 }
 
-void KillQuest::addObjective(std::string enemy , int numberToKill){
+void KillQuest::addObjective(std::string goalToAccomplish ,
+        int totalNecessaryToAchieveGoal){
 
     Objective *objective = new Objective();
-    objective->enemy = enemy;
-    objective->totalToKill = numberToKill;
-    objective->numberKilled = 0;
+    objective->_goalToAccomplish = goalToAccomplish;
+    objective->_totalNecessaryToAchieveGoal = totalNecessaryToAchieveGoal;
+    objective->_numberAcquired = 0;
 
     this->_objectives.push_back(objective); 
 }
@@ -146,12 +147,12 @@ std::string KillQuest::getObjectiveSummary(){
             char tempChar[3];
 
             //Populate quest status.
-            objectiveSummary += (*objectiveIter)->enemy;
+            objectiveSummary += (*objectiveIter)->_goalToAccomplish;
             objectiveSummary += "-";
-             _itoa_s((*objectiveIter)->numberKilled , tempChar , 10);
+             _itoa_s((*objectiveIter)->_numberAcquired , tempChar , 10);
             objectiveSummary += tempChar;
             objectiveSummary += "/";
-            _itoa_s((*objectiveIter)->totalToKill , tempChar , 10);
+            _itoa_s((*objectiveIter)->_totalNecessaryToAchieveGoal , tempChar , 10);
             objectiveSummary += tempChar;
 
             //Add a comma if there's a list.

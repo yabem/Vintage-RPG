@@ -58,7 +58,7 @@ void HomeTown::loadTheTangibles(){
     talkingRock->createCharacter(32 , 32 , 60 , 1 , 4 , this);
 
     NPCWithDialogueAndGift *storeOwner = new NPCWithDialogueAndGift(
-        imageStore->getBitMap("player") ,
+        imageStore->getBitMap("playerLookalike") ,
         PixelConversion::convertTilesToPixels(25) , 
         PixelConversion::convertTilesToPixels(25) ,
         this->drawRepository ,
@@ -104,17 +104,17 @@ void HomeTown::loadTheTangibles(){
     witch->setCH(32);
     witch->setCharacterFacing(DOWN);
 
-    NPCWithDialogue *strife = new NPCWithDialogue(
-        imageStore->getBitMap("strife") ,
+    NPCWithDialogue *oldMan = new NPCWithDialogue(
+        imageStore->getBitMap("oldMan") ,
         PixelConversion::convertTilesToPixels(33) , 
         PixelConversion::convertTilesToPixels(36) ,        
         this->drawRepository ,
-        this->gameManager , "Strife: This wind is really killing my hair..." ,
+        this->gameManager , "Old Man: This wind is really killing my hair..." ,
         this->fontStore->getFont("default"));
-    strife->createCharacter(32 , 32 , 60 , 2 , 4 , this);
-    strife->setCW(32);
-    strife->setCH(32);
-    strife->setCharacterFacing(DOWN);
+    oldMan->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    oldMan->setCW(32);
+    oldMan->setCH(32);
+    oldMan->setCharacterFacing(DOWN);
 
     NPCWithDialogue *clod = new NPCWithDialogue(
         imageStore->getBitMap("clod") ,
@@ -220,19 +220,19 @@ void HomeTown::loadTheTangibles(){
     strifeTheQuestGiver->setCH(32);
     strifeTheQuestGiver->setCharacterFacing(DOWN);
     strifeTheQuestGiver->setQuestExplanation(
-        "I'm making a delicious stew but I'm all out of rat eyeballs."  
+        "Strife: I'm making a delicious stew but I'm all out of rat eyeballs."  
         "I need you to kill 3 rats so I can get the last 6 eyes that " 
         "the recipe requires. Can you do that for me? Of course you will! " 
         "Thanks in advance!");
     strifeTheQuestGiver->setQuestReminder(
-        "Have you killed those 3 rats yet? Chop chop, I don't have much time!");
+        "Strife: Have you killed those 3 rats yet? Chop chop, I don't have much time!");
     strifeTheQuestGiver->setQuestCompleteMessage(
-        "Wow, these eyes are so big and juicy, they'll be perfect! Here take this...");
+        "Strife:Wow, these eyes are so big and juicy, they'll be perfect! Here take this...");
     strifeTheQuestGiver->setRewardNotification(
-        "Player received the Jump ability!");
+        "Strife: Player received the Jump ability!");
     strifeTheQuestGiver->setGift("player" , "Jump");
     strifeTheQuestGiver->setQuestAfterCompleteMessage(
-        "The soup turned out great. Thanks for the eye balls."
+        "Strife: The soup turned out great. Thanks for the eye balls."
         );
 
     KillQuest *kill3Rats = new KillQuest();
@@ -258,28 +258,64 @@ void HomeTown::loadTheTangibles(){
     skugsTheQuestGiver->setCH(32);
     skugsTheQuestGiver->setCharacterFacing(DOWN);
     skugsTheQuestGiver->setQuestExplanation(
-        "I was out training in the dessert... no the desert... and "  
+        "Skugs: I was out training in the dessert... no the desert... and "  
         "I ran into a demon near the graves and I ran away because it was " 
         "too strong. Please go kill it so I can continue my training and " 
         "get me a neon orange belt.");
     skugsTheQuestGiver->setQuestReminder(
-        "Any luck killing the demon in the desert? ");
+        "Skugs: Any luck killing the demon in the desert? ");
     skugsTheQuestGiver->setQuestCompleteMessage(
-        "I really didn't think you could do it to be honest. I'm impressed. Take "
+        "Skugs: I really didn't think you could do it to be honest. I'm impressed. Take "
         "this as a token of my gratitude.");
     skugsTheQuestGiver->setRewardNotification(
-        "Player received the Triple Thrust ability!");
+        "Skugs: Player received the Triple Thrust ability!");
     skugsTheQuestGiver->setGift("player" , "Triple Thrust");
     skugsTheQuestGiver->setQuestAfterCompleteMessage(
-        "You're my hero, peculiar person that doesn't say anything."
+        "Skugs: You're my hero, peculiar person that doesn't say anything."
         );
-
     KillQuest *killDesertDemon= new KillQuest();
     killDesertDemon->setQuestDisplayName("A Demon in the Desert");
     killDesertDemon->addObjective("demon" , 1);
     skugsTheQuestGiver->loadQuest(killDesertDemon);
     gameManager->getPlayerEntity()->addQuest("demonQuest" , killDesertDemon);
 
+    NPCWithDialogueAndQuest *friendlyGentlemanQuestGiver = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("friendlyGentleman") ,
+        PixelConversion::convertTilesToPixels(10) , 
+        PixelConversion::convertTilesToPixels(40) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    friendlyGentlemanQuestGiver->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    friendlyGentlemanQuestGiver->setCW(32);
+    friendlyGentlemanQuestGiver->setCH(32);
+    friendlyGentlemanQuestGiver->setCharacterFacing(DOWN);
+    friendlyGentlemanQuestGiver->setQuestExplanation(
+        "Friendly Gentleman: Why hullo there friend. You look like a strapping young lad. "  
+        "I run a potion exchange and I'm short some potions. Have you "
+        "perchance run across any? I'd be every so graetful if you could "
+        "get me 10 potions and 5 hi-potions. I would most definitely "
+        "repay you with something extraordinary!" );
+    friendlyGentlemanQuestGiver->setQuestReminder(
+        "Friendly Gentleman: How goes the potion hunt? ");
+    friendlyGentlemanQuestGiver->setQuestCompleteMessage(
+        "Friendly Gentleman: Well done kind sir, you have saved my slightly wrinkly overcooked bacon!");
+    friendlyGentlemanQuestGiver->setRewardNotification(
+        "Friendly Gentleman: Thief received the Backstab ability!");
+    friendlyGentlemanQuestGiver->setGift("thief" , "Backstab");
+    friendlyGentlemanQuestGiver->setQuestAfterCompleteMessage(
+        "Friendly Gentleman: Whoop whoop, back in business!"
+        );
+    GatherQuest *get10Potions5Hipotions = new GatherQuest(
+        gameManager->getPlayerEntity()->getPlayerInventory());
+    get10Potions5Hipotions->setQuestDisplayName("Potions for a Gentleman");
+    get10Potions5Hipotions->addObjective("Potion" , 2);
+    get10Potions5Hipotions->addObjective("hi-potion" , 5);
+    friendlyGentlemanQuestGiver->loadQuest(get10Potions5Hipotions);
+    gameManager->getPlayerEntity()->addQuest("potionQuest" , get10Potions5Hipotions);
+    
     /*
     NPCWithDialogue *monk = new NPCWithDialogue(
         imageStore->getBitMap("monk") ,
@@ -299,7 +335,7 @@ void HomeTown::loadTheTangibles(){
     this->loadTangible(storeOwner);
     this->loadTangible(mysteriousMan);
     this->loadTangible(witch);
-    this->loadTangible(strife);
+    this->loadTangible(oldMan);
     this->loadTangible(clod);
     this->loadTangible(joanna);
     this->loadTangible(treasureBoxWithRecoverForPlayer);
@@ -308,6 +344,7 @@ void HomeTown::loadTheTangibles(){
     this->loadTangible(treasureBarrelWithRecoverForWarrior);
     this->loadTangible(strifeTheQuestGiver);
     this->loadTangible(skugsTheQuestGiver);
+    this->loadTangible(friendlyGentlemanQuestGiver);
 }
 
 //Loads all the layers to the areaMap.

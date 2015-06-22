@@ -59,15 +59,30 @@ public:
 
     float getSpeed() const;     //Returns the speed.
 
+    void setLevel(int level);
+    void setBaseHP(int baseHP);
+    void setCurrHP(int currHP);
+    void setBaseMP(int baseMP);
+    void setBaseAtk(int baseAtk);
+    void setBaseDef(int baseDef);
+    void setSpeed(int speed);
+    virtual void setToLvlXP(int toLvlXP) = 0;
+
     virtual int getXPRewardForSlaying() const = 0;
     virtual int getMoneyRewardForSlaying() const = 0;
     virtual std::vector<std::string> getRewards() const = 0;
     virtual void addReward(std::string reward) = 0;
 
+    void setRole(std::string role); //Set's the player's role.
     void addToCurrHP(int amount);        //Adds to currHP.
-    virtual void addToTtlXP(int amount);        //Adds to the Character's total XP.
+    virtual void addToTtlXP(int amount) = 0;    //Adds to the Character's total XP.
+    virtual bool hasLeveledUp() = 0;    //Checks if the character has leveled up.
+    virtual std::string getRole();
 
     bool isDead();        //Determines if currHP are all gone.
     void makeDead();            //Sets the dead status to true.
     void makeAlive();            //Sets the dead status to false.
+
+    //Retrieves a summary of the pertinent stats to display.
+    virtual std::string getSummary();  
 };

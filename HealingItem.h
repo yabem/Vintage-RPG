@@ -18,5 +18,6 @@ public:
     virtual ~HealingItem();
     virtual std::string getName();
     virtual int getAmount();
-    virtual void addToAmount(int amountToAdd);
+    virtual int getCapacity();
+    virtual bool addToAmount(int amountToAdd);
 };

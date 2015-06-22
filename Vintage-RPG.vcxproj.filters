@@ -535,6 +535,18 @@
     <Filter Include="Header Files\TextBox\Derived Class\Menu\Derived Class">
       <UniqueIdentifier>{0a8b1609-7845-4eeb-bc54-e9b557f017f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Character\StatsByLevel">
+      <UniqueIdentifier>{eccf3002-aaad-4edf-9528-b6c3f91de27c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\StatsByLevel">
+      <UniqueIdentifier>{e3181e07-619e-4275-a944-4ed5b84ade61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\StatsByLevel\StatsByLevelStore">
+      <UniqueIdentifier>{468a72d9-97aa-4755-a0da-f7681eabd85d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\StatsByLevel\StatsByLevelStore">
+      <UniqueIdentifier>{765f7494-30e2-4ca6-baf7-6b1490134c10}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -926,6 +938,24 @@
     </ClCompile>
     <ClCompile Include="InfoTable.cpp">
       <Filter>Source Files\TextBox\Derived Class\Menu\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="GatherQuest.cpp">
+      <Filter>Source Files\Quest\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ShowInventory.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ShowPartyStatus.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="StatsByLevel.cpp">
+      <Filter>Source Files\Character\StatsByLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="StatsByLevelStore.cpp">
+      <Filter>Source Files\Character\StatsByLevel\StatsByLevelStore</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelUpCalculations.cpp">
+      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1321,6 +1351,24 @@
     </ClInclude>
     <ClInclude Include="InfoTable.h">
       <Filter>Header Files\TextBox\Derived Class\Menu\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="GatherQuest.h">
+      <Filter>Header Files\Quest\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ShowInventory.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ShowPartyStatus.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="StatsByLevel.h">
+      <Filter>Header Files\Character\StatsByLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="StatsByLevelStore.h">
+      <Filter>Header Files\Character\StatsByLevel\StatsByLevelStore</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelUpCalculations.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

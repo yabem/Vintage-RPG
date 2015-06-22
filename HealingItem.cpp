@@ -28,18 +28,35 @@ int HealingItem::getAmount(){
     return currentAmount;
 }
 
+//Returns the items capacity.
+int HealingItem::getCapacity(){
+
+    return capacity;
+}
+
 //Adds to the current amount of the item.
 //Pre:  None.
 //Post: The amountToAdd is added to currentAmount. If the new amount
-//      is > than the capacity, it will only be increased to the capacity.
-//      If the new capacity is < 0, the capacity will be set to 0.
-void HealingItem::addToAmount(int amountToAdd){
+//      is > than the capacity, it will only be increased to the capacity
+//      and will return true. If the new amount will be unchanged and will 
+//      return false. If the amount is > 0 and < capacity, the amount
+//      is added and returns true.
+bool HealingItem::addToAmount(int amountToAdd){
 
-    if(amountToAdd + currentAmount < 0)
-        currentAmount = 0;
+    if(amountToAdd + currentAmount < 0){
+        
+        return false;
+    }
 
-    else if(amountToAdd + currentAmount > capacity)
+    else if(amountToAdd + currentAmount > capacity){
+        
         currentAmount = capacity;
+        return true;
+    }
 
-    else currentAmount += amountToAdd;
+    else {
+        
+        currentAmount += amountToAdd;
+        return true;
+    }
 }

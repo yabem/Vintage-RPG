@@ -26,6 +26,7 @@
 #include "BattleTrans.h"
 #include "TreasureBox.h"
 #include "FontStore.h"
+#include "LevelUpCalculations.h"
 
 class DrawRepository;
 

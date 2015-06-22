@@ -20,8 +20,7 @@ GainedItem::~GainedItem(){
 //Post: Delivers the experience points to the player.
 bool GainedItem::deliverToPlayer(){
 
-    //Fix memory leak, figure out how to delete this.
-    I_InventoryItem *potion = new HealingItem("Potion" , amountGained);
+    I_InventoryItem *potion = new HealingItem(this->itemName , amountGained);
 
     backpack->addItem(potion);
 

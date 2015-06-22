@@ -7,6 +7,7 @@ PlayerEntity::PlayerEntity(ImageStore *imageStore , FontStore *fontStore){
     this->imageStore = imageStore;
     this->questLog = NULL;
     this->fontStore = fontStore;
+    this->partyStatusDisplay = NULL;
 }
 
 //Destructor.    
@@ -25,7 +26,7 @@ bool PlayerEntity::createBackpack(){
 
     if(backpack == NULL){
 
-        backpack = new Backpack();
+        backpack = new Backpack(fontStore);
         return true;
     }
     
@@ -33,18 +34,87 @@ bool PlayerEntity::createBackpack(){
 }
 
 //Pre:  None.
-//Post: Displays all the active quests for the player
+//Post: Displays all the active quests for the player.
 void PlayerEntity::displayActiveQuestsInQuestLog(){
 
-    this->questLog->displayActiveQuests();
+    questLog->displayActiveQuests();
 }
 
 //Pre:  None.
-//Post: Displays all the completed quests for the player
+//Post: Displays all the completed quests for the player.
 void PlayerEntity::displayCompletedQuestsInQuestLog(){
 
-    this->questLog->displayCompletedQuests();
+    questLog->displayCompletedQuests();
 }
+
+//Pre:  None.
+//Post: Updates all the quests in the questLog.
+void PlayerEntity::updateQuestDisplays(){
+
+    questLog->updateActiveQuestsDisplay();
+}
+
+//Pre:  None.
+//Post: Displays the player stats of everyone in the party.
+void PlayerEntity::displayPlayerStats(){
+
+    partyStatusDisplay->draw();
+}
+
+//Recreates the display
+//Pre:  None.
+//Post: Permanently updates the partyStatusDisplay.
+void PlayerEntity::updatePartyStatusDisplay(){
+
+    //Delete existing display.
+    delete partyStatusDisplay;
+
+    std::string allStatuses = 
+        "--------------------------------------------Party Status"
+        "--------------------------------------------,";
+
+    thePlayers->resetSelection();
+
+    //Get character summary from each character.
+    for(int i = 0 ; i < thePlayers->getSize() ; i++){
+
+        allStatuses += thePlayers->getCurrSelection()->getStats()->getSummary();
+
+        //Check if there's another element.
+        if(i + 1 != thePlayers->getSize()){
+
+            allStatuses += ",";
+        }
+
+        thePlayers->moveSelectionDown();
+    }
+
+    thePlayers->resetSelection();
+    allStatuses += ";";
+
+    InfoTable *partyStatusDisplay = new InfoTable(allStatuses ,
+        fontStore->getFont("default"));
+    partyStatusDisplay->formatText();
+    this->partyStatusDisplay = partyStatusDisplay;
+    centerPartyStatusDisplayToScreen();
+}
+
+ //Moves the partyStatusDisplay to the middle of the screen.
+//Pre:  None.
+//Post: Gets the difference in width between the partyStatusDisplay and the screen 
+//      width. Divides that by two, then adds it to the start position of
+//      the partyStatusDisplay.
+ void PlayerEntity::centerPartyStatusDisplayToScreen(){
+
+    int totalWidthOfInfoTable = 
+        partyStatusDisplay->getDX() - partyStatusDisplay->getSX();
+    int amountToAddToInfoTableToCenter = 
+        (SCREEN_W - totalWidthOfInfoTable) / 2;
+
+    partyStatusDisplay->setSX(amountToAddToInfoTableToCenter);
+    partyStatusDisplay->calculateMenuEndCoordinates();
+    partyStatusDisplay->calculateSelectorCoords();
+ }
 
 //Pre:  The QuestLog does not exist.
 //Post: Dynamically allocates a QuestLog. Returns true if
@@ -127,12 +197,19 @@ void PlayerEntity::loadDefaultPlayers(){
     //Character stats
     CharStats *playerStats = new CharStats(1 , 1 , 10 , 100 , 10 , 1 , 100 ,
         10 , 1.8 , 0 , 0 , emptyStringVector);
+    playerStats->setRole("Lancer");
+
     CharStats *playerStats2 = new CharStats(1 , 5 , 10 , 100 , 10 , 1 , 100 ,
         10 , 1.9 , 0 , 0 , emptyStringVector);
+    playerStats2->setRole("Warrior");
+    
     CharStats *playerStats3 = new CharStats(1 , 1 , 10 , 100 , 10 , 1 , 100 ,
         10 , 2.0 , 0 , 0, emptyStringVector);
+    playerStats3->setRole("Thief");
+
     CharStats *playerStats4 = new CharStats(1 , 5 , 10 , 100 , 10 , 1 , 100 ,
         10 , 1.3 , 0 , 0 , emptyStringVector);
+    playerStats4->setRole("Mage");
 
     thePlayer->setStats(playerStats);
     thePlayer2->setStats(playerStats2);

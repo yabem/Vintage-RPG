@@ -70,9 +70,29 @@ int CharStats::getToLvlXP() const{
 }
 
 //Increases the total xp by the amount.
-void CharStats::addTottlXPGained(int amount){
+void CharStats::addToTtlXP(int amount){
 
     ttlXPGained += amount;
+}
+
+//Checks if the character has leveled up.
+//Pre:  None.
+//Post: Returns true if ttlXPGained > toLvlXP and the character is not at the
+//      max allowable level. Otherwise returns false.
+bool CharStats::hasLeveledUp(){
+
+    if(ttlXPGained > toLvlXP && level < MAX_CHARACTER_LEVEL){
+
+        return true;
+    }
+
+    return false;
+}
+
+//Sets the ToLvlXP.
+void CharStats::setToLvlXP(int toLvlXP){
+
+    this->toLvlXP = toLvlXP;
 }
 
 //Returns listOfRewards.
@@ -85,4 +105,50 @@ std::vector<std::string> CharStats::getRewards() const{
 void CharStats::addReward(std::string reward){
 
     listOfRewards.push_back(reward);
+}
+
+//Recreates the player's stats.
+//Pre:  None.
+//Post: Permanently updates the statsDisplay.
+std::string CharStats::getSummary(){
+
+   std::string statsSummary = "";
+
+    char tempChar[10];
+
+    statsSummary += "Class:";
+    statsSummary += role;
+    
+    statsSummary += " Lvl:";
+    _itoa_s(getLevel() , tempChar , 10);
+    statsSummary += tempChar; 
+
+    statsSummary += "  HP:";
+    _itoa_s(getCurrHP() , tempChar , 10);
+    statsSummary += tempChar; 
+    statsSummary += "/";
+    _itoa_s(getTtlHP() , tempChar , 10);
+    statsSummary += tempChar; 
+
+    statsSummary += "  Atk:";
+    _itoa_s(getTtlAtk() , tempChar , 10);
+    statsSummary += tempChar; 
+
+    statsSummary += "  Def:";
+    _itoa_s(getTtlDef() , tempChar , 10);
+    statsSummary += tempChar; 
+
+    statsSummary += " Spd:";
+    _itoa_s(getSpeed() , tempChar , 10);
+    statsSummary += tempChar; 
+
+    statsSummary += "  XP:";
+    _itoa_s(getTtlXPGained() , tempChar , 10);
+    statsSummary += tempChar; 
+
+    statsSummary += "  XPtoLvl:";
+    _itoa_s(getToLvlXP() , tempChar , 10);
+    statsSummary += tempChar; 
+
+    return statsSummary;
 }

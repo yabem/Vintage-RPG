@@ -72,8 +72,11 @@ std::vector<std::string> InitEnemies::ratRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 20)
+    if(randomNum < 100)
         rewards.push_back("Potion");
+
+    if(randomNum < 100)
+        rewards.push_back("Potion2");
 
     return rewards;
 }
@@ -111,10 +114,10 @@ std::vector<std::string> InitEnemies::wolfRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 30)
+    if(randomNum < 100)
         rewards.push_back("Potion");
 
-    if(randomNum < 10)
+    if(randomNum < 100)
         rewards.push_back("Potion2");
 
     return rewards;
@@ -153,14 +156,14 @@ std::vector<std::string> InitEnemies::soldierRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 40)
-        rewards.push_back("Potion");
+    if(randomNum < 100)
+        rewards.push_back("CPotion");
 
-    if(randomNum < 20)
-        rewards.push_back("Potion2");
+    if(randomNum < 100)
+        rewards.push_back("DPotion");
 
-    if(randomNum < 10)
-        rewards.push_back("Potion3");
+    if(randomNum < 100)
+        rewards.push_back("BPotion");
 
     return rewards;
 }

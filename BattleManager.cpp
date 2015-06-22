@@ -883,6 +883,10 @@ void BattleManager::playersVictory(){
 
     removeAllEvents();
 
+    //Levels up all the characters if they meet the requirements.
+    LevelUpCalculations::levelUpListOfCharacters(
+        &thePlayers , gameManager->getStatsByLevelStore());
+
     gameManager->getPlayerEntity()->updateQuestLog(listOfDefeatedEnemies);
     listOfDefeatedEnemies.clear();
 

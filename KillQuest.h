@@ -6,14 +6,13 @@
 
 class KillQuest : public Quest{
 
-private:
+protected:
 
     struct Objective{
 
-        std::string displayName;
-        std::string enemy;
-        int totalToKill;
-        int numberKilled;
+        std::string _goalToAccomplish;
+        int _totalNecessaryToAchieveGoal;
+        int _numberAcquired;
     };
 
     std::string _displayName;
@@ -32,11 +31,12 @@ public:
     virtual void makeActiveForPlayer();
     virtual void makeInactiveForPlayer();
     virtual bool objectivesAreUpdateable();
-    void setMustBeActiveForPlayerToUpdate();
+    virtual void setMustBeActiveForPlayerToUpdate();
     virtual void updateQuestObjectives(std::vector<std::string> list);
     virtual void checkComplete();
-    void addObjective(std::string enemy , int numberToKill);
-    void emptyObjectives();
+    virtual void addObjective(std::string goalToAccomplish ,
+        int totalNecessaryToAchieveGoal);
+    virtual void emptyObjectives();
     virtual void setQuestDisplayName(std::string displayName);
     virtual std::string getQuestDisplayName();
     virtual std::string getObjectiveSummary();

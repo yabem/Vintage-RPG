@@ -149,7 +149,6 @@ int Collision::characterToTangible(Character &character , Tangible &tangible ,
             }
                 break;
             
-                
             //Collision with tangible above.
             case UP:
             if((character.getY() < (tangible.getDY() + tangible.getH()) &&

@@ -6,9 +6,10 @@
 
 using namespace std;
 
-enum MYKEYS {UP , RIGHT , DOWN , LEFT , SPACE , Q , U , C , L};
-const int MAX_NUM_KEYS = 9;
+enum MYKEYS {UP , RIGHT , DOWN , LEFT , SPACE , Q , U , C , L , I , O};
+const int MAX_NUM_KEYS = 11;
 enum LAYERTYPES {BACKGROUND , CENTERGROUND , FOREGROUND};
+const int MAX_CHARACTER_LEVEL = 10;
 enum IMAGES {ATTACK, BLOCK, MAGIC}; //Used for images indexing values.
 enum ENEMIES {RAT , WOLF , SOLDIER , ICE_BULL , BLOB_KING , GUARDIAN , DEMON};
 const int SCREEN_TEXT_WIDTH_BUFFER = 75;

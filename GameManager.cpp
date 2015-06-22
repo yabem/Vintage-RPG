@@ -210,3 +210,18 @@ PlayerEntity* GameManager::getPlayerEntity(){
 
     return playerEntity;
 }
+
+//Sets the StatsByLevelStore.
+//Pre:  The StatsByLevelStore is valid.
+//Post: Sets the StatsByLevelStore.
+void GameManager::setStatsByLevelStore(StatsByLevelStore *statsByLevelStore){
+
+    this->statsByLevelStore = statsByLevelStore;
+}
+
+//Gets the StatsByLevelStore.
+StatsByLevelStore* GameManager::getStatsByLevelStore(){
+
+    return statsByLevelStore;
+}
+

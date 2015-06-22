@@ -8,6 +8,7 @@
 #include "ItemLocationWithGift.h"
 #include "PixelConversion.h"
 #include "KillQuest.h"
+#include "GatherQuest.h"
 
 class GameManager;
 class BattleManager;
