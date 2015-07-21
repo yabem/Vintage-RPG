@@ -11,6 +11,17 @@ EasternCastle::EasternCastle(ImageStore *imageStore ,  DrawRepository *drawRepos
 EasternCastle::~EasternCastle(){
 }
 
+//Loads the enemies and level ranges for the map.
+void EasternCastle::loadMapEnemies(){
+
+    this->listOfEnemies.push_back(SOLDIER);
+    this->listOfEnemies.push_back(NINJA_FOX);
+    this->listOfEnemies.push_back(FANGED_FOX);
+    this->listOfEnemies.push_back(SHEEP);
+
+    this->loadEnemyLevelRange(3 , 5);
+}
+
 //Loads all the cloud Scenery objects.
 void EasternCastle::loadTheSceneries(){
 
@@ -40,8 +51,8 @@ void EasternCastle::loadTheTangibles(){
     std::string identifierName = "guardian"; //Used when deleting the Tangible once the fight is over.
 
     NPCWithDialogueThenBattle *guardian = new NPCWithDialogueThenBattle(imageStore->getBitMap("guardian") ,
-        PixelConversion::convertTilesToPixels(18) , 
-        PixelConversion::convertTilesToPixels(42) ,        
+        Conversion::convertTilesToPixels(18) , 
+        Conversion::convertTilesToPixels(42) ,        
         this->drawRepository ,
         this->gameManager , "You shall not pass!" ,
         this->battleManager ,

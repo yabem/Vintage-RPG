@@ -31,6 +31,16 @@ void CharacterManipulation::loadCharacters(Character *initiator ,
 
 }
 
+//Sets the damage.
+void CharacterManipulation::setDamage(){
+
+}
+
+//Loads a delay to the Character
+void CharacterManipulation::loadDelay(){
+
+}
+
 //Executes the manipulation.
 void CharacterManipulation::execute(){
 

@@ -178,9 +178,7 @@ void Backpack::updateInventoryDisplay(){
         "---------------------------Inventory----------------------------,";
 
     currentInventory += "Gold: ";
-    char tempChar[10];
-    _itoa_s(getMoney() , tempChar , 10);
-    currentInventory += tempChar;
+    currentInventory += Conversion::convertIntToString(getMoney());
     currentInventory += ",";
 
     //Find the item if it exists.
@@ -190,15 +188,13 @@ void Backpack::updateInventoryDisplay(){
         contentsIter != sortedContents.end() ;
         contentsIter++){
 
-            char tempChar[3];
-
             currentInventory += (*contentsIter)->getName();
             currentInventory += ": ";
-            _itoa_s((*contentsIter)->getAmount() , tempChar , 10);
-            currentInventory += tempChar;
+            currentInventory += Conversion::convertIntToString(
+                (*contentsIter)->getAmount());
             currentInventory += "/";
-            _itoa_s((*contentsIter)->getCapacity() , tempChar , 10);
-            currentInventory += tempChar;
+            currentInventory += Conversion::convertIntToString(
+                (*contentsIter)->getCapacity());
 
             //Check if there's another element.
             if(contentsIter + 1 != sortedContents.end()){

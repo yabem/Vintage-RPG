@@ -2,6 +2,7 @@
 
 #pragma once
 #include "Menu.h"
+#include "DrawTextWithBorder.h"
 
 class InfoTable : public Menu{
 

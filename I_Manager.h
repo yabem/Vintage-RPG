@@ -104,4 +104,13 @@ public:
 
     //Adds a defeated enemy to the defeated enemies list.
     virtual void addToDefeatedEnemyList(std::string defeatedEnemy);
+
+    //Checks if there are any events in the queue.
+    virtual bool isEventsEmpty();
+
+    //Checks if a battle has been initiated.
+    virtual bool checkForBattle();  
+
+    //Increases the battle time.
+    virtual void incrementBattleTime();
 };

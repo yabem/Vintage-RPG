@@ -66,7 +66,8 @@ void TurnTimerList::addConnection(I_Creature *i_Creature){
     characterTimer->i_Creature = i_Creature;
     characterTimer->turnTimer = turnTimer;
 
-    turnTimer->setRate(i_Creature->getStats()->getSpeed());
+    float test = i_Creature->getStats()->getTtlSpeed();
+    turnTimer->setRate(i_Creature->getStats()->getTtlSpeed());
 
     initializeTurnTimerToCharacter(characterTimer); 
 
@@ -126,15 +127,16 @@ void TurnTimerList::deleteList(){
 //      the turnTimers are reset.
 void TurnTimerList::updateTurnTimers(){
 
-    if(battleManager->battlePaused())
+    //Only cycle if there aren't any pending events in the battle.
+    if(!this->battleManager->isEventsEmpty()){
+        return;
+    }
+
+    else if(battleManager->battlePaused())
         return;
 
     else for(unsigned int i = 0 ; i < listOfCharTimers.size() ; i++){
-        
-        //Only update of the Character is alive.
-        if(!listOfCharTimers[i]->i_Creature->isDead())
-            listOfCharTimers[i]->turnTimer->updateCurrentFill();
-                
+         
         //Cycle through the entire list of Characters.
         if(listOfCharTimers[i]->turnTimer->innerBarIsFull()){
          
@@ -149,6 +151,7 @@ void TurnTimerList::updateTurnTimers(){
                     battleManager->getDrawRepository());
                 
                 battleManager->loadEvent(playerTurn);
+                return;
             }
 
             //Enemy's turn.
@@ -169,8 +172,18 @@ void TurnTimerList::updateTurnTimers(){
                 battleManager->loadEvent(enemyTurn);
                     
                 battleManager->getEnemiesList()->resetSelection();
+                return;
             }
         }
+    }
+
+    //Cycle through the entire list of Characters.
+    //Only update if it's not the player's or enemy's turn.
+    for(unsigned int i = 0 ; i < listOfCharTimers.size() ; i++){
+
+        //Only update of the Character is alive.
+        if(!listOfCharTimers[i]->i_Creature->isDead())
+            listOfCharTimers[i]->turnTimer->updateCurrentFill();
     }
 }
 
@@ -190,5 +203,20 @@ void TurnTimerList::drawTurnTimers(){
     for(unsigned int i = 0 ; i < listOfCharTimers.size() ; i++){
 
         listOfCharTimers[i]->turnTimer->draw();
+    }
+}
+
+//Recalculates fill rate on the CharacterTimers.
+//Pre:  None.
+//Post  Cycles through each of the CharacterTimers and sets the
+//      fill rate based on the the Character's speed.
+void TurnTimerList::recalculateAllFillRates(){
+
+    for(unsigned int i = 0 ; i < listOfCharTimers.size() ; i++){
+        
+        float fillRate = 
+            listOfCharTimers[i]->i_Creature->getStats()->getTtlSpeed();
+
+        listOfCharTimers[i]->turnTimer->setRate(fillRate);
     }
 }

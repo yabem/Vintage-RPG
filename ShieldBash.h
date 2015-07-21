@@ -14,6 +14,7 @@
 #include "ChangeCreatureImage.h"
 #include "SetCreatureFacingDirection.h"
 #include "DelayInSeconds.h"
+#include "DamageCalculations.h"
 
 class ShieldBash : public CharacterManipulation{
 

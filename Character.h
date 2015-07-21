@@ -74,6 +74,7 @@ public:
     int getLowerLeftY() const;                  //Return lower left y value.
     bool isPlayable() const;                    //Returns if the player is playable.
     bool getCollision(int direction);           //Return the collision value for the direction.
+    bool hasCollision() const;                  //Determine if there is a collision.
     Stats* getStats();                          //Return a pointer to the character stats.
     void deleteStats();                         //Deletes the character stats.
 
@@ -120,4 +121,5 @@ public:
 
     virtual int getXPReward();
     virtual int getMoneyReward();
+
 };

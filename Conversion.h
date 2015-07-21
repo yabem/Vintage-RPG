@@ -3,8 +3,10 @@
 #pragma once
 #include "GameConfig.h"
 
-namespace PixelConversion{
+namespace Conversion{
 
     int convertPixelsToTiles(int pixels);
     int convertTilesToPixels(int tiles);
+    std::string convertIntToString(int number);
+    float getBattleTimeIncrement();
 };

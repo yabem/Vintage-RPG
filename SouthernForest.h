@@ -7,7 +7,7 @@
 #include "FilterImage.h"
 #include "PulsingImage.h"
 #include "NPCWithDialogueThenBattle.h"
-#include "PixelConversion.h"
+#include "Conversion.h"
 
 class GameManager;
 class BattleManager;
@@ -19,6 +19,8 @@ class FontStore;
 class SouthernForest : public CustomAreaMap{
     
 private:
+
+    virtual void loadMapEnemies();
 
     virtual void loadTheSceneries();
     virtual void loadLayers();

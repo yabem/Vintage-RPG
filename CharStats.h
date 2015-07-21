@@ -4,12 +4,10 @@
 #include <vector>
 #include "I_CharacterValuesList.h"
 
-
 class CharStats: public Stats{
 
 private:
 
-    
     int ttlXPGained;    //Total gained experience.
     int currLvlXP;      //Total XP for this level.
     int toLvlXP;        //Remaining XP to next level.    

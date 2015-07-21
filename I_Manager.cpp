@@ -56,3 +56,9 @@ void I_Manager::drawFloatingTexts(){}
 bool I_Manager::currPlayerDead(){return false;}
 
 void I_Manager::addToDefeatedEnemyList(std::string defeatedEnemy){}
+
+bool I_Manager::isEventsEmpty(){return false;}
+
+bool I_Manager::checkForBattle(){return false;}
+
+void I_Manager::incrementBattleTime(){}

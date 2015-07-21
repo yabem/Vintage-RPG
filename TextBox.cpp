@@ -98,13 +98,9 @@ void TextBox::draw(){
     vector<string>::iterator it = formattedText.begin();
     
     for(int i = 0 ; it != formattedText.end() ; it++ , i++){
-        
-        al_draw_textf(font,             //Font.
-            al_map_rgb(tr , tg , tb),   //Color.
-            sx + FONT_SIZE ,             //X draw location.
-            sy + FONT_HEIGHT * i ,       //Y draw location.
-            0,                          //Flag. 
-            it->c_str());               //Text.
+    
+        DrawTextWithBorder::drawTextWithBorder(font, tr , tg , tb ,
+            sx + FONT_SIZE , sy + FONT_HEIGHT * i , it->c_str());
     }
 }
 

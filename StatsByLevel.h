@@ -33,7 +33,7 @@ public:
     int getMPAtLevel(int level);
     int getAtkAtLevel(int level);
     int getDefAtLevel(int level);
-    int getSpeedAtLevel(int level);
+    float getSpeedAtLevel(int level);
     int getXPToAchieveLevelAtLevel(int level);
     void removeAllStats();
     void resizeWithNulls();

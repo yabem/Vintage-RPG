@@ -28,11 +28,12 @@ void InfoTable::draw(){
     //Draw the text to the screen.
     for(int i = 0 ; selecIter != options.end() ; selecIter++ , i++){
         
-        al_draw_textf(font,                 //Font.
-            al_map_rgb(tr , tg , tb),       //Color.
-            sx + HALF_MENU_WIDTH_BUFFER,                //X draw location.
-            sy + FONT_HEIGHT * i ,          //Y draw location.
-            0,                              //Flag. 
+
+        DrawTextWithBorder::drawTextWithBorder(
+            font,                           //Font.
+            tr , tg , tb,                   //Color.
+            sx + HALF_MENU_WIDTH_BUFFER,    //X draw location.
+            sy + FONT_HEIGHT * i ,          //Y draw location. 
             (*selecIter)->Name.c_str());    //Text.
     }
 }

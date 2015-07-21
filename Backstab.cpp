@@ -57,8 +57,7 @@ void Backstab::loadAnimations(){
     MovingText *damageStay = new MovingText(font , 10 , 10 , 16 , false);
 
     //Convert damage to string for display purposes.
-    char theDamage[10];
-    _itoa_s(damageToReceiver , theDamage , 10);
+    std::string theDamage = Conversion::convertIntToString(damageToReceiver);
 
     //Sets the start and end coordinates.
     damage->initialize(theDamage , receiver->getX() , receiver->getY() , 
@@ -126,15 +125,8 @@ void Backstab::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void Backstab::calculateDamage(){
 
-    //Get attack and defense for calculation.
-    int charAAttack = initiator->getAttack();
-    int charBDefense = receiver->getDefense();
-
-    damageToReceiver = charAAttack - charBDefense;
-
-    //No damage done, the defense negated the attack.
-    if(damageToReceiver < 0)
-        damageToReceiver = 0;
+    damageToReceiver = DamageCalculations::damageWithDelay(
+        initiator , receiver , 2 , 3.6);
 }
 
 //Sets the draw to spell location.

@@ -36,6 +36,10 @@ protected:
 
     AreaMap *battleMap;          //Map for the battles in this area.
 
+    std::vector<int> listOfEnemies; //List of enemies for the map.
+    int minEnemyLevel;              //Minimum level for the enemies.
+    int maxEnemyLevel;              //Maximum level for the enemies.
+
 public:
 
     AreaMap();                      //Constructor.
@@ -74,4 +78,12 @@ public:
     void deleteLayers();        //Deallocates all Layers.
     void deleteTangibles();     //Deallocates all Tangibles.
     void deleteSceneries();     //Deallocates all Sceneries.
+
+    virtual void loadMapEnemies();      //Loads the map enemies.
+    virtual void loadEnemyLevelRange(int minEnemyLevel ,        
+        int maxEnemyLevel);             //Loads the minimum and maximum level ranges.
+    virtual bool mapHasBattles();       //Determines if the map has battles.
+    virtual std::vector<int> getListOfEnemies();    //Returns the list of enemies for the map.
+    virtual int getMinEnemyLevel();    //Returns the minimum level for the enemies.
+    virtual int getMaxEnemyLevel();    //Returns the max level for the enemies.
 };

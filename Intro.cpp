@@ -33,9 +33,9 @@ void Intro::loadBackground(){
         imageStore->getBitMap("forestMidground"),0,0,-8,0);
 
     this->character = new Character(imageStore->getBitMap("introPlayer")
-        , 32 , 32 , 10 , 5 , rate);
+        , 32 , 32 , 10 , 5 , PLAYER_MOVE_RATE);
     character->setFacing(UP);
-    character->setX(PixelConversion::convertTilesToPixels(9));
+    character->setX(Conversion::convertTilesToPixels(9));
     character->setY(313);
 
     this->foreground = new RightToLeftImage(
@@ -60,12 +60,16 @@ bool Intro::play(const int pressedKey){
 
     r += fade ; g += fade ; b += fade;
     frameCount++;
-    al_draw_textf(introFont , al_map_rgb(255, 255, 255), 250, SCREEN_H / 2, 0, "Vintage RPG");
+
+    DrawTextWithBorder::drawTextWithBorder(introFont , INTRO_TEXT_R ,
+        INTRO_TEXT_G , INTRO_TEXT_B, 250, SCREEN_H / 2, "Vintage RPG");
 
     if(frameCount % 30 == 0)
         fade *= -1;
 
-    al_draw_textf(introFont , al_map_rgb(r , g , b), 213, SCREEN_H / 2 + 30 , 0, "Press Space to Begin");
+    DrawTextWithBorder::drawTextWithBorder(
+        introFont , r , g , b, 213, SCREEN_H / 2 + 30 ,
+        "Press Space to Begin");
 
     if(pressedKey == SPACE)
         return true;

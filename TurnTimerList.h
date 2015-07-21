@@ -73,4 +73,7 @@ public:
 
     //Draw all timers.
     void drawTurnTimers();
+
+    //Recalculates fill rate on the CharacterTimers.
+    void recalculateAllFillRates();
 };

@@ -69,7 +69,7 @@ int StatsByLevel::getDefAtLevel(int level){
 //Gets the Speed at the specified level.
 //Pre: The level must be within the range of the vector.
 //Post: Returns the Speed for that level.
-int StatsByLevel::getSpeedAtLevel(int level){
+float StatsByLevel::getSpeedAtLevel(int level){
 
     return _listOfStats[level]->_speed;
 }

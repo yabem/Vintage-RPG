@@ -20,6 +20,6 @@ public:
     int getMPForClassLevel(std::string characterClass , int level);
     int getAtkForClassLevel(std::string characterClass , int level);
     int getDefForClassLevel(std::string characterClass , int level);
-    int getSpeedForClassLevel(std::string characterClass , int level);
+    float getSpeedForClassLevel(std::string characterClass , int level);
     int getXPForClassLevel(std::string characterClass , int level);
 };

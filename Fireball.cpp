@@ -1,13 +1,13 @@
-//Fire1 is an object that holds two characters CharacterA and
+//Fireball is an object that holds two characters CharacterA and
 //CharacterB and a set of instructions to take the attack and defense from
 //the first character and applies it to the second. The damage
 //that is leftover after reducing the defense of CharacterB
 //is deducted from CharacterB's remaining hit points.
 
-#include "Fire1.h"
+#include "Fireball.h"
 
 //Default constructor.
-Fire1::Fire1(){
+Fireball::Fireball(){
 
     imageStore = NULL;
     fontStore = NULL;
@@ -19,7 +19,7 @@ Fire1::Fire1(){
 }
 
 //Destructor.
-Fire1::~Fire1(){
+Fireball::~Fireball(){
 
     //Deletion is handled by the ImageStore.
 }
@@ -27,7 +27,7 @@ Fire1::~Fire1(){
 //Loads the Characters.
 //Pre:  None.
 //Post: loads the iniatiator and receiver.
-void Fire1::loadCharacters(Character *initiator ,
+void Fireball::loadCharacters(Character *initiator ,
     Character *receiver){
 
     this->initiator = initiator;
@@ -41,7 +41,7 @@ void Fire1::loadCharacters(Character *initiator ,
 //      after the defense is subtracted is then reduced
 //      from the receiver's hitpoints. If the HP are reduced
 //      to 0 or below, the Character will be dead.
-void Fire1::execute(){
+void Fireball::execute(){
 
     if(initiator == NULL || receiver == NULL)
         return;
@@ -56,7 +56,7 @@ void Fire1::execute(){
 }
 
 //Loads the animations to the animations vector.
-void Fire1::loadAnimations(){
+void Fireball::loadAnimations(){
 
     //Creates the text that will display the damage above the receiver.
     MovingText *damage = new MovingText(font , 10 , 10 , 8 , false);
@@ -89,7 +89,7 @@ void Fire1::loadAnimations(){
     backToStartingPosition->initialize(moveIntoAttackPositionX,
         moveIntoAttackPositionY, origPositionX , origPositionY);
 
-    ALLEGRO_BITMAP *bmap = imageStore->getBitMap("fire1");
+    ALLEGRO_BITMAP *bmap = imageStore->getBitMap("fireball");
     int spellDestinationX = 0;
     int spellDestinationY = 0;
 
@@ -102,7 +102,7 @@ void Fire1::loadAnimations(){
     setSpellStartPosition(initiator , bmap , spellStartFromX , spellStartFromY ,
         moveIntoAttackPositionX , moveIntoAttackPositionY);
 
-    //Throws a fire1 between the initiator and the receiver.
+    //Throws a Fireball between the initiator and the receiver.
     MovingImage *weaponAttack = new MovingImage(
         bmap , al_get_bitmap_width(bmap) , al_get_bitmap_height(bmap) , 15);
 
@@ -143,21 +143,14 @@ void Fire1::loadAnimations(){
 //Post: The initiator is the Character doing the attacking
 //      The receiver is the Character receiving the attack.
 //      The imageStore is where the images will be taken from.
-void Fire1::calculateDamage(){
+void Fireball::calculateDamage(){
 
-    //Get attack and defense for calculation.
-    int charAAttack = initiator->getAttack();
-    int charBDefense = receiver->getDefense();
-
-    damageToReceiver = charAAttack - charBDefense;
-
-    //No damage done, the defense negated the attack.
-    if(damageToReceiver < 0)
-        damageToReceiver = 0;
+    damageToReceiver = DamageCalculations::damageWithDelay(
+        initiator , receiver , 1.8 , 2.16);
 }
 
 //Sets the draw to spell location.
-void Fire1::setInitiatorAttackPosition(Character *initiator , 
+void Fireball::setInitiatorAttackPosition(Character *initiator , 
     Character *receiver , int &moveIntoAttackPositionX ,
     int &moveIntoAttackPositionY){
 
@@ -178,7 +171,7 @@ void Fire1::setInitiatorAttackPosition(Character *initiator ,
 }
 
 //Sets the spell's destination position.
-void Fire1::setSpellDestinationPosition(Character *initiator , 
+void Fireball::setSpellDestinationPosition(Character *initiator , 
     ALLEGRO_BITMAP *bmap , int &spellDestinationX , int &spellDestinationY){
 
     spellDestinationX = receiver->getX();
@@ -199,7 +192,7 @@ void Fire1::setSpellDestinationPosition(Character *initiator ,
 }
 
 //Sets the spell's start position.
-void Fire1::setSpellStartPosition(Character *initiator , 
+void Fireball::setSpellStartPosition(Character *initiator , 
     ALLEGRO_BITMAP *bmap , int &spellStartFromX , int &spellStartFromY ,
     int moveIntoAttackPositionX , int moveIntoAttackPositionY){
 

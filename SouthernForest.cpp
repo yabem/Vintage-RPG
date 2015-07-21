@@ -11,6 +11,18 @@ SouthernForest::SouthernForest(ImageStore *imageStore ,  DrawRepository *drawRep
 SouthernForest::~SouthernForest(){
 }
 
+//Loads the enemies and level ranges for the map.
+void SouthernForest::loadMapEnemies(){
+
+    this->listOfEnemies.push_back(WOLF);
+    this->listOfEnemies.push_back(WERERAT);
+    this->listOfEnemies.push_back(GOO_CUBE);
+    this->listOfEnemies.push_back(BABY_BLOB);
+    this->listOfEnemies.push_back(MUSHROOM_MAN);
+
+    this->loadEnemyLevelRange(3 , 5);
+}
+
 //Loads all the cloud Scenery objects.
 void SouthernForest::loadTheSceneries(){
 
@@ -31,8 +43,8 @@ void SouthernForest::loadTheTangibles(){
     std::string identifierName = "blobKing"; //Used when deleting the Tangible once the fight is over.
 
     NPCWithDialogueThenBattle *blobKing = new NPCWithDialogueThenBattle(imageStore->getBitMap("blobKing") ,
-        PixelConversion::convertTilesToPixels(25) , 
-        PixelConversion::convertTilesToPixels(39) ,        
+        Conversion::convertTilesToPixels(25) , 
+        Conversion::convertTilesToPixels(39) ,        
         this->drawRepository ,
         this->gameManager , "Shmodor... shMOdor... SHMODOR!" ,
         this->battleManager ,

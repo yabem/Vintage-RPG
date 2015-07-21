@@ -4,16 +4,21 @@
 #include "Character.h"
 #include "CharacterList.h"
 #include "StatsByLevelStore.h"
+#include "DrawRepository.h"
+#include "Conversion.h"
 
 namespace LevelUpCalculations{
 
-    void levelUpListOfCharacters(CharacterList *characterList ,
+    std::vector<std::string> levelUpListOfCharacters(CharacterList *characterList ,
+        StatsByLevelStore *statsByLevelStore , DrawRepository *drawRepository);
+
+    std::vector<std::string> levelUpCharacter(Character *character , 
+        StatsByLevelStore *statsByLevelStore , DrawRepository *drawRepository);
+
+    std::string getNewStatsSummary(Character *character , 
         StatsByLevelStore *statsByLevelStore);
 
-    void levelUpCharacter(Character *character , 
-        StatsByLevelStore *statsByLevelStore);
-
-    void setNewStats(Character *character , 
+    void setCharacterToLevel(Character *character , int level , 
         StatsByLevelStore *statsByLevelStore);
 
     void setHPToFull(Character *character);

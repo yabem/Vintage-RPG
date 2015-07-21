@@ -9,6 +9,8 @@
 #include "AddAbilityToCharacterInList.h"
 #include "QuestLog.h"
 #include "InfoTable.h"
+#include "StatsByLevelStore.h"
+#include "LevelUpCalculations.h"
 
 class PlayerEntity{
 
@@ -20,10 +22,12 @@ private:
     QuestLog *questLog;
     FontStore *fontStore;
     InfoTable *partyStatusDisplay;
+    StatsByLevelStore *statsByLevelStore;
 
 public:
 
-    PlayerEntity(ImageStore *imageStore , FontStore *fontStore);
+    PlayerEntity(ImageStore *imageStore , FontStore *fontStore ,
+        StatsByLevelStore *statsByLevelStore);
     ~PlayerEntity();
     bool createBackpack();
     bool createQuestLog();

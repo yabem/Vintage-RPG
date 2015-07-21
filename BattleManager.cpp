@@ -15,6 +15,9 @@ BattleManager::BattleManager(){
 
     playerTurnTimerList.loadManager(this);
     playerTurnTimerList.loadList(&playerMenuList);
+
+    movedSpaces = 0;
+    runningBattleTime = 0;
 }
 
 //Destructor.
@@ -418,6 +421,7 @@ void BattleManager::consumePlayerInput(){
 
             else if(this->currentTarget == NO_TARGET){
                 this->moveMenuCursor();
+                break;
             }
 
             else{   
@@ -572,24 +576,6 @@ void BattleManager::deleteCurrEnemy(){
     theEnemies.deleteCurrSelectedCharacter();
 }
 
-/*
-//Delete's the current enemy if it is dead.
-//Pre:  None.
-//Post: Checks if the currentSelected enemy is dead. If
-//      dead, the enemy is deleted and returns true. If
-//      not dead, the enemy is not deleted and returns false.
-bool BattleManager::deleteCurrEnemyIfDead(){
-
-    //Check if enemy is dead.
-    if(currEnemyDead()){
-        deleteCurrEnemy();
-        return true;
-    }
-
-    else return false;
-}
-*/
-
 //Determines if there are still enemies remaining.
 //Pre:  None.
 //Post: Returns TRUE if there is an Character still in
@@ -607,11 +593,11 @@ bool BattleManager::enemiesRemaining(){
 void BattleManager::updateAndDrawTurnTimers(){
 
     if(!isBattlePaused){
-        enemyTurnTimerList.updateTurnTimers();  
+       playerTurnTimerList.updateTurnTimers(); 
     }
 
     if(!isBattlePaused){
-       playerTurnTimerList.updateTurnTimers(); 
+        enemyTurnTimerList.updateTurnTimers();  
     }
 
     enemyTurnTimerList.drawTurnTimers();
@@ -634,14 +620,29 @@ void BattleManager::drawFloatingTexts(){
 
 //Determines if a battle will occur.
 bool BattleManager::checkForBattle(){
-
-    if((gameManager->getPressedKey() == Q && gameManager->battle == false) || 
-        gameManager->battle == true){
-
-        initializeBattle();
-
-        return true;
+    
+    if(!gameManager->currMap->mapHasBattles()){
+        
+        return false;
     }
+
+    else if(!gameManager->player->hasCollision()){
+
+        movedSpaces += PLAYER_MOVE_RATE;
+    }
+    
+    if(movedSpaces >= 32){
+
+        if(rand() % 100 < 5){
+
+            initializeBattle();
+            movedSpaces = 0;
+            return true;
+        }
+
+        movedSpaces = 0;
+    }
+    
     else return false;
 }
 
@@ -653,16 +654,26 @@ void BattleManager::initializeBattle(){
     //Set battle flags to true.
     gameManager->battle = true;
 
+    //Set battleTime to 0.
+    runningBattleTime = 0;
+
     //Sets battle to unpause.
     unPauseBattle();
 
     //Load battle transition cutscene.
-    BattleTrans *theBattle = new BattleTrans(gameManager->cutSceneMap ,
-        gameManager->currMap , gameManager->player , gameManager , this);
+    BattleTrans *theBattle = new BattleTrans(
+        gameManager->cutSceneMap ,
+        gameManager->currMap , 
+        gameManager->player , 
+        gameManager , this);
+    
     drawRepository->loadCutscene(theBattle);
 
     //Create the enemies for the battle.
-    generateRandomEnemies(MAX_ENEMIES_PER_BATTLE);
+    generateRandomEnemies(
+        gameManager->currMap->getListOfEnemies() ,
+        gameManager->currMap->getMinEnemyLevel() , 
+        gameManager->currMap->getMaxEnemyLevel()); 
 }
 
 //Initializes the variables to the beginning of a new battle.
@@ -708,16 +719,41 @@ void BattleManager::generateRandomEnemies(int maxNumberOfEnemies){
         theEnemies.loadChar(addEnemy);
     }
 
-    //Set spacing.
-    InitEnemies::initEnemiesSpacing(theEnemies.getList());
+    //Sets the spacing of the enemies, resets the enemies iterator, and
+    //adds the TurnTimers
+    generateEnemiesHelper();
+}
 
-    //Reset iterator to the beginning.
-    theEnemies.resetSelection();
+//Generates random enemies based off of the list of enemies and min/max 
+//possible levels for the enemies.
+//Pre:  The minEnemyLevel and maxEnemyLevel must both be above 0 and the 
+//      minEnemyLevel must be lower than the maxEnemyLevel.
+//Post: Generates a list of enemies that the player will fight.
+void BattleManager::generateRandomEnemies(std::vector<int> listOfEnemies ,
+    int minEnemyLevel , int maxEnemyLevel){
 
-    //Adds the turnTimers to the enemies.
-    theEnemies.loadList(&enemyTurnTimerList);
-    SetTurnTimerListToCharacterList::setTurnTimerListToCharacterList(
-        &theEnemies , &enemyTurnTimerList);
+    //Choose a random number of enemies.
+    int numEnemies = rand() % MAX_ENEMIES_PER_BATTLE + 1;
+    int randomEnemyType = 0;
+
+    for(int i = 0 ; i < numEnemies ; i++){
+
+        //Choose a random enemy from the list.
+        randomEnemyType = listOfEnemies[rand() % listOfEnemies.size()];
+
+        //Get the enemy's level within the level range.
+        int levelRange = maxEnemyLevel - minEnemyLevel;
+        int randomEnemyLevel = rand() % levelRange + minEnemyLevel;      
+
+        //Create and add the enemy to the battle.
+        Character *addEnemy = new Character();
+        InitEnemies::init(addEnemy , randomEnemyType , randomEnemyLevel , enemyModels);
+        theEnemies.loadChar(addEnemy);
+    }
+
+    //Sets the spacing of the enemies, resets the enemies iterator, and
+    //adds the TurnTimers
+    generateEnemiesHelper();
 }
 
 //Generates the enemies for the battle.
@@ -736,6 +772,14 @@ void BattleManager::generateEnemies(std::vector<int> enemiesToFight ,
         InitEnemies::init(addEnemy , (*enemyIter) , (*enemyLevelsIter) , enemyModels);
         theEnemies.loadChar(addEnemy);
     }
+
+    //Sets the spacing of the enemies, resets the enemies iterator, and
+    //adds the TurnTimers
+    generateEnemiesHelper();
+}
+
+//Initiates the generated enemies for the battle.
+void BattleManager::generateEnemiesHelper(){
 
     //Set spacing.
     InitEnemies::initEnemiesSpacing(theEnemies.getList());
@@ -867,9 +911,21 @@ void BattleManager::playersVictory(){
 
     treasureBox.deliverAllRewards();
 
+    //Levels up all the characters if they meet the requirements.
+    std::vector<std::string> levelUpSummary = 
+        LevelUpCalculations::levelUpListOfCharacters( 
+        &thePlayers , 
+        gameManager->getStatsByLevelStore() ,
+        drawRepository);
+
+    //Update the quest log with the enemies that were killed in battle.
+    gameManager->getPlayerEntity()->updateQuestLog(listOfDefeatedEnemies);
+    listOfDefeatedEnemies.clear();
+
     //Create victory cutscene.
     BattleVictory *battleVictory = new BattleVictory(gameManager->currMap , 
-        &thePlayers , gameManager , &treasureBox , fontStore->getFont("default"));
+        &thePlayers , gameManager , &treasureBox , fontStore->getFont("default") ,
+        levelUpSummary);
 
     drawRepository->loadCutscene(battleVictory);
 
@@ -882,16 +938,13 @@ void BattleManager::playersVictory(){
     Draw::drawList(&theEnemies);
 
     removeAllEvents();
-
-    //Levels up all the characters if they meet the requirements.
-    LevelUpCalculations::levelUpListOfCharacters(
-        &thePlayers , gameManager->getStatsByLevelStore());
-
-    gameManager->getPlayerEntity()->updateQuestLog(listOfDefeatedEnemies);
-    listOfDefeatedEnemies.clear();
+    removeAugments();
 
     theEnemies.deleteList();
     thePlayers.deleteList();
+
+    gameManager->resetPressedKey();
+
 }
 
 //End of the battle, enemies won.
@@ -911,6 +964,7 @@ void BattleManager::enemiesVictory(){
     //Draw final battle frame.
     Draw::drawArea(*gameManager->currMap , *gameManager->player);
 
+    removeAugments();
     removeAllEvents();
 
     listOfDefeatedEnemies.clear();
@@ -945,7 +999,7 @@ bool BattleManager::battlePaused(){
 //Pre:  None.
 //Post: Returns true if there are no events left.
 //      Returns false if there are events left..
-bool BattleManager::emptyEvents(){
+bool BattleManager::isEventsEmpty(){
 
     return events.empty();
 }
@@ -983,3 +1037,69 @@ bool BattleManager::playCurrEvent(){
     }
 }
 
+//Running length of the battle.
+//Pre:  None.
+//Post: Adds the amount of one frame to runningBattleTime by 
+//      the equivalent of 1 frame.
+void BattleManager::incrementBattleTime(){
+
+    runningBattleTime += Conversion::getBattleTimeIncrement();
+}
+
+//Recalculate fill rates on CharacterTimers.
+//Pre:  None.
+//Post: Updates each of the CharacterTimers with the current speed.
+void BattleManager::recalculateFillRatesOnTimers(){
+
+    playerTurnTimerList.recalculateAllFillRates();
+    enemyTurnTimerList.recalculateAllFillRates();
+}
+
+//Updates each Character's Augments.
+//Pre:  None.
+//Post: Cycles through the augments for each character and updates the
+//      augments.
+void BattleManager::updateAugments(){
+
+    //Update players
+    thePlayers.resetSelection();
+
+    for(int i = 0 ; i < thePlayers.getSize() ; i++){
+
+        thePlayers.getCurrSelection()->getStats()->updateAugments();
+        thePlayers.moveSelectionDown();
+    }
+
+    //Update enemies.
+    theEnemies.resetSelection();
+
+    for(int i = 0 ; i < theEnemies.getSize() ; i++){
+
+        theEnemies.getCurrSelection()->getStats()->updateAugments();
+        theEnemies.moveSelectionDown();
+    }
+}
+
+//Removes each Character's Augments.
+//Pre:  None.
+//Post: Cycles through each Character and empties their list of augments.
+void BattleManager::removeAugments(){
+
+    //Update players
+    thePlayers.resetSelection();
+
+    for(int i = 0 ; i < thePlayers.getSize() ; i++){
+
+        thePlayers.getCurrSelection()->getStats()->removeAugments();
+        thePlayers.moveSelectionDown();
+    }
+
+    //Update enemies.
+    theEnemies.resetSelection();
+
+    for(int i = 0 ; i < theEnemies.getSize() ; i++){
+
+        theEnemies.getCurrSelection()->getStats()->removeAugments();
+        theEnemies.moveSelectionDown();
+    }
+}

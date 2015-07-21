@@ -15,6 +15,9 @@ CustomAreaMap::CustomAreaMap(ImageStore *imageStore ,  DrawRepository *drawRepos
     backgroundLayerLayout = NULL;
     collisionLayerLayout = NULL;
     canGoBehindLayerLayout = NULL;
+
+    minEnemyLevel = 0;
+    maxEnemyLevel = 0;
 }
 
 //Destructor.
@@ -30,6 +33,7 @@ void CustomAreaMap::loadDefaults(){
     this->loadTheTangibles();
     this->loadAllMapConfigurationsForLayers();
     this->loadLayers();
+    this->loadMapEnemies();
 }
 
 //Loads all the cloud Scenery objects.

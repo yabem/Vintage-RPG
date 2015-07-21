@@ -12,6 +12,7 @@ private:
 
     //Map that holds all of the ALLEGRO_FONTs.
     std::map<std::string , ALLEGRO_FONT*> fonts;
+    std::map<std::string , ALLEGRO_COLOR*> colors;
 
 public:
 
@@ -20,6 +21,9 @@ public:
 
     //Destructor.
     ~FontStore();
+
+    //Destroy font store.
+    void destroyFontStore();
 
     //Loads a single font.
     void loadFont(std::string name , ALLEGRO_FONT *font);
@@ -30,6 +34,12 @@ public:
     //Returns the desired font.
     ALLEGRO_FONT* getFont(std::string fontName);
 
-    //Destroy font store.
-    void destroyFontStore();
+    //Loads a single color.
+    void loadColor(std::string name , ALLEGRO_COLOR *color);
+    
+    //Loads all the predetermined colors.
+    void loadAllDefaultColors();
+
+    //Returns the desired color.
+    ALLEGRO_COLOR* getColor(std::string colorName);
 };

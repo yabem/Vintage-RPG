@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "Conversion.h"
+#include "StatAugment.h"
 
 //Forward declarations.
 class string;
@@ -31,6 +33,8 @@ protected:
 
     bool dead;     //Character's status of being alive or dead.
 
+    std::vector<StatAugment*> augments; 
+
 public:
 
     //Constructor.
@@ -58,6 +62,7 @@ public:
     int virtual getTtlDef() const;     //Returns ttlDef.
 
     float getSpeed() const;     //Returns the speed.
+    float getTtlSpeed();  //Returns ttlSpeed.
 
     void setLevel(int level);
     void setBaseHP(int baseHP);
@@ -65,7 +70,7 @@ public:
     void setBaseMP(int baseMP);
     void setBaseAtk(int baseAtk);
     void setBaseDef(int baseDef);
-    void setSpeed(int speed);
+    void setSpeed(float speed);
     virtual void setToLvlXP(int toLvlXP) = 0;
 
     virtual int getXPRewardForSlaying() const = 0;
@@ -85,4 +90,16 @@ public:
 
     //Retrieves a summary of the pertinent stats to display.
     virtual std::string getSummary();  
+
+    //Loads an augment.
+    void loadAugment(
+        std::string nameOfAugment , 
+        std::string statToAugment ,
+        float augmentAmount , 
+        float totalDuration);
+
+    void updateAugments();     //Updates Augments.
+
+    //Remove all Augments.
+    void removeAugments();
 };

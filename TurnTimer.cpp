@@ -47,6 +47,14 @@ void TurnTimer::setRate(float fillRate){
     this->fillRate =  DEFAULT_BAR_AMOUNT / (FPS * fillRate);
 }
 
+//Gets the fill rate.
+//Pre:  None.
+//Post: Gets the fill rate as a floating point number.
+float TurnTimer::getFillRate(){
+
+    return fillRate;
+}
+
 //Sets the X draw coordinate.
 //Pre:  None.
 //Post: None.

@@ -41,14 +41,14 @@ bool Collision::characterToLayer(Character &character , Layer &layer){
     ///////////////////////////Upper right////////////////////////////
     //Check collision with upper right corner and square to the right.
     if(getLayerVal(layer , getRow(character.getUpperRightY() , layer) , 
-        getCol(character.getUpperRightX() + rate , layer)) > 0){
+        getCol(character.getUpperRightX() + PLAYER_MOVE_RATE , layer)) > 0){
         
         character.setColl(RIGHT);
         result = true;
     }
     
     //Check collision with upper right corner and square above.
-    if(getLayerVal(layer, getRow(character.getUpperRightY() - rate , layer) , 
+    if(getLayerVal(layer, getRow(character.getUpperRightY() - PLAYER_MOVE_RATE , layer) , 
         getCol(character.getUpperRightX() , layer)) > 0){
         
         character.setColl(UP);
@@ -58,14 +58,14 @@ bool Collision::characterToLayer(Character &character , Layer &layer){
     ///////////////////////////Upper left////////////////////////////
     //Check collision with upper left corner and square to the left.
     if(getLayerVal(layer, getRow(character.getUpperLeftY() , layer) , 
-        getCol(character.getUpperLeftX() - rate , layer)) > 0){
+        getCol(character.getUpperLeftX() - PLAYER_MOVE_RATE , layer)) > 0){
         
         character.setColl(LEFT);
         result = true;
     }
 
     //Check collision with upper left corner and square above.
-    if(getLayerVal(layer, getRow(character.getUpperLeftY() - rate , layer) ,
+    if(getLayerVal(layer, getRow(character.getUpperLeftY() - PLAYER_MOVE_RATE , layer) ,
         getCol(character.getUpperLeftX() , layer)) > 0){
         
         character.setColl(UP);
@@ -75,14 +75,14 @@ bool Collision::characterToLayer(Character &character , Layer &layer){
     ///////////////////////////Lower left////////////////////////////
     //Check collision with lower left corner and square to the left.
     if(getLayerVal(layer, getRow(character.getLowerLeftY() , layer) , 
-        getCol(character.getLowerLeftX() - rate , layer)) > 0){
+        getCol(character.getLowerLeftX() - PLAYER_MOVE_RATE , layer)) > 0){
         
         character.setColl(LEFT);
         result = true;
     }
 
     //Check collision with lower left corner and square below.
-    if(getLayerVal(layer, getRow(character.getLowerLeftY() + rate , layer) , 
+    if(getLayerVal(layer, getRow(character.getLowerLeftY() + PLAYER_MOVE_RATE , layer) , 
         getCol(character.getLowerLeftX() , layer)) > 0){
         
         character.setColl(DOWN);
@@ -92,14 +92,14 @@ bool Collision::characterToLayer(Character &character , Layer &layer){
     ///////////////////////////Lower right////////////////////////////
     //Check collision with lower right corner and square to the right.
     if(getLayerVal(layer, getRow(character.getLowerRightY() , layer) , 
-        getCol(character.getLowerRightX() + rate , layer)) > 0){
+        getCol(character.getLowerRightX() + PLAYER_MOVE_RATE , layer)) > 0){
         
         character.setColl(RIGHT);
         result = true;
     }
 
     //Check collision with lower right corner and square below.
-    if(getLayerVal(layer, getRow(character.getLowerRightY() + rate , layer) ,
+    if(getLayerVal(layer, getRow(character.getLowerRightY() + PLAYER_MOVE_RATE , layer) ,
         getCol(character.getLowerRightX() , layer)) > 0){
         
         character.setColl(DOWN);
@@ -216,8 +216,8 @@ bool Collision::characterToExit(Character &character , AreaMap *&areaMap ,
 
             //Set the start point based off of the previous map's destination.
             Movement::setStartCoords(character , *areaMap ,
-                PixelConversion::convertTilesToPixels(prevMap->getExitDestC(i)) ,
-                PixelConversion::convertTilesToPixels(prevMap->getExitDestR(i)));
+                Conversion::convertTilesToPixels(prevMap->getExitDestC(i)) ,
+                Conversion::convertTilesToPixels(prevMap->getExitDestR(i)));
 
             result = true;
         }

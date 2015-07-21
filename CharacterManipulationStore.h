@@ -11,7 +11,7 @@
 #include "CharacterAttack.h"
 #include "GameManager.h"
 #include "ThrowRock.h"
-#include "Fire1.h"
+#include "Fireball.h"
 #include "Fire2.h"
 #include "Fire3.h"
 #include "Jump.h"
@@ -20,6 +20,12 @@
 #include "Recover.h"
 #include "I_Manager.h"
 #include "Potion.h"
+#include "Lance.h"
+#include "Staff.h"
+#include "Dagger.h"
+#include "Sword.h"
+#include "Skewer.h"
+#include "FuryOfTheFang.h"
 class Character;
 class ImageStore;
 class DrawRepository;

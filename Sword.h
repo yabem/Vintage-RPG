@@ -1,6 +1,5 @@
-//Fire1 is an object that initiates an
-//attack between one Character and AnotherCharacter
-//using the approriate attack and defense stats.
+//Sword positions the character in front of the enemy and
+//attacks for damage.
 
 #pragma once
 #include "CharacterManipulation.h"
@@ -16,8 +15,13 @@
 #include "ChangeCreatureImage.h"
 #include "SetCreatureFacingDirection.h"
 #include "DelayInSeconds.h"
+#include "Conversion.h"
+#include "ChangeCharacterWidth.h"
+#include "ChangeCharacterHeight.h"
+#include "SimultaneousAnimations.h"
+#include "DamageCalculations.h"
 
-class Fire1 : public CharacterManipulation{
+class Sword : public CharacterManipulation{
 
 private:
 
@@ -25,8 +29,8 @@ private:
 
 public:
 
-    Fire1();      //Default constructor.
-    ~Fire1();     //Destructor.
+    Sword();      //Default constructor.
+    ~Sword();     //Destructor.
 
     //Loads the Characters.
     void loadCharacters(Character *initiator , Character *receiver);
@@ -43,13 +47,4 @@ public:
     //Sets the ititiator's attack position.
     void setInitiatorAttackPosition(Character *initiator , Character *receiver ,
         int &moveIntoAttackPositionX , int &moveIntoAttackPositionY);
-
-    //Sets the spell's destination position.
-    void setSpellDestinationPosition(Character *initiator , 
-        ALLEGRO_BITMAP *bmap , int &spellDestinationX , int &spellDestinationY);
-
-    //Sets the spell's start position.
-    void setSpellStartPosition(Character *initiator , 
-        ALLEGRO_BITMAP *bmap , int &spellStartFromX , int &spellStartFromY ,
-        int moveIntoAttackPositionX , int moveIntoAttackPositionY);
 };

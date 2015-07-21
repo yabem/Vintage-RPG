@@ -49,21 +49,38 @@ void HomeTown::loadTheTangibles(){
 
     NPCWithDialogue *talkingRock = new NPCWithDialogue(
         imageStore->getBitMap("rock") ,
-        PixelConversion::convertTilesToPixels(26) , 
-        PixelConversion::convertTilesToPixels(26) ,
+        Conversion::convertTilesToPixels(26) , 
+        Conversion::convertTilesToPixels(26) ,
         this->drawRepository ,
         this->gameManager , 
         "Mighty Rock: I'm a rock, are you really trying to talk to a rock?" ,
         this->fontStore->getFont("default"));
     talkingRock->createCharacter(32 , 32 , 60 , 1 , 4 , this);
 
-    NPCWithDialogueAndGift *storeOwner = new NPCWithDialogueAndGift(
+    NPCWithDialogue *teacher = new NPCWithDialogue(
         imageStore->getBitMap("playerLookalike") ,
-        PixelConversion::convertTilesToPixels(25) , 
-        PixelConversion::convertTilesToPixels(25) ,
+        Conversion::convertTilesToPixels(28) , 
+        Conversion::convertTilesToPixels(28) ,
         this->drawRepository ,
         this->gameManager , 
-        "Store Owner: Hey! You look a lot like me! Take this and help us figure out what happened.",
+        "Teacher: Welcome to the town Stiltaviksenburgville! It's safe to walk around here " 
+        "but be careful going outside because there are tons of monsters. Lucky for you, you already "
+        "have formidible weapons. Now you just need to be able to heal yourself. Search around the town. "
+        "Talk to people. Open treasure chests. Search barrels. I'm sure you'll find a healing spell for "
+        "everyone somewhere in town." ,
+        this->fontStore->getFont("default"));
+    teacher->createCharacter(32 , 32 , 90 , 2 , 4 , this);
+    teacher->setCW(32);
+    teacher->setCH(32);
+    teacher->setCharacterFacing(DOWN);
+
+    NPCWithDialogueAndGift *storeOwner = new NPCWithDialogueAndGift(
+        imageStore->getBitMap("playerLookalike") ,
+        Conversion::convertTilesToPixels(25) , 
+        Conversion::convertTilesToPixels(25) ,
+        this->drawRepository ,
+        this->gameManager , 
+        "Store Owner: Hey! You look a lot like me! Take this and help us figure out what happened." ,
         this->fontStore->getFont("default") ,
         this->gameManager->getPlayerEntity());
     storeOwner->createCharacter(32 , 32 , 90 , 2 , 4 , this);
@@ -71,13 +88,14 @@ void HomeTown::loadTheTangibles(){
     storeOwner->setCH(32);
     storeOwner->setGift("player" , "Jump");
     storeOwner->setRewardNotification("Player received the Jump ability!");
-    storeOwner->setMessageAfterGiftDelivery("Sorry, that's all I have to give you.");
+    storeOwner->setMessageAfterGiftDelivery(" Make sure to go around town and talk to everyone. They'll have some useful tips." 
+        "Well...most of them will.");
     storeOwner->setCharacterFacing(DOWN);
 
     NPCWithDialogueAndGift *mysteriousMan = new NPCWithDialogueAndGift(
         imageStore->getBitMap("mysteriousMan") ,
-        PixelConversion::convertTilesToPixels(3) , 
-        PixelConversion::convertTilesToPixels(3) ,        
+        Conversion::convertTilesToPixels(3) , 
+        Conversion::convertTilesToPixels(3) ,        
         this->drawRepository ,
         this->gameManager , 
         "Mysterious Man: I bet your mage could use this handy spell." ,
@@ -86,15 +104,15 @@ void HomeTown::loadTheTangibles(){
     mysteriousMan->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     mysteriousMan->setCW(32);
     mysteriousMan->setCH(32);
-    mysteriousMan->setGift("mage" , "Fire1");
-    mysteriousMan->setRewardNotification("mage received the Fire1 spell!");
+    mysteriousMan->setGift("mage" , "Fireball");
+    mysteriousMan->setRewardNotification("mage received the Fireball spell!");
     mysteriousMan->setMessageAfterGiftDelivery("Try out the spell, I'm sure you'll enjoy it. Hadouken!");
     mysteriousMan->setCharacterFacing(DOWN);
 
     NPCWithDialogue *witch = new NPCWithDialogue(
         imageStore->getBitMap("witch") ,
-        PixelConversion::convertTilesToPixels(46) , 
-        PixelConversion::convertTilesToPixels(4) ,        
+        Conversion::convertTilesToPixels(46) , 
+        Conversion::convertTilesToPixels(4) ,        
         this->drawRepository ,
         this->gameManager , 
         "Witch: There are some extreme seasons in this country." ,
@@ -106,8 +124,8 @@ void HomeTown::loadTheTangibles(){
 
     NPCWithDialogue *oldMan = new NPCWithDialogue(
         imageStore->getBitMap("oldMan") ,
-        PixelConversion::convertTilesToPixels(33) , 
-        PixelConversion::convertTilesToPixels(36) ,        
+        Conversion::convertTilesToPixels(33) , 
+        Conversion::convertTilesToPixels(36) ,        
         this->drawRepository ,
         this->gameManager , "Old Man: This wind is really killing my hair..." ,
         this->fontStore->getFont("default"));
@@ -118,11 +136,13 @@ void HomeTown::loadTheTangibles(){
 
     NPCWithDialogue *clod = new NPCWithDialogue(
         imageStore->getBitMap("clod") ,
-        PixelConversion::convertTilesToPixels(8) , 
-        PixelConversion::convertTilesToPixels(19) ,        
+        Conversion::convertTilesToPixels(8) , 
+        Conversion::convertTilesToPixels(19) ,        
         this->drawRepository ,
         this->gameManager , 
-        "Clod: I am the proud one!" ,
+        "Clod: In battle, you won't have any MP. The skills and spells will have a recover "
+        "time. Some skills will do less damage but let you recover faster. Others will do tons "
+        "of damage but you'll need to wait a lot longer to use another ability.",
         this->fontStore->getFont("default"));
     clod->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     clod->setCW(32);
@@ -131,11 +151,11 @@ void HomeTown::loadTheTangibles(){
 
     NPCWithDialogue *joanna = new NPCWithDialogue(
         imageStore->getBitMap("joanna") ,
-        PixelConversion::convertTilesToPixels(6) , 
-        PixelConversion::convertTilesToPixels(19) ,        
+        Conversion::convertTilesToPixels(6) , 
+        Conversion::convertTilesToPixels(19) ,        
         this->drawRepository ,
         this->gameManager , 
-        "Joanna: Dickle punch with lightning!" ,
+        "Joanna: Dickle punch with lightning! Oh yeah, where's the music? What's a going on?" ,
         this->fontStore->getFont("default"));
     joanna->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     joanna->setCW(32);
@@ -144,8 +164,8 @@ void HomeTown::loadTheTangibles(){
 
     ItemLocationWithGift *treasureBoxWithRecoverForPlayer = new ItemLocationWithGift(
         imageStore->getBitMap("treasureBox1") ,
-        PixelConversion::convertTilesToPixels(18) , 
-        PixelConversion::convertTilesToPixels(18) ,
+        Conversion::convertTilesToPixels(18) , 
+        Conversion::convertTilesToPixels(18) ,
         this->drawRepository ,
         this->gameManager ,
         this->fontStore->getFont("default") ,
@@ -160,8 +180,8 @@ void HomeTown::loadTheTangibles(){
 
     ItemLocationWithGift *treasureBoxWithRecoverForMage = new ItemLocationWithGift(
         imageStore->getBitMap("treasureBox2") ,
-        PixelConversion::convertTilesToPixels(19) , 
-        PixelConversion::convertTilesToPixels(18) ,
+        Conversion::convertTilesToPixels(19) , 
+        Conversion::convertTilesToPixels(18) ,
         this->drawRepository ,
         this->gameManager ,
         this->fontStore->getFont("default") ,
@@ -176,8 +196,8 @@ void HomeTown::loadTheTangibles(){
 
     ItemLocationWithGift *treasureBarrelWithRecoverForThief = new ItemLocationWithGift(
         imageStore->getBitMap("treasureBarrel") ,
-        PixelConversion::convertTilesToPixels(12) , 
-        PixelConversion::convertTilesToPixels(10) ,
+        Conversion::convertTilesToPixels(12) , 
+        Conversion::convertTilesToPixels(10) ,
         this->drawRepository ,
         this->gameManager ,
         this->fontStore->getFont("default") ,
@@ -192,8 +212,8 @@ void HomeTown::loadTheTangibles(){
 
     ItemLocationWithGift *treasureBarrelWithRecoverForWarrior = new ItemLocationWithGift(
         imageStore->getBitMap("treasureBarrel") ,
-        PixelConversion::convertTilesToPixels(33) , 
-        PixelConversion::convertTilesToPixels(37) ,
+        Conversion::convertTilesToPixels(33) , 
+        Conversion::convertTilesToPixels(37) ,
         this->drawRepository ,
         this->gameManager ,
         this->fontStore->getFont("default") ,
@@ -208,8 +228,8 @@ void HomeTown::loadTheTangibles(){
 
     NPCWithDialogueAndQuest *strifeTheQuestGiver = new NPCWithDialogueAndQuest(
         imageStore->getBitMap("strife") ,
-        PixelConversion::convertTilesToPixels(17) , 
-        PixelConversion::convertTilesToPixels(17) ,
+        Conversion::convertTilesToPixels(17) , 
+        Conversion::convertTilesToPixels(17) ,
         this->drawRepository ,
         this->gameManager ,
         this->fontStore->getFont("default") ,
@@ -246,8 +266,8 @@ void HomeTown::loadTheTangibles(){
 
     NPCWithDialogueAndQuest *skugsTheQuestGiver = new NPCWithDialogueAndQuest(
         imageStore->getBitMap("monk") ,
-        PixelConversion::convertTilesToPixels(9) , 
-        PixelConversion::convertTilesToPixels(40) ,
+        Conversion::convertTilesToPixels(9) , 
+        Conversion::convertTilesToPixels(40) ,
         this->drawRepository ,
         this->gameManager ,
         this->fontStore->getFont("default") ,
@@ -281,8 +301,8 @@ void HomeTown::loadTheTangibles(){
 
     NPCWithDialogueAndQuest *friendlyGentlemanQuestGiver = new NPCWithDialogueAndQuest(
         imageStore->getBitMap("friendlyGentleman") ,
-        PixelConversion::convertTilesToPixels(10) , 
-        PixelConversion::convertTilesToPixels(40) ,
+        Conversion::convertTilesToPixels(10) , 
+        Conversion::convertTilesToPixels(40) ,
         this->drawRepository ,
         this->gameManager ,
         this->fontStore->getFont("default") ,
@@ -316,22 +336,8 @@ void HomeTown::loadTheTangibles(){
     friendlyGentlemanQuestGiver->loadQuest(get10Potions5Hipotions);
     gameManager->getPlayerEntity()->addQuest("potionQuest" , get10Potions5Hipotions);
     
-    /*
-    NPCWithDialogue *monk = new NPCWithDialogue(
-        imageStore->getBitMap("monk") ,
-        PixelConversion::convertTilesToPixels(9) , 
-        PixelConversion::convertTilesToPixels(40) ,        
-        this->drawRepository ,
-        this->gameManager , 
-        "Monk: Monk monk monk monk monk monk... MONK!" ,
-        this->fontStore->getFont("default"));
-    monk->createCharacter(32 , 32 , 60 , 2 , 4 , this);
-    monk->setCW(32);
-    monk->setCH(32);
-    monk->setCharacterFacing(DOWN);
-    */
-
     this->loadTangible(talkingRock);
+    this->loadTangible(teacher);
     this->loadTangible(storeOwner);
     this->loadTangible(mysteriousMan);
     this->loadTangible(witch);

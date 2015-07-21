@@ -5,7 +5,7 @@
 #include "Movement.h"
 #include "PulsingImage.h"
 #include "NPCWithDialogueThenBattle.h"
-#include "PixelConversion.h"
+#include "Conversion.h"
 
 class GameManager;
 class BattleManager;
@@ -17,6 +17,8 @@ class FontStore;
 class WesternDesert : public CustomAreaMap{
     
 private:
+
+    virtual void loadMapEnemies();
 
     virtual void loadTheSceneries();
     virtual void loadLayers();

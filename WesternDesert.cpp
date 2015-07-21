@@ -19,14 +19,26 @@ void WesternDesert::loadTheSceneries(){
     this->loadScenery(heatWave);
 }
 
+//Loads the enemies and level ranges for the map.
+void WesternDesert::loadMapEnemies(){
+
+    this->listOfEnemies.push_back(RAT);
+    this->listOfEnemies.push_back(CACTUS);
+    this->listOfEnemies.push_back(ZOMBIE);
+    this->listOfEnemies.push_back(SHIELD_SKELETON);
+    this->listOfEnemies.push_back(FIRE_CUBE);
+
+    this->loadEnemyLevelRange(3 , 5);
+}
+
 //Load the interactive models.
 void WesternDesert::loadTheTangibles(){
 
     std::string identifierName = "demon"; //Used when deleting the Tangible once the fight is over.
 
     NPCWithDialogueThenBattle *demon = new NPCWithDialogueThenBattle(imageStore->getBitMap("demon") ,
-        PixelConversion::convertTilesToPixels(22) , 
-        PixelConversion::convertTilesToPixels(43) ,        
+        Conversion::convertTilesToPixels(22) , 
+        Conversion::convertTilesToPixels(43) ,        
         this->drawRepository ,
         this->gameManager , "Hurgle burgle burgle... Rooooooo... ROOOAR!!!" ,
         this->battleManager ,

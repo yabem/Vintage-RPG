@@ -98,7 +98,16 @@ private:
 
     //List of defeated enemies.
     std::vector<std::string> listOfDefeatedEnemies;
-    
+
+    //Movement counter for battle calculation.
+    int movedSpaces;
+
+    //Running length of the battle.
+    float runningBattleTime;
+
+    //Initiates the generated enemies for the battle.
+    void generateEnemiesHelper();
+
 public:
     
     //Default constructor.
@@ -210,9 +219,6 @@ public:
     //Deletes the currently selected enemy.
     virtual void deleteCurrEnemy(); 
 
-    //Delete's the current enemy if it is dead.
-    //bool deleteCurrEnemyIfDead();
-
     //Determines if there are still enemies remaining.
     bool enemiesRemaining();    
 
@@ -254,6 +260,11 @@ public:
     //Generates the enemies for the battle.
     virtual void generateRandomEnemies(int maxNumberOfEnemies); 
 
+    //Generates random enemies based off of the list of enemies and min/max 
+    //possible levels for the enemies.
+    void generateRandomEnemies(std::vector<int> listOfEnemies ,
+        int minEnemyLevel , int maxEnemyLevel);
+
     //Generates the enemies for the battle.
     virtual void generateEnemies(std::vector<int> enemiesToFight ,
         std::vector<int> enemyLevels); 
@@ -283,11 +294,23 @@ public:
     bool battlePaused();
 
     //Determines if there are Events left.
-    bool emptyEvents();
+    virtual bool isEventsEmpty();
 
     //Determines if there are Menus left.
     bool emptyMenus();
 
     //Executes the events.
     bool playCurrEvent();
+
+    //Running length of the battle.
+    virtual void incrementBattleTime();
+
+    //Recalculate fill rates on CharacterTimers.
+    void recalculateFillRatesOnTimers();
+
+    //Checks each Character's Augments to see if any have expired.
+    void updateAugments();
+
+    //Removes each Character's Augments.
+    void removeAugments();
 };

@@ -7,9 +7,9 @@ FloatingText::FloatingText(ALLEGRO_FONT *font){
 
     this->drawX = 0;
     this->drawY = 0;      
-    this->redColor = DEFAULT_RED;
-    this->greenColor = DEFAULT_GREEN; 
-    this->blueColor = DEFAULT_BLUE;   
+    this->redColor = FLOATING_TEXT_R;
+    this->greenColor = FLOATING_TEXT_G; 
+    this->blueColor = FLOATING_TEXT_B;   
     this->font = font;     
     this->drawMessage = "";
 }
@@ -80,6 +80,7 @@ void FloatingText::setFloatingTextToCreatureHealth(I_Creature *i_Creature){
 //      drawY locations.
 void FloatingText::draw(){
 
-    al_draw_textf(font , al_map_rgb(redColor , greenColor , blueColor)
-        , drawX , drawY , 0 , drawMessage.c_str());
+    DrawTextWithBorder::drawTextWithBorder(
+        font , redColor , greenColor , blueColor
+        , drawX , drawY , drawMessage.c_str());
 }

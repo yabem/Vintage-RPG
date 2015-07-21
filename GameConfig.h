@@ -11,7 +11,10 @@ const int MAX_NUM_KEYS = 11;
 enum LAYERTYPES {BACKGROUND , CENTERGROUND , FOREGROUND};
 const int MAX_CHARACTER_LEVEL = 10;
 enum IMAGES {ATTACK, BLOCK, MAGIC}; //Used for images indexing values.
-enum ENEMIES {RAT , WOLF , SOLDIER , ICE_BULL , BLOB_KING , GUARDIAN , DEMON};
+enum ENEMIES {RAT , WOLF , SOLDIER , ICE_BULL , BLOB_KING , GUARDIAN , DEMON ,
+    CARROT_RAT , WALRUS , GOO_CUBE , ICE_CUBE ,FIRE_CUBE , SHIELD_SKELETON , 
+    WERERAT , CACTUS , OLDMAN_AXE , MUSHROOM_MAN , ZOMBIE , BABY_BLOB , SHEEP , 
+    KUNGFOO_DOG , FANGED_FOX , NINJA_FOX , RED_REAPER};
 const int SCREEN_TEXT_WIDTH_BUFFER = 75;
 const int MAX_ENEMIES = 3;  //Total number of possible enemies.
 const int MAX_ENEMIES_PER_BATTLE = 4; //Total number of enemies per battle.
@@ -22,7 +25,7 @@ const int DEAD = 5; //Used to set the facing direction to dead.
 const int CELEBRATE = 4; //Used to set the facing direction to dead.
 
 const int FPS = 60;
-const int rate = 4;
+const int PLAYER_MOVE_RATE = 4;
 const int SCREEN_W = 640;
 const int SCREEN_H = 480;
 const int AREA_MAP_SIZE = 2500;

@@ -252,3 +252,50 @@ void AreaMap::deleteSceneries(){
 
     sceneries.clear();
 }
+
+
+//Loads the enemies and level ranges for the map.
+void AreaMap::loadMapEnemies(){
+
+}
+
+//Loads the level range for the enemies.
+void AreaMap::loadEnemyLevelRange(int minEnemyLevel , int maxEnemyLevel){
+
+    this->minEnemyLevel = minEnemyLevel;
+    this->maxEnemyLevel = maxEnemyLevel;
+}
+
+//Determines if there are battles in the map.
+//Pre:  The map is valid.
+//Post: Returns true if there is > 1 enemy in the listOfEnemies. Otherwise
+//      returns false.
+bool AreaMap::mapHasBattles(){
+
+    if(listOfEnemies.empty()){
+        return false;
+
+    }
+
+    else {    
+        return true;
+    }
+}
+
+//Returns the list of enemies for the map.
+std::vector<int> AreaMap::getListOfEnemies(){
+    
+    return listOfEnemies;
+}
+
+//Returns the minimum level for the enemies.
+int AreaMap::getMinEnemyLevel(){
+
+    return minEnemyLevel;
+}
+
+//Returns the max level for the enemies.
+int AreaMap::getMaxEnemyLevel(){
+
+    return maxEnemyLevel;
+}

@@ -7,6 +7,8 @@
 #include "I_Creature.h"
 #include "Stats.h"
 #include "GameConfig.h"
+#include "FontColorSettings.h"
+#include "DrawTextWithBorder.h"
 
 class FloatingText : public I_InfoBox{
 

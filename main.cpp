@@ -54,6 +54,8 @@
 //To do:
 //Make controls a class
 //Make tangible collision better so you can't go through objects.
+//change MP to mag, put scaling on healing/recovery with mag
+//Change player to lance
 
 //Tiles taken from http://opengameart.org/content/tiled-terrains
 //More tiles taken from http://opengameart.org/content/lpc-tile-atlas
@@ -63,7 +65,8 @@
 #define ttfaddon
 
 int checkInit();
-void displayVariables(ALLEGRO_FONT *theFont , int theKey ,
+void displayVariables(ALLEGRO_FONT *theFont ,
+    ALLEGRO_FONT *theShadowFont , int theKey ,
     Character *thePlayer , Layer &layer);
 
 int main(int argc, char **argv){
@@ -117,13 +120,16 @@ int main(int argc, char **argv){
 
     FontStore fontStore;
     fontStore.loadAllDefaultFonts();
+    fontStore.loadAllDefaultColors();
+
+    ALLEGRO_COLOR *testColor = fontStore.getColor("default");
 
     DrawRepository drawRepository;
     GameManager gameManager = GameManager();
     BattleManager battleManager;
 
     //Loads the information for the player.
-    PlayerEntity playerEntity(&imageStore , &fontStore);
+    PlayerEntity playerEntity(&imageStore , &fontStore , &statsByLevelStore);
     playerEntity.createBackpack();
     playerEntity.createQuestLog();
     playerEntity.loadDefaultPlayers();
@@ -205,6 +211,23 @@ int main(int argc, char **argv){
     battleManager.loadEnemyModel(imageStore.getBitMap("blobKing"));
     battleManager.loadEnemyModel(imageStore.getBitMap("guardian"));
     battleManager.loadEnemyModel(imageStore.getBitMap("demon"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("carrotRat"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("walrus"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("gooCube"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("iceCube"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("fireCube"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("shieldSkeleton"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("wererat"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("cactus"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("oldmanAxe"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("mushroomMan"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("zombie"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("babyBlob"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("sheep"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("kungfooDog"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("fangedFox"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("ninjaFox"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("redReaper"));
     battleManager.loadDrawRepository(&drawRepository);
     battleManager.loadBackpack(playerEntity.getPlayerInventory());
     battleManager.loadFontStore(&fontStore);
@@ -228,8 +251,8 @@ int main(int argc, char **argv){
     LoadExitsForSouthernForest::LoadExitsForSouthernForest(&southernForest , &homeTown);
     LoadExitsForEasternCastle::LoadExitsForEasternCastle(&easternCastle , &homeTown);
     Movement::setStartCoords(*gameManager.player, homeTown , 
-        PixelConversion::convertTilesToPixels(STARTCOL) , 
-        PixelConversion::convertTilesToPixels(STARTROW));
+        Conversion::convertTilesToPixels(STARTCOL) , 
+        Conversion::convertTilesToPixels(STARTROW));
 
     al_start_timer(timer);
 
@@ -278,13 +301,25 @@ int main(int argc, char **argv){
                     //Draw cursor.
                     drawRepository.drawTopCursor();
 
-                    if(!battleManager.emptyEvents()){
+                    if(!battleManager.isEventsEmpty()){
+
                         battleManager.pauseBattle();
                         battleManager.playCurrEvent();
-                        
-                        if(battleManager.emptyEvents())
-                            battleManager.unPauseBattle();
-                    }            
+                    }     
+
+                    //Increase battle time.
+                    if(!battleManager.battlePaused()){
+
+                        battleManager.incrementBattleTime();
+                        battleManager.recalculateFillRatesOnTimers();
+                        battleManager.updateAugments();
+                    }
+
+                    //Unpause the battle if the event is done.
+                    if(battleManager.isEventsEmpty()){
+                            
+                        battleManager.unPauseBattle();
+                    }
 
                     //Play animations.
                     if(!drawRepository.animationsEmpty())
@@ -335,16 +370,18 @@ int main(int argc, char **argv){
 
                 //Move the player on the map.
                 Movement::moveMap(*gameManager.player , *gameManager.currMap ,
-                    gameManager.getPressedKey(), keys);
+                    gameManager.getPressedKey(), keys , &battleManager);
 
                 //Animate the player by increasing the framerate.
                 gameManager.player->animate();
             
                 //Animate the sceneries. 
                 gameManager.currMap->animateSceneries();
-            
-                //Determine if there is a battle.
-                battleManager.checkForBattle();
+
+                //Force a battle for testing.
+                if(gameManager.getPressedKey() == Q){
+                    battleManager.initializeBattle();
+                }
 
                 //Draw map.
                 Draw::drawArea(*gameManager.currMap , *gameManager.player);
@@ -353,6 +390,7 @@ int main(int argc, char **argv){
                 
 #ifdef ttfaddon
                 displayVariables(fontStore.getFont("default") ,
+                    fontStore.getFont("shadowFont"),
                     gameManager.getPressedKey() , gameManager.player ,
                     gameManager.currMap->getLayer(CENTERGROUND));
                 al_draw_textf(fontStore.getFont("default"),
@@ -403,9 +441,15 @@ int checkInit(){
     return 0;
 }
 
-void displayVariables(ALLEGRO_FONT *theFont , int theKey , Character *thePlayer , Layer &layer){
+void displayVariables(ALLEGRO_FONT *theFont , ALLEGRO_FONT *theShadowFont , 
+    int theKey , Character *thePlayer , Layer &layer){
 
-    al_draw_textf(theFont, al_map_rgb(255, 255, 255), 500, 10, 0, "Key: %i" , theKey); 
+    al_draw_textf(theFont, al_map_rgb(0, 0, 0), 499, 10, 0, "KEY: %i" , theKey); 
+    al_draw_textf(theFont, al_map_rgb(0, 0, 0), 501, 10, 0, "KEY: %i" , theKey); 
+    al_draw_textf(theFont, al_map_rgb(0, 0, 0), 500, 9, 0, "KEY: %i" , theKey); 
+    al_draw_textf(theFont, al_map_rgb(0, 0, 0), 500, 11, 0, "KEY: %i" , theKey); 
+    al_draw_textf(theFont, al_map_rgb(255, 255, 255), 500, 10, 0, "KEY: %i" , theKey); 
+
     al_draw_textf(theFont, al_map_rgb(255, 255, 255), 500, 30, 0, "Left: %i" , thePlayer->getX());
     al_draw_textf(theFont, al_map_rgb(255, 255, 255), 500, 90, 0, "Up: %i" , thePlayer->getY());
     al_draw_textf(theFont, al_map_rgb(255, 255, 255), 500, 150, 0, "Right: %i" , 

@@ -12,7 +12,6 @@
 #include "ImageStore.h"
 #include "FontStore.h"
 #include "DrawRepository.h"
-#include "UnPauseBattle.h"
 #include "MovingCreature.h"
 #include "ChangeCreatureImage.h"
 #include "SetCreatureFacingDirection.h"

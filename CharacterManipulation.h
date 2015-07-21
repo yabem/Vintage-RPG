@@ -36,6 +36,12 @@ public:
     virtual void initialize(Character *initiator , Character *receiver ,
         ImageStore *imageStore , FontStore *fontStore , 
         DrawRepository *drawRepository , I_Manager *i_Manager);
+
+    //Sets the damage.
+    virtual void setDamage();
+
+    //Loads a delay to the Character
+    virtual void loadDelay();
     
     virtual void execute();             //Executes the manipulation.
 };

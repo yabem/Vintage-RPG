@@ -174,6 +174,7 @@ bool CharacterList::deleteSelection(int position){
 
         delete (*currSelection)->getStats();
         delete *currSelection;
+        (*currSelection) = NULL;
         charList.erase(currSelection);
 
         //Sets the iterator to the correct delete position.

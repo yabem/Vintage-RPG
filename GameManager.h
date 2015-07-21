@@ -10,7 +10,7 @@
 #include "I_Manager.h"
 #include "DrawRepository.h"
 #include "PlayerEntity.h"
-#include "PixelConversion.h"
+#include "Conversion.h"
 #include "StatsByLevelStore.h"
 
 const int RESET_TIMER = 2000;

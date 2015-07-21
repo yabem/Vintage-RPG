@@ -11,6 +11,18 @@ NorthernSnow::NorthernSnow(ImageStore *imageStore ,  DrawRepository *drawReposit
 NorthernSnow::~NorthernSnow(){
 }
 
+//Loads the enemies and level ranges for the map.
+void NorthernSnow::loadMapEnemies(){
+
+    this->listOfEnemies.push_back(ICE_CUBE);
+    this->listOfEnemies.push_back(WALRUS);
+    this->listOfEnemies.push_back(CARROT_RAT);
+    this->listOfEnemies.push_back(OLDMAN_AXE);
+    this->listOfEnemies.push_back(RED_REAPER);
+
+    this->loadEnemyLevelRange(3 , 5);
+}
+
 //Loads all the cloud Scenery objects.
 void NorthernSnow::loadTheSceneries(){
 
@@ -36,8 +48,8 @@ void NorthernSnow::loadTheTangibles(){
     std::string identifierName = "iceBull"; //Used when deleting the Tangible once the fight is over.
 
     NPCWithDialogueThenBattle *iceBull = new NPCWithDialogueThenBattle(imageStore->getBitMap("iceBull") ,
-        PixelConversion::convertTilesToPixels(20) , 
-        PixelConversion::convertTilesToPixels(20) ,        
+        Conversion::convertTilesToPixels(20) , 
+        Conversion::convertTilesToPixels(20) ,        
         this->drawRepository ,
         this->gameManager , "Do you dare challenge the great Bull of the North?" ,
         this->battleManager ,

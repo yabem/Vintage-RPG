@@ -6,7 +6,7 @@
 #include "NPCWithDialogueAndGift.h"
 #include "NPCWithDialogueAndQuest.h"
 #include "ItemLocationWithGift.h"
-#include "PixelConversion.h"
+#include "Conversion.h"
 #include "KillQuest.h"
 #include "GatherQuest.h"
 

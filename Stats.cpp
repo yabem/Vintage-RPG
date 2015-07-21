@@ -124,6 +124,26 @@ float Stats::getSpeed() const{
     return speed;
 }
 
+//Returns the total speed calculation.
+float Stats::getTtlSpeed(){
+
+    float augmentAmount = 0;
+
+    std::vector<StatAugment*>::iterator augIter = augments.begin();
+
+    while(augIter != augments.end()){
+
+        if((*augIter)->getStatToAugment() == "speed"){
+
+            augmentAmount += (*augIter)->getAugmentAmount();
+        }
+
+        augIter++;
+    }
+
+    return speed + augmentAmount;
+}
+
 //Returns the level.
 void Stats::setLevel(int level){
 
@@ -161,7 +181,7 @@ void Stats::setBaseDef(int baseDef){
 }
 
 //Sets the speed.
-void Stats::setSpeed(int speed){
+void Stats::setSpeed(float speed){
 
     this->speed = speed;
 }
@@ -202,8 +222,8 @@ void Stats::addToCurrHP(int amount){
 
     currHP += amount;
 
-    if(currHP >= ttlHP)
-        currHP = ttlHP;
+    if(currHP >= getTtlHP())
+        currHP = baseHP;
 
     if(currHP <= 0){
      
@@ -257,33 +277,84 @@ std::string Stats::getSummary(){
 
     std::string statsSummary = "";
 
-    char tempChar[10];
-
     statsSummary += "Class: ";
     statsSummary += role;
     
     statsSummary += "   Level: ";
-    _itoa_s(level , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary += Conversion::convertIntToString(level);
 
     statsSummary += "   HP: ";
-    _itoa_s(currHP , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary += Conversion::convertIntToString(currHP);
     statsSummary += "/";
-    _itoa_s(ttlHP , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary += Conversion::convertIntToString(ttlHP);
 
     statsSummary += "   Attack: ";
-    _itoa_s(ttlAtk , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary += Conversion::convertIntToString(ttlAtk);
 
     statsSummary += "   Defense: ";
-    _itoa_s(ttlDef , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary += Conversion::convertIntToString(ttlDef);
 
     statsSummary += "   Speed: ";
-    _itoa_s(speed , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary += Conversion::convertIntToString(speed);
 
     return statsSummary;
+}
+
+//Loads an augment.
+void Stats::loadAugment(
+    std::string nameOfAugment , 
+    std::string statToAugment ,
+    float augmentAmount , 
+    float totalDuration){
+
+        StatAugment *statAugment = new StatAugment(
+            nameOfAugment , 
+            statToAugment , 
+            augmentAmount , 
+            totalDuration);
+
+        this->augments.push_back(statAugment);
+}
+
+//Updates Augments.
+//Pre:  None.
+//Post: Cycles through augments and increases the duration of the augment
+//      and erases it if it has expired.
+void Stats::updateAugments(){
+
+    std::vector<StatAugment*>::iterator augIter = augments.begin();
+
+    while(augIter != augments.end()){
+
+        //Increase time on Augment.
+        (*augIter)->increaseCurrentDuration();
+
+        //Removes the Augment from augments and resets the iterator.
+        if((*augIter)->isDurationExpired()){
+
+            delete (*augIter);
+            augments.erase(augIter);
+            augIter = augments.begin();
+        }
+
+        //Increment the iterator.
+        else{
+            augIter++;
+        }
+    }
+}
+
+//Remove all Augments.
+//Pre:  None.
+//Post: Cycles through augments and removes each Augment.
+void Stats::removeAugments(){
+
+    std::vector<StatAugment*>::iterator augIter = augments.begin();
+
+    while(augIter != augments.end()){
+
+        delete (*augIter);
+        augments.erase(augIter);
+        augIter = augments.begin();
+    }
 }

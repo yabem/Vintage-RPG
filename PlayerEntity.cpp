@@ -1,13 +1,15 @@
 #include "PlayerEntity.h"
 
 //Constructor.
-PlayerEntity::PlayerEntity(ImageStore *imageStore , FontStore *fontStore){
+PlayerEntity::PlayerEntity(ImageStore *imageStore , FontStore *fontStore ,
+    StatsByLevelStore *statsByLevelStore){
 
     this->backpack = NULL;
     this->imageStore = imageStore;
     this->questLog = NULL;
     this->fontStore = fontStore;
     this->partyStatusDisplay = NULL;
+    this->statsByLevelStore = statsByLevelStore;
 }
 
 //Destructor.    
@@ -154,38 +156,39 @@ void PlayerEntity::loadDefaultPlayers(){
 
     //Characters
     Character *thePlayer = new Character(imageStore->getBitMap("player")
-        , 32 , 32 , 30 , 2 , rate);
+        , 32 , 32 , 30 , 2 , PLAYER_MOVE_RATE);
     thePlayer->setIdentifierName("player");
     thePlayer->setFacing(DOWN);
 
     Character *thePlayer2 = new Character(imageStore->getBitMap("warrior") ,
-        32 , 32 , 30 , 2 , rate);
+        32 , 32 , 30 , 2 , PLAYER_MOVE_RATE);
     thePlayer2->setIdentifierName("warrior");
     
     Character *thePlayer3 = new Character(imageStore->getBitMap("thief") ,
-        32 , 32 , 30 , 2 , rate);
+        32 , 32 , 30 , 2 , PLAYER_MOVE_RATE);
     thePlayer3->setIdentifierName("thief");
     
     Character *thePlayer4 = new Character(imageStore->getBitMap("mage") ,
-        32 , 32 , 30 , 2 , rate);
+        32 , 32 , 30 , 2 , PLAYER_MOVE_RATE);
     thePlayer4->setIdentifierName("mage");
 
     /*
     thePlayer->loadAbilities("Attack,Jump,Item|Potion;Recover;");
     thePlayer2->loadAbilities("Attack,Shield Bash,Item|Potion;Recover;");
     thePlayer3->loadAbilities("Attack,Backstab,Item|Potion;Recover;");
-    thePlayer4->loadAbilities("Attack,Magic|Fire1,Fire2,Fire3;Item|Potion;Recover;");
+    
+    thePlayer4->loadAbilities("Attack,Magic|Fireball,Fire2,Fire3;Item|Potion;Recover;");
     */
 
-    thePlayer->loadAbilities("Attack;");
-    thePlayer2->loadAbilities("Attack;");
-    thePlayer3->loadAbilities("Attack;");
-    thePlayer4->loadAbilities("Attack;");
+    thePlayer->loadAbilities("Lance,Skewer,Jump,Fury Of The Fang;");
+    thePlayer2->loadAbilities("Sword,Shield Bash;");
+    thePlayer3->loadAbilities("Dagger,Backstab;");
+    thePlayer4->loadAbilities("Staff,Fireball,Fire3;");
    
     //CharacterList thePlayers;
     this->thePlayers->loadChar(thePlayer);
-    this->thePlayers->loadChar(thePlayer2);
-    this->thePlayers->loadChar(thePlayer3);
+    //this->thePlayers->loadChar(thePlayer2);
+    //this->thePlayers->loadChar(thePlayer3);
     this->thePlayers->loadChar(thePlayer4);
 
     //thePlayer->addAbility("Jump");
@@ -196,25 +199,35 @@ void PlayerEntity::loadDefaultPlayers(){
 
     //Character stats
     CharStats *playerStats = new CharStats(1 , 1 , 10 , 100 , 10 , 1 , 100 ,
-        10 , 1.8 , 0 , 0 , emptyStringVector);
+        10 , 1 , 0 , 0 , emptyStringVector);
     playerStats->setRole("Lancer");
 
     CharStats *playerStats2 = new CharStats(1 , 5 , 10 , 100 , 10 , 1 , 100 ,
-        10 , 1.9 , 0 , 0 , emptyStringVector);
+        10 , 1 , 0 , 0 , emptyStringVector);
     playerStats2->setRole("Warrior");
     
     CharStats *playerStats3 = new CharStats(1 , 1 , 10 , 100 , 10 , 1 , 100 ,
-        10 , 2.0 , 0 , 0, emptyStringVector);
+        10 , 1 , 0 , 0, emptyStringVector);
     playerStats3->setRole("Thief");
 
     CharStats *playerStats4 = new CharStats(1 , 5 , 10 , 100 , 10 , 1 , 100 ,
-        10 , 1.3 , 0 , 0 , emptyStringVector);
+        10 , 1 , 0 , 0 , emptyStringVector);
     playerStats4->setRole("Mage");
 
     thePlayer->setStats(playerStats);
     thePlayer2->setStats(playerStats2);
     thePlayer3->setStats(playerStats3);
     thePlayer4->setStats(playerStats4);
+
+    LevelUpCalculations::setCharacterToLevel(thePlayer , 1 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 1 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 1 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 1 , statsByLevelStore);
+
+    LevelUpCalculations::setHPToFull(thePlayer);
+    LevelUpCalculations::setHPToFull(thePlayer2);
+    LevelUpCalculations::setHPToFull(thePlayer3);
+    LevelUpCalculations::setHPToFull(thePlayer4);
 }
     
 //Returns a pointer to the player's inventory.

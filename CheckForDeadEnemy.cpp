@@ -20,6 +20,11 @@ CheckForDeadEnemy::~CheckForDeadEnemy(){
 //Post: Always returns true because the event only executes once.
 bool CheckForDeadEnemy::execute(){
 
+    if(theEnemy == NULL){
+        //here
+        return true;
+    }
+
     if(theEnemy->getStats()->getCurrHP() <= 0){
 
         if(drawRepository->animationsEmpty()){

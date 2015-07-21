@@ -175,6 +175,21 @@ bool Character::getCollision(int index){
     else return collCheck[index];
 }
 
+//Determines if there's a collision with the player.
+//Pre:  The Character is valid.
+//Post: Returns true if there is a collision. Otherwise returns false.
+bool Character::hasCollision() const{
+
+    for(int i = 0 ; i < DIRECTIONS ; i ++){
+
+        if(collCheck[i] == true){
+            return true;
+        }
+    }
+
+    return false;
+}
+
 //Return a pointer to the character stats.
 Stats* Character::getStats(){
 
@@ -442,7 +457,7 @@ int Character::move(bool *keys , int keyPressed){
         result = DOWN;
     }
 
-    resetColl(); //Reset collision.
+    //resetColl(); //Reset collision.
 
     return result;  //return the key that was pressed.
 }

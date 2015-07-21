@@ -1,5 +1,7 @@
 #pragma once
 #include "I_Animation.h"
+#include "FontColorSettings.h"
+#include "DrawTextWithBorder.h"
 #include <allegro5/allegro_font.h>
 
 struct ALLEGRO_FONT;

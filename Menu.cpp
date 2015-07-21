@@ -13,9 +13,20 @@ Menu::Menu(ALLEGRO_FONT *font){
     this->dx = 0;
     this->dy = 0;
 
-    tr = 255 ; tg = 255 ; tb = 255; //Hues for the text color.
-    rr = 0 ; rg = 0 ; rb = 200;     //Hues for rectangle color.
-    br = 255 ; bg = 255 ; bb = 255; //Hues for border color.
+    //Hues for the text color.
+    tr = MENU_TEXT_R;
+    tg = MENU_TEXT_G;
+    tb = MENU_TEXT_G; 
+    
+    //Hues for rectangle color.
+    rr = MENU_BACKGROUND_R;
+    rg = MENU_BACKGROUND_G;
+    rb = MENU_BACKGROUND_B;   
+
+    //Hues for border color.
+    br = MENU_BORDER_R;
+    bg = MENU_BORDER_G;
+    bb = MENU_BORDER_B; 
     bWid = 2;           //Width of the border around the text box.
 }
 
@@ -302,11 +313,11 @@ void Menu::draw(){
     //Draw the text to the screen.
     for(int i = 0 ; selecIter != options.end() ; selecIter++ , i++){
         
-        al_draw_textf(font,                 //Font.
-            al_map_rgb(tr , tg , tb),       //Color.
-            sx + HALF_MENU_WIDTH_BUFFER,                //X draw location.
+        DrawTextWithBorder::drawTextWithBorder(
+            font,                           //Font.
+            tr , tg , tb,       //Color.
+            sx + HALF_MENU_WIDTH_BUFFER,    //X draw location.
             sy + FONT_HEIGHT * i ,          //Y draw location.
-            0,                              //Flag. 
             (*selecIter)->Name.c_str());    //Text.
     }
     

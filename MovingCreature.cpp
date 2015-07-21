@@ -29,8 +29,16 @@ bool MovingCreature::play(){
 
     bool result = false;
     
+    //Move instantly if there are no frames.
+    if(ttlFrames == 0){
+        i_Creature->setX(ex);
+        i_Creature->setY(ey);
+
+        result = true;
+    }
+
     //Check if the animation is done.
-    if(currFrame == ttlFrames){
+    else if(currFrame == ttlFrames){
         result = true;
         initialized = false;
         currFrame = 0;
@@ -56,8 +64,11 @@ void MovingCreature::initialize(int sx , int sy , int ex , int ey){
     this->ex = ex;
     this->ey = ey;
 
-    this->xRate = (ex - sx) / ttlFrames;
-    this->yRate = (ey - sy) / ttlFrames;
+    //Cannot divide by 0.
+    if(ttlFrames != 0){
+        this->xRate = (ex - sx) / ttlFrames;
+        this->yRate = (ey - sy) / ttlFrames;
+    }
 
     this->initialized = true;
     this->rotate180Rads = atan2(double(sx - ex) , double(sy - ey));

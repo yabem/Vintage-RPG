@@ -7,6 +7,7 @@
 #include "I_InventoryItem.h"
 #include "InfoTable.h"
 #include "FontStore.h"
+#include "Conversion.h"
 
 class Backpack{
 

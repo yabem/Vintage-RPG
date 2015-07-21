@@ -7,7 +7,9 @@
 #include "ImageStore.h"
 #include "RightToLeftImage.h"
 #include "Character.h"
-#include "PixelConversion.h"
+#include "Conversion.h"
+#include "FontColorSettings.h"
+#include "DrawTextWithBorder.h"
 
 struct ALLEGRO_FONT;
 

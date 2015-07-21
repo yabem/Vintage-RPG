@@ -63,6 +63,9 @@ public:
     //Sets the rate in seconds.
     void setRate(float fillRate);
 
+    //Gets the fill rate.
+    float getFillRate();
+
     void setDrawX(int drawX);
     void setDrawY(int drawY);
     int getOutterWidth() const;

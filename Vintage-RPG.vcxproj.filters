@@ -67,9 +67,6 @@
     <Filter Include="Header Files\Battle\TurnTimer\Base Class">
       <UniqueIdentifier>{6f037d71-1719-4052-9f7d-bae716333bce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Battle\TurnTimer\Derived Class">
-      <UniqueIdentifier>{ebb00211-9050-438e-a1c5-466f021b3c74}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\List">
       <UniqueIdentifier>{2d1410bf-b860-4cd0-ac3c-04d6d3e9a99d}</UniqueIdentifier>
     </Filter>
@@ -192,9 +189,6 @@
     </Filter>
     <Filter Include="Source Files\Battle\TurnTimer">
       <UniqueIdentifier>{288ca775-13ea-4cbb-b414-bc3fd81b6d36}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Battle\TurnTimer\Derived Class">
-      <UniqueIdentifier>{fd833bcf-6de1-450c-b2e5-27193726e38b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Battle\TurnTimer\Base Class">
       <UniqueIdentifier>{675b5491-27d9-4a6e-ab64-656ec2056b6d}</UniqueIdentifier>
@@ -547,6 +541,36 @@
     <Filter Include="Source Files\Character\StatsByLevel\StatsByLevelStore">
       <UniqueIdentifier>{765f7494-30e2-4ca6-baf7-6b1490134c10}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Character\Stats\StatAugment">
+      <UniqueIdentifier>{57effa3c-ec10-49ac-9bd2-878ed9b459bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\Stats\StatAugment">
+      <UniqueIdentifier>{ed04e2e8-0548-4c5f-abef-efac6a5b5f38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\CharacterManipulation\Derived Class\Lancer">
+      <UniqueIdentifier>{57883489-904f-4ca8-afde-c9d7befefd51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\CharacterManipulation\Derived Class\Warrior">
+      <UniqueIdentifier>{e3ad3aa5-5319-4d74-8b08-06facd63f65b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\CharacterManipulation\Derived Class\Mage">
+      <UniqueIdentifier>{b5fee4eb-1c73-4649-b72a-523fd2708cb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\CharacterManipulation\Derived Class\Thief">
+      <UniqueIdentifier>{a938d14d-51b4-44af-8f51-c691eaf2e699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\CharacterManipulation\Derived Class\Lancer">
+      <UniqueIdentifier>{96aa845a-0a90-447c-a582-a9f194483018}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\CharacterManipulation\Derived Class\Mage">
+      <UniqueIdentifier>{939ae2d6-4273-4aaf-bbc8-b430742c8b08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\CharacterManipulation\Derived Class\Warrior">
+      <UniqueIdentifier>{787d1934-9672-4cf2-8e52-ca149f028ccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\CharacterManipulation\Derived Class\Thief">
+      <UniqueIdentifier>{1c8c9448-af8a-45d7-949a-1b9c6591add8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -597,9 +621,6 @@
     <ClCompile Include="InitEnemies.cpp">
       <Filter>Source Files\Battle</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterTimer.cpp">
-      <Filter>Source Files\Battle\TurnTimer\Derived Class</Filter>
-    </ClCompile>
     <ClCompile Include="CharacterList.cpp">
       <Filter>Source Files\List\Derived Class</Filter>
     </ClCompile>
@@ -617,15 +638,6 @@
     </ClCompile>
     <ClCompile Include="Character.cpp">
       <Filter>Source Files\Character\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="Fire1.cpp">
-      <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="Fire2.cpp">
-      <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="Fire3.cpp">
-      <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="I_AI.cpp">
       <Filter>Source Files\Character\AI\Base Class</Filter>
@@ -747,17 +759,8 @@
     <ClCompile Include="DelayInSeconds.cpp">
       <Filter>Source Files\Animation\Derived Class</Filter>
     </ClCompile>
-    <ClCompile Include="Jump.cpp">
-      <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
-    </ClCompile>
     <ClCompile Include="I_Animation.cpp">
       <Filter>Source Files\Animation\Base Class</Filter>
-    </ClCompile>
-    <ClCompile Include="Backstab.cpp">
-      <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
-    </ClCompile>
-    <ClCompile Include="ShieldBash.cpp">
-      <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
     </ClCompile>
     <ClCompile Include="Recover.cpp">
       <Filter>Source Files\Character\CharacterManipulation\Derived Class</Filter>
@@ -821,9 +824,6 @@
     </ClCompile>
     <ClCompile Include="Tangible.cpp">
       <Filter>Source Files\Tangible\Base Class</Filter>
-    </ClCompile>
-    <ClCompile Include="PixelConversion.cpp">
-      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="StartBattle.cpp">
       <Filter>Source Files\Cutscene\Derived Class</Filter>
@@ -957,6 +957,63 @@
     <ClCompile Include="LevelUpCalculations.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="Conversion.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeCharacterWidth.cpp">
+      <Filter>Source Files\Animation\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="SimultaneousAnimations.cpp">
+      <Filter>Source Files\Animation\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeCharacterHeight.cpp">
+      <Filter>Source Files\Animation\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="StatAugment.cpp">
+      <Filter>Source Files\Character\Stats\StatAugment</Filter>
+    </ClCompile>
+    <ClCompile Include="Backstab.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Thief</Filter>
+    </ClCompile>
+    <ClCompile Include="Dagger.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Thief</Filter>
+    </ClCompile>
+    <ClCompile Include="Fire3.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
+    </ClCompile>
+    <ClCompile Include="Fire2.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
+    </ClCompile>
+    <ClCompile Include="Lance.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Lancer</Filter>
+    </ClCompile>
+    <ClCompile Include="Jump.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Lancer</Filter>
+    </ClCompile>
+    <ClCompile Include="Sword.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Warrior</Filter>
+    </ClCompile>
+    <ClCompile Include="ShieldBash.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Warrior</Filter>
+    </ClCompile>
+    <ClCompile Include="Staff.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawTextWithBorder.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBall.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageCalculations.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Skewer.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Lancer</Filter>
+    </ClCompile>
+    <ClCompile Include="FuryOfTheFang.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Lancer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageStore.h">
@@ -1001,9 +1058,6 @@
     <ClInclude Include="InitEnemies.h">
       <Filter>Header Files\Battle</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterTimer.h">
-      <Filter>Header Files\Battle\TurnTimer\Derived Class</Filter>
-    </ClInclude>
     <ClInclude Include="TurnTimer.h">
       <Filter>Header Files\Battle\TurnTimer\Base Class</Filter>
     </ClInclude>
@@ -1024,15 +1078,6 @@
     </ClInclude>
     <ClInclude Include="Character.h">
       <Filter>Header Files\Character\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="Fire1.h">
-      <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="Fire3.h">
-      <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="Fire2.h">
-      <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="I_AI.h">
       <Filter>Header Files\Character\AI\Base Class</Filter>
@@ -1157,17 +1202,8 @@
     <ClInclude Include="DelayInSeconds.h">
       <Filter>Header Files\Animation\Derived Class</Filter>
     </ClInclude>
-    <ClInclude Include="Jump.h">
-      <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
-    </ClInclude>
     <ClInclude Include="I_Animation.h">
       <Filter>Header Files\Animation\Base Class</Filter>
-    </ClInclude>
-    <ClInclude Include="Backstab.h">
-      <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
-    </ClInclude>
-    <ClInclude Include="ShieldBash.h">
-      <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="Recover.h">
       <Filter>Header Files\Character\CharacterManipulation\Derived Class</Filter>
@@ -1231,9 +1267,6 @@
     </ClInclude>
     <ClInclude Include="Tangible.h">
       <Filter>Header Files\Tangible\Base Class</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelConversion.h">
-      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="StartBattle.h">
       <Filter>Header Files\Cutscene\Derived Class</Filter>
@@ -1369,6 +1402,66 @@
     </ClInclude>
     <ClInclude Include="LevelUpCalculations.h">
       <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Conversion.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeCharacterWidth.h">
+      <Filter>Header Files\Animation\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="SimultaneousAnimations.h">
+      <Filter>Header Files\Animation\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeCharacterHeight.h">
+      <Filter>Header Files\Animation\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="StatAugment.h">
+      <Filter>Header Files\Character\Stats\StatAugment</Filter>
+    </ClInclude>
+    <ClInclude Include="Backstab.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Thief</Filter>
+    </ClInclude>
+    <ClInclude Include="Dagger.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Thief</Filter>
+    </ClInclude>
+    <ClInclude Include="Fire2.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
+    </ClInclude>
+    <ClInclude Include="Fire3.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
+    </ClInclude>
+    <ClInclude Include="Staff.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
+    </ClInclude>
+    <ClInclude Include="Lance.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Lancer</Filter>
+    </ClInclude>
+    <ClInclude Include="Jump.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Lancer</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="ShieldBash.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="FontColorSettings.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawTextWithBorder.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBall.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageCalculations.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Skewer.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Lancer</Filter>
+    </ClInclude>
+    <ClInclude Include="FuryOfTheFang.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Lancer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

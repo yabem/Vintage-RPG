@@ -3,6 +3,8 @@
 #include "Character.h"
 #include "I_Creature.h"
 #include "I_InfoBox.h"
+#include "FontColorSettings.h"
+#include "DrawTextWithBorder.h"
 
 const int MENU_WIDTH_BUFFER = 20;
 const int HALF_MENU_WIDTH_BUFFER = MENU_WIDTH_BUFFER / 2;

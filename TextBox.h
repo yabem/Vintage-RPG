@@ -5,6 +5,7 @@
 #include <allegro5/allegro_font.h>
 #include <vector>
 #include "I_InfoBox.h"
+#include "DrawTextWithBorder.h"
 
 class TextBox: public I_InfoBox{
 

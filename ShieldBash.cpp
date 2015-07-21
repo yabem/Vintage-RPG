@@ -129,15 +129,8 @@ void ShieldBash::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void ShieldBash::calculateDamage(){
 
-    //Get attack and defense for calculation.
-    int charAAttack = initiator->getAttack();
-    int charBDefense = receiver->getDefense();
-
-    damageToReceiver = charAAttack - charBDefense;
-
-    //No damage done, the defense negated the attack.
-    if(damageToReceiver < 0)
-        damageToReceiver = 0;
+    damageToReceiver = DamageCalculations::damageWithDelay(
+        initiator , receiver , 1.5 , 1.65);
 }
 
 //Sets the draw to spell location.

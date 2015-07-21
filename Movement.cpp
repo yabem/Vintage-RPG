@@ -4,7 +4,8 @@
 #include "Movement.h"
 
 //Move map based off of the key that was pressed and the keys already pressed.
-bool Movement::moveMap(Character &character , AreaMap &areaMap , int theKey , bool keys[]){
+bool Movement::moveMap(Character &character , AreaMap &areaMap , int theKey , bool keys[] ,
+    I_Manager *battleManager){
     
     switch(theKey){
     
@@ -28,6 +29,8 @@ bool Movement::moveMap(Character &character , AreaMap &areaMap , int theKey , bo
             return false;   //Invalid entry.
     }
     
+    battleManager->checkForBattle();
+    character.resetColl();
     return true;
 }
 
@@ -40,18 +43,18 @@ void Movement::moveUp(Character &character , AreaMap &areaMap , int theKey , boo
 
         //Move map.
         for(int i = 0 ; i < areaMap.getNumLayers() ; i++)
-            areaMap.getLayer(i).addToDY(rate);
+            areaMap.getLayer(i).addToDY(PLAYER_MOVE_RATE);
 
         character.setFacing(UP);
-        character.addToAllCornerY(-rate);
+        character.addToAllCornerY(-PLAYER_MOVE_RATE);
 
         for(int i = 0 ; i < areaMap.getNumTangibles() ; i++)
-            areaMap.getTangible(i).addToDY(rate);
+            areaMap.getTangible(i).addToDY(PLAYER_MOVE_RATE);
     }
     else{
         //Move character.
         if(character.move(keys , theKey) != -1)
-            character.addToAllCornerY(-rate); 
+            character.addToAllCornerY(-PLAYER_MOVE_RATE); 
     }
 }
 
@@ -64,19 +67,19 @@ void Movement::moveDown(Character &character , AreaMap &areaMap , int theKey , b
                     
         //Move map.
         for(int i = 0 ; i < areaMap.getNumLayers() ; i++)
-            areaMap.getLayer(i).addToDY(-rate);
+            areaMap.getLayer(i).addToDY(-PLAYER_MOVE_RATE);
             
-        character.addToAllCornerY(rate);        
+        character.addToAllCornerY(PLAYER_MOVE_RATE);        
         character.setFacing(DOWN);
                     
         for(int i = 0 ; i < areaMap.getNumTangibles() ; i++)
-            areaMap.getTangible(i).addToDY(-rate);
+            areaMap.getTangible(i).addToDY(-PLAYER_MOVE_RATE);
     }
 
     else{          
         //Move character.
         if(character.move(keys , theKey) != -1)
-            character.addToAllCornerY(rate);
+            character.addToAllCornerY(PLAYER_MOVE_RATE);
     }
 }
 
@@ -89,18 +92,18 @@ void Movement::moveLeft(Character &character , AreaMap &areaMap , int theKey , b
 
         //Move map.
         for(int i = 0 ; i < areaMap.getNumLayers() ; i++)
-            areaMap.getLayer(i).addToDX(rate);
+            areaMap.getLayer(i).addToDX(PLAYER_MOVE_RATE);
 
         character.setFacing(LEFT);
-        character.addToAllCornerX(-rate);
+        character.addToAllCornerX(-PLAYER_MOVE_RATE);
 
         for(int i = 0 ; i < areaMap.getNumTangibles() ; i++)
-            areaMap.getTangible(i).addToDX(rate);
+            areaMap.getTangible(i).addToDX(PLAYER_MOVE_RATE);
     }
     else{
         //Move character.
         if(character.move(keys , theKey) != -1)
-            character.addToAllCornerX(-rate);
+            character.addToAllCornerX(-PLAYER_MOVE_RATE);
     }
 }
 
@@ -113,19 +116,19 @@ void Movement::moveRight(Character &character , AreaMap &areaMap , int theKey , 
 
         //Move map.
         for(int i = 0 ; i < areaMap.getNumLayers() ; i++)
-            areaMap.getLayer(i).addToDX(-rate);
+            areaMap.getLayer(i).addToDX(-PLAYER_MOVE_RATE);
                     
         character.setFacing(RIGHT);
-        character.addToAllCornerX(rate);
+        character.addToAllCornerX(PLAYER_MOVE_RATE);
 
         for(int i = 0 ; i < areaMap.getNumTangibles() ; i++)
-            areaMap.getTangible(i).addToDX(-rate);
+            areaMap.getTangible(i).addToDX(-PLAYER_MOVE_RATE);
     }
 
     else{
         //Move character.
         if(character.move(keys , theKey) != -1)
-            character.addToAllCornerX(rate);
+            character.addToAllCornerX(PLAYER_MOVE_RATE);
     }
 }
 

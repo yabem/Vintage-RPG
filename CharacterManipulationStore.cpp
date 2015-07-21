@@ -88,10 +88,10 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
         drawRepository , battleManager);
     loadManipulation("Rock" , charManip);
 
-    charManip = new Fire1;
+    charManip = new Fireball;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
         drawRepository , battleManager);
-    loadManipulation("Fire1" , charManip);
+    loadManipulation("Fireball" , charManip);
 
     charManip = new Fire2;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
@@ -103,10 +103,20 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
         drawRepository , battleManager);
     loadManipulation("Fire3" , charManip);
 
+    charManip = new Skewer;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Skewer" , charManip);
+
     charManip = new Jump;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
         drawRepository , battleManager);
     loadManipulation("Jump" , charManip);
+
+    charManip = new FuryOfTheFang;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Fury Of The Fang" , charManip);
 
     charManip = new Backstab;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
@@ -127,6 +137,26 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
         drawRepository , battleManager);
     loadManipulation("Potion" , charManip);
+
+    charManip = new Lance;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Lance" , charManip);
+
+    charManip = new Staff;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Staff" , charManip);
+
+    charManip = new Dagger;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Dagger" , charManip);
+
+    charManip = new Sword;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Sword" , charManip);
 }
 
 //Retrieves a pointer to the CharacterManipulation.

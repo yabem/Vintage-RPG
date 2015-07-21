@@ -3,7 +3,7 @@
 #pragma once
 #include "CustomAreaMap.h"
 #include "NPCWithDialogueThenBattle.h"
-#include "PixelConversion.h"
+#include "Conversion.h"
 #include "FallingImage.h"
 
 class GameManager;
@@ -16,6 +16,8 @@ class FontStore;
 class NorthernSnow : public CustomAreaMap{
 
 private:
+
+    virtual void loadMapEnemies();
 
     virtual void loadTheSceneries();
     virtual void loadLayers();

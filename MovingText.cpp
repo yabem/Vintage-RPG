@@ -50,8 +50,8 @@ bool MovingText::play(){
         dx += xRate * direction;
         dy += yRate * direction;
 
-        //Draw bitmap to the buffer.
-        al_draw_textf(font, al_map_rgb(DEFR , DEFG , DEFB), dx , dy , 0, text.c_str());
+        DrawTextWithBorder::drawTextWithBorder(
+        font, MOVING_TEXT_R , MOVING_TEXT_G , MOVING_TEXT_B,  dx , dy , text.c_str());
     }
 
     return result;

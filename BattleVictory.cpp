@@ -8,7 +8,8 @@ BattleVictory::BattleVictory(){
 
 //Constructor with parameters.
 BattleVictory::BattleVictory(AreaMap *currMap , CharacterList *characterList ,
-    I_Manager *i_Manager , TreasureBox *treasureBox , ALLEGRO_FONT *font){
+    I_Manager *i_Manager , TreasureBox *treasureBox , ALLEGRO_FONT *font ,
+    std::vector<std::string> levelUpSummary){
 
     frameCount = 0;
     mapSwitch = 1;
@@ -17,6 +18,7 @@ BattleVictory::BattleVictory(AreaMap *currMap , CharacterList *characterList ,
     this->i_Manager = i_Manager;
     this->treasureBox = treasureBox;
     this->font = font;
+    this->levelUpSummary = levelUpSummary;
 
     createVictoryMessage();
     createCelebratingPlayers();
@@ -115,7 +117,7 @@ void BattleVictory::createVictoryMessage(){
     }
 
     victoryMessage += ".";
-    //textBox->loadText(victoryMessage);
+
     this->textBox = new TextBox(victoryMessage , font);
 }
 
@@ -133,10 +135,28 @@ bool BattleVictory::play(const int pressedKey){
 
     if(pressedKey == SPACE){
 
-        deletePlayers();
+        if(!levelUpSummary.empty()){
 
-        i_Manager->switchVariablesToMap();
-        return true;
+            //Delete previous textbox and create a new one for the next
+            //level up.
+            delete textBox;
+            textBox = new TextBox(levelUpSummary.front() , font);
+
+            //Remove level up message.
+            std::vector<std::string>::iterator strIter = levelUpSummary.begin();
+            levelUpSummary.erase(strIter);
+
+            //Reset the key.
+            i_Manager->setPressedKeyToInactive();
+            return false;
+        }
+
+        else{
+            deletePlayers();
+
+            i_Manager->switchVariablesToMap();
+            return true;
+        }
     }
 
     else return false;
