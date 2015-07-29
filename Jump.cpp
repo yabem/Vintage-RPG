@@ -69,7 +69,7 @@ void Jump::loadAnimations(){
     //Original location of the character.
     int saveX = initiator->getX();
     int saveY = initiator->getY();
-    ALLEGRO_BITMAP *originalImage = imageStore->getBitMap("player");
+    ALLEGRO_BITMAP *originalImage = imageStore->getBitMap("lancer");
 
     MovingCreature *jumpUp = new MovingCreature(initiator , 20);
     jumpUp->initialize(initiator->getX() , initiator->getY() ,
@@ -91,7 +91,7 @@ void Jump::loadAnimations(){
     ChangeCreatureImage *diving = new ChangeCreatureImage(initiator ,
         imageStore->getBitMap("playerLanceDive"));
     ChangeCreatureImage *origImage = new ChangeCreatureImage(initiator ,
-        imageStore->getBitMap("player"));
+        imageStore->getBitMap("lancer"));
 
     SetCreatureFacingDirection *initialDirection = 
         new SetCreatureFacingDirection(initiator , 0);

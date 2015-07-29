@@ -155,9 +155,9 @@ void PlayerEntity::loadDefaultPlayers(){
     this->thePlayers = new CharacterList();
 
     //Characters
-    Character *thePlayer = new Character(imageStore->getBitMap("player")
+    Character *thePlayer = new Character(imageStore->getBitMap("lancer")
         , 32 , 32 , 30 , 2 , PLAYER_MOVE_RATE);
-    thePlayer->setIdentifierName("player");
+    thePlayer->setIdentifierName("lancer");
     thePlayer->setFacing(DOWN);
 
     Character *thePlayer2 = new Character(imageStore->getBitMap("warrior") ,
@@ -181,14 +181,14 @@ void PlayerEntity::loadDefaultPlayers(){
     */
 
     thePlayer->loadAbilities("Lance,Skewer,Jump,Fury Of The Fang;");
-    thePlayer2->loadAbilities("Sword,Shield Bash;");
-    thePlayer3->loadAbilities("Dagger,Backstab;");
+    thePlayer2->loadAbilities("Sword,Headbutt,Shield Bash,Earth Shatter;");
+    thePlayer3->loadAbilities("Dagger,Backstab,Knife Barrage,Shade of the Crescent;");
     thePlayer4->loadAbilities("Staff,Fireball,Fire3;");
    
     //CharacterList thePlayers;
     this->thePlayers->loadChar(thePlayer);
-    //this->thePlayers->loadChar(thePlayer2);
-    //this->thePlayers->loadChar(thePlayer3);
+    this->thePlayers->loadChar(thePlayer2);
+    this->thePlayers->loadChar(thePlayer3);
     this->thePlayers->loadChar(thePlayer4);
 
     //thePlayer->addAbility("Jump");

@@ -1,7 +1,7 @@
-#include "Sword.h"
+#include "KnifeBarrage.h"
 
 //Default constructor.
-Sword::Sword(){
+KnifeBarrage::KnifeBarrage(){
 
     imageStore = NULL;
     fontStore = NULL;
@@ -13,7 +13,7 @@ Sword::Sword(){
 }
 
 //Destructor.
-Sword::~Sword(){
+KnifeBarrage::~KnifeBarrage(){
 
     //Deletion is handled by the ImageStore.
 }
@@ -21,7 +21,7 @@ Sword::~Sword(){
 //Loads the Characters.
 //Pre:  None.
 //Post: loads the iniatiator and receiver.
-void Sword::loadCharacters(Character *initiator ,
+void KnifeBarrage::loadCharacters(Character *initiator ,
     Character *receiver){
 
     this->initiator = initiator;
@@ -35,7 +35,7 @@ void Sword::loadCharacters(Character *initiator ,
 //      after the defense is subtracted is then reduced
 //      from the receiver's hitpoints. If the HP are reduced
 //      to 0 or below, the Character will be dead.
-void Sword::execute(){
+void KnifeBarrage::execute(){
 
     if(initiator == NULL || receiver == NULL)
         return;
@@ -50,7 +50,7 @@ void Sword::execute(){
 }
 
 //Loads the animations to the animations vector.
-void Sword::loadAnimations(){
+void KnifeBarrage::loadAnimations(){
 
     //Creates the text that will display the damage above the receiver.
     MovingText *damage = new MovingText(font , 10 , 10 , 8 , false);
@@ -71,17 +71,17 @@ void Sword::loadAnimations(){
     int moveIntoAttackPositionY = 0;
 
     MovingCreature *positionBeforeAttack = new MovingCreature(initiator , 10);
-    MovingCreature *moveUpForAttack = new MovingCreature(initiator , 1);
+    MovingCreature *moveUpForAttack = new MovingCreature(initiator , 0);
     MovingCreature *backToStartingPosition = new MovingCreature(initiator , 0);
     
     setInitiatorAttackPosition(initiator , receiver , moveIntoAttackPositionX ,
         moveIntoAttackPositionY);
 
-    positionBeforeAttack->initialize(origPositionX , origPositionY ,
+    positionBeforeAttack->initialize(origPositionX - 208, origPositionY - 8 ,
         moveIntoAttackPositionX, moveIntoAttackPositionY);
 
-    moveUpForAttack->initialize(moveIntoAttackPositionX , moveIntoAttackPositionY ,
-        moveIntoAttackPositionX - 19, moveIntoAttackPositionY);
+    moveUpForAttack->initialize(origPositionX , origPositionY ,
+        origPositionX - 208, origPositionY - 8);
 
     backToStartingPosition->initialize(moveIntoAttackPositionX,
         moveIntoAttackPositionY, origPositionX , origPositionY);
@@ -91,30 +91,51 @@ void Sword::loadAnimations(){
     SetCreatureFacingDirection *attackFacingDirection =
         new SetCreatureFacingDirection(initiator , UP);
 
-    ChangeCreatureImage *mageAttackPart1 = new ChangeCreatureImage(initiator
-        , imageStore->getBitMap("warriorAttackPart1"));
-    ChangeCreatureImage *mageAttackPart2 = new ChangeCreatureImage(initiator
-        , imageStore->getBitMap("warriorAttackPart2"));
+    ChangeCreatureImage *thiefKnifeBarrage1 = new ChangeCreatureImage(initiator
+        , imageStore->getBitMap("thiefKnifeBarrage1"));
+    ChangeCreatureImage *thiefKnifeBarrage2 = new ChangeCreatureImage(initiator
+        , imageStore->getBitMap("thiefKnifeBarrage2"));
+    ChangeCreatureImage *thiefKnifeBarrage3 = new ChangeCreatureImage(initiator
+        , imageStore->getBitMap("thiefKnifeBarrage3"));
+    ChangeCreatureImage *thiefKnifeBarrage4 = new ChangeCreatureImage(initiator
+        , imageStore->getBitMap("thiefKnifeBarrage4"));
+    ChangeCreatureImage *thiefKnifeBarrage5 = new ChangeCreatureImage(initiator
+        , imageStore->getBitMap("thiefKnifeBarrage5"));
+    ChangeCreatureImage *thiefKnifeBarrage6 = new ChangeCreatureImage(initiator
+        , imageStore->getBitMap("thiefKnifeBarrage6"));
+    ChangeCreatureImage *thiefKnifeBarrage7 = new ChangeCreatureImage(initiator
+        , imageStore->getBitMap("thiefKnifeBarrage7"));
+    ChangeCreatureImage *thiefKnifeBarrage8 = new ChangeCreatureImage(initiator
+        , imageStore->getBitMap("thiefKnifeBarrage8"));
+
     ChangeCreatureImage *origImage = new ChangeCreatureImage(initiator
-        , imageStore->getBitMap("warrior"));
+        , imageStore->getBitMap("thief"));
 
     ChangeCharacterWidth *increaseWidthForAttack = new ChangeCharacterWidth(
-        initiator , 46);
-    ChangeCharacterHeight *increaseHeightForAttack = new ChangeCharacterHeight(
-        initiator , 47);
+        initiator , 160);
     ChangeCharacterWidth *decreaseWidthToOriginalSize = new ChangeCharacterWidth(
         initiator , 32);
+
+    ChangeCharacterHeight *increaseHeightForAttack = new ChangeCharacterHeight(
+        initiator , 40);
     ChangeCharacterHeight *decreaseHeightToOriginalSize = new ChangeCharacterHeight(
         initiator , 32);
 
-    DelayInSeconds *delayAttackPart1 = new DelayInSeconds(.1);
-    DelayInSeconds *delayAttackPart2 = new DelayInSeconds(.2);
+    DelayInSeconds *delay1 = new DelayInSeconds(.4);
+    DelayInSeconds *delay2 = new DelayInSeconds(.1);
+    DelayInSeconds *delay3 = new DelayInSeconds(.1);
+    DelayInSeconds *delay4 = new DelayInSeconds(.1);
+    DelayInSeconds *delay5 = new DelayInSeconds(.1);
+    DelayInSeconds *delay6 = new DelayInSeconds(.1);
+    DelayInSeconds *delay7 = new DelayInSeconds(.1);
+    DelayInSeconds *delay8 = new DelayInSeconds(.4);
 
     SimultaneousAnimations *attackSetup = new SimultaneousAnimations();
     attackSetup->loadAnimation(increaseWidthForAttack);
     attackSetup->loadAnimation(increaseHeightForAttack);
     attackSetup->loadAnimation(attackFacingDirection);
-    attackSetup->loadAnimation(mageAttackPart1);
+    attackSetup->loadAnimation(thiefKnifeBarrage1);
+    attackSetup->loadAnimation(moveUpForAttack);
 
     SimultaneousAnimations *resetToOriginalPosition = new SimultaneousAnimations();
     resetToOriginalPosition->loadAnimation(decreaseWidthToOriginalSize);
@@ -126,11 +147,23 @@ void Sword::loadAnimations(){
     //Load all the animations to the animations queue.
     drawRepository->loadAnimation(attackSetup);
 
+    //drawRepository->loadAnimation(positionBeforeAttack);
     drawRepository->loadAnimation(positionBeforeAttack);
-    drawRepository->loadAnimation(moveUpForAttack);
-    drawRepository->loadAnimation(delayAttackPart1);
-    drawRepository->loadAnimation(mageAttackPart2);
-    drawRepository->loadAnimation(delayAttackPart2);
+    drawRepository->loadAnimation(delay1);
+    drawRepository->loadAnimation(thiefKnifeBarrage2);
+    drawRepository->loadAnimation(delay2);
+    drawRepository->loadAnimation(thiefKnifeBarrage3);
+    drawRepository->loadAnimation(delay3);
+    drawRepository->loadAnimation(thiefKnifeBarrage4);
+    drawRepository->loadAnimation(delay4);
+    drawRepository->loadAnimation(thiefKnifeBarrage5);
+    drawRepository->loadAnimation(delay5);
+    drawRepository->loadAnimation(thiefKnifeBarrage6);
+    drawRepository->loadAnimation(delay6);
+    drawRepository->loadAnimation(thiefKnifeBarrage7);
+    drawRepository->loadAnimation(delay7);
+    drawRepository->loadAnimation(thiefKnifeBarrage8);
+    drawRepository->loadAnimation(delay8);
     drawRepository->loadAnimation(damage);
     drawRepository->loadAnimation(damageStay); 
 
@@ -142,28 +175,19 @@ void Sword::loadAnimations(){
 //Post: The initiator is the Character doing the attacking
 //      The receiver is the Character receiving the attack.
 //      The imageStore is where the images will be taken from.
-void Sword::calculateDamage(){
+void KnifeBarrage::calculateDamage(){
 
     damageToReceiver = DamageCalculations::damageWithoutDelay(initiator, receiver);
 }
 
 //Sets the draw to spell location.
-void Sword::setInitiatorAttackPosition(Character *initiator , 
+void KnifeBarrage::setInitiatorAttackPosition(Character *initiator , 
     Character *receiver , int &moveIntoAttackPositionX ,
     int &moveIntoAttackPositionY){
 
-    moveIntoAttackPositionX = receiver->getX() + receiver->getW();
+    int attackImageHeight = 40;
 
-    //Receiver is taller than initiator.
-    if(receiver->getH() > initiator->getH()){
+    moveIntoAttackPositionX = receiver->getX();
 
-        moveIntoAttackPositionY = receiver->getY() +
-            ((receiver->getH() - initiator->getH()) / 2);
-    }
-
-    //Initiator is taller than receiver.
-    else{
-        moveIntoAttackPositionY = receiver->getY() -
-            ((initiator->getH() - receiver->getH()) / 2);
-    }
+    moveIntoAttackPositionY = receiver->getY() + receiver->getH() - attackImageHeight;
 }

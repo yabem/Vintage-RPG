@@ -115,7 +115,7 @@ void FuryOfTheFang::loadAnimations(){
         , imageStore->getBitMap("furyOfTheFang1"));
 
     ChangeCreatureImage *origImage = new ChangeCreatureImage(initiator
-        , imageStore->getBitMap("player"));
+        , imageStore->getBitMap("lancer"));
 
     ChangeCharacterWidth *increaseWidthForAttack = new ChangeCharacterWidth(
         initiator , 90);

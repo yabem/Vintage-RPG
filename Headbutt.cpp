@@ -1,7 +1,7 @@
-#include "Sword.h"
+#include "Headbutt.h"
 
 //Default constructor.
-Sword::Sword(){
+Headbutt::Headbutt(){
 
     imageStore = NULL;
     fontStore = NULL;
@@ -13,7 +13,7 @@ Sword::Sword(){
 }
 
 //Destructor.
-Sword::~Sword(){
+Headbutt::~Headbutt(){
 
     //Deletion is handled by the ImageStore.
 }
@@ -21,7 +21,7 @@ Sword::~Sword(){
 //Loads the Characters.
 //Pre:  None.
 //Post: loads the iniatiator and receiver.
-void Sword::loadCharacters(Character *initiator ,
+void Headbutt::loadCharacters(Character *initiator ,
     Character *receiver){
 
     this->initiator = initiator;
@@ -35,7 +35,7 @@ void Sword::loadCharacters(Character *initiator ,
 //      after the defense is subtracted is then reduced
 //      from the receiver's hitpoints. If the HP are reduced
 //      to 0 or below, the Character will be dead.
-void Sword::execute(){
+void Headbutt::execute(){
 
     if(initiator == NULL || receiver == NULL)
         return;
@@ -50,7 +50,7 @@ void Sword::execute(){
 }
 
 //Loads the animations to the animations vector.
-void Sword::loadAnimations(){
+void Headbutt::loadAnimations(){
 
     //Creates the text that will display the damage above the receiver.
     MovingText *damage = new MovingText(font , 10 , 10 , 8 , false);
@@ -92,12 +92,13 @@ void Sword::loadAnimations(){
         new SetCreatureFacingDirection(initiator , UP);
 
     ChangeCreatureImage *mageAttackPart1 = new ChangeCreatureImage(initiator
-        , imageStore->getBitMap("warriorAttackPart1"));
+        , imageStore->getBitMap("warriorHeadbutt1"));
     ChangeCreatureImage *mageAttackPart2 = new ChangeCreatureImage(initiator
-        , imageStore->getBitMap("warriorAttackPart2"));
+        , imageStore->getBitMap("warriorHeadbutt2"));
     ChangeCreatureImage *origImage = new ChangeCreatureImage(initiator
         , imageStore->getBitMap("warrior"));
 
+    /*
     ChangeCharacterWidth *increaseWidthForAttack = new ChangeCharacterWidth(
         initiator , 46);
     ChangeCharacterHeight *increaseHeightForAttack = new ChangeCharacterHeight(
@@ -106,19 +107,20 @@ void Sword::loadAnimations(){
         initiator , 32);
     ChangeCharacterHeight *decreaseHeightToOriginalSize = new ChangeCharacterHeight(
         initiator , 32);
+    */
 
-    DelayInSeconds *delayAttackPart1 = new DelayInSeconds(.1);
-    DelayInSeconds *delayAttackPart2 = new DelayInSeconds(.2);
+    DelayInSeconds *delay1 = new DelayInSeconds(.1);
+    DelayInSeconds *delay2 = new DelayInSeconds(.2);
 
     SimultaneousAnimations *attackSetup = new SimultaneousAnimations();
-    attackSetup->loadAnimation(increaseWidthForAttack);
-    attackSetup->loadAnimation(increaseHeightForAttack);
+    //attackSetup->loadAnimation(increaseWidthForAttack);
+    //attackSetup->loadAnimation(increaseHeightForAttack);
     attackSetup->loadAnimation(attackFacingDirection);
     attackSetup->loadAnimation(mageAttackPart1);
 
     SimultaneousAnimations *resetToOriginalPosition = new SimultaneousAnimations();
-    resetToOriginalPosition->loadAnimation(decreaseWidthToOriginalSize);
-    resetToOriginalPosition->loadAnimation(decreaseHeightToOriginalSize);
+    //resetToOriginalPosition->loadAnimation(decreaseWidthToOriginalSize);
+    //resetToOriginalPosition->loadAnimation(decreaseHeightToOriginalSize);
     resetToOriginalPosition->loadAnimation(origImage);
     resetToOriginalPosition->loadAnimation(originalFacingDirection);
     resetToOriginalPosition->loadAnimation(backToStartingPosition);
@@ -128,9 +130,9 @@ void Sword::loadAnimations(){
 
     drawRepository->loadAnimation(positionBeforeAttack);
     drawRepository->loadAnimation(moveUpForAttack);
-    drawRepository->loadAnimation(delayAttackPart1);
+    drawRepository->loadAnimation(delay1);
     drawRepository->loadAnimation(mageAttackPart2);
-    drawRepository->loadAnimation(delayAttackPart2);
+    drawRepository->loadAnimation(delay2);
     drawRepository->loadAnimation(damage);
     drawRepository->loadAnimation(damageStay); 
 
@@ -142,13 +144,13 @@ void Sword::loadAnimations(){
 //Post: The initiator is the Character doing the attacking
 //      The receiver is the Character receiving the attack.
 //      The imageStore is where the images will be taken from.
-void Sword::calculateDamage(){
+void Headbutt::calculateDamage(){
 
     damageToReceiver = DamageCalculations::damageWithoutDelay(initiator, receiver);
 }
 
 //Sets the draw to spell location.
-void Sword::setInitiatorAttackPosition(Character *initiator , 
+void Headbutt::setInitiatorAttackPosition(Character *initiator , 
     Character *receiver , int &moveIntoAttackPositionX ,
     int &moveIntoAttackPositionY){
 

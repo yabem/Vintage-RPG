@@ -109,7 +109,6 @@ void Staff::loadAnimations(){
 
     DelayInSeconds *delayAttackPart1 = new DelayInSeconds(.1);
     DelayInSeconds *delayAttackPart2 = new DelayInSeconds(.2);
-    DelayInSeconds *delayAfterAttack = new DelayInSeconds(.1);
 
     SimultaneousAnimations *attackSetup = new SimultaneousAnimations();
     attackSetup->loadAnimation(increaseWidthForAttack);

@@ -86,7 +86,7 @@ void HomeTown::loadTheTangibles(){
     storeOwner->createCharacter(32 , 32 , 90 , 2 , 4 , this);
     storeOwner->setCW(32);
     storeOwner->setCH(32);
-    storeOwner->setGift("player" , "Jump");
+    storeOwner->setGift("lancer" , "Jump");
     storeOwner->setRewardNotification("Player received the Jump ability!");
     storeOwner->setMessageAfterGiftDelivery(" Make sure to go around town and talk to everyone. They'll have some useful tips." 
         "Well...most of them will.");
@@ -174,7 +174,7 @@ void HomeTown::loadTheTangibles(){
     treasureBoxWithRecoverForPlayer->setRewardNotification(
         "Player learned the Recover ability!");
     treasureBoxWithRecoverForPlayer->setGift(
-        "player" , "Recover");
+        "lancer" , "Recover");
     treasureBoxWithRecoverForPlayer->setMessageAfterGiftDelivery(
         "Nothing out of the ordinary.");
 
@@ -250,7 +250,7 @@ void HomeTown::loadTheTangibles(){
         "Strife:Wow, these eyes are so big and juicy, they'll be perfect! Here take this...");
     strifeTheQuestGiver->setRewardNotification(
         "Strife: Player received the Jump ability!");
-    strifeTheQuestGiver->setGift("player" , "Jump");
+    strifeTheQuestGiver->setGift("lancer" , "Jump");
     strifeTheQuestGiver->setQuestAfterCompleteMessage(
         "Strife: The soup turned out great. Thanks for the eye balls."
         );
@@ -289,7 +289,7 @@ void HomeTown::loadTheTangibles(){
         "this as a token of my gratitude.");
     skugsTheQuestGiver->setRewardNotification(
         "Skugs: Player received the Triple Thrust ability!");
-    skugsTheQuestGiver->setGift("player" , "Triple Thrust");
+    skugsTheQuestGiver->setGift("lancer" , "Triple Thrust");
     skugsTheQuestGiver->setQuestAfterCompleteMessage(
         "Skugs: You're my hero, peculiar person that doesn't say anything."
         );

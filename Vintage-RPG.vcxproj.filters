@@ -1014,6 +1014,18 @@
     <ClCompile Include="FuryOfTheFang.cpp">
       <Filter>Source Files\Character\CharacterManipulation\Derived Class\Lancer</Filter>
     </ClCompile>
+    <ClCompile Include="Headbutt.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Warrior</Filter>
+    </ClCompile>
+    <ClCompile Include="EarthShatter.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Warrior</Filter>
+    </ClCompile>
+    <ClCompile Include="KnifeBarrage.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Thief</Filter>
+    </ClCompile>
+    <ClCompile Include="ShadeOfTheCrescent.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Thief</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageStore.h">
@@ -1462,6 +1474,18 @@
     </ClInclude>
     <ClInclude Include="FuryOfTheFang.h">
       <Filter>Header Files\Character\CharacterManipulation\Derived Class\Lancer</Filter>
+    </ClInclude>
+    <ClInclude Include="Headbutt.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="EarthShatter.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Warrior</Filter>
+    </ClInclude>
+    <ClInclude Include="KnifeBarrage.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Thief</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadeOfTheCrescent.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Thief</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

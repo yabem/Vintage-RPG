@@ -26,6 +26,10 @@
 #include "Sword.h"
 #include "Skewer.h"
 #include "FuryOfTheFang.h"
+#include "Headbutt.h"
+#include "EarthShatter.h"
+#include "KnifeBarrage.h"
+#include "ShadeOfTheCrescent.h"
 class Character;
 class ImageStore;
 class DrawRepository;

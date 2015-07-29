@@ -55,7 +55,6 @@
 //Make controls a class
 //Make tangible collision better so you can't go through objects.
 //change MP to mag, put scaling on healing/recovery with mag
-//Change player to lance
 
 //Tiles taken from http://opengameart.org/content/tiled-terrains
 //More tiles taken from http://opengameart.org/content/lpc-tile-atlas

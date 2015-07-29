@@ -18,10 +18,10 @@ void StatsByLevelStore::loadAllCharacterStats(){
 
     StatsByLevel *lancer = new StatsByLevel();
     lancer->resizeWithNulls();
-    lancer->loadLevelStats(1 , 100 , 1 , 100 , 4 , .5 , 0);
-    lancer->loadLevelStats(2 , 150 , 1 , 150 , 5 , .5 , 200);
-    lancer->loadLevelStats(3 , 200 , 2 , 21 , 6 , .5 , 500);
-    lancer->loadLevelStats(4 , 250 , 2 , 28 , 7 , .5 , 800);
+    lancer->loadLevelStats(1 , 100 , 1 , 100 , 4 , 2.0 , 0);
+    lancer->loadLevelStats(2 , 150 , 1 , 150 , 5 , 2.0 , 200);
+    lancer->loadLevelStats(3 , 200 , 2 , 21 , 6 , 1.9 , 500);
+    lancer->loadLevelStats(4 , 250 , 2 , 28 , 7 , 1.8 , 800);
     lancer->loadLevelStats(5 , 300 , 3 , 36 , 8 , 1.7 , 1100);
     lancer->loadLevelStats(6 , 350 , 3 , 45 , 9 , 1.6 , 1400);
     lancer->loadLevelStats(7 , 400 , 4 , 55 , 10 , 1.5 , 1700);
@@ -32,7 +32,7 @@ void StatsByLevelStore::loadAllCharacterStats(){
 
     StatsByLevel *warrior = new StatsByLevel();
     warrior->resizeWithNulls();
-    warrior->loadLevelStats(1 , 100 , 1 , 100 , 4 , 1.5 , 0);
+    warrior->loadLevelStats(1 , 100 , 1 , 100 , 4 , 2.0 , 0);
     warrior->loadLevelStats(2 , 200 , 1 , 140 , 5 , 1.9 , 200);
     warrior->loadLevelStats(3 , 300 , 2 , 18 , 6 , 1.8 , 500);
     warrior->loadLevelStats(4 , 400 , 2 , 23, 7 , 1.8 , 800);
@@ -46,8 +46,8 @@ void StatsByLevelStore::loadAllCharacterStats(){
 
     StatsByLevel *thief = new StatsByLevel();
     thief->resizeWithNulls();
-    thief->loadLevelStats(1 , 100 , 1 , 200 , 4 , 1.4 , 0);
-    thief->loadLevelStats(2 , 130 , 1 , 300 , 5 , 1.9 , 200);
+    thief->loadLevelStats(1 , 100 , 1 , 200 , 4 , 0.5 , 0);
+    thief->loadLevelStats(2 , 130 , 1 , 300 , 5 , 0.5 , 200);
     thief->loadLevelStats(3 , 160 , 2 , 40 , 6 , 1.8 , 500);
     thief->loadLevelStats(4 , 190 , 2 , 50 , 7 , 1.8 , 800);
     thief->loadLevelStats(5 , 220 , 3 , 60 , 8 , 1.7 , 1100);
@@ -60,7 +60,7 @@ void StatsByLevelStore::loadAllCharacterStats(){
 
     StatsByLevel *mage = new StatsByLevel();
     mage->resizeWithNulls();
-    mage->loadLevelStats(1 , 100 , 1 , 200 , 4 , 1.2 , 0);
+    mage->loadLevelStats(1 , 100 , 1 , 200 , 4 , 2.0 , 0);
     mage->loadLevelStats(2 , 125 , 1 , 270 , 5 , 1.9 , 200);
     mage->loadLevelStats(3 , 150 , 2 , 34 , 6 , 1.8 , 500);
     mage->loadLevelStats(4 , 175 , 2 , 41 , 7 , 1.8 , 800);

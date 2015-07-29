@@ -118,16 +118,6 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
         drawRepository , battleManager);
     loadManipulation("Fury Of The Fang" , charManip);
 
-    charManip = new Backstab;
-    charManip->initialize(NULL , NULL , imageStore , fontStore ,
-        drawRepository , battleManager);
-    loadManipulation("Backstab" , charManip);
-
-    charManip = new ShieldBash;
-    charManip->initialize(NULL , NULL , imageStore , fontStore ,
-        drawRepository , battleManager);
-    loadManipulation("Shield Bash" , charManip);
-
     charManip = new Recover;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
         drawRepository , battleManager);
@@ -153,10 +143,40 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
         drawRepository , battleManager);
     loadManipulation("Dagger" , charManip);
 
+    charManip = new Backstab;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Backstab" , charManip);
+
+    charManip = new KnifeBarrage;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Knife Barrage" , charManip);
+
+    charManip = new ShadeOfTheCrescent;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Shade of the Crescent" , charManip);
+
     charManip = new Sword;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
         drawRepository , battleManager);
     loadManipulation("Sword" , charManip);
+
+    charManip = new Headbutt;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Headbutt" , charManip);
+
+    charManip = new ShieldBash;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Shield Bash" , charManip);
+
+    charManip = new EarthShatter;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Earth Shatter" , charManip);
 }
 
 //Retrieves a pointer to the CharacterManipulation.

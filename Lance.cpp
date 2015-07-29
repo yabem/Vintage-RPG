@@ -96,7 +96,7 @@ void Lance::loadAnimations(){
     ChangeCreatureImage *lancerAttackPart2 = new ChangeCreatureImage(initiator
         , imageStore->getBitMap("lancerAttackPart2"));
     ChangeCreatureImage *origImage = new ChangeCreatureImage(initiator
-        , imageStore->getBitMap("player"));
+        , imageStore->getBitMap("lancer"));
 
     ChangeCharacterWidth *increaseWidthForAttack = new ChangeCharacterWidth(
         initiator , 60);
@@ -105,7 +105,6 @@ void Lance::loadAnimations(){
 
     DelayInSeconds *delaylancerAttackPart1 = new DelayInSeconds(.3);
     DelayInSeconds *delaylancerAttackPart2 = new DelayInSeconds(.2);
-    DelayInSeconds *delayAfterAttack = new DelayInSeconds(.1);
 
     SimultaneousAnimations *attackSetup = new SimultaneousAnimations();
     attackSetup->loadAnimation(increaseWidthForAttack);

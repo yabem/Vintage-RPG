@@ -104,7 +104,7 @@ void Skewer::loadAnimations(){
     ChangeCreatureImage *skewerPart3 = new ChangeCreatureImage(initiator
         , imageStore->getBitMap("skewerPart3"));
     ChangeCreatureImage *player = new ChangeCreatureImage(initiator
-        , imageStore->getBitMap("player"));
+        , imageStore->getBitMap("lancer"));
 
     ChangeCharacterWidth *increaseWidthForAttack = new ChangeCharacterWidth(
         initiator , 66);
