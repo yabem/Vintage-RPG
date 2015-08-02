@@ -101,20 +101,13 @@ void ImageStore::loadAllDefaultImages(){
 
     //Attacks
     loadBitMap("swordAttack" , al_load_bitmap("swordAttack.png"));
-    loadBitMap("fireball" , al_load_bitmap("fireball.png"));
-    loadBitMap("fire2" , al_load_bitmap("fire2.png"));
-    loadBitMap("fire3" , al_load_bitmap("fire3.png"));
-    loadBitMap("playerKneel" , al_load_bitmap("lancerJump1.png"));
-    loadBitMap("playerJump" , al_load_bitmap("lancerJump2.png"));
-    loadBitMap("playerLanceDive" , al_load_bitmap("lancerJump3.png"));
-    loadBitMap("magePrepareSpell" , al_load_bitmap("magePrepareSpell.png"));
-    loadBitMap("mageCastSpell" , al_load_bitmap("mageCastSpell.png"));
+
+    //Thief Attacks
     loadBitMap("thiefAttackPart1" , al_load_bitmap("thiefAttackPart1.png"));
     loadBitMap("thiefAttackPart2" , al_load_bitmap("thiefAttackPart2.png"));
     loadBitMap("thiefPrepareStab" , al_load_bitmap("thiefBackstab1.png"));
     loadBitMap("thiefPrepareStabWindUp" , al_load_bitmap("thiefBackstab2.png"));
     loadBitMap("thiefStab" , al_load_bitmap("thiefBackstab3.png"));
-
     loadBitMap("thiefKnifeBarrage1" , al_load_bitmap("thiefKnifeBarrage1.png"));
     loadBitMap("thiefKnifeBarrage2" , al_load_bitmap("thiefKnifeBarrage2.png"));
     loadBitMap("thiefKnifeBarrage3" , al_load_bitmap("thiefKnifeBarrage3.png"));
@@ -142,8 +135,39 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("thiefMutilatingStrikes17" , al_load_bitmap("thiefMutilatingStrikes17.png"));
     loadBitMap("thiefMutilatingStrikes18" , al_load_bitmap("thiefMutilatingStrikes18.png"));
     loadBitMap("thiefMutilatingStrikes19" , al_load_bitmap("thiefMutilatingStrikes19.png"));
+
+    //Mage attacks
     loadBitMap("mageAttackPart1" , al_load_bitmap("mageAttackPart1.png"));
     loadBitMap("mageAttackPart2" , al_load_bitmap("mageAttackPart2.png"));
+    loadBitMap("magePrepareSpell" , al_load_bitmap("magePrepareSpell.png"));
+    loadBitMap("mageCastSpell" , al_load_bitmap("mageCastSpell.png"));
+    loadBitMap("fireball" , al_load_bitmap("fireball.png"));
+    loadBitMap("fire2" , al_load_bitmap("fire2.png"));
+    loadBitMap("fire3" , al_load_bitmap("fire3.png"));
+    loadBitMap("mageChainLightning1" , al_load_bitmap("mageChainLightning1.png"));
+    loadBitMap("mageChainLightning2" , al_load_bitmap("mageChainLightning2.png"));
+    loadBitMap("mageChainLightning3" , al_load_bitmap("mageChainLightning3.png"));
+    loadBitMap("mageChainLightning4" , al_load_bitmap("mageChainLightning4.png"));
+    loadBitMap("mageChainLightning5" , al_load_bitmap("mageChainLightning5.png"));
+    loadBitMap("mageChainLightning6" , al_load_bitmap("mageChainLightning6.png"));
+    loadBitMap("mageChainLightning7" , al_load_bitmap("mageChainLightning7.png"));
+    loadBitMap("mageChainLightning8" , al_load_bitmap("mageChainLightning8.png"));
+    loadBitMap("mageChainLightning9" , al_load_bitmap("mageChainLightning9.png"));
+    loadBitMap("mageChainLightning10" , al_load_bitmap("mageChainLightning10.png"));
+    loadBitMap("mageChainLightning11" , al_load_bitmap("mageChainLightning11.png"));
+    loadBitMap("mageReignOfWinter1" , al_load_bitmap("mageReignOfWinter1.png"));
+    loadBitMap("mageReignOfWinter2" , al_load_bitmap("mageReignOfWinter2.png"));
+    loadBitMap("mageReignOfWinter3" , al_load_bitmap("mageReignOfWinter3.png"));
+    loadBitMap("mageReignOfWinter4" , al_load_bitmap("mageReignOfWinter4.png"));
+    loadBitMap("mageReignOfWinter5" , al_load_bitmap("mageReignOfWinter5.png"));
+    loadBitMap("mageReignOfWinter6" , al_load_bitmap("mageReignOfWinter6.png"));
+    loadBitMap("mageReignOfWinter7" , al_load_bitmap("mageReignOfWinter7.png"));
+    loadBitMap("mageReignOfWinter8" , al_load_bitmap("mageReignOfWinter8.png"));
+    loadBitMap("mageReignOfWinter9" , al_load_bitmap("mageReignOfWinter9.png"));
+    loadBitMap("mageReignOfWinter10" , al_load_bitmap("mageReignOfWinter10.png"));
+    loadBitMap("mageReignOfWinter11" , al_load_bitmap("mageReignOfWinter11.png"));
+
+    //Warrior attacks
     loadBitMap("warriorAttackPart1" , al_load_bitmap("warriorAttackPart1.png"));
     loadBitMap("warriorAttackPart2" , al_load_bitmap("warriorAttackPart2.png"));
     loadBitMap("warriorHeadbutt1" , al_load_bitmap("warriorHeadbutt1.png"));
@@ -159,11 +183,16 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("warriorEarthShatter7" , al_load_bitmap("warriorEarthShatter7.png"));
     loadBitMap("warriorEarthShatter8" , al_load_bitmap("warriorEarthShatter8.png"));
     loadBitMap("warriorEarthShatter9" , al_load_bitmap("warriorEarthShatter9.png"));
+
+    //Lancer attacks
     loadBitMap("lancerAttackPart1" , al_load_bitmap("lancerAttack1.png"));
     loadBitMap("lancerAttackPart2" , al_load_bitmap("lancerAttack2.png"));
     loadBitMap("skewerPart1" , al_load_bitmap("lancerSkewer1.png"));
     loadBitMap("skewerPart2" , al_load_bitmap("lancerSkewer2.png"));
     loadBitMap("skewerPart3" , al_load_bitmap("lancerSkewer3.png"));
+    loadBitMap("playerKneel" , al_load_bitmap("lancerJump1.png"));
+    loadBitMap("playerJump" , al_load_bitmap("lancerJump2.png"));
+    loadBitMap("playerLanceDive" , al_load_bitmap("lancerJump3.png"));
     loadBitMap("furyOfTheFang1" , al_load_bitmap("lancerFuryOfTheFang1.png"));
     loadBitMap("furyOfTheFang2" , al_load_bitmap("lancerFuryOfTheFang2.png"));
     loadBitMap("furyOfTheFang3" , al_load_bitmap("lancerFuryOfTheFang3.png"));

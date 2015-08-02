@@ -93,6 +93,16 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
         drawRepository , battleManager);
     loadManipulation("Fireball" , charManip);
 
+    charManip = new ChainLightning;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Chain Lightning" , charManip);
+
+    charManip = new ReignOfWinter;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Reign of Winter" , charManip);
+
     charManip = new Fire2;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
         drawRepository , battleManager);

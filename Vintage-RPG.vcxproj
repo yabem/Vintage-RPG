@@ -71,6 +71,7 @@
     <ClCompile Include="AddAbilityToCharacterInList.cpp" />
     <ClCompile Include="Backstab.cpp" />
     <ClCompile Include="BattleTransitionScreen.cpp" />
+    <ClCompile Include="ChainLightning.cpp" />
     <ClCompile Include="ChangeCharacterHeight.cpp" />
     <ClCompile Include="ChangeCharacterWidth.cpp" />
     <ClCompile Include="CustomAreaMap.cpp" />
@@ -98,6 +99,7 @@
     <ClCompile Include="KnifeBarrage.cpp" />
     <ClCompile Include="Lance.cpp" />
     <ClCompile Include="LevelUpCalculations.cpp" />
+    <ClCompile Include="ReignOfWinter.cpp" />
     <ClCompile Include="ShadeOfTheCrescent.cpp" />
     <ClCompile Include="NPCWithDialogueAndGift.cpp" />
     <ClCompile Include="NPCWithDialogueAndQuest.cpp" />
@@ -224,6 +226,7 @@
     <ClInclude Include="AddAbilityToCharacterInList.h" />
     <ClInclude Include="Backstab.h" />
     <ClInclude Include="BattleTransitionScreen.h" />
+    <ClInclude Include="ChainLightning.h" />
     <ClInclude Include="ChangeCharacterHeight.h" />
     <ClInclude Include="ChangeCharacterWidth.h" />
     <ClInclude Include="CustomAreaMap.h" />
@@ -250,6 +253,7 @@
     <ClInclude Include="NPCWithDialogueAndQuest.h" />
     <ClInclude Include="Quest.h" />
     <ClInclude Include="QuestLog.h" />
+    <ClInclude Include="ReignOfWinter.h" />
     <ClInclude Include="RemoveTangible.h" />
     <ClInclude Include="RewardAbility.h" />
     <ClInclude Include="RightToLeftImage.h" />

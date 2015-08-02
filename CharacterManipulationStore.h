@@ -30,6 +30,8 @@
 #include "EarthShatter.h"
 #include "KnifeBarrage.h"
 #include "ShadeOfTheCrescent.h"
+#include "ChainLightning.h"
+#include "ReignOfWinter.h"
 class Character;
 class ImageStore;
 class DrawRepository;

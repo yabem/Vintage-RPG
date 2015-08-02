@@ -1026,6 +1026,12 @@
     <ClCompile Include="ShadeOfTheCrescent.cpp">
       <Filter>Source Files\Character\CharacterManipulation\Derived Class\Thief</Filter>
     </ClCompile>
+    <ClCompile Include="ChainLightning.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
+    </ClCompile>
+    <ClCompile Include="ReignOfWinter.cpp">
+      <Filter>Source Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageStore.h">
@@ -1486,6 +1492,12 @@
     </ClInclude>
     <ClInclude Include="ShadeOfTheCrescent.h">
       <Filter>Header Files\Character\CharacterManipulation\Derived Class\Thief</Filter>
+    </ClInclude>
+    <ClInclude Include="ChainLightning.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
+    </ClInclude>
+    <ClInclude Include="ReignOfWinter.h">
+      <Filter>Header Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
