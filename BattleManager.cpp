@@ -1070,6 +1070,8 @@ void BattleManager::updateAugments(){
         thePlayers.moveSelectionDown();
     }
 
+    thePlayers.resetSelection();
+
     //Update enemies.
     theEnemies.resetSelection();
 
@@ -1078,6 +1080,8 @@ void BattleManager::updateAugments(){
         theEnemies.getCurrSelection()->getStats()->updateAugments();
         theEnemies.moveSelectionDown();
     }
+
+    theEnemies.resetSelection();
 }
 
 //Removes each Character's Augments.

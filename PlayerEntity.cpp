@@ -180,10 +180,10 @@ void PlayerEntity::loadDefaultPlayers(){
     thePlayer4->loadAbilities("Attack,Magic|Fireball,Fire2,Fire3;Item|Potion;Recover;");
     */
 
-    thePlayer->loadAbilities("Lance,Skewer,Jump,Fury Of The Fang;");
-    thePlayer2->loadAbilities("Sword,Headbutt,Shield Bash,Earth Shatter;");
-    thePlayer3->loadAbilities("Dagger,Backstab,Knife Barrage,Shade of the Crescent;");
-    thePlayer4->loadAbilities("Staff,Fireball,Chain Lightning,Reign of Winter;");
+    thePlayer->loadAbilities("Lance,Skewer,Jump,Fury Of The Fang,Recover;");
+    thePlayer2->loadAbilities("Sword,Headbutt,Shield Bash,Earth Shatter,Recover;");
+    thePlayer3->loadAbilities("Dagger,Backstab,Knife Barrage,Shade of the Crescent,Recover;");
+    thePlayer4->loadAbilities("Staff,Fireball,Chain Lightning,Reign of Winter,Recover;");
    
     //CharacterList thePlayers;
     this->thePlayers->loadChar(thePlayer);

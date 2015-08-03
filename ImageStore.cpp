@@ -135,6 +135,7 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("thiefMutilatingStrikes17" , al_load_bitmap("thiefMutilatingStrikes17.png"));
     loadBitMap("thiefMutilatingStrikes18" , al_load_bitmap("thiefMutilatingStrikes18.png"));
     loadBitMap("thiefMutilatingStrikes19" , al_load_bitmap("thiefMutilatingStrikes19.png"));
+    loadBitMap("thiefMutilatingStrikes20" , al_load_bitmap("thiefMutilatingStrikes20.png"));
 
     //Mage attacks
     loadBitMap("mageAttackPart1" , al_load_bitmap("mageAttackPart1.png"));
@@ -155,6 +156,7 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("mageChainLightning9" , al_load_bitmap("mageChainLightning9.png"));
     loadBitMap("mageChainLightning10" , al_load_bitmap("mageChainLightning10.png"));
     loadBitMap("mageChainLightning11" , al_load_bitmap("mageChainLightning11.png"));
+    loadBitMap("mageChainLightning12" , al_load_bitmap("mageChainLightning12.png"));
     loadBitMap("mageReignOfWinter1" , al_load_bitmap("mageReignOfWinter1.png"));
     loadBitMap("mageReignOfWinter2" , al_load_bitmap("mageReignOfWinter2.png"));
     loadBitMap("mageReignOfWinter3" , al_load_bitmap("mageReignOfWinter3.png"));

@@ -46,8 +46,8 @@ void StatsByLevelStore::loadAllCharacterStats(){
 
     StatsByLevel *thief = new StatsByLevel();
     thief->resizeWithNulls();
-    thief->loadLevelStats(1 , 100 , 1 , 200 , 4 , 2.0 , 0);
-    thief->loadLevelStats(2 , 130 , 1 , 300 , 5 , 1.9 , 200);
+    thief->loadLevelStats(1 , 100 , 1 , 200 , 4 , 0.5 , 0);
+    thief->loadLevelStats(2 , 130 , 1 , 300 , 5 , 0.5 , 200);
     thief->loadLevelStats(3 , 160 , 2 , 40 , 6 , 1.8 , 500);
     thief->loadLevelStats(4 , 190 , 2 , 50 , 7 , 1.8 , 800);
     thief->loadLevelStats(5 , 220 , 3 , 60 , 8 , 1.7 , 1100);

@@ -113,6 +113,8 @@ void ChainLightning::loadAnimations(){
         , imageStore->getBitMap("mageChainLightning10"));
     ChangeCreatureImage *mageChainLightning11 = new ChangeCreatureImage(initiator
         , imageStore->getBitMap("mageChainLightning11"));
+    ChangeCreatureImage *mageChainLightning12 = new ChangeCreatureImage(initiator
+        , imageStore->getBitMap("mageChainLightning12"));
 
     ChangeCreatureImage *origImage = new ChangeCreatureImage(initiator
         , imageStore->getBitMap("mage"));
@@ -138,6 +140,7 @@ void ChainLightning::loadAnimations(){
     DelayInSeconds *delay9 = new DelayInSeconds(.1);
     DelayInSeconds *delay10 = new DelayInSeconds(.1);
     DelayInSeconds *delay11 = new DelayInSeconds(.1);
+    DelayInSeconds *delay12 = new DelayInSeconds(.1);
 
     SimultaneousAnimations *attackSetup = new SimultaneousAnimations();
     attackSetup->loadAnimation(increaseWidthForAttack);
@@ -178,6 +181,8 @@ void ChainLightning::loadAnimations(){
     drawRepository->loadAnimation(delay10);
     drawRepository->loadAnimation(mageChainLightning11);
     drawRepository->loadAnimation(delay11);
+    drawRepository->loadAnimation(mageChainLightning12);
+    drawRepository->loadAnimation(delay12);
     drawRepository->loadAnimation(damage);
     drawRepository->loadAnimation(damageStay); 
 

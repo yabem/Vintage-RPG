@@ -70,18 +70,18 @@ void ShadeOfTheCrescent::loadAnimations(){
     int moveIntoAttackPositionX = 0;
     int moveIntoAttackPositionY = 0;
 
-    MovingCreature *positionBeforeAttack = new MovingCreature(initiator , 10);
     MovingCreature *moveUpForAttack = new MovingCreature(initiator , 0);
+    MovingCreature *positionBeforeAttack = new MovingCreature(initiator , 10);
     MovingCreature *backToStartingPosition = new MovingCreature(initiator , 0);
     
     setInitiatorAttackPosition(initiator , receiver , moveIntoAttackPositionX ,
         moveIntoAttackPositionY);
 
-    positionBeforeAttack->initialize(origPositionX - 368, origPositionY - 48 ,
-        moveIntoAttackPositionX, moveIntoAttackPositionY);
-
     moveUpForAttack->initialize(origPositionX , origPositionY ,
         origPositionX - 368, origPositionY - 48);
+
+    positionBeforeAttack->initialize(origPositionX - 368, origPositionY - 48 ,
+        moveIntoAttackPositionX, moveIntoAttackPositionY);
 
     backToStartingPosition->initialize(moveIntoAttackPositionX,
         moveIntoAttackPositionY, origPositionX , origPositionY);
@@ -129,6 +129,8 @@ void ShadeOfTheCrescent::loadAnimations(){
         , imageStore->getBitMap("thiefMutilatingStrikes18"));
     ChangeCreatureImage *thiefMutilatingStrikes19 = new ChangeCreatureImage(initiator
         , imageStore->getBitMap("thiefMutilatingStrikes19"));
+    ChangeCreatureImage *thiefMutilatingStrikes20 = new ChangeCreatureImage(initiator
+        , imageStore->getBitMap("thiefMutilatingStrikes20"));
 
 
     ChangeCreatureImage *origImage = new ChangeCreatureImage(initiator
@@ -162,7 +164,8 @@ void ShadeOfTheCrescent::loadAnimations(){
     DelayInSeconds *delay16 = new DelayInSeconds(.15);
     DelayInSeconds *delay17 = new DelayInSeconds(.15);
     DelayInSeconds *delay18 = new DelayInSeconds(.15);
-    DelayInSeconds *delay19 = new DelayInSeconds(.4);
+    DelayInSeconds *delay19 = new DelayInSeconds(.15);
+    DelayInSeconds *delay20 = new DelayInSeconds(.4);
 
     SimultaneousAnimations *attackSetup = new SimultaneousAnimations();
     attackSetup->loadAnimation(increaseWidthForAttack);
@@ -220,6 +223,8 @@ void ShadeOfTheCrescent::loadAnimations(){
     drawRepository->loadAnimation(delay18);
     drawRepository->loadAnimation(thiefMutilatingStrikes19);
     drawRepository->loadAnimation(delay19);
+    drawRepository->loadAnimation(thiefMutilatingStrikes20);
+    drawRepository->loadAnimation(delay20);
 
     drawRepository->loadAnimation(damage);
     drawRepository->loadAnimation(damageStay); 
