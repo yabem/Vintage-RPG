@@ -26,6 +26,9 @@ protected:
     int baseAtk;    //Character's base ATK before augments.
     int ttlAtk;     //Character's total ATK after augments.
 
+    int baseMgc;    //Character's base MGC before augments.
+    int ttlMgc;     //Character's total MGC after augments.
+
     int baseDef;    //Character's base DEF before augments.
     int ttlDef;     //Character's total DEF after augments.
 
@@ -39,7 +42,7 @@ public:
 
     //Constructor.
     Stats();
-    Stats(int level , int baseHP , int baseMP , int baseAtk , int baseDef ,
+    Stats(int level , int baseHP , int baseMP , int baseAtk , int baseMgc , int baseDef ,
         float speed);
 
     //Destructor.
@@ -58,6 +61,9 @@ public:
     int getBaseAtk() const;    //Returns baseAtk.
     int virtual getTtlAtk() const;     //Returns ttlAtk.
 
+    int getBaseMgc() const;    //Returns baseMgc.
+    int virtual getTtlMgc() const;     //Returns ttlMgc.
+
     int getBaseDef() const;    //Returns baseDef.
     int virtual getTtlDef() const;     //Returns ttlDef.
 
@@ -69,6 +75,7 @@ public:
     void setCurrHP(int currHP);
     void setBaseMP(int baseMP);
     void setBaseAtk(int baseAtk);
+    void setBaseMgc(int baseMgc);
     void setBaseDef(int baseDef);
     void setSpeed(float speed);
     virtual void setToLvlXP(int toLvlXP) = 0;

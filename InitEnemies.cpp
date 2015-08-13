@@ -146,7 +146,7 @@ void InitEnemies::rat(Character *character , int enemyType , int level ,
     int moneyReward = RAT_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = ratRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -158,11 +158,11 @@ std::vector<std::string> InitEnemies::ratRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
+    if(randomNum < 30)
+        rewards.push_back("Stick");
 
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 10)
+        rewards.push_back("Rock");
 
     return rewards;
 }
@@ -188,7 +188,7 @@ void InitEnemies::wolf(Character *character , int enemyType , int level ,
     int moneyReward = WOLF_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = wolfRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -200,11 +200,11 @@ std::vector<std::string> InitEnemies::wolfRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
+    if(randomNum < 30)
+        rewards.push_back("Red Potion");
 
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 10)
+        rewards.push_back("Green Potion");
 
     return rewards;
 }
@@ -230,7 +230,7 @@ void InitEnemies::soldier(Character *character , int enemyType ,
     int moneyReward = SOLDIER_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = soldierRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -242,14 +242,14 @@ std::vector<std::string> InitEnemies::soldierRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("CPotion");
+    if(randomNum < 15)
+        rewards.push_back("Red Potion");
 
-    if(randomNum < 100)
-        rewards.push_back("DPotion");
+    if(randomNum < 15)
+        rewards.push_back("Green Potion");
 
-    if(randomNum < 100)
-        rewards.push_back("BPotion");
+    if(randomNum < 15)
+        rewards.push_back("Blue Potion");
 
     return rewards;
 }
@@ -275,7 +275,7 @@ void InitEnemies::iceBull(Character *character , int enemyType ,
     int moneyReward = ICE_BULL_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = iceBullRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -287,14 +287,8 @@ std::vector<std::string> InitEnemies::iceBullRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 40)
-        rewards.push_back("Potion");
-
-    if(randomNum < 20)
-        rewards.push_back("Potion2");
-
-    if(randomNum < 10)
-        rewards.push_back("Potion3");
+    if(randomNum < 100)
+        rewards.push_back("Ice Bull Horns");
 
     return rewards;
 }
@@ -320,7 +314,7 @@ void InitEnemies::blobKing(Character *character , int enemyType ,
     int moneyReward = BLOB_KING_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = blobKingRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -332,14 +326,8 @@ std::vector<std::string> InitEnemies::blobKingRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 40)
-        rewards.push_back("Potion");
-
-    if(randomNum < 20)
-        rewards.push_back("Potion2");
-
-    if(randomNum < 10)
-        rewards.push_back("Potion3");
+    if(randomNum < 100)
+        rewards.push_back("Blob King Crown");
 
     return rewards;
 }
@@ -365,7 +353,7 @@ void InitEnemies::guardian(Character *character , int enemyType ,
     int moneyReward = GUARDIAN_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = guardianRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -377,14 +365,8 @@ std::vector<std::string> InitEnemies::guardianRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 40)
-        rewards.push_back("Potion");
-
-    if(randomNum < 20)
-        rewards.push_back("Potion2");
-
-    if(randomNum < 10)
-        rewards.push_back("Potion3");
+    if(randomNum < 100)
+        rewards.push_back("Guardian Collar");
 
     return rewards;
 }
@@ -410,7 +392,7 @@ void InitEnemies::demon(Character *character , int enemyType ,
     int moneyReward = DEMON_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = demonRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -422,14 +404,8 @@ std::vector<std::string> InitEnemies::demonRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 40)
-        rewards.push_back("Potion");
-
-    if(randomNum < 20)
-        rewards.push_back("Potion2");
-
-    if(randomNum < 10)
-        rewards.push_back("Potion3");
+    if(randomNum < 100)
+        rewards.push_back("Demon Jewel");
 
     return rewards;
 }
@@ -455,7 +431,7 @@ void InitEnemies::carrotRat(Character *character , int enemyType ,
     int moneyReward = CARROT_RAT_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = carrotRatRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -467,14 +443,8 @@ std::vector<std::string> InitEnemies::carrotRatRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 40)
-        rewards.push_back("Potion");
-
-    if(randomNum < 20)
-        rewards.push_back("Potion2");
-
-    if(randomNum < 10)
-        rewards.push_back("Potion3");
+    if(randomNum < 5)
+        rewards.push_back("Carrot");
 
     return rewards;
 }
@@ -500,7 +470,7 @@ void InitEnemies::walrus(Character *character , int enemyType ,
     int moneyReward = WALRUS_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = walrusRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -512,14 +482,8 @@ std::vector<std::string> InitEnemies::walrusRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 40)
-        rewards.push_back("Potion");
-
-    if(randomNum < 20)
-        rewards.push_back("Potion2");
-
-    if(randomNum < 10)
-        rewards.push_back("Potion3");
+    if(randomNum < 5)
+        rewards.push_back("Whiskers");
 
     return rewards;
 }
@@ -545,7 +509,7 @@ void InitEnemies::gooCube(Character *character , int enemyType ,
     int moneyReward = GOO_CUBE_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = gooCubeRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -557,14 +521,14 @@ std::vector<std::string> InitEnemies::gooCubeRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 40)
-        rewards.push_back("Potion");
+    if(randomNum < 30)
+        rewards.push_back("Small Goo");
 
     if(randomNum < 20)
-        rewards.push_back("Potion2");
+        rewards.push_back("Medium Goo");
 
     if(randomNum < 10)
-        rewards.push_back("Potion3");
+        rewards.push_back("Large Goo");
 
     return rewards;
 }
@@ -590,7 +554,7 @@ void InitEnemies::iceCube(Character *character , int enemyType ,
     int moneyReward = ICE_CUBE_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = iceCubeRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -602,14 +566,14 @@ std::vector<std::string> InitEnemies::iceCubeRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 40)
-        rewards.push_back("Potion");
+    if(randomNum < 30)
+        rewards.push_back("Small Goo");
 
     if(randomNum < 20)
-        rewards.push_back("Potion2");
+        rewards.push_back("Medium Goo");
 
     if(randomNum < 10)
-        rewards.push_back("Potion3");
+        rewards.push_back("Large Goo");
 
     return rewards;
 }
@@ -635,7 +599,7 @@ void InitEnemies::fireCube(Character *character , int enemyType ,
     int moneyReward = FIRE_CUBE_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = fireCubeRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -647,14 +611,14 @@ std::vector<std::string> InitEnemies::fireCubeRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 40)
-        rewards.push_back("Potion");
+    if(randomNum < 30)
+        rewards.push_back("Small Goo");
 
     if(randomNum < 20)
-        rewards.push_back("Potion2");
+        rewards.push_back("Medium Goo");
 
     if(randomNum < 10)
-        rewards.push_back("Potion3");
+        rewards.push_back("Large Goo");
 
     return rewards;
 }
@@ -680,7 +644,7 @@ void InitEnemies::shieldSkeleton(Character *character , int enemyType , int leve
     int moneyReward = SHIELD_SKELETON_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = shieldSkeletonRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -692,11 +656,11 @@ std::vector<std::string> InitEnemies::shieldSkeletonRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
+    if(randomNum < 20)
+        rewards.push_back("Rock");
 
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 20)
+        rewards.push_back("Sand");
 
     return rewards;
 }
@@ -722,7 +686,7 @@ void InitEnemies::wererat(Character *character , int enemyType , int level ,
     int moneyReward = WERERAT_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = wereratRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -734,11 +698,11 @@ std::vector<std::string> InitEnemies::wereratRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
+    if(randomNum < 30)
+        rewards.push_back("Green Potion");
 
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 10)
+        rewards.push_back("Blue Potion");
 
     return rewards;
 }
@@ -764,7 +728,7 @@ void InitEnemies::cactus(Character *character , int enemyType , int level ,
     int moneyReward = CACTUS_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = cactusRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -776,11 +740,11 @@ std::vector<std::string> InitEnemies::cactusRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
+    if(randomNum < 20)
+        rewards.push_back("Napalm");
 
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 20)
+        rewards.push_back("Sand");
 
     return rewards;
 }
@@ -806,7 +770,7 @@ void InitEnemies::oldmanAxe(Character *character , int enemyType , int level ,
     int moneyReward = OLDMAN_AXE_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = oldmanAxeRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -818,11 +782,8 @@ std::vector<std::string> InitEnemies::oldmanAxeRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
-
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 5)
+        rewards.push_back("Old Man Spices");
 
     return rewards;
 }
@@ -848,7 +809,7 @@ void InitEnemies::mushroomMan(Character *character , int enemyType , int level ,
     int moneyReward = MUSHROOM_MAN_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = mushroomManRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -860,11 +821,11 @@ std::vector<std::string> InitEnemies::mushroomManRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
+    if(randomNum < 30)
+        rewards.push_back("Blue Potion");
 
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 10)
+        rewards.push_back("Red Potion");
 
     return rewards;
 }
@@ -890,7 +851,7 @@ void InitEnemies::zombie(Character *character , int enemyType , int level ,
     int moneyReward = ZOMBIE_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = zombieRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -902,11 +863,11 @@ std::vector<std::string> InitEnemies::zombieRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
+    if(randomNum < 20)
+        rewards.push_back("Napalm");
 
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 20)
+        rewards.push_back("Sand");
 
     return rewards;
 }
@@ -932,7 +893,7 @@ void InitEnemies::babyBlob(Character *character , int enemyType , int level ,
     int moneyReward = BABY_BLOB_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = babyBlobRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -944,11 +905,8 @@ std::vector<std::string> InitEnemies::babyBlobRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
-
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 5)
+        rewards.push_back("Blob Eye");
 
     return rewards;
 }
@@ -974,7 +932,7 @@ void InitEnemies::sheep(Character *character , int enemyType , int level ,
     int moneyReward = SHEEP_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = sheepRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -986,11 +944,14 @@ std::vector<std::string> InitEnemies::sheepRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
+    if(randomNum < 30)
+        rewards.push_back("Tiny Eye");
 
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 10)
+        rewards.push_back("Bloodshot Eye");
+
+    if(randomNum < 10)
+        rewards.push_back("Pussing Eye");
 
     return rewards;
 }
@@ -1016,7 +977,7 @@ void InitEnemies::kungfooDog(Character *character , int enemyType , int level ,
     int moneyReward = KUNGFOO_DOG_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = kungfooDogRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -1028,11 +989,8 @@ std::vector<std::string> InitEnemies::kungfooDogRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
-
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 5)
+        rewards.push_back("Kungfoo Belt");
 
     return rewards;
 }
@@ -1058,7 +1016,7 @@ void InitEnemies::fangedFox(Character *character , int enemyType , int level ,
     int moneyReward = FANGED_FOX_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = fangedFoxRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -1070,11 +1028,11 @@ std::vector<std::string> InitEnemies::fangedFoxRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
+    if(randomNum < 30)
+        rewards.push_back("Tiny Eye");
 
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 15)
+        rewards.push_back("Pussing Eye");
 
     return rewards;
 }
@@ -1100,7 +1058,7 @@ void InitEnemies::ninjaFox(Character *character , int enemyType , int level ,
     int moneyReward = NINJA_FOX_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = ninjaFoxRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -1112,11 +1070,11 @@ std::vector<std::string> InitEnemies::ninjaFoxRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
+    if(randomNum < 30)
+        rewards.push_back("Tiny Eye");
 
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 15)
+        rewards.push_back("Bloodshot Eye");
 
     return rewards;
 }
@@ -1142,7 +1100,7 @@ void InitEnemies::redReaper(Character *character , int enemyType , int level ,
     int moneyReward = RED_REAPER_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = redReaperRewards();
 
-    CharStats *charStats = new CharStats(level , hp , mp , atk , def,
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
         0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
 
     character->setStats(charStats);
@@ -1154,11 +1112,8 @@ std::vector<std::string> InitEnemies::redReaperRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
-        rewards.push_back("Potion");
-
-    if(randomNum < 100)
-        rewards.push_back("Potion2");
+    if(randomNum < 5)
+        rewards.push_back("Scythe");
 
     return rewards;
 }

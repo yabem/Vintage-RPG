@@ -45,6 +45,7 @@ void NorthernSnow::loadTheSceneries(){
 //Load the interactive models.
 void NorthernSnow::loadTheTangibles(){
 
+    //Ice Bull quest.
     std::string identifierName = "iceBull"; //Used when deleting the Tangible once the fight is over.
 
     NPCWithDialogueThenBattle *iceBull = new NPCWithDialogueThenBattle(imageStore->getBitMap("iceBull") ,
@@ -71,6 +72,119 @@ void NorthernSnow::loadTheTangibles(){
 
     iceBull->loadEnemies(enemies , enemyLevels);
 
+    //Snowman quest.
+    NPCWithDialogueAndQuest *wanderer = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("npcRedVampire") ,
+        Conversion::convertTilesToPixels(37) , 
+        Conversion::convertTilesToPixels(6) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    wanderer->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    wanderer->setCW(32);
+    wanderer->setCH(32);
+    wanderer->setCharacterFacing(DOWN);
+    wanderer->setQuestExplanation(
+        "Wanderer: I'm visiting from a far off land. This place is so "  
+        "dangerous. Please clear a way for me so I can get back home! ");
+    wanderer->setQuestReminder(
+        "Wanderer: I wander how long it's going to take you. A pun indeed.");
+    wanderer->setQuestCompleteMessage(
+        "Wanderer: I can make my way home now, thank you stranger.");
+    wanderer->setRewardNotification(
+        "Mage received the Chain Lightning ability!");
+    wanderer->setGift("mage" , "Chain Lightning");
+    wanderer->setQuestAfterCompleteMessage(
+        "Wanderer: I can't wait to get home!"
+        );
+
+    KillQuest *killTask = new KillQuest();
+    killTask->setQuestDisplayName("Cleanse the North");
+    killTask->addObjective("walrus" , 4);
+    killTask->addObjective("iceCube" , 4);
+    killTask->addObjective("carrotRat" , 4);
+    killTask->setMustBeActiveForPlayerToUpdate();
+    wanderer->loadQuest(killTask);
+    gameManager->getPlayerEntity()->addQuest("cleanseTheNorth" , killTask);
+
+    //Jon Winter quest
+    NPCWithDialogueAndQuest *jonWinter = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("npcBlondeWarrior") ,
+        Conversion::convertTilesToPixels(42) , 
+        Conversion::convertTilesToPixels(27) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    jonWinter->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    jonWinter->setCW(32);
+    jonWinter->setCH(32);
+    jonWinter->setCharacterFacing(DOWN);
+    jonWinter->setQuestExplanation(
+        "Jon Winter: There's a huge bull to the west. I would help you take "
+        "on the bull but I was recently betrayed and wounded by my brothers. " 
+        "Please slay the beast whilst I recover.");
+    jonWinter->setQuestReminder(
+        "Jon Winter: How fares the hunt? ");
+    jonWinter->setQuestCompleteMessage(
+        "Jon Winter: You've exceeded my expectations. I owe you much gratitude. "
+        "Here, take this as a reward.");
+    jonWinter->setRewardNotification(
+        "Thief received the Potion ability!");
+    jonWinter->setGift("thief" , "Potion");
+    jonWinter->setQuestAfterCompleteMessage(
+        "Jon Winter: Well done. May the Many bless you."
+        );
+    KillQuest *killIceBull= new KillQuest();
+    killIceBull->setQuestDisplayName("The Bully of the North");
+    killIceBull->addObjective("iceBull" , 1);
+    jonWinter->loadQuest(killIceBull);
+    gameManager->getPlayerEntity()->addQuest("iceBullQuest" , killIceBull);
+
+    //Mushroom quest
+    NPCWithDialogueAndQuest *magicMushroom = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("scenerySpottedMushroom") ,
+        Conversion::convertTilesToPixels(9) , 
+        Conversion::convertTilesToPixels(31) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    magicMushroom->createCharacter(32 , 32 , 1 , 1 , 1 , this);
+    magicMushroom->setCW(32);
+    magicMushroom->setCH(32);
+    magicMushroom->setCharacterFacing(UP);
+    magicMushroom->setQuestExplanation(
+        "Magic Mushroom: Hey... hey hey hey hey HEEEEEY! "  
+        "Blob eyes blob eyes blob eyes blob eyes blob eyes blob eyes blob eyes.");
+    magicMushroom->setQuestReminder(
+        "Magic Mushroom: OooOOOOoooOOooOoOoOoooo blob eyes.");
+    magicMushroom->setQuestCompleteMessage(
+        "Mr. Mushboom: I can see and think again. Thank you. I was once a powerful "
+        "giant until I started eating mushrooms. I guess one of them had a curse and turned "
+        "me into a mushroom. I'm still a mushroom but at least I can think again. Take this "
+        "ability, your warrior will find it very useful.");
+    magicMushroom->setRewardNotification(
+        "Warrior learned Earth Shatter!");
+    magicMushroom->setGift("warrior" , "Earth Shatter");
+    magicMushroom->setQuestAfterCompleteMessage(
+        "Mr. Mushboom: What to do, what to do..."
+        );
+
+    GatherQuest *mushboomQuestObjectives = new GatherQuest(
+        gameManager->getPlayerEntity()->getPlayerInventory());
+    mushboomQuestObjectives->setQuestDisplayName("You Are What You Eat");
+    mushboomQuestObjectives->addObjective("Blob Eye" , 2);
+    magicMushroom->loadQuest(mushboomQuestObjectives);
+    gameManager->getPlayerEntity()->addQuest("youAreWhatYouEat" , mushboomQuestObjectives);
+
+    this->loadTangible(magicMushroom);
+    this->loadTangible(jonWinter);
+    this->loadTangible(wanderer);
     this->loadTangible(iceBull);
 }
 

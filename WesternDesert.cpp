@@ -60,6 +60,127 @@ void WesternDesert::loadTheTangibles(){
 
     demon->loadEnemies(enemies , enemyLevels);
 
+    //Explorer quest.
+    NPCWithDialogueAndQuest *explorer = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("npcPurpleFox") ,
+        Conversion::convertTilesToPixels(5) , 
+        Conversion::convertTilesToPixels(21) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    explorer->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    explorer->setCW(32);
+    explorer->setCH(32);
+    explorer->setCharacterFacing(DOWN);
+    explorer->setQuestExplanation(
+        "Explorer: Lucky meeting you out here. I was on my way to the "  
+        "graveyard to pillage, er um... pay my respects to my late friend. " 
+        "I ran into some undead creatures that are following me insecently. "
+        "I'm too afraid to go back to the grave with all all these undead "
+        "following me. Would you please clear them out so I can visit my friend?");
+    explorer->setQuestReminder(
+        "Explorer: Not to rush you or anything, but it's really hot out here "
+        "and I'd like to get out of here before it gets dark.");
+    explorer->setQuestCompleteMessage(
+        "Explorer: It looks much safer now. I'll go check it out. Here, take "
+        "this as a reward.");
+    explorer->setRewardNotification(
+        "Lancer received Jump ability!");
+    explorer->setGift("lancer" , "Jump");
+    explorer->setQuestAfterCompleteMessage(
+        "Explorer: Treasure awaits! By the way, I heard there was a secret "
+        "at the graveyard. It might be worth it to check it out.");
+
+    KillQuest *killTask = new KillQuest();
+    killTask->setQuestDisplayName("The Stalking Dead");
+    killTask->addObjective("rat" , 2);
+    killTask->addObjective("shieldSkeleton" , 10);
+    killTask->addObjective("zombie" , 4);
+    killTask->setMustBeActiveForPlayerToUpdate();
+    explorer->loadQuest(killTask);
+    gameManager->getPlayerEntity()->addQuest("theStalkingDead" , killTask);
+
+    //Skugs quest
+    NPCWithDialogueAndQuest *skugsTheQuestGiver = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("npcAgingArcher") ,
+        Conversion::convertTilesToPixels(47) , 
+        Conversion::convertTilesToPixels(41) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    skugsTheQuestGiver->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    skugsTheQuestGiver->setCW(32);
+    skugsTheQuestGiver->setCH(32);
+    skugsTheQuestGiver->setCharacterFacing(DOWN);
+    skugsTheQuestGiver->setQuestExplanation(
+        "Skugs: I was out training in the dessert... no the desert... and "  
+        "I ran into a demon near the graves and I ran away because it was " 
+        "too strong. Please go kill it so I can continue my training and " 
+        "get me a neon orange belt.");
+    skugsTheQuestGiver->setQuestReminder(
+        "Skugs: Any luck killing the demon in the desert? ");
+    skugsTheQuestGiver->setQuestCompleteMessage(
+        "Skugs: I really didn't think you could do it to be honest. I'm impressed. Take "
+        "this as a token of my gratitude.");
+    skugsTheQuestGiver->setRewardNotification(
+        "Lancer received the Cure ability!");
+    skugsTheQuestGiver->setGift("lancer" , "Cure");
+    skugsTheQuestGiver->setQuestAfterCompleteMessage(
+        "Skugs: You're my hero, peculiar person that doesn't say anything."
+        );
+    KillQuest *killDesertDemon= new KillQuest();
+    killDesertDemon->setQuestDisplayName("A Demon in the Desert");
+    killDesertDemon->addObjective("demon" , 1);
+    skugsTheQuestGiver->loadQuest(killDesertDemon);
+    gameManager->getPlayerEntity()->addQuest("demonQuest" , killDesertDemon);
+
+    //Ghost quest
+    NPCWithDialogueAndQuest *ghostOfTheCrescent = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("sceneryGraveStone") ,
+        Conversion::convertTilesToPixels(16) , 
+        Conversion::convertTilesToPixels(44) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    ghostOfTheCrescent->createCharacter(30 , 45 , 1 , 1 , 1 , this);
+    ghostOfTheCrescent->setCW(30);
+    ghostOfTheCrescent->setCH(45);
+    ghostOfTheCrescent->setCharacterFacing(UP);
+    ghostOfTheCrescent->setQuestExplanation(
+        "Ghost of the Crescent: The Order of the Crescent was the most powerful "  
+        "clan of assassins for 300 hundred years. Until 200 years ago when our " 
+        "leader betrayed us all in an attempt to become omnipotent. The order is "
+        "gone but if you find a few items, I will share with you our most sacred and "
+        "powerful teachings.");
+    ghostOfTheCrescent->setQuestReminder(
+        "Ghost of the Crescent: ...");
+    ghostOfTheCrescent->setQuestCompleteMessage(
+        "Ghost of the Crescent: Thank you for finding these items. I can now rest in peace. "
+        "Use this and you can restore a modicum of the order's existance in this world.");
+    ghostOfTheCrescent->setRewardNotification(
+        "Thief learned Shade of the Crescent!");
+    ghostOfTheCrescent->setGift("thief" , "Shade of the Crescent");
+    ghostOfTheCrescent->setQuestAfterCompleteMessage(
+        "Ghost of the Crescent: ..."
+        );
+
+    GatherQuest *ghostQuestObjectives = new GatherQuest(
+        gameManager->getPlayerEntity()->getPlayerInventory());
+    ghostQuestObjectives->setQuestDisplayName("Gifts for a Ghost");
+    ghostQuestObjectives->addObjective("Kungfoo Belt" , 1);
+    ghostQuestObjectives->addObjective("Scythe" , 1);
+    ghostOfTheCrescent->loadQuest(ghostQuestObjectives);
+    gameManager->getPlayerEntity()->addQuest("giftsForAGhost" , ghostQuestObjectives);
+
+    this->loadTangible(ghostOfTheCrescent);
+    this->loadTangible(skugsTheQuestGiver);
+    this->loadTangible(explorer);
     this->loadTangible(demon);
 }
 

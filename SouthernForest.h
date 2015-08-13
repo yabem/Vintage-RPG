@@ -8,6 +8,8 @@
 #include "PulsingImage.h"
 #include "NPCWithDialogueThenBattle.h"
 #include "Conversion.h"
+#include "NPCWithDialogueAndQuest.h"
+#include "GatherQuest.h"
 
 class GameManager;
 class BattleManager;

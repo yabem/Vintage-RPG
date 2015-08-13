@@ -27,6 +27,7 @@
 #include "TreasureBox.h"
 #include "FontStore.h"
 #include "LevelUpCalculations.h"
+#include "HealingActions.h"
 
 class DrawRepository;
 

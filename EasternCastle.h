@@ -8,6 +8,9 @@
 #include "Rain.h"
 #include "NPCWithDialogueThenBattle.h"
 #include "Conversion.h"
+#include "NPCWithDialogueAndQuest.h"
+#include "KillQuest.h"
+#include "GatherQuest.h"
 
 class GameManager;
 class BattleManager;

@@ -40,6 +40,7 @@ void SouthernForest::loadTheSceneries(){
 //Load the interactive models.
 void SouthernForest::loadTheTangibles(){
 
+    //Blob King quest.
     std::string identifierName = "blobKing"; //Used when deleting the Tangible once the fight is over.
 
     NPCWithDialogueThenBattle *blobKing = new NPCWithDialogueThenBattle(imageStore->getBitMap("blobKing") ,
@@ -66,7 +67,123 @@ void SouthernForest::loadTheTangibles(){
 
     blobKing->loadEnemies(enemies , enemyLevels);
 
+    //Forester quest.
+    NPCWithDialogueAndQuest *forester = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("npcHornedWarrior") ,
+        Conversion::convertTilesToPixels(8) , 
+        Conversion::convertTilesToPixels(43) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    forester->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    forester->setCW(32);
+    forester->setCH(32);
+    forester->setCharacterFacing(DOWN);
+    forester->setQuestExplanation(
+        "Forester: I've been collecting wood in this forest for years. "  
+        "Recently there's been an influx of evil creatures. Please, " 
+        "help me clear the forest so I can get wood... Why are you " 
+        "looking at me like I said something suggestive?");
+    forester->setQuestReminder(
+        "Forester: I'm still encounter evil every day, please hurry!");
+    forester->setQuestCompleteMessage(
+        "Forester: Great, you did it! Take this as a token of my appreciation.");
+    forester->setRewardNotification(
+        "Warrior received the Shield Bash ability!");
+    forester->setGift("warrior" , "Shield Bash");
+    forester->setQuestAfterCompleteMessage(
+        "Forester: The forest is much safer now, thanks!"
+        );
+
+    KillQuest *killTask = new KillQuest();
+    killTask->setQuestDisplayName("Help Clear the Forest");
+    killTask->addObjective("wererat" , 3);
+    killTask->addObjective("wolf" , 8);
+    killTask->addObjective("mushroomMan" , 6);
+    killTask->setMustBeActiveForPlayerToUpdate();
+    forester->loadQuest(killTask);
+    gameManager->getPlayerEntity()->addQuest("clearTheForest" , killTask);
+
+    //Barrold quest
+    NPCWithDialogueAndQuest *barroldTheQuestGiver = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("npcPurpleMonk") ,
+        Conversion::convertTilesToPixels(45) , 
+        Conversion::convertTilesToPixels(23) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    barroldTheQuestGiver->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    barroldTheQuestGiver->setCW(32);
+    barroldTheQuestGiver->setCH(32);
+    barroldTheQuestGiver->setCharacterFacing(DOWN);
+    barroldTheQuestGiver->setQuestExplanation(
+        "Barrold: There's a huge blob down south. Help kill it because "  
+        "it's killing everything in the forest! The good, the bad, and even the "
+        "ugly!");
+    barroldTheQuestGiver->setQuestReminder(
+        "Barrold: Ahhhh! Hurry!!!");
+    barroldTheQuestGiver->setQuestCompleteMessage(
+        "Barrold: I could have done it myself, but here's a reward.");
+    barroldTheQuestGiver->setRewardNotification(
+        "Mage received the Heal ability!");
+    barroldTheQuestGiver->setGift("mage" , "Heal");
+    barroldTheQuestGiver->setQuestAfterCompleteMessage(
+        "Barrold: Well back to standing here alone in the forest."
+        );
+    KillQuest *killBlobKing = new KillQuest();
+    killBlobKing->setQuestDisplayName("One Eyed Monster");
+    killBlobKing->addObjective("blobKing" , 1);
+    barroldTheQuestGiver->loadQuest(killBlobKing);
+    gameManager->getPlayerEntity()->addQuest("blobKingQuest" , killBlobKing);
+
+    //Red pepper quest
+    NPCWithDialogueAndQuest *spicyRedPeppers = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("sceneryRedPeppers") ,
+        Conversion::convertTilesToPixels(36) , 
+        Conversion::convertTilesToPixels(47) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    spicyRedPeppers->createCharacter(32 , 32 , 1 , 1 , 1 , this);
+    spicyRedPeppers->setCW(32);
+    spicyRedPeppers->setCH(32);
+    spicyRedPeppers->setCharacterFacing(UP);
+    spicyRedPeppers->setQuestExplanation(
+        "Doctor Peppers: Whaddup. I'm the team doctor and official mascot for the Red "  
+        "Pepper Lancers Polearm Spinning group. I'm so close to finishing an all natural, "
+        "gluten free, soy, vegan, egg free, nut free, soy based, energy drink. I'm missing "
+        "one ingredient. If you get it for me, I'll show you the Red Pepper Lancers' newest "
+        "dance moves.");
+    spicyRedPeppers->setQuestReminder(
+        "Doctor Peppers: Chika chika meow meow.");
+    spicyRedPeppers->setQuestCompleteMessage(
+        "Doctor Peppers: Wooooooooot! You did it! Here you go. Now your lancer can cut loose "
+        "red pepper style.");
+    spicyRedPeppers->setRewardNotification(
+        "Lancer learned Fury of the Fang!");
+    spicyRedPeppers->setGift("lancer" , "Fury of the Fang");
+    spicyRedPeppers->setQuestAfterCompleteMessage(
+        "Doctor Peppers: How are the dance moves? Great, I'm sure!"
+        );
+
+    GatherQuest *peppersQuestObjectives = new GatherQuest(
+        gameManager->getPlayerEntity()->getPlayerInventory());
+    peppersQuestObjectives->setQuestDisplayName("Doctor Peppers' Crew");
+    peppersQuestObjectives->addObjective("Old Man Spices" , 2);
+    spicyRedPeppers->loadQuest(peppersQuestObjectives);
+    gameManager->getPlayerEntity()->addQuest("doctorPeppersCrew" , peppersQuestObjectives);
+
+    this->loadTangible(spicyRedPeppers);
+
+    this->loadTangible(barroldTheQuestGiver);
     this->loadTangible(blobKing);
+    this->loadTangible(forester);
 }
 
 //Loads all the layers to the areaMap.

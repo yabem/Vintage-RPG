@@ -28,6 +28,68 @@ void HomeTownShop::loadAllMapConfigurationsForLayers(){
     loadShopCollisionLayerConfiguration();
 }
 
+void HomeTownShop::loadTheTangibles(){
+
+    NPCWithDialogueAndQuest *timberMan = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("friendlyGentleman") ,
+        Conversion::convertTilesToPixels(4) , 
+        Conversion::convertTilesToPixels(4) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    timberMan->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    timberMan->setCW(32);
+    timberMan->setCH(32);
+    timberMan->setCharacterFacing(DOWN);
+    timberMan->setQuestExplanation(
+        "Timber Man: It's a secret to most people but you. Anyway. "  
+        "There's a goo problem in my building. I think it's coming from "
+        "the goo monsters in the south. If you're traveling in the forest, can "
+        "you kill a bunch of them to show just how mean I am? You know, cause that "
+        "will make me feel better. Bring back some goo clumps as proof." );
+    timberMan->setQuestReminder(
+        "Timber Man: How is the gooooooos the hunting, get it? ");
+    timberMan->setQuestCompleteMessage(
+        "Timber Man: Fantastic! You did it! You look pretty filthy now so, just "
+        "take this and leave.");
+    timberMan->setRewardNotification(
+        "Thief received the Backstab ability!");
+    timberMan->setGift("thief" , "Backstab");
+    timberMan->setQuestAfterCompleteMessage(
+        "Timber Man: Great job, now get out!"
+        );
+
+    GatherQuest *questObjectives = new GatherQuest(
+        gameManager->getPlayerEntity()->getPlayerInventory());
+    questObjectives->setQuestDisplayName("Timber Man and My Goo");
+    questObjectives->addObjective("Small Goo" , 10);
+    questObjectives->addObjective("Medium Goo" , 5);
+    questObjectives->addObjective("Large Goo" , 2);
+    timberMan->loadQuest(questObjectives);
+    gameManager->getPlayerEntity()->addQuest("gooQuest" , questObjectives);
+
+    ItemLocationWithGift *treasureBarrelWithRecoverForMage = new ItemLocationWithGift(
+        imageStore->getBitMap("treasureBox1") ,
+        Conversion::convertTilesToPixels(1) , 
+        Conversion::convertTilesToPixels(4) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    treasureBarrelWithRecoverForMage->setRewardNotification(
+        "Mage learned the Recover ability!");
+    treasureBarrelWithRecoverForMage->setGift(
+        "mage" , "Recover");
+    treasureBarrelWithRecoverForMage->setMessageAfterGiftDelivery(
+        "Nothing is inside you thief!");
+
+    this->loadTangible(timberMan);
+    this->loadTangible(treasureBarrelWithRecoverForMage);
+}
+
 void HomeTownShop::loadBackgroundLayerConfiguration(){
 
     int backgroundLayerLayout[] ={

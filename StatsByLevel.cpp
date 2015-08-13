@@ -18,7 +18,7 @@ StatsByLevel::~StatsByLevel(){
 //Post: Inserts a StatSheetForLevel object into the _listOfStats using the
 //      level as the index.
 void StatsByLevel::loadLevelStats(int level , int HP , int MP , int atk ,
-        int def , float speed , int XPToAchieveLevel){
+        int Mgc , int def , float speed , int XPToAchieveLevel){
 
     std::vector<std::string> listOfRewards;
 
@@ -27,6 +27,7 @@ void StatsByLevel::loadLevelStats(int level , int HP , int MP , int atk ,
     statSheetForLevel->_HP = HP;
     statSheetForLevel->_MP = MP;
     statSheetForLevel->_Atk = atk;
+    statSheetForLevel->_Mgc = Mgc;
     statSheetForLevel->_Def = def;
     statSheetForLevel->_speed = speed;
     statSheetForLevel->_XPToAchieveLevel = XPToAchieveLevel;
@@ -56,6 +57,14 @@ int StatsByLevel::getMPAtLevel(int level){
 int StatsByLevel::getAtkAtLevel(int level){
 
     return _listOfStats[level]->_Atk;
+}
+
+//Gets the Mgc at the specified level.
+//Pre: The level must be within the range of the vector.
+//Post: Returns the Mgc for that level.
+int StatsByLevel::getMgcAtLevel(int level){
+
+    return _listOfStats[level]->_Mgc;
 }
 
 //Gets the Def at the specified level.

@@ -20,7 +20,7 @@ public:
 
     //Constructor.
     CharStats(int level , int baseHP , int baseMP , int baseAtk ,
-        int baseDef , int ttlXPGained , int currLvlXP , int toLvlXP ,
+        int baseMgc, int baseDef , int ttlXPGained , int currLvlXP , int toLvlXP ,
         float speed , int xpRewardForSlaying , int moneyRewardForSlaying ,
         std::vector<std::string> listOfRewards);
     

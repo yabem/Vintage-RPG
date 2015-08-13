@@ -95,9 +95,25 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("clod" , al_load_bitmap("clod.png"));
     loadBitMap("joanna" , al_load_bitmap("joanna.png"));
     loadBitMap("introPlayer" , al_load_bitmap("introPlayer.png"));
-    loadBitMap("playerLookalike" , al_load_bitmap("playerLookalike.png"));
     loadBitMap("oldMan" , al_load_bitmap("oldMan.png"));
     loadBitMap("friendlyGentleman" , al_load_bitmap("friendlyGentleman.png"));
+    loadBitMap("npcHornedWarrior" , al_load_bitmap("npcHornedWarrior.png"));
+    loadBitMap("npcPurpleMonk" , al_load_bitmap("npcPurpleMonk.png"));
+    loadBitMap("npcRedVampire" , al_load_bitmap("npcRedVampire.png"));
+    loadBitMap("npcGreenCrownMage" , al_load_bitmap("npcGreenCrownMage.png"));
+    loadBitMap("npcEyepatchCat" , al_load_bitmap("npcEyepatchCat.png"));
+    loadBitMap("npcBlondeWarrior" , al_load_bitmap("npcBlondeWarrior.png"));
+    loadBitMap("npcPurpleFox" , al_load_bitmap("npcPurpleFox.png"));
+    loadBitMap("npcAgingArcher" , al_load_bitmap("npcAgingArcher.png"));
+    loadBitMap("npcTalkingSheep" , al_load_bitmap("npcTalkingSheep.png"));
+    loadBitMap("npcAngryCleric" , al_load_bitmap("npcAngryCleric.png"));
+    loadBitMap("npcOldScholar" , al_load_bitmap("npcOldScholar.png"));
+
+    //Scenery
+    loadBitMap("sceneryBarrel" , al_load_bitmap("sceneryBarrel.png"));
+    loadBitMap("sceneryGraveStone" , al_load_bitmap("sceneryGraveStone.png"));
+    loadBitMap("sceneryRedPeppers" , al_load_bitmap("sceneryRedPeppers.png"));
+    loadBitMap("scenerySpottedMushroom" , al_load_bitmap("scenerySpottedMushroom.png"));
 
     //Attacks
     loadBitMap("swordAttack" , al_load_bitmap("swordAttack.png"));

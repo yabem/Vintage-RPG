@@ -2,6 +2,9 @@
 
 #pragma once
 #include "CustomAreaMap.h"
+#include "NPCWithDialogueAndQuest.h"
+#include "GatherQuest.h"
+#include "ItemLocationWithGift.h"
 
 class GameManager;
 class BattleManager;
@@ -18,6 +21,7 @@ private:
     void loadAllMapConfigurationsForLayers();
     void loadBackgroundLayerConfiguration();
     void loadShopCollisionLayerConfiguration();
+    void loadTheTangibles();
 
 public:
 

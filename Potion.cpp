@@ -107,5 +107,8 @@ void Potion::loadAnimations(){
 //Calculates the healing that will be done to the receiver.
 void Potion::calculateHealing(){
 
-    healingToReceiver = HEALING_AMOUNT;
+    float baseHealingAmount = 25;
+    float healingAugmentAmount = initiator->getStats()->getTtlMgc() * 1.5;
+
+    healingToReceiver = baseHealingAmount + healingAugmentAmount;
 }

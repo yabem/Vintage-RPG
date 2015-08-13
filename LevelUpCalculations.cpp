@@ -160,6 +160,8 @@ void LevelUpCalculations::setCharacterToLevel(Character *character , int level ,
             statsByLevelStore->getMPForClassLevel(theClass , level));
         character->getStats()->setBaseAtk(
             statsByLevelStore->getAtkForClassLevel(theClass , level));
+        character->getStats()->setBaseMgc(
+            statsByLevelStore->getMgcForClassLevel(theClass , level));
         character->getStats()->setBaseDef(
             statsByLevelStore->getDefForClassLevel(theClass , level));
         character->getStats()->setSpeed(

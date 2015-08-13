@@ -2,7 +2,7 @@
 
 //Constructor.
 CharStats::CharStats(int level , int baseHP , int baseMP , int baseAtk ,
-    int baseDef , int ttlXPGained , int currLvlXP , int toLvlXP ,
+    int baseMgc, int baseDef , int ttlXPGained , int currLvlXP , int toLvlXP ,
     float speed , int xpRewardForSlaying , int moneyRewardForSlaying ,
     std::vector<std::string> listOfRewards){
 
@@ -17,6 +17,9 @@ CharStats::CharStats(int level , int baseHP , int baseMP , int baseAtk ,
 
     this->baseAtk = baseAtk;
     this->ttlAtk = baseAtk;
+
+    this->baseMgc = baseMgc;
+    this->ttlMgc = baseMgc;
 
     this->baseDef = baseDef;
     this->ttlDef = baseDef;
@@ -116,39 +119,35 @@ std::string CharStats::getSummary(){
 
     char tempChar[10];
 
-    statsSummary += "Class:";
     statsSummary += role;
+    statsSummary += ":";
     
     statsSummary += " Lvl:";
-    _itoa_s(getLevel() , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary += Conversion::convertIntToString(getLevel());
 
-    statsSummary += "  HP:";
-    _itoa_s(getCurrHP() , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary += " HP:";
+    statsSummary += Conversion::convertIntToString(getCurrHP());
     statsSummary += "/";
-    _itoa_s(getTtlHP() , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary += Conversion::convertIntToString(getTtlHP());
 
-    statsSummary += "  Atk:";
-    _itoa_s(getTtlAtk() , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary += " Atk:";
+    statsSummary += Conversion::convertIntToString(getTtlAtk());
 
-    statsSummary += "  Def:";
-    _itoa_s(getTtlDef() , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary += " Mgc:";
+    statsSummary += Conversion::convertIntToString(getTtlMgc());
+
+    statsSummary += " Def:";
+    statsSummary += Conversion::convertIntToString(getTtlDef());
 
     statsSummary += " Spd:";
-    _itoa_s(getSpeed() , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary  += Conversion::convertIntToString(getSpeed());
 
     statsSummary += "  XP:";
     _itoa_s(getTtlXPGained() , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary += Conversion::convertIntToString(getTtlXPGained());
 
     statsSummary += "  XPtoLvl:";
-    _itoa_s(getToLvlXP() , tempChar , 10);
-    statsSummary += tempChar; 
+    statsSummary += Conversion::convertIntToString(getToLvlXP());
 
     return statsSummary;
 }

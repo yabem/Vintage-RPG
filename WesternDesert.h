@@ -6,6 +6,9 @@
 #include "PulsingImage.h"
 #include "NPCWithDialogueThenBattle.h"
 #include "Conversion.h"
+#include "NPCWithDialogueAndQuest.h"
+#include "GatherQuest.h"
+#include "KillQuest.h"
 
 class GameManager;
 class BattleManager;

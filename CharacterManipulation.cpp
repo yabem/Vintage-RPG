@@ -17,18 +17,18 @@ void CharacterManipulation::initialize(Character *initiator ,
     FontStore *fontStore , DrawRepository *drawRepository,
     I_Manager *i_Manager){
 
-     this->initiator = initiator;
+    this->initiator = initiator;
     this->receiver = receiver;
     this->imageStore = imageStore;
     this->font = fontStore->getFont("default");
     this->drawRepository = drawRepository;
     this->battleManager = i_Manager;
+    this->isHealing = false;
 }
 
 //Loads the Characters.
 void CharacterManipulation::loadCharacters(Character *initiator ,
     Character *receiver){
-
 }
 
 //Sets the damage.

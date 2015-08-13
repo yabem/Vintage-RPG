@@ -15,6 +15,9 @@ Stats::Stats(){
     this->baseAtk = 0;
     this->ttlAtk = 0;
 
+    this->baseMgc = 0;
+    this->ttlMgc = 0;
+
     this->baseDef = 0;
     this->ttlAtk = 0;
 
@@ -24,7 +27,7 @@ Stats::Stats(){
 }
 
 //Constructor.
-Stats::Stats(int level , int baseHP , int baseMP , int baseAtk , int baseDef ,
+Stats::Stats(int level , int baseHP , int baseMP , int baseAtk , int baseMgc , int baseDef ,
     float speed){
 
     this->level = level;
@@ -38,6 +41,9 @@ Stats::Stats(int level , int baseHP , int baseMP , int baseAtk , int baseDef ,
 
     this->baseAtk = baseAtk;
     this->ttlAtk = baseAtk;
+
+    this->baseMgc = baseMgc;
+    this->ttlMgc = baseMgc;
 
     this->baseDef = baseDef;
     this->ttlAtk = baseDef;
@@ -106,6 +112,18 @@ int Stats::getTtlAtk() const{
     return baseAtk;
 }
 
+//Returns baseAtk.
+int Stats::getBaseMgc() const{
+
+    return baseMgc;
+}
+
+//Returns baseAtk plus any bonuses.
+int Stats::getTtlMgc() const{
+
+    return baseMgc;
+}
+
 //Returns baseDef.
 int Stats::getBaseDef() const{
 
@@ -172,6 +190,12 @@ void Stats::setBaseMP(int baseMP){
 void Stats::setBaseAtk(int baseAtk){
 
     this->baseAtk = baseAtk;
+}
+
+//Sets the baseMgc.
+void Stats::setBaseMgc(int baseMgc){
+
+    this->baseMgc = baseMgc;
 }
 
 //Sets the baseDef.
@@ -290,6 +314,9 @@ std::string Stats::getSummary(){
 
     statsSummary += "   Attack: ";
     statsSummary += Conversion::convertIntToString(ttlAtk);
+
+    statsSummary += "   Magic: ";
+    statsSummary += Conversion::convertIntToString(ttlMgc);
 
     statsSummary += "   Defense: ";
     statsSummary += Conversion::convertIntToString(ttlDef);

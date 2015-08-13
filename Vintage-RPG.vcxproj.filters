@@ -1032,6 +1032,21 @@
     <ClCompile Include="ReignOfWinter.cpp">
       <Filter>Source Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
     </ClCompile>
+    <ClCompile Include="HealingActions.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeTownArmory.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeTownBar.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadExitsForHomeTownArmory.cpp">
+      <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadExitsForHomeTownBar.cpp">
+      <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageStore.h">
@@ -1498,6 +1513,21 @@
     </ClInclude>
     <ClInclude Include="ReignOfWinter.h">
       <Filter>Header Files\Character\CharacterManipulation\Derived Class\Mage</Filter>
+    </ClInclude>
+    <ClInclude Include="HealingActions.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeTownArmory.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeTownBar.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadExitsForHomeTownArmory.h">
+      <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadExitsForHomeTownBar.h">
+      <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

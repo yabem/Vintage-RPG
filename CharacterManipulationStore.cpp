@@ -138,6 +138,21 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
         drawRepository , battleManager);
     loadManipulation("Potion" , charManip);
 
+    charManip = new Potion;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Bandage" , charManip);
+
+    charManip = new Potion;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Cure" , charManip);
+
+    charManip = new Potion;
+    charManip->initialize(NULL , NULL , imageStore , fontStore ,
+        drawRepository , battleManager);
+    loadManipulation("Heal" , charManip);
+
     charManip = new Lance;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
         drawRepository , battleManager);

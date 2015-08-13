@@ -12,6 +12,19 @@ HomeTown::HomeTown(ImageStore *imageStore , DrawRepository *drawRepository ,
 HomeTown::~HomeTown(){
 }
 
+//Loads the enemies and level ranges for the map.
+void HomeTown::loadMapEnemies(){
+
+    /*
+    this->listOfEnemies.push_back(SOLDIER);
+    this->listOfEnemies.push_back(NINJA_FOX);
+    this->listOfEnemies.push_back(FANGED_FOX);
+    this->listOfEnemies.push_back(SHEEP);
+
+    this->loadEnemyLevelRange(3 , 5);
+
+    */
+}
 //Loads all the cloud Scenery objects.
 void HomeTown::loadTheSceneries(){
 
@@ -58,16 +71,16 @@ void HomeTown::loadTheTangibles(){
     talkingRock->createCharacter(32 , 32 , 60 , 1 , 4 , this);
 
     NPCWithDialogue *teacher = new NPCWithDialogue(
-        imageStore->getBitMap("playerLookalike") ,
+        imageStore->getBitMap("npcTalkingSheep") ,
         Conversion::convertTilesToPixels(28) , 
         Conversion::convertTilesToPixels(28) ,
         this->drawRepository ,
         this->gameManager , 
         "Teacher: Welcome to the town Stiltaviksenburgville! It's safe to walk around here " 
-        "but be careful going outside because there are tons of monsters. Lucky for you, you already "
-        "have formidible weapons. Now you just need to be able to heal yourself. Search around the town. "
-        "Talk to people. Open treasure chests. Search barrels. I'm sure you'll find a healing spell for "
-        "everyone somewhere in town." ,
+        "but be careful going outside because there are tons of monsters. Lucky for you, "
+        "you already have formidible weapons. Now you just need to be able to heal "
+        "yourself. Search around the town. Talk to people. Open treasure chests. Search "
+        "barrels. I'm sure you'll find a healing spell for everyone somewhere in town." ,
         this->fontStore->getFont("default"));
     teacher->createCharacter(32 , 32 , 90 , 2 , 4 , this);
     teacher->setCW(32);
@@ -75,7 +88,7 @@ void HomeTown::loadTheTangibles(){
     teacher->setCharacterFacing(DOWN);
 
     NPCWithDialogueAndGift *storeOwner = new NPCWithDialogueAndGift(
-        imageStore->getBitMap("playerLookalike") ,
+        imageStore->getBitMap("npcAngryCleric") ,
         Conversion::convertTilesToPixels(25) , 
         Conversion::convertTilesToPixels(25) ,
         this->drawRepository ,
@@ -86,28 +99,49 @@ void HomeTown::loadTheTangibles(){
     storeOwner->createCharacter(32 , 32 , 90 , 2 , 4 , this);
     storeOwner->setCW(32);
     storeOwner->setCH(32);
-    storeOwner->setGift("lancer" , "Jump");
-    storeOwner->setRewardNotification("Player received the Jump ability!");
+    storeOwner->setGift("lancer" , "Recover");
+    storeOwner->setRewardNotification("Lancer received the Recover ability!");
     storeOwner->setMessageAfterGiftDelivery(" Make sure to go around town and talk to everyone. They'll have some useful tips." 
         "Well...most of them will.");
     storeOwner->setCharacterFacing(DOWN);
 
-    NPCWithDialogueAndGift *mysteriousMan = new NPCWithDialogueAndGift(
+    NPCWithDialogueAndQuest *mysteriousManQuestGiver = new NPCWithDialogueAndQuest(
         imageStore->getBitMap("mysteriousMan") ,
         Conversion::convertTilesToPixels(3) , 
-        Conversion::convertTilesToPixels(3) ,        
+        Conversion::convertTilesToPixels(3) ,
         this->drawRepository ,
-        this->gameManager , 
-        "Mysterious Man: I bet your mage could use this handy spell." ,
+        this->gameManager ,
         this->fontStore->getFont("default") ,
-        this->gameManager->getPlayerEntity());
-    mysteriousMan->createCharacter(32 , 32 , 60 , 2 , 4 , this);
-    mysteriousMan->setCW(32);
-    mysteriousMan->setCH(32);
-    mysteriousMan->setGift("mage" , "Fireball");
-    mysteriousMan->setRewardNotification("mage received the Fireball spell!");
-    mysteriousMan->setMessageAfterGiftDelivery("Try out the spell, I'm sure you'll enjoy it. Hadouken!");
-    mysteriousMan->setCharacterFacing(DOWN);
+        this->gameManager->getPlayerEntity()
+        );
+    mysteriousManQuestGiver->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    mysteriousManQuestGiver->setCW(32);
+    mysteriousManQuestGiver->setCH(32);
+    mysteriousManQuestGiver->setCharacterFacing(DOWN);
+    mysteriousManQuestGiver->setQuestExplanation(
+        "Mysterious Man: Hey there! I'm running some trials and I am low " 
+        "on some key materials. Can you please take this list, make like "
+        "Fievel and go west to get everything and bring it back to me? "
+        "I'll teach your mage a useful spell.");
+    mysteriousManQuestGiver->setQuestReminder(
+        "Mysterious Man: Did you acquire everything? ");
+    mysteriousManQuestGiver->setQuestCompleteMessage(
+        "Mysterious Man: As promised here's the spell.");
+    mysteriousManQuestGiver->setRewardNotification(
+        "Mage received the Fireball ability!");
+    mysteriousManQuestGiver->setGift("mage" , "Fireball");
+    mysteriousManQuestGiver->setQuestAfterCompleteMessage(
+        "Mysterious Man: Try out the spell, I'm sure you'll enjoy it. Hadouken!!!"
+        );
+    GatherQuest *mysteriousManObjectives = new GatherQuest(
+        gameManager->getPlayerEntity()->getPlayerInventory());
+    mysteriousManObjectives->setQuestDisplayName("The Needs of a Tinkerer");
+    mysteriousManObjectives->addObjective("Stick" , 5);
+    mysteriousManObjectives->addObjective("Rock" , 5);
+    mysteriousManObjectives->addObjective("Sand" , 15);
+    mysteriousManObjectives->addObjective("Napalm" , 2);
+    mysteriousManQuestGiver->loadQuest(mysteriousManObjectives);
+    gameManager->getPlayerEntity()->addQuest("theNeedsOfATinkerer" , mysteriousManObjectives);
 
     NPCWithDialogue *witch = new NPCWithDialogue(
         imageStore->getBitMap("witch") ,
@@ -127,7 +161,8 @@ void HomeTown::loadTheTangibles(){
         Conversion::convertTilesToPixels(33) , 
         Conversion::convertTilesToPixels(36) ,        
         this->drawRepository ,
-        this->gameManager , "Old Man: This wind is really killing my hair..." ,
+        this->gameManager , "Old Man: This wind is really killing my hair. Whatever you do, "
+        "don't look inside this barrel.",
         this->fontStore->getFont("default"));
     oldMan->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     oldMan->setCW(32);
@@ -140,91 +175,15 @@ void HomeTown::loadTheTangibles(){
         Conversion::convertTilesToPixels(19) ,        
         this->drawRepository ,
         this->gameManager , 
-        "Clod: In battle, you won't have any MP. The skills and spells will have a recover "
-        "time. Some skills will do less damage but let you recover faster. Others will do tons "
-        "of damage but you'll need to wait a lot longer to use another ability.",
+        "Clod: In battle, you won't have any MP. The skills and spells will have a "
+        "recover time. Some skills will do less damage but let you recover faster. "
+        "Others will do tons of damage but you'll need to wait a lot longer to use "
+        "another ability.",
         this->fontStore->getFont("default"));
     clod->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     clod->setCW(32);
     clod->setCH(32);
     clod->setCharacterFacing(DOWN);
-
-    NPCWithDialogue *joanna = new NPCWithDialogue(
-        imageStore->getBitMap("joanna") ,
-        Conversion::convertTilesToPixels(6) , 
-        Conversion::convertTilesToPixels(19) ,        
-        this->drawRepository ,
-        this->gameManager , 
-        "Joanna: Dickle punch with lightning! Oh yeah, where's the music? What's a going on?" ,
-        this->fontStore->getFont("default"));
-    joanna->createCharacter(32 , 32 , 60 , 2 , 4 , this);
-    joanna->setCW(32);
-    joanna->setCH(32);
-    joanna->setCharacterFacing(DOWN);
-
-    ItemLocationWithGift *treasureBoxWithRecoverForPlayer = new ItemLocationWithGift(
-        imageStore->getBitMap("treasureBox1") ,
-        Conversion::convertTilesToPixels(18) , 
-        Conversion::convertTilesToPixels(18) ,
-        this->drawRepository ,
-        this->gameManager ,
-        this->fontStore->getFont("default") ,
-        this->gameManager->getPlayerEntity()
-        );
-    treasureBoxWithRecoverForPlayer->setRewardNotification(
-        "Player learned the Recover ability!");
-    treasureBoxWithRecoverForPlayer->setGift(
-        "lancer" , "Recover");
-    treasureBoxWithRecoverForPlayer->setMessageAfterGiftDelivery(
-        "Nothing out of the ordinary.");
-
-    ItemLocationWithGift *treasureBoxWithRecoverForMage = new ItemLocationWithGift(
-        imageStore->getBitMap("treasureBox2") ,
-        Conversion::convertTilesToPixels(19) , 
-        Conversion::convertTilesToPixels(18) ,
-        this->drawRepository ,
-        this->gameManager ,
-        this->fontStore->getFont("default") ,
-        this->gameManager->getPlayerEntity()
-        );
-    treasureBoxWithRecoverForMage->setRewardNotification(
-        "Mage learned the Recover ability!");
-    treasureBoxWithRecoverForMage->setGift(
-        "mage" , "Recover");
-    treasureBoxWithRecoverForMage->setMessageAfterGiftDelivery(
-        "The box is empty.");
-
-    ItemLocationWithGift *treasureBarrelWithRecoverForThief = new ItemLocationWithGift(
-        imageStore->getBitMap("treasureBarrel") ,
-        Conversion::convertTilesToPixels(12) , 
-        Conversion::convertTilesToPixels(10) ,
-        this->drawRepository ,
-        this->gameManager ,
-        this->fontStore->getFont("default") ,
-        this->gameManager->getPlayerEntity()
-        );
-    treasureBarrelWithRecoverForThief->setRewardNotification(
-        "Thief learned the Recover ability!");
-    treasureBarrelWithRecoverForThief->setGift(
-        "thief" , "Recover");
-    treasureBarrelWithRecoverForThief->setMessageAfterGiftDelivery(
-        "Nothing worth noting.");
-
-    ItemLocationWithGift *treasureBarrelWithRecoverForWarrior = new ItemLocationWithGift(
-        imageStore->getBitMap("treasureBarrel") ,
-        Conversion::convertTilesToPixels(33) , 
-        Conversion::convertTilesToPixels(37) ,
-        this->drawRepository ,
-        this->gameManager ,
-        this->fontStore->getFont("default") ,
-        this->gameManager->getPlayerEntity()
-        );
-    treasureBarrelWithRecoverForWarrior->setRewardNotification(
-        "Warrior learned the Recover ability!");
-    treasureBarrelWithRecoverForWarrior->setGift(
-        "warrior" , "Recover");
-    treasureBarrelWithRecoverForWarrior->setMessageAfterGiftDelivery(
-        "The barrel is empty.");
 
     NPCWithDialogueAndQuest *strifeTheQuestGiver = new NPCWithDialogueAndQuest(
         imageStore->getBitMap("strife") ,
@@ -240,64 +199,29 @@ void HomeTown::loadTheTangibles(){
     strifeTheQuestGiver->setCH(32);
     strifeTheQuestGiver->setCharacterFacing(DOWN);
     strifeTheQuestGiver->setQuestExplanation(
-        "Strife: I'm making a delicious stew but I'm all out of rat eyeballs."  
-        "I need you to kill 3 rats so I can get the last 6 eyes that " 
-        "the recipe requires. Can you do that for me? Of course you will! " 
-        "Thanks in advance!");
+        "Strife: I'm making a delicious stew but I'm all out of eyeballs."  
+        "I need you to acquire some eyeballs from various animals. " 
+        "Foxes and sheep to the east have the plumpest eyeballs! "
+        "Can you do that for me? Of course you will! Thanks in advance!");
     strifeTheQuestGiver->setQuestReminder(
-        "Strife: Have you killed those 3 rats yet? Chop chop, I don't have much time!");
+        "Strife: Have you gotten those eyes yet? Chop chop, I don't have much time!");
     strifeTheQuestGiver->setQuestCompleteMessage(
-        "Strife:Wow, these eyes are so big and juicy, they'll be perfect! Here take this...");
+        "Strife: Wow, these eyes are so big and juicy, they'll be perfect! Here take this...");
     strifeTheQuestGiver->setRewardNotification(
-        "Strife: Player received the Jump ability!");
-    strifeTheQuestGiver->setGift("lancer" , "Jump");
+        "Warrior received the Headbutt ability!");
+    strifeTheQuestGiver->setGift("warrior" , "Headbutt");
     strifeTheQuestGiver->setQuestAfterCompleteMessage(
-        "Strife: The soup turned out great. Thanks for the eye balls."
+        "Strife: The soup turned out great. Thanks for the eyeballs."
         );
 
-    KillQuest *kill3Rats = new KillQuest();
-    kill3Rats->setQuestDisplayName("Three Semi-Blind Mice");
-    kill3Rats->addObjective("rat" , 3);
-    kill3Rats->addObjective("wolf" , 8);
-    kill3Rats->addObjective("soldier" , 6);
-    kill3Rats->setMustBeActiveForPlayerToUpdate();
-    strifeTheQuestGiver->loadQuest(kill3Rats);
-    gameManager->getPlayerEntity()->addQuest("ratQuest" , kill3Rats);
-
-    NPCWithDialogueAndQuest *skugsTheQuestGiver = new NPCWithDialogueAndQuest(
-        imageStore->getBitMap("monk") ,
-        Conversion::convertTilesToPixels(9) , 
-        Conversion::convertTilesToPixels(40) ,
-        this->drawRepository ,
-        this->gameManager ,
-        this->fontStore->getFont("default") ,
-        this->gameManager->getPlayerEntity()
-        );
-    skugsTheQuestGiver->createCharacter(32 , 32 , 60 , 2 , 4 , this);
-    skugsTheQuestGiver->setCW(32);
-    skugsTheQuestGiver->setCH(32);
-    skugsTheQuestGiver->setCharacterFacing(DOWN);
-    skugsTheQuestGiver->setQuestExplanation(
-        "Skugs: I was out training in the dessert... no the desert... and "  
-        "I ran into a demon near the graves and I ran away because it was " 
-        "too strong. Please go kill it so I can continue my training and " 
-        "get me a neon orange belt.");
-    skugsTheQuestGiver->setQuestReminder(
-        "Skugs: Any luck killing the demon in the desert? ");
-    skugsTheQuestGiver->setQuestCompleteMessage(
-        "Skugs: I really didn't think you could do it to be honest. I'm impressed. Take "
-        "this as a token of my gratitude.");
-    skugsTheQuestGiver->setRewardNotification(
-        "Skugs: Player received the Triple Thrust ability!");
-    skugsTheQuestGiver->setGift("lancer" , "Triple Thrust");
-    skugsTheQuestGiver->setQuestAfterCompleteMessage(
-        "Skugs: You're my hero, peculiar person that doesn't say anything."
-        );
-    KillQuest *killDesertDemon= new KillQuest();
-    killDesertDemon->setQuestDisplayName("A Demon in the Desert");
-    killDesertDemon->addObjective("demon" , 1);
-    skugsTheQuestGiver->loadQuest(killDesertDemon);
-    gameManager->getPlayerEntity()->addQuest("demonQuest" , killDesertDemon);
+    GatherQuest *strifeQuestObjectives = new GatherQuest(
+        gameManager->getPlayerEntity()->getPlayerInventory());
+    strifeQuestObjectives->setQuestDisplayName("I've Got My Eyes On You");
+    strifeQuestObjectives->addObjective("Tiny Eye" , 10);
+    strifeQuestObjectives->addObjective("Bloodshot Eye" , 3);
+    strifeQuestObjectives->addObjective("Pussing Eye" , 3);
+    strifeTheQuestGiver->loadQuest(strifeQuestObjectives);
+    gameManager->getPlayerEntity()->addQuest("IveGotMyEyesOnYou" , strifeQuestObjectives);
 
     NPCWithDialogueAndQuest *friendlyGentlemanQuestGiver = new NPCWithDialogueAndQuest(
         imageStore->getBitMap("friendlyGentleman") ,
@@ -315,41 +239,36 @@ void HomeTown::loadTheTangibles(){
     friendlyGentlemanQuestGiver->setQuestExplanation(
         "Friendly Gentleman: Why hullo there friend. You look like a strapping young lad. "  
         "I run a potion exchange and I'm short some potions. Have you "
-        "perchance run across any? I'd be every so graetful if you could "
-        "get me 10 potions and 5 hi-potions. I would most definitely "
-        "repay you with something extraordinary!" );
+        "perchance run across any in your Southern travels? I'd be every "
+        "so graetful if you could gather this list of potions for me. I "
+        "would most definitely repay you with something extraordinary!" );
     friendlyGentlemanQuestGiver->setQuestReminder(
         "Friendly Gentleman: How goes the potion hunt? ");
     friendlyGentlemanQuestGiver->setQuestCompleteMessage(
         "Friendly Gentleman: Well done kind sir, you have saved my slightly wrinkly overcooked bacon!");
     friendlyGentlemanQuestGiver->setRewardNotification(
-        "Friendly Gentleman: Thief received the Backstab ability!");
-    friendlyGentlemanQuestGiver->setGift("thief" , "Backstab");
+        "Lancer received the Skewer ability!");
+    friendlyGentlemanQuestGiver->setGift("lancer" , "Skewer");
     friendlyGentlemanQuestGiver->setQuestAfterCompleteMessage(
         "Friendly Gentleman: Whoop whoop, back in business!"
         );
-    GatherQuest *get10Potions5Hipotions = new GatherQuest(
+    GatherQuest *potionObjectives = new GatherQuest(
         gameManager->getPlayerEntity()->getPlayerInventory());
-    get10Potions5Hipotions->setQuestDisplayName("Potions for a Gentleman");
-    get10Potions5Hipotions->addObjective("Potion" , 2);
-    get10Potions5Hipotions->addObjective("hi-potion" , 5);
-    friendlyGentlemanQuestGiver->loadQuest(get10Potions5Hipotions);
-    gameManager->getPlayerEntity()->addQuest("potionQuest" , get10Potions5Hipotions);
+    potionObjectives->setQuestDisplayName("Potions for a Gentleman");
+    potionObjectives->addObjective("Red Potion" , 5);
+    potionObjectives->addObjective("Green Potion" , 5);
+    potionObjectives->addObjective("Blue Potion" , 5);
+    friendlyGentlemanQuestGiver->loadQuest(potionObjectives);
+    gameManager->getPlayerEntity()->addQuest("potionsForAGentleman" , potionObjectives);
     
     this->loadTangible(talkingRock);
     this->loadTangible(teacher);
     this->loadTangible(storeOwner);
-    this->loadTangible(mysteriousMan);
+    this->loadTangible(mysteriousManQuestGiver);
     this->loadTangible(witch);
     this->loadTangible(oldMan);
     this->loadTangible(clod);
-    this->loadTangible(joanna);
-    this->loadTangible(treasureBoxWithRecoverForPlayer);
-    this->loadTangible(treasureBoxWithRecoverForMage);
-    this->loadTangible(treasureBarrelWithRecoverForThief);
-    this->loadTangible(treasureBarrelWithRecoverForWarrior);
     this->loadTangible(strifeTheQuestGiver);
-    this->loadTangible(skugsTheQuestGiver);
     this->loadTangible(friendlyGentlemanQuestGiver);
 }
 

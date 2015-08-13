@@ -471,7 +471,9 @@ void BattleManager::consumePlayerInput(){
                     this->initiator = this->getCurrPlayer();
 
                     //Healing item.
-                    if(selection == "Recover" || selection == "Potion"){
+                    //if(selection == "Recover" || selection == "Potion"){
+                    if(HealingActions::isHealingAction(selection)){
+                    
                         this->receiver = this->getCurrPlayer();
                         this->currentTarget = PLAYER;
                     }
@@ -633,7 +635,7 @@ bool BattleManager::checkForBattle(){
     
     if(movedSpaces >= 32){
 
-        if(rand() % 100 < 5){
+        if(rand() % 100 < 0){
 
             initializeBattle();
             movedSpaces = 0;

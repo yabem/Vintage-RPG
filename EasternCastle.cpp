@@ -74,6 +74,125 @@ void EasternCastle::loadTheTangibles(){
 
     guardian->loadEnemies(enemies , enemyLevels);
 
+    //Explorer quest.
+    NPCWithDialogueAndQuest *escapedPrisoner = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("npcEyepatchCat") ,
+        Conversion::convertTilesToPixels(33) , 
+        Conversion::convertTilesToPixels(14) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    escapedPrisoner->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    escapedPrisoner->setCW(32);
+    escapedPrisoner->setCH(32);
+    escapedPrisoner->setCharacterFacing(DOWN);
+    escapedPrisoner->setQuestExplanation(
+        "Escaped Prisoner: I just barely made it out alive. They are doing "
+        "terrible things inside. I'm exhausted and can barely run. Please "
+        "clear the way for me so I can get back to the village.");
+    escapedPrisoner->setQuestReminder(
+        "Escaped Prisoner: Are you close to being done?");
+    escapedPrisoner->setQuestCompleteMessage(
+        "Escaped Prisoner: I can see that you cleared the path. Thank you "
+        "thank you! It's not much, but I'll teach you something worthwhile.");
+    escapedPrisoner->setRewardNotification(
+        "Thief received Knife Barrage ability!");
+    escapedPrisoner->setGift("thief" , "Knife Barrage");
+    escapedPrisoner->setQuestAfterCompleteMessage(
+        "Escaped Prisoner: Thank you again. I'm headed back soon, "
+        "once I catch my breath. I saw something shiny in those "
+        "barrels back there...");
+
+    KillQuest *killTask = new KillQuest();
+    killTask->setQuestDisplayName("Security Breach");
+    killTask->addObjective("soldier" , 6);
+    killTask->addObjective("ninjaFox" , 6);
+    killTask->addObjective("fangedFox" , 6);
+    killTask->setMustBeActiveForPlayerToUpdate();
+    escapedPrisoner->loadQuest(killTask);
+    gameManager->getPlayerEntity()->addQuest("securityBreach" , killTask);
+
+    //Jomk quest
+    NPCWithDialogueAndQuest *jomk = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("npcGreenCrownMage") ,
+        Conversion::convertTilesToPixels(8) , 
+        Conversion::convertTilesToPixels(16) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    jomk->createCharacter(32 , 32 , 60 , 2 , 4 , this);
+    jomk->setCW(32);
+    jomk->setCH(32);
+    jomk->setCharacterFacing(DOWN);
+    jomk->setQuestExplanation(
+        "Jomk: Yo, you need to help kill that huge dog that's guarding the "  
+        "entrance to the castle. Once, it's open, you can go in and see " 
+        "what's inside. ");
+    jomk->setQuestReminder(
+        "Jomk: Are you done yet? ");
+    jomk->setQuestCompleteMessage(
+        "Jomk: Wow, took long enough. Here, now move outta my way!");
+    jomk->setRewardNotification(
+        "Warrior received the Bandage ability!");
+    jomk->setGift("warrior" , "Bandage");
+    jomk->setQuestAfterCompleteMessage(
+        "Jomk: Alright alright, time to do some driving."
+        );
+    KillQuest *killLargeDog= new KillQuest();
+    killLargeDog->setQuestDisplayName("Guardian of the Castlealaxy");
+    killLargeDog->addObjective("guardian" , 1);
+    jomk->loadQuest(killLargeDog);
+    gameManager->getPlayerEntity()->addQuest("guardianOfTheCastlealaxy" , killLargeDog);
+
+    //Barrel quest
+    NPCWithDialogueAndQuest *mageInABarrel = new NPCWithDialogueAndQuest(
+        imageStore->getBitMap("sceneryBarrel") ,
+        Conversion::convertTilesToPixels(36) , 
+        Conversion::convertTilesToPixels(6) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity()
+        );
+    mageInABarrel->createCharacter(28 , 38 , 1 , 1 , 1 , this);
+    mageInABarrel->setCW(28);
+    mageInABarrel->setCH(38);
+    mageInABarrel->setCharacterFacing(UP);
+    mageInABarrel->setQuestExplanation(
+        "Mage in a Barrel: I use to be the most powerful mage in the north. In an "  
+        "attempt to become even more powerful I began working with other elements. " 
+        "I found some crystals that had the power to amplify my abilities. However, "
+        "something went wrong and I ended up amplifying the natural environments "
+        "that surround our beloved town. The change is irreversable but if you "
+        "find me some rare items, I'll be able to live a little longer in my barrel of "
+        "exile.");
+    mageInABarrel->setQuestReminder(
+        "Mage in a Barrel: The carrot is for business. The whiskers are for pleasure.");
+    mageInABarrel->setQuestCompleteMessage(
+        "Mage in a Barrel: You made it just in time. I'm famished! My greatest achievement "
+        "was learning the ultimate ice spell. I'll teach it to your mage.");
+    mageInABarrel->setRewardNotification(
+        "Mage learned Reign of Winter!");
+    mageInABarrel->setGift("mage" , "Reign of Winter");
+    mageInABarrel->setQuestAfterCompleteMessage(
+        "Mage in a Barrel: *Chomp chomp chomp chomp*"
+        );
+
+    GatherQuest *mageQuestObjectives = new GatherQuest(
+        gameManager->getPlayerEntity()->getPlayerInventory());
+    mageQuestObjectives->setQuestDisplayName("Glacial Mage is Hungry");
+    mageQuestObjectives->addObjective("Carrot" , 1);
+    mageQuestObjectives->addObjective("Whiskers" , 1);
+    mageInABarrel->loadQuest(mageQuestObjectives);
+    gameManager->getPlayerEntity()->addQuest("glacialMageIsHungry" , mageQuestObjectives);
+
+    this->loadTangible(mageInABarrel);
+    this->loadTangible(jomk);
+    this->loadTangible(escapedPrisoner);
     this->loadTangible(guardian);
 }
 

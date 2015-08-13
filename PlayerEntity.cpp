@@ -180,10 +180,10 @@ void PlayerEntity::loadDefaultPlayers(){
     thePlayer4->loadAbilities("Attack,Magic|Fireball,Fire2,Fire3;Item|Potion;Recover;");
     */
 
-    thePlayer->loadAbilities("Lance,Skewer,Jump,Fury Of The Fang,Recover;");
-    thePlayer2->loadAbilities("Sword,Headbutt,Shield Bash,Earth Shatter,Recover;");
-    thePlayer3->loadAbilities("Dagger,Backstab,Knife Barrage,Shade of the Crescent,Recover;");
-    thePlayer4->loadAbilities("Staff,Fireball,Chain Lightning,Reign of Winter,Recover;");
+    thePlayer->loadAbilities("Lance,Skewer,Jump,Fury Of The Fang,Cure,Recover;");
+    thePlayer2->loadAbilities("Sword,Headbutt,Shield Bash,Earth Shatter,Bandage,Recover;");
+    thePlayer3->loadAbilities("Dagger,Backstab,Knife Barrage,Shade of the Crescent,Potion,Recover;");
+    thePlayer4->loadAbilities("Staff,Fireball,Chain Lightning,Reign of Winter,Heal,Recover;");
    
     //CharacterList thePlayers;
     this->thePlayers->loadChar(thePlayer);
@@ -198,19 +198,19 @@ void PlayerEntity::loadDefaultPlayers(){
     std::vector<std::string> emptyStringVector;
 
     //Character stats
-    CharStats *playerStats = new CharStats(1 , 1 , 10 , 100 , 10 , 1 , 100 ,
+    CharStats *playerStats = new CharStats(1 , 1 , 10 , 100 , 100 , 10 , 1 , 100 ,
         10 , 1 , 0 , 0 , emptyStringVector);
     playerStats->setRole("Lancer");
 
-    CharStats *playerStats2 = new CharStats(1 , 5 , 10 , 100 , 10 , 1 , 100 ,
+    CharStats *playerStats2 = new CharStats(1 , 5 , 10 , 100 , 100 ,10 , 1 , 100 ,
         10 , 1 , 0 , 0 , emptyStringVector);
     playerStats2->setRole("Warrior");
     
-    CharStats *playerStats3 = new CharStats(1 , 1 , 10 , 100 , 10 , 1 , 100 ,
+    CharStats *playerStats3 = new CharStats(1 , 1 , 10 , 100 , 100 , 10 , 1 , 100 ,
         10 , 1 , 0 , 0, emptyStringVector);
     playerStats3->setRole("Thief");
 
-    CharStats *playerStats4 = new CharStats(1 , 5 , 10 , 100 , 10 , 1 , 100 ,
+    CharStats *playerStats4 = new CharStats(1 , 5 , 10 , 100 , 100 , 10 , 1 , 100 ,
         10 , 1 , 0 , 0 , emptyStringVector);
     playerStats4->setRole("Mage");
 

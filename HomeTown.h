@@ -20,7 +20,7 @@ class FontStore;
 class HomeTown : public CustomAreaMap{
     
 private:
-
+    virtual void loadMapEnemies();
     virtual void loadTheSceneries();
     virtual void loadLayers();
     virtual void loadTheTangibles();

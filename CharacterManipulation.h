@@ -24,6 +24,7 @@ protected:
     DrawRepository *drawRepository;    //Repository of animations.
     ALLEGRO_FONT *font;     //Font for the text.
     I_Manager *battleManager;       //Used for pausing and unpausing.
+    bool isHealing;     //Marks the manipulation as healing.
 
 public:
 
@@ -37,11 +38,7 @@ public:
         ImageStore *imageStore , FontStore *fontStore , 
         DrawRepository *drawRepository , I_Manager *i_Manager);
 
-    //Sets the damage.
-    virtual void setDamage();
-
-    //Loads a delay to the Character
-    virtual void loadDelay();
-    
-    virtual void execute();             //Executes the manipulation.
+    virtual void setDamage();   //Sets the damage.
+    virtual void loadDelay();   //Loads a delay to the Character
+    virtual void execute();     //Executes the manipulation.
 };

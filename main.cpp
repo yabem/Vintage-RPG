@@ -27,7 +27,11 @@
 #include "HomeTown.h"
 #include "LoadExitsForHomeTown.h"
 #include "HomeTownShop.h"
+#include "HomeTownArmory.h"
+#include "HomeTownBar.h"
 #include "LoadExitsForHomeTownShop.h"
+#include "LoadExitsForHomeTownArmory.h"
+#include "LoadExitsForHomeTownBar.h"
 #include "EasternCastleBattle.h"
 #include "NorthernSnow.h"
 #include "LoadExitsForNorthernSnow.h"
@@ -52,9 +56,12 @@
 #include <crtdbg.h>
 
 //To do:
+//Finish inside houses maps
+//Finish castle map
+//figure out a better way to display questobjectives for kill quests
 //Make controls a class
 //Make tangible collision better so you can't go through objects.
-//change MP to mag, put scaling on healing/recovery with mag
+//Clean up main
 
 //Tiles taken from http://opengameart.org/content/tiled-terrains
 //More tiles taken from http://opengameart.org/content/lpc-tile-atlas
@@ -142,6 +149,14 @@ int main(int argc, char **argv){
     HomeTownShop homeTownShop(&imageStore , &drawRepository , &gameManager , 
         &battleManager , &fontStore , BATTLE_MAP_SIZE);
     homeTownShop.loadDefaults();
+
+    HomeTownArmory homeTownArmory(&imageStore , &drawRepository , &gameManager , 
+        &battleManager , &fontStore , BATTLE_MAP_SIZE);
+    homeTownArmory.loadDefaults();
+
+    HomeTownBar homeTownBar(&imageStore , &drawRepository , &gameManager , 
+        &battleManager , &fontStore , BATTLE_MAP_SIZE);
+    homeTownBar.loadDefaults();
 
     EasternCastleBattle easternCastleBattle(&imageStore , BATTLE_MAP_SIZE);
     easternCastleBattle.loadDefaults();
@@ -242,9 +257,11 @@ int main(int argc, char **argv){
     drawRepository.loadCutscene(theInstruct);
 
     //Initialize starting position.
-    LoadExitsForHomeTown::LoadExitsForHomeTown(&homeTown , &homeTownShop , &northernSnow ,
-        &westernDesert , &easternCastle , &southernForest);
+    LoadExitsForHomeTown::LoadExitsForHomeTown(&homeTown , &homeTownShop , &homeTownArmory , &homeTownBar ,
+        &northernSnow , &westernDesert , &easternCastle , &southernForest);
     LoadExitsForHomeTownShop::LoadExitsForHomeTownShop(&homeTownShop , &homeTown);
+    LoadExitsForHomeTownArmory::LoadExitsForHomeTownArmory(&homeTownArmory , &homeTown);
+    LoadExitsForHomeTownBar::LoadExitsForHomeTownBar(&homeTownBar , &homeTown);
     LoadExitsForNorthernSnow::LoadExitsForNorthernSnow(&northernSnow , &homeTown);
     LoadExitsForWesternDesert::LoadExitsForWesternDesert(&westernDesert , &homeTown);
     LoadExitsForSouthernForest::LoadExitsForSouthernForest(&southernForest , &homeTown);

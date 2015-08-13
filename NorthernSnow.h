@@ -3,8 +3,10 @@
 #pragma once
 #include "CustomAreaMap.h"
 #include "NPCWithDialogueThenBattle.h"
+#include "NPCWithDialogueAndQuest.h"
 #include "Conversion.h"
 #include "FallingImage.h"
+#include "GatherQuest.h"
 
 class GameManager;
 class BattleManager;
