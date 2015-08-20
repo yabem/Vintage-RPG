@@ -5,5 +5,6 @@
 
 namespace LoadExitsForEasternCastle{
 
-    void LoadExitsForEasternCastle(AreaMap *easternCastle , AreaMap *westArea);
+    void LoadExitsForEasternCastle(AreaMap *easternCastle , AreaMap *westArea ,
+        AreaMap *insideCastle);
 };

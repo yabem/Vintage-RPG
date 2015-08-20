@@ -95,6 +95,8 @@
     <ClCompile Include="HomeTownArmory.cpp" />
     <ClCompile Include="HomeTownBar.cpp" />
     <ClCompile Include="InfoTable.cpp" />
+    <ClCompile Include="InsideCastle.cpp" />
+    <ClCompile Include="InsideCastleBattle.cpp" />
     <ClCompile Include="Instruct.cpp" />
     <ClCompile Include="Intro.cpp" />
     <ClCompile Include="ItemLocationWithGift.cpp" />
@@ -102,6 +104,7 @@
     <ClCompile Include="KnifeBarrage.cpp" />
     <ClCompile Include="Lance.cpp" />
     <ClCompile Include="LevelUpCalculations.cpp" />
+    <ClCompile Include="LoadExitsForCastle.cpp" />
     <ClCompile Include="LoadExitsForHomeTownArmory.cpp" />
     <ClCompile Include="LoadExitsForHomeTownBar.cpp" />
     <ClCompile Include="ReignOfWinter.cpp" />
@@ -252,11 +255,14 @@
     <ClInclude Include="HomeTownArmory.h" />
     <ClInclude Include="HomeTownBar.h" />
     <ClInclude Include="InfoTable.h" />
+    <ClInclude Include="InsideCastle.h" />
+    <ClInclude Include="InsideCastleBattle.h" />
     <ClInclude Include="ItemLocationWithGift.h" />
     <ClInclude Include="KillQuest.h" />
     <ClInclude Include="KnifeBarrage.h" />
     <ClInclude Include="Lance.h" />
     <ClInclude Include="LevelUpCalculations.h" />
+    <ClInclude Include="LoadExitsForCastle.h" />
     <ClInclude Include="LoadExitsForHomeTownArmory.h" />
     <ClInclude Include="LoadExitsForHomeTownBar.h" />
     <ClInclude Include="NPCWithDialogueAndGift.h" />

@@ -196,6 +196,54 @@ namespace InitEnemies{
     const int RED_REAPER_BASE_REWARD_XP = 10;
     const int RED_REAPER_BASE_MONEY_REWARD = 10;
 
+    const int SPIDER_BASE_HP = 10;
+    const int SPIDER_BASE_MP = 0;
+    const int SPIDER_BASE_ATK = 1;
+    const int SPIDER_BASE_DEF = 1;
+    const int SPIDER_BASE_SPEED = 3;
+    const int SPIDER_BASE_REWARD_XP = 10;
+    const int SPIDER_BASE_MONEY_REWARD = 10;
+
+    const int SPIDER_EGG_BASE_HP = 10;
+    const int SPIDER_EGG_BASE_MP = 0;
+    const int SPIDER_EGG_BASE_ATK = 1;
+    const int SPIDER_EGG_BASE_DEF = 1;
+    const int SPIDER_EGG_BASE_SPEED = 3;
+    const int SPIDER_EGG_BASE_REWARD_XP = 10;
+    const int SPIDER_EGG_BASE_MONEY_REWARD = 10;
+
+    const int SPIDER_WEB_BASE_HP = 10;
+    const int SPIDER_WEB_BASE_MP = 0;
+    const int SPIDER_WEB_BASE_ATK = 1;
+    const int SPIDER_WEB_BASE_DEF = 1;
+    const int SPIDER_WEB_BASE_SPEED = 3;
+    const int SPIDER_WEB_BASE_REWARD_XP = 10;
+    const int SPIDER_WEB_BASE_MONEY_REWARD = 10;
+
+    const int TENTACLE_MAGE_BASE_HP = 10;
+    const int TENTACLE_MAGE_BASE_MP = 0;
+    const int TENTACLE_MAGE_BASE_ATK = 1;
+    const int TENTACLE_MAGE_BASE_DEF = 1;
+    const int TENTACLE_MAGE_BASE_SPEED = 3;
+    const int TENTACLE_MAGE_BASE_REWARD_XP = 10;
+    const int TENTACLE_MAGE_BASE_MONEY_REWARD = 10;
+
+    const int ECHIDNA_BASE_HP = 10;
+    const int ECHIDNA_BASE_MP = 0;
+    const int ECHIDNA_BASE_ATK = 1;
+    const int ECHIDNA_BASE_DEF = 1;
+    const int ECHIDNA_BASE_SPEED = 3;
+    const int ECHIDNA_BASE_REWARD_XP = 10;
+    const int ECHIDNA_BASE_MONEY_REWARD = 10;
+
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_HP = 10;
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_MP = 0;
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_ATK = 1;
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_DEF = 1;
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_SPEED = 3;
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_REWARD_XP = 10;
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_MONEY_REWARD = 10;
+
     //Initialize character based off of the level and type or enemy.
     void init(Character *character , int enemyType , int level , 
         vector<ALLEGRO_BITMAP*> enemies);
@@ -249,6 +297,18 @@ namespace InitEnemies{
         vector<ALLEGRO_BITMAP*> enemies);
     void redReaper(Character *character , int enemyType , int level , 
         vector<ALLEGRO_BITMAP*> enemies);
+    void spider(Character *character , int enemyType , int level , 
+        vector<ALLEGRO_BITMAP*> enemies);
+    void spiderEgg(Character *character , int enemyType , int level , 
+        vector<ALLEGRO_BITMAP*> enemies);
+    void spiderWeb(Character *character , int enemyType , int level , 
+        vector<ALLEGRO_BITMAP*> enemies);
+    void tentacleMage(Character *character , int enemyType , int level , 
+        vector<ALLEGRO_BITMAP*> enemies);
+    void echidna(Character *character , int enemyType , int level , 
+        vector<ALLEGRO_BITMAP*> enemies);
+    void umgarTheWorldDestroyer(Character *character , int enemyType , int level , 
+        vector<ALLEGRO_BITMAP*> enemies);
 
     //Figure out rewards.
     std::vector<std::string> ratRewards();
@@ -275,8 +335,13 @@ namespace InitEnemies{
     std::vector<std::string> fangedFoxRewards();
     std::vector<std::string> ninjaFoxRewards();
     std::vector<std::string> redReaperRewards();
+    std::vector<std::string> spiderRewards();
+    std::vector<std::string> spiderEggRewards();
+    std::vector<std::string> spiderWebRewards();
+    std::vector<std::string> tentacleMageRewards();
+    std::vector<std::string> echidnaRewards();
+    std::vector<std::string> umgarTheWorldDestroyerRewards();
 
     //Set the spacing so the enemies are drawn correctly on the screen.
     void initEnemiesSpacing(vector<Character*> theEnemies);
-    
 };

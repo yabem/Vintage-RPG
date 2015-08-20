@@ -31,7 +31,7 @@ void HomeTownShop::loadAllMapConfigurationsForLayers(){
 void HomeTownShop::loadTheTangibles(){
 
     NPCWithDialogueAndQuest *timberMan = new NPCWithDialogueAndQuest(
-        imageStore->getBitMap("friendlyGentleman") ,
+        imageStore->getBitMap("npcBlueDevil") ,
         Conversion::convertTilesToPixels(4) , 
         Conversion::convertTilesToPixels(4) ,
         this->drawRepository ,

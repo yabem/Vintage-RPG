@@ -102,6 +102,30 @@ void InitEnemies::init(Character *character , int enemyType , int level ,
             redReaper(character , enemyType , level , enemies);
             break;
 
+        case SPIDER:
+            spider(character , enemyType , level , enemies);
+            break;
+
+        case SPIDER_EGG:
+            spiderEgg(character , enemyType , level , enemies);
+            break;
+
+        case SPIDER_WEB:
+            spiderWeb(character , enemyType , level , enemies);
+            break;
+
+        case TENTACLE_MAGE:
+            spiderWeb(character , enemyType , level , enemies);
+            break;
+
+        case ECHIDNA:
+            spiderWeb(character , enemyType , level , enemies);
+            break;
+
+        case UMGAR_THE_WORLD_DESTROYER:
+            umgarTheWorldDestroyer(character , enemyType , level , enemies);
+            break;
+
         default:
             return;
     }
@@ -1114,6 +1138,240 @@ std::vector<std::string> InitEnemies::redReaperRewards(){
 
     if(randomNum < 5)
         rewards.push_back("Scythe");
+
+    return rewards;
+}
+
+//Initialize to a spider.
+void InitEnemies::spider(Character *character , int enemyType , int level ,
+    vector<ALLEGRO_BITMAP*> enemies){
+
+    character->setImage(enemies[enemyType]);
+    character->setIdentifierName("spider");
+
+    //Base stats times level.
+    character->setW(al_get_bitmap_width(enemies[enemyType]));
+    character->setH(al_get_bitmap_height(enemies[enemyType])); 
+    
+    //Calculate stat values based off of level.
+    int hp = SPIDER_BASE_HP + (level * 5);
+    int mp = SPIDER_BASE_MP + (level * 2);
+    int atk = SPIDER_BASE_ATK + (level * 5);
+    int def = SPIDER_BASE_DEF + (level * 1);
+    float spd = SPIDER_BASE_SPEED - (level * 0.1);
+    int rewardXP = SPIDER_BASE_REWARD_XP + (level * 5);
+    int moneyReward = SPIDER_BASE_MONEY_REWARD;
+    std::vector<std::string> itemRewards = spiderRewards();
+
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
+        0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
+
+    character->setStats(charStats);
+}
+
+//Gets the spider's rewards.
+std::vector<std::string> InitEnemies::spiderRewards(){
+
+    std::vector<std::string> rewards;
+    int randomNum = rand() % 100;
+
+    if(randomNum < 5)
+        rewards.push_back("Spider Leg");
+
+    return rewards;
+}
+
+//Initialize to a spiderEgg.
+void InitEnemies::spiderEgg(Character *character , int enemyType , int level ,
+    vector<ALLEGRO_BITMAP*> enemies){
+
+    character->setImage(enemies[enemyType]);
+    character->setIdentifierName("spiderEgg");
+
+    //Base stats times level.
+    character->setW(al_get_bitmap_width(enemies[enemyType]));
+    character->setH(al_get_bitmap_height(enemies[enemyType])); 
+    
+    //Calculate stat values based off of level.
+    int hp = SPIDER_EGG_BASE_HP + (level * 5);
+    int mp = SPIDER_EGG_BASE_MP + (level * 2);
+    int atk = SPIDER_EGG_BASE_ATK + (level * 5);
+    int def = SPIDER_EGG_BASE_DEF + (level * 1);
+    float spd = SPIDER_EGG_BASE_SPEED - (level * 0.1);
+    int rewardXP = SPIDER_EGG_BASE_REWARD_XP + (level * 5);
+    int moneyReward = SPIDER_EGG_BASE_MONEY_REWARD;
+    std::vector<std::string> itemRewards = spiderEggRewards();
+
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
+        0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
+
+    character->setStats(charStats);
+}
+
+//Gets the spiderEgg's rewards.
+std::vector<std::string> InitEnemies::spiderEggRewards(){
+
+    std::vector<std::string> rewards;
+    int randomNum = rand() % 100;
+
+    if(randomNum < 5)
+        rewards.push_back("Spider Egg Spindle");
+
+    return rewards;
+}
+
+//Initialize to a spiderWeb.
+void InitEnemies::spiderWeb(Character *character , int enemyType , int level ,
+    vector<ALLEGRO_BITMAP*> enemies){
+
+    character->setImage(enemies[enemyType]);
+    character->setIdentifierName("spiderWeb");
+
+    //Base stats times level.
+    character->setW(al_get_bitmap_width(enemies[enemyType]));
+    character->setH(al_get_bitmap_height(enemies[enemyType])); 
+    
+    //Calculate stat values based off of level.
+    int hp = SPIDER_WEB_BASE_HP + (level * 5);
+    int mp = SPIDER_WEB_BASE_MP + (level * 2);
+    int atk = SPIDER_WEB_BASE_ATK + (level * 5);
+    int def = SPIDER_WEB_BASE_DEF + (level * 1);
+    float spd = SPIDER_WEB_BASE_SPEED - (level * 0.1);
+    int rewardXP = SPIDER_WEB_BASE_REWARD_XP + (level * 5);
+    int moneyReward = SPIDER_WEB_BASE_MONEY_REWARD;
+    std::vector<std::string> itemRewards = spiderWebRewards();
+
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
+        0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
+
+    character->setStats(charStats);
+}
+
+//Gets the spiderWeb's rewards.
+std::vector<std::string> InitEnemies::spiderWebRewards(){
+
+    std::vector<std::string> rewards;
+    int randomNum = rand() % 100;
+
+    if(randomNum < 5)
+        rewards.push_back("Spider Web Bits");
+
+    return rewards;
+}
+
+//Initialize to a tentacleMage.
+void InitEnemies::tentacleMage(Character *character , int enemyType , int level ,
+    vector<ALLEGRO_BITMAP*> enemies){
+
+    character->setImage(enemies[enemyType]);
+    character->setIdentifierName("tentacleMage");
+
+    //Base stats times level.
+    character->setW(al_get_bitmap_width(enemies[enemyType]));
+    character->setH(al_get_bitmap_height(enemies[enemyType])); 
+    
+    //Calculate stat values based off of level.
+    int hp = TENTACLE_MAGE_BASE_HP + (level * 5);
+    int mp = TENTACLE_MAGE_BASE_MP + (level * 2);
+    int atk = TENTACLE_MAGE_BASE_ATK + (level * 5);
+    int def = TENTACLE_MAGE_BASE_DEF + (level * 1);
+    float spd = TENTACLE_MAGE_BASE_SPEED - (level * 0.1);
+    int rewardXP = TENTACLE_MAGE_BASE_REWARD_XP + (level * 5);
+    int moneyReward = TENTACLE_MAGE_BASE_MONEY_REWARD;
+    std::vector<std::string> itemRewards = tentacleMageRewards();
+
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
+        0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
+
+    character->setStats(charStats);
+}
+
+//Gets the tentacleMage's rewards.
+std::vector<std::string> InitEnemies::tentacleMageRewards(){
+
+    std::vector<std::string> rewards;
+    int randomNum = rand() % 100;
+
+    if(randomNum < 5)
+        rewards.push_back("Mages Warped Staff");
+
+    return rewards;
+}
+
+//Initialize to a echidna.
+void InitEnemies::echidna(Character *character , int enemyType , int level ,
+    vector<ALLEGRO_BITMAP*> enemies){
+
+    character->setImage(enemies[enemyType]);
+    character->setIdentifierName("echidna");
+
+    //Base stats times level.
+    character->setW(al_get_bitmap_width(enemies[enemyType]));
+    character->setH(al_get_bitmap_height(enemies[enemyType])); 
+    
+    //Calculate stat values based off of level.
+    int hp = ECHIDNA_BASE_HP + (level * 5);
+    int mp = ECHIDNA_BASE_MP + (level * 2);
+    int atk = ECHIDNA_BASE_ATK + (level * 5);
+    int def = ECHIDNA_BASE_DEF + (level * 1);
+    float spd = ECHIDNA_BASE_SPEED - (level * 0.1);
+    int rewardXP = ECHIDNA_BASE_REWARD_XP + (level * 5);
+    int moneyReward = ECHIDNA_BASE_MONEY_REWARD;
+    std::vector<std::string> itemRewards = echidnaRewards();
+
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
+        0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
+
+    character->setStats(charStats);
+}
+
+//Gets the echidna's rewards.
+std::vector<std::string> InitEnemies::echidnaRewards(){
+
+    std::vector<std::string> rewards;
+    int randomNum = rand() % 100;
+
+    if(randomNum < 5)
+        rewards.push_back("Mages Warped Staff");
+
+    return rewards;
+}
+
+//Initialize to a umgarTheWorldDestroyer.
+void InitEnemies::umgarTheWorldDestroyer(Character *character , int enemyType , int level ,
+    vector<ALLEGRO_BITMAP*> enemies){
+
+    character->setImage(enemies[enemyType]);
+    character->setIdentifierName("umgarTheWorldDestroyer");
+
+    //Base stats times level.
+    character->setW(al_get_bitmap_width(enemies[enemyType]));
+    character->setH(al_get_bitmap_height(enemies[enemyType])); 
+    
+    //Calculate stat values based off of level.
+    int hp = UMGAR_THE_WORLD_DESTROYER_BASE_HP + (level * 5);
+    int mp = UMGAR_THE_WORLD_DESTROYER_BASE_MP + (level * 2);
+    int atk = UMGAR_THE_WORLD_DESTROYER_BASE_ATK + (level * 5);
+    int def = UMGAR_THE_WORLD_DESTROYER_BASE_DEF + (level * 1);
+    float spd = UMGAR_THE_WORLD_DESTROYER_BASE_SPEED - (level * 0.1);
+    int rewardXP = UMGAR_THE_WORLD_DESTROYER_BASE_REWARD_XP + (level * 5);
+    int moneyReward = UMGAR_THE_WORLD_DESTROYER_BASE_MONEY_REWARD;
+    std::vector<std::string> itemRewards = umgarTheWorldDestroyerRewards();
+
+    CharStats *charStats = new CharStats(level , hp , mp , atk , 0 , def,
+        0 , 0 , 0 , spd , rewardXP , moneyReward , itemRewards);
+
+    character->setStats(charStats);
+}
+
+//Gets the umgarTheWorldDestroyer's rewards.
+std::vector<std::string> InitEnemies::umgarTheWorldDestroyerRewards(){
+
+    std::vector<std::string> rewards;
+    int randomNum = rand() % 100;
+
+    if(randomNum < 100)
+        rewards.push_back("Badge of I Saved the World");
 
     return rewards;
 }

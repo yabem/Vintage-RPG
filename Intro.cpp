@@ -33,7 +33,7 @@ void Intro::loadBackground(){
         imageStore->getBitMap("forestMidground"),0,0,-8,0);
 
     this->character = new Character(imageStore->getBitMap("introPlayer")
-        , 32 , 32 , 10 , 5 , PLAYER_MOVE_RATE);
+        , 32 , 32 , 10 , 2 , PLAYER_MOVE_RATE);
     character->setFacing(UP);
     character->setX(Conversion::convertTilesToPixels(9));
     character->setY(313);

@@ -2,19 +2,18 @@
 
 #pragma once
 #include "CustomAreaMap.h"
-#include "FilterImage.h"
+
 class ImageStore;
 
-class EasternCastleBattle : public CustomAreaMap{
+class InsideCastleBattle : public CustomAreaMap{
 
 private:
 
     void loadLayers();
-    void loadTheSceneries();
     void loadBackgroundLayerMapConfiguration();
 
 public:
 
-    EasternCastleBattle(ImageStore *imageStore , int layoutSize);
-    virtual ~EasternCastleBattle();
+    InsideCastleBattle(ImageStore *imageStore , int layoutSize);
+    virtual ~InsideCastleBattle();
 };

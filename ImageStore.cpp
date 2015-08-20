@@ -85,10 +85,11 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("forestBackground" , al_load_bitmap("forestBackground.png"));
     loadBitMap("forestMidground" , al_load_bitmap("forestMidground.png"));
     loadBitMap("forestForeground" , al_load_bitmap("forestForeground.png"));
+    loadBitMap("castle" , al_load_bitmap("castle.png"));
 
     //NPCs
     loadBitMap("storeOwner" , al_load_bitmap("storeOwner.png"));
-    loadBitMap("mysteriousMan" , al_load_bitmap("mysteriousMan.png"));
+    loadBitMap("npcMysteriousMan" , al_load_bitmap("npcMysteriousMan.png"));
     loadBitMap("witch" , al_load_bitmap("witch.png"));
     loadBitMap("strife" , al_load_bitmap("strife.png"));
     loadBitMap("monk" , al_load_bitmap("monk.png"));
@@ -97,6 +98,7 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("introPlayer" , al_load_bitmap("introPlayer.png"));
     loadBitMap("oldMan" , al_load_bitmap("oldMan.png"));
     loadBitMap("friendlyGentleman" , al_load_bitmap("friendlyGentleman.png"));
+    loadBitMap("npcMysteriousMan" , al_load_bitmap("npcMysteriousMan.png"));
     loadBitMap("npcHornedWarrior" , al_load_bitmap("npcHornedWarrior.png"));
     loadBitMap("npcPurpleMonk" , al_load_bitmap("npcPurpleMonk.png"));
     loadBitMap("npcRedVampire" , al_load_bitmap("npcRedVampire.png"));
@@ -108,6 +110,12 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("npcTalkingSheep" , al_load_bitmap("npcTalkingSheep.png"));
     loadBitMap("npcAngryCleric" , al_load_bitmap("npcAngryCleric.png"));
     loadBitMap("npcOldScholar" , al_load_bitmap("npcOldScholar.png"));
+    loadBitMap("npcBlueDevil" , al_load_bitmap("npcBlueDevil.png"));
+    loadBitMap("npcBlueWarrior" , al_load_bitmap("npcBlueWarrior.png"));
+    loadBitMap("npcBlackMage" , al_load_bitmap("npcBlackMage.png"));
+    loadBitMap("npcRedQueen" , al_load_bitmap("npcRedQueen.png"));
+    loadBitMap("npcCloakedVoid" , al_load_bitmap("npcCloakedVoid.png"));
+    loadBitMap("npcShade" , al_load_bitmap("npcShade.png"));
 
     //Scenery
     loadBitMap("sceneryBarrel" , al_load_bitmap("sceneryBarrel.png"));
@@ -253,6 +261,12 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("fangedFox" , al_load_bitmap("fangedFox.png"));
     loadBitMap("ninjaFox" , al_load_bitmap("ninjaFox.png"));
     loadBitMap("redReaper" , al_load_bitmap("redReaper.png"));
+    loadBitMap("spider" , al_load_bitmap("spider.png"));
+    loadBitMap("spiderEgg" , al_load_bitmap("spiderEgg.png"));
+    loadBitMap("spiderWeb" , al_load_bitmap("spiderWeb.png"));
+    loadBitMap("tentacleMage" , al_load_bitmap("tentacleMage.png"));
+    loadBitMap("echidna" , al_load_bitmap("echidna.png"));
+    loadBitMap("umgarTheWorldDestroyer" , al_load_bitmap("umgarTheWorldDestroyer.png"));
 
     loadBitMap("default" , al_load_bitmap("default.png"));
 

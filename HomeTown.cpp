@@ -63,12 +63,26 @@ void HomeTown::loadTheTangibles(){
     NPCWithDialogue *talkingRock = new NPCWithDialogue(
         imageStore->getBitMap("rock") ,
         Conversion::convertTilesToPixels(26) , 
-        Conversion::convertTilesToPixels(26) ,
+        Conversion::convertTilesToPixels(25) ,
         this->drawRepository ,
         this->gameManager , 
         "Mighty Rock: I'm a rock, are you really trying to talk to a rock?" ,
         this->fontStore->getFont("default"));
     talkingRock->createCharacter(32 , 32 , 60 , 1 , 4 , this);
+
+    NPCWithDialogue *informativeShade = new NPCWithDialogue(
+        imageStore->getBitMap("npcShade") ,
+        Conversion::convertTilesToPixels(17) , 
+        Conversion::convertTilesToPixels(27) ,
+        this->drawRepository ,
+        this->gameManager , 
+        "Informative Shade: You can use I to access your inventory, L to review open quests, "
+        "O to see completed quests, and U to view your party stats." ,
+        this->fontStore->getFont("default"));
+    informativeShade->createCharacter(32 , 32 , 90 , 2 , 4 , this);
+    informativeShade->setCW(32);
+    informativeShade->setCH(32);
+    informativeShade->setCharacterFacing(DOWN);
 
     NPCWithDialogue *teacher = new NPCWithDialogue(
         imageStore->getBitMap("npcTalkingSheep") ,
@@ -106,7 +120,7 @@ void HomeTown::loadTheTangibles(){
     storeOwner->setCharacterFacing(DOWN);
 
     NPCWithDialogueAndQuest *mysteriousManQuestGiver = new NPCWithDialogueAndQuest(
-        imageStore->getBitMap("mysteriousMan") ,
+        imageStore->getBitMap("npcMysteriousMan") ,
         Conversion::convertTilesToPixels(3) , 
         Conversion::convertTilesToPixels(3) ,
         this->drawRepository ,
@@ -161,8 +175,7 @@ void HomeTown::loadTheTangibles(){
         Conversion::convertTilesToPixels(33) , 
         Conversion::convertTilesToPixels(36) ,        
         this->drawRepository ,
-        this->gameManager , "Old Man: This wind is really killing my hair. Whatever you do, "
-        "don't look inside this barrel.",
+        this->gameManager , "Old Man: This wind is really killing my hair.",
         this->fontStore->getFont("default"));
     oldMan->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     oldMan->setCW(32);
@@ -239,8 +252,8 @@ void HomeTown::loadTheTangibles(){
     friendlyGentlemanQuestGiver->setQuestExplanation(
         "Friendly Gentleman: Why hullo there friend. You look like a strapping young lad. "  
         "I run a potion exchange and I'm short some potions. Have you "
-        "perchance run across any in your Southern travels? I'd be every "
-        "so graetful if you could gather this list of potions for me. I "
+        "perchance run across any in your Southern travels? I'd be ever "
+        "so greatful if you could gather this list of potions for me. I "
         "would most definitely repay you with something extraordinary!" );
     friendlyGentlemanQuestGiver->setQuestReminder(
         "Friendly Gentleman: How goes the potion hunt? ");
@@ -262,6 +275,7 @@ void HomeTown::loadTheTangibles(){
     gameManager->getPlayerEntity()->addQuest("potionsForAGentleman" , potionObjectives);
     
     this->loadTangible(talkingRock);
+    this->loadTangible(informativeShade);
     this->loadTangible(teacher);
     this->loadTangible(storeOwner);
     this->loadTangible(mysteriousManQuestGiver);

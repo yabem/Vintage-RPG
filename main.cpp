@@ -44,6 +44,9 @@
 #include "LoadExitsForEasternCastle.h"
 #include "SouthernForestBattle.h"
 #include "WesternDesertBattle.h"
+#include "InsideCastle.h"
+#include "InsideCastleBattle.h"
+#include "LoadExitsForCastle.h"
 #include "NorthernSnowBattle.h"
 #include "ShowActiveQuestLog.h"
 #include "ShowCompletedQuestLog.h"
@@ -56,8 +59,14 @@
 #include <crtdbg.h>
 
 //To do:
-//Finish inside houses maps
-//Finish castle map
+//Fix bug with completing a quest.
+//Add quest giver that rewards an item
+//add music
+//Finish stats so that the enemies are hard.
+//Look at adding status effects?
+//Add final boss that requires items from each boss to fight
+//Create credits
+//Add notification for quest acquisition
 //figure out a better way to display questobjectives for kill quests
 //Make controls a class
 //Make tangible collision better so you can't go through objects.
@@ -189,12 +198,20 @@ int main(int argc, char **argv){
         &battleManager , &fontStore , AREA_MAP_SIZE);
     easternCastle.loadDefaults();
 
+    InsideCastle insideCastle(&imageStore , &drawRepository , &gameManager , 
+        &battleManager , &fontStore , 1600);
+    insideCastle.loadDefaults();
+
+    InsideCastleBattle insideCastleBattle(&imageStore , BATTLE_MAP_SIZE);
+    insideCastleBattle.loadDefaults();
+
     //Set battlemaps.
     homeTown.setBattleMap(&easternCastleBattle);
     northernSnow.setBattleMap(&northernSnowBattle);
     westernDesert.setBattleMap(&westernDesertBattle);
     southernForest.setBattleMap(&southernForestBattle);
     easternCastle.setBattleMap(&easternCastleBattle);
+    insideCastle.setBattleMap(&insideCastleBattle);
 
     gameManager.currMap = &homeTown;
     gameManager.player = playerEntity.getFirstPlayer();
@@ -242,6 +259,12 @@ int main(int argc, char **argv){
     battleManager.loadEnemyModel(imageStore.getBitMap("fangedFox"));
     battleManager.loadEnemyModel(imageStore.getBitMap("ninjaFox"));
     battleManager.loadEnemyModel(imageStore.getBitMap("redReaper"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("spider"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("spiderEgg"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("spiderWeb"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("tentacleMage"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("echidna"));
+    battleManager.loadEnemyModel(imageStore.getBitMap("umgarTheWorldDestroyer"));
     battleManager.loadDrawRepository(&drawRepository);
     battleManager.loadBackpack(playerEntity.getPlayerInventory());
     battleManager.loadFontStore(&fontStore);
@@ -265,7 +288,8 @@ int main(int argc, char **argv){
     LoadExitsForNorthernSnow::LoadExitsForNorthernSnow(&northernSnow , &homeTown);
     LoadExitsForWesternDesert::LoadExitsForWesternDesert(&westernDesert , &homeTown);
     LoadExitsForSouthernForest::LoadExitsForSouthernForest(&southernForest , &homeTown);
-    LoadExitsForEasternCastle::LoadExitsForEasternCastle(&easternCastle , &homeTown);
+    LoadExitsForEasternCastle::LoadExitsForEasternCastle(&easternCastle , &homeTown , &insideCastle);
+    LoadExitsForCastle::LoadExitsForCastle(&insideCastle , &easternCastle);
     Movement::setStartCoords(*gameManager.player, homeTown , 
         Conversion::convertTilesToPixels(STARTCOL) , 
         Conversion::convertTilesToPixels(STARTROW));

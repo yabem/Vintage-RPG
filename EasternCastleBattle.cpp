@@ -9,11 +9,25 @@ EasternCastleBattle::~EasternCastleBattle(){
 
 }
 
+void EasternCastleBattle::loadTheSceneries(){
+
+    FilterImage *darkness = new FilterImage(imageStore->getBitMap("darkness") ,
+        0 , 0 , 0 , 0);
+
+    darkness->setTransparencyLevel(.5);
+    darkness->setTransparencyIncrementer(.01);
+    darkness->setRedTransparency(1);
+    darkness->setGreenTransparency(1);
+    darkness->setBlueTransparency(1);
+
+    this->loadScenery(darkness);
+}
 void EasternCastleBattle::loadLayers(){
 
     Layer *backgroundLayer = new Layer(imageStore->getBitMap("terrain") ,
         15 , 20 , this->backgroundLayerLayout , 300);
 
+    this->loadTheSceneries();
     this->loadLayer(backgroundLayer);
 }
 

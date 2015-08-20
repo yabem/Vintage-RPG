@@ -1047,6 +1047,15 @@
     <ClCompile Include="LoadExitsForHomeTownBar.cpp">
       <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
     </ClCompile>
+    <ClCompile Include="InsideCastle.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadExitsForCastle.cpp">
+      <Filter>Source Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="InsideCastleBattle.cpp">
+      <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageStore.h">
@@ -1528,6 +1537,15 @@
     </ClInclude>
     <ClInclude Include="LoadExitsForHomeTownBar.h">
       <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="InsideCastle.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadExitsForCastle.h">
+      <Filter>Header Files\Map\AreaMap\Exit Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="InsideCastleBattle.h">
+      <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
