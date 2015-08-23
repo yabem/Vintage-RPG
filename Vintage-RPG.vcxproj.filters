@@ -729,9 +729,6 @@
     <ClCompile Include="Backpack.cpp">
       <Filter>Source Files\Backpack\I_InventoryItem</Filter>
     </ClCompile>
-    <ClCompile Include="HealingItem.cpp">
-      <Filter>Source Files\Backpack\I_InventoryItem\Derived Class</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerEntity.cpp">
       <Filter>Source Files\PlayerEntity</Filter>
     </ClCompile>
@@ -1056,6 +1053,18 @@
     <ClCompile Include="InsideCastleBattle.cpp">
       <Filter>Source Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
     </ClCompile>
+    <ClCompile Include="RewardItem.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCWithDialogueAndQuestWithItemReward.cpp">
+      <Filter>Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="GenericItem.cpp">
+      <Filter>Source Files\Backpack\I_InventoryItem\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCWithQuestAndRemoval.cpp">
+      <Filter>Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Derived Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageStore.h">
@@ -1210,9 +1219,6 @@
     </ClInclude>
     <ClInclude Include="I_InventoryItem.h">
       <Filter>Header Files\Backpack\I_InventoryItem\Base Class</Filter>
-    </ClInclude>
-    <ClInclude Include="HealingItem.h">
-      <Filter>Header Files\Backpack\I_InventoryItem\Derived Class</Filter>
     </ClInclude>
     <ClInclude Include="GameConfig.h">
       <Filter>Header Files\Utilities</Filter>
@@ -1546,6 +1552,18 @@
     </ClInclude>
     <ClInclude Include="InsideCastleBattle.h">
       <Filter>Header Files\Map\AreaMap\Derived Class\CustomAreaMap\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="RewardItem.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCWithDialogueAndQuestWithItemReward.h">
+      <Filter>Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="GenericItem.h">
+      <Filter>Header Files\Backpack\I_InventoryItem\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCWithQuestAndRemoval.h">
+      <Filter>Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Derived Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

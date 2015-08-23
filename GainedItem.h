@@ -6,7 +6,7 @@
 #include "GameConfig.h"
 #include "Backpack.h"
 #include "I_InventoryItem.h"
-#include "HealingItem.h"
+#include "GenericItem.h"
 
 class GainedItem : public I_Reward{
 

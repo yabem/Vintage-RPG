@@ -1,7 +1,7 @@
-#include "HealingItem.h"
+#include "GenericItem.h"
 
 //Constructor.
-HealingItem::HealingItem(std::string name , int amount){
+GenericItem::GenericItem(std::string name , int amount){
 
     this->name = name;
     this->currentAmount = 0;
@@ -12,24 +12,24 @@ HealingItem::HealingItem(std::string name , int amount){
 }
 
 //Destructor.
-HealingItem::~HealingItem(){
+GenericItem::~GenericItem(){
 
 }
 
 //Returns the name of the item.
-std::string HealingItem::getName(){
+std::string GenericItem::getName(){
 
     return this->name;
 }
 
 //Returns the current amount of the item.
-int HealingItem::getAmount(){
+int GenericItem::getAmount(){
 
     return currentAmount;
 }
 
 //Returns the items capacity.
-int HealingItem::getCapacity(){
+int GenericItem::getCapacity(){
 
     return capacity;
 }
@@ -41,7 +41,7 @@ int HealingItem::getCapacity(){
 //      and will return true. If the new amount will be unchanged and will 
 //      return false. If the amount is > 0 and < capacity, the amount
 //      is added and returns true.
-bool HealingItem::addToAmount(int amountToAdd){
+bool GenericItem::addToAmount(int amountToAdd){
 
     if(amountToAdd + currentAmount < 0){
         

@@ -25,7 +25,7 @@ void ItemLocationWithGift::playCutscene(int pressedKey){
     if(!this->giftDelivered){
 
         RewardAbility *rewardAbility = new RewardAbility(gameManager , font ,
-            playerToReward , playerEntity->getThePlayers() , abilityToReward);
+            playerToReward , playerEntity->getThePlayers() , reward);
         rewardAbility->setText(rewardNotification);
         this->drawRepository->loadCutscene(rewardAbility);
 

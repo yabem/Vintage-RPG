@@ -12,7 +12,7 @@ ratAI::ratAI(Character *initiator ,
     this->listOfEnemies = listOfEnemies;
     this->drawRepository = drawRepository;
 
-    possibleAttacks.push_back("Fire2");
+    //possibleAttacks.push_back("Fire2");
     possibleAttacks.push_back("Rock");
 }
 

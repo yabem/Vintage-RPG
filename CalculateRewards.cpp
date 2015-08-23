@@ -50,13 +50,12 @@ void CalculateRewards::deliverItems(){
 
         while(rewardsIter != theRewards.end()){
 
-        GainedItem *gainedItem = 
+            GainedItem *gainedItem = 
+                new GainedItem(*rewardsIter , 1 , battleManager->getBackpack());
 
-            new GainedItem(*rewardsIter , 1 , battleManager->getBackpack());
+                battleManager->loadReward(gainedItem);
 
-            battleManager->loadReward(gainedItem);
-
-            rewardsIter++;
+                rewardsIter++;
         }
     }
 }

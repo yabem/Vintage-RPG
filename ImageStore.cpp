@@ -116,6 +116,7 @@ void ImageStore::loadAllDefaultImages(){
     loadBitMap("npcRedQueen" , al_load_bitmap("npcRedQueen.png"));
     loadBitMap("npcCloakedVoid" , al_load_bitmap("npcCloakedVoid.png"));
     loadBitMap("npcShade" , al_load_bitmap("npcShade.png"));
+    loadBitMap("npcFirewall" , al_load_bitmap("npcFirewall.png"));
 
     //Scenery
     loadBitMap("sceneryBarrel" , al_load_bitmap("sceneryBarrel.png"));

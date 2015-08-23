@@ -1,8 +1,8 @@
-#include "NPCWithDialogueAndQuest.h"
+#include "NPCWithQuestAndRemoval.h"
 
-NPCWithDialogueAndQuest::NPCWithDialogueAndQuest(ALLEGRO_BITMAP *image , int sx , int sy ,
+NPCWithQuestAndRemoval::NPCWithQuestAndRemoval(ALLEGRO_BITMAP *image , int sx , int sy ,
     DrawRepository *drawRepository , GameManager *gameManager ,
-    ALLEGRO_FONT *font , PlayerEntity *playerEntity) : 
+    ALLEGRO_FONT *font , PlayerEntity *playerEntity , std::string nameOfNPC) : 
     NPCWithDialogueAndGift(image , sx , sy , drawRepository , gameManager , "" , font ,
         playerEntity){
 
@@ -10,42 +10,37 @@ NPCWithDialogueAndQuest::NPCWithDialogueAndQuest(ALLEGRO_BITMAP *image , int sx 
         this->questExplanation = "";
         this->questReminderExplanation = "";
         this->questCompleteMessage = "";
+        this->nameOfNPC = nameOfNPC;
 }
 
-NPCWithDialogueAndQuest::~NPCWithDialogueAndQuest(){
+NPCWithQuestAndRemoval::~NPCWithQuestAndRemoval(){
 
 }
 
-void NPCWithDialogueAndQuest::loadQuest(Quest *quest){
+void NPCWithQuestAndRemoval::loadQuest(Quest *quest){
 
     this->quest = quest;
 }
 
-void NPCWithDialogueAndQuest::setQuestExplanation(
+void NPCWithQuestAndRemoval::setQuestExplanation(
     std::string questExplanation){
     
         this->questExplanation = questExplanation;
 }
 
-void NPCWithDialogueAndQuest::setQuestReminder(
+void NPCWithQuestAndRemoval::setQuestReminder(
     std::string questReminderExplanation){
 
         this->questReminderExplanation = questReminderExplanation;
 }
     
-void NPCWithDialogueAndQuest::setQuestCompleteMessage(
+void NPCWithQuestAndRemoval::setQuestCompleteMessage(
     std::string questCompleteMessage){
 
         this->questCompleteMessage = questCompleteMessage;
 }
 
-void NPCWithDialogueAndQuest::setQuestAfterCompleteMessage(
-    std::string questAfterCompleteMessage){
-
-        this->questAfterCompleteMessage = questAfterCompleteMessage;
-}
-
-void NPCWithDialogueAndQuest::playCutscene(int pressedKey){
+void NPCWithQuestAndRemoval::playCutscene(int pressedKey){
 
     if(!quest->isActiveForPlayer()){
 
@@ -70,28 +65,23 @@ void NPCWithDialogueAndQuest::playCutscene(int pressedKey){
         this->drawRepository->loadCutscene(remindAboutQuest);
     }
 
-    else if(!giftDelivered){
+    else{
 
-        Dialogue *deliverGift = new Dialogue(gameManager , font);
-        deliverGift->setText(questCompleteMessage);
-        this->drawRepository->loadCutscene(deliverGift);
+        Dialogue *questComplete = new Dialogue(gameManager , font);
+        questComplete->setText(questCompleteMessage);
+        this->drawRepository->loadCutscene(questComplete);
 
-        RewardAbility *rewardAbility = new RewardAbility(gameManager , font ,
-            playerToReward , playerEntity->getThePlayers() , reward);
-        rewardAbility->setText(rewardNotification);
-        this->drawRepository->loadCutscene(rewardAbility);
+        Dialogue *rewardDelivery = new Dialogue(gameManager , font);
+        rewardDelivery->setText(rewardNotification);
+        this->drawRepository->loadCutscene(rewardDelivery);
 
         quest->makeInactiveForPlayer();
         quest->removeQuestItemsFromBackPack();
         quest->completedByPlayer();
-        giftDelivered = true;
-    }
 
-    else{
-
-        Dialogue *cutscene = new Dialogue(gameManager , font);
-        cutscene->setText(questAfterCompleteMessage);
-        this->drawRepository->loadCutscene(cutscene);
+        RemoveTangible *removeTangible = new RemoveTangible(this->gameManager ,
+            this->nameOfNPC);
+        this->drawRepository->loadCutscene(removeTangible);
     }
 
     gameManager->resetPressedKey();

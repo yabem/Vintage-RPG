@@ -59,7 +59,7 @@ void InsideCastle::loadTheTangibles(){
     umgarTheWorldDestroyer->loadEnemies(enemies , enemyLevels);
 
     //KMAK the All-Powerful quest.
-    NPCWithDialogueAndQuest *kMak = new NPCWithDialogueAndQuest(
+    NPCWithDialogueAndQuestWithItemReward *kMak = new NPCWithDialogueAndQuestWithItemReward(
         imageStore->getBitMap("npcBlackMage") ,
         Conversion::convertTilesToPixels(38) , 
         Conversion::convertTilesToPixels(31) ,
@@ -81,12 +81,13 @@ void InsideCastle::loadTheTangibles(){
     kMak->setQuestCompleteMessage(
         "KMAK the All-Powerful: Way to go! Those eggs really put up a fight!");
     kMak->setRewardNotification(
-        "Warrior received the Shield Bash ability!");
-    kMak->setGift("warrior" , "Shield Bash");
+        "You received a Spider-Slaying Stinger of Sensational Spider-Slaying!");
+    kMak->setItemReward("Spider-Slaying Stinger of Sensational Spider-Slaying");
     kMak->setQuestAfterCompleteMessage(
         "KMAK the All-Powerful: Spiders... if they could talk I wonder what they would say... probably "
         "'please don’t kill me.' Oh well."
         );
+    kMak->setAmountGained(1);
 
     KillQuest *killTask = new KillQuest();
     killTask->setQuestDisplayName("Spider Slaying 101");

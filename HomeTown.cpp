@@ -60,6 +60,48 @@ void HomeTown::loadTheSceneries(){
 
 void HomeTown::loadTheTangibles(){
 
+
+///////test/////////
+    std::string npcName = "fireWall";
+    NPCWithQuestAndRemoval *magicalBarrier = new NPCWithQuestAndRemoval(
+        imageStore->getBitMap("npcFirewall") ,
+        Conversion::convertTilesToPixels(25) , 
+        Conversion::convertTilesToPixels(25) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity(),
+        npcName
+        );
+    magicalBarrier->createCharacter(300 , 190 , 60 , 2 , 4 , this);
+    magicalBarrier->setIdentifierName(npcName);
+    magicalBarrier->setCW(300);
+    magicalBarrier->setCH(190);
+    magicalBarrier->setCharacterFacing(UP);
+    magicalBarrier->setQuestExplanation(
+        "Magical Barrier: I am a magic firewall. I've been summoned from " 
+        "my home by that huge guy right there. I'd gladly leave but I can't "
+        "go back to my kids empty handed. They'll be super dissapointed. Get "
+        "me a Guardian Collar, a Blob King Crown, a Demon Jewel, and a fancy "
+        "pair of Ice Bull Horns and I'll gladly let you pass.");
+    magicalBarrier->setQuestReminder(
+        "Magical Barrier: She gives me money, when I'm in neeeeeeeeeeeed.... ");
+    magicalBarrier->setQuestCompleteMessage(
+        "Magical Barrier: Wow, the kids are going to LOVE this swag. Thanks dude!");
+    magicalBarrier->setRewardNotification(
+        "The barrier magically dissipates and the path forward is revealed!");
+
+    GatherQuest *magicalBarrierObjectives = new GatherQuest(
+        gameManager->getPlayerEntity()->getPlayerInventory());
+    magicalBarrierObjectives->setQuestDisplayName("So this a Firewall?");
+    magicalBarrierObjectives->addObjective("Guardian Collar" , 1);
+    magicalBarrierObjectives->addObjective("Blob King Crown" , 1);
+    magicalBarrierObjectives->addObjective("Demon Jewel" , 1);
+    magicalBarrierObjectives->addObjective("Ice Bull Horns" , 1);
+    magicalBarrier->loadQuest(magicalBarrierObjectives);
+    gameManager->getPlayerEntity()->addQuest("soThisIsAFirewall?" , magicalBarrierObjectives);
+///////test/////////
+
     NPCWithDialogue *talkingRock = new NPCWithDialogue(
         imageStore->getBitMap("rock") ,
         Conversion::convertTilesToPixels(26) , 
@@ -284,6 +326,9 @@ void HomeTown::loadTheTangibles(){
     this->loadTangible(clod);
     this->loadTangible(strifeTheQuestGiver);
     this->loadTangible(friendlyGentlemanQuestGiver);
+
+    //Test
+    this->loadTangible(magicalBarrier);   
 }
 
 //Loads all the layers to the areaMap.

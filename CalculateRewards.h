@@ -7,7 +7,7 @@
 #include "GainedItem.h"
 #include "GainedMoney.h"
 #include "I_InventoryItem.h"
-#include "HealingItem.h"
+#include "GenericItem.h"
 
 class CalculateRewards{
 

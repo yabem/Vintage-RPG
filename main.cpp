@@ -59,18 +59,17 @@
 #include <crtdbg.h>
 
 //To do:
-//Fix bug with completing a quest.
-//Add quest giver that rewards an item
 //add music
 //Finish stats so that the enemies are hard.
+//Finish ability stats so they scale well
 //Look at adding status effects?
 //Add final boss that requires items from each boss to fight
 //Create credits
-//Add notification for quest acquisition
 //figure out a better way to display questobjectives for kill quests
 //Make controls a class
 //Make tangible collision better so you can't go through objects.
 //Clean up main
+//Fix bug with completing a quest.
 
 //Tiles taken from http://opengameart.org/content/tiled-terrains
 //More tiles taken from http://opengameart.org/content/lpc-tile-atlas

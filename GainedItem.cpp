@@ -17,10 +17,10 @@ GainedItem::~GainedItem(){
 
 //Delivers the reward to the player.
 //Pre:  The object has been initialized.
-//Post: Delivers the experience points to the player.
+//Post: Delivers the item to the player.
 bool GainedItem::deliverToPlayer(){
 
-    I_InventoryItem *potion = new HealingItem(this->itemName , amountGained);
+    I_InventoryItem *potion = new GenericItem(this->itemName , amountGained);
 
     backpack->addItem(potion);
 

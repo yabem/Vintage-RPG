@@ -1,12 +1,12 @@
 #include "RewardAbility.h"
 
-RewardAbility::RewardAbility(GameManager *gameManager , ALLEGRO_FONT *introFont ,
+RewardAbility::RewardAbility(GameManager *gameManager , ALLEGRO_FONT *font ,
     std::string playerToReward ,CharacterList *characterList ,
-    std::string abilityToReward) : Dialogue(gameManager , introFont){
+    std::string reward) : Dialogue(gameManager , font){
 
     this->characterList = characterList;
     this->playerToReward = playerToReward;
-    this->abilityToReward = abilityToReward;
+    this->reward = reward;
 }
 
 RewardAbility::~RewardAbility(){
@@ -30,7 +30,7 @@ bool RewardAbility::play(const int pressedKey){
     if(pressedKey == SPACE){
         
         AddAbilityToCharacterInList::AddAbilityToCharacterInList(
-        this->playerToReward , this->characterList , this->abilityToReward);
+        this->playerToReward , this->characterList , this->reward);
         
         return true;
     }

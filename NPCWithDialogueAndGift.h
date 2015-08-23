@@ -12,7 +12,7 @@ protected:
     ALLEGRO_FONT *font;
     PlayerEntity *playerEntity;
     std::string playerToReward;
-    std::string abilityToReward;
+    std::string reward;
     bool giftDelivered;
     std::string messageAfterGiftDelivery;
     std::string rewardNotification;
@@ -23,7 +23,7 @@ public:
         DrawRepository *drawRepository , GameManager *gameManager , 
         std::string message , ALLEGRO_FONT *font , PlayerEntity *playerEntity);
 
-    virtual void setGift(std::string playerToReward , std::string abilityToReward);
+    virtual void setGift(std::string playerToReward , std::string reward);
     virtual void setMessageAfterGiftDelivery(std::string messageAfterGiftDelivery);
     virtual void setRewardNotification(std::string rewardNotification);
     virtual ~NPCWithDialogueAndGift();

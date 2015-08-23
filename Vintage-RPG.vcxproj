@@ -107,7 +107,10 @@
     <ClCompile Include="LoadExitsForCastle.cpp" />
     <ClCompile Include="LoadExitsForHomeTownArmory.cpp" />
     <ClCompile Include="LoadExitsForHomeTownBar.cpp" />
+    <ClCompile Include="NPCWithDialogueAndQuestWithItemReward.cpp" />
+    <ClCompile Include="NPCWithQuestAndRemoval.cpp" />
     <ClCompile Include="ReignOfWinter.cpp" />
+    <ClCompile Include="RewardItem.cpp" />
     <ClCompile Include="ShadeOfTheCrescent.cpp" />
     <ClCompile Include="NPCWithDialogueAndGift.cpp" />
     <ClCompile Include="NPCWithDialogueAndQuest.cpp" />
@@ -145,7 +148,7 @@
     <ClCompile Include="FloatingTextList.cpp" />
     <ClCompile Include="GainedItem.cpp" />
     <ClCompile Include="GainedMoney.cpp" />
-    <ClCompile Include="HealingItem.cpp" />
+    <ClCompile Include="GenericItem.cpp" />
     <ClCompile Include="I_CharacterValuesList.cpp" />
     <ClCompile Include="CheckForDeadPlayer.cpp" />
     <ClCompile Include="CheckForDeadEnemy.cpp" />
@@ -267,11 +270,14 @@
     <ClInclude Include="LoadExitsForHomeTownBar.h" />
     <ClInclude Include="NPCWithDialogueAndGift.h" />
     <ClInclude Include="NPCWithDialogueAndQuest.h" />
+    <ClInclude Include="NPCWithDialogueAndQuestWithItemReward.h" />
+    <ClInclude Include="NPCWithQuestAndRemoval.h" />
     <ClInclude Include="Quest.h" />
     <ClInclude Include="QuestLog.h" />
     <ClInclude Include="ReignOfWinter.h" />
     <ClInclude Include="RemoveTangible.h" />
     <ClInclude Include="RewardAbility.h" />
+    <ClInclude Include="RewardItem.h" />
     <ClInclude Include="RightToLeftImage.h" />
     <ClInclude Include="Lightning.h" />
     <ClInclude Include="NorthernSnowBattle.h" />
@@ -310,7 +316,7 @@
     <ClInclude Include="FloatingTextList.h" />
     <ClInclude Include="GainedItem.h" />
     <ClInclude Include="GainedMoney.h" />
-    <ClInclude Include="HealingItem.h" />
+    <ClInclude Include="GenericItem.h" />
     <ClInclude Include="I_CharacterValuesList.h" />
     <ClInclude Include="CheckForDeadPlayer.h" />
     <ClInclude Include="CheckForDeadEnemy.h" />

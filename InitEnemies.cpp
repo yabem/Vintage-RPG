@@ -224,7 +224,7 @@ std::vector<std::string> InitEnemies::wolfRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 30)
+    if(randomNum < 100)
         rewards.push_back("Red Potion");
 
     if(randomNum < 10)

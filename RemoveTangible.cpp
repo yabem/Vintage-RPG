@@ -17,6 +17,15 @@ RemoveTangible::~RemoveTangible(){
 //      not exist, nothing happens.
 bool RemoveTangible::play(const int pressedKey){
 
+    //Animate player.
+    gameManager->player->animate();
+            
+    //Animate the sceneries. 
+    gameManager->currMap->animateSceneries();
+
+    //Draw map.
+    Draw::drawArea(*gameManager->currMap , *gameManager->player);
+
     gameManager->removeTangibleFromCurrMap(this->identifierNameToRemove);
     return true;
 }

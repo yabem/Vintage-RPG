@@ -4,7 +4,7 @@
 #include "I_InventoryItem.h"
 #include "GameConfig.h"
 
-class HealingItem : public I_InventoryItem{
+class GenericItem : public I_InventoryItem{
 
 private:
 
@@ -14,8 +14,8 @@ private:
 
 public:
 
-    HealingItem(std::string name , int amount);
-    virtual ~HealingItem();
+    GenericItem(std::string name , int amount);
+    virtual ~GenericItem();
     virtual std::string getName();
     virtual int getAmount();
     virtual int getCapacity();

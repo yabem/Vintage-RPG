@@ -1,5 +1,3 @@
-//Initiates a battle.
-
 #pragma once
 #include "Dialogue.h"
 #include "CharacterList.h"
@@ -11,13 +9,13 @@ private:
 
     CharacterList *characterList;
     std::string playerToReward;
-    std::string abilityToReward;
+    std::string reward;
 
 public:
 
-    RewardAbility(GameManager *gameManager , ALLEGRO_FONT *introFont ,
+    RewardAbility(GameManager *gameManager , ALLEGRO_FONT *font ,
         std::string playerToReward ,CharacterList *characterList ,
-        std::string abilityToReward);
+        std::string reward);
     ~RewardAbility();
     virtual bool play(const int pressedKey); 
 };

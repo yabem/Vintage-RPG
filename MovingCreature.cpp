@@ -71,5 +71,4 @@ void MovingCreature::initialize(int sx , int sy , int ex , int ey){
     }
 
     this->initialized = true;
-    this->rotate180Rads = atan2(double(sx - ex) , double(sy - ey));
 }

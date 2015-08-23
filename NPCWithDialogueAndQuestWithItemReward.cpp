@@ -1,6 +1,7 @@
-#include "NPCWithDialogueAndQuest.h"
+#include "NPCWithDialogueAndQuestWithItemReward.h"
 
-NPCWithDialogueAndQuest::NPCWithDialogueAndQuest(ALLEGRO_BITMAP *image , int sx , int sy ,
+NPCWithDialogueAndQuestWithItemReward::NPCWithDialogueAndQuestWithItemReward(
+    ALLEGRO_BITMAP *image , int sx , int sy ,
     DrawRepository *drawRepository , GameManager *gameManager ,
     ALLEGRO_FONT *font , PlayerEntity *playerEntity) : 
     NPCWithDialogueAndGift(image , sx , sy , drawRepository , gameManager , "" , font ,
@@ -12,40 +13,50 @@ NPCWithDialogueAndQuest::NPCWithDialogueAndQuest(ALLEGRO_BITMAP *image , int sx 
         this->questCompleteMessage = "";
 }
 
-NPCWithDialogueAndQuest::~NPCWithDialogueAndQuest(){
+NPCWithDialogueAndQuestWithItemReward::~NPCWithDialogueAndQuestWithItemReward(){
 
 }
 
-void NPCWithDialogueAndQuest::loadQuest(Quest *quest){
+void NPCWithDialogueAndQuestWithItemReward::loadQuest(Quest *quest){
 
     this->quest = quest;
 }
 
-void NPCWithDialogueAndQuest::setQuestExplanation(
+void NPCWithDialogueAndQuestWithItemReward::setQuestExplanation(
     std::string questExplanation){
     
         this->questExplanation = questExplanation;
 }
 
-void NPCWithDialogueAndQuest::setQuestReminder(
+void NPCWithDialogueAndQuestWithItemReward::setQuestReminder(
     std::string questReminderExplanation){
 
         this->questReminderExplanation = questReminderExplanation;
 }
     
-void NPCWithDialogueAndQuest::setQuestCompleteMessage(
+void NPCWithDialogueAndQuestWithItemReward::setQuestCompleteMessage(
     std::string questCompleteMessage){
 
         this->questCompleteMessage = questCompleteMessage;
 }
 
-void NPCWithDialogueAndQuest::setQuestAfterCompleteMessage(
+void NPCWithDialogueAndQuestWithItemReward::setQuestAfterCompleteMessage(
     std::string questAfterCompleteMessage){
 
         this->questAfterCompleteMessage = questAfterCompleteMessage;
 }
 
-void NPCWithDialogueAndQuest::playCutscene(int pressedKey){
+void NPCWithDialogueAndQuestWithItemReward::setAmountGained(int amount){
+    
+    amountGained = amount;
+}
+
+void NPCWithDialogueAndQuestWithItemReward::setItemReward(std::string itemReward){
+
+    this->reward = itemReward;
+}
+
+void NPCWithDialogueAndQuestWithItemReward::playCutscene(int pressedKey){
 
     if(!quest->isActiveForPlayer()){
 
@@ -76,10 +87,10 @@ void NPCWithDialogueAndQuest::playCutscene(int pressedKey){
         deliverGift->setText(questCompleteMessage);
         this->drawRepository->loadCutscene(deliverGift);
 
-        RewardAbility *rewardAbility = new RewardAbility(gameManager , font ,
-            playerToReward , playerEntity->getThePlayers() , reward);
-        rewardAbility->setText(rewardNotification);
-        this->drawRepository->loadCutscene(rewardAbility);
+        RewardItem *rewardItem = new RewardItem(
+            gameManager , font , reward , amountGained);
+        rewardItem->setText(rewardNotification);
+        this->drawRepository->loadCutscene(rewardItem);
 
         quest->makeInactiveForPlayer();
         quest->removeQuestItemsFromBackPack();

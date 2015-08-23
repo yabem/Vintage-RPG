@@ -17,10 +17,10 @@ NPCWithDialogueAndGift::~NPCWithDialogueAndGift(){
 }
 
 void NPCWithDialogueAndGift::setGift(std::string playerToReward ,
-    std::string abilityToReward){
+    std::string reward){
 
         this->playerToReward = playerToReward;
-        this->abilityToReward = abilityToReward;
+        this->reward = reward;
 }
 
 void NPCWithDialogueAndGift::setMessageAfterGiftDelivery(
@@ -44,7 +44,7 @@ void NPCWithDialogueAndGift::playCutscene(int pressedKey){
         this->drawRepository->loadCutscene(cutscene);
 
         RewardAbility *rewardAbility = new RewardAbility(gameManager , font ,
-            playerToReward , playerEntity->getThePlayers() , abilityToReward);
+            playerToReward , playerEntity->getThePlayers() , reward);
         rewardAbility->setText(rewardNotification);
         this->drawRepository->loadCutscene(rewardAbility);
 
