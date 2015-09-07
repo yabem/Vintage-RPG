@@ -5,6 +5,8 @@ NorthernSnow::NorthernSnow(ImageStore *imageStore ,  DrawRepository *drawReposit
         GameManager *gameManager , BattleManager *battleManager , FontStore *fontStore ,
         int layoutSize) : CustomAreaMap(imageStore , drawRepository , gameManager , 
         battleManager , fontStore , layoutSize){
+
+            mapMusic = "Dreamy Flashback";
 }
 
 //Destructor.
@@ -14,13 +16,18 @@ NorthernSnow::~NorthernSnow(){
 //Loads the enemies and level ranges for the map.
 void NorthernSnow::loadMapEnemies(){
 
+    //Easy
     this->listOfEnemies.push_back(ICE_CUBE);
     this->listOfEnemies.push_back(WALRUS);
+    
+    //Medium
     this->listOfEnemies.push_back(CARROT_RAT);
     this->listOfEnemies.push_back(OLDMAN_AXE);
+    
+    //Hard
     this->listOfEnemies.push_back(RED_REAPER);
 
-    this->loadEnemyLevelRange(3 , 5);
+    this->loadEnemyLevelRange(5 , 7);
 }
 
 //Loads all the cloud Scenery objects.
@@ -46,9 +53,9 @@ void NorthernSnow::loadTheSceneries(){
 void NorthernSnow::loadTheTangibles(){
 
     //Ice Bull quest.
-    std::string identifierName = "iceBull"; //Used when deleting the Tangible once the fight is over.
+    std::string identifierName = "Ice Bull"; //Used when deleting the Tangible once the fight is over.
 
-    NPCWithDialogueThenBattle *iceBull = new NPCWithDialogueThenBattle(imageStore->getBitMap("iceBull") ,
+    NPCWithDialogueThenBattle *iceBull = new NPCWithDialogueThenBattle(imageStore->getBitMap("Ice Bull") ,
         Conversion::convertTilesToPixels(20) , 
         Conversion::convertTilesToPixels(20) ,        
         this->drawRepository ,
@@ -59,6 +66,7 @@ void NorthernSnow::loadTheTangibles(){
 
     iceBull->createCharacter(130 , 78 , 60 , 1 , 4 , this);
     iceBull->setIdentifierName(identifierName);
+    iceBull->setMusic("Split In Synapse");
 
     std::vector<int> enemies;
     enemies.push_back(RAT);
@@ -66,17 +74,17 @@ void NorthernSnow::loadTheTangibles(){
     enemies.push_back(RAT);
 
     std::vector<int> enemyLevels;
-    enemyLevels.push_back(5);
     enemyLevels.push_back(7);
-    enemyLevels.push_back(5);
+    enemyLevels.push_back(7);
+    enemyLevels.push_back(7);
 
     iceBull->loadEnemies(enemies , enemyLevels);
 
-    //Snowman quest.
+    //Red Vampire quest.
     NPCWithDialogueAndQuest *wanderer = new NPCWithDialogueAndQuest(
         imageStore->getBitMap("npcRedVampire") ,
-        Conversion::convertTilesToPixels(37) , 
-        Conversion::convertTilesToPixels(6) ,
+        Conversion::convertTilesToPixels(39) , 
+        Conversion::convertTilesToPixels(43) ,
         this->drawRepository ,
         this->gameManager ,
         this->fontStore->getFont("default") ,
@@ -102,9 +110,9 @@ void NorthernSnow::loadTheTangibles(){
 
     KillQuest *killTask = new KillQuest();
     killTask->setQuestDisplayName("Cleanse the North");
-    killTask->addObjective("walrus" , 4);
-    killTask->addObjective("iceCube" , 4);
-    killTask->addObjective("carrotRat" , 4);
+    killTask->addObjective("Walrus" , 2);
+    killTask->addObjective("Ice Cube" , 2);
+    killTask->addObjective("Carrot Rat" , 3);
     killTask->setMustBeActiveForPlayerToUpdate();
     wanderer->loadQuest(killTask);
     gameManager->getPlayerEntity()->addQuest("cleanseTheNorth" , killTask);
@@ -140,7 +148,7 @@ void NorthernSnow::loadTheTangibles(){
         );
     KillQuest *killIceBull= new KillQuest();
     killIceBull->setQuestDisplayName("The Bully of the North");
-    killIceBull->addObjective("iceBull" , 1);
+    killIceBull->addObjective("Ice Bull" , 1);
     jonWinter->loadQuest(killIceBull);
     gameManager->getPlayerEntity()->addQuest("iceBullQuest" , killIceBull);
 

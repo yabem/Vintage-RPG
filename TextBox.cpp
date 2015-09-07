@@ -50,40 +50,53 @@ TextBox::~TextBox(){
 //Find the number of rows based on the length of the text.
 void TextBox::formatText(){
 
-    int countRows = -1;
-    int countChars = 0;
-    std::string partial;
+    std::string textLine = "";
+    std::string nextWord = "";
 
-    if(text == "")
+    if(text == ""){
+
         return;
+    }
 
     else{
 
         std::string::iterator it = text.begin();
 
         for(int i = 0 ; it != text.end() ; it++){
-            
-            countChars++;
-            int pixelWidthInLine = al_get_text_width(font ,
-                (char*)partial.c_str());
-            partial.push_back(*it);
 
-            //Insert full row of text.
-            if(pixelWidthInLine > (SCREEN_W - SCREEN_TEXT_WIDTH_BUFFER) &&
-                *it == ' '){
-                formattedText.push_back(partial);
+            //Add next character to the word.
+            nextWord.push_back(*it);
 
-                partial.clear();
-                countChars = 0;
+            //End of word or end of passage.
+            if(*it == ' ' || (it + 1) == text.end()){
+
+                //Check to see if the next word added will make the text line wider than the allowable on the screen.
+                if(((al_get_text_width(font , (char*)textLine.c_str()) + al_get_text_width(font , (char*)nextWord.c_str())) > (SCREEN_W - FONT_WIDTH))){
+
+                    //No more room on the line so add the line to formattedText.
+                    formattedText.push_back(textLine);
+                    textLine.clear();
+                }
+
+                //Add the next word to the line.
+                std::string::iterator wordIter = nextWord.begin();
+                
+                while(wordIter != nextWord.end()){
+
+                    textLine.push_back(*wordIter);
+                    wordIter++;
+                }
+
+                nextWord.clear();
+
+                //Add the remaining text if it's the end of the passage.
+                if((it + 1) == text.end()){
+
+                    formattedText.push_back(textLine);
+                    textLine.clear();
+                }
             }
         }
-
-        //Insert remaining row of text.
-        formattedText.push_back(partial);
-        partial.clear();
-
-        //Add part to put in an another vector so when there's multiple 
-        //screens of text it will cycle through.
     }
 }
 

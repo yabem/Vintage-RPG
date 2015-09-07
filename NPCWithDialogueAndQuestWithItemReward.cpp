@@ -94,7 +94,7 @@ void NPCWithDialogueAndQuestWithItemReward::playCutscene(int pressedKey){
 
         quest->makeInactiveForPlayer();
         quest->removeQuestItemsFromBackPack();
-        quest->completedByPlayer();
+        quest->makeTurnedInByPlayer();
         giftDelivered = true;
     }
 

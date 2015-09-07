@@ -6,6 +6,8 @@ HomeTown::HomeTown(ImageStore *imageStore , DrawRepository *drawRepository ,
         FontStore *fontStore , int layoutSize) : 
             CustomAreaMap(imageStore , drawRepository , gameManager , 
             battleManager , fontStore , layoutSize){
+
+                mapMusic = "Enchanted Valley";
 }
 
 //Destructor.
@@ -60,48 +62,6 @@ void HomeTown::loadTheSceneries(){
 
 void HomeTown::loadTheTangibles(){
 
-
-///////test/////////
-    std::string npcName = "fireWall";
-    NPCWithQuestAndRemoval *magicalBarrier = new NPCWithQuestAndRemoval(
-        imageStore->getBitMap("npcFirewall") ,
-        Conversion::convertTilesToPixels(25) , 
-        Conversion::convertTilesToPixels(25) ,
-        this->drawRepository ,
-        this->gameManager ,
-        this->fontStore->getFont("default") ,
-        this->gameManager->getPlayerEntity(),
-        npcName
-        );
-    magicalBarrier->createCharacter(300 , 190 , 60 , 2 , 4 , this);
-    magicalBarrier->setIdentifierName(npcName);
-    magicalBarrier->setCW(300);
-    magicalBarrier->setCH(190);
-    magicalBarrier->setCharacterFacing(UP);
-    magicalBarrier->setQuestExplanation(
-        "Magical Barrier: I am a magic firewall. I've been summoned from " 
-        "my home by that huge guy right there. I'd gladly leave but I can't "
-        "go back to my kids empty handed. They'll be super dissapointed. Get "
-        "me a Guardian Collar, a Blob King Crown, a Demon Jewel, and a fancy "
-        "pair of Ice Bull Horns and I'll gladly let you pass.");
-    magicalBarrier->setQuestReminder(
-        "Magical Barrier: She gives me money, when I'm in neeeeeeeeeeeed.... ");
-    magicalBarrier->setQuestCompleteMessage(
-        "Magical Barrier: Wow, the kids are going to LOVE this swag. Thanks dude!");
-    magicalBarrier->setRewardNotification(
-        "The barrier magically dissipates and the path forward is revealed!");
-
-    GatherQuest *magicalBarrierObjectives = new GatherQuest(
-        gameManager->getPlayerEntity()->getPlayerInventory());
-    magicalBarrierObjectives->setQuestDisplayName("So this a Firewall?");
-    magicalBarrierObjectives->addObjective("Guardian Collar" , 1);
-    magicalBarrierObjectives->addObjective("Blob King Crown" , 1);
-    magicalBarrierObjectives->addObjective("Demon Jewel" , 1);
-    magicalBarrierObjectives->addObjective("Ice Bull Horns" , 1);
-    magicalBarrier->loadQuest(magicalBarrierObjectives);
-    gameManager->getPlayerEntity()->addQuest("soThisIsAFirewall?" , magicalBarrierObjectives);
-///////test/////////
-
     NPCWithDialogue *talkingRock = new NPCWithDialogue(
         imageStore->getBitMap("rock") ,
         Conversion::convertTilesToPixels(26) , 
@@ -136,9 +96,11 @@ void HomeTown::loadTheTangibles(){
         "but be careful going outside because there are tons of monsters. Lucky for you, "
         "you already have formidible weapons. Now you just need to be able to heal "
         "yourself. Search around the town. Talk to people. Open treasure chests. Search "
-        "barrels. I'm sure you'll find a healing spell for everyone somewhere in town." ,
+        "barrels. I'm sure you'll find a healing spell for everyone somewhere in town. Oh,"
+        "word around the water cooler is that, a mage was trapped in a barrel somewhere to the "
+        "eastern castle area. I bet if you find him he'd have something powerful for you!" ,
         this->fontStore->getFont("default"));
-    teacher->createCharacter(32 , 32 , 90 , 2 , 4 , this);
+    teacher->createCharacter(32 , 32 , 15 , 2 , 4 , this);
     teacher->setCW(32);
     teacher->setCH(32);
     teacher->setCharacterFacing(DOWN);
@@ -205,7 +167,9 @@ void HomeTown::loadTheTangibles(){
         Conversion::convertTilesToPixels(4) ,        
         this->drawRepository ,
         this->gameManager , 
-        "Witch: There are some extreme seasons in this country." ,
+        "Witch: There are some extreme seasons in this country. Oh, by the way "
+        "I hear there was a magical spotted mushroom in the North, be on the lookout for "
+        "it in your journeys.",
         this->fontStore->getFont("default"));
     witch->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     witch->setCW(32);
@@ -217,7 +181,9 @@ void HomeTown::loadTheTangibles(){
         Conversion::convertTilesToPixels(33) , 
         Conversion::convertTilesToPixels(36) ,        
         this->drawRepository ,
-        this->gameManager , "Old Man: This wind is really killing my hair.",
+        this->gameManager , "Old Man: This wind is really killing my hair. Anyway, legend has it that "
+        "there's a talking red pepper somewhere in the southwestern part of the forest. "
+        "I've never seen it but how great that would be if it existed!",
         this->fontStore->getFont("default"));
     oldMan->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     oldMan->setCW(32);
@@ -233,7 +199,9 @@ void HomeTown::loadTheTangibles(){
         "Clod: In battle, you won't have any MP. The skills and spells will have a "
         "recover time. Some skills will do less damage but let you recover faster. "
         "Others will do tons of damage but you'll need to wait a lot longer to use "
-        "another ability.",
+        "another ability. Before I forget, make sure you search the tombstones "
+        "in the graveyard to the west. People were saying there was a ghost that was "
+        "looking for help. Maybe you could help it out!",
         this->fontStore->getFont("default"));
     clod->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     clod->setCW(32);
@@ -268,6 +236,7 @@ void HomeTown::loadTheTangibles(){
     strifeTheQuestGiver->setQuestAfterCompleteMessage(
         "Strife: The soup turned out great. Thanks for the eyeballs."
         );
+    strifeTheQuestGiver->setIdentifierName("strife");
 
     GatherQuest *strifeQuestObjectives = new GatherQuest(
         gameManager->getPlayerEntity()->getPlayerInventory());
@@ -325,10 +294,7 @@ void HomeTown::loadTheTangibles(){
     this->loadTangible(oldMan);
     this->loadTangible(clod);
     this->loadTangible(strifeTheQuestGiver);
-    this->loadTangible(friendlyGentlemanQuestGiver);
-
-    //Test
-    this->loadTangible(magicalBarrier);   
+    this->loadTangible(friendlyGentlemanQuestGiver); 
 }
 
 //Loads all the layers to the areaMap.

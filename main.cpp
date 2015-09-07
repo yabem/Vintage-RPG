@@ -5,6 +5,8 @@
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_image.h>
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
 #include <vector>
 #include <queue>
 #include "Controls.h"
@@ -48,35 +50,32 @@
 #include "InsideCastleBattle.h"
 #include "LoadExitsForCastle.h"
 #include "NorthernSnowBattle.h"
-#include "ShowActiveQuestLog.h"
-#include "ShowCompletedQuestLog.h"
-#include "ShowInventory.h"
-#include "ShowPartyStatus.h"
 #include "StatsByLevelStore.h"
+#include "MusicBox.h"
+#include "ProcessPlayerInput.h"
+#include "GameInitialization.h"
+#include "EndGameWithCredits.h"
 
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
 
 //To do:
-//add music
-//Finish stats so that the enemies are hard.
-//Finish ability stats so they scale well
-//Look at adding status effects?
-//Add final boss that requires items from each boss to fight
-//Create credits
-//figure out a better way to display questobjectives for kill quests
-//Make controls a class
-//Make tangible collision better so you can't go through objects.
-//Clean up main
-//Fix bug with completing a quest.
+//Give clues about secret quests.
+
 
 //Tiles taken from http://opengameart.org/content/tiled-terrains
+//Tile editor http://tilestudio.sourceforge.net/
 //More tiles taken from http://opengameart.org/content/lpc-tile-atlas
 //Images taken from http://rpg.hamsterrepublic.com/ohrrpgce/Free_Sprites
 //Fireblast taken from http://opengameart.org/content/fire-blast
 //Lightning http://opengameart.org/content/painterly-spell-icons-part-2
-#define ttfaddon
+//Music http://incompetech.com/music/royalty-free/index.html?collection=045&Search=Search
+//Music Metaphysik http://incompetech.com/music/royalty-free/index.html?collection=035&Search=Search
+//Music Split Synapse, Mistake the Gateway, Alchemists Tower http://incompetech.com/music/royalty-free/index.html?collection=033&page=1
+
+//#define DISPLAY_COORDINATES
+//#define Q_FOR_BATTLE
 
 int checkInit();
 void displayVariables(ALLEGRO_FONT *theFont ,
@@ -92,7 +91,7 @@ int main(int argc, char **argv){
    ALLEGRO_DISPLAY *display = NULL;
    ALLEGRO_EVENT_QUEUE *event_queue = NULL;
    ALLEGRO_TIMER *timer = NULL;
-    
+   
    //List of all the keys.
    bool keys[11] = {false , false , false , false , false , false ,
        false, false , false , false , false};
@@ -108,17 +107,20 @@ int main(int argc, char **argv){
    if(!display)
        return -1;
  
-   al_init_primitives_addon();
-   event_queue = al_create_event_queue();
-   timer = al_create_timer(1.0 / FPS);
-   al_init_font_addon();
-
-#ifdef ttfaddon
-   al_init_ttf_addon();
-
-#endif 
-   
+    //Load addons
+    al_init_primitives_addon();
+    al_init_font_addon();
+    al_init_ttf_addon();
     al_init_image_addon();
+    al_install_audio();
+    al_init_acodec_addon();
+
+    event_queue = al_create_event_queue();
+    timer = al_create_timer(1.0 / FPS);
+
+    MusicBox musicBox;
+    musicBox.loadAllSongs();
+    musicBox.playSong("Moonlight Hall");
 
     al_register_event_source(event_queue, al_get_display_event_source(display));
     al_register_event_source(event_queue, al_get_keyboard_event_source());
@@ -167,31 +169,31 @@ int main(int argc, char **argv){
     homeTownBar.loadDefaults();
 
     EasternCastleBattle easternCastleBattle(&imageStore , BATTLE_MAP_SIZE);
-    easternCastleBattle.loadDefaults();
+        easternCastleBattle.loadDefaults();
     
     NorthernSnow northernSnow(&imageStore , &drawRepository , &gameManager , 
         &battleManager , &fontStore , AREA_MAP_SIZE);
     northernSnow.loadDefaults();
 
     NorthernSnowBattle northernSnowBattle(&imageStore , BATTLE_MAP_SIZE);
-    northernSnowBattle.loadDefaults();
+        northernSnowBattle.loadDefaults();
 
     BattleTransitionScreen battleTransitionScreen(&imageStore);
-    battleTransitionScreen.loadDefaults();
+        battleTransitionScreen.loadDefaults();
 
     WesternDesert westernDesert(&imageStore , &drawRepository , &gameManager , 
         &battleManager , &fontStore , AREA_MAP_SIZE);
     westernDesert.loadDefaults();
 
     WesternDesertBattle westernDesertBattle(&imageStore , BATTLE_MAP_SIZE);
-    westernDesertBattle.loadDefaults();
+        westernDesertBattle.loadDefaults();
 
     SouthernForest southernForest(&imageStore , &drawRepository , &gameManager , 
         &battleManager , &fontStore , AREA_MAP_SIZE);
     southernForest.loadDefaults();
 
     SouthernForestBattle southernForestBattle(&imageStore , BATTLE_MAP_SIZE);
-    southernForestBattle.loadDefaults();
+        southernForestBattle.loadDefaults();
 
     EasternCastle easternCastle(&imageStore , &drawRepository , &gameManager , 
         &battleManager , &fontStore , AREA_MAP_SIZE);
@@ -202,8 +204,8 @@ int main(int argc, char **argv){
     insideCastle.loadDefaults();
 
     InsideCastleBattle insideCastleBattle(&imageStore , BATTLE_MAP_SIZE);
-    insideCastleBattle.loadDefaults();
-
+        insideCastleBattle.loadDefaults();
+    
     //Set battlemaps.
     homeTown.setBattleMap(&easternCastleBattle);
     northernSnow.setBattleMap(&northernSnowBattle);
@@ -217,6 +219,7 @@ int main(int argc, char **argv){
     gameManager.battleMap = &easternCastleBattle;
     gameManager.cutSceneMap = &battleTransitionScreen;
     gameManager.loadPlayers(playerEntity.getThePlayers());
+    gameManager.loadMusicBox(&musicBox);
 
     int cutsceneFrameCount = 0;  //For display.
     srand (time(NULL));  //Seed random
@@ -234,36 +237,8 @@ int main(int argc, char **argv){
     battleManager.loadGameManager(&gameManager);
     battleManager.loadCharacterManipulationStore(&characterManipulationStore);
 
-    battleManager.loadEnemyModel(imageStore.getBitMap("rat"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("wolf"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("soldier"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("iceBull"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("blobKing"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("guardian"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("demon"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("carrotRat"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("walrus"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("gooCube"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("iceCube"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("fireCube"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("shieldSkeleton"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("wererat"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("cactus"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("oldmanAxe"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("mushroomMan"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("zombie"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("babyBlob"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("sheep"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("kungfooDog"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("fangedFox"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("ninjaFox"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("redReaper"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("spider"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("spiderEgg"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("spiderWeb"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("tentacleMage"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("echidna"));
-    battleManager.loadEnemyModel(imageStore.getBitMap("umgarTheWorldDestroyer"));
+    GameInitialization::loadAllEnemyModels(&battleManager , &imageStore);
+
     battleManager.loadDrawRepository(&drawRepository);
     battleManager.loadBackpack(playerEntity.getPlayerInventory());
     battleManager.loadFontStore(&fontStore);
@@ -271,14 +246,9 @@ int main(int argc, char **argv){
     gameManager.loadDrawRepository(&drawRepository);
 
     //Cutscenes
-    Intro *theIntro = new Intro(fontStore.getFont("default") , &imageStore); 
-    theIntro->loadBackground();
-    Instruct *theInstruct = new Instruct(fontStore.getFont("default"));
+    GameInitialization::loadIntro(&gameManager , &drawRepository , &fontStore , &imageStore);
 
-    drawRepository.loadCutscene(theIntro);   
-    drawRepository.loadCutscene(theInstruct);
-
-    //Initialize starting position.
+    //Load all the map exits
     LoadExitsForHomeTown::LoadExitsForHomeTown(&homeTown , &homeTownShop , &homeTownArmory , &homeTownBar ,
         &northernSnow , &westernDesert , &easternCastle , &southernForest);
     LoadExitsForHomeTownShop::LoadExitsForHomeTownShop(&homeTownShop , &homeTown);
@@ -375,37 +345,8 @@ int main(int argc, char **argv){
                 Collision::characterToAreaMap(*gameManager.player ,
                     gameManager.currMap , &gameManager);
             
-                //Display active quest log.
-                if(gameManager.getPressedKey() == L){
-                    ShowActiveQuestLog *showActiveQuestLog = new 
-                        ShowActiveQuestLog(&gameManager , &playerEntity);
-                    drawRepository.loadCutscene(showActiveQuestLog);
-                    gameManager.resetPressedKey();
-                }
-
-                //Display completed quest log.
-                if(gameManager.getPressedKey() == O){
-                    ShowCompletedQuestLog *showCompletedQuestLog = new 
-                        ShowCompletedQuestLog(&gameManager , &playerEntity);
-                    drawRepository.loadCutscene(showCompletedQuestLog);
-                    gameManager.resetPressedKey();
-                }
-
-                //Display player inventory.
-                if(gameManager.getPressedKey() == I){
-                    ShowInventory *showInvenory= new 
-                        ShowInventory(&gameManager , &playerEntity);
-                    drawRepository.loadCutscene(showInvenory);
-                    gameManager.resetPressedKey();
-                }
-
-                //Display party statuses.
-                if(gameManager.getPressedKey() == U){
-                    ShowPartyStatus *showPartyStatus= new 
-                        ShowPartyStatus(&gameManager , &playerEntity);
-                    drawRepository.loadCutscene(showPartyStatus);
-                    gameManager.resetPressedKey();
-                }
+                ProcessPlayerInput::processPlayerInput(&gameManager , 
+                    &playerEntity , &drawRepository);
 
                 //Move the player on the map.
                 Movement::moveMap(*gameManager.player , *gameManager.currMap ,
@@ -417,25 +358,25 @@ int main(int argc, char **argv){
                 //Animate the sceneries. 
                 gameManager.currMap->animateSceneries();
 
+#ifdef Q_FOR_BATTLE
                 //Force a battle for testing.
                 if(gameManager.getPressedKey() == Q){
                     battleManager.initializeBattle();
                 }
-
+#endif
                 //Draw map.
                 Draw::drawArea(*gameManager.currMap , *gameManager.player);
  
                 //Show variables.
                 
-#ifdef ttfaddon
+#ifdef DISPLAY_COORDINATES
                 displayVariables(fontStore.getFont("default") ,
                     fontStore.getFont("shadowFont"),
                     gameManager.getPressedKey() , gameManager.player ,
                     gameManager.currMap->getLayer(CENTERGROUND));
                 al_draw_textf(fontStore.getFont("default"),
                     al_map_rgb(0, 0, 0), 500, 310, 0, 
-                    "Cutscn count: %i" , cutsceneFrameCount);
-                    
+                    "Cutscn count: %i" , cutsceneFrameCount);   
 #endif
                     
         }

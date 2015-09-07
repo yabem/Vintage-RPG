@@ -36,5 +36,9 @@ void NPCWithDialogueThenBattle::playCutscene(int pressedKey){
         this->nameOfNPC);
     this->drawRepository->loadCutscene(removeTangible);
 
+    PlayMusic *playMusic = new PlayMusic(gameManager , 
+        this->nameOfSongForMusicChange);
+    this->drawRepository->loadCutscene(playMusic);
+
     gameManager->resetPressedKey();
 }

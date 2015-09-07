@@ -196,7 +196,8 @@ void ChainLightning::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void ChainLightning::calculateDamage(){
 
-    damageToReceiver = DamageCalculations::damageWithoutDelay(initiator, receiver);
+    damageToReceiver = DamageCalculations::damageWithDelayMgc(
+        initiator, receiver , 2 , 1.5);
 }
 
 //Sets the draw to spell location.

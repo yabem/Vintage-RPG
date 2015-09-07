@@ -10,6 +10,8 @@
 #include "Conversion.h"
 #include "NPCWithDialogueAndQuest.h"
 #include "NPCWithDialogueAndQuestWithItemReward.h"
+#include "NPCWithQuestAndRemoval.h"
+#include "NPCWithDialogueThenCutscene.h"
 #include "GatherQuest.h"
 
 class GameManager;

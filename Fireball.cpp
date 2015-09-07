@@ -145,8 +145,8 @@ void Fireball::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void Fireball::calculateDamage(){
 
-    damageToReceiver = DamageCalculations::damageWithDelay(
-        initiator , receiver , 1.8 , 2.16);
+    damageToReceiver = DamageCalculations::damageWithDelayMgc(
+        initiator , receiver , 1.56 , 1.25);
 }
 
 //Sets the draw to spell location.

@@ -139,7 +139,7 @@ void Lance::loadAnimations(){
 void Lance::calculateDamage(){
 
     //Get attack and defense for calculation.
-    damageToReceiver = DamageCalculations::damageWithoutDelay(initiator, receiver);
+    damageToReceiver = DamageCalculations::damageWithoutDelayAtk(initiator, receiver);
 }
 
 //Sets the draw to spell location.

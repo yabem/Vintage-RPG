@@ -571,6 +571,18 @@
     <Filter Include="Header Files\Character\CharacterManipulation\Derived Class\Thief">
       <UniqueIdentifier>{1c8c9448-af8a-45d7-949a-1b9c6591add8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\MusicBox">
+      <UniqueIdentifier>{dad17251-2a00-44ed-96d0-827e9568cf6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MusicBox">
+      <UniqueIdentifier>{8eb553fb-f6a3-431c-96db-446a0d3dec66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueThenCutscene">
+      <UniqueIdentifier>{b77f1cf5-3c41-4cc6-b8ef-b9d737d2af2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueThenCutscene">
+      <UniqueIdentifier>{a2ecb9ee-c9a9-4a93-894a-602d220d1677}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -1064,6 +1076,24 @@
     </ClCompile>
     <ClCompile Include="NPCWithQuestAndRemoval.cpp">
       <Filter>Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicBox.cpp">
+      <Filter>Source Files\MusicBox</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayMusic.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessPlayerInput.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="GameInitialization.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="EndGameWithCredits.cpp">
+      <Filter>Source Files\Cutscene\Derived Class</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCWithDialogueThenCutscene.cpp">
+      <Filter>Source Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueThenCutscene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1564,6 +1594,24 @@
     </ClInclude>
     <ClInclude Include="NPCWithQuestAndRemoval.h">
       <Filter>Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueAndGift\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicBox.h">
+      <Filter>Header Files\MusicBox</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayMusic.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessPlayerInput.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="GameInitialization.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="EndGameWithCredits.h">
+      <Filter>Header Files\Cutscene\Derived Class</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCWithDialogueThenCutscene.h">
+      <Filter>Header Files\Tangible\Derived Class\NPCWithDialogue\Derived Class\NPCWithDialogueThenCutscene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 
 KillQuest::KillQuest(){
 
+    this->_isTurnedInByPlayer = false;
     this->_isCompletedByPlayer = false;
     this->_isActiveForPlayer = false;
     this->_mustBeActiveForPlayerToUpdate = false;
@@ -11,6 +12,16 @@ KillQuest::KillQuest(){
 KillQuest::~KillQuest(){
 
     emptyObjectives();
+}
+
+bool KillQuest::isTurnedInByPlayer(){
+    
+    return _isTurnedInByPlayer;
+}
+
+void KillQuest::makeTurnedInByPlayer(){
+
+    _isTurnedInByPlayer = true;
 }
 
 bool KillQuest::completedByPlayer(){

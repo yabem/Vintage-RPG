@@ -191,7 +191,8 @@ void FuryOfTheFang::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void FuryOfTheFang::calculateDamage(){
 
-    damageToReceiver = DamageCalculations::damageWithoutDelay(initiator, receiver);
+    damageToReceiver = DamageCalculations::damageWithDelayAtk(
+        initiator, receiver , 5 , 2.5);
 }
 
 //Sets the draw to spell location.

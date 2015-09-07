@@ -64,7 +64,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>c:\allegro\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);allegro-5.0.10-monolith-mt.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);allegro-5.0.10-monolith-md.lib</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -81,6 +82,7 @@
     <ClCompile Include="DrawTextWithBorder.cpp" />
     <ClCompile Include="EarthShatter.cpp" />
     <ClCompile Include="EasternCastle.cpp" />
+    <ClCompile Include="EndGameWithCredits.cpp" />
     <ClCompile Include="FallingImage.cpp" />
     <ClCompile Include="FilterImage.cpp" />
     <ClCompile Include="FlashingImage.cpp" />
@@ -88,6 +90,7 @@
     <ClCompile Include="BattleTrans.cpp" />
     <ClCompile Include="BattleVictory.cpp" />
     <ClCompile Include="FuryOfTheFang.cpp" />
+    <ClCompile Include="GameInitialization.cpp" />
     <ClCompile Include="GatherQuest.cpp" />
     <ClCompile Include="Headbutt.cpp" />
     <ClCompile Include="HealingActions.cpp" />
@@ -107,8 +110,12 @@
     <ClCompile Include="LoadExitsForCastle.cpp" />
     <ClCompile Include="LoadExitsForHomeTownArmory.cpp" />
     <ClCompile Include="LoadExitsForHomeTownBar.cpp" />
+    <ClCompile Include="MusicBox.cpp" />
     <ClCompile Include="NPCWithDialogueAndQuestWithItemReward.cpp" />
+    <ClCompile Include="NPCWithDialogueThenCutscene.cpp" />
     <ClCompile Include="NPCWithQuestAndRemoval.cpp" />
+    <ClCompile Include="PlayMusic.cpp" />
+    <ClCompile Include="ProcessPlayerInput.cpp" />
     <ClCompile Include="ReignOfWinter.cpp" />
     <ClCompile Include="RewardItem.cpp" />
     <ClCompile Include="ShadeOfTheCrescent.cpp" />
@@ -248,6 +255,7 @@
     <ClInclude Include="DUMMY.h" />
     <ClInclude Include="EarthShatter.h" />
     <ClInclude Include="EasternCastle.h" />
+    <ClInclude Include="EndGameWithCredits.h" />
     <ClInclude Include="FilterImage.h" />
     <ClInclude Include="FlashingImage.h" />
     <ClInclude Include="FontColorSettings.h" />
@@ -258,6 +266,7 @@
     <ClInclude Include="HomeTownArmory.h" />
     <ClInclude Include="HomeTownBar.h" />
     <ClInclude Include="InfoTable.h" />
+    <ClInclude Include="GameInitialization.h" />
     <ClInclude Include="InsideCastle.h" />
     <ClInclude Include="InsideCastleBattle.h" />
     <ClInclude Include="ItemLocationWithGift.h" />
@@ -268,10 +277,14 @@
     <ClInclude Include="LoadExitsForCastle.h" />
     <ClInclude Include="LoadExitsForHomeTownArmory.h" />
     <ClInclude Include="LoadExitsForHomeTownBar.h" />
+    <ClInclude Include="MusicBox.h" />
     <ClInclude Include="NPCWithDialogueAndGift.h" />
     <ClInclude Include="NPCWithDialogueAndQuest.h" />
     <ClInclude Include="NPCWithDialogueAndQuestWithItemReward.h" />
+    <ClInclude Include="NPCWithDialogueThenCutscene.h" />
     <ClInclude Include="NPCWithQuestAndRemoval.h" />
+    <ClInclude Include="PlayMusic.h" />
+    <ClInclude Include="ProcessPlayerInput.h" />
     <ClInclude Include="Quest.h" />
     <ClInclude Include="QuestLog.h" />
     <ClInclude Include="ReignOfWinter.h" />

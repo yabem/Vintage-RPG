@@ -5,6 +5,7 @@
 #include "BattleManager.h"
 #include "StartBattle.h"
 #include "RemoveTangible.h"
+#include "PlayMusic.h"
 
 class NPCWithDialogueThenBattle : public NPCWithDialogue{
 

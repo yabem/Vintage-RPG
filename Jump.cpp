@@ -125,6 +125,6 @@ void Jump::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void Jump::calculateDamage(){
 
-    damageToReceiver = DamageCalculations::damageWithDelay(
-        initiator , receiver , 2.5 , 4);
+    damageToReceiver = DamageCalculations::damageWithDelayAtk(
+        initiator , receiver , 1.75 , 1.4);
 }

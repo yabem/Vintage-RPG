@@ -12,6 +12,9 @@
 #include "StatsByLevelStore.h"
 #include "LevelUpCalculations.h"
 
+//#define ALL_ABILITIES
+//#define MAX_LEVEL
+
 class PlayerEntity{
 
 private:

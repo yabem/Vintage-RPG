@@ -239,7 +239,8 @@ void ShadeOfTheCrescent::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void ShadeOfTheCrescent::calculateDamage(){
 
-    damageToReceiver = DamageCalculations::damageWithoutDelay(initiator, receiver);
+    damageToReceiver = DamageCalculations::damageWithDelayAtk(
+        initiator, receiver , 3.75 , 1.5);
 }
 
 //Sets the draw to spell location.

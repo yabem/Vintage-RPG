@@ -177,7 +177,8 @@ void KnifeBarrage::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void KnifeBarrage::calculateDamage(){
 
-    damageToReceiver = DamageCalculations::damageWithoutDelay(initiator, receiver);
+    damageToReceiver = DamageCalculations::damageWithDelayAtk(
+        initiator, receiver , 1.5 , .85);
 }
 
 //Sets the draw to spell location.

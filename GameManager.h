@@ -12,6 +12,7 @@
 #include "PlayerEntity.h"
 #include "Conversion.h"
 #include "StatsByLevelStore.h"
+#include "MusicBox.h"
 
 const int RESET_TIMER = 2000;
 const int BATTLE_TIMER = 100;   //Determines when a battle will take place.
@@ -24,6 +25,8 @@ private:
     DrawRepository *drawRepository;
     PlayerEntity *playerEntity;
     StatsByLevelStore *statsByLevelStore;
+
+    MusicBox *musicBox;
 
     //Determines when the gameloop exits.
     bool endOfGameLoop; 
@@ -100,6 +103,9 @@ public:
     //Loads the DrawRepository
     void loadDrawRepository(DrawRepository *drawRepository);
 
+    //Loads the MusicBox
+    void loadMusicBox(MusicBox *musicBox);
+
     //Loads the list of players.
     void loadPlayers(CharacterList *characterList);  
     
@@ -108,6 +114,12 @@ public:
 
     //Returns the pressedKey
     virtual int getPressedKey() const;
+
+    //Returns the prevMap.
+    virtual AreaMap* getPreviousMap();
+
+    //Returns the musicBox.
+    virtual MusicBox* getMusicBox();
 
     //Sets the pressedKey to inactive.
     virtual void setPressedKeyToInactive();

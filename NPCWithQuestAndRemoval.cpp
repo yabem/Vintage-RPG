@@ -77,7 +77,7 @@ void NPCWithQuestAndRemoval::playCutscene(int pressedKey){
 
         quest->makeInactiveForPlayer();
         quest->removeQuestItemsFromBackPack();
-        quest->completedByPlayer();
+        quest->makeTurnedInByPlayer();
 
         RemoveTangible *removeTangible = new RemoveTangible(this->gameManager ,
             this->nameOfNPC);

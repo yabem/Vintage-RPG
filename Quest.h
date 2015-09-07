@@ -13,6 +13,8 @@ public:
 
     Quest();
     virtual ~Quest();
+    virtual bool isTurnedInByPlayer() = 0;
+    virtual void makeTurnedInByPlayer() = 0;
     virtual bool completedByPlayer() = 0;
     virtual void makeCompletedByPlayer() = 0;
     virtual bool isActiveForPlayer() = 0;

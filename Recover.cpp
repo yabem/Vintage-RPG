@@ -69,7 +69,14 @@ void Recover::loadAnimations(){
 //Calculates the recovery amount.
 void Recover::calculateRecovery(){
 
-    //Get attack and defense for calculation.
-    this->recoveryAmount = receiver->getTtlHP() * 0.10;
+    //Revive if the receiver is dead.
+    if(receiver->isDead()){
+
+        receiver->makeAlive();
+        receiver->setFacing(LEFT);
+    }
+
+    //Get recover amount
+    this->recoveryAmount = receiver->getTtlHP() * 0.20;
 }
 

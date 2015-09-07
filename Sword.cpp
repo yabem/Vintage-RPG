@@ -144,7 +144,7 @@ void Sword::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void Sword::calculateDamage(){
 
-    damageToReceiver = DamageCalculations::damageWithoutDelay(initiator, receiver);
+    damageToReceiver = DamageCalculations::damageWithoutDelayAtk(initiator, receiver);
 }
 
 //Sets the draw to spell location.

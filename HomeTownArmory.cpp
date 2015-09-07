@@ -52,7 +52,7 @@ void HomeTownArmory::loadTheTangibles(){
         Conversion::convertTilesToPixels(4) ,        
         this->drawRepository ,
         this->gameManager , 
-        "Joanna: Dickle punch with lightning! Oh yeah! Where's the music? What's a going on?" ,
+        "Joanna: Dickle punch with lightning! Oh yeah! Where am I? What's a going on?" ,
         this->fontStore->getFont("default"));
     joanna->createCharacter(32 , 32 , 60 , 2 , 4 , this);
     joanna->setCW(32);

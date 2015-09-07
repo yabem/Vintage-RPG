@@ -10,6 +10,7 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
 
+#include <string>
 #include <vector>
 #include "Layer.h"
 #include "GameConfig.h"
@@ -36,6 +37,8 @@ protected:
 
     AreaMap *battleMap;          //Map for the battles in this area.
 
+    std::string mapMusic;        //Music for the map.
+
     std::vector<int> listOfEnemies; //List of enemies for the map.
     int minEnemyLevel;              //Minimum level for the enemies.
     int maxEnemyLevel;              //Maximum level for the enemies.
@@ -54,6 +57,9 @@ public:
     int getExitDestR(int index) const; //Return the destination row of the indexed exit.
     int getExitDestC(int index) const; //Return the destination col of the indexed exit.
     bool removeTangible(std::string identifierName); //Removes the tangible that matches the name.
+
+    void setMapMusic(std::string mapMusic); //Sets the song for the map.
+    std::string getMapMusic();      //Gets the song for the map.
 
     AreaMap* getToMap(int index) const; //Return a pointer to the indexed exits destination map.   
     Layer& getLayer(int index) const;         //Return a reference to the indexed Layer.

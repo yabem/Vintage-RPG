@@ -19,7 +19,7 @@ namespace Collision{
     bool characterToLayer(Character &character , Layer &layer);
 
     //Check collisions between a character and a tangible.
-    int characterToTangible(Character &character , Tangible &tangible ,
+    bool characterToTangible(Character &character , Tangible &tangible ,
         GameManager *gameManager);
 
     //Check collisions between a character and an exit.

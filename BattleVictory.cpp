@@ -121,8 +121,7 @@ void BattleVictory::createVictoryMessage(){
     this->textBox = new TextBox(victoryMessage , font);
 }
 
-//Plays the battle victory. The cutscene switches back and forth
-//between the current map and a white background.
+//Plays the battle victory.
 bool BattleVictory::play(const int pressedKey){
     
     frameCount++;
@@ -155,6 +154,7 @@ bool BattleVictory::play(const int pressedKey){
             deletePlayers();
 
             i_Manager->switchVariablesToMap();
+            i_Manager->getMusicBox()->playSong(i_Manager->getPreviousMap()->getMapMusic());
             return true;
         }
     }

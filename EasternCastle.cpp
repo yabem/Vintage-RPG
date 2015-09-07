@@ -5,6 +5,8 @@ EasternCastle::EasternCastle(ImageStore *imageStore ,  DrawRepository *drawRepos
         GameManager *gameManager , BattleManager *battleManager , FontStore *fontStore ,
         int layoutSize) : CustomAreaMap(imageStore , drawRepository , gameManager , 
         battleManager , fontStore , layoutSize){
+
+            mapMusic = "Metaphysik";
 }
 
 //Destructor.
@@ -14,12 +16,18 @@ EasternCastle::~EasternCastle(){
 //Loads the enemies and level ranges for the map.
 void EasternCastle::loadMapEnemies(){
 
+    //Easy
     this->listOfEnemies.push_back(SOLDIER);
+    this->listOfEnemies.push_back(KUNGFOO_DOG);
+    
+    //Medium
     this->listOfEnemies.push_back(NINJA_FOX);
     this->listOfEnemies.push_back(FANGED_FOX);
+    
+    //Hard
     this->listOfEnemies.push_back(SHEEP);
 
-    this->loadEnemyLevelRange(3 , 5);
+    this->loadEnemyLevelRange(7 , 9);
 }
 
 //Loads all the cloud Scenery objects.
@@ -48,9 +56,9 @@ void EasternCastle::loadTheSceneries(){
 //Load the interactive models.
 void EasternCastle::loadTheTangibles(){
 
-    std::string identifierName = "guardian"; //Used when deleting the Tangible once the fight is over.
+    std::string identifierName = "Guardian"; //Used when deleting the Tangible once the fight is over.
 
-    NPCWithDialogueThenBattle *guardian = new NPCWithDialogueThenBattle(imageStore->getBitMap("guardian") ,
+    NPCWithDialogueThenBattle *guardian = new NPCWithDialogueThenBattle(imageStore->getBitMap("Guardian") ,
         Conversion::convertTilesToPixels(18) , 
         Conversion::convertTilesToPixels(42) ,        
         this->drawRepository ,
@@ -61,6 +69,7 @@ void EasternCastle::loadTheTangibles(){
 
     guardian->createCharacter(160 , 80 , 60 , 1 , 4 , this);
     guardian->setIdentifierName(identifierName);
+    guardian->setMusic("Split In Synapse");
 
     std::vector<int> enemies;
     enemies.push_back(RAT);
@@ -68,17 +77,17 @@ void EasternCastle::loadTheTangibles(){
     enemies.push_back(RAT);
 
     std::vector<int> enemyLevels;
-    enemyLevels.push_back(5);
-    enemyLevels.push_back(7);
-    enemyLevels.push_back(5);
+    enemyLevels.push_back(9);
+    enemyLevels.push_back(9);
+    enemyLevels.push_back(9);
 
     guardian->loadEnemies(enemies , enemyLevels);
 
-    //Explorer quest.
+    //Eyepatch Cat quest.
     NPCWithDialogueAndQuest *escapedPrisoner = new NPCWithDialogueAndQuest(
         imageStore->getBitMap("npcEyepatchCat") ,
-        Conversion::convertTilesToPixels(33) , 
-        Conversion::convertTilesToPixels(14) ,
+        Conversion::convertTilesToPixels(3) , 
+        Conversion::convertTilesToPixels(28) ,
         this->drawRepository ,
         this->gameManager ,
         this->fontStore->getFont("default") ,
@@ -107,9 +116,9 @@ void EasternCastle::loadTheTangibles(){
 
     KillQuest *killTask = new KillQuest();
     killTask->setQuestDisplayName("Security Breach");
-    killTask->addObjective("soldier" , 6);
-    killTask->addObjective("ninjaFox" , 6);
-    killTask->addObjective("fangedFox" , 6);
+    killTask->addObjective("Soldier" , 2);
+    killTask->addObjective("Ninja Fox" , 2);
+    killTask->addObjective("Fanged Fox" , 4);
     killTask->setMustBeActiveForPlayerToUpdate();
     escapedPrisoner->loadQuest(killTask);
     gameManager->getPlayerEntity()->addQuest("securityBreach" , killTask);
@@ -144,7 +153,7 @@ void EasternCastle::loadTheTangibles(){
         );
     KillQuest *killLargeDog= new KillQuest();
     killLargeDog->setQuestDisplayName("Guardian of the Castlealaxy");
-    killLargeDog->addObjective("guardian" , 1);
+    killLargeDog->addObjective("Guardian" , 1);
     jomk->loadQuest(killLargeDog);
     gameManager->getPlayerEntity()->addQuest("guardianOfTheCastlealaxy" , killLargeDog);
 

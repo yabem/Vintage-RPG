@@ -6,8 +6,16 @@
 
 namespace DamageCalculations{
 
-    int damageWithoutDelay(Character *initiator , Character *receiver);
+    int damageWithoutDelayAtk(Character *initiator , Character *receiver);
 
-    int damageWithDelay(Character *initiator , Character *receiver,
+    int damageWithDelayAtk(Character *initiator , Character *receiver,
+        float damageMultiplier , float delayMultiplier);
+
+    int damageWithoutDelayMgc(Character *initiator , Character *receiver);
+
+    int damageWithDelayAtk(Character *initiator , Character *receiver,
+        float damageMultiplier , float delayMultiplier);
+
+    int damageWithDelayMgc(Character *initiator , Character *receiver,
         float damageMultiplier , float delayMultiplier);
 }

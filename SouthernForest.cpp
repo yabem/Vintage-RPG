@@ -5,6 +5,8 @@ SouthernForest::SouthernForest(ImageStore *imageStore ,  DrawRepository *drawRep
         GameManager *gameManager , BattleManager *battleManager , FontStore *fontStore ,
         int layoutSize) : CustomAreaMap(imageStore , drawRepository , gameManager , 
         battleManager , fontStore , layoutSize){
+
+            mapMusic = "Arcadia";
 }
 
 //Destructor.
@@ -14,13 +16,18 @@ SouthernForest::~SouthernForest(){
 //Loads the enemies and level ranges for the map.
 void SouthernForest::loadMapEnemies(){
 
-    this->listOfEnemies.push_back(WOLF);
+    //Easy
     this->listOfEnemies.push_back(WERERAT);
-    this->listOfEnemies.push_back(GOO_CUBE);
     this->listOfEnemies.push_back(BABY_BLOB);
+
+    //Medium
+    this->listOfEnemies.push_back(GOO_CUBE);
     this->listOfEnemies.push_back(MUSHROOM_MAN);
 
-    this->loadEnemyLevelRange(3 , 5);
+    //Hard
+    this->listOfEnemies.push_back(WOLF);
+
+    this->loadEnemyLevelRange(1 , 3);
 }
 
 //Loads all the cloud Scenery objects.
@@ -41,9 +48,9 @@ void SouthernForest::loadTheSceneries(){
 void SouthernForest::loadTheTangibles(){
 
     //Blob King quest.
-    std::string identifierName = "blobKing"; //Used when deleting the Tangible once the fight is over.
+    std::string identifierName = "Blob King"; //Used when deleting the Tangible once the fight is over.
 
-    NPCWithDialogueThenBattle *blobKing = new NPCWithDialogueThenBattle(imageStore->getBitMap("blobKing") ,
+    NPCWithDialogueThenBattle *blobKing = new NPCWithDialogueThenBattle(imageStore->getBitMap("Blob King") ,
         Conversion::convertTilesToPixels(25) , 
         Conversion::convertTilesToPixels(39) ,        
         this->drawRepository ,
@@ -54,24 +61,25 @@ void SouthernForest::loadTheTangibles(){
 
     blobKing->createCharacter(160 , 80 , 60 , 1 , 4 , this);
     blobKing->setIdentifierName(identifierName);
+    blobKing->setMusic("Split In Synapse");
 
     std::vector<int> enemies;
-    enemies.push_back(RAT);
+    enemies.push_back(WERERAT);
     enemies.push_back(BLOB_KING);
-    enemies.push_back(RAT);
+    enemies.push_back(WERERAT);
 
     std::vector<int> enemyLevels;
-    enemyLevels.push_back(5);
-    enemyLevels.push_back(7);
-    enemyLevels.push_back(5);
+    enemyLevels.push_back(3);
+    enemyLevels.push_back(3);
+    enemyLevels.push_back(3);
 
     blobKing->loadEnemies(enemies , enemyLevels);
 
-    //Forester quest.
+    //Horned Warrior quest.
     NPCWithDialogueAndQuest *forester = new NPCWithDialogueAndQuest(
         imageStore->getBitMap("npcHornedWarrior") ,
-        Conversion::convertTilesToPixels(8) , 
-        Conversion::convertTilesToPixels(43) ,
+        Conversion::convertTilesToPixels(22) , 
+        Conversion::convertTilesToPixels(3) ,
         this->drawRepository ,
         this->gameManager ,
         this->fontStore->getFont("default") ,
@@ -99,9 +107,9 @@ void SouthernForest::loadTheTangibles(){
 
     KillQuest *killTask = new KillQuest();
     killTask->setQuestDisplayName("Help Clear the Forest");
-    killTask->addObjective("wererat" , 3);
-    killTask->addObjective("wolf" , 8);
-    killTask->addObjective("mushroomMan" , 6);
+    killTask->addObjective("Wererat" , 2);
+    killTask->addObjective("Wolf" , 3);
+    killTask->addObjective("Mushroom Man" , 2);
     killTask->setMustBeActiveForPlayerToUpdate();
     forester->loadQuest(killTask);
     gameManager->getPlayerEntity()->addQuest("clearTheForest" , killTask);
@@ -136,15 +144,15 @@ void SouthernForest::loadTheTangibles(){
         );
     KillQuest *killBlobKing = new KillQuest();
     killBlobKing->setQuestDisplayName("One Eyed Monster");
-    killBlobKing->addObjective("blobKing" , 1);
+    killBlobKing->addObjective("Blob King" , 1);
     barroldTheQuestGiver->loadQuest(killBlobKing);
     gameManager->getPlayerEntity()->addQuest("blobKingQuest" , killBlobKing);
 
     //Red pepper quest
     NPCWithDialogueAndQuest *spicyRedPeppers = new NPCWithDialogueAndQuest(
         imageStore->getBitMap("sceneryRedPeppers") ,
-        Conversion::convertTilesToPixels(36) , 
-        Conversion::convertTilesToPixels(47) ,
+        Conversion::convertTilesToPixels(6) , 
+        Conversion::convertTilesToPixels(41) ,
         this->drawRepository ,
         this->gameManager ,
         this->fontStore->getFont("default") ,
@@ -163,7 +171,7 @@ void SouthernForest::loadTheTangibles(){
     spicyRedPeppers->setQuestReminder(
         "Doctor Peppers: Chika chika meow meow.");
     spicyRedPeppers->setQuestCompleteMessage(
-        "Doctor Peppers: Wooooooooot! You did it! Here you go. Now your lancer can cut loose "
+        "Doctor Peppers: Wooooooooot! You did it! Here you go. Now your Lancer can cut loose "
         "red pepper style.");
     spicyRedPeppers->setRewardNotification(
         "Lancer learned Fury of the Fang!");

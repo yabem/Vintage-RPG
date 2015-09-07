@@ -8,6 +8,7 @@
 //Constructor.
 AreaMap::AreaMap(){
 
+    this->mapMusic = "";
 }
 
 //Destructor.
@@ -89,6 +90,18 @@ bool AreaMap::removeTangible(std::string identifierName){
     }
 
     return false;
+}
+
+//Sets the song for the map.
+void AreaMap::setMapMusic(std::string mapMusic){
+
+    this->mapMusic = mapMusic;
+}
+
+//Gets the song for the map.
+std::string AreaMap::getMapMusic(){
+
+    return mapMusic;
 }
 
 //Return a pointer to the indexed exits destination map.

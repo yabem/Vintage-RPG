@@ -132,8 +132,7 @@ void QuestLog::updateCompletedQuestsDisplay(){
     //Get quest name and add it to the list.
     for(int i = 0 ; i < _quests.size() ; i++ , questIter++){
 
-        if(!questIter->second->isActiveForPlayer() && 
-            questIter->second->completedByPlayer()){
+        if(questIter->second->isTurnedInByPlayer()){
             
             allCompletedQuests += questIter->second->getQuestDisplayName();
             allCompletedQuests += ": ";

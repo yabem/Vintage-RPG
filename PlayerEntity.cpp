@@ -54,6 +54,7 @@ void PlayerEntity::displayCompletedQuestsInQuestLog(){
 void PlayerEntity::updateQuestDisplays(){
 
     questLog->updateActiveQuestsDisplay();
+    questLog->updateCompletedQuestsDisplay();
 }
 
 //Pre:  None.
@@ -172,28 +173,11 @@ void PlayerEntity::loadDefaultPlayers(){
         32 , 32 , 30 , 2 , PLAYER_MOVE_RATE);
     thePlayer4->setIdentifierName("mage");
 
-    /*
-    thePlayer->loadAbilities("Attack,Jump,Item|Potion;Recover;");
-    thePlayer2->loadAbilities("Attack,Shield Bash,Item|Potion;Recover;");
-    thePlayer3->loadAbilities("Attack,Backstab,Item|Potion;Recover;");
-    
-    thePlayer4->loadAbilities("Attack,Magic|Fireball,Fire2,Fire3;Item|Potion;Recover;");
-    */
-
-    thePlayer->loadAbilities("Lance,Skewer,Jump,Fury Of The Fang,Cure,Recover;");
-    thePlayer2->loadAbilities("Sword,Headbutt,Shield Bash,Earth Shatter,Bandage,Recover;");
-    thePlayer3->loadAbilities("Dagger,Backstab,Knife Barrage,Shade of the Crescent,Potion,Recover;");
-    thePlayer4->loadAbilities("Staff,Fireball,Chain Lightning,Reign of Winter,Heal,Recover;");
-   
     //CharacterList thePlayers;
     this->thePlayers->loadChar(thePlayer);
     this->thePlayers->loadChar(thePlayer2);
     this->thePlayers->loadChar(thePlayer3);
     this->thePlayers->loadChar(thePlayer4);
-
-    //thePlayer->addAbility("Jump");
-    //AddAbilityToCharacterInList::AddAbilityToCharacterInList("player",thePlayers,"Jump");
-    //AddAbilityToCharacterInList::AddAbilityToCharacterInList("mage",thePlayers,"Jump");
 
     std::vector<std::string> emptyStringVector;
 
@@ -219,10 +203,33 @@ void PlayerEntity::loadDefaultPlayers(){
     thePlayer3->setStats(playerStats3);
     thePlayer4->setStats(playerStats4);
 
+#ifdef ALL_ABILITIES
+    thePlayer->loadAbilities("Lance,Skewer,Jump,Fury Of The Fang,Cure,Recover;");
+    thePlayer2->loadAbilities("Sword,Headbutt,Shield Bash,Earth Shatter,Bandage,Recover;");
+    thePlayer3->loadAbilities("Dagger,Backstab,Knife Barrage,Shade of the Crescent,Potion,Recover;");
+    thePlayer4->loadAbilities("Staff,Fireball,Chain Lightning,Reign of Winter,Heal,Recover;");
+#endif
+
+#ifndef ALL_ABILITIES
+    thePlayer->loadAbilities("Lance;");
+    thePlayer2->loadAbilities("Sword;");
+    thePlayer3->loadAbilities("Dagger;");
+    thePlayer4->loadAbilities("Staff;");
+#endif
+
+#ifdef MAX_LEVEL
+    LevelUpCalculations::setCharacterToLevel(thePlayer , 10 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 10 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 10 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 10 , statsByLevelStore);
+#endif
+
+#ifndef MAX_LEVEL
     LevelUpCalculations::setCharacterToLevel(thePlayer , 1 , statsByLevelStore);
     LevelUpCalculations::setCharacterToLevel(thePlayer2 , 1 , statsByLevelStore);
     LevelUpCalculations::setCharacterToLevel(thePlayer3 , 1 , statsByLevelStore);
     LevelUpCalculations::setCharacterToLevel(thePlayer4 , 1 , statsByLevelStore);
+#endif
 
     LevelUpCalculations::setHPToFull(thePlayer);
     LevelUpCalculations::setHPToFull(thePlayer2);

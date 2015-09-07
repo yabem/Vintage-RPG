@@ -98,29 +98,14 @@ void Headbutt::loadAnimations(){
     ChangeCreatureImage *origImage = new ChangeCreatureImage(initiator
         , imageStore->getBitMap("warrior"));
 
-    /*
-    ChangeCharacterWidth *increaseWidthForAttack = new ChangeCharacterWidth(
-        initiator , 46);
-    ChangeCharacterHeight *increaseHeightForAttack = new ChangeCharacterHeight(
-        initiator , 47);
-    ChangeCharacterWidth *decreaseWidthToOriginalSize = new ChangeCharacterWidth(
-        initiator , 32);
-    ChangeCharacterHeight *decreaseHeightToOriginalSize = new ChangeCharacterHeight(
-        initiator , 32);
-    */
-
     DelayInSeconds *delay1 = new DelayInSeconds(.1);
     DelayInSeconds *delay2 = new DelayInSeconds(.2);
 
     SimultaneousAnimations *attackSetup = new SimultaneousAnimations();
-    //attackSetup->loadAnimation(increaseWidthForAttack);
-    //attackSetup->loadAnimation(increaseHeightForAttack);
     attackSetup->loadAnimation(attackFacingDirection);
     attackSetup->loadAnimation(mageAttackPart1);
 
     SimultaneousAnimations *resetToOriginalPosition = new SimultaneousAnimations();
-    //resetToOriginalPosition->loadAnimation(decreaseWidthToOriginalSize);
-    //resetToOriginalPosition->loadAnimation(decreaseHeightToOriginalSize);
     resetToOriginalPosition->loadAnimation(origImage);
     resetToOriginalPosition->loadAnimation(originalFacingDirection);
     resetToOriginalPosition->loadAnimation(backToStartingPosition);
@@ -146,7 +131,8 @@ void Headbutt::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void Headbutt::calculateDamage(){
 
-    damageToReceiver = DamageCalculations::damageWithoutDelay(initiator, receiver);
+    damageToReceiver = DamageCalculations::damageWithDelayAtk(
+        initiator, receiver , .5 , .4);
 }
 
 //Sets the draw to spell location.

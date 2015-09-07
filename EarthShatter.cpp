@@ -182,7 +182,8 @@ void EarthShatter::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void EarthShatter::calculateDamage(){
 
-    damageToReceiver = DamageCalculations::damageWithoutDelay(initiator, receiver);
+    damageToReceiver = DamageCalculations::damageWithDelayAtk(
+        initiator, receiver, 1.75 , 1.16);
 }
 
 //Sets the draw to spell location.

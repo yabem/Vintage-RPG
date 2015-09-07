@@ -5,6 +5,8 @@ WesternDesert::WesternDesert(ImageStore *imageStore ,  DrawRepository *drawRepos
         GameManager *gameManager , BattleManager *battleManager , FontStore *fontStore ,
         int layoutSize) : CustomAreaMap(imageStore , drawRepository , gameManager , 
         battleManager , fontStore , layoutSize){
+
+            mapMusic = "Vulcan";
 }
 
 //Destructor.
@@ -22,11 +24,16 @@ void WesternDesert::loadTheSceneries(){
 //Loads the enemies and level ranges for the map.
 void WesternDesert::loadMapEnemies(){
 
+    //Easy
     this->listOfEnemies.push_back(RAT);
     this->listOfEnemies.push_back(CACTUS);
+
+    //Medium
     this->listOfEnemies.push_back(ZOMBIE);
-    this->listOfEnemies.push_back(SHIELD_SKELETON);
     this->listOfEnemies.push_back(FIRE_CUBE);
+
+    //Hard
+    this->listOfEnemies.push_back(SHIELD_SKELETON);
 
     this->loadEnemyLevelRange(3 , 5);
 }
@@ -34,9 +41,9 @@ void WesternDesert::loadMapEnemies(){
 //Load the interactive models.
 void WesternDesert::loadTheTangibles(){
 
-    std::string identifierName = "demon"; //Used when deleting the Tangible once the fight is over.
+    std::string identifierName = "Demon"; //Used when deleting the Tangible once the fight is over.
 
-    NPCWithDialogueThenBattle *demon = new NPCWithDialogueThenBattle(imageStore->getBitMap("demon") ,
+    NPCWithDialogueThenBattle *demon = new NPCWithDialogueThenBattle(imageStore->getBitMap("Demon") ,
         Conversion::convertTilesToPixels(22) , 
         Conversion::convertTilesToPixels(43) ,        
         this->drawRepository ,
@@ -47,24 +54,25 @@ void WesternDesert::loadTheTangibles(){
 
     demon->createCharacter(160 , 80 , 60 , 1 , 4 , this);
     demon->setIdentifierName(identifierName);
+    demon->setMusic("Split In Synapse");
 
     std::vector<int> enemies;
-    enemies.push_back(RAT);
+    enemies.push_back(ZOMBIE);
     enemies.push_back(DEMON);
-    enemies.push_back(RAT);
+    enemies.push_back(ZOMBIE);
 
     std::vector<int> enemyLevels;
     enemyLevels.push_back(5);
-    enemyLevels.push_back(7);
+    enemyLevels.push_back(5);
     enemyLevels.push_back(5);
 
     demon->loadEnemies(enemies , enemyLevels);
 
-    //Explorer quest.
+    //Purple Fox quest.
     NPCWithDialogueAndQuest *explorer = new NPCWithDialogueAndQuest(
         imageStore->getBitMap("npcPurpleFox") ,
-        Conversion::convertTilesToPixels(5) , 
-        Conversion::convertTilesToPixels(21) ,
+        Conversion::convertTilesToPixels(30) , 
+        Conversion::convertTilesToPixels(9) ,
         this->drawRepository ,
         this->gameManager ,
         this->fontStore->getFont("default") ,
@@ -95,9 +103,9 @@ void WesternDesert::loadTheTangibles(){
 
     KillQuest *killTask = new KillQuest();
     killTask->setQuestDisplayName("The Stalking Dead");
-    killTask->addObjective("rat" , 2);
-    killTask->addObjective("shieldSkeleton" , 10);
-    killTask->addObjective("zombie" , 4);
+    killTask->addObjective("Rat" , 2);
+    killTask->addObjective("Shield Skeleton" , 3);
+    killTask->addObjective("Zombie" , 1);
     killTask->setMustBeActiveForPlayerToUpdate();
     explorer->loadQuest(killTask);
     gameManager->getPlayerEntity()->addQuest("theStalkingDead" , killTask);
@@ -134,7 +142,7 @@ void WesternDesert::loadTheTangibles(){
         );
     KillQuest *killDesertDemon= new KillQuest();
     killDesertDemon->setQuestDisplayName("A Demon in the Desert");
-    killDesertDemon->addObjective("demon" , 1);
+    killDesertDemon->addObjective("Demon" , 1);
     skugsTheQuestGiver->loadQuest(killDesertDemon);
     gameManager->getPlayerEntity()->addQuest("demonQuest" , killDesertDemon);
 

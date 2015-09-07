@@ -19,6 +19,7 @@ GameManager::GameManager(){
     player = NULL;
     numEnemies = 0;
     endOfGameLoop = false; 
+    musicBox = NULL;
 }
 
 //Destructor.
@@ -127,7 +128,7 @@ bool GameManager::isBattle(){
     else return false;
 }
 
-//Switch variables bak to the player moving on the map.
+//Switch variables back to the player moving on the map.
 void GameManager::switchVariablesToMap(){
 
     currMap = prevMap;
@@ -149,6 +150,14 @@ void GameManager::resetGameTimer(){
 void GameManager::loadDrawRepository(DrawRepository *drawRepository){
 
     this->drawRepository = drawRepository;
+}
+
+//Loads the MusicBox
+//Pre:  The MusicBox is valid.
+//Post: Loads the MusicBox to the GameManager.
+void GameManager::loadMusicBox(MusicBox *musicBox){
+
+    this->musicBox = musicBox;
 }
 
 //Loads the list of players.
@@ -175,6 +184,20 @@ void GameManager::resetPressedKey(){
 int GameManager::getPressedKey() const{
 
     return pressedKey;
+}
+
+//Returns the prevMap.
+AreaMap* GameManager::getPreviousMap(){
+
+    return prevMap;
+}
+
+//Returns the musicBox.
+//Pre:  None.
+//Post: Returns the musicBox.
+MusicBox* GameManager::getMusicBox(){
+
+    return musicBox;
 }
 
 //Sets the pressedKey to inactive.
@@ -224,4 +247,3 @@ StatsByLevelStore* GameManager::getStatsByLevelStore(){
 
     return statsByLevelStore;
 }
-

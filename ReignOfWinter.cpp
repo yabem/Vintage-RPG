@@ -191,7 +191,8 @@ void ReignOfWinter::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void ReignOfWinter::calculateDamage(){
 
-    damageToReceiver = DamageCalculations::damageWithoutDelay(initiator, receiver);
+    damageToReceiver = DamageCalculations::damageWithDelayMgc(
+        initiator, receiver , 6.5 , 2);
 }
 
 //Sets the draw to spell location.

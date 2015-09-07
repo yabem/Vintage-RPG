@@ -31,6 +31,9 @@
 
 class DrawRepository;
 
+//Turn random battles off
+#define NO_RANDOM_BATTLES
+
 class BattleManager: public I_Manager{
 
 private:

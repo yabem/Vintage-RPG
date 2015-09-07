@@ -6,6 +6,7 @@ NPCWithDialogue::NPCWithDialogue( ALLEGRO_BITMAP *image , int sx , int sy ,
 
     this->gameManager = gameManager;
     this->drawRepository = drawRepository;
+    this->nameOfSongForMusicChange = "";
     this->message = message;
     this->character = NULL;
 
@@ -37,6 +38,11 @@ void NPCWithDialogue::setCharacterFacing(int direction){
     character->setFacing(direction);
 }
 
+void NPCWithDialogue::setMusic(std::string songName){
+
+    this->nameOfSongForMusicChange = songName;
+}
+
 void NPCWithDialogue::draw(){
 
     this->character->setX(dx);
@@ -51,4 +57,5 @@ void NPCWithDialogue::playCutscene(int pressedKey){
     cutscene->setText(message);
     this->drawRepository->loadCutscene(cutscene);
     gameManager->resetPressedKey();
+    gameManager->getMusicBox()->playSong(nameOfSongForMusicChange);
 }

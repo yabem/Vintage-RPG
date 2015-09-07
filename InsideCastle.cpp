@@ -5,6 +5,8 @@ InsideCastle::InsideCastle(ImageStore *imageStore ,  DrawRepository *drawReposit
         GameManager *gameManager , BattleManager *battleManager , FontStore *fontStore ,
         int layoutSize) : CustomAreaMap(imageStore , drawRepository , gameManager , 
         battleManager , fontStore , layoutSize){
+
+            mapMusic = "Mistake The Getaway";
 }
 
 //Destructor.
@@ -14,23 +16,68 @@ InsideCastle::~InsideCastle(){
 //Loads the enemies and level ranges for the map.
 void InsideCastle::loadMapEnemies(){
 
+    //Easy
     this->listOfEnemies.push_back(SPIDER);
     this->listOfEnemies.push_back(SPIDER_EGG);
+
+    //Medium
     this->listOfEnemies.push_back(SPIDER_WEB);
-    this->listOfEnemies.push_back(TENTACLE_MAGE);
     this->listOfEnemies.push_back(ECHIDNA);
 
-    this->loadEnemyLevelRange(3 , 5);
+    //Hard
+    this->listOfEnemies.push_back(TENTACLE_MAGE);
+
+    this->loadEnemyLevelRange(9 , 11);
 }
 
 //Load the interactive models.
 void InsideCastle::loadTheTangibles(){
 
-    //Blob King quest.
-    std::string identifierName = "umgarTheWorldDestroyer"; //Used when deleting the Tangible once the fight is over.
+    //Magical barrier
+    std::string npcName = "fireWall";
+    NPCWithQuestAndRemoval *magicalBarrier = new NPCWithQuestAndRemoval(
+        imageStore->getBitMap("npcFirewall") ,
+        Conversion::convertTilesToPixels(16) , 
+        Conversion::convertTilesToPixels(5) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity(),
+        npcName
+        );
+    magicalBarrier->createCharacter(304 , 190 , 60 , 2 , 4 , this);
+    magicalBarrier->setIdentifierName(npcName);
+    magicalBarrier->setCW(304);
+    magicalBarrier->setCH(190);
+    magicalBarrier->setCharacterFacing(UP);
+    magicalBarrier->setQuestExplanation(
+        "Magical Barrier: I am a magic firewall. I've been summoned from " 
+        "my home by that huge guy right there. I'd gladly leave but I can't "
+        "go back to my kids empty handed. They'll be super dissapointed. Get "
+        "me a Dog Collar, a Crown, a Dark Jewel, and a fancy "
+        "pair of Bull Horns and I'll gladly let you pass.");
+    magicalBarrier->setQuestReminder(
+        "Magical Barrier: She gives me money, when I'm in neeeeeeeeeeeed.... ");
+    magicalBarrier->setQuestCompleteMessage(
+        "Magical Barrier: Wow, the kids are going to LOVE this swag. Thanks dude!");
+    magicalBarrier->setRewardNotification(
+        "The barrier magically dissipates and the path forward is revealed!");
+
+    GatherQuest *magicalBarrierObjectives = new GatherQuest(
+        gameManager->getPlayerEntity()->getPlayerInventory());
+    magicalBarrierObjectives->setQuestDisplayName("So this a Firewall?");
+    magicalBarrierObjectives->addObjective("Dog Collar" , 1);
+    magicalBarrierObjectives->addObjective("Crown" , 1);
+    magicalBarrierObjectives->addObjective("Dark Jewel" , 1);
+    magicalBarrierObjectives->addObjective("Bull Horns" , 1);
+    magicalBarrier->loadQuest(magicalBarrierObjectives);
+    gameManager->getPlayerEntity()->addQuest("soThisIsAFirewall?" , magicalBarrierObjectives);
+
+    //Umgar quest.
+    std::string identifierName = "Umgar The World Destroyer"; //Used when deleting the Tangible once the fight is over.
 
     NPCWithDialogueThenBattle *umgarTheWorldDestroyer = 
-        new NPCWithDialogueThenBattle(imageStore->getBitMap("umgarTheWorldDestroyer") ,
+        new NPCWithDialogueThenBattle(imageStore->getBitMap("Umgar The World Destroyer") ,
         Conversion::convertTilesToPixels(17) , 
         Conversion::convertTilesToPixels(5) ,        
         this->drawRepository ,
@@ -45,6 +92,7 @@ void InsideCastle::loadTheTangibles(){
 
     umgarTheWorldDestroyer->createCharacter(240 , 160 , 60 , 1 , 4 , this);
     umgarTheWorldDestroyer->setIdentifierName(identifierName);
+    umgarTheWorldDestroyer->setMusic("Alchemists Tower");
 
     std::vector<int> enemies;
     enemies.push_back(TENTACLE_MAGE);
@@ -91,9 +139,9 @@ void InsideCastle::loadTheTangibles(){
 
     KillQuest *killTask = new KillQuest();
     killTask->setQuestDisplayName("Spider Slaying 101");
-    killTask->addObjective("spider" , 5);
-    killTask->addObjective("spiderEgg" , 3);
-    killTask->addObjective("spiderWeb" , 2);
+    killTask->addObjective("Spider" , 5);
+    killTask->addObjective("Spider Egg" , 3);
+    killTask->addObjective("Spider Web" , 2);
     killTask->setMustBeActiveForPlayerToUpdate();
     kMak->loadQuest(killTask);
     gameManager->getPlayerEntity()->addQuest("spiderSlaying101" , killTask);
@@ -147,11 +195,62 @@ void InsideCastle::loadTheTangibles(){
         escapedPrisoner->setCH(32);
         escapedPrisoner->setCharacterFacing(DOWN);
 
+    NPCWithDialogueThenCutscene *endGameBlueStar = new NPCWithDialogueThenCutscene(
+        imageStore->getBitMap("npcBlueStar") ,
+        Conversion::convertTilesToPixels(9) , 
+        Conversion::convertTilesToPixels(7) ,
+        this->drawRepository ,
+        this->gameManager , 
+        "You jump into the portal and on to your next adventure!" ,
+        this->fontStore->getFont("default"));
+    endGameBlueStar->createCharacter(32 , 32 , 90 , 2 , 4 , this);
+    endGameBlueStar->setCW(32);
+    endGameBlueStar->setCH(32);
+    endGameBlueStar->setCharacterFacing(0);
+
+    //Baby Magical barrier
+    std::string anotherNPCName = "fireWallBaby";
+    NPCWithQuestAndRemoval *babyMagicalBarrier = new NPCWithQuestAndRemoval(
+        imageStore->getBitMap("npcFirewallBaby") ,
+        Conversion::convertTilesToPixels(9) , 
+        Conversion::convertTilesToPixels(7) ,
+        this->drawRepository ,
+        this->gameManager ,
+        this->fontStore->getFont("default") ,
+        this->gameManager->getPlayerEntity(),
+        anotherNPCName
+        );
+    babyMagicalBarrier->createCharacter(64 , 64 , 60 , 2 , 4 , this);
+    babyMagicalBarrier->setIdentifierName(npcName);
+    babyMagicalBarrier->setCW(64);
+    babyMagicalBarrier->setCH(64);
+    babyMagicalBarrier->setCharacterFacing(UP);
+    babyMagicalBarrier->setQuestExplanation(
+        "Baby Magical Barrier: You will need proof that you saved the world " 
+        "to pass this point.");
+    babyMagicalBarrier->setQuestReminder(
+        "Baby Magical Barrier: Yup, I'm still waiting. ");
+    babyMagicalBarrier->setQuestCompleteMessage(
+        "Baby Magical Barrier: Well, that will do it. Enter at your own risk!");
+    babyMagicalBarrier->setRewardNotification(
+        "The barrier magically dissipates the portal is revealed!");
+
+    GatherQuest *babyMagicalBarrierObjectives = new GatherQuest(
+        gameManager->getPlayerEntity()->getPlayerInventory());
+    babyMagicalBarrierObjectives->setQuestDisplayName("Maybe We Do Need Those Stinkin' Badges");
+    babyMagicalBarrierObjectives->addObjective("Badge of I Saved the World" , 1);
+    babyMagicalBarrier->loadQuest(babyMagicalBarrierObjectives);
+    gameManager->getPlayerEntity()->addQuest("maybeWeDoNeedThoseStinkin'Badges" , babyMagicalBarrierObjectives);
+
+
+    this->loadTangible(magicalBarrier);  
     this->loadTangible(queen);
     this->loadTangible(gameEndingInformer);
     this->loadTangible(escapedPrisoner);
     this->loadTangible(kMak);
     this->loadTangible(umgarTheWorldDestroyer);
+    this->loadTangible(endGameBlueStar); 
+    this->loadTangible(babyMagicalBarrier);
 }
 
 //Loads all the layers to the areaMap.

@@ -15,6 +15,7 @@ protected:
 
     DrawRepository *drawRepository;
     GameManager *gameManager;
+    std::string nameOfSongForMusicChange;
     std::string message;
     int currentFrame;
     int segmentOfImage;
@@ -33,6 +34,7 @@ public:
     void createCharacter(int w , int h , int framesPerSequence ,
         int numSequence , int moveRate , AreaMap *areaMap);
     void setCharacterFacing(int direction);
+    virtual void setMusic(std::string songName);
     virtual void draw();
     virtual void playCutscene(int pressedKey);  
 };

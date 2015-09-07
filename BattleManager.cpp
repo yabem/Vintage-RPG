@@ -635,12 +635,24 @@ bool BattleManager::checkForBattle(){
     
     if(movedSpaces >= 32){
 
+#ifdef NO_RANDOM_BATTLES
         if(rand() % 100 < 0){
 
             initializeBattle();
             movedSpaces = 0;
             return true;
         }
+#endif
+
+#ifndef NO_RANDOM_BATTLES
+
+        if(rand() % 100 < 5){
+
+            initializeBattle();
+            movedSpaces = 0;
+            return true;
+        }
+#endif
 
         movedSpaces = 0;
     }
@@ -676,6 +688,8 @@ void BattleManager::initializeBattle(){
         gameManager->currMap->getListOfEnemies() ,
         gameManager->currMap->getMinEnemyLevel() , 
         gameManager->currMap->getMaxEnemyLevel()); 
+
+    gameManager->getMusicBox()->playSong("Split In Synapse");
 }
 
 //Initializes the variables to the beginning of a new battle.
@@ -880,6 +894,7 @@ bool BattleManager::isEndOfBattle(){
     //If all the enemies are dead. End the battle.
     if(!enemiesRemaining()){
 
+        gameManager->getMusicBox()->playSong("Motivator");
         playersVictory();
         return true;
     }
@@ -899,6 +914,7 @@ bool BattleManager::isEndOfBattle(){
         && this->events.size() == 0 ){
 
         enemiesVictory();
+        gameManager->getMusicBox()->playSong("Frost Waltz");
         return true;
     }
 

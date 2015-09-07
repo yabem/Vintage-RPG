@@ -16,6 +16,7 @@ protected:
     };
 
     std::string _displayName;
+    bool _isTurnedInByPlayer;
     bool _isCompletedByPlayer;
     bool _isActiveForPlayer;
     bool _mustBeActiveForPlayerToUpdate;
@@ -25,6 +26,8 @@ public:
 
     KillQuest();
     virtual ~KillQuest();
+    virtual bool isTurnedInByPlayer();
+    virtual void makeTurnedInByPlayer();
     virtual bool completedByPlayer();
     virtual void makeCompletedByPlayer();
     virtual bool isActiveForPlayer();

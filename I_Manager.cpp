@@ -62,3 +62,7 @@ bool I_Manager::isEventsEmpty(){return false;}
 bool I_Manager::checkForBattle(){return false;}
 
 void I_Manager::incrementBattleTime(){}
+
+MusicBox* I_Manager::getMusicBox(){return NULL;}
+
+AreaMap* I_Manager::getPreviousMap(){return NULL;}

@@ -189,12 +189,9 @@ void Backpack::updateInventoryDisplay(){
         contentsIter++){
 
             currentInventory += (*contentsIter)->getName();
-            currentInventory += ": ";
+            currentInventory += " x";
             currentInventory += Conversion::convertIntToString(
                 (*contentsIter)->getAmount());
-            currentInventory += "/";
-            currentInventory += Conversion::convertIntToString(
-                (*contentsIter)->getCapacity());
 
             //Check if there's another element.
             if(contentsIter + 1 != sortedContents.end()){

@@ -154,19 +154,19 @@ void InitEnemies::rat(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("rat");
+    character->setIdentifierName("Rat");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = RAT_BASE_HP + (level * 5);
+    int hp = RAT_BASE_HP + (level * HP_MOD_FOR_EASY_ENEMIES);
     int mp = RAT_BASE_MP + (level * 2);
-    int atk = RAT_BASE_ATK + (level * 5);
-    int def = RAT_BASE_DEF + (level * 1);
-    float spd = RAT_BASE_SPEED - (level * 0.1);
-    int rewardXP = RAT_BASE_REWARD_XP + (level * 5);
+    int atk = RAT_BASE_ATK + (level * ATK_MOD_FOR_EASY_ENEMIES);
+    int def = RAT_BASE_DEF + (level * DEF_MOD_FOR_EASY_ENEMIES);
+    float spd = RAT_BASE_SPEED - (level * SPD_MOD_FOR_EASY_ENEMIES);
+    int rewardXP = RAT_BASE_REWARD_XP;
     int moneyReward = RAT_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = ratRewards();
 
@@ -196,19 +196,19 @@ void InitEnemies::wolf(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("wolf");
+    character->setIdentifierName("Wolf");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = WOLF_BASE_HP + (level * 7);
+    int hp = WOLF_BASE_HP + (level * HP_MOD_FOR_HARD_ENEMIES);
     int mp = WOLF_BASE_MP + (level * 4);
-    int atk = WOLF_BASE_ATK + (level * 7);
-    int def = WOLF_BASE_DEF + (level * 1);
-    float spd = WOLF_BASE_SPEED - (level * 0.1);
-    int rewardXP = WOLF_BASE_REWARD_XP + (level * 5);
+    int atk = WOLF_BASE_ATK + (level * ATK_MOD_FOR_HARD_ENEMIES);
+    int def = WOLF_BASE_DEF + (level * DEF_MOD_FOR_HARD_ENEMIES);
+    float spd = WOLF_BASE_SPEED - (level * SPD_MOD_FOR_HARD_ENEMIES);
+    int rewardXP = WOLF_BASE_REWARD_XP;
     int moneyReward = WOLF_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = wolfRewards();
 
@@ -224,7 +224,7 @@ std::vector<std::string> InitEnemies::wolfRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
+    if(randomNum < 30)
         rewards.push_back("Red Potion");
 
     if(randomNum < 10)
@@ -238,19 +238,19 @@ void InitEnemies::soldier(Character *character , int enemyType ,
     int level , vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("soldier");
+    character->setIdentifierName("Soldier");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = SOLDIER_BASE_HP + (level * 6);
+    int hp = SOLDIER_BASE_HP + (level * HP_MOD_FOR_EASY_ENEMIES);
     int mp = SOLDIER_BASE_MP + (level * 3);
-    int atk = SOLDIER_BASE_ATK + (level * 9);
-    int def = SOLDIER_BASE_DEF + (level * 2);
-    float spd = SOLDIER_BASE_SPEED - (level * 0.1);
-    int rewardXP = SOLDIER_BASE_REWARD_XP + (level * 5);
+    int atk = SOLDIER_BASE_ATK + (level * ATK_MOD_FOR_EASY_ENEMIES);
+    int def = SOLDIER_BASE_DEF + (level * DEF_MOD_FOR_EASY_ENEMIES);
+    float spd = SOLDIER_BASE_SPEED - (level * SPD_MOD_FOR_EASY_ENEMIES);
+    int rewardXP = SOLDIER_BASE_REWARD_XP;
     int moneyReward = SOLDIER_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = soldierRewards();
 
@@ -266,13 +266,13 @@ std::vector<std::string> InitEnemies::soldierRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 15)
+    if(randomNum < 20)
         rewards.push_back("Red Potion");
 
-    if(randomNum < 15)
+    if(randomNum < 20)
         rewards.push_back("Green Potion");
 
-    if(randomNum < 15)
+    if(randomNum < 20)
         rewards.push_back("Blue Potion");
 
     return rewards;
@@ -283,19 +283,19 @@ void InitEnemies::iceBull(Character *character , int enemyType ,
     int level , vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("iceBull");
+    character->setIdentifierName("Ice Bull");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = ICE_BULL_BASE_HP + (level * 6);
+    int hp = ICE_BULL_BASE_HP + (level * HP_MOD_FOR_HARD_ENEMIES);
     int mp = ICE_BULL_BASE_MP + (level * 3);
-    int atk = ICE_BULL_BASE_ATK + (level * 10);
-    int def = ICE_BULL_BASE_DEF + (level * 2);
-    float spd = ICE_BULL_BASE_SPEED - (level * 0.1);
-    int rewardXP = ICE_BULL_BASE_REWARD_XP + (level * 5);
+    int atk = ICE_BULL_BASE_ATK + (level * ATK_MOD_FOR_HARD_ENEMIES);
+    int def = ICE_BULL_BASE_DEF + (level * DEF_MOD_FOR_HARD_ENEMIES);
+    float spd = ICE_BULL_BASE_SPEED - (level * SPD_MOD_FOR_HARD_ENEMIES);
+    int rewardXP = ICE_BULL_BASE_REWARD_XP;
     int moneyReward = ICE_BULL_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = iceBullRewards();
 
@@ -312,7 +312,7 @@ std::vector<std::string> InitEnemies::iceBullRewards(){
     int randomNum = rand() % 100;
 
     if(randomNum < 100)
-        rewards.push_back("Ice Bull Horns");
+        rewards.push_back("Bull Horns");
 
     return rewards;
 }
@@ -322,19 +322,19 @@ void InitEnemies::blobKing(Character *character , int enemyType ,
     int level , vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("blobKing");
+    character->setIdentifierName("Blob King");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = BLOB_KING_BASE_HP + (level * 6);
+    int hp = BLOB_KING_BASE_HP + (level * HP_MOD_FOR_HARD_ENEMIES);
     int mp = BLOB_KING_BASE_MP + (level * 3);
-    int atk = BLOB_KING_BASE_ATK + (level * 15);
-    int def = BLOB_KING_BASE_DEF + (level * 2);
-    float spd = BLOB_KING_BASE_SPEED - (level * 0.1);
-    int rewardXP = BLOB_KING_BASE_REWARD_XP + (level * 5);
+    int atk = BLOB_KING_BASE_ATK + (level * ATK_MOD_FOR_HARD_ENEMIES);
+    int def = BLOB_KING_BASE_DEF + (level * DEF_MOD_FOR_HARD_ENEMIES);
+    float spd = BLOB_KING_BASE_SPEED - (level * SPD_MOD_FOR_HARD_ENEMIES);
+    int rewardXP = BLOB_KING_BASE_REWARD_XP;
     int moneyReward = BLOB_KING_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = blobKingRewards();
 
@@ -351,7 +351,7 @@ std::vector<std::string> InitEnemies::blobKingRewards(){
     int randomNum = rand() % 100;
 
     if(randomNum < 100)
-        rewards.push_back("Blob King Crown");
+        rewards.push_back("Crown");
 
     return rewards;
 }
@@ -361,19 +361,19 @@ void InitEnemies::guardian(Character *character , int enemyType ,
     int level , vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("guardian");
+    character->setIdentifierName("Guardian");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = GUARDIAN_BASE_HP + (level * 6);
+    int hp = GUARDIAN_BASE_HP + (level * HP_MOD_FOR_HARD_ENEMIES);
     int mp = GUARDIAN_BASE_MP + (level * 3);
-    int atk = GUARDIAN_BASE_ATK + (level * 14);
-    int def = GUARDIAN_BASE_DEF + (level * 2);
-    float spd = GUARDIAN_BASE_SPEED - (level * 0.1);
-    int rewardXP = GUARDIAN_BASE_REWARD_XP + (level * 5);
+    int atk = GUARDIAN_BASE_ATK + (level * ATK_MOD_FOR_HARD_ENEMIES);
+    int def = GUARDIAN_BASE_DEF + (level * DEF_MOD_FOR_HARD_ENEMIES);
+    float spd = GUARDIAN_BASE_SPEED - (level * SPD_MOD_FOR_HARD_ENEMIES);
+    int rewardXP = GUARDIAN_BASE_REWARD_XP;
     int moneyReward = GUARDIAN_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = guardianRewards();
 
@@ -390,7 +390,7 @@ std::vector<std::string> InitEnemies::guardianRewards(){
     int randomNum = rand() % 100;
 
     if(randomNum < 100)
-        rewards.push_back("Guardian Collar");
+        rewards.push_back("Dog Collar");
 
     return rewards;
 }
@@ -400,19 +400,19 @@ void InitEnemies::demon(Character *character , int enemyType ,
     int level , vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("demon");
+    character->setIdentifierName("Demon");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = DEMON_BASE_HP + (level * 6);
+    int hp = DEMON_BASE_HP + (level * HP_MOD_FOR_HARD_ENEMIES);
     int mp = DEMON_BASE_MP + (level * 3);
-    int atk = DEMON_BASE_ATK + (level * 14);
-    int def = DEMON_BASE_DEF + (level * 2);
-    float spd = DEMON_BASE_SPEED - (level * 0.1);
-    int rewardXP = DEMON_BASE_REWARD_XP + (level * 5);
+    int atk = DEMON_BASE_ATK + (level * ATK_MOD_FOR_HARD_ENEMIES);
+    int def = DEMON_BASE_DEF + (level * DEF_MOD_FOR_HARD_ENEMIES);
+    float spd = DEMON_BASE_SPEED - (level * SPD_MOD_FOR_HARD_ENEMIES);
+    int rewardXP = DEMON_BASE_REWARD_XP;
     int moneyReward = DEMON_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = demonRewards();
 
@@ -429,7 +429,7 @@ std::vector<std::string> InitEnemies::demonRewards(){
     int randomNum = rand() % 100;
 
     if(randomNum < 100)
-        rewards.push_back("Demon Jewel");
+        rewards.push_back("Dark Jewel");
 
     return rewards;
 }
@@ -439,19 +439,19 @@ void InitEnemies::carrotRat(Character *character , int enemyType ,
     int level , vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("carrotRat");
+    character->setIdentifierName("Carrot Rat");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = CARROT_RAT_BASE_HP + (level * 6);
+    int hp = CARROT_RAT_BASE_HP + (level * HP_MOD_FOR_MEDIUM_ENEMIES);
     int mp = CARROT_RAT_BASE_MP + (level * 3);
-    int atk = CARROT_RAT_BASE_ATK + (level * 14);
-    int def = CARROT_RAT_BASE_DEF + (level * 2);
-    float spd = CARROT_RAT_BASE_SPEED - (level * 0.1);
-    int rewardXP = CARROT_RAT_BASE_REWARD_XP + (level * 5);
+    int atk = CARROT_RAT_BASE_ATK + (level * ATK_MOD_FOR_MEDIUM_ENEMIES);
+    int def = CARROT_RAT_BASE_DEF + (level * DEF_MOD_FOR_MEDIUM_ENEMIES);
+    float spd = CARROT_RAT_BASE_SPEED - (level * SPD_MOD_FOR_MEDIUM_ENEMIES);
+    int rewardXP = CARROT_RAT_BASE_REWARD_XP;
     int moneyReward = CARROT_RAT_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = carrotRatRewards();
 
@@ -467,7 +467,7 @@ std::vector<std::string> InitEnemies::carrotRatRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 5)
+    if(randomNum < 10)
         rewards.push_back("Carrot");
 
     return rewards;
@@ -478,19 +478,19 @@ void InitEnemies::walrus(Character *character , int enemyType ,
     int level , vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("walrus");
+    character->setIdentifierName("Walrus");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = WALRUS_BASE_HP + (level * 6);
+    int hp = WALRUS_BASE_HP + (level * HP_MOD_FOR_EASY_ENEMIES);
     int mp = WALRUS_BASE_MP + (level * 3);
-    int atk = WALRUS_BASE_ATK + (level * 14);
-    int def = WALRUS_BASE_DEF + (level * 2);
-    float spd = WALRUS_BASE_SPEED - (level * 0.1);
-    int rewardXP = WALRUS_BASE_REWARD_XP + (level * 5);
+    int atk = WALRUS_BASE_ATK + (level * ATK_MOD_FOR_EASY_ENEMIES);
+    int def = WALRUS_BASE_DEF + (level * DEF_MOD_FOR_EASY_ENEMIES);
+    float spd = WALRUS_BASE_SPEED - (level * SPD_MOD_FOR_EASY_ENEMIES);
+    int rewardXP = WALRUS_BASE_REWARD_XP;
     int moneyReward = WALRUS_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = walrusRewards();
 
@@ -506,7 +506,7 @@ std::vector<std::string> InitEnemies::walrusRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 5)
+    if(randomNum < 10)
         rewards.push_back("Whiskers");
 
     return rewards;
@@ -517,19 +517,19 @@ void InitEnemies::gooCube(Character *character , int enemyType ,
     int level , vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("gooCube");
+    character->setIdentifierName("Goo Cube");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = GOO_CUBE_BASE_HP + (level * 6);
+    int hp = GOO_CUBE_BASE_HP + (level * HP_MOD_FOR_MEDIUM_ENEMIES);
     int mp = GOO_CUBE_BASE_MP + (level * 3);
-    int atk = GOO_CUBE_BASE_ATK + (level * 14);
-    int def = GOO_CUBE_BASE_DEF + (level * 2);
-    float spd = GOO_CUBE_BASE_SPEED - (level * 0.1);
-    int rewardXP = GOO_CUBE_BASE_REWARD_XP + (level * 5);
+    int atk = GOO_CUBE_BASE_ATK + (level * ATK_MOD_FOR_MEDIUM_ENEMIES);
+    int def = GOO_CUBE_BASE_DEF + (level * DEF_MOD_FOR_MEDIUM_ENEMIES);
+    float spd = GOO_CUBE_BASE_SPEED - (level * SPD_MOD_FOR_MEDIUM_ENEMIES);
+    int rewardXP = GOO_CUBE_BASE_REWARD_XP;
     int moneyReward = GOO_CUBE_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = gooCubeRewards();
 
@@ -562,19 +562,19 @@ void InitEnemies::iceCube(Character *character , int enemyType ,
     int level , vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("iceCube");
+    character->setIdentifierName("Ice Cube");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = ICE_CUBE_BASE_HP + (level * 6);
+    int hp = ICE_CUBE_BASE_HP + (level * HP_MOD_FOR_EASY_ENEMIES);
     int mp = ICE_CUBE_BASE_MP + (level * 3);
-    int atk = ICE_CUBE_BASE_ATK + (level * 14);
-    int def = ICE_CUBE_BASE_DEF + (level * 2);
-    float spd = ICE_CUBE_BASE_SPEED - (level * 0.1);
-    int rewardXP = ICE_CUBE_BASE_REWARD_XP + (level * 5);
+    int atk = ICE_CUBE_BASE_ATK + (level * ATK_MOD_FOR_EASY_ENEMIES);
+    int def = ICE_CUBE_BASE_DEF + (level * DEF_MOD_FOR_EASY_ENEMIES);
+    float spd = ICE_CUBE_BASE_SPEED - (level * SPD_MOD_FOR_EASY_ENEMIES);
+    int rewardXP = ICE_CUBE_BASE_REWARD_XP;
     int moneyReward = ICE_CUBE_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = iceCubeRewards();
 
@@ -607,19 +607,19 @@ void InitEnemies::fireCube(Character *character , int enemyType ,
     int level , vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("fireCube");
+    character->setIdentifierName("Fire Cube");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = FIRE_CUBE_BASE_HP + (level * 6);
+    int hp = FIRE_CUBE_BASE_HP + (level * HP_MOD_FOR_MEDIUM_ENEMIES);
     int mp = FIRE_CUBE_BASE_MP + (level * 3);
-    int atk = FIRE_CUBE_BASE_ATK + (level * 14);
-    int def = FIRE_CUBE_BASE_DEF + (level * 2);
-    float spd = FIRE_CUBE_BASE_SPEED - (level * 0.1);
-    int rewardXP = FIRE_CUBE_BASE_REWARD_XP + (level * 5);
+    int atk = FIRE_CUBE_BASE_ATK + (level * ATK_MOD_FOR_MEDIUM_ENEMIES);
+    int def = FIRE_CUBE_BASE_DEF + (level * DEF_MOD_FOR_MEDIUM_ENEMIES);
+    float spd = FIRE_CUBE_BASE_SPEED - (level * SPD_MOD_FOR_MEDIUM_ENEMIES);
+    int rewardXP = FIRE_CUBE_BASE_REWARD_XP;
     int moneyReward = FIRE_CUBE_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = fireCubeRewards();
 
@@ -652,19 +652,19 @@ void InitEnemies::shieldSkeleton(Character *character , int enemyType , int leve
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("shieldSkeleton");
+    character->setIdentifierName("Shield Skeleton");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = SHIELD_SKELETON_BASE_HP + (level * 5);
+    int hp = SHIELD_SKELETON_BASE_HP + (level * HP_MOD_FOR_HARD_ENEMIES);
     int mp = SHIELD_SKELETON_BASE_MP + (level * 2);
-    int atk = SHIELD_SKELETON_BASE_ATK + (level * 5);
-    int def = SHIELD_SKELETON_BASE_DEF + (level * 1);
-    float spd = SHIELD_SKELETON_BASE_SPEED - (level * 0.1);
-    int rewardXP = SHIELD_SKELETON_BASE_REWARD_XP + (level * 5);
+    int atk = SHIELD_SKELETON_BASE_ATK + (level * ATK_MOD_FOR_HARD_ENEMIES);
+    int def = SHIELD_SKELETON_BASE_DEF + (level * DEF_MOD_FOR_HARD_ENEMIES);
+    float spd = SHIELD_SKELETON_BASE_SPEED - (level * SPD_MOD_FOR_HARD_ENEMIES);
+    int rewardXP = SHIELD_SKELETON_BASE_REWARD_XP;
     int moneyReward = SHIELD_SKELETON_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = shieldSkeletonRewards();
 
@@ -694,19 +694,19 @@ void InitEnemies::wererat(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("wererat");
+    character->setIdentifierName("Wererat");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = WERERAT_BASE_HP + (level * 5);
+    int hp = WERERAT_BASE_HP + (level * HP_MOD_FOR_EASY_ENEMIES);
     int mp = WERERAT_BASE_MP + (level * 2);
-    int atk = WERERAT_BASE_ATK + (level * 5);
-    int def = WERERAT_BASE_DEF + (level * 1);
+    int atk = WERERAT_BASE_ATK + (level * ATK_MOD_FOR_EASY_ENEMIES);
+    int def = WERERAT_BASE_DEF + (level * DEF_MOD_FOR_EASY_ENEMIES);
     float spd = WERERAT_BASE_SPEED - (level * 0.1);
-    int rewardXP = WERERAT_BASE_REWARD_XP + (level * 5);
+    int rewardXP = WERERAT_BASE_REWARD_XP + (level * SPD_MOD_FOR_EASY_ENEMIES);
     int moneyReward = WERERAT_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = wereratRewards();
 
@@ -736,19 +736,19 @@ void InitEnemies::cactus(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("cactus");
+    character->setIdentifierName("Cactus");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = CACTUS_BASE_HP + (level * 5);
+    int hp = CACTUS_BASE_HP + (level * HP_MOD_FOR_EASY_ENEMIES);
     int mp = CACTUS_BASE_MP + (level * 2);
-    int atk = CACTUS_BASE_ATK + (level * 5);
-    int def = CACTUS_BASE_DEF + (level * 1);
-    float spd = CACTUS_BASE_SPEED - (level * 0.1);
-    int rewardXP = CACTUS_BASE_REWARD_XP + (level * 5);
+    int atk = CACTUS_BASE_ATK + (level * ATK_MOD_FOR_EASY_ENEMIES);
+    int def = CACTUS_BASE_DEF + (level * DEF_MOD_FOR_EASY_ENEMIES);
+    float spd = CACTUS_BASE_SPEED - (level * SPD_MOD_FOR_EASY_ENEMIES);
+    int rewardXP = CACTUS_BASE_REWARD_XP;
     int moneyReward = CACTUS_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = cactusRewards();
 
@@ -778,19 +778,19 @@ void InitEnemies::oldmanAxe(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("oldmanAxe");
+    character->setIdentifierName("Oldman Axe");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = OLDMAN_AXE_BASE_HP + (level * 5);
+    int hp = OLDMAN_AXE_BASE_HP + (level * HP_MOD_FOR_MEDIUM_ENEMIES);
     int mp = OLDMAN_AXE_BASE_MP + (level * 2);
-    int atk = OLDMAN_AXE_BASE_ATK + (level * 5);
-    int def = OLDMAN_AXE_BASE_DEF + (level * 1);
-    float spd = OLDMAN_AXE_BASE_SPEED - (level * 0.1);
-    int rewardXP = OLDMAN_AXE_BASE_REWARD_XP + (level * 5);
+    int atk = OLDMAN_AXE_BASE_ATK + (level * ATK_MOD_FOR_MEDIUM_ENEMIES);
+    int def = OLDMAN_AXE_BASE_DEF + (level * DEF_MOD_FOR_MEDIUM_ENEMIES);
+    float spd = OLDMAN_AXE_BASE_SPEED - (level * SPD_MOD_FOR_MEDIUM_ENEMIES);
+    int rewardXP = OLDMAN_AXE_BASE_REWARD_XP;
     int moneyReward = OLDMAN_AXE_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = oldmanAxeRewards();
 
@@ -806,7 +806,7 @@ std::vector<std::string> InitEnemies::oldmanAxeRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 5)
+    if(randomNum < 10)
         rewards.push_back("Old Man Spices");
 
     return rewards;
@@ -817,19 +817,19 @@ void InitEnemies::mushroomMan(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("mushroomMan");
+    character->setIdentifierName("Mushroom Man");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = MUSHROOM_MAN_BASE_HP + (level * 5);
+    int hp = MUSHROOM_MAN_BASE_HP + (level * HP_MOD_FOR_MEDIUM_ENEMIES);
     int mp = MUSHROOM_MAN_BASE_MP + (level * 2);
-    int atk = MUSHROOM_MAN_BASE_ATK + (level * 5);
-    int def = MUSHROOM_MAN_BASE_DEF + (level * 1);
-    float spd = MUSHROOM_MAN_BASE_SPEED - (level * 0.1);
-    int rewardXP = MUSHROOM_MAN_BASE_REWARD_XP + (level * 5);
+    int atk = MUSHROOM_MAN_BASE_ATK + (level * ATK_MOD_FOR_MEDIUM_ENEMIES);
+    int def = MUSHROOM_MAN_BASE_DEF + (level * DEF_MOD_FOR_MEDIUM_ENEMIES);
+    float spd = MUSHROOM_MAN_BASE_SPEED - (level * SPD_MOD_FOR_MEDIUM_ENEMIES);
+    int rewardXP = MUSHROOM_MAN_BASE_REWARD_XP;
     int moneyReward = MUSHROOM_MAN_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = mushroomManRewards();
 
@@ -859,19 +859,19 @@ void InitEnemies::zombie(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("zombie");
+    character->setIdentifierName("Zombie");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = ZOMBIE_BASE_HP + (level * 5);
+    int hp = ZOMBIE_BASE_HP + (level * HP_MOD_FOR_MEDIUM_ENEMIES);
     int mp = ZOMBIE_BASE_MP + (level * 2);
-    int atk = ZOMBIE_BASE_ATK + (level * 5);
-    int def = ZOMBIE_BASE_DEF + (level * 1);
-    float spd = ZOMBIE_BASE_SPEED - (level * 0.1);
-    int rewardXP = ZOMBIE_BASE_REWARD_XP + (level * 5);
+    int atk = ZOMBIE_BASE_ATK + (level * ATK_MOD_FOR_MEDIUM_ENEMIES);
+    int def = ZOMBIE_BASE_DEF + (level * DEF_MOD_FOR_MEDIUM_ENEMIES);
+    float spd = ZOMBIE_BASE_SPEED - (level * SPD_MOD_FOR_MEDIUM_ENEMIES);
+    int rewardXP = ZOMBIE_BASE_REWARD_XP;
     int moneyReward = ZOMBIE_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = zombieRewards();
 
@@ -901,19 +901,19 @@ void InitEnemies::babyBlob(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("babyBlob");
+    character->setIdentifierName("Baby Blob");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = BABY_BLOB_BASE_HP + (level * 5);
+    int hp = BABY_BLOB_BASE_HP + (level * HP_MOD_FOR_EASY_ENEMIES);
     int mp = BABY_BLOB_BASE_MP + (level * 2);
-    int atk = BABY_BLOB_BASE_ATK + (level * 5);
-    int def = BABY_BLOB_BASE_DEF + (level * 1);
-    float spd = BABY_BLOB_BASE_SPEED - (level * 0.1);
-    int rewardXP = BABY_BLOB_BASE_REWARD_XP + (level * 5);
+    int atk = BABY_BLOB_BASE_ATK + (level * ATK_MOD_FOR_EASY_ENEMIES);
+    int def = BABY_BLOB_BASE_DEF + (level * DEF_MOD_FOR_EASY_ENEMIES);
+    float spd = BABY_BLOB_BASE_SPEED - (level * SPD_MOD_FOR_EASY_ENEMIES);
+    int rewardXP = BABY_BLOB_BASE_REWARD_XP;
     int moneyReward = BABY_BLOB_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = babyBlobRewards();
 
@@ -929,7 +929,7 @@ std::vector<std::string> InitEnemies::babyBlobRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 5)
+    if(randomNum < 10)
         rewards.push_back("Blob Eye");
 
     return rewards;
@@ -940,19 +940,19 @@ void InitEnemies::sheep(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("sheep");
+    character->setIdentifierName("Sheep");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = SHEEP_BASE_HP + (level * 5);
+    int hp = SHEEP_BASE_HP + (level * HP_MOD_FOR_HARD_ENEMIES);
     int mp = SHEEP_BASE_MP + (level * 2);
-    int atk = SHEEP_BASE_ATK + (level * 5);
-    int def = SHEEP_BASE_DEF + (level * 1);
-    float spd = SHEEP_BASE_SPEED - (level * 0.1);
-    int rewardXP = SHEEP_BASE_REWARD_XP + (level * 5);
+    int atk = SHEEP_BASE_ATK + (level * ATK_MOD_FOR_HARD_ENEMIES);
+    int def = SHEEP_BASE_DEF + (level * DEF_MOD_FOR_HARD_ENEMIES);
+    float spd = SHEEP_BASE_SPEED - (level * SPD_MOD_FOR_HARD_ENEMIES);
+    int rewardXP = SHEEP_BASE_REWARD_XP;
     int moneyReward = SHEEP_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = sheepRewards();
 
@@ -985,19 +985,19 @@ void InitEnemies::kungfooDog(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("kungfooDog");
+    character->setIdentifierName("Kungfoo Dog");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = KUNGFOO_DOG_BASE_HP + (level * 5);
+    int hp = KUNGFOO_DOG_BASE_HP + (level * HP_MOD_FOR_EASY_ENEMIES);
     int mp = KUNGFOO_DOG_BASE_MP + (level * 2);
-    int atk = KUNGFOO_DOG_BASE_ATK + (level * 5);
-    int def = KUNGFOO_DOG_BASE_DEF + (level * 1);
-    float spd = KUNGFOO_DOG_BASE_SPEED - (level * 0.1);
-    int rewardXP = KUNGFOO_DOG_BASE_REWARD_XP + (level * 5);
+    int atk = KUNGFOO_DOG_BASE_ATK + (level * ATK_MOD_FOR_EASY_ENEMIES);
+    int def = KUNGFOO_DOG_BASE_DEF + (level * DEF_MOD_FOR_EASY_ENEMIES);
+    float spd = KUNGFOO_DOG_BASE_SPEED - (level * SPD_MOD_FOR_EASY_ENEMIES);
+    int rewardXP = KUNGFOO_DOG_BASE_REWARD_XP;
     int moneyReward = KUNGFOO_DOG_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = kungfooDogRewards();
 
@@ -1013,7 +1013,7 @@ std::vector<std::string> InitEnemies::kungfooDogRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 5)
+    if(randomNum < 10)
         rewards.push_back("Kungfoo Belt");
 
     return rewards;
@@ -1024,19 +1024,19 @@ void InitEnemies::fangedFox(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("fangedFox");
+    character->setIdentifierName("Fanged Fox");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = FANGED_FOX_BASE_HP + (level * 5);
+    int hp = FANGED_FOX_BASE_HP + (level * HP_MOD_FOR_MEDIUM_ENEMIES);
     int mp = FANGED_FOX_BASE_MP + (level * 2);
-    int atk = FANGED_FOX_BASE_ATK + (level * 5);
-    int def = FANGED_FOX_BASE_DEF + (level * 1);
-    float spd = FANGED_FOX_BASE_SPEED - (level * 0.1);
-    int rewardXP = FANGED_FOX_BASE_REWARD_XP + (level * 5);
+    int atk = FANGED_FOX_BASE_ATK + (level * ATK_MOD_FOR_MEDIUM_ENEMIES);
+    int def = FANGED_FOX_BASE_DEF + (level * DEF_MOD_FOR_MEDIUM_ENEMIES);
+    float spd = FANGED_FOX_BASE_SPEED - (level * SPD_MOD_FOR_MEDIUM_ENEMIES);
+    int rewardXP = FANGED_FOX_BASE_REWARD_XP;
     int moneyReward = FANGED_FOX_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = fangedFoxRewards();
 
@@ -1066,19 +1066,19 @@ void InitEnemies::ninjaFox(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("ninjaFox");
+    character->setIdentifierName("Ninja Fox");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = NINJA_FOX_BASE_HP + (level * 5);
+    int hp = NINJA_FOX_BASE_HP + (level * HP_MOD_FOR_MEDIUM_ENEMIES);
     int mp = NINJA_FOX_BASE_MP + (level * 2);
-    int atk = NINJA_FOX_BASE_ATK + (level * 5);
-    int def = NINJA_FOX_BASE_DEF + (level * 1);
-    float spd = NINJA_FOX_BASE_SPEED - (level * 0.1);
-    int rewardXP = NINJA_FOX_BASE_REWARD_XP + (level * 5);
+    int atk = NINJA_FOX_BASE_ATK + (level * ATK_MOD_FOR_MEDIUM_ENEMIES);
+    int def = NINJA_FOX_BASE_DEF + (level * DEF_MOD_FOR_MEDIUM_ENEMIES);
+    float spd = NINJA_FOX_BASE_SPEED - (level * SPD_MOD_FOR_MEDIUM_ENEMIES);
+    int rewardXP = NINJA_FOX_BASE_REWARD_XP;
     int moneyReward = NINJA_FOX_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = ninjaFoxRewards();
 
@@ -1108,19 +1108,19 @@ void InitEnemies::redReaper(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("redReaper");
+    character->setIdentifierName("Red Reaper");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = RED_REAPER_BASE_HP + (level * 5);
+    int hp = RED_REAPER_BASE_HP + (level * HP_MOD_FOR_HARD_ENEMIES);
     int mp = RED_REAPER_BASE_MP + (level * 2);
-    int atk = RED_REAPER_BASE_ATK + (level * 5);
-    int def = RED_REAPER_BASE_DEF + (level * 1);
-    float spd = RED_REAPER_BASE_SPEED - (level * 0.1);
-    int rewardXP = RED_REAPER_BASE_REWARD_XP + (level * 5);
+    int atk = RED_REAPER_BASE_ATK + (level * ATK_MOD_FOR_HARD_ENEMIES);
+    int def = RED_REAPER_BASE_DEF + (level * DEF_MOD_FOR_HARD_ENEMIES);
+    float spd = RED_REAPER_BASE_SPEED - (level * SPD_MOD_FOR_HARD_ENEMIES);
+    int rewardXP = RED_REAPER_BASE_REWARD_XP;
     int moneyReward = RED_REAPER_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = redReaperRewards();
 
@@ -1136,7 +1136,7 @@ std::vector<std::string> InitEnemies::redReaperRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 5)
+    if(randomNum < 10)
         rewards.push_back("Scythe");
 
     return rewards;
@@ -1147,19 +1147,19 @@ void InitEnemies::spider(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("spider");
+    character->setIdentifierName("Spider");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = SPIDER_BASE_HP + (level * 5);
+    int hp = SPIDER_BASE_HP + (level * HP_MOD_FOR_EASY_ENEMIES);
     int mp = SPIDER_BASE_MP + (level * 2);
-    int atk = SPIDER_BASE_ATK + (level * 5);
-    int def = SPIDER_BASE_DEF + (level * 1);
-    float spd = SPIDER_BASE_SPEED - (level * 0.1);
-    int rewardXP = SPIDER_BASE_REWARD_XP + (level * 5);
+    int atk = SPIDER_BASE_ATK + (level * ATK_MOD_FOR_EASY_ENEMIES);
+    int def = SPIDER_BASE_DEF + (level * DEF_MOD_FOR_EASY_ENEMIES);
+    float spd = SPIDER_BASE_SPEED - (level * SPD_MOD_FOR_EASY_ENEMIES);
+    int rewardXP = SPIDER_BASE_REWARD_XP;
     int moneyReward = SPIDER_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = spiderRewards();
 
@@ -1175,7 +1175,7 @@ std::vector<std::string> InitEnemies::spiderRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 5)
+    if(randomNum < 10)
         rewards.push_back("Spider Leg");
 
     return rewards;
@@ -1186,19 +1186,19 @@ void InitEnemies::spiderEgg(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("spiderEgg");
+    character->setIdentifierName("Spider Egg");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = SPIDER_EGG_BASE_HP + (level * 5);
+    int hp = SPIDER_EGG_BASE_HP + (level * HP_MOD_FOR_EASY_ENEMIES);
     int mp = SPIDER_EGG_BASE_MP + (level * 2);
-    int atk = SPIDER_EGG_BASE_ATK + (level * 5);
-    int def = SPIDER_EGG_BASE_DEF + (level * 1);
-    float spd = SPIDER_EGG_BASE_SPEED - (level * 0.1);
-    int rewardXP = SPIDER_EGG_BASE_REWARD_XP + (level * 5);
+    int atk = SPIDER_EGG_BASE_ATK + (level * ATK_MOD_FOR_EASY_ENEMIES);
+    int def = SPIDER_EGG_BASE_DEF + (level * DEF_MOD_FOR_EASY_ENEMIES);
+    float spd = SPIDER_EGG_BASE_SPEED - (level * SPD_MOD_FOR_EASY_ENEMIES);
+    int rewardXP = SPIDER_EGG_BASE_REWARD_XP;
     int moneyReward = SPIDER_EGG_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = spiderEggRewards();
 
@@ -1214,7 +1214,7 @@ std::vector<std::string> InitEnemies::spiderEggRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 5)
+    if(randomNum < 10)
         rewards.push_back("Spider Egg Spindle");
 
     return rewards;
@@ -1225,19 +1225,19 @@ void InitEnemies::spiderWeb(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("spiderWeb");
+    character->setIdentifierName("Spider Web");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = SPIDER_WEB_BASE_HP + (level * 5);
+    int hp = SPIDER_WEB_BASE_HP + (level * HP_MOD_FOR_MEDIUM_ENEMIES);
     int mp = SPIDER_WEB_BASE_MP + (level * 2);
-    int atk = SPIDER_WEB_BASE_ATK + (level * 5);
-    int def = SPIDER_WEB_BASE_DEF + (level * 1);
-    float spd = SPIDER_WEB_BASE_SPEED - (level * 0.1);
-    int rewardXP = SPIDER_WEB_BASE_REWARD_XP + (level * 5);
+    int atk = SPIDER_WEB_BASE_ATK + (level * ATK_MOD_FOR_MEDIUM_ENEMIES);
+    int def = SPIDER_WEB_BASE_DEF + (level * DEF_MOD_FOR_MEDIUM_ENEMIES);
+    float spd = SPIDER_WEB_BASE_SPEED - (level * SPD_MOD_FOR_MEDIUM_ENEMIES);
+    int rewardXP = SPIDER_WEB_BASE_REWARD_XP;
     int moneyReward = SPIDER_WEB_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = spiderWebRewards();
 
@@ -1253,7 +1253,7 @@ std::vector<std::string> InitEnemies::spiderWebRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 5)
+    if(randomNum < 10)
         rewards.push_back("Spider Web Bits");
 
     return rewards;
@@ -1264,19 +1264,19 @@ void InitEnemies::tentacleMage(Character *character , int enemyType , int level 
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("tentacleMage");
+    character->setIdentifierName("Tentacle Mage");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = TENTACLE_MAGE_BASE_HP + (level * 5);
+    int hp = TENTACLE_MAGE_BASE_HP + (level * HP_MOD_FOR_HARD_ENEMIES);
     int mp = TENTACLE_MAGE_BASE_MP + (level * 2);
-    int atk = TENTACLE_MAGE_BASE_ATK + (level * 5);
-    int def = TENTACLE_MAGE_BASE_DEF + (level * 1);
-    float spd = TENTACLE_MAGE_BASE_SPEED - (level * 0.1);
-    int rewardXP = TENTACLE_MAGE_BASE_REWARD_XP + (level * 5);
+    int atk = TENTACLE_MAGE_BASE_ATK + (level * ATK_MOD_FOR_HARD_ENEMIES);
+    int def = TENTACLE_MAGE_BASE_DEF + (level * DEF_MOD_FOR_HARD_ENEMIES);
+    float spd = TENTACLE_MAGE_BASE_SPEED - (level * SPD_MOD_FOR_HARD_ENEMIES);
+    int rewardXP = TENTACLE_MAGE_BASE_REWARD_XP;
     int moneyReward = TENTACLE_MAGE_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = tentacleMageRewards();
 
@@ -1292,7 +1292,7 @@ std::vector<std::string> InitEnemies::tentacleMageRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 5)
+    if(randomNum < 10)
         rewards.push_back("Mages Warped Staff");
 
     return rewards;
@@ -1303,19 +1303,19 @@ void InitEnemies::echidna(Character *character , int enemyType , int level ,
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("echidna");
+    character->setIdentifierName("Echidna");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = ECHIDNA_BASE_HP + (level * 5);
+    int hp = ECHIDNA_BASE_HP + (level * HP_MOD_FOR_MEDIUM_ENEMIES);
     int mp = ECHIDNA_BASE_MP + (level * 2);
-    int atk = ECHIDNA_BASE_ATK + (level * 5);
-    int def = ECHIDNA_BASE_DEF + (level * 1);
-    float spd = ECHIDNA_BASE_SPEED - (level * 0.1);
-    int rewardXP = ECHIDNA_BASE_REWARD_XP + (level * 5);
+    int atk = ECHIDNA_BASE_ATK + (level * ATK_MOD_FOR_MEDIUM_ENEMIES);
+    int def = ECHIDNA_BASE_DEF + (level * DEF_MOD_FOR_MEDIUM_ENEMIES);
+    float spd = ECHIDNA_BASE_SPEED - (level * SPD_MOD_FOR_MEDIUM_ENEMIES);
+    int rewardXP = ECHIDNA_BASE_REWARD_XP;
     int moneyReward = ECHIDNA_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = echidnaRewards();
 
@@ -1331,8 +1331,8 @@ std::vector<std::string> InitEnemies::echidnaRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 5)
-        rewards.push_back("Mages Warped Staff");
+    if(randomNum < 10)
+        rewards.push_back("Echidna Tail");
 
     return rewards;
 }
@@ -1342,19 +1342,19 @@ void InitEnemies::umgarTheWorldDestroyer(Character *character , int enemyType , 
     vector<ALLEGRO_BITMAP*> enemies){
 
     character->setImage(enemies[enemyType]);
-    character->setIdentifierName("umgarTheWorldDestroyer");
+    character->setIdentifierName("Umgar The World Destroyer");
 
     //Base stats times level.
     character->setW(al_get_bitmap_width(enemies[enemyType]));
     character->setH(al_get_bitmap_height(enemies[enemyType])); 
     
     //Calculate stat values based off of level.
-    int hp = UMGAR_THE_WORLD_DESTROYER_BASE_HP + (level * 5);
+    int hp = UMGAR_THE_WORLD_DESTROYER_BASE_HP + (level * HP_MOD_FOR_HARD_ENEMIES);
     int mp = UMGAR_THE_WORLD_DESTROYER_BASE_MP + (level * 2);
-    int atk = UMGAR_THE_WORLD_DESTROYER_BASE_ATK + (level * 5);
-    int def = UMGAR_THE_WORLD_DESTROYER_BASE_DEF + (level * 1);
-    float spd = UMGAR_THE_WORLD_DESTROYER_BASE_SPEED - (level * 0.1);
-    int rewardXP = UMGAR_THE_WORLD_DESTROYER_BASE_REWARD_XP + (level * 5);
+    int atk = UMGAR_THE_WORLD_DESTROYER_BASE_ATK + (level * ATK_MOD_FOR_HARD_ENEMIES);
+    int def = UMGAR_THE_WORLD_DESTROYER_BASE_DEF + (level * DEF_MOD_FOR_HARD_ENEMIES);
+    float spd = UMGAR_THE_WORLD_DESTROYER_BASE_SPEED - (level * SPD_MOD_FOR_HARD_ENEMIES);
+    int rewardXP = UMGAR_THE_WORLD_DESTROYER_BASE_REWARD_XP;
     int moneyReward = UMGAR_THE_WORLD_DESTROYER_BASE_MONEY_REWARD;
     std::vector<std::string> itemRewards = umgarTheWorldDestroyerRewards();
 

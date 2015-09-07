@@ -20,12 +20,12 @@ bool Collision::characterToAreaMap(Character &character , AreaMap *&areaMap ,
     //Check collisions with all the tangibles in the tangible vector.
     for(int i = 0 ; i < areaMap->getNumTangibles() ; i ++){
 
-        int index = characterToTangible(character , areaMap->getTangible(i) ,
+        bool collision = characterToTangible(character , areaMap->getTangible(i) ,
             gameManager);
 
         //Collision with tangible found.
-        if(index != -1){
-            character.setColl(index);
+        if(collision){
+
             result = true;
         }
     }
@@ -110,79 +110,77 @@ bool Collision::characterToLayer(Character &character , Layer &layer){
 }
 
 //Check collisions between a character and a tangible.
-int Collision::characterToTangible(Character &character , Tangible &tangible ,
+bool Collision::characterToTangible(Character &character , Tangible &tangible ,
     GameManager *gameManager){
 
-    if(character.getX() > tangible.getDX() + tangible.getCW()  ||   //Check if left A is greater than right B 
-       character.getX() + character.getW() < tangible.getDX() ||   //Check if right A is less than left B 
-       character.getY() > tangible.getDY() + tangible.getCH()  ||   //Check if top A is less than bottom B 
-       character.getY() + character.getH() < tangible.getDY())     //Check if bottom A is greater than top B 
-           return -1;
+    int characterLeft = character.getX();
+    int characterRight = character.getX() + character.getW();
+    int characterTop = character.getY();
+    int characterBottom = character.getY() + character.getH();
+
+    int tangibleLeft = tangible.getDX();
+    int tangibleRight = tangible.getDX() + tangible.getCW();
+    int tangibleTop =  tangible.getDY();
+    int tangibleBottom = tangible.getDY() + tangible.getCH();
+
+    if(characterLeft > tangibleRight ||   //Check if character left is greater than tangible right
+       characterRight < tangibleLeft ||   //Check if character right is less than tangible left
+       characterTop > tangibleBottom ||   //Check if character top is less than tangible bottom
+       characterBottom < tangibleTop){     //Check if character bottom is greater than tangible top
+           return false;
+    }
 
     else{
-        
-        switch(character.getFacing()){
 
-            //Collision with tangible on the left.
-            case LEFT:
-            if((character.getX() < tangible.getDX() + tangible.getW() &&
-                character.getX() > tangible.getDX())){
+        //Collision with tangible on the left.
+        if(characterLeft < tangibleRight && characterLeft > tangibleLeft ){
 
-                if(gameManager->pressedKey == SPACE)
-                    tangible.playCutscene(gameManager->pressedKey);
+            if(gameManager->pressedKey == SPACE && character.getFacing() == LEFT){
                     
-                return LEFT;
+                tangible.playCutscene(gameManager->pressedKey);
             }
-                break;
-            
 
-            //Collision with tangible on the right.
-            case RIGHT:
-            if((character.getX() + character.getW()) < tangible.getDX() +
-                tangible.getW() && (character.getX() + character.getW()) >
-                tangible.getDX()){
-                
-                    if(gameManager->pressedKey == SPACE)
-                        tangible.playCutscene(gameManager->pressedKey);
-
-                return RIGHT;
-            }
-                break;
-            
-            //Collision with tangible above.
-            case UP:
-            if((character.getY() < (tangible.getDY() + tangible.getH()) &&
-                character.getY() > tangible.getDY())){
-
-                if(gameManager->pressedKey == SPACE)
-                    tangible.playCutscene(gameManager->pressedKey);
-                    
-                return UP;
-            }
-                break;
-            
-            
-            //Collision with tangible below.
-            case DOWN:
-            if((character.getY() + character.getH() < tangible.getDY() +
-                tangible.getH() && character.getY() + character.getH() >
-                tangible.getDY())){
-                
-                if(gameManager->pressedKey == SPACE)
-                    tangible.playCutscene(gameManager->pressedKey);                    
-                
-                return DOWN;
-            }
-                break;
-            
-            
-        //Error.
-            default:
-                return -2;
-                break;
+            character.setColl(LEFT);
         }
+
+        //Collision with tangible on the right.
+        if(characterRight < tangibleRight && characterRight > tangibleLeft ){
+                
+            if(gameManager->pressedKey == SPACE && character.getFacing() == RIGHT){
+
+                tangible.playCutscene(gameManager->pressedKey);
+            }
+
+            character.setColl(RIGHT);
+        }
+            
+        //Collision with tangible above.
+        if(characterTop < tangibleBottom && characterTop > tangibleTop){
+
+            if(gameManager->pressedKey == SPACE && character.getFacing() == UP){
+
+                tangible.playCutscene(gameManager->pressedKey);
+            }
+                    
+            character.setColl(UP);
+
+        }
+
+        //Collison with tangible below.
+        if((characterBottom < tangibleBottom && characterBottom > tangibleTop)){
+                
+            if(gameManager->pressedKey == SPACE && character.getFacing() == DOWN){
+
+                tangible.playCutscene(gameManager->pressedKey);                    
+            }
+                
+            character.setColl(DOWN);
+        }
+        return true;
     }
 }
+
+
 
 //Check collisions between a character and an exit.
 bool Collision::characterToExit(Character &character , AreaMap *&areaMap ,
@@ -210,6 +208,8 @@ bool Collision::characterToExit(Character &character , AreaMap *&areaMap ,
 
             //Set map to the destination map.
             areaMap = areaMap->getToMap(i); 
+
+            gameManager->getMusicBox()->playSong(areaMap->getMapMusic());
 
             //Set battleMap.
             gameManager->battleMap = areaMap->getBattleMap();

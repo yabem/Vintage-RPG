@@ -125,8 +125,8 @@ void Backstab::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void Backstab::calculateDamage(){
 
-    damageToReceiver = DamageCalculations::damageWithDelay(
-        initiator , receiver , 2 , 3.6);
+    damageToReceiver = DamageCalculations::damageWithDelayAtk(
+        initiator , receiver , 1.25 , 1);
 }
 
 //Sets the draw to spell location.

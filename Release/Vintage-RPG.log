@@ -1,0 +1,259 @@
+﻿Build started 8/26/2015 1:28:16 PM.
+     1>Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\RPG.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Backstab.cpp BattleManager.cpp ChainLightning.cpp CharacterManipulationStore.cpp CustomAreaMap.cpp Dagger.cpp DamageCalculations.cpp EarthShatter.cpp EasternCastle.cpp EasternCastleBattle.cpp EnemyTurn.cpp FireBall.cpp FuryOfTheFang.cpp Headbutt.cpp HomeTown.cpp HomeTownArmory.cpp HomeTownBar.cpp HomeTownShop.cpp InsideCastle.cpp InsideCastleBattle.cpp Jump.cpp KnifeBarrage.cpp Lance.cpp NPCWithDialogueThenBattle.cpp NorthernSnow.cpp NorthernSnowBattle.cpp ReignOfWinter.cpp SetTurnTimerListToCharacterList.cpp ShadeOfTheCrescent.cpp ShieldBash.cpp Skewer.cpp SouthernForest.cpp SouthernForestBattle.cpp Staff.cpp StartBattle.cpp StatsByLevelStore.cpp Sword.cpp TurnTimerList.cpp WesternDesert.cpp WesternDesertBattle.cpp main.cpp ratAI.cpp
+         Backstab.cpp
+         BattleManager.cpp
+         ChainLightning.cpp
+         CharacterManipulationStore.cpp
+         CustomAreaMap.cpp
+         Dagger.cpp
+         DamageCalculations.cpp
+         EarthShatter.cpp
+         EasternCastle.cpp
+         EasternCastleBattle.cpp
+         EnemyTurn.cpp
+         FireBall.cpp
+         FuryOfTheFang.cpp
+         Headbutt.cpp
+         HomeTown.cpp
+         HomeTownArmory.cpp
+         HomeTownBar.cpp
+         HomeTownShop.cpp
+         InsideCastle.cpp
+         InsideCastleBattle.cpp
+         Compiling...
+         Jump.cpp
+         KnifeBarrage.cpp
+         Lance.cpp
+         NPCWithDialogueThenBattle.cpp
+         NorthernSnow.cpp
+         NorthernSnowBattle.cpp
+         ReignOfWinter.cpp
+         SetTurnTimerListToCharacterList.cpp
+         ShadeOfTheCrescent.cpp
+         ShieldBash.cpp
+         Skewer.cpp
+         SouthernForest.cpp
+         SouthernForestBattle.cpp
+         Staff.cpp
+         StartBattle.cpp
+         StatsByLevelStore.cpp
+     1>StatsByLevelStore.cpp(22): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(23): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(24): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(25): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(26): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(27): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(28): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(29): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(36): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(37): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(38): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(39): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(40): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(41): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(42): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(49): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(50): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(53): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(54): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(55): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(56): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(57): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(64): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(65): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(66): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(67): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(69): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(70): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>StatsByLevelStore.cpp(71): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Sword.cpp
+         TurnTimerList.cpp
+         WesternDesert.cpp
+         WesternDesertBattle.cpp
+         Compiling...
+         main.cpp
+         ratAI.cpp
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.exe" /NOLOGO /LIBPATH:c:\allegro\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro-5.0.10-monolith-md.lib" /MANIFEST /ManifestFile:"Release\RPG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.lib" /MACHINE:X86 Release\AddAbilityToCharacterInList.obj
+         Release\Backstab.obj
+         Release\BattleTransitionScreen.obj
+         Release\ChainLightning.obj
+         Release\ChangeCharacterHeight.obj
+         Release\ChangeCharacterWidth.obj
+         Release\CustomAreaMap.obj
+         Release\Dagger.obj
+         Release\DamageCalculations.obj
+         Release\Dialogue.obj
+         Release\DrawTextWithBorder.obj
+         Release\EarthShatter.obj
+         Release\EasternCastle.obj
+         Release\FallingImage.obj
+         Release\FilterImage.obj
+         Release\FlashingImage.obj
+         Release\EasternCastleBattle.obj
+         Release\BattleTrans.obj
+         Release\BattleVictory.obj
+         Release\FuryOfTheFang.obj
+         Release\GatherQuest.obj
+         Release\Headbutt.obj
+         Release\HealingActions.obj
+         Release\HomeTown.obj
+         Release\HomeTownArmory.obj
+         Release\HomeTownBar.obj
+         Release\InfoTable.obj
+         Release\InsideCastle.obj
+         Release\InsideCastleBattle.obj
+         Release\Instruct.obj
+         Release\Intro.obj
+         Release\ItemLocationWithGift.obj
+         Release\KillQuest.obj
+         Release\KnifeBarrage.obj
+         Release\Lance.obj
+         Release\LevelUpCalculations.obj
+         Release\LoadExitsForCastle.obj
+         Release\LoadExitsForHomeTownArmory.obj
+         Release\LoadExitsForHomeTownBar.obj
+         Release\NPCWithDialogueAndQuestWithItemReward.obj
+         Release\NPCWithQuestAndRemoval.obj
+         Release\ReignOfWinter.obj
+         Release\RewardItem.obj
+         Release\ShadeOfTheCrescent.obj
+         Release\NPCWithDialogueAndGift.obj
+         Release\NPCWithDialogueAndQuest.obj
+         Release\Quest.obj
+         Release\QuestLog.obj
+         Release\RemoveTangible.obj
+         Release\RewardAbility.obj
+         Release\RightToLeftImage.obj
+         Release\Lightning.obj
+         Release\LoadExitsForEasternCastle.obj
+         Release\LoadExitsForHomeTown.obj
+         Release\LoadExitsForHomeTownShop.obj
+         Release\LoadExitsForNothernSnow.obj
+         Release\LoadExitsForSouthernForest.obj
+         Release\LoadExitsForWesternDesert.obj
+         Release\NorthernSnow.obj
+         Release\NorthernSnowBattle.obj
+         Release\NPCWithDialogue.obj
+         Release\NPCWithDialogueThenBattle.obj
+         Release\Conversion.obj
+         Release\Potion.obj
+         Release\Rain.obj
+         Release\Recover.obj
+         Release\I_Animation.obj
+         Release\AreaMap.obj
+         Release\Backpack.obj
+         Release\BattleLoss.obj
+         Release\BattleManager.obj
+         Release\CalculateRewards.obj
+         Release\ChangeCreatureImage.obj
+         Release\Character.obj
+         Release\CharacterAttack.obj
+         Release\DelayInSeconds.obj
+         Release\FloatingText.obj
+         Release\FloatingTextList.obj
+         Release\GainedItem.obj
+         Release\GainedMoney.obj
+         Release\GenericItem.obj
+         Release\I_CharacterValuesList.obj
+         Release\CheckForDeadPlayer.obj
+         Release\CheckForDeadEnemy.obj
+         Release\EnemyTurn.obj
+         Release\FireBall.obj
+         Release\Fire2.obj
+         Release\Fire3.obj
+         Release\GainedExperiencePoints.obj
+         Release\InitPlayers.obj
+         Release\I_AI.obj
+         Release\I_Creature.obj
+         Release\I_Event.obj
+         Release\I_InfoBox.obj
+         Release\I_InventoryItem.obj
+         Release\I_Manager.obj
+         Release\I_List.obj
+         Release\Jump.obj
+         Release\LoadAMenu.obj
+         Release\MenuList.obj
+         Release\MovingCreature.obj
+         Release\PauseBattle.obj
+         Release\PlayerEntity.obj
+         Release\PlayerTurn.obj
+         Release\ProcessAI.obj
+         Release\ratAI.obj
+         Release\ResetTurnTimer.obj
+         Release\I_Reward.obj
+         Release\SetCreatureFacingDirection.obj
+         Release\SetFloatingTextListToCharacterList.obj
+         Release\SetMenuListToCharacterList.obj
+         Release\SetTurnTimerListToCharacterList.obj
+         Release\ShieldBash.obj
+         Release\HomeTownShop.obj
+         Release\PulsingImage.obj
+         Release\ShowActiveQuestLog.obj
+         Release\ShowPartyStatus.obj
+         Release\ShowCompletedQuestLog.obj
+         Release\ShowInventory.obj
+         Release\SimultaneousAnimations.obj
+         Release\Skewer.obj
+         Release\SouthernForest.obj
+         Release\SouthernForestBattle.obj
+         Release\Staff.obj
+         Release\StartBattle.obj
+         Release\StatAugment.obj
+         Release\StatsByLevel.obj
+         Release\StatsByLevelStore.obj
+         Release\Sword.obj
+         Release\TreasureBox.obj
+         Release\TurnTimer.obj
+         Release\CharacterList.obj
+         Release\CharacterManipulation.obj
+         Release\CharacterManipulationStore.obj
+         Release\CharStats.obj
+         Release\Collision.obj
+         Release\Controls.obj
+         Release\Cursor.obj
+         Release\Cutscene.obj
+         Release\Draw.obj
+         Release\DrawRespository.obj
+         Release\FontStore.obj
+         Release\GameManager.obj
+         Release\ImageStore.obj
+         Release\InitEnemies.obj
+         Release\Layer.obj
+         Release\main.obj
+         Release\Map.obj
+         Release\Menu.obj
+         Release\Movement.obj
+         Release\MovingImage.obj
+         Release\MovingText.obj
+         Release\Scenery.obj
+         Release\Stats.obj
+         Release\Tangible.obj
+         Release\TextBox.obj
+         Release\ThrowRock.obj
+         Release\TransferAnimations.obj
+         Release\TurnTimerList.obj
+         Release\UnPauseBattle.obj
+         Release\UpdatePlayersHP.obj
+         Release\WesternDesert.obj
+         Release\WesternDesertBattle.obj
+         Release\XPToLevel.obj
+         Generating code
+     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\collision.cpp(185): warning C4715: 'Collision::characterToTangible' : not all control paths return a value
+     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\battlemanager.cpp(661): warning C4715: 'BattleManager::checkForBattle' : not all control paths return a value
+         Finished generating code
+         Vintage-RPG.vcxproj -> C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.exe;#1" /manifest Release\RPG.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\RPG.unsuccessfulbuild".
+         Touching "Release\RPG.lastbuildstate".
+     1>Done Building Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:01:26.27

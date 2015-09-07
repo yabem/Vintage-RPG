@@ -149,8 +149,8 @@ void Skewer::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void Skewer::calculateDamage(){
 
-    damageToReceiver = DamageCalculations::damageWithDelay(
-        initiator , receiver , 1.5 , 1.65);
+    damageToReceiver = DamageCalculations::damageWithDelayAtk(
+        initiator , receiver , 1.875 , 1.5);
 }
 
 //Sets the draw to spell location.

@@ -1,5 +1,3 @@
-//An item that heals a player.
-
 #pragma once
 #include "I_InventoryItem.h"
 #include "GameConfig.h"

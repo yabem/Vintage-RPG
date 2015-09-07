@@ -4,245 +4,266 @@
 
 namespace InitEnemies{
 
-    const int RAT_BASE_HP = 5;
-    const int RAT_BASE_MP = 0;
-    const int RAT_BASE_ATK = 1;
-    const int RAT_BASE_DEF = 1;
-    const int RAT_BASE_SPEED = 2.8;
-    const int RAT_BASE_REWARD_XP = 5;
-    const int RAT_BASE_MONEY_REWARD = 1;
+    //Modifiers
+    const int HP_MOD_FOR_EASY_ENEMIES = 0;
+    const int ATK_MOD_FOR_EASY_ENEMIES = 0;
+    const int DEF_MOD_FOR_EASY_ENEMIES = 0;
+    const int SPD_MOD_FOR_EASY_ENEMIES = 0;
 
-    const int WOLF_BASE_HP = 10;
-    const int WOLF_BASE_MP = 0;
-    const int WOLF_BASE_ATK = 1;
-    const int WOLF_BASE_DEF = 1;
-    const int WOLF_BASE_SPEED = 4;
-    const int WOLF_BASE_REWARD_XP = 15;
-    const int WOLF_BASE_MONEY_REWARD = 5;
+    const int HP_MOD_FOR_MEDIUM_ENEMIES = 0;
+    const int ATK_MOD_FOR_MEDIUM_ENEMIES = 0;
+    const int DEF_MOD_FOR_MEDIUM_ENEMIES = 0;
+    const int SPD_MOD_FOR_MEDIUM_ENEMIES = 0;
 
-    const int SOLDIER_BASE_HP = 10;
-    const int SOLDIER_BASE_MP = 0;
-    const int SOLDIER_BASE_ATK = 1;
-    const int SOLDIER_BASE_DEF = 1;
-    const int SOLDIER_BASE_SPEED = 3;
-    const int SOLDIER_BASE_REWARD_XP = 10;
-    const int SOLDIER_BASE_MONEY_REWARD = 10;
+    const int HP_MOD_FOR_HARD_ENEMIES = 0;
+    const int ATK_MOD_FOR_HARD_ENEMIES = 0;
+    const int DEF_MOD_FOR_HARD_ENEMIES = 0;
+    const int SPD_MOD_FOR_HARD_ENEMIES = 0;
 
-    const int ICE_BULL_BASE_HP = 10;
-    const int ICE_BULL_BASE_MP = 0;
-    const int ICE_BULL_BASE_ATK = 1;
-    const int ICE_BULL_BASE_DEF = 1;
-    const int ICE_BULL_BASE_SPEED = 3;
-    const int ICE_BULL_BASE_REWARD_XP = 10;
-    const int ICE_BULL_BASE_MONEY_REWARD = 10;
-
-    const int BLOB_KING_BASE_HP = 10;
-    const int BLOB_KING_BASE_MP = 0;
-    const int BLOB_KING_BASE_ATK = 1;
-    const int BLOB_KING_BASE_DEF = 1;
-    const int BLOB_KING_BASE_SPEED = 3;
-    const int BLOB_KING_BASE_REWARD_XP = 10;
-    const int BLOB_KING_BASE_MONEY_REWARD = 10;
-
-    const int GUARDIAN_BASE_HP = 10;
-    const int GUARDIAN_BASE_MP = 0;
-    const int GUARDIAN_BASE_ATK = 1;
-    const int GUARDIAN_BASE_DEF = 1;
-    const int GUARDIAN_BASE_SPEED = 3;
-    const int GUARDIAN_BASE_REWARD_XP = 10;
-    const int GUARDIAN_BASE_MONEY_REWARD = 10;
-
-    const int DEMON_BASE_HP = 10;
-    const int DEMON_BASE_MP = 0;
-    const int DEMON_BASE_ATK = 1;
-    const int DEMON_BASE_DEF = 1;
-    const int DEMON_BASE_SPEED = 3;
-    const int DEMON_BASE_REWARD_XP = 10;
-    const int DEMON_BASE_MONEY_REWARD = 10;
-
-    const int CARROT_RAT_BASE_HP = 10;
-    const int CARROT_RAT_BASE_MP = 0;
-    const int CARROT_RAT_BASE_ATK = 1;
-    const int CARROT_RAT_BASE_DEF = 1;
-    const int CARROT_RAT_BASE_SPEED = 3;
-    const int CARROT_RAT_BASE_REWARD_XP = 10;
-    const int CARROT_RAT_BASE_MONEY_REWARD = 10;
-
-    const int WALRUS_BASE_HP = 10;
-    const int WALRUS_BASE_MP = 0;
-    const int WALRUS_BASE_ATK = 1;
-    const int WALRUS_BASE_DEF = 1;
-    const int WALRUS_BASE_SPEED = 3;
-    const int WALRUS_BASE_REWARD_XP = 10;
-    const int WALRUS_BASE_MONEY_REWARD = 10;
-
-    const int GOO_CUBE_BASE_HP = 10;
-    const int GOO_CUBE_BASE_MP = 0;
-    const int GOO_CUBE_BASE_ATK = 1;
-    const int GOO_CUBE_BASE_DEF = 1;
-    const int GOO_CUBE_BASE_SPEED = 3;
-    const int GOO_CUBE_BASE_REWARD_XP = 10;
-    const int GOO_CUBE_BASE_MONEY_REWARD = 10;
-
-    const int ICE_CUBE_BASE_HP = 10;
-    const int ICE_CUBE_BASE_MP = 0;
-    const int ICE_CUBE_BASE_ATK = 1;
-    const int ICE_CUBE_BASE_DEF = 1;
-    const int ICE_CUBE_BASE_SPEED = 3;
-    const int ICE_CUBE_BASE_REWARD_XP = 10;
-    const int ICE_CUBE_BASE_MONEY_REWARD = 10;
-
-    const int FIRE_CUBE_BASE_HP = 10;
-    const int FIRE_CUBE_BASE_MP = 0;
-    const int FIRE_CUBE_BASE_ATK = 1;
-    const int FIRE_CUBE_BASE_DEF = 1;
-    const int FIRE_CUBE_BASE_SPEED = 3;
-    const int FIRE_CUBE_BASE_REWARD_XP = 10;
-    const int FIRE_CUBE_BASE_MONEY_REWARD = 10;
-
-    const int SHIELD_SKELETON_BASE_HP = 10;
-    const int SHIELD_SKELETON_BASE_MP = 0;
-    const int SHIELD_SKELETON_BASE_ATK = 1;
-    const int SHIELD_SKELETON_BASE_DEF = 1;
-    const int SHIELD_SKELETON_BASE_SPEED = 3;
-    const int SHIELD_SKELETON_BASE_REWARD_XP = 10;
-    const int SHIELD_SKELETON_BASE_MONEY_REWARD = 10;
-
+    //Southern Forest
     const int WERERAT_BASE_HP = 10;
     const int WERERAT_BASE_MP = 0;
-    const int WERERAT_BASE_ATK = 1;
-    const int WERERAT_BASE_DEF = 1;
-    const int WERERAT_BASE_SPEED = 3;
+    const int WERERAT_BASE_ATK = 5;
+    const int WERERAT_BASE_DEF = 0;
+    const int WERERAT_BASE_SPEED = 2.5;
     const int WERERAT_BASE_REWARD_XP = 10;
-    const int WERERAT_BASE_MONEY_REWARD = 10;
-
-    const int CACTUS_BASE_HP = 10;
-    const int CACTUS_BASE_MP = 0;
-    const int CACTUS_BASE_ATK = 1;
-    const int CACTUS_BASE_DEF = 1;
-    const int CACTUS_BASE_SPEED = 3;
-    const int CACTUS_BASE_REWARD_XP = 10;
-    const int CACTUS_BASE_MONEY_REWARD = 10;
-
-    const int OLDMAN_AXE_BASE_HP = 10;
-    const int OLDMAN_AXE_BASE_MP = 0;
-    const int OLDMAN_AXE_BASE_ATK = 1;
-    const int OLDMAN_AXE_BASE_DEF = 1;
-    const int OLDMAN_AXE_BASE_SPEED = 3;
-    const int OLDMAN_AXE_BASE_REWARD_XP = 10;
-    const int OLDMAN_AXE_BASE_MONEY_REWARD = 10;
-
-    const int MUSHROOM_MAN_BASE_HP = 10;
-    const int MUSHROOM_MAN_BASE_MP = 0;
-    const int MUSHROOM_MAN_BASE_ATK = 1;
-    const int MUSHROOM_MAN_BASE_DEF = 1;
-    const int MUSHROOM_MAN_BASE_SPEED = 3;
-    const int MUSHROOM_MAN_BASE_REWARD_XP = 10;
-    const int MUSHROOM_MAN_BASE_MONEY_REWARD = 10;
-
-    const int ZOMBIE_BASE_HP = 10;
-    const int ZOMBIE_BASE_MP = 0;
-    const int ZOMBIE_BASE_ATK = 1;
-    const int ZOMBIE_BASE_DEF = 1;
-    const int ZOMBIE_BASE_SPEED = 3;
-    const int ZOMBIE_BASE_REWARD_XP = 10;
-    const int ZOMBIE_BASE_MONEY_REWARD = 10;
+    const int WERERAT_BASE_MONEY_REWARD = 5;
 
     const int BABY_BLOB_BASE_HP = 10;
     const int BABY_BLOB_BASE_MP = 0;
-    const int BABY_BLOB_BASE_ATK = 1;
-    const int BABY_BLOB_BASE_DEF = 1;
-    const int BABY_BLOB_BASE_SPEED = 3;
+    const int BABY_BLOB_BASE_ATK = 5;
+    const int BABY_BLOB_BASE_DEF = 0;
+    const int BABY_BLOB_BASE_SPEED = 2.5;
     const int BABY_BLOB_BASE_REWARD_XP = 10;
-    const int BABY_BLOB_BASE_MONEY_REWARD = 10;
+    const int BABY_BLOB_BASE_MONEY_REWARD = 5;
 
-    const int SHEEP_BASE_HP = 10;
-    const int SHEEP_BASE_MP = 0;
-    const int SHEEP_BASE_ATK = 1;
-    const int SHEEP_BASE_DEF = 1;
-    const int SHEEP_BASE_SPEED = 3;
-    const int SHEEP_BASE_REWARD_XP = 10;
-    const int SHEEP_BASE_MONEY_REWARD = 10;
+    const int GOO_CUBE_BASE_HP = 20;
+    const int GOO_CUBE_BASE_MP = 0;
+    const int GOO_CUBE_BASE_ATK = 10;
+    const int GOO_CUBE_BASE_DEF = 0;
+    const int GOO_CUBE_BASE_SPEED = 2.2;
+    const int GOO_CUBE_BASE_REWARD_XP = 20;
+    const int GOO_CUBE_BASE_MONEY_REWARD = 10;
 
-    const int KUNGFOO_DOG_BASE_HP = 10;
-    const int KUNGFOO_DOG_BASE_MP = 0;
-    const int KUNGFOO_DOG_BASE_ATK = 1;
-    const int KUNGFOO_DOG_BASE_DEF = 1;
-    const int KUNGFOO_DOG_BASE_SPEED = 3;
-    const int KUNGFOO_DOG_BASE_REWARD_XP = 10;
-    const int KUNGFOO_DOG_BASE_MONEY_REWARD = 10;
+    const int MUSHROOM_MAN_BASE_HP = 20;
+    const int MUSHROOM_MAN_BASE_MP = 0;
+    const int MUSHROOM_MAN_BASE_ATK = 10;
+    const int MUSHROOM_MAN_BASE_DEF = 0;
+    const int MUSHROOM_MAN_BASE_SPEED = 2.2;
+    const int MUSHROOM_MAN_BASE_REWARD_XP = 20;
+    const int MUSHROOM_MAN_BASE_MONEY_REWARD = 10;
 
-    const int FANGED_FOX_BASE_HP = 10;
-    const int FANGED_FOX_BASE_MP = 0;
-    const int FANGED_FOX_BASE_ATK = 1;
-    const int FANGED_FOX_BASE_DEF = 1;
-    const int FANGED_FOX_BASE_SPEED = 3;
-    const int FANGED_FOX_BASE_REWARD_XP = 10;
-    const int FANGED_FOX_BASE_MONEY_REWARD = 10;
+    const int WOLF_BASE_HP = 30;
+    const int WOLF_BASE_MP = 0;
+    const int WOLF_BASE_ATK = 15;
+    const int WOLF_BASE_DEF = 0;
+    const int WOLF_BASE_SPEED = 2;
+    const int WOLF_BASE_REWARD_XP = 30;
+    const int WOLF_BASE_MONEY_REWARD = 15;
 
-    const int NINJA_FOX_BASE_HP = 10;
-    const int NINJA_FOX_BASE_MP = 0;
-    const int NINJA_FOX_BASE_ATK = 1;
-    const int NINJA_FOX_BASE_DEF = 1;
-    const int NINJA_FOX_BASE_SPEED = 3;
-    const int NINJA_FOX_BASE_REWARD_XP = 10;
-    const int NINJA_FOX_BASE_MONEY_REWARD = 10;
+    const int BLOB_KING_BASE_HP = 300;
+    const int BLOB_KING_BASE_MP = 0;
+    const int BLOB_KING_BASE_ATK = 30;
+    const int BLOB_KING_BASE_DEF = 0;
+    const int BLOB_KING_BASE_SPEED = 1.8;
+    const int BLOB_KING_BASE_REWARD_XP = 300;
+    const int BLOB_KING_BASE_MONEY_REWARD = 150;
 
-    const int RED_REAPER_BASE_HP = 10;
+    //Western Desert
+    const int RAT_BASE_HP = 30;
+    const int RAT_BASE_MP = 0;
+    const int RAT_BASE_ATK = 15;
+    const int RAT_BASE_DEF = 0;
+    const int RAT_BASE_SPEED = 2.5;
+    const int RAT_BASE_REWARD_XP = 30;
+    const int RAT_BASE_MONEY_REWARD = 15;
+
+    const int CACTUS_BASE_HP = 30;
+    const int CACTUS_BASE_MP = 0;
+    const int CACTUS_BASE_ATK = 15;
+    const int CACTUS_BASE_DEF = 0;
+    const int CACTUS_BASE_SPEED = 2.5;
+    const int CACTUS_BASE_REWARD_XP = 30;
+    const int CACTUS_BASE_MONEY_REWARD = 15;
+
+    const int ZOMBIE_BASE_HP = 40;
+    const int ZOMBIE_BASE_MP = 0;
+    const int ZOMBIE_BASE_ATK = 20;
+    const int ZOMBIE_BASE_DEF = 0;
+    const int ZOMBIE_BASE_SPEED = 2.2;
+    const int ZOMBIE_BASE_REWARD_XP = 40;
+    const int ZOMBIE_BASE_MONEY_REWARD = 20;
+
+    const int FIRE_CUBE_BASE_HP = 40;
+    const int FIRE_CUBE_BASE_MP = 0;
+    const int FIRE_CUBE_BASE_ATK = 20;
+    const int FIRE_CUBE_BASE_DEF = 0;
+    const int FIRE_CUBE_BASE_SPEED = 2.2;
+    const int FIRE_CUBE_BASE_REWARD_XP = 40;
+    const int FIRE_CUBE_BASE_MONEY_REWARD = 20;
+
+    const int SHIELD_SKELETON_BASE_HP = 50;
+    const int SHIELD_SKELETON_BASE_MP = 0;
+    const int SHIELD_SKELETON_BASE_ATK = 25;
+    const int SHIELD_SKELETON_BASE_DEF = 0;
+    const int SHIELD_SKELETON_BASE_SPEED = 2;
+    const int SHIELD_SKELETON_BASE_REWARD_XP = 50;
+    const int SHIELD_SKELETON_BASE_MONEY_REWARD = 25;
+
+    const int DEMON_BASE_HP = 500;
+    const int DEMON_BASE_MP = 0;
+    const int DEMON_BASE_ATK = 50;
+    const int DEMON_BASE_DEF = 0;
+    const int DEMON_BASE_SPEED = 1.8;
+    const int DEMON_BASE_REWARD_XP = 500;
+    const int DEMON_BASE_MONEY_REWARD = 250;
+
+    //Northern Snow
+    const int ICE_CUBE_BASE_HP = 50;
+    const int ICE_CUBE_BASE_MP = 0;
+    const int ICE_CUBE_BASE_ATK = 25;
+    const int ICE_CUBE_BASE_DEF = 0;
+    const int ICE_CUBE_BASE_SPEED = 2.5;
+    const int ICE_CUBE_BASE_REWARD_XP = 50;
+    const int ICE_CUBE_BASE_MONEY_REWARD = 25;
+
+    const int WALRUS_BASE_HP = 50;
+    const int WALRUS_BASE_MP = 0;
+    const int WALRUS_BASE_ATK = 25;
+    const int WALRUS_BASE_DEF = 0;
+    const int WALRUS_BASE_SPEED = 2.5;
+    const int WALRUS_BASE_REWARD_XP = 50;
+    const int WALRUS_BASE_MONEY_REWARD = 25;
+
+    const int CARROT_RAT_BASE_HP = 60;
+    const int CARROT_RAT_BASE_MP = 0;
+    const int CARROT_RAT_BASE_ATK = 30;
+    const int CARROT_RAT_BASE_DEF = 0;
+    const int CARROT_RAT_BASE_SPEED = 2.2;
+    const int CARROT_RAT_BASE_REWARD_XP = 60;
+    const int CARROT_RAT_BASE_MONEY_REWARD = 30;
+
+    const int OLDMAN_AXE_BASE_HP = 60;
+    const int OLDMAN_AXE_BASE_MP = 0;
+    const int OLDMAN_AXE_BASE_ATK = 30;
+    const int OLDMAN_AXE_BASE_DEF = 0;
+    const int OLDMAN_AXE_BASE_SPEED = 2.2;
+    const int OLDMAN_AXE_BASE_REWARD_XP = 60;
+    const int OLDMAN_AXE_BASE_MONEY_REWARD = 30;
+
+    const int RED_REAPER_BASE_HP = 70;
     const int RED_REAPER_BASE_MP = 0;
-    const int RED_REAPER_BASE_ATK = 1;
-    const int RED_REAPER_BASE_DEF = 1;
-    const int RED_REAPER_BASE_SPEED = 3;
-    const int RED_REAPER_BASE_REWARD_XP = 10;
-    const int RED_REAPER_BASE_MONEY_REWARD = 10;
+    const int RED_REAPER_BASE_ATK = 35;
+    const int RED_REAPER_BASE_DEF = 0;
+    const int RED_REAPER_BASE_SPEED = 2;
+    const int RED_REAPER_BASE_REWARD_XP = 70;
+    const int RED_REAPER_BASE_MONEY_REWARD = 35;
 
-    const int SPIDER_BASE_HP = 10;
+    const int ICE_BULL_BASE_HP = 700;
+    const int ICE_BULL_BASE_MP = 0;
+    const int ICE_BULL_BASE_ATK = 70;
+    const int ICE_BULL_BASE_DEF = 0;
+    const int ICE_BULL_BASE_SPEED = 1.8;
+    const int ICE_BULL_BASE_REWARD_XP = 700;
+    const int ICE_BULL_BASE_MONEY_REWARD = 350;
+
+    //Eastern Castle
+    const int SOLDIER_BASE_HP = 70;
+    const int SOLDIER_BASE_MP = 0;
+    const int SOLDIER_BASE_ATK = 35;
+    const int SOLDIER_BASE_DEF = 0;
+    const int SOLDIER_BASE_SPEED = 2.5;
+    const int SOLDIER_BASE_REWARD_XP = 70;
+    const int SOLDIER_BASE_MONEY_REWARD = 35;
+
+    const int KUNGFOO_DOG_BASE_HP = 70;
+    const int KUNGFOO_DOG_BASE_MP = 0;
+    const int KUNGFOO_DOG_BASE_ATK = 35;
+    const int KUNGFOO_DOG_BASE_DEF = 0;
+    const int KUNGFOO_DOG_BASE_SPEED = 2.5;
+    const int KUNGFOO_DOG_BASE_REWARD_XP = 70;
+    const int KUNGFOO_DOG_BASE_MONEY_REWARD = 35;
+
+    const int NINJA_FOX_BASE_HP = 80;
+    const int NINJA_FOX_BASE_MP = 0;
+    const int NINJA_FOX_BASE_ATK = 40;
+    const int NINJA_FOX_BASE_DEF = 0;
+    const int NINJA_FOX_BASE_SPEED = 2.2;
+    const int NINJA_FOX_BASE_REWARD_XP = 80;
+    const int NINJA_FOX_BASE_MONEY_REWARD = 40;
+
+    const int FANGED_FOX_BASE_HP = 80;
+    const int FANGED_FOX_BASE_MP = 0;
+    const int FANGED_FOX_BASE_ATK = 40;
+    const int FANGED_FOX_BASE_DEF = 0;
+    const int FANGED_FOX_BASE_SPEED = 2.2;
+    const int FANGED_FOX_BASE_REWARD_XP = 80;
+    const int FANGED_FOX_BASE_MONEY_REWARD = 40;
+
+    const int SHEEP_BASE_HP = 90;
+    const int SHEEP_BASE_MP = 0;
+    const int SHEEP_BASE_ATK = 45;
+    const int SHEEP_BASE_DEF = 0;
+    const int SHEEP_BASE_SPEED = 2;
+    const int SHEEP_BASE_REWARD_XP = 90;
+    const int SHEEP_BASE_MONEY_REWARD = 45;
+
+    const int GUARDIAN_BASE_HP = 900;
+    const int GUARDIAN_BASE_MP = 0;
+    const int GUARDIAN_BASE_ATK = 90;
+    const int GUARDIAN_BASE_DEF = 0;
+    const int GUARDIAN_BASE_SPEED = 1.8;
+    const int GUARDIAN_BASE_REWARD_XP = 900;
+    const int GUARDIAN_BASE_MONEY_REWARD = 450;
+
+    //Inside Castle
+    const int SPIDER_BASE_HP = 90;
     const int SPIDER_BASE_MP = 0;
-    const int SPIDER_BASE_ATK = 1;
-    const int SPIDER_BASE_DEF = 1;
-    const int SPIDER_BASE_SPEED = 3;
-    const int SPIDER_BASE_REWARD_XP = 10;
-    const int SPIDER_BASE_MONEY_REWARD = 10;
+    const int SPIDER_BASE_ATK = 45;
+    const int SPIDER_BASE_DEF = 0;
+    const int SPIDER_BASE_SPEED = 2.5;
+    const int SPIDER_BASE_REWARD_XP = 90;
+    const int SPIDER_BASE_MONEY_REWARD = 45;
 
-    const int SPIDER_EGG_BASE_HP = 10;
+    const int SPIDER_EGG_BASE_HP = 90;
     const int SPIDER_EGG_BASE_MP = 0;
-    const int SPIDER_EGG_BASE_ATK = 1;
-    const int SPIDER_EGG_BASE_DEF = 1;
-    const int SPIDER_EGG_BASE_SPEED = 3;
-    const int SPIDER_EGG_BASE_REWARD_XP = 10;
-    const int SPIDER_EGG_BASE_MONEY_REWARD = 10;
+    const int SPIDER_EGG_BASE_ATK = 45;
+    const int SPIDER_EGG_BASE_DEF = 0;
+    const int SPIDER_EGG_BASE_SPEED = 2.5;
+    const int SPIDER_EGG_BASE_REWARD_XP = 90;
+    const int SPIDER_EGG_BASE_MONEY_REWARD = 45;
 
-    const int SPIDER_WEB_BASE_HP = 10;
+    const int SPIDER_WEB_BASE_HP = 100;
     const int SPIDER_WEB_BASE_MP = 0;
-    const int SPIDER_WEB_BASE_ATK = 1;
-    const int SPIDER_WEB_BASE_DEF = 1;
-    const int SPIDER_WEB_BASE_SPEED = 3;
-    const int SPIDER_WEB_BASE_REWARD_XP = 10;
-    const int SPIDER_WEB_BASE_MONEY_REWARD = 10;
+    const int SPIDER_WEB_BASE_ATK = 50;
+    const int SPIDER_WEB_BASE_DEF = 0;
+    const int SPIDER_WEB_BASE_SPEED = 2.2;
+    const int SPIDER_WEB_BASE_REWARD_XP = 100;
+    const int SPIDER_WEB_BASE_MONEY_REWARD = 50;
 
-    const int TENTACLE_MAGE_BASE_HP = 10;
-    const int TENTACLE_MAGE_BASE_MP = 0;
-    const int TENTACLE_MAGE_BASE_ATK = 1;
-    const int TENTACLE_MAGE_BASE_DEF = 1;
-    const int TENTACLE_MAGE_BASE_SPEED = 3;
-    const int TENTACLE_MAGE_BASE_REWARD_XP = 10;
-    const int TENTACLE_MAGE_BASE_MONEY_REWARD = 10;
-
-    const int ECHIDNA_BASE_HP = 10;
+    const int ECHIDNA_BASE_HP = 100;
     const int ECHIDNA_BASE_MP = 0;
-    const int ECHIDNA_BASE_ATK = 1;
-    const int ECHIDNA_BASE_DEF = 1;
-    const int ECHIDNA_BASE_SPEED = 3;
-    const int ECHIDNA_BASE_REWARD_XP = 10;
-    const int ECHIDNA_BASE_MONEY_REWARD = 10;
+    const int ECHIDNA_BASE_ATK = 50;
+    const int ECHIDNA_BASE_DEF = 0;
+    const int ECHIDNA_BASE_SPEED = 2.2;
+    const int ECHIDNA_BASE_REWARD_XP = 100;
+    const int ECHIDNA_BASE_MONEY_REWARD = 50;
 
-    const int UMGAR_THE_WORLD_DESTROYER_BASE_HP = 10;
+    const int TENTACLE_MAGE_BASE_HP = 110;
+    const int TENTACLE_MAGE_BASE_MP = 0;
+    const int TENTACLE_MAGE_BASE_ATK = 55;
+    const int TENTACLE_MAGE_BASE_DEF = 0;
+    const int TENTACLE_MAGE_BASE_SPEED = 2;
+    const int TENTACLE_MAGE_BASE_REWARD_XP = 110;
+    const int TENTACLE_MAGE_BASE_MONEY_REWARD = 65;
+
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_HP = 1200;
     const int UMGAR_THE_WORLD_DESTROYER_BASE_MP = 0;
-    const int UMGAR_THE_WORLD_DESTROYER_BASE_ATK = 1;
-    const int UMGAR_THE_WORLD_DESTROYER_BASE_DEF = 1;
-    const int UMGAR_THE_WORLD_DESTROYER_BASE_SPEED = 3;
-    const int UMGAR_THE_WORLD_DESTROYER_BASE_REWARD_XP = 10;
-    const int UMGAR_THE_WORLD_DESTROYER_BASE_MONEY_REWARD = 10;
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_ATK = 120;
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_DEF = 0;
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_SPEED = 1.8;
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_REWARD_XP = 1200;
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_MONEY_REWARD = 600;
 
     //Initialize character based off of the level and type or enemy.
     void init(Character *character , int enemyType , int level , 

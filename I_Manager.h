@@ -11,6 +11,8 @@ class Character;
 class I_Reward;
 class Backpack;
 class I_List;
+#include "MusicBox.h"
+#include "AreaMap.h"
 
 class I_Manager{
 
@@ -113,4 +115,10 @@ public:
 
     //Increases the battle time.
     virtual void incrementBattleTime();
+
+    //Returns the prevMap.
+    virtual AreaMap* getPreviousMap();
+
+    //Gets the MusicBox.
+    virtual MusicBox* getMusicBox();
 };
