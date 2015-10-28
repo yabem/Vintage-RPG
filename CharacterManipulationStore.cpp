@@ -126,7 +126,7 @@ void CharacterManipulationStore::loadAllDefaultManipulations(){
     charManip = new FuryOfTheFang;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,
         drawRepository , battleManager);
-    loadManipulation("Fury Of The Fang" , charManip);
+    loadManipulation("Fury of the Fang" , charManip);
 
     charManip = new Recover;
     charManip->initialize(NULL , NULL , imageStore , fontStore ,

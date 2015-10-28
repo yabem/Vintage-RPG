@@ -9,23 +9,28 @@ Instruct::Instruct(ALLEGRO_FONT *font , GameManager *gameManager){
 
     TextBox *textBox = NULL;
         
-    textBox = new TextBox("You awaken in a strange town that you have never seen before."
-        "You don't know where you are and how you got here. "
-        "Oddly enough you are in a party with three other people. Good thing because you are "
-        "going to fight lots of monsters whilst trying to understand this riddle, "
-        "which is wrapped in an enigma, that's nestled inside a "
-        "conundrum. Find some clues and figure out what happened. Dun dun DUNNN!!! ", introFont);
+    textBox = new TextBox("After a harrowing battle with the giant tree god, Ent Man, "
+        "you come across a strange town that you have never heard of before. It is in dire "
+        "need of saving from an evil monster that is bent on devouring the town and then the entire "
+        "world. Dun dun DUNNN!!! You find youself in a party with three other heroes which is fortuitous "
+        "because you are going to fight lots of monsters whilst trying to figure out how to save this town. "
+        "It's a good old fashioned riddle, wrapped in an enigma, that's nestled inside a conundrum. "
+        "Start exploring, get some awesome abilities, and then save the town! ", introFont);
     listOfTexts.push_back(textBox);
 
-    textBox = new TextBox("Brief Tutorial: A few things first. Use the 'Up', 'Down', 'Left', and 'Right' "
+    textBox = new TextBox("Tutorial: A few things first. Use the 'Up', 'Down', 'Left', and 'Right' "
         "arrows to move your character. Use 'Space' to interact with objects, people, "
         "and monsters. Use 'I' to access your inventory, 'O' to view completed quests, "
         "'L' to view open quests, and 'U' to view your players stats.", introFont);
     listOfTexts.push_back(textBox);
 
-    textBox = new TextBox("Brief Tutorial: In combat, you can use 'Space' to select actions "
-        "and 'C' to reverse actions or selections. Now you're prepared and "
-        "on your way! Enjoy!", introFont);
+    textBox = new TextBox("Tutorial: In combat, you can use 'Space' to select actions "
+        "and 'C' to reverse actions or selections.", introFont);
+    listOfTexts.push_back(textBox);
+
+    textBox = new TextBox("Tutorial: You cannot run from battle or save your progress. Some would "
+        "call it ""Hardcore Mode"" while others might call it features the developer didn't implement. "
+        "That's the important stuff, now on your way!", introFont);
     listOfTexts.push_back(textBox);
 }
 

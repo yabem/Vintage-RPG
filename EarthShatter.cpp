@@ -182,7 +182,7 @@ void EarthShatter::loadAnimations(){
 //      The imageStore is where the images will be taken from.
 void EarthShatter::calculateDamage(){
 
-    damageToReceiver = DamageCalculations::damageWithDelayAtk(
+    damageToReceiver = DamageCalculations::damageWithDelayMgc(
         initiator, receiver, 1.75 , 1.16);
 }
 

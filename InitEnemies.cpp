@@ -182,11 +182,10 @@ std::vector<std::string> InitEnemies::ratRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 30)
+    if(randomNum < 70)
         rewards.push_back("Stick");
 
-    if(randomNum < 10)
-        rewards.push_back("Rock");
+    randomNum = rand() % 100;
 
     return rewards;
 }
@@ -224,10 +223,12 @@ std::vector<std::string> InitEnemies::wolfRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 30)
+    if(randomNum < 70)
         rewards.push_back("Red Potion");
 
-    if(randomNum < 10)
+    randomNum = rand() % 100;
+
+    if(randomNum < 50)
         rewards.push_back("Green Potion");
 
     return rewards;
@@ -266,13 +267,17 @@ std::vector<std::string> InitEnemies::soldierRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 20)
+    if(randomNum < 60)
         rewards.push_back("Red Potion");
 
-    if(randomNum < 20)
+    randomNum = rand() % 100;
+
+    if(randomNum < 60)
         rewards.push_back("Green Potion");
 
-    if(randomNum < 20)
+    randomNum = rand() % 100;
+
+    if(randomNum < 60)
         rewards.push_back("Blue Potion");
 
     return rewards;
@@ -311,7 +316,7 @@ std::vector<std::string> InitEnemies::iceBullRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
+    if(randomNum < 101)
         rewards.push_back("Bull Horns");
 
     return rewards;
@@ -350,7 +355,7 @@ std::vector<std::string> InitEnemies::blobKingRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
+    if(randomNum < 101)
         rewards.push_back("Crown");
 
     return rewards;
@@ -389,7 +394,7 @@ std::vector<std::string> InitEnemies::guardianRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
+    if(randomNum < 101)
         rewards.push_back("Dog Collar");
 
     return rewards;
@@ -428,7 +433,7 @@ std::vector<std::string> InitEnemies::demonRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
+    if(randomNum < 101)
         rewards.push_back("Dark Jewel");
 
     return rewards;
@@ -467,7 +472,7 @@ std::vector<std::string> InitEnemies::carrotRatRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 10)
+    if(randomNum < 50)
         rewards.push_back("Carrot");
 
     return rewards;
@@ -506,7 +511,7 @@ std::vector<std::string> InitEnemies::walrusRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 10)
+    if(randomNum < 50)
         rewards.push_back("Whiskers");
 
     return rewards;
@@ -545,13 +550,12 @@ std::vector<std::string> InitEnemies::gooCubeRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 30)
+    if(randomNum < 70)
         rewards.push_back("Small Goo");
 
-    if(randomNum < 20)
-        rewards.push_back("Medium Goo");
+    randomNum = rand() % 100;
 
-    if(randomNum < 10)
+    if(randomNum < 50)
         rewards.push_back("Large Goo");
 
     return rewards;
@@ -590,13 +594,12 @@ std::vector<std::string> InitEnemies::iceCubeRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 30)
+    if(randomNum < 70)
         rewards.push_back("Small Goo");
 
-    if(randomNum < 20)
-        rewards.push_back("Medium Goo");
+    randomNum = rand() % 100;
 
-    if(randomNum < 10)
+    if(randomNum < 50)
         rewards.push_back("Large Goo");
 
     return rewards;
@@ -635,13 +638,12 @@ std::vector<std::string> InitEnemies::fireCubeRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 30)
+    if(randomNum < 70)
         rewards.push_back("Small Goo");
 
-    if(randomNum < 20)
-        rewards.push_back("Medium Goo");
+    randomNum = rand() % 100;
 
-    if(randomNum < 10)
+    if(randomNum < 50)
         rewards.push_back("Large Goo");
 
     return rewards;
@@ -680,10 +682,7 @@ std::vector<std::string> InitEnemies::shieldSkeletonRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 20)
-        rewards.push_back("Rock");
-
-    if(randomNum < 20)
+    if(randomNum < 60)
         rewards.push_back("Sand");
 
     return rewards;
@@ -722,10 +721,12 @@ std::vector<std::string> InitEnemies::wereratRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 30)
+    if(randomNum < 70)
         rewards.push_back("Green Potion");
 
-    if(randomNum < 10)
+    randomNum = rand() % 100;
+
+    if(randomNum < 50)
         rewards.push_back("Blue Potion");
 
     return rewards;
@@ -764,10 +765,12 @@ std::vector<std::string> InitEnemies::cactusRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 20)
+    if(randomNum < 60)
         rewards.push_back("Napalm");
 
-    if(randomNum < 20)
+    randomNum = rand() % 100;
+
+    if(randomNum < 60)
         rewards.push_back("Sand");
 
     return rewards;
@@ -806,7 +809,7 @@ std::vector<std::string> InitEnemies::oldmanAxeRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 10)
+    if(randomNum < 50)
         rewards.push_back("Old Man Spices");
 
     return rewards;
@@ -845,10 +848,12 @@ std::vector<std::string> InitEnemies::mushroomManRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 30)
+    if(randomNum < 70)
         rewards.push_back("Blue Potion");
 
-    if(randomNum < 10)
+    randomNum = rand() % 100;
+
+    if(randomNum < 50)
         rewards.push_back("Red Potion");
 
     return rewards;
@@ -887,10 +892,12 @@ std::vector<std::string> InitEnemies::zombieRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 20)
+    if(randomNum < 60)
         rewards.push_back("Napalm");
 
-    if(randomNum < 20)
+    randomNum = rand() % 100;
+
+    if(randomNum < 60)
         rewards.push_back("Sand");
 
     return rewards;
@@ -929,7 +936,7 @@ std::vector<std::string> InitEnemies::babyBlobRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 10)
+    if(randomNum < 50)
         rewards.push_back("Blob Eye");
 
     return rewards;
@@ -968,13 +975,14 @@ std::vector<std::string> InitEnemies::sheepRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 30)
-        rewards.push_back("Tiny Eye");
+    randomNum = rand() % 100;
 
-    if(randomNum < 10)
+    if(randomNum < 50)
         rewards.push_back("Bloodshot Eye");
 
-    if(randomNum < 10)
+    randomNum = rand() % 100;
+
+    if(randomNum < 50)
         rewards.push_back("Pussing Eye");
 
     return rewards;
@@ -1013,7 +1021,7 @@ std::vector<std::string> InitEnemies::kungfooDogRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 10)
+    if(randomNum < 50)
         rewards.push_back("Kungfoo Belt");
 
     return rewards;
@@ -1052,10 +1060,9 @@ std::vector<std::string> InitEnemies::fangedFoxRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 30)
-        rewards.push_back("Tiny Eye");
+    randomNum = rand() % 100;
 
-    if(randomNum < 15)
+    if(randomNum < 50)
         rewards.push_back("Pussing Eye");
 
     return rewards;
@@ -1094,10 +1101,9 @@ std::vector<std::string> InitEnemies::ninjaFoxRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 30)
-        rewards.push_back("Tiny Eye");
+    randomNum = rand() % 100;
 
-    if(randomNum < 15)
+    if(randomNum < 50)
         rewards.push_back("Bloodshot Eye");
 
     return rewards;
@@ -1136,8 +1142,8 @@ std::vector<std::string> InitEnemies::redReaperRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 10)
-        rewards.push_back("Scythe");
+    //if(randomNum < 40)
+    //    rewards.push_back("Scythe");
 
     return rewards;
 }
@@ -1175,8 +1181,8 @@ std::vector<std::string> InitEnemies::spiderRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 10)
-        rewards.push_back("Spider Leg");
+    //if(randomNum < 50)
+    //    rewards.push_back("Spider Leg");
 
     return rewards;
 }
@@ -1214,8 +1220,8 @@ std::vector<std::string> InitEnemies::spiderEggRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 10)
-        rewards.push_back("Spider Egg Spindle");
+    //if(randomNum < 50)
+    //    rewards.push_back("Spider Egg Spindle");
 
     return rewards;
 }
@@ -1253,8 +1259,8 @@ std::vector<std::string> InitEnemies::spiderWebRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 10)
-        rewards.push_back("Spider Web Bits");
+    //if(randomNum < 50)
+    //    rewards.push_back("Spider Web Bit");
 
     return rewards;
 }
@@ -1292,8 +1298,8 @@ std::vector<std::string> InitEnemies::tentacleMageRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 10)
-        rewards.push_back("Mages Warped Staff");
+    //if(randomNum < 50)
+    //    rewards.push_back("Mages Warped Staff");
 
     return rewards;
 }
@@ -1331,8 +1337,8 @@ std::vector<std::string> InitEnemies::echidnaRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 10)
-        rewards.push_back("Echidna Tail");
+    //if(randomNum < 50)
+    //    rewards.push_back("Echidna Tail");
 
     return rewards;
 }
@@ -1370,7 +1376,7 @@ std::vector<std::string> InitEnemies::umgarTheWorldDestroyerRewards(){
     std::vector<std::string> rewards;
     int randomNum = rand() % 100;
 
-    if(randomNum < 100)
+    if(randomNum < 101)
         rewards.push_back("Badge of I Saved the World");
 
     return rewards;

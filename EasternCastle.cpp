@@ -72,9 +72,9 @@ void EasternCastle::loadTheTangibles(){
     guardian->setMusic("Split In Synapse");
 
     std::vector<int> enemies;
-    enemies.push_back(RAT);
+    enemies.push_back(SOLDIER);
     enemies.push_back(GUARDIAN);
-    enemies.push_back(RAT);
+    enemies.push_back(SOLDIER);
 
     std::vector<int> enemyLevels;
     enemyLevels.push_back(9);
@@ -107,8 +107,8 @@ void EasternCastle::loadTheTangibles(){
         "Escaped Prisoner: I can see that you cleared the path. Thank you "
         "thank you! It's not much, but I'll teach you something worthwhile.");
     escapedPrisoner->setRewardNotification(
-        "Thief received Knife Barrage ability!");
-    escapedPrisoner->setGift("thief" , "Knife Barrage");
+        "Lancer received the Jump ability!");
+    escapedPrisoner->setGift("lancer" , "Jump");
     escapedPrisoner->setQuestAfterCompleteMessage(
         "Escaped Prisoner: Thank you again. I'm headed back soon, "
         "once I catch my breath. I saw something shiny in those "
@@ -118,7 +118,7 @@ void EasternCastle::loadTheTangibles(){
     killTask->setQuestDisplayName("Security Breach");
     killTask->addObjective("Soldier" , 2);
     killTask->addObjective("Ninja Fox" , 2);
-    killTask->addObjective("Fanged Fox" , 4);
+    killTask->addObjective("Fanged Fox" , 2);
     killTask->setMustBeActiveForPlayerToUpdate();
     escapedPrisoner->loadQuest(killTask);
     gameManager->getPlayerEntity()->addQuest("securityBreach" , killTask);
@@ -146,13 +146,13 @@ void EasternCastle::loadTheTangibles(){
     jomk->setQuestCompleteMessage(
         "Jomk: Wow, took long enough. Here, now move outta my way!");
     jomk->setRewardNotification(
-        "Warrior received the Bandage ability!");
-    jomk->setGift("warrior" , "Bandage");
+        "Warrior learned the Shield Bash ability!");
+    jomk->setGift("warrior" , "Shield Bash");
     jomk->setQuestAfterCompleteMessage(
         "Jomk: Alright alright, time to do some driving."
         );
     KillQuest *killLargeDog= new KillQuest();
-    killLargeDog->setQuestDisplayName("Guardian of the Castlealaxy");
+    killLargeDog->setQuestDisplayName("Guardian of the Castle-alaxy");
     killLargeDog->addObjective("Guardian" , 1);
     jomk->loadQuest(killLargeDog);
     gameManager->getPlayerEntity()->addQuest("guardianOfTheCastlealaxy" , killLargeDog);

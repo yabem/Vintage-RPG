@@ -26,6 +26,31 @@ Character* CharacterList::getCurrSelection(){
 
     else return NULL;
 }
+
+//Sets the current selection to the specific character.
+//Pre:  The Character is valid.
+//Post: Iterates through the list. If the character is in the list,
+//      currSelection is set to that character. If the character is not
+//      found, currSelection is set to the beginning of the list.
+void CharacterList::setCurrSelection(Character *character){
+
+    resetSelection();
+
+    while(currPosition < size){
+
+        if(*currSelection == character){
+
+            return;
+        }
+
+        else{
+            moveSelectionDown();
+        }
+    }
+
+    //Character not found, reset to the beginning.
+    resetSelection();
+}
  
 //Returns the Character at the position.
 //Pre:  The position is within the bounds of the list.

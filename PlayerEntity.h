@@ -12,8 +12,20 @@
 #include "StatsByLevelStore.h"
 #include "LevelUpCalculations.h"
 
-//#define ALL_ABILITIES
-//#define MAX_LEVEL
+#define ADD_TIER_2_ABILITIES
+#define ADD_TIER_3_ABILITIES
+#define ADD_TIER_4_ABILITIES
+#define ADD_TIER_5_ABILITIES
+
+#define PROMOTE_ALL_PLAYERS_TO_LEVEL_2
+#define PROMOTE_ALL_PLAYERS_TO_LEVEL_3
+#define PROMOTE_ALL_PLAYERS_TO_LEVEL_4
+#define PROMOTE_ALL_PLAYERS_TO_LEVEL_5
+#define PROMOTE_ALL_PLAYERS_TO_LEVEL_6
+#define PROMOTE_ALL_PLAYERS_TO_LEVEL_7
+#define PROMOTE_ALL_PLAYERS_TO_LEVEL_8
+#define PROMOTE_ALL_PLAYERS_TO_LEVEL_9
+#define PROMOTE_ALL_PLAYERS_TO_LEVEL_10
 
 class PlayerEntity{
 
@@ -26,6 +38,8 @@ private:
     FontStore *fontStore;
     InfoTable *partyStatusDisplay;
     StatsByLevelStore *statsByLevelStore;
+
+    void appendCommas();
 
 public:
 

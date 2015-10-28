@@ -39,6 +39,9 @@ public:
     //Returns a pointer to the currently selected enemy.
     Character* getCurrSelection();  
 
+    //Sets the current selection to the specific character.
+    void setCurrSelection(Character *character);
+
     //Returns a pointer to the specified position.
     Character* getCharacterSelection(int position);
     

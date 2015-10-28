@@ -18,7 +18,7 @@ void FontStore::destroyFontStore(){
 
     while(fontIter != fonts.end()){
 
-        //al_destroy_font(iter->second);
+        al_destroy_font(fontIter->second);
         fonts.erase(fontIter);
         fontIter = fonts.begin();
     }
@@ -51,9 +51,9 @@ void FontStore::loadFont(std::string name , ALLEGRO_FONT *font){
 //Post: Loads all the fonts to the fonts map.
 void FontStore::loadAllDefaultFonts(){
 
-    loadFont("default" , al_load_font("arial.ttf" , 18 , 0));
-    loadFont("battleFont" , al_load_font("arial.ttf" , 18 , 0));
-    loadFont("shadowFont" , al_load_font("arial.ttf" , 19 , 0));
+    loadFont("default" , al_load_font("TTF/arial.ttf" , 18 , 0));
+    loadFont("battleFont" , al_load_font("TTF/arial.ttf" , 18 , 0));
+    loadFont("shadowFont" , al_load_font("TTF/arial.ttf" , 19 , 0));
 }
 
 //Returns the desired font.

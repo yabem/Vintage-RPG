@@ -1,84 +1,12 @@
-﻿Build started 8/26/2015 1:28:16 PM.
+﻿Build started 9/6/2015 11:37:06 PM.
      1>Project "C:\Users\Mike\Documents\GitHub\Vintage-RPG\Vintage-RPG\Vintage-RPG.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\RPG.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Backstab.cpp BattleManager.cpp ChainLightning.cpp CharacterManipulationStore.cpp CustomAreaMap.cpp Dagger.cpp DamageCalculations.cpp EarthShatter.cpp EasternCastle.cpp EasternCastleBattle.cpp EnemyTurn.cpp FireBall.cpp FuryOfTheFang.cpp Headbutt.cpp HomeTown.cpp HomeTownArmory.cpp HomeTownBar.cpp HomeTownShop.cpp InsideCastle.cpp InsideCastleBattle.cpp Jump.cpp KnifeBarrage.cpp Lance.cpp NPCWithDialogueThenBattle.cpp NorthernSnow.cpp NorthernSnowBattle.cpp ReignOfWinter.cpp SetTurnTimerListToCharacterList.cpp ShadeOfTheCrescent.cpp ShieldBash.cpp Skewer.cpp SouthernForest.cpp SouthernForestBattle.cpp Staff.cpp StartBattle.cpp StatsByLevelStore.cpp Sword.cpp TurnTimerList.cpp WesternDesert.cpp WesternDesertBattle.cpp main.cpp ratAI.cpp
-         Backstab.cpp
-         BattleManager.cpp
-         ChainLightning.cpp
-         CharacterManipulationStore.cpp
-         CustomAreaMap.cpp
-         Dagger.cpp
-         DamageCalculations.cpp
-         EarthShatter.cpp
-         EasternCastle.cpp
-         EasternCastleBattle.cpp
-         EnemyTurn.cpp
-         FireBall.cpp
-         FuryOfTheFang.cpp
-         Headbutt.cpp
-         HomeTown.cpp
-         HomeTownArmory.cpp
-         HomeTownBar.cpp
-         HomeTownShop.cpp
-         InsideCastle.cpp
-         InsideCastleBattle.cpp
-         Compiling...
-         Jump.cpp
-         KnifeBarrage.cpp
-         Lance.cpp
-         NPCWithDialogueThenBattle.cpp
-         NorthernSnow.cpp
-         NorthernSnowBattle.cpp
-         ReignOfWinter.cpp
-         SetTurnTimerListToCharacterList.cpp
-         ShadeOfTheCrescent.cpp
-         ShieldBash.cpp
-         Skewer.cpp
-         SouthernForest.cpp
-         SouthernForestBattle.cpp
-         Staff.cpp
-         StartBattle.cpp
-         StatsByLevelStore.cpp
-     1>StatsByLevelStore.cpp(22): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(23): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(24): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(25): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(26): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(27): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(28): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(29): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(36): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(37): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(38): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(39): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(40): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(41): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(42): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(49): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(50): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(53): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(54): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(55): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(56): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(57): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(64): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(65): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(66): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(67): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(69): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(70): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>StatsByLevelStore.cpp(71): warning C4305: 'argument' : truncation from 'double' to 'float'
-         Sword.cpp
-         TurnTimerList.cpp
-         WesternDesert.cpp
-         WesternDesertBattle.cpp
-         Compiling...
-         main.cpp
-         ratAI.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Ic:\allegro\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt MusicBox.cpp
+         MusicBox.cpp
        Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.exe" /NOLOGO /LIBPATH:c:\allegro\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro-5.0.10-monolith-md.lib" /MANIFEST /ManifestFile:"Release\RPG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.lib" /MACHINE:X86 Release\AddAbilityToCharacterInList.obj
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.exe" /NOLOGO /LIBPATH:c:\allegro\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "allegro-5.0.10-monolith-mt.lib" /MANIFEST /ManifestFile:"Release\RPG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.lib" /MACHINE:X86 Release\AddAbilityToCharacterInList.obj
          Release\Backstab.obj
          Release\BattleTransitionScreen.obj
          Release\ChainLightning.obj
@@ -91,6 +19,7 @@
          Release\DrawTextWithBorder.obj
          Release\EarthShatter.obj
          Release\EasternCastle.obj
+         Release\EndGameWithCredits.obj
          Release\FallingImage.obj
          Release\FilterImage.obj
          Release\FlashingImage.obj
@@ -98,6 +27,7 @@
          Release\BattleTrans.obj
          Release\BattleVictory.obj
          Release\FuryOfTheFang.obj
+         Release\GameInitialization.obj
          Release\GatherQuest.obj
          Release\Headbutt.obj
          Release\HealingActions.obj
@@ -117,8 +47,12 @@
          Release\LoadExitsForCastle.obj
          Release\LoadExitsForHomeTownArmory.obj
          Release\LoadExitsForHomeTownBar.obj
+         Release\MusicBox.obj
          Release\NPCWithDialogueAndQuestWithItemReward.obj
+         Release\NPCWithDialogueThenCutscene.obj
          Release\NPCWithQuestAndRemoval.obj
+         Release\PlayMusic.obj
+         Release\ProcessPlayerInput.obj
          Release\ReignOfWinter.obj
          Release\RewardItem.obj
          Release\ShadeOfTheCrescent.obj
@@ -243,7 +177,8 @@
          Release\WesternDesertBattle.obj
          Release\XPToLevel.obj
          Generating code
-     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\collision.cpp(185): warning C4715: 'Collision::characterToTangible' : not all control paths return a value
+     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\instruct.cpp(63): warning C4715: 'Instruct::play' : not all control paths return a value
+     1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\endgamewithcredits.cpp(77): warning C4715: 'EndGameWithCredits::play' : not all control paths return a value
      1>c:\users\mike\documents\github\vintage-rpg\vintage-rpg\battlemanager.cpp(661): warning C4715: 'BattleManager::checkForBattle' : not all control paths return a value
          Finished generating code
          Vintage-RPG.vcxproj -> C:\Users\Mike\Documents\GitHub\Vintage-RPG\Release\RPG.exe
@@ -256,4 +191,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:01:26.27
+Time Elapsed 00:00:40.01

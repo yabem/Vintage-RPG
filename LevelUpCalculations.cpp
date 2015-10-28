@@ -85,10 +85,13 @@ std::string LevelUpCalculations::getNewStatsSummary(Character *character ,
         int atkIncrease = statsByLevelStore->getAtkForClassLevel(theClass , nextLevel) -
             theStats->getBaseAtk();
 
+        int mgcIncrease = statsByLevelStore->getMgcForClassLevel(theClass , nextLevel) -
+            theStats->getBaseMgc();
+
         int defIncrease = statsByLevelStore->getDefForClassLevel(theClass , nextLevel) -
             theStats->getBaseDef();
 
-        int speedIncrease = statsByLevelStore->getSpeedForClassLevel(theClass , nextLevel) -
+        float speedIncrease = statsByLevelStore->getSpeedForClassLevel(theClass , nextLevel) -
             theStats->getSpeed();
 
         levelUpInfo += theClass;
@@ -96,14 +99,12 @@ std::string LevelUpCalculations::getNewStatsSummary(Character *character ,
             Conversion::convertIntToString(nextLevel); 
         levelUpInfo += "! Hp +" + 
             Conversion::convertIntToString(hpIncrease);
-        levelUpInfo += ". Mp +" + 
-            Conversion::convertIntToString(mpIncrease);
         levelUpInfo += ". Atk +" + 
             Conversion::convertIntToString(atkIncrease);
-        levelUpInfo += ". Def +" + 
-            Conversion::convertIntToString(defIncrease);
-        levelUpInfo += ". Speed +" + 
-            Conversion::convertIntToString(speedIncrease);
+        levelUpInfo += ". Mgc +" + 
+            Conversion::convertIntToString(mgcIncrease);
+        levelUpInfo += ". Speed " + 
+            Conversion::convertFloatToString(speedIncrease);
         levelUpInfo += ".";
 
         return levelUpInfo;
@@ -167,6 +168,11 @@ void LevelUpCalculations::setCharacterToLevel(Character *character , int level ,
         character->getStats()->setSpeed(
             statsByLevelStore->getSpeedForClassLevel(theClass , level));
 
+        //Set current level XP to previous level's to level XP.
+        if(level != 1){
+            character->getStats()->setTtlXPGained(statsByLevelStore->getXPForClassLevel(theClass , level - 1));
+        }
+        
         character->getStats()->setToLvlXP(
             statsByLevelStore->getXPForClassLevel(theClass , level));
 }

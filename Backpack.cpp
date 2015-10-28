@@ -12,6 +12,7 @@ Backpack::Backpack(FontStore *fontStore){
 Backpack::~Backpack(){
 
     removeAllContents();
+    delete inventoryDisplay;
 }
 
 int Backpack::getMoney(){
@@ -173,9 +174,11 @@ void Backpack::updateInventoryDisplay(){
 
     //Delete existing display.
     delete inventoryDisplay;
+    inventoryDisplay = NULL;
 
-    std::string currentInventory = 
-        "---------------------------Inventory----------------------------,";
+    std::string currentInventory =        
+        "----------------------------------------------Inventory"
+        "----------------------------------------------,";
 
     currentInventory += "Gold: ";
     currentInventory += Conversion::convertIntToString(getMoney());

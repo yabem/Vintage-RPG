@@ -95,14 +95,14 @@ void InsideCastle::loadTheTangibles(){
     umgarTheWorldDestroyer->setMusic("Alchemists Tower");
 
     std::vector<int> enemies;
-    enemies.push_back(TENTACLE_MAGE);
+    enemies.push_back(SPIDER);
     enemies.push_back(UMGAR_THE_WORLD_DESTROYER);
-    enemies.push_back(TENTACLE_MAGE);
+    enemies.push_back(SPIDER);
 
     std::vector<int> enemyLevels;
-    enemyLevels.push_back(5);
-    enemyLevels.push_back(7);
-    enemyLevels.push_back(5);
+    enemyLevels.push_back(11);
+    enemyLevels.push_back(11);
+    enemyLevels.push_back(11);
 
     umgarTheWorldDestroyer->loadEnemies(enemies , enemyLevels);
 
@@ -139,8 +139,8 @@ void InsideCastle::loadTheTangibles(){
 
     KillQuest *killTask = new KillQuest();
     killTask->setQuestDisplayName("Spider Slaying 101");
-    killTask->addObjective("Spider" , 5);
-    killTask->addObjective("Spider Egg" , 3);
+    killTask->addObjective("Spider" , 2);
+    killTask->addObjective("Spider Egg" , 2);
     killTask->addObjective("Spider Web" , 2);
     killTask->setMustBeActiveForPlayerToUpdate();
     kMak->loadQuest(killTask);
@@ -153,7 +153,7 @@ void InsideCastle::loadTheTangibles(){
             this->drawRepository ,
             this->gameManager , 
             "Queen of Stiltaviksenburgville: Thank you for saving the world. My reign can now continue "
-            "and I will do everything in my power to fix the scourge that Umgar has left behind."
+            "and I will do everything in my power to fix the scourge that Umgar has left behind. "
             "Umgar has been a lingering presence for centuries and my family has battled him "
             "for a millenia. You have defeated him but he will appear again. For now we are safe "
             "and we can thank you for that. Please speak with my aid. She has a special message "
@@ -171,9 +171,9 @@ void InsideCastle::loadTheTangibles(){
             this->drawRepository ,
             this->gameManager , 
             "Game Creator: You did it! You completed the game. Thanks for playing. I hope you " 
-            "enjoyed it. Feel free to continue to explore the world and finish any quests you "
-            "haven't finished. I guess you can call that a New Game+ but without the New Game..."
-            "or the +. I might create an ending cutscene but we'll see how ambitious I get." ,
+            "enjoyed it. Feel free to continue to explore the world and finish any remaining quests. "
+            "I guess you can call that a New Game+ but without the New Game..."
+            "or the +... To end the game and see the final cutscene, go talk to that blue star." ,
             this->fontStore->getFont("default"));
         gameEndingInformer->createCharacter(32 , 32 , 90 , 2 , 4 , this);
         gameEndingInformer->setCW(32);
@@ -186,7 +186,7 @@ void InsideCastle::loadTheTangibles(){
             Conversion::convertTilesToPixels(30) ,
             this->drawRepository ,
             this->gameManager , 
-            "Escaped Prisoner: I don't remember what happened. I was farming in the south and "
+            "Escaped Prisoner: I don't remember what happened. I was farming in the south "
             "when all of a sudden the sky turned black. I saw a bright light and then my memory "
             "went blank. Then I woke up here. I'm going to escape quietly.",
             this->fontStore->getFont("default"));
@@ -221,7 +221,7 @@ void InsideCastle::loadTheTangibles(){
         anotherNPCName
         );
     babyMagicalBarrier->createCharacter(64 , 64 , 60 , 2 , 4 , this);
-    babyMagicalBarrier->setIdentifierName(npcName);
+    babyMagicalBarrier->setIdentifierName(anotherNPCName);
     babyMagicalBarrier->setCW(64);
     babyMagicalBarrier->setCH(64);
     babyMagicalBarrier->setCharacterFacing(UP);
@@ -241,7 +241,6 @@ void InsideCastle::loadTheTangibles(){
     babyMagicalBarrierObjectives->addObjective("Badge of I Saved the World" , 1);
     babyMagicalBarrier->loadQuest(babyMagicalBarrierObjectives);
     gameManager->getPlayerEntity()->addQuest("maybeWeDoNeedThoseStinkin'Badges" , babyMagicalBarrierObjectives);
-
 
     this->loadTangible(magicalBarrier);  
     this->loadTangible(queen);

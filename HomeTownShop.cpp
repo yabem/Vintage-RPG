@@ -44,7 +44,7 @@ void HomeTownShop::loadTheTangibles(){
     timberMan->setCH(32);
     timberMan->setCharacterFacing(DOWN);
     timberMan->setQuestExplanation(
-        "Timber Man: It's a secret to most people but you. Anyway. "  
+        "Timber Man: It's a secret to everyone... or not... Anyway! "  
         "There's a goo problem in my building. I think it's coming from "
         "the goo monsters in the south. If you're traveling in the forest, can "
         "you kill a bunch of them to show just how mean I am? You know, cause that "
@@ -55,8 +55,8 @@ void HomeTownShop::loadTheTangibles(){
         "Timber Man: Fantastic! You did it! You look pretty filthy now so, just "
         "take this and leave.");
     timberMan->setRewardNotification(
-        "Thief received the Backstab ability!");
-    timberMan->setGift("thief" , "Backstab");
+        "Warrior received the Headbutt ability!");
+    timberMan->setGift("warrior" , "Headbutt");
     timberMan->setQuestAfterCompleteMessage(
         "Timber Man: Great job, now get out!"
         );
@@ -64,9 +64,8 @@ void HomeTownShop::loadTheTangibles(){
     GatherQuest *questObjectives = new GatherQuest(
         gameManager->getPlayerEntity()->getPlayerInventory());
     questObjectives->setQuestDisplayName("Timber Man and My Goo");
-    questObjectives->addObjective("Small Goo" , 10);
-    questObjectives->addObjective("Medium Goo" , 5);
-    questObjectives->addObjective("Large Goo" , 2);
+    questObjectives->addObjective("Small Goo" , 2);
+    questObjectives->addObjective("Large Goo" , 1);
     timberMan->loadQuest(questObjectives);
     gameManager->getPlayerEntity()->addQuest("gooQuest" , questObjectives);
 

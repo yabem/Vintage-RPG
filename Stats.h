@@ -78,6 +78,7 @@ public:
     void setBaseMgc(int baseMgc);
     void setBaseDef(int baseDef);
     void setSpeed(float speed);
+    virtual void setTtlXPGained(int ttlXPGained) = 0;
     virtual void setToLvlXP(int toLvlXP) = 0;
 
     virtual int getXPRewardForSlaying() const = 0;

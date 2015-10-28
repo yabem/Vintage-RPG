@@ -9,6 +9,7 @@
 #include "NPCWithDialogueThenBattle.h"
 #include "Conversion.h"
 #include "NPCWithDialogueAndQuest.h"
+#include "NPCWithDialogueAndQuestWithItemReward.h"
 #include "KillQuest.h"
 #include "GatherQuest.h"
 

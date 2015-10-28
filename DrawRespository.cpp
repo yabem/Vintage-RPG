@@ -90,7 +90,6 @@ bool DrawRepository::cutscenesEmpty(){
     return cutscenes.empty();
 }
 
-
 //Loads a single Animation.
 //Pre:  The Animation is not NULL.
 //Post: Loads the Animation to the animations queue. Returns true

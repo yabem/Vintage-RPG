@@ -428,6 +428,9 @@ void BattleManager::consumePlayerInput(){
 
                 drawRepository->removeTopCursor();
                 battleCursor = NULL;
+                
+                this->thePlayers.setCurrSelection(initiator);
+                //this->setCurrPlayer(getCharacterPosition(initiator));
                 setTargetToNoTarget();
                 break;
             }
@@ -471,7 +474,6 @@ void BattleManager::consumePlayerInput(){
                     this->initiator = this->getCurrPlayer();
 
                     //Healing item.
-                    //if(selection == "Recover" || selection == "Potion"){
                     if(HealingActions::isHealingAction(selection)){
                     
                         this->receiver = this->getCurrPlayer();
@@ -646,7 +648,7 @@ bool BattleManager::checkForBattle(){
 
 #ifndef NO_RANDOM_BATTLES
 
-        if(rand() % 100 < 5){
+        if(rand() % 100 < 3){
 
             initializeBattle();
             movedSpaces = 0;

@@ -58,7 +58,7 @@ void NPCWithDialogueAndQuestWithItemReward::setItemReward(std::string itemReward
 
 void NPCWithDialogueAndQuestWithItemReward::playCutscene(int pressedKey){
 
-    if(!quest->isActiveForPlayer()){
+    if(!quest->isActiveForPlayer() && !quest->isTurnedInByPlayer()){
 
         Dialogue *explainQuest = new Dialogue(gameManager , font);
         explainQuest->setText(questExplanation);

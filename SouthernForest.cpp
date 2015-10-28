@@ -99,8 +99,8 @@ void SouthernForest::loadTheTangibles(){
     forester->setQuestCompleteMessage(
         "Forester: Great, you did it! Take this as a token of my appreciation.");
     forester->setRewardNotification(
-        "Warrior received the Shield Bash ability!");
-    forester->setGift("warrior" , "Shield Bash");
+        "Mage learned the Fireball ability!");
+    forester->setGift("mage" , "Fireball");
     forester->setQuestAfterCompleteMessage(
         "Forester: The forest is much safer now, thanks!"
         );
@@ -108,7 +108,7 @@ void SouthernForest::loadTheTangibles(){
     KillQuest *killTask = new KillQuest();
     killTask->setQuestDisplayName("Help Clear the Forest");
     killTask->addObjective("Wererat" , 2);
-    killTask->addObjective("Wolf" , 3);
+    killTask->addObjective("Wolf" , 2);
     killTask->addObjective("Mushroom Man" , 2);
     killTask->setMustBeActiveForPlayerToUpdate();
     forester->loadQuest(killTask);
@@ -130,17 +130,17 @@ void SouthernForest::loadTheTangibles(){
     barroldTheQuestGiver->setCharacterFacing(DOWN);
     barroldTheQuestGiver->setQuestExplanation(
         "Barrold: There's a huge blob down south. Help kill it because "  
-        "it's killing everything in the forest! The good, the bad, and even the "
-        "ugly!");
+        "it's killing everything in the forest! The good creatures, the bad "
+        "creatures, and even the ugly creatures!");
     barroldTheQuestGiver->setQuestReminder(
         "Barrold: Ahhhh! Hurry!!!");
     barroldTheQuestGiver->setQuestCompleteMessage(
         "Barrold: I could have done it myself, but here's a reward.");
     barroldTheQuestGiver->setRewardNotification(
-        "Mage received the Heal ability!");
-    barroldTheQuestGiver->setGift("mage" , "Heal");
+        "Thief learned the Backstab ability!");
+    barroldTheQuestGiver->setGift("thief" , "Backstab");
     barroldTheQuestGiver->setQuestAfterCompleteMessage(
-        "Barrold: Well back to standing here alone in the forest."
+        "Barrold: Well, back to standing here alone in the forest."
         );
     KillQuest *killBlobKing = new KillQuest();
     killBlobKing->setQuestDisplayName("One Eyed Monster");
@@ -183,7 +183,7 @@ void SouthernForest::loadTheTangibles(){
     GatherQuest *peppersQuestObjectives = new GatherQuest(
         gameManager->getPlayerEntity()->getPlayerInventory());
     peppersQuestObjectives->setQuestDisplayName("Doctor Peppers' Crew");
-    peppersQuestObjectives->addObjective("Old Man Spices" , 2);
+    peppersQuestObjectives->addObjective("Old Man Spices" , 1);
     spicyRedPeppers->loadQuest(peppersQuestObjectives);
     gameManager->getPlayerEntity()->addQuest("doctorPeppersCrew" , peppersQuestObjectives);
 

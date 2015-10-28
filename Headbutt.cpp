@@ -132,7 +132,7 @@ void Headbutt::loadAnimations(){
 void Headbutt::calculateDamage(){
 
     damageToReceiver = DamageCalculations::damageWithDelayAtk(
-        initiator, receiver , .5 , .4);
+        initiator, receiver , 1.3 , 1.0);
 }
 
 //Sets the draw to spell location.

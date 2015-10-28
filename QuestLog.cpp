@@ -85,9 +85,11 @@ void QuestLog::updateActiveQuestsDisplay(){
 
     //Delete existing display.
     delete activeQuestDisplay;
+    activeQuestDisplay = NULL;
 
     std::string allActiveQuests = 
-        "------------------------Active Quests-------------------------,";
+        "-------------------------------------------Active Quests"
+        "-------------------------------------------,";
 
     std::map<std::string , Quest*>::iterator questIter = _quests.begin();
 
@@ -123,9 +125,11 @@ void QuestLog::updateCompletedQuestsDisplay(){
 
     //Delete existing display.
     delete completedQuestDisplay;
+    completedQuestDisplay = NULL;
 
     std::string allCompletedQuests = 
-        "------------------------Completed Quests-------------------------,";
+        "----------------------------------------Completed Quests"
+        "----------------------------------------,";
 
     std::map<std::string , Quest*>::iterator questIter = _quests.begin();
 

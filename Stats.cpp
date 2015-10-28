@@ -318,9 +318,6 @@ std::string Stats::getSummary(){
     statsSummary += "   Magic: ";
     statsSummary += Conversion::convertIntToString(ttlMgc);
 
-    statsSummary += "   Defense: ";
-    statsSummary += Conversion::convertIntToString(ttlDef);
-
     statsSummary += "   Speed: ";
     statsSummary += Conversion::convertIntToString(speed);
 

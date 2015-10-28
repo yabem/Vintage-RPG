@@ -14,6 +14,7 @@ NPCWithDialogueAndQuest::NPCWithDialogueAndQuest(ALLEGRO_BITMAP *image , int sx 
 
 NPCWithDialogueAndQuest::~NPCWithDialogueAndQuest(){
 
+    delete quest;
 }
 
 void NPCWithDialogueAndQuest::loadQuest(Quest *quest){
@@ -47,7 +48,7 @@ void NPCWithDialogueAndQuest::setQuestAfterCompleteMessage(
 
 void NPCWithDialogueAndQuest::playCutscene(int pressedKey){
 
-    if(!quest->isActiveForPlayer()){
+    if(!quest->isActiveForPlayer() && !quest->isTurnedInByPlayer()){
 
         Dialogue *explainQuest = new Dialogue(gameManager , font);
         explainQuest->setText(questExplanation);

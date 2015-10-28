@@ -63,7 +63,7 @@ void Scenery::animate(){
     crFrame += 1;
 
     //Check if the Scenery has gone across the entire screen width.
-    if(crFrame * abs(moveRateX) > SCREEN_W + w){
+    if(dx < -w){
 
         dx = sx;
         dy = sy;

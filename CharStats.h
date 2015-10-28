@@ -41,6 +41,7 @@ public:
     void addToTtlXP(int amount);     //Add to ttlXPGained.
     bool hasLeveledUp();    //Checks if the character has leveled up.
 
+    virtual void setTtlXPGained(int ttlXPGained);    //Sets the TtlXPGained.
     virtual void setToLvlXP(int toLvlXP);  //Sets the ToLvlXP.
 
     //Retrieves a summary of the pertinent stats to display.

@@ -69,9 +69,9 @@ void NorthernSnow::loadTheTangibles(){
     iceBull->setMusic("Split In Synapse");
 
     std::vector<int> enemies;
-    enemies.push_back(RAT);
+    enemies.push_back(CARROT_RAT);
     enemies.push_back(ICE_BULL);
-    enemies.push_back(RAT);
+    enemies.push_back(CARROT_RAT);
 
     std::vector<int> enemyLevels;
     enemyLevels.push_back(7);
@@ -102,8 +102,8 @@ void NorthernSnow::loadTheTangibles(){
     wanderer->setQuestCompleteMessage(
         "Wanderer: I can make my way home now, thank you stranger.");
     wanderer->setRewardNotification(
-        "Mage received the Chain Lightning ability!");
-    wanderer->setGift("mage" , "Chain Lightning");
+        "Warrior received the Bandage ability!");
+    wanderer->setGift("warrior" , "Bandage");
     wanderer->setQuestAfterCompleteMessage(
         "Wanderer: I can't wait to get home!"
         );
@@ -112,7 +112,7 @@ void NorthernSnow::loadTheTangibles(){
     killTask->setQuestDisplayName("Cleanse the North");
     killTask->addObjective("Walrus" , 2);
     killTask->addObjective("Ice Cube" , 2);
-    killTask->addObjective("Carrot Rat" , 3);
+    killTask->addObjective("Carrot Rat" , 1);
     killTask->setMustBeActiveForPlayerToUpdate();
     wanderer->loadQuest(killTask);
     gameManager->getPlayerEntity()->addQuest("cleanseTheNorth" , killTask);
@@ -141,8 +141,8 @@ void NorthernSnow::loadTheTangibles(){
         "Jon Winter: You've exceeded my expectations. I owe you much gratitude. "
         "Here, take this as a reward.");
     jonWinter->setRewardNotification(
-        "Thief received the Potion ability!");
-    jonWinter->setGift("thief" , "Potion");
+        "Mage learned the Chain Lightning ability!");
+    jonWinter->setGift("mage" , "Chain Lightning");
     jonWinter->setQuestAfterCompleteMessage(
         "Jon Winter: Well done. May the Many bless you."
         );
@@ -186,7 +186,7 @@ void NorthernSnow::loadTheTangibles(){
     GatherQuest *mushboomQuestObjectives = new GatherQuest(
         gameManager->getPlayerEntity()->getPlayerInventory());
     mushboomQuestObjectives->setQuestDisplayName("You Are What You Eat");
-    mushboomQuestObjectives->addObjective("Blob Eye" , 2);
+    mushboomQuestObjectives->addObjective("Blob Eye" , 1);
     magicMushroom->loadQuest(mushboomQuestObjectives);
     gameManager->getPlayerEntity()->addQuest("youAreWhatYouEat" , mushboomQuestObjectives);
 

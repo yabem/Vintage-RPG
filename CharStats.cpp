@@ -98,6 +98,12 @@ void CharStats::setToLvlXP(int toLvlXP){
     this->toLvlXP = toLvlXP;
 }
 
+//Sets the CurrLvlXP.
+void CharStats::setTtlXPGained(int ttlXPGained){
+
+    this->ttlXPGained = ttlXPGained;
+}
+
 //Returns listOfRewards.
 std::vector<std::string> CharStats::getRewards() const{
 
@@ -136,11 +142,8 @@ std::string CharStats::getSummary(){
     statsSummary += " Mgc:";
     statsSummary += Conversion::convertIntToString(getTtlMgc());
 
-    statsSummary += " Def:";
-    statsSummary += Conversion::convertIntToString(getTtlDef());
-
     statsSummary += " Spd:";
-    statsSummary  += Conversion::convertIntToString(getSpeed());
+    statsSummary  += Conversion::convertFloatToString(getSpeed());
 
     statsSummary += "  XP:";
     _itoa_s(getTtlXPGained() , tempChar , 10);

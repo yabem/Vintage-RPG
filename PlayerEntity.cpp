@@ -19,6 +19,7 @@ PlayerEntity::~PlayerEntity(){
     delete questLog;
     thePlayers->deleteCharList();
     delete thePlayers;
+    delete partyStatusDisplay;
 }
 
 //Pre:  The backpack does not already exist.
@@ -71,6 +72,7 @@ void PlayerEntity::updatePartyStatusDisplay(){
 
     //Delete existing display.
     delete partyStatusDisplay;
+    partyStatusDisplay = NULL;
 
     std::string allStatuses = 
         "--------------------------------------------Party Status"
@@ -203,32 +205,109 @@ void PlayerEntity::loadDefaultPlayers(){
     thePlayer3->setStats(playerStats3);
     thePlayer4->setStats(playerStats4);
 
-#ifdef ALL_ABILITIES
-    thePlayer->loadAbilities("Lance,Skewer,Jump,Fury Of The Fang,Cure,Recover;");
-    thePlayer2->loadAbilities("Sword,Headbutt,Shield Bash,Earth Shatter,Bandage,Recover;");
-    thePlayer3->loadAbilities("Dagger,Backstab,Knife Barrage,Shade of the Crescent,Potion,Recover;");
-    thePlayer4->loadAbilities("Staff,Fireball,Chain Lightning,Reign of Winter,Heal,Recover;");
-#endif
-
-#ifndef ALL_ABILITIES
     thePlayer->loadAbilities("Lance;");
     thePlayer2->loadAbilities("Sword;");
     thePlayer3->loadAbilities("Dagger;");
     thePlayer4->loadAbilities("Staff;");
+
+#ifdef ADD_TIER_2_ABILITIES
+    thePlayer->addAbility("Skewer");
+    thePlayer2->addAbility("Headbutt");
+    thePlayer3->addAbility("Backstab");
+    thePlayer4->addAbility("Fireball");
 #endif
 
+#ifdef ADD_TIER_3_ABILITIES
+    thePlayer->addAbility("Cure");
+    thePlayer2->addAbility("Bandage");
+    thePlayer3->addAbility("Potion");
+    thePlayer4->addAbility("Heal");
+#endif
+
+#ifdef ADD_TIER_4_ABILITIES
+    thePlayer->addAbility("Jump");
+    thePlayer2->addAbility("Shield Bash");
+    thePlayer3->addAbility("Knife Barrage");
+    thePlayer4->addAbility("Chain Lightning");
+#endif
+
+#ifdef ADD_TIER_5_ABILITIES
+    thePlayer->addAbility("Fury of the Fang");
+    thePlayer2->addAbility("Earth Shatter");
+    thePlayer3->addAbility("Shade of the Crescent");
+    thePlayer4->addAbility("Reign of Winter");
+#endif
+
+    /*
 #ifdef MAX_LEVEL
     LevelUpCalculations::setCharacterToLevel(thePlayer , 10 , statsByLevelStore);
     LevelUpCalculations::setCharacterToLevel(thePlayer2 , 10 , statsByLevelStore);
     LevelUpCalculations::setCharacterToLevel(thePlayer3 , 10 , statsByLevelStore);
     LevelUpCalculations::setCharacterToLevel(thePlayer4 , 10 , statsByLevelStore);
 #endif
+    */
 
-#ifndef MAX_LEVEL
-    LevelUpCalculations::setCharacterToLevel(thePlayer , 1 , statsByLevelStore);
-    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 1 , statsByLevelStore);
-    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 1 , statsByLevelStore);
-    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 1 , statsByLevelStore);
+#ifdef PROMOTE_ALL_PLAYERS_TO_LEVEL_2
+    LevelUpCalculations::setCharacterToLevel(thePlayer , 2 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 2 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 2 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 2 , statsByLevelStore);
+#endif
+
+#ifdef PROMOTE_ALL_PLAYERS_TO_LEVEL_3
+    LevelUpCalculations::setCharacterToLevel(thePlayer , 3 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 3 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 3 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 3 , statsByLevelStore);
+#endif
+
+#ifdef PROMOTE_ALL_PLAYERS_TO_LEVEL_4
+    LevelUpCalculations::setCharacterToLevel(thePlayer , 4 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 4 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 4 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 4 , statsByLevelStore);
+#endif
+
+#ifdef PROMOTE_ALL_PLAYERS_TO_LEVEL_5
+    LevelUpCalculations::setCharacterToLevel(thePlayer , 5 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 5 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 5 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 5 , statsByLevelStore);
+#endif
+
+#ifdef PROMOTE_ALL_PLAYERS_TO_LEVEL_6
+    LevelUpCalculations::setCharacterToLevel(thePlayer , 6 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 6 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 6 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 6 , statsByLevelStore);
+#endif
+
+#ifdef PROMOTE_ALL_PLAYERS_TO_LEVEL_7
+    LevelUpCalculations::setCharacterToLevel(thePlayer , 7 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 7 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 7 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 7 , statsByLevelStore);
+#endif
+
+#ifdef PROMOTE_ALL_PLAYERS_TO_LEVEL_8
+    LevelUpCalculations::setCharacterToLevel(thePlayer , 8 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 8 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 8 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 8 , statsByLevelStore);
+#endif
+
+#ifdef PROMOTE_ALL_PLAYERS_TO_LEVEL_9
+    LevelUpCalculations::setCharacterToLevel(thePlayer , 9 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 9 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 9 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 9 , statsByLevelStore);
+#endif
+
+#ifdef PROMOTE_ALL_PLAYERS_TO_LEVEL_10
+    LevelUpCalculations::setCharacterToLevel(thePlayer , 10 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 10 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 10 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 10 , statsByLevelStore);
 #endif
 
     LevelUpCalculations::setHPToFull(thePlayer);

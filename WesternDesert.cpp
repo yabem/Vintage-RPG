@@ -95,8 +95,8 @@ void WesternDesert::loadTheTangibles(){
         "Explorer: It looks much safer now. I'll go check it out. Here, take "
         "this as a reward.");
     explorer->setRewardNotification(
-        "Lancer received Jump ability!");
-    explorer->setGift("lancer" , "Jump");
+        "Thief learned the Potion ability!");
+    explorer->setGift("thief" , "Potion");
     explorer->setQuestAfterCompleteMessage(
         "Explorer: Treasure awaits! By the way, I heard there was a secret "
         "at the graveyard. It might be worth it to check it out.");
@@ -104,7 +104,7 @@ void WesternDesert::loadTheTangibles(){
     KillQuest *killTask = new KillQuest();
     killTask->setQuestDisplayName("The Stalking Dead");
     killTask->addObjective("Rat" , 2);
-    killTask->addObjective("Shield Skeleton" , 3);
+    killTask->addObjective("Shield Skeleton" , 1);
     killTask->addObjective("Zombie" , 1);
     killTask->setMustBeActiveForPlayerToUpdate();
     explorer->loadQuest(killTask);
@@ -182,7 +182,6 @@ void WesternDesert::loadTheTangibles(){
         gameManager->getPlayerEntity()->getPlayerInventory());
     ghostQuestObjectives->setQuestDisplayName("Gifts for a Ghost");
     ghostQuestObjectives->addObjective("Kungfoo Belt" , 1);
-    ghostQuestObjectives->addObjective("Scythe" , 1);
     ghostOfTheCrescent->loadQuest(ghostQuestObjectives);
     gameManager->getPlayerEntity()->addQuest("giftsForAGhost" , ghostQuestObjectives);
 

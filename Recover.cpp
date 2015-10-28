@@ -77,6 +77,6 @@ void Recover::calculateRecovery(){
     }
 
     //Get recover amount
-    this->recoveryAmount = receiver->getTtlHP() * 0.20;
+    this->recoveryAmount = 40;//receiver->getTtlHP() * 0.20;
 }
 

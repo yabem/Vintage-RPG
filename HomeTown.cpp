@@ -30,23 +30,23 @@ void HomeTown::loadMapEnemies(){
 //Loads all the cloud Scenery objects.
 void HomeTown::loadTheSceneries(){
 
-    Scenery *cloud1 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 0 , -4 , 1);
+    Scenery *cloud1 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 0 , -2 , 0);
     cloud1->setDX(80);    cloud1->setDY(0);
-    Scenery *cloud2 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 40 , -8 , 0);
+    Scenery *cloud2 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 40 , -3 , 0);
     cloud2->setDX(500);    cloud2->setDY(40);
-    Scenery *cloud3 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 80 , -6 , 0);
+    Scenery *cloud3 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 80 , -3 , 0);
     cloud3->setDX(540);    cloud3->setDY(80);
-    Scenery *cloud4 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 120 , -10 , 2);
+    Scenery *cloud4 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 120 , -2 , 0);
     cloud4->setDX(290);   cloud4->setDY(120);
-    Scenery *cloud5 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 160 , -3 , 0);
+    Scenery *cloud5 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 160 , -2 , 0);
     cloud5->setDX(360);    cloud5->setDY(160);
-    Scenery *cloud6 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 200 , -2 , 0);
+    Scenery *cloud6 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 200 , -3 , 0);
     cloud6->setDX(430);    cloud6->setDY(200);
-    Scenery *cloud7 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 240 , -8 , -2);
+    Scenery *cloud7 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 240 , -3 , 0);
     cloud7->setDX(150);    cloud7->setDY(240);
-    Scenery *cloud8 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 280 , -9 , 0);
+    Scenery *cloud8 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 280 , -2 , 0);
     cloud8->setDX(220);    cloud8->setDY(280);
-    Scenery *cloud9 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 380 , -5 , -1);
+    Scenery *cloud9 = new Scenery(imageStore->getBitMap("cloud") , SCREEN_W , 380 , -3 , 0);
     cloud9->setDX(SCREEN_W);    cloud9->setDY(380);
 
     this->loadScenery(cloud1);
@@ -92,11 +92,11 @@ void HomeTown::loadTheTangibles(){
         Conversion::convertTilesToPixels(28) ,
         this->drawRepository ,
         this->gameManager , 
-        "Teacher: Welcome to the town Stiltaviksenburgville! It's safe to walk around here " 
+        "Teacher: Welcome to the town Hamletburgeville! It's safe to walk around here " 
         "but be careful going outside because there are tons of monsters. Lucky for you, "
         "you already have formidible weapons. Now you just need to be able to heal "
         "yourself. Search around the town. Talk to people. Open treasure chests. Search "
-        "barrels. I'm sure you'll find a healing spell for everyone somewhere in town. Oh,"
+        "barrels. I'm sure you'll find a healing spell for everyone somewhere in town. Oh, "
         "word around the water cooler is that, a mage was trapped in a barrel somewhere to the "
         "eastern castle area. I bet if you find him he'd have something powerful for you!" ,
         this->fontStore->getFont("default"));
@@ -111,7 +111,8 @@ void HomeTown::loadTheTangibles(){
         Conversion::convertTilesToPixels(25) ,
         this->drawRepository ,
         this->gameManager , 
-        "Store Owner: Hey! You look a lot like me! Take this and help us figure out what happened." ,
+        "Store Owner: Hey! Take this and help us figure out what happened. If you use this on"
+        "a dead ally, you can bring them back to life. Try it out!" ,
         this->fontStore->getFont("default") ,
         this->gameManager->getPlayerEntity());
     storeOwner->createCharacter(32 , 32 , 90 , 2 , 4 , this);
@@ -119,8 +120,8 @@ void HomeTown::loadTheTangibles(){
     storeOwner->setCH(32);
     storeOwner->setGift("lancer" , "Recover");
     storeOwner->setRewardNotification("Lancer received the Recover ability!");
-    storeOwner->setMessageAfterGiftDelivery(" Make sure to go around town and talk to everyone. They'll have some useful tips." 
-        "Well...most of them will.");
+    storeOwner->setMessageAfterGiftDelivery("Store Owner: Make sure to go around town and talk to everyone. They'll have some useful tips. " 
+        "Remember, recover also resurrects dead allies.");
     storeOwner->setCharacterFacing(DOWN);
 
     NPCWithDialogueAndQuest *mysteriousManQuestGiver = new NPCWithDialogueAndQuest(
@@ -146,18 +147,17 @@ void HomeTown::loadTheTangibles(){
     mysteriousManQuestGiver->setQuestCompleteMessage(
         "Mysterious Man: As promised here's the spell.");
     mysteriousManQuestGiver->setRewardNotification(
-        "Mage received the Fireball ability!");
-    mysteriousManQuestGiver->setGift("mage" , "Fireball");
+        "Mage received the Heal ability!");
+    mysteriousManQuestGiver->setGift("mage" , "Heal");
     mysteriousManQuestGiver->setQuestAfterCompleteMessage(
-        "Mysterious Man: Try out the spell, I'm sure you'll enjoy it. Hadouken!!!"
+        "Mysterious Man: Try out the spell, I'm sure you'll enjoy it!"
         );
     GatherQuest *mysteriousManObjectives = new GatherQuest(
         gameManager->getPlayerEntity()->getPlayerInventory());
     mysteriousManObjectives->setQuestDisplayName("The Needs of a Tinkerer");
-    mysteriousManObjectives->addObjective("Stick" , 5);
-    mysteriousManObjectives->addObjective("Rock" , 5);
-    mysteriousManObjectives->addObjective("Sand" , 15);
-    mysteriousManObjectives->addObjective("Napalm" , 2);
+    mysteriousManObjectives->addObjective("Stick" , 2);
+    mysteriousManObjectives->addObjective("Sand" , 1);
+    mysteriousManObjectives->addObjective("Napalm" , 1);
     mysteriousManQuestGiver->loadQuest(mysteriousManObjectives);
     gameManager->getPlayerEntity()->addQuest("theNeedsOfATinkerer" , mysteriousManObjectives);
 
@@ -168,7 +168,7 @@ void HomeTown::loadTheTangibles(){
         this->drawRepository ,
         this->gameManager , 
         "Witch: There are some extreme seasons in this country. Oh, by the way "
-        "I hear there was a magical spotted mushroom in the North, be on the lookout for "
+        "I hear there was a magical spotted mushroom in the north, be on the lookout for "
         "it in your journeys.",
         this->fontStore->getFont("default"));
     witch->createCharacter(32 , 32 , 60 , 2 , 4 , this);
@@ -222,7 +222,7 @@ void HomeTown::loadTheTangibles(){
     strifeTheQuestGiver->setCH(32);
     strifeTheQuestGiver->setCharacterFacing(DOWN);
     strifeTheQuestGiver->setQuestExplanation(
-        "Strife: I'm making a delicious stew but I'm all out of eyeballs."  
+        "Strife: I'm making a delicious stew but I'm all out of eyeballs. "  
         "I need you to acquire some eyeballs from various animals. " 
         "Foxes and sheep to the east have the plumpest eyeballs! "
         "Can you do that for me? Of course you will! Thanks in advance!");
@@ -231,8 +231,8 @@ void HomeTown::loadTheTangibles(){
     strifeTheQuestGiver->setQuestCompleteMessage(
         "Strife: Wow, these eyes are so big and juicy, they'll be perfect! Here take this...");
     strifeTheQuestGiver->setRewardNotification(
-        "Warrior received the Headbutt ability!");
-    strifeTheQuestGiver->setGift("warrior" , "Headbutt");
+        "Thief received the Knife Barrage ability!");
+    strifeTheQuestGiver->setGift("thief" , "Knife Barrage");
     strifeTheQuestGiver->setQuestAfterCompleteMessage(
         "Strife: The soup turned out great. Thanks for the eyeballs."
         );
@@ -241,9 +241,8 @@ void HomeTown::loadTheTangibles(){
     GatherQuest *strifeQuestObjectives = new GatherQuest(
         gameManager->getPlayerEntity()->getPlayerInventory());
     strifeQuestObjectives->setQuestDisplayName("I've Got My Eyes On You");
-    strifeQuestObjectives->addObjective("Tiny Eye" , 10);
-    strifeQuestObjectives->addObjective("Bloodshot Eye" , 3);
-    strifeQuestObjectives->addObjective("Pussing Eye" , 3);
+    strifeQuestObjectives->addObjective("Bloodshot Eye" , 2);
+    strifeQuestObjectives->addObjective("Pussing Eye" , 2);
     strifeTheQuestGiver->loadQuest(strifeQuestObjectives);
     gameManager->getPlayerEntity()->addQuest("IveGotMyEyesOnYou" , strifeQuestObjectives);
 
@@ -263,8 +262,8 @@ void HomeTown::loadTheTangibles(){
     friendlyGentlemanQuestGiver->setQuestExplanation(
         "Friendly Gentleman: Why hullo there friend. You look like a strapping young lad. "  
         "I run a potion exchange and I'm short some potions. Have you "
-        "perchance run across any in your Southern travels? I'd be ever "
-        "so greatful if you could gather this list of potions for me. I "
+        "perchance run across any in your southern travels? I'd be ever "
+        "so grateful if you could gather this list of potions for me. I "
         "would most definitely repay you with something extraordinary!" );
     friendlyGentlemanQuestGiver->setQuestReminder(
         "Friendly Gentleman: How goes the potion hunt? ");
@@ -279,9 +278,9 @@ void HomeTown::loadTheTangibles(){
     GatherQuest *potionObjectives = new GatherQuest(
         gameManager->getPlayerEntity()->getPlayerInventory());
     potionObjectives->setQuestDisplayName("Potions for a Gentleman");
-    potionObjectives->addObjective("Red Potion" , 5);
-    potionObjectives->addObjective("Green Potion" , 5);
-    potionObjectives->addObjective("Blue Potion" , 5);
+    potionObjectives->addObjective("Red Potion" , 2);
+    potionObjectives->addObjective("Green Potion" , 2);
+    potionObjectives->addObjective("Blue Potion" , 2);
     friendlyGentlemanQuestGiver->loadQuest(potionObjectives);
     gameManager->getPlayerEntity()->addQuest("potionsForAGentleman" , potionObjectives);
     
