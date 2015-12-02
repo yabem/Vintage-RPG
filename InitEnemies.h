@@ -26,9 +26,9 @@ namespace InitEnemies{
 
     const int SOUTHERN_FOREST_BASE_ATTACK = 8;
     const int WESTERN_DESERT_BASE_ATTACK = 16;
-    const int NORTHERN_SNOW_BASE_ATTACK = 24;
-    const int EASTERN_CASTLE_BASE_ATTACK = 32;
-    const int INSIDE_CASTLE_BASE_ATTACK = 40;
+    const int NORTHERN_SNOW_BASE_ATTACK = 26;
+    const int EASTERN_CASTLE_BASE_ATTACK = 38;
+    const int INSIDE_CASTLE_BASE_ATTACK = 50;
 
     //Southern Forest
     const int WERERAT_BASE_HP = 10;
@@ -124,7 +124,7 @@ namespace InitEnemies{
     const int DEMON_BASE_MP = 0;
     const int DEMON_BASE_ATK = 999;
     const int DEMON_BASE_DEF = 0;
-    const float DEMON_BASE_SPEED = 1.6;
+    const float DEMON_BASE_SPEED = 1.9;
     const int DEMON_BASE_REWARD_XP = 500;
     const int DEMON_BASE_MONEY_REWARD = 250;
 
@@ -173,7 +173,7 @@ namespace InitEnemies{
     const int ICE_BULL_BASE_MP = 0;
     const int ICE_BULL_BASE_ATK = 125;
     const int ICE_BULL_BASE_DEF = 0;
-    const float ICE_BULL_BASE_SPEED = 1.75;
+    const float ICE_BULL_BASE_SPEED = 1.65;
     const int ICE_BULL_BASE_REWARD_XP = 700;
     const int ICE_BULL_BASE_MONEY_REWARD = 350;
 
@@ -267,11 +267,11 @@ namespace InitEnemies{
     const int TENTACLE_MAGE_BASE_REWARD_XP = 110;
     const int TENTACLE_MAGE_BASE_MONEY_REWARD = 65;
 
-    const int UMGAR_THE_WORLD_DESTROYER_BASE_HP = 1200;
+    const int UMGAR_THE_WORLD_DESTROYER_BASE_HP = 2000;
     const int UMGAR_THE_WORLD_DESTROYER_BASE_MP = 0;
     const int UMGAR_THE_WORLD_DESTROYER_BASE_ATK = 195;
     const int UMGAR_THE_WORLD_DESTROYER_BASE_DEF = 0;
-    const float UMGAR_THE_WORLD_DESTROYER_BASE_SPEED = 1.3;
+    const float UMGAR_THE_WORLD_DESTROYER_BASE_SPEED = 1.5;
     const int UMGAR_THE_WORLD_DESTROYER_BASE_REWARD_XP = 1200;
     const int UMGAR_THE_WORLD_DESTROYER_BASE_MONEY_REWARD = 600;
 

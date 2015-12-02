@@ -4,7 +4,7 @@
 #include <string>
 #include <map>
 
-#define NO_MUSIC
+//#define NO_MUSIC
 
 class MusicBox{
 

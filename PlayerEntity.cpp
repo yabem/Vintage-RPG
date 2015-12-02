@@ -238,14 +238,10 @@ void PlayerEntity::loadDefaultPlayers(){
     thePlayer4->addAbility("Reign of Winter");
 #endif
 
-    /*
-#ifdef MAX_LEVEL
-    LevelUpCalculations::setCharacterToLevel(thePlayer , 10 , statsByLevelStore);
-    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 10 , statsByLevelStore);
-    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 10 , statsByLevelStore);
-    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 10 , statsByLevelStore);
-#endif
-    */
+    LevelUpCalculations::setCharacterToLevel(thePlayer , 1 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer2 , 1 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer3 , 1 , statsByLevelStore);
+    LevelUpCalculations::setCharacterToLevel(thePlayer4 , 1 , statsByLevelStore);
 
 #ifdef PROMOTE_ALL_PLAYERS_TO_LEVEL_2
     LevelUpCalculations::setCharacterToLevel(thePlayer , 2 , statsByLevelStore);
